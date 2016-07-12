@@ -7,6 +7,16 @@
 //
 
 #import "AppDelegate.h"
+#import "CCLocationManager.h"
+#import "ZXLocationManager.h"
+#import "FSBaseDataManager.h"
+#import "PUtils.h"
+#import "OpenShareHeader.h"
+#import <AlipaySDK/AlipaySDK.h>
+#import "XGPush.h"
+#import "XGSetting.h"
+#import "JRSwizzle.h"
+#import "KMCGeigerCounter.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +26,206 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    //-------------------1.设置状态栏隐藏，因为有广告------------------
+    [[UIApplication sharedApplication]setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+    
+    
+    //------------------2.设置URL缓存机制----------------
+    NSURLCache *URLCache = [[NSURLCache alloc] initWithMemoryCapacity:40 * 1024 * 1024 diskCapacity:40 * 1024 * 1024 diskPath:nil];
+    [NSURLCache setSharedURLCache:URLCache];
+    
+    //--------------------4.初始化定位-------------------
+    if (IS_IOS8)
+    {
+        [[CCLocationManager shareLocation]getCity:^(NSString *addressString) {
+            CLLocationCoordinate2D location = CLLocationCoordinate2DMake([USER_DEFAULT doubleForKey:CCLastLatitude],[USER_DEFAULT doubleForKey:CCLastLongitude]);
+            [FSBaseDataInstance setCurLocation:location];
+            [FSBaseDataInstance setCurCityName:addressString];
+        }];
+    }
+    else if (IS_IOS7)
+    {
+        [[ZXLocationManager sharedZXLocationManager]getCityName:^(NSString *addressString) {
+            CLLocationCoordinate2D location = CLLocationCoordinate2DMake([USER_DEFAULT doubleForKey:CCLastLatitude],[USER_DEFAULT doubleForKey:CCLastLongitude]);
+            [FSBaseDataInstance setCurLocation:location];
+            [FSBaseDataInstance setCurCityName:addressString];
+        }];
+    }
+    
+    //--------------------5.推送注册中心-----------------
+    [XGPush startApp:kCZJPushServerAppId appKey:kCZJPushServerAppKey];
+    //注销之后需要再次注册前的准备
+    GeneralBlockHandler successBlock = ^(void)
+    {
+        //如果变成需要注册状态
+        if(![XGPush isUnRegisterStatus])
+        {
+            //iOS8注册push方法
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= _IPHONE80_
+            if(IS_IOS8)
+            {
+                [self registerPushForIOS8];
+            }
+            else
+            {
+                [self registerPush];
+            }
+#else
+            //iOS8之前注册push方法
+            //注册Push服务，注册后才能收到推送
+            [self registerPush];
+#endif
+        }
+    };
+    [XGPush initForReregister:successBlock];
+    
+    //推送反馈回调版本示例
+    GeneralBlockHandler _successBlock = ^(void){
+        //成功之后的处理
+        DLog(@"[XGPush]handleLaunching's successBlock");
+    };
+    
+    GeneralBlockHandler _errorBlock = ^(void){
+        //失败之后的处理
+        DLog(@"[XGPush]handleLaunching's errorBlock");
+    };
+    [XGPush handleLaunching:launchOptions successCallback:_successBlock errorCallback:_errorBlock];
+    
+    //角标清0
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    iLog(@"========CZJ launchOptions:%@",[launchOptions description]);
+    
+    
+    //-----------------6.设置主页并判断是否启动广告页面--------------
+#ifdef DEBUG//离线日志打印
+    self.window = [[iConsoleWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+#else
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+#endif
+    UIViewController *_CZJRootViewController = [PUtils getViewControllerFromStoryboard:kCZJStoryBoardFileMain andVCName:kCZJStoryBoardIDHomeView];
+    self.window.rootViewController = _CZJRootViewController;
+    [self.window makeKeyAndVisible];
+    
+    
+    //---------------------7.分享设置---------------------
+    [OpenShare connectQQWithAppId:kCZJOpenShareQQAppId];
+    [OpenShare connectWeiboWithAppKey:kCZJOpenShareWeiboAppKey];
+    [OpenShare connectWeixinWithAppId:kCZJOpenShareWeixinAppId];
+    [OpenShare connectAlipay];
+    
+    
+    //-------------------8.字典描述分类替换----------------
+    [NSDictionary jr_swizzleMethod:@selector(description) withMethod:@selector(my_description) error:nil];
+    
+    
+    //--------------------9.开启帧数显示------------------
+    [KMCGeigerCounter sharedGeigerCounter].enabled = NO;
+    
+    return YES;
+}
+
+
+#pragma mark- PushNotification
+//注册系统为IOS8及以后的版本推送服务
+- (void)registerPushForIOS8{
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= _IPHONE80_
+    //Types
+    UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+    
+    //Actions
+    UIMutableUserNotificationAction *acceptAction = [[UIMutableUserNotificationAction alloc] init];
+    acceptAction.identifier = @"ACCEPT_IDENTIFIER";
+    acceptAction.title = @"Accept";
+    acceptAction.activationMode = UIUserNotificationActivationModeForeground;
+    acceptAction.destructive = NO;
+    acceptAction.authenticationRequired = NO;
+    
+    //Categories
+    UIMutableUserNotificationCategory *inviteCategory = [[UIMutableUserNotificationCategory alloc] init];
+    inviteCategory.identifier = @"INVITE_CATEGORY";
+    [inviteCategory setActions:@[acceptAction] forContext:UIUserNotificationActionContextDefault];
+    [inviteCategory setActions:@[acceptAction] forContext:UIUserNotificationActionContextMinimal];
+    
+    NSSet *categories = [NSSet setWithObjects:inviteCategory, nil];
+    
+    UIUserNotificationSettings *mySettings = [UIUserNotificationSettings settingsForTypes:types categories:categories];
+    
+    [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
+    
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
+#endif
+}
+
+//注册系统为IOS8之前的版本推送服务
+- (void)registerPush{
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
+}
+
+
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= _IPHONE80_
+
+//注册UserNotification成功的回调
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
+{
+    //用户已经允许接收以下类型的推送
+    iLog(@"========CZJ 注册用户通知成功");
+}
+
+//按钮点击事件回调
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (^)())completionHandler{
+    if([identifier isEqualToString:@"ACCEPT_IDENTIFIER"]){
+        NSLog(@"ACCEPT_IDENTIFIER is clicked");
+    }
+    
+    completionHandler();
+}
+#endif
+
+
+//注册远程通知获取deviceToken成功回调
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    GeneralBlockHandler successBlock = ^(void){
+        //成功之后的处理
+        DLog(@"[XGPush]register successBlock");
+    };
+    
+    GeneralBlockHandler errorBlock = ^(void){
+        //失败之后的处理
+        DLog(@"[XGPush]register errorBlock");
+    };
+    NSString * deviceTokenStr = [XGPush registerDevice:deviceToken successCallback:successBlock errorCallback:errorBlock];
+    [USER_DEFAULT setValue:deviceToken forKey:kUserDefaultDeviceTokenStr];
+    iLog(@"========CZJ 设备deviceTokenStr:%@",deviceTokenStr);
+}
+
+//如果deviceToken获取不到会进入此事件
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    DLog(@"%@", [NSString stringWithFormat: @"[XGPush] Error: %@",error]);
+}
+
+
+#pragma mark- 应用跳转
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    //跳转支付宝钱包进行支付，处理支付结果
+    [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+        DLog(@"result ---- = %@",resultDic);
+        if ([[resultDic valueForKey:@"resultStatus"] intValue] == 9000) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:kCZJAlipaySuccseful object:resultDic];
+        }
+    }];
+    
+    DLog(@"%@",url.absoluteString);
+    //第二步：添加回调
+    if (![url.absoluteString hasPrefix:@"CheZhiJian"]) {
+        DLog(@"微信");
+        return [OpenShare handleOpenURL:url];
+    }
+    
     return YES;
 }
 
