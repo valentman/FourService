@@ -139,6 +139,12 @@ typedef NS_ENUM(NSInteger, CZJOrderDetailType)
     CZJOrderDetailTypeReturned
 };
 
+typedef NS_ENUM(NSInteger, AFRequestType)
+{
+    AFRequestTypePost = 0,
+    AFRequestTypeGet
+};
+
 
 struct CZJMargin {
     CGFloat horisideMargin;

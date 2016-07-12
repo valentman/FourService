@@ -40,47 +40,17 @@ singleton_implementation(FSNetworkManager)
 }
 
 
-- (void)JSONDataWithUrl:(NSString *)url
-                success:(void (^)(id json))success
-                   fail:(void (^)())fail;
-{
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
 
-    NSDictionary *dict = @{@"format": @"json"};
-
-    NSString* curUrl = [NSString stringWithFormat:@"http://192.168.0.148:8080/appserver/%@",url];
-    // 网络访问是异步的,回调是主线程的,因此程序员不用管在主线程更新UI的事情
-    [manager GET:curUrl
-      parameters:dict
-         success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            if (success) {
-                success(responseObject);
-            }
-         }
-         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"%@", error);
-            if (fail) {
-                fail();
-            }
-    }];
-
-
-}
-
-//本可返回AFHTTPRequestOperation *op =
-
+//上传图片
 - (void)uploadImageWithUrl:(NSString *)urlStr
                      Image:(UIImage *)image
                 Parameters:(id)parameters
-                   success:(void (^)(id json))success
-                   failure:(void (^)())failure {
+                   success:(SuccessBlockHandler)success
+                   failure:(FailureBlockHandler)failure {
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     // 设置返回类型
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",@"text/plain", nil];
-    
-    // 设置请求格式
-    //manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
     // 设置返回格式
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
@@ -105,10 +75,41 @@ singleton_implementation(FSNetworkManager)
 }
 
 
+
+- (void)postJSONWithUrl:(NSString *)urlStr
+             parameters:(id)parameters
+                success:(SuccessBlockHandler)success
+                   fail:(FailureBlockHandler)fail
+{
+    NSString* path =  [self getPath:urlStr];
+    DLog(@"\nServerAPI:%@, \nParameter:%@",path,[parameters description]);
+    
+    //这里暂时设置成Get方式。
+    [self postJSONWithUrl:path withRequestType:AFRequestTypeGet parameters:AFRequestTypePost success:success fail:fail];
+}
+
+- (void)postJSONWithUrl:(NSString *)urlStr
+        withRequestType:(AFRequestType)requestType
+             parameters:(id)parameters
+                success:(void (^)(id responseObject))success
+                   fail:(FailureBlockHandler)fail
+{
+    if (AFRequestTypePost == requestType)
+    {
+        [self postJSONWithNoServerAPI:urlStr parameters:parameters success:success fail:fail];
+    }
+    else if (AFRequestTypeGet == requestType)
+    {
+        [self GetJSONDataWithUrl:urlStr parameter:parameters success:success fail:fail];
+    }
+}
+
+
+//Post请求网络数据
 - (void)postJSONWithNoServerAPI:(NSString *)urlStr
                      parameters:(id)parameters
-                        success:(void (^)(id responseObject))success
-                           fail:(void (^)())fail
+                        success:(SuccessBlockHandler)success
+                           fail:(FailureBlockHandler)fail
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     // 设置返回类型
@@ -128,28 +129,44 @@ singleton_implementation(FSNetworkManager)
               {
                   success(responseObject);
               }
-              dispatch_async(dispatch_get_main_queue(), ^(){
-              });
           }
           failure:^(AFHTTPRequestOperation *operation, NSError *error){
-              DLog(@"~~~~~~~~~~~~~~~~~~~~网络失败~~~~~~~~~~~~~~~~~~~~");
               if (fail) {
                   fail();
               }
-              dispatch_async(dispatch_get_main_queue(), ^{
-              });
           }
      ];
 }
 
-- (void)postJSONWithUrl:(NSString *)urlStr
-             parameters:(id)parameters
-                success:(void (^)(id responseObject))success
-                   fail:(void (^)())fail
+
+
+//Get请求网络数据
+- (void)GetJSONDataWithUrl:(NSString *)url
+                 parameter:(id)parameter
+                   success:(SuccessBlockHandler) success
+                      fail:(FailureBlockHandler)fail
 {
-    NSString* path =  [self getPath:urlStr];
-    DLog(@"\nServerAPI:%@, \nParameter:%@",path,[parameters description]);
-    [self postJSONWithNoServerAPI:path parameters:parameters success:success fail:fail];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    parameter = @{@"format": @"json"};
+    
+    // 网络访问是异步的,回调是主线程的,因此程序员不用管在主线程更新UI的事情
+    [manager GET:url
+      parameters:parameter
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             if (success) {
+                 DLog(@"%@",[responseObject description]);
+                 success(responseObject);
+             }
+         }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             NSLog(@"%@", error);
+             if (fail) {
+                 fail();
+             }
+         }];
+    
+    
 }
 
 - (void)sessionDownloadWithUrl:(NSString *)urlStr success:(void (^)(NSURL *fileURL))success fail:(void (^)())fail

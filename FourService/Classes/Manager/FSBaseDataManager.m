@@ -142,7 +142,8 @@ singleton_implementation(FSBaseDataManager);
 }
 
 - (BOOL)showAlertView:(id)info{
-    NSDictionary* dict = [PUtils DataFromJson:info];
+//    NSDictionary* dict = [PUtils dictionaryFromJsonString:info];
+    NSDictionary* dict = [NSDictionary dictionaryWithDictionary:info];
     NSString* msgKey = [[dict valueForKey:@"code"] stringValue];
     if (![msgKey isEqual:@"0"]) {
 //        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowErrorInfoWithErrorCode: stringValue]];

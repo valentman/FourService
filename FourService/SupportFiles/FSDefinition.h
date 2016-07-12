@@ -14,10 +14,11 @@
 //static NSString *const kCZJServerAddr = @"http://192.168.0.251:8080/appserver/";      //线下测试环境
 //static NSString *const kCZJServerAddr = @"http://101.201.197.202:8080/appserver/";    //线上测试环境1
 //static NSString *const kCZJServerAddr = @"http://101.200.189.9:8080/appserver2/";     //线上测试环境2
-static NSString *const kCZJServerAddr = @"http://czapp.FourService.com/appserver/";      //线上正式环境
+//static NSString *const kCZJServerAddr = @"http://czapp.FourService.com/appserver/";      //线上正式环境
+static NSString *const kCZJServerAddr = @"";      //线上正式环境
 
 //首页接口组
-static NSString *const kCZJServerAPIShowHome = @"chezhu/showHomeV2.do";                             //获取首页数据
+static NSString *const kCZJServerAPIShowHome = @"http://119.29.135.211/Home/home";                             //获取首页数据
 static NSString *const kCZJServerAPIGetRecoGoods = @"chezhu/showRecommendGoods.do";                 //获取首页推荐商品
 static NSString *const kCZJServerAPIActivityCenter = @"chezhu/showActivityCenter.do";               //获取活动中心信息
 static NSString *const kCZJServerAPICarInfo = @"chezhu/showCarNews.do";                             //获取汽车资讯

@@ -10,6 +10,7 @@
 #import "FSActivityCell.h"
 #import "FSLotteryCell.h"
 #import "FSRecommendInfoCell.h"
+#import "FSBaseDataManager.h"
 
 @interface FSHomeViewController ()
 <
@@ -26,7 +27,7 @@ PBaseNaviagtionBarViewDelegate
     
     //数据数组
     NSMutableArray* _activityArray;                 //活动信息
-    NSMutableArray* _recommendInfoArray;            //推荐信息
+    NSMutableArray* _newsArray;            //推荐信息
     NSMutableArray* _lotteryArray;                  //抽奖信息
     
     __block BOOL _isAllRefresh;
@@ -54,6 +55,10 @@ PBaseNaviagtionBarViewDelegate
     _isLotteryRefresh = NO;
     _isRecommendRefresh = NO;
     _isJumpToAnotherView = NO;
+    
+    _activityArray = [NSMutableArray array];
+    _newsArray = [NSMutableArray array];
+    _lotteryArray = [NSMutableArray array];
 }
 
 
@@ -112,7 +117,16 @@ PBaseNaviagtionBarViewDelegate
 
 - (void)getHomeDataFromServer
 {
-    [FSBaseDataInstance g];
+    [FSBaseDataInstance showHomeType:CZJHomeGetDataFromServerTypeOne page:0 Success:^(id json) {
+        NSDictionary* jsondata = [[NSDictionary dictionaryWithDictionary:json] valueForKey:@"data"];
+        NSArray* tmpAry = [jsondata valueForKey:@"banner"];
+        _activityArray = [[FSHomeBannerForm objectArrayWithKeyValuesArray:[jsondata objectForKey:@"banner"]] mutableCopy];
+        _lotteryArray = [[FSHomeLuckyForm objectArrayWithKeyValuesArray:[jsondata objectForKey:@"lucky"]] mutableCopy];
+        _newsArray = [[FSHomeNewsForm objectArrayWithKeyValuesArray:[jsondata objectForKey:@"news"]] mutableCopy];
+        DLog(@"%@",[jsondata description]);
+    } fail:^{
+        
+    }];
     [self.myTableView reloadData];
 }
 

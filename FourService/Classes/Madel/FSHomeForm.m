@@ -9,9 +9,16 @@
 #import "FSHomeForm.h"
 
 @implementation FSHomeForm
+@end
 
+@implementation FSHomeBannerForm
+@end
+
+@implementation FSHomeLuckyForm
+@end
+
+@implementation FSHomeNewsForm
 @end
 
 @implementation FSActivityForm
-
 @end
