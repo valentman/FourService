@@ -104,7 +104,6 @@
 		EC54297E1D237E7700F3B4BF /* KSRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5428021D237E7700F3B4BF /* KSRefreshView.m */; };
 		EC54297F1D237E7700F3B4BF /* UIScrollView+KS.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5428041D237E7700F3B4BF /* UIScrollView+KS.m */; };
 		EC5429801D237E7700F3B4BF /* LewPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5428071D237E7700F3B4BF /* LewPickerController.m */; };
-		EC5429811D237E7700F3B4BF /* LjjUISegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = EC54280A1D237E7700F3B4BF /* LjjUISegmentedControl.m */; };
 		EC5429821D237E7700F3B4BF /* LJWKeyboardHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = EC54280D1D237E7700F3B4BF /* LJWKeyboardHandler.m */; };
 		EC5429831D237E7700F3B4BF /* LJWKeyboardToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5428101D237E7700F3B4BF /* LJWKeyboardToolBar.m */; };
 		EC5429841D237E7700F3B4BF /* Resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EC5428111D237E7700F3B4BF /* Resources.bundle */; };
@@ -471,8 +470,6 @@
 		EC5428041D237E7700F3B4BF /* UIScrollView+KS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+KS.m"; sourceTree = "<group>"; };
 		EC5428061D237E7700F3B4BF /* LewPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LewPickerController.h; sourceTree = "<group>"; };
 		EC5428071D237E7700F3B4BF /* LewPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LewPickerController.m; sourceTree = "<group>"; };
-		EC5428091D237E7700F3B4BF /* LjjUISegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LjjUISegmentedControl.h; sourceTree = "<group>"; };
-		EC54280A1D237E7700F3B4BF /* LjjUISegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LjjUISegmentedControl.m; sourceTree = "<group>"; };
 		EC54280C1D237E7700F3B4BF /* LJWKeyboardHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJWKeyboardHandler.h; sourceTree = "<group>"; };
 		EC54280D1D237E7700F3B4BF /* LJWKeyboardHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJWKeyboardHandler.m; sourceTree = "<group>"; };
 		EC54280E1D237E7700F3B4BF /* LJWKeyboardHandlerHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJWKeyboardHandlerHeaders.h; sourceTree = "<group>"; };
@@ -1184,7 +1181,6 @@
 				EC5427F51D237E7700F3B4BF /* KMCGeigerCounter */,
 				EC5427F91D237E7700F3B4BF /* KSTableRefresh */,
 				EC5428051D237E7700F3B4BF /* LewPickerController */,
-				EC5428081D237E7700F3B4BF /* LjjUISegmentedControl */,
 				EC54280B1D237E7700F3B4BF /* LJWKeyboardHandler */,
 				EC5428181D237E7700F3B4BF /* LXActivity */,
 				EC54281B1D237E7700F3B4BF /* LXDSegmentControl */,
@@ -1499,15 +1495,6 @@
 				EC5428071D237E7700F3B4BF /* LewPickerController.m */,
 			);
 			path = LewPickerController;
-			sourceTree = "<group>";
-		};
-		EC5428081D237E7700F3B4BF /* LjjUISegmentedControl */ = {
-			isa = PBXGroup;
-			children = (
-				EC5428091D237E7700F3B4BF /* LjjUISegmentedControl.h */,
-				EC54280A1D237E7700F3B4BF /* LjjUISegmentedControl.m */,
-			);
-			path = LjjUISegmentedControl;
 			sourceTree = "<group>";
 		};
 		EC54280B1D237E7700F3B4BF /* LJWKeyboardHandler */ = {
@@ -2503,7 +2490,6 @@
 				EC542A3D1D237EF500F3B4BF /* ShareMessage.m in Sources */,
 				EC542A411D237F5E00F3B4BF /* FSDateTime.m in Sources */,
 				EC5429CD1D237E7700F3B4BF /* OpenShare+QQ.m in Sources */,
-				EC5429811D237E7700F3B4BF /* LjjUISegmentedControl.m in Sources */,
 				EC5429E61D237E7700F3B4BF /* QNHttpManager.m in Sources */,
 				EC5429E11D237E7700F3B4BF /* QNSystem.m in Sources */,
 				EC7760DE1D2223D500E1A89F /* AppDelegate.m in Sources */,

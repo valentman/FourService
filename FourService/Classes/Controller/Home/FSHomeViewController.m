@@ -51,7 +51,7 @@ PBaseNaviagtionBarViewDelegate
 
 - (void)initDatas
 {
-    _isAllRefresh = NO;
+    _isAllRefresh = YES;
     _isLotteryRefresh = NO;
     _isRecommendRefresh = NO;
     _isJumpToAnotherView = NO;
@@ -119,15 +119,16 @@ PBaseNaviagtionBarViewDelegate
 {
     [FSBaseDataInstance showHomeType:CZJHomeGetDataFromServerTypeOne page:0 Success:^(id json) {
         NSDictionary* jsondata = [[NSDictionary dictionaryWithDictionary:json] valueForKey:@"data"];
-        NSArray* tmpAry = [jsondata valueForKey:@"banner"];
         _activityArray = [[FSHomeBannerForm objectArrayWithKeyValuesArray:[jsondata objectForKey:@"banner"]] mutableCopy];
         _lotteryArray = [[FSHomeLuckyForm objectArrayWithKeyValuesArray:[jsondata objectForKey:@"lucky"]] mutableCopy];
         _newsArray = [[FSHomeNewsForm objectArrayWithKeyValuesArray:[jsondata objectForKey:@"news"]] mutableCopy];
+        [self.myTableView reloadData];
+    
         DLog(@"%@",[jsondata description]);
     } fail:^{
         
     }];
-    [self.myTableView reloadData];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -173,7 +174,7 @@ PBaseNaviagtionBarViewDelegate
 {
     if (2 == section)
     {
-        return 4;
+        return _newsArray.count;
     }
     return 1;
 }
@@ -204,6 +205,10 @@ PBaseNaviagtionBarViewDelegate
         case 2:
         {//推荐信息
             FSRecommendInfoCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FSRecommendInfoCell" forIndexPath:indexPath];
+            FSHomeNewsForm* newsForm = _newsArray[indexPath.row];
+            [cell.newsImageView sd_setImageWithURL:[NSURL URLWithString:newsForm.news_image_url]];
+            cell.titleLabel.text = newsForm.title;
+            cell.summerLabel.text = newsForm.summary;
             return cell;
         }
             break;
@@ -294,6 +299,13 @@ PBaseNaviagtionBarViewDelegate
         default:
             break;
     }
+}
+
+- (void)showActivityHtmlWithUrl:(NSString*)url
+{
+    FSWebViewController* webView = (FSWebViewController*)[PUtils getViewControllerFromStoryboard:kCZJStoryBoardFileMain andVCName:@"webViewSBID"];
+    webView.cur_url = url;
+    [self.navigationController pushViewController:webView animated:YES];
 }
 
 #pragma mark - Navigation

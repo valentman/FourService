@@ -24,8 +24,8 @@
     self.isInit = YES;
     [_imageArray removeAllObjects];
     _activeties = [array mutableCopy];
-    for (FSActivityForm* tmp in array) {
-        [_imageArray addObject:tmp.img];
+    for (FSHomeBannerForm* tmp in array) {
+        [_imageArray addObject:tmp.news_image_url];
     }
     [self loadImageData];
 }

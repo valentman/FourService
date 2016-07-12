@@ -10,4 +10,7 @@
 
 @interface FSRecommendInfoCell : PBaseTableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *newsImageView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *summerLabel;
 @end

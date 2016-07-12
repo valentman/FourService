@@ -56,8 +56,8 @@ DZNEmptyDataSetDelegate
     self.myWebView.scrollView.backgroundColor = CZJNAVIBARBGCOLOR;
     
     //webView JS交互接口
-    self.webViewJSI = [FSWebViewJSI bridgeForWebView:_myWebView webViewDelegate:self];
-    self.webViewJSI.JSIDelegate = self;
+//    self.webViewJSI = [FSWebViewJSI bridgeForWebView:_myWebView webViewDelegate:self];
+//    self.webViewJSI.JSIDelegate = self;
     
     
     //URLRequest

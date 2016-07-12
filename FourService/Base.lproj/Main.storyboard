@@ -9,6 +9,7 @@
         <scene sceneID="2FU-VB-Crn">
             <objects>
                 <tabBarController storyboardIdentifier="homeViewSBID" id="UlC-D3-PYm" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="cm6-l3-ADM"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="fHn-OU-WRF">
@@ -17,16 +18,16 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="yGl-AV-JKZ" kind="relationship" relationship="viewControllers" id="65J-dK-tKO"/>
-                        <segue destination="LVN-Jt-Wqd" kind="relationship" relationship="viewControllers" id="Rs6-Vd-xe3"/>
-                        <segue destination="aLb-2g-ELH" kind="relationship" relationship="viewControllers" id="1Fd-3Q-efS"/>
+                        <segue destination="rEh-Es-IU1" kind="relationship" relationship="viewControllers" id="670-n5-D2I"/>
+                        <segue destination="zKL-fY-fq6" kind="relationship" relationship="viewControllers" id="jGp-vb-g5c"/>
+                        <segue destination="HpI-oF-28j" kind="relationship" relationship="viewControllers" id="gk9-hV-XAp"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b8e-X2-UfH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-44" y="1680"/>
         </scene>
-        <!--首页-->
+        <!--Home View Controller-->
         <scene sceneID="RoQ-Xf-xTd">
             <objects>
                 <viewController id="yGl-AV-JKZ" customClass="FSHomeViewController" sceneMemberID="viewController">
@@ -41,28 +42,26 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="推荐商品接口" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czy-kj-urI">
                                 <rect key="frame" x="55" y="165" width="210" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="首页数据接口" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zEj-Of-d1J">
                                 <rect key="frame" x="55" y="80" width="210" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="首页" image="all_btn_home" id="1iI-RM-8J9">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-4"/>
-                    </tabBarItem>
+                    <navigationItem key="navigationItem" id="Z7t-zj-KG1"/>
                     <value key="contentSizeForViewInPopover" type="size" width="320" height="568"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F4h-bR-1f1" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="392" y="626"/>
+            <point key="canvasLocation" x="774" y="632"/>
         </scene>
         <!--4S服务-->
         <scene sceneID="MQt-BT-8Iu">
@@ -80,13 +79,52 @@
                     <tabBarItem key="tabBarItem" title="4S服务" image="all_btn_classify" id="3qR-HB-oSX">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-4"/>
                     </tabBarItem>
+                    <navigationItem key="navigationItem" id="crW-lM-sIg"/>
                     <value key="contentSizeForViewInPopover" type="size" width="320" height="568"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ZD-FO-5xM" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="392" y="1276"/>
+            <point key="canvasLocation" x="774" y="1287"/>
+        </scene>
+        <!--4S服务-->
+        <scene sceneID="gTw-mL-QXr">
+            <objects>
+                <navigationController id="zKL-fY-fq6" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="4S服务" image="all_btn_classify" id="Y8a-4J-IUH"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="O2B-WI-3t4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="LVN-Jt-Wqd" kind="relationship" relationship="rootViewController" id="2Eb-wr-Xti"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o0c-1M-621" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="392" y="1287"/>
+        </scene>
+        <!--我的-->
+        <scene sceneID="RyQ-Iz-h0N">
+            <objects>
+                <navigationController id="HpI-oF-28j" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="我的" image="all_btn_my" id="o2v-Ec-PnK"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3jY-Dm-ijt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="aLb-2g-ELH" kind="relationship" relationship="rootViewController" id="Uk7-oY-B42"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zup-qH-cMf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="392" y="1926"/>
         </scene>
         <!--我的-->
         <scene sceneID="UFh-yS-owY">
@@ -104,13 +142,53 @@
                     <tabBarItem key="tabBarItem" title="我的" image="all_btn_my" id="0gp-bS-dEf">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-4"/>
                     </tabBarItem>
+                    <navigationItem key="navigationItem" id="kWO-Fr-nU2"/>
                     <value key="contentSizeForViewInPopover" type="size" width="320" height="568"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h6P-KK-BHo" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="392" y="1921"/>
+            <point key="canvasLocation" x="774" y="1926"/>
+        </scene>
+        <!--首页-->
+        <scene sceneID="YsL-ki-h5S">
+            <objects>
+                <navigationController id="rEh-Es-IU1" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="首页" image="all_btn_home" id="qbd-hO-rVg"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WlA-sI-y85">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="yGl-AV-JKZ" kind="relationship" relationship="rootViewController" id="k3h-jq-abk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b66-rA-uQ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="392" y="632"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="nwF-GA-NMt">
+            <objects>
+                <viewController storyboardIdentifier="webViewSBID" extendedLayoutIncludesOpaqueBars="YES" hidesBottomBarWhenPushed="YES" id="bGu-6u-uHl" customClass="FSWebViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Fvk-Ux-5PQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="ULN-6B-Hch"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mUy-AD-WGd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bTi-RU-uWE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5" y="324"/>
         </scene>
     </scenes>
     <resources>

@@ -11,16 +11,16 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="199.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="199"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7s-2G-bWb">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="189.5"/>
+                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h7s-2G-bWb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="190"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="anjuke_icon_to_position.png" translatesAutoresizingMaskIntoConstraints="NO" id="FeQ-Ck-Egt">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="anjuke_icon_to_position.png" translatesAutoresizingMaskIntoConstraints="NO" id="FeQ-Ck-Egt">
                                 <rect key="frame" x="10" y="10" width="300" height="158"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="价格" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQL-qm-OKJ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="价格" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQL-qm-OKJ">
                                 <rect key="frame" x="8" y="171" width="100" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="Y70-dg-6bd"/>
@@ -29,7 +29,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="描述" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ObM-sb-2um">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="描述" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ObM-sb-2um">
                                 <rect key="frame" x="120" y="171" width="80" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="EXx-8U-gqc"/>
@@ -49,6 +49,7 @@
                             <constraint firstAttribute="bottom" secondItem="cQL-qm-OKJ" secondAttribute="bottom" constant="0.5" id="Lz9-XJ-VOU"/>
                             <constraint firstItem="ObM-sb-2um" firstAttribute="leading" secondItem="cQL-qm-OKJ" secondAttribute="trailing" constant="12" id="Sxm-q2-uyG"/>
                             <constraint firstItem="cQL-qm-OKJ" firstAttribute="leading" secondItem="h7s-2G-bWb" secondAttribute="leading" constant="8" id="drC-eT-P1c"/>
+                            <constraint firstItem="ObM-sb-2um" firstAttribute="top" secondItem="FeQ-Ck-Egt" secondAttribute="bottom" constant="3" id="ebJ-Dr-mjd"/>
                             <constraint firstItem="ObM-sb-2um" firstAttribute="top" secondItem="FeQ-Ck-Egt" secondAttribute="bottom" constant="3" id="iIK-9G-be6"/>
                             <constraint firstItem="cQL-qm-OKJ" firstAttribute="top" secondItem="FeQ-Ck-Egt" secondAttribute="bottom" constant="3" id="ndV-Lb-U8r"/>
                             <constraint firstItem="ObM-sb-2um" firstAttribute="top" secondItem="FeQ-Ck-Egt" secondAttribute="bottom" constant="3" id="slS-uf-4Zj"/>
@@ -78,6 +79,11 @@
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="newsImageView" destination="FeQ-Ck-Egt" id="2jD-cd-VVQ"/>
+                <outlet property="summerLabel" destination="ObM-sb-2um" id="EQW-9l-a1I"/>
+                <outlet property="titleLabel" destination="cQL-qm-OKJ" id="HuZ-wl-UaL"/>
+            </connections>
             <point key="canvasLocation" x="304" y="374"/>
         </tableViewCell>
     </objects>
