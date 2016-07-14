@@ -10,8 +10,8 @@
 
 #import "FSHomeForm.h"
 #import "FSStartPageForm.h"
-
-//#import "UserBaseForm.h"
+#import "FSMyInfoForm.h"
+#import "UserBaseForm.h"
 //#import "CZJStoreForm.h"
 #import "ProvinceForm.h"
 //#import "CZJStoreMAAroundForm.h"

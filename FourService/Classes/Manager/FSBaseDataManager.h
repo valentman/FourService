@@ -23,8 +23,8 @@
 //    CZJCarForm* _carForm;                           //汽车列表信息
 //    CZJStoreForm* _storeForm;                       //门店信息
 //    FourServicepingCartForm* _shoppingCartForm;         //购物车信息
-//    UserBaseForm* _userInfoForm;                    //我的个人信息
-//    
+    UserBaseForm* _userInfoForm;                    //我的个人信息
+//
 //    CarBrandsForm* _carBrandForm;
 //    CarSeriesForm* _carSerialForm;
 //    CarModelForm* _carModealForm;
@@ -43,7 +43,7 @@
 //@property (nonatomic, retain) HomeForm* homeForm;
 //@property (nonatomic, retain) CZJCarForm* carForm;
 //@property (nonatomic, retain) CZJStoreForm* storeForm;
-//@property (nonatomic, retain) UserBaseForm* userInfoForm;
+@property (nonatomic, retain) UserBaseForm* userInfoForm;
 //@property (nonatomic, retain) FourServicepingCartForm* shoppingCartForm;
 //
 //@property (nonatomic, retain) CarBrandsForm* carBrandForm;

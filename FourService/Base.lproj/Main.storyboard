@@ -126,10 +126,30 @@
             </objects>
             <point key="canvasLocation" x="392" y="1926"/>
         </scene>
+        <!--Setting Controller-->
+        <scene sceneID="quG-UB-a8u">
+            <objects>
+                <viewController id="k6x-Bq-BOQ" customClass="FSSettingController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6fC-7L-kpJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="BqU-af-He4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ACS-WO-6Qt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8VN-jt-8bN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1159" y="1926"/>
+        </scene>
         <!--我的-->
         <scene sceneID="UFh-yS-owY">
             <objects>
-                <viewController id="aLb-2g-ELH" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="aLb-2g-ELH" customClass="FSMyInformationController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="i4W-Fv-7Wt"/>
                         <viewControllerLayoutGuide type="bottom" id="An4-g8-D7V"/>
@@ -146,6 +166,9 @@
                     <value key="contentSizeForViewInPopover" type="size" width="320" height="568"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
+                    <connections>
+                        <segue destination="k6x-Bq-BOQ" kind="show" identifier="segueToSetting" id="aWV-Zu-OrK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h6P-KK-BHo" sceneMemberID="firstResponder"/>
             </objects>

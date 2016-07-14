@@ -18,7 +18,7 @@
 //#import "CZJCarForm.h"
 //#import "FourServicepingCartForm.h"
 //#import "CZJOrderForm.h"
-//#import "UserBaseForm.h"
+#import "UserBaseForm.h"
 #import "AppDelegate.h"
 
 @implementation FSBaseDataManager
@@ -54,7 +54,7 @@ singleton_implementation(FSBaseDataManager);
 //        _homeForm = [[HomeForm alloc]init];
 //        _storeForm = [[CZJStoreForm alloc]init];
 //        _shoppingCartForm = [[FourServicepingCartForm alloc]init];
-//        _userInfoForm = [[UserBaseForm alloc]init];
+        _userInfoForm = [[UserBaseForm alloc]init];
         [self initPostBaseParameters];
         NSArray* dict = [PUtils readArrayFromBundleDirectoryWithName:@"PaymentType"];
 //        _orderPaymentTypeAry = [CZJOrderTypeForm objectArrayWithKeyValuesArray:dict];
