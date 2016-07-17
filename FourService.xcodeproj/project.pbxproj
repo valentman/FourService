@@ -312,6 +312,9 @@
 		EC7760DB1D2223D500E1A89F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7760DA1D2223D500E1A89F /* main.m */; };
 		EC7760DE1D2223D500E1A89F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7760DD1D2223D500E1A89F /* AppDelegate.m */; };
 		EC7760E61D2223D500E1A89F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC7760E51D2223D500E1A89F /* Assets.xcassets */; };
+		EC7FC0A31D3A2B460082ECB4 /* FSLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7FC09E1D3A2B460082ECB4 /* FSLoginController.m */; };
+		EC7FC0A41D3A2B460082ECB4 /* FSRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7FC0A01D3A2B460082ECB4 /* FSRegisterController.m */; };
+		EC7FC0A51D3A2B460082ECB4 /* ServiceProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7FC0A21D3A2B460082ECB4 /* ServiceProtocol.m */; };
 		ECA233CE1D37DB78004C2679 /* FSMyInformationController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA233CC1D37DB78004C2679 /* FSMyInformationController.m */; };
 		ECA233D11D37DB91004C2679 /* FSSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA233D01D37DB91004C2679 /* FSSettingController.m */; };
 		ECA233DF1D37DC8F004C2679 /* CZJGeneralCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA233D41D37DC8F004C2679 /* CZJGeneralCell.m */; };
@@ -949,6 +952,12 @@
 		EC7760DD1D2223D500E1A89F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../AppDelegate.m; sourceTree = "<group>"; };
 		EC7760E51D2223D500E1A89F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC7760EA1D2223D500E1A89F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC7FC09D1D3A2B460082ECB4 /* FSLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSLoginController.h; sourceTree = "<group>"; };
+		EC7FC09E1D3A2B460082ECB4 /* FSLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSLoginController.m; sourceTree = "<group>"; };
+		EC7FC09F1D3A2B460082ECB4 /* FSRegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRegisterController.h; sourceTree = "<group>"; };
+		EC7FC0A01D3A2B460082ECB4 /* FSRegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRegisterController.m; sourceTree = "<group>"; };
+		EC7FC0A11D3A2B460082ECB4 /* ServiceProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceProtocol.h; sourceTree = "<group>"; };
+		EC7FC0A21D3A2B460082ECB4 /* ServiceProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceProtocol.m; sourceTree = "<group>"; };
 		ECA233CB1D37DB78004C2679 /* FSMyInformationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyInformationController.h; sourceTree = "<group>"; };
 		ECA233CC1D37DB78004C2679 /* FSMyInformationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyInformationController.m; sourceTree = "<group>"; };
 		ECA233CF1D37DB91004C2679 /* FSSettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSettingController.h; sourceTree = "<group>"; };
@@ -2322,9 +2331,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		EC7FC09C1D3A29EB0082ECB4 /* MyLogin */ = {
+			isa = PBXGroup;
+			children = (
+				EC7FC09D1D3A2B460082ECB4 /* FSLoginController.h */,
+				EC7FC09E1D3A2B460082ECB4 /* FSLoginController.m */,
+				EC7FC09F1D3A2B460082ECB4 /* FSRegisterController.h */,
+				EC7FC0A01D3A2B460082ECB4 /* FSRegisterController.m */,
+				EC7FC0A11D3A2B460082ECB4 /* ServiceProtocol.h */,
+				EC7FC0A21D3A2B460082ECB4 /* ServiceProtocol.m */,
+			);
+			path = MyLogin;
+			sourceTree = "<group>";
+		};
 		ECA233C91D37DB78004C2679 /* MyInfo */ = {
 			isa = PBXGroup;
 			children = (
+				EC7FC09C1D3A29EB0082ECB4 /* MyLogin */,
 				ECA233CA1D37DB78004C2679 /* Main */,
 				ECA233CD1D37DB78004C2679 /* Other */,
 			);
@@ -2502,6 +2525,7 @@
 				EC5429B21D237E7700F3B4BF /* MJRefreshHeader.m in Sources */,
 				EC5427821D237DE000F3B4BF /* BadgeButtonView.m in Sources */,
 				EC5427901D237DE000F3B4BF /* PBaseViewController.m in Sources */,
+				EC7FC0A31D3A2B460082ECB4 /* FSLoginController.m in Sources */,
 				EC54278B1D237DE000F3B4BF /* RefreshLocationBarView.m in Sources */,
 				EC5429CE1D237E7700F3B4BF /* OpenShare+Renren.m in Sources */,
 				EC5429A91D237E7700F3B4BF /* MJType.m in Sources */,
@@ -2571,11 +2595,13 @@
 				EC542A031D237E7700F3B4BF /* UIImage+MultiFormat.m in Sources */,
 				EC5429D41D237E7700F3B4BF /* PhotoView.m in Sources */,
 				EC542AF21D239B8A00F3B4BF /* DataVerifier.m in Sources */,
+				EC7FC0A51D3A2B460082ECB4 /* ServiceProtocol.m in Sources */,
 				ECA233EC1D37DD98004C2679 /* UserBaseForm.m in Sources */,
 				EC5429581D237E7700F3B4BF /* AFHTTPSessionManager.m in Sources */,
 				EC542A131D237E7700F3B4BF /* WebViewJavascriptBridgeBase.m in Sources */,
 				EC542A1B1D237E7700F3B4BF /* ZXLocationManager.m in Sources */,
 				EC5429B41D237E7700F3B4BF /* MJRefreshAutoNormalFooter.m in Sources */,
+				EC7FC0A41D3A2B460082ECB4 /* FSRegisterController.m in Sources */,
 				EC542A0D1D237E7700F3B4BF /* UIProgressView+AFNetworking.m in Sources */,
 				EC5429DE1D237E7700F3B4BF /* QNNetworkInfo.m in Sources */,
 				EC5427A11D237E0500F3B4BF /* FSMessageManager.m in Sources */,

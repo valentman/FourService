@@ -85,7 +85,7 @@ singleton_implementation(FSNetworkManager)
     DLog(@"\nServerAPI:%@, \nParameter:%@",path,[parameters description]);
     
     //这里暂时设置成Get方式。
-    [self postJSONWithUrl:path withRequestType:AFRequestTypeGet parameters:AFRequestTypePost success:success fail:fail];
+    [self postJSONWithUrl:path withRequestType:AFRequestTypeGet parameters:parameters success:success fail:fail];
 }
 
 - (void)postJSONWithUrl:(NSString *)urlStr
@@ -148,7 +148,7 @@ singleton_implementation(FSNetworkManager)
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
-    parameter = @{@"format": @"json"};
+//    parameter = @{@"format": @"json"};
     
     // 网络访问是异步的,回调是主线程的,因此程序员不用管在主线程更新UI的事情
     [manager GET:url

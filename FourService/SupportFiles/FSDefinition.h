@@ -11,15 +11,19 @@
 
 //----------------------------服务器接口-------------------------------
 //服务地址
-//static NSString *const kCZJServerAddr = @"http://192.168.0.251:8080/appserver/";      //线下测试环境
-//static NSString *const kCZJServerAddr = @"http://101.201.197.202:8080/appserver/";    //线上测试环境1
-//static NSString *const kCZJServerAddr = @"http://101.200.189.9:8080/appserver2/";     //线上测试环境2
-//static NSString *const kCZJServerAddr = @"http://czapp.FourService.com/appserver/";      //线上正式环境
 static NSString *const kCZJServerAddr = @"";      //线上正式环境
 
 //首页接口组
-static NSString *const kCZJServerAPIShowHome = @"http://119.29.135.211/Home/home";                             //获取首页数据
-static NSString *const kCZJServerAPIGetRecoGoods = @"chezhu/showRecommendGoods.do";                 //获取首页推荐商品
+static NSString *const kFSServerAPIShowHome = @"http://119.29.135.211/Home/home";                   //获取首页数据
+static NSString *const kFSServerAPILottery = @"http://119.29.135.211/Home/lucky/activity_id/1";     //抽奖
+
+//登录模块接口组
+static NSString *const kFSServerAPIRegister = @"http://119.29.135.211/Login/register";              //注册
+static NSString *const kFSServerAPILogin = @"http://119.29.135.211/Login/customerLogin";            //登录
+static NSString *const kFSServerAPILoginOut = @"http://119.29.135.211/Login/customerLogout";        //注销
+static NSString *const kFSServerAPIVerfyCode = @"http://119.29.135.211/Login/verify";               //验证码
+
+
 static NSString *const kCZJServerAPIActivityCenter = @"chezhu/showActivityCenter.do";               //获取活动中心信息
 static NSString *const kCZJServerAPICarInfo = @"chezhu/showCarNews.do";                             //获取汽车资讯
 static NSString *const kCZJServerAPIGetCityIdByName = @"chezhu/loadCityIdByNameV2.do";              //获取城市ID

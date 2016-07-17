@@ -144,10 +144,10 @@ singleton_implementation(FSBaseDataManager);
 - (BOOL)showAlertView:(id)info{
 //    NSDictionary* dict = [PUtils dictionaryFromJsonString:info];
     NSDictionary* dict = [NSDictionary dictionaryWithDictionary:info];
-    NSString* msgKey = [[dict valueForKey:@"code"] stringValue];
+    NSString* msgKey = [[info valueForKey:@"code"] stringValue];
     if (![msgKey isEqual:@"0"]) {
 //        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowErrorInfoWithErrorCode: stringValue]];
-        [PUtils tipWithText:[dict valueForKey:@"msg"] andView:nil];
+        [PUtils tipWithText:[dict valueForKey:@"message"] andView:nil];
         return NO;
     }
     DLog(@"%@",msgKey);
@@ -228,18 +228,18 @@ singleton_implementation(FSBaseDataManager);
         switch (dataType) {
             case CZJHomeGetDataFromServerTypeOne:
             {
-                explicitUrl = kCZJServerAPIShowHome;
+                explicitUrl = kFSServerAPIShowHome;
                 [params setValuesForKeysWithDictionary:_params];
             }
                 break;
                 
             case CZJHomeGetDataFromServerTypeTwo:
             {
-                explicitUrl = kCZJServerAPIGetRecoGoods;
-                int randNum = [[USER_DEFAULT valueForKey:kUserDefaultRandomCode]intValue];
-                [params setValuesForKeysWithDictionary:_params];
-                [params setValue:@(page) forKey:@"page"];
-                [params setValue:@(randNum) forKey:@"randomCode"];
+//                explicitUrl = kCZJServerAPIGetRecoGoods;
+//                int randNum = [[USER_DEFAULT valueForKey:kUserDefaultRandomCode]intValue];
+//                [params setValuesForKeysWithDictionary:_params];
+//                [params setValue:@(page) forKey:@"page"];
+//                [params setValue:@(randNum) forKey:@"randomCode"];
             }
                 break;
             default:
@@ -1768,4 +1768,65 @@ singleton_implementation(FSBaseDataManager);
                                 success:successBlock
                                    fail:failBlock];
 }
+
+
+- (void)getAuthCodeWithIphone:(NSString*)phone
+                      success:(GeneralBlockHandler)success
+                         fail:(GeneralBlockHandler)fail{
+    NSDictionary *params = @{@"mobile" : phone};
+    
+    SuccessBlockHandler successBlock = ^(id json)
+    {
+        if ([self showAlertView:json]) {
+            success(json);
+            DLog(@"获取短信验证码成功");
+        }
+    };
+    FailureBlockHandler failure = ^()
+    {
+//        [[CZJErrorCodeManager sharedCZJErrorCodeManager] ShowNetError];
+        fail();
+    };
+    
+    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPILoginSendVerifiCode
+                             parameters:params
+                                success:successBlock
+                                   fail:failure];
+}
+
+
+- (void)getImageCodeWithSuccess:(SuccessBlockHandler)success
+                          fail:(GeneralBlockHandler)fail
+{
+    SuccessBlockHandler successBlock = ^(id json)
+    {
+//        if ([self showAlertView:json]) {
+            success(json);
+            DLog(@"获取图片验证码成功");
+//        }
+    };
+    FailureBlockHandler failure = ^()
+    {
+        if (fail)
+        {
+            fail();
+        }
+        
+    };
+    
+    [FSNetWorkInstance postJSONWithUrl:kFSServerAPIVerfyCode
+                            parameters:nil
+                               success:successBlock
+                                  fail:failure];
+}
+
+
+- (void)userRegistWithParam:(NSDictionary*)postParams
+                    success:(SuccessBlockHandler)success
+                       fail:(FailureBlockHandler)fail
+{
+    [self generalPost:postParams success:success fail:fail andServerAPI:kFSServerAPIRegister];
+}
+
+
 @end

@@ -9,7 +9,7 @@
 #include <objc/runtime.h>
 #import "PUtils.h"
 #import "MBProgressHUD.h"
-//#import "CZJLoginController.h"
+#import "FSLoginController.h"
 //#import "FourServicepingCartController.h"
 //#import "CZJDetailViewController.h"
 //#import "CZJStoreDetailController.h"
@@ -747,12 +747,12 @@ void tapToHidePopViewAction(id sender, SEL _cmd)
 {
     //由storyboard根据LoginView获取到登录界面
     TICK;
-//    UINavigationController* loginView = (UINavigationController*)[self getViewControllerFromStoryboard:@"Main" andVCName:@"LoginView"];
-//    
-//    ((CZJLoginController*)loginView.toPBaseViewController).delegate = naviBar ? naviBar : target;
-//    [target presentViewController:loginView animated:YES completion:^{
-//        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
-//    }];
+    UINavigationController* loginView = (UINavigationController*)[self getViewControllerFromStoryboard:@"Main" andVCName:@"LoginView"];
+    
+    ((FSLoginController*)loginView.topViewController).delegate = naviBar ? naviBar : target;
+    [target presentViewController:loginView animated:YES completion:^{
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+    }];
     TOCK;
 }
 
@@ -858,25 +858,25 @@ void tapToHidePopViewAction(id sender, SEL _cmd)
     NSInteger hour = (ms - day * dd) / hh;// 时
     NSInteger minute = (ms - day * dd - hour * hh) / mi;// 分
     NSInteger second = (ms - day * dd - hour * hh - minute * mi) / ss;// 秒
-    NSString* hourStr = [NSString stringWithFormat:@"%ld", hour];
+    NSString* hourStr = [NSString stringWithFormat:@"%d", hour];
     if (hour < 10)
     {
-        hourStr =[NSString stringWithFormat:@"0%ld", hour];
+        hourStr =[NSString stringWithFormat:@"0%d", hour];
     }
     
-    NSString* minutesStr = [NSString stringWithFormat:@"%ld", minute];
+    NSString* minutesStr = [NSString stringWithFormat:@"%d", minute];
     if (minute < 10)
     {
-        minutesStr = [NSString stringWithFormat:@"0%ld", minute];
+        minutesStr = [NSString stringWithFormat:@"0%d", minute];
     }
     
-    NSString* secondStr = [NSString stringWithFormat:@"%ld", second];
+    NSString* secondStr = [NSString stringWithFormat:@"%d", second];
     if (second < 10)
     {
-        secondStr = [NSString stringWithFormat:@"0%ld", second];
+        secondStr = [NSString stringWithFormat:@"0%d", second];
     }
     
-    dateTime.day = [NSString stringWithFormat:@"%ld", day];
+    dateTime.day = [NSString stringWithFormat:@"%d", day];
     dateTime.hour = hourStr;
     dateTime.minute = minutesStr;
     dateTime.second = secondStr;
@@ -1269,7 +1269,7 @@ void tapToHidePopViewAction(id sender, SEL _cmd)
                      andFail:(GeneralBlockHandler)fail
 {
     [[SDWebImageManager sharedManager]downloadImageWithURL:[NSURL URLWithString:imgUrl] options:SDWebImageContinueInBackground progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-        DLog(@"receivedSize:%ld, expectedSize:%ld",receivedSize,expectedSize);
+        DLog(@"receivedSize:%d, expectedSize:%d",receivedSize,expectedSize);
     }completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL){
         NSString* imagepath2 = [DocumentsDirectory stringByAppendingPathComponent:imgName];
         //把图片直接保存到指定的路径（同时应该把图片的路径imagePath存起来，下次就可以直接用来取）

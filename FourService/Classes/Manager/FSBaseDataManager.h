@@ -380,4 +380,18 @@ singleton_interface(FSBaseDataManager);
                fail:(FailureBlockHandler)fail
        andServerAPI:(NSString*)api;
 
+
+//获取短信验证码
+- (void)getAuthCodeWithIphone:(NSString*)phone
+                      success:(GeneralBlockHandler)success
+                         fail:(GeneralBlockHandler)fail;
+
+//获取图片验证码
+- (void)getImageCodeWithSuccess:(SuccessBlockHandler)success
+                           fail:(GeneralBlockHandler)fail;
+
+- (void)userRegistWithParam:(NSDictionary*)postParams
+                    success:(SuccessBlockHandler)success
+                       fail:(FailureBlockHandler)fail;
+
 @end

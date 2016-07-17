@@ -418,7 +418,7 @@ CZJMyInfoShoppingCartCellDelegate
     {
         if (indexPath.row == 0) {
             //如果没有登录则进入登录页面
-//            if ([CZJUtils isLoginIn:self andNaviBar:nil])
+//            if ([PUtils isLoginIn:self andNaviBar:nil])
 //            {
 //                CZJChatViewController *chatController = [[CZJChatViewController alloc] initWithConversationChatter: CZJBaseDataInstance.userInfoForm.kefuId conversationType:EMConversationTypeChat];
 //                chatController.storeName = @"车之健客服";
@@ -505,8 +505,6 @@ CZJMyInfoShoppingCartCellDelegate
 }
 
 
-#pragma mark- CZJMyInfoHeadCellDelegate
-
 
 #pragma mark- CZJMyInfoShoppingCartCellDelegate
 - (void)clickMyInfoShoppingCartCell:(id)sender
@@ -556,7 +554,7 @@ CZJMyInfoShoppingCartCellDelegate
 //    if ([controller isKindOfClass: [CZJLoginController class]] )
 //    {
 //        [self getMyInfoDataFromServer];
-//        [CZJUtils removeLoginViewFromCurrent:self];
+//        [PUtils removeLoginViewFromCurrent:self];
 //    }
 }
 
