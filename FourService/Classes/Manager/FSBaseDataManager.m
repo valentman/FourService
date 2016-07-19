@@ -1233,7 +1233,7 @@ singleton_implementation(FSBaseDataManager);
     };
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:self.params];
+//    [params setValuesForKeysWithDictionary:self.params];
     [params setValuesForKeysWithDictionary:postParams];
     
     [FSNetWorkInstance postJSONWithUrl:api
@@ -1814,10 +1814,17 @@ singleton_implementation(FSBaseDataManager);
         
     };
     
-    [FSNetWorkInstance postJSONWithUrl:kFSServerAPIVerfyCode
+    [FSNetWorkInstance postJSONWithUrl:kFSServerAPIVerifyCode
                             parameters:nil
                                success:successBlock
                                   fail:failure];
+}
+
+- (void)verifyCodeWithParam:(NSDictionary*)codeParams
+                    success:(GeneralBlockHandler)success
+                       fail:(GeneralBlockHandler)fail
+{
+    [self generalPost:codeParams success:success fail:fail andServerAPI:kFSServerAPICheckVerifyCode];
 }
 
 

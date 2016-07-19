@@ -12,6 +12,16 @@
 #import "FSBaseDataManager.h"
 #define kLoginColorRed RGB(255, 102, 102)
 
+
+
+typedef NS_ENUM(NSUInteger, RegistStageType)
+{
+    RegistStageTypeVerifyCode = 1,
+    RegistStageTypeSetPwd,
+    RegistStageTypeSuccess
+};
+
+
 @interface FSRegisterController ()
 <
 UITextFieldDelegate,
@@ -21,8 +31,12 @@ FDAlertViewDelegate
 {
     BOOL isIdentityVerify;
     NSDictionary* vertifySuccessDict;
+    RegistStageType currentStageType;
 }
 
+@property (weak, nonatomic) IBOutlet UIButton *identityButton;
+@property (weak, nonatomic) IBOutlet UIButton *setPWDButton;
+@property (weak, nonatomic) IBOutlet UIButton *registSuccessButton;
 
 @property (weak, nonatomic) IBOutlet UILabel *phoneNumPrompt;
 @property (weak, nonatomic) IBOutlet UILabel *pwdPrompt;
@@ -38,6 +52,7 @@ FDAlertViewDelegate
 @property (weak, nonatomic) IBOutlet UIButton *getCodeBtn;
 @property (weak, nonatomic) IBOutlet UIButton *confirmBtn;
 @property (weak, nonatomic) IBOutlet UIView *pwdView;
+@property (weak, nonatomic) IBOutlet UIView *rePwdView;
 @property (weak, nonatomic) IBOutlet UIView *codeView;
 @property (weak, nonatomic) IBOutlet UIView *protocolView;
 
@@ -47,6 +62,7 @@ FDAlertViewDelegate
 @property (weak, nonatomic) IBOutlet UIButton *agreeProtocolBtn;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageCode;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *confirmBtnTop;
 
 - (IBAction)getCodeAction:(id)sender;
 - (IBAction)confirmAction:(id)sender;
@@ -69,6 +85,9 @@ FDAlertViewDelegate
 
 - (void)initViews
 {
+    //顶部步骤按钮颜色
+    [self setStageButtonColor:RegistStageTypeVerifyCode];
+    
     self.phoneNumTextField.delegate = self;
     self.pwdTextField.delegate = self;
     self.repeatPwdTextField.delegate = self;
@@ -88,7 +107,7 @@ FDAlertViewDelegate
     [self.isRePasswordTypeBtn setImage:[UIImage imageNamed:@"login_btn_eye_off"] forState:UIControlStateNormal];
     [self.isRePasswordTypeBtn setSelected:NO];
     
-    [self.confirmBtn setEnabled:NO];
+    [self.confirmBtn setEnabled:YES];
     self.confirmBtn.backgroundColor = [UIColor lightGrayColor];
     
     [self.agreeProtocolBtn setImage:[UIImage imageNamed:@"login_icon_select_sel"] forState:UIControlStateSelected];
@@ -107,6 +126,8 @@ FDAlertViewDelegate
     vertifySuccessDict = [NSDictionary dictionary];
     isIdentityVerify = YES;
     [self.daojishiLab setHidden:YES];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -118,12 +139,12 @@ FDAlertViewDelegate
 - (IBAction)getCodeAction:(id)sender
 {
     //输入内容校验（是不是手机号，以及有没有输入文字）
-//    if ([PUtils isBlankString:self.phoneNumTextField.text] ||
-//        ![PUtils isPhoneNumber:self.phoneNumTextField.text])
-//    {
-//        [PUtils tipWithText:@"请输入正确手机号码!" onView:self.view];
-//        return;
-//    }
+    if ([PUtils isBlankString:self.phoneNumTextField.text] ||
+        ![PUtils isPhoneNumber:self.phoneNumTextField.text])
+    {
+        [PUtils tipWithText:@"请输入正确手机号码!" onView:self.view];
+        return;
+    }
     
     if (self.getCodeBtn.enabled)
     {
@@ -166,8 +187,7 @@ FDAlertViewDelegate
 //        };
         
         //临时用图片验证码代替
-        [self.imageCode sd_setImageWithURL:[NSURL URLWithString:kFSServerAPIVerfyCode]];
-        [self.imageCode sd_setImageWithURL:[NSURL URLWithString:kFSServerAPIVerfyCode] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        [self.imageCode sd_setImageWithURL:[NSURL URLWithString:kFSServerAPIVerifyCode] placeholderImage:nil options:SDWebImageRefreshCached completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             [self.getCodeBtn setEnabled:NO];
             [self.getCodeBtn setHidden:YES];
         }];
@@ -179,72 +199,79 @@ FDAlertViewDelegate
 {
     [self.view endEditing:YES];
 
-    NSDictionary* params = @{@"customer_pho":self.phoneNumTextField.text,
-                             @"password" : self.pwdTextField.text,
-                             @"repassword" : self.repeatPwdTextField.text,
-                             @"verify" : self.codeTextField.text};
-    SuccessBlockHandler success = ^(id json)
-    {
-        DLog(@"%@",json);
-    };
-    FailureBlockHandler failure = ^(){
-        
-    };
-    
-    [FSBaseDataInstance userRegistWithParam:params success:success fail:failure];
-    
-//    //验证手机有效性
-//    if (isIdentityVerify &&
-//        self.phoneNumTextField.text.length == 11 &&
-//        self.codeTextField.text.length > 0)
+//    NSDictionary* params = @{@"customer_pho":self.phoneNumTextField.text,
+//                             @"password" : self.pwdTextField.text,
+//                             @"repassword" : self.repeatPwdTextField.text,
+//                             @"verify" : self.codeTextField.text};
+//    SuccessBlockHandler success = ^(id json)
 //    {
-//        [self.confirmBtn setEnabled:NO];
-//        self.confirmBtn.backgroundColor = [UIColor lightGrayColor];
-//        SuccessBlockHandler successBlock = ^(id json){
-//            vertifySuccessDict = [[PUtils DataFromJson:json] valueForKey:@"msg"];
-//            if ([[vertifySuccessDict valueForKey:@"code"] integerValue] != 0)
-//            {
-//                [self showAlert:[vertifySuccessDict valueForKey:@"msg"]];
-//                return;
-//            }
-//            
-//            //身份验证成功
-//            [PUtils tipWithText:@"身份验证成功，请设置密码" withCompeletHandler:^{
-//                [self.pwdTextField becomeFirstResponder];
-//            }];
-//            isIdentityVerify = NO;
-//            
-//            //顶部身份验证和设置密码栏重置
-////            self.identityVerifyBtn.backgroundColor = UIColorFromRGB(0xe0e0e0);
-////            self.identityVerifyBtn.titleLabel.textColor = [UIColor lightGrayColor];
-////            [self.stateButton setImage:[UIImage imageNamed:@"login_img_titlebase"] forState:UIControlStateNormal];
-////            self.resetPWDBtn.backgroundColor = UIColorFromRGB(0xff9494);
-////            self.resetPWDBtn.titleLabel.textColor = [UIColor whiteColor];
-//            
-//            //密码栏显示，验证码栏和服务协议隐藏
-//            [self.codeView setHidden:YES];
-//            [self.pwdView setHidden:NO];
-//            [self.protocolView setHidden:YES];
-//            
-//            self.phoneNumTextField.enabled = NO;
-//            self.phoneNumTextField.textColor = [UIColor lightGrayColor];
-//            
-//        };
-//        FailureBlockHandler failure = ^{
-//            NSLog(@"login fail");
-//            self.confirmBtn.enabled = YES;
-//            [self.confirmBtn setBackgroundColor:kLoginColorRed];
-//        };
-////        [CZJLoginModelInstance loginWithAuthCode:self.codeTextField.text
-////                                     mobilePhone:self.phoneNumTextField.text
-////                                         success:successBlock
-////                                            fali:failure];
-//    }
+//        DLog(@"%@",json);
+//    };
+//    FailureBlockHandler failure = ^(){
+//        
+//    };
+//    
+//    [FSBaseDataInstance userRegistWithParam:params success:success fail:failure];
+
+    
+    //验证手机有效性
+    if (isIdentityVerify &&
+        self.phoneNumTextField.text.length == 11 &&
+        self.codeTextField.text.length > 0)
+    {
+        [self.confirmBtn setEnabled:NO];
+        self.confirmBtn.backgroundColor = [UIColor lightGrayColor];
+        SuccessBlockHandler successBlock = ^(id json){
+            vertifySuccessDict = [[PUtils DataFromJson:json] valueForKey:@"msg"];
+            if ([[vertifySuccessDict valueForKey:@"code"] integerValue] != 0)
+            {
+                [self showAlert:[vertifySuccessDict valueForKey:@"msg"]];
+                return;
+            }
+            
+            //身份验证成功
+            [PUtils tipWithText:@"身份验证成功，请设置密码" withCompeletHandler:^{
+                [self.pwdTextField becomeFirstResponder];
+            }];
+            isIdentityVerify = NO;
+            
+            //顶部身份验证和设置密码栏重置
+            [self setStageButtonColor:currentStageType];
+            
+            //密码栏显示，验证码栏和服务协议隐藏
+            [self.view layoutIfNeeded];
+            [UIView animateWithDuration:0.5 animations:^{
+                //遍历查找view的heigh约束，并修改它
+                [self.codeView setHidden:YES];
+                [self.pwdView setHidden:NO];
+                [self.rePwdView setHidden:NO];
+                [self.protocolView setHidden:YES];
+                self.confirmBtnTop.constant = 120;
+                //更新约束  在某个时刻约束会被还原成frame使视图显示
+                [self.view layoutIfNeeded];
+            } completion:^(BOOL finished) {
+                [self.confirmBtn setEnabled:YES];
+                self.confirmBtn.backgroundColor = CZJREDCOLOR;
+            }];
+            
+            self.phoneNumTextField.enabled = NO;
+            self.phoneNumTextField.textColor = [UIColor lightGrayColor];
+            
+        };
+        FailureBlockHandler failure = ^{
+            NSLog(@"login fail");
+            self.confirmBtn.enabled = YES;
+            [self.confirmBtn setBackgroundColor:kLoginColorRed];
+        };
+        
+        [FSBaseDataInstance verifyCodeWithParam:@{@"verify":self.codeTextField.text} success:successBlock fail:failure];
+    }
 //    //重设密码中
 //    if (!isIdentityVerify &&
 //        self.pwdTextField.text.length > 0)
 //    {
-//        [self.confirmBtn setEnabled:NO];
+//        [self.confirmBtn setEnabled:NO];123
+    
 //        SuccessBlockHandler successBlock = ^(id json){
 //            NSDictionary* dict = [PUtils DataFromJson:json];
 //            if ([[dict valueForKey:@"code"] integerValue] != 0)
@@ -377,10 +404,29 @@ FDAlertViewDelegate
             break;
     }
     
-    if (self.phoneNumTextField.text.length == 11
-        && self.pwdTextField.text.length > 0
-        && self.repeatPwdTextField.text.length > 0
-        && self.codeTextField.text.length > 0)
+    BOOL confirmBtnEnable = NO;
+    switch (currentStageType) {
+        case RegistStageTypeVerifyCode: {
+            if (self.phoneNumTextField.text.length == 11 &&
+                self.codeTextField.text.length > 0) {
+                confirmBtnEnable = YES;
+            }
+            break;
+        }
+        case RegistStageTypeSetPwd: {
+            if (self.phoneNumTextField.text.length == 11 &&
+                self.pwdTextField.text.length > 0 &&
+                self.repeatPwdTextField.text.length > 0) {
+                confirmBtnEnable = YES;
+            }
+            break;
+        }
+        case RegistStageTypeSuccess: {
+            
+            break;
+        }
+    }
+    if (confirmBtnEnable)
     {
         self.confirmBtn.enabled = YES;
         [self.confirmBtn setBackgroundColor:kLoginColorRed];
@@ -395,6 +441,14 @@ FDAlertViewDelegate
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self.view endEditing:YES];
+}
+
+- (void)setStageButtonColor:(RegistStageType)stageNum
+{
+    currentStageType = stageNum;
+    self.identityButton.titleLabel.textColor = (stageNum == 1) ? BLACKCOLOR : CZJGRAYCOLOR;
+    self.setPWDButton.titleLabel.textColor = (stageNum == 2) ? BLACKCOLOR : CZJGRAYCOLOR;
+    self.registSuccessButton.titleLabel.textColor = (stageNum == 3) ? BLACKCOLOR : CZJGRAYCOLOR;
 }
 
 @end

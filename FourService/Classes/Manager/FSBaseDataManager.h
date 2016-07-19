@@ -390,6 +390,12 @@ singleton_interface(FSBaseDataManager);
 - (void)getImageCodeWithSuccess:(SuccessBlockHandler)success
                            fail:(GeneralBlockHandler)fail;
 
+//验证码验证
+- (void)verifyCodeWithParam:(NSDictionary*)codeParams
+                    success:(GeneralBlockHandler)success
+                       fail:(GeneralBlockHandler)fail;
+
+//注册
 - (void)userRegistWithParam:(NSDictionary*)postParams
                     success:(SuccessBlockHandler)success
                        fail:(FailureBlockHandler)fail;

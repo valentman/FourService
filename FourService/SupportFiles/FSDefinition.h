@@ -13,7 +13,7 @@
 //服务地址
 static NSString *const kCZJServerAddr = @"";      //线上正式环境
 
-//首页接口组
+//首页接口组 
 static NSString *const kFSServerAPIShowHome = @"http://119.29.135.211/Home/home";                   //获取首页数据
 static NSString *const kFSServerAPILottery = @"http://119.29.135.211/Home/lucky/activity_id/1";     //抽奖
 
@@ -21,7 +21,8 @@ static NSString *const kFSServerAPILottery = @"http://119.29.135.211/Home/lucky/
 static NSString *const kFSServerAPIRegister = @"http://119.29.135.211/Login/register";              //注册
 static NSString *const kFSServerAPILogin = @"http://119.29.135.211/Login/customerLogin";            //登录
 static NSString *const kFSServerAPILoginOut = @"http://119.29.135.211/Login/customerLogout";        //注销
-static NSString *const kFSServerAPIVerfyCode = @"http://119.29.135.211/Login/verify";               //验证码
+static NSString *const kFSServerAPIVerifyCode = @"http://119.29.135.211/Login/verify";              //验证码
+static NSString *const kFSServerAPICheckVerifyCode = @"http://119.29.135.211/Login/checkVerify";    //确认验证码
 
 
 static NSString *const kCZJServerAPIActivityCenter = @"chezhu/showActivityCenter.do";               //获取活动中心信息

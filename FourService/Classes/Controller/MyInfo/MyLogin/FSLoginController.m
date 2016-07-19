@@ -26,6 +26,8 @@ FDAlertViewDelegate
 {
     BOOL isLoginWithCode;
     CGRect loginViewOriginRect;
+    
+    
 }
 @property (weak, nonatomic) IBOutlet UIButton *loginWithCodeBtn;
 @property (weak, nonatomic) IBOutlet UIButton *loginWithPWDBtn;
@@ -248,8 +250,7 @@ FDAlertViewDelegate
 //                                                fail:^(){}];
         
         //临时的图片验证码
-        [self.imageCode sd_setImageWithURL:[NSURL URLWithString:kFSServerAPIVerfyCode]];
-        [self.imageCode sd_setImageWithURL:[NSURL URLWithString:kFSServerAPIVerfyCode] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        [self.imageCode sd_setImageWithURL:[NSURL URLWithString:kFSServerAPIVerifyCode] placeholderImage:nil options:SDWebImageRefreshCached completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             [self.getCodeBtn setEnabled:NO];
             [self.getCodeBtn setHidden:YES];
         }];
