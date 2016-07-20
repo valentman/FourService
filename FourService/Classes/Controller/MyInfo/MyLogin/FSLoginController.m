@@ -11,6 +11,7 @@
 #import "ServiceProtocol.h"
 #import "FSBaseDataManager.h"
 #import "FSRegisterController.h"
+#import "XGPush.h"
 
 #define kLoginColorRed RGB(255, 102, 102)
 #define kPhoneNum 1000
@@ -264,10 +265,9 @@ FDAlertViewDelegate
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     __weak typeof(self) weakSelf = self;
     SuccessBlockHandler successBlock= ^(id json){
-        NSDictionary* dict = [PUtils DataFromJson:json];
-        if ([[dict valueForKey:@"code"] integerValue] != 0)
+        if ([[json valueForKey:@"code"] integerValue] != 0)
         {
-            [PUtils tipWithText:[dict valueForKey:@"msg"] onView:weakSelf.view];
+            [PUtils tipWithText:[json valueForKey:@"msg"] onView:weakSelf.view];
         }
         [weakSelf.confirmBtn setEnabled:YES];
         [weakSelf.confirmBtn setBackgroundColor:kLoginColorRed];
@@ -302,11 +302,12 @@ FDAlertViewDelegate
     {
         [self.confirmBtn setEnabled:NO];
         [self.confirmBtn setBackgroundColor:[UIColor lightGrayColor]];
-//        [CZJLoginModelInstance loginWithAuthCode:self.codeTextField.text
-//                                     mobilePhone:self.phoneNumTextField.text
-//                                         success:successBlock
-//                                            fali:failure];
+        NSDictionary* loginDict = @{@"customer_pho" : self.phoneNumTextField.text,
+                                    @"password" : self.pwdTextField.text};
+    [FSBaseDataInstance loginWithPwdOrCode:loginDict success:successBlock fail:failure];
     }
+    
+    
     //密码登录
     if (!isLoginWithCode &&
         self.phoneNumTextField.text.length == 11 &&
@@ -315,12 +316,63 @@ FDAlertViewDelegate
         [self.confirmBtn setEnabled:NO];
         [self.confirmBtn setBackgroundColor:[UIColor lightGrayColor]];
         
-//        [CZJLoginModelInstance loginWithPassword:self.pwdTextField.text
-//                                     mobilePhone:self.phoneNumTextField.text
-//                                         success:successBlock
-//                                            fali:failure];
+        NSDictionary* loginDict = @{@"customer_pho" : self.phoneNumTextField.text,
+                                    @"password" : self.pwdTextField.text};
+        [FSBaseDataInstance loginWithPwdOrCode:loginDict success:successBlock fail:failure];
     }
 }
+
+
+- (void)loginSuccess:(id)json
+             success:(GeneralBlockHandler)sucessBlock
+                fail:(GeneralBlockHandler)failBlock
+{
+    NSDictionary* dict = [json valueForKey:@"data"];
+    FSBaseDataInstance.userInfoForm.chezhuId = [dict valueForKey:@"chezhuId"];
+    FSBaseDataInstance.userInfoForm.headPic = [dict valueForKey:@"headPic"];
+    FSBaseDataInstance.userInfoForm.imId = [dict valueForKey:@"imId"];
+    FSBaseDataInstance.userInfoForm.mobile = [dict valueForKey:@"mobile"];
+    FSBaseDataInstance.userInfoForm.name = [dict valueForKey:@"name"];
+    
+    
+    //登录成功，个人信息写入本地文件中
+    if ([PUtils writeDictionaryToDocumentsDirectory:[FSBaseDataInstance.userInfoForm.keyValues mutableCopy] withPlistName:kCZJPlistFileUserBaseForm])
+    {
+        [USER_DEFAULT setObject:[NSNumber numberWithBool:YES] forKey:kCZJIsUserHaveLogined];
+        [USER_DEFAULT synchronize]; //强制更新到本地
+        
+        //将个人信息存入数据管理单例类中，并刷新上传参数
+//        CZJBaseDataInstance.userInfoForm = self.usrBaseForm;
+//        [CZJBaseDataInstance refreshChezhuID];
+        
+        //注册个人推送
+        [XGPush setAccount:FSBaseDataInstance.userInfoForm.chezhuId];
+        
+        //注册环信
+//        EMError *errorss = [[EMClient sharedClient] loginWithUsername:CZJLoginModelInstance.usrBaseForm.imId password:@"123456"];
+//        if (!errorss)
+//        {
+//            [[EMClient sharedClient].options setIsAutoLogin:YES];
+//        }
+        
+        [[NSNotificationCenter defaultCenter]postNotificationName:kCZJNotifiLoginSuccess object:nil];
+        
+        if (sucessBlock)
+        {
+            sucessBlock();
+        }
+    }
+    else
+    {
+        [PUtils tipWithText:@"登录超时，请重新操作" andView:nil];
+        if (failBlock)
+        {
+            failBlock();
+        }
+    }
+    
+}
+
 
 - (IBAction)isSecurityPwd:(id)sender {
     BOOL flag = self.isPasswordTypeBtn.isSelected;

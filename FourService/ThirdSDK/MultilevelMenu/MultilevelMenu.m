@@ -188,7 +188,7 @@
         }];
     };
     
-    [FSBaseDataInstance showCategoryTypeId:currentTypeID success:successBlock fail:failBlock];
+//    [FSBaseDataInstance showCategoryTypeId:currentTypeID success:successBlock fail:failBlock];
 }
 
 #pragma mark-----------------------左边的tablewView 代理-------------------------

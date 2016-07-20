@@ -78,28 +78,7 @@ singleton_interface(FSBaseDataManager);
                 fail:(FailureBlockHandler)fail;
 
 
-//-------------------------分类数据------------------------------
-//获取分类数据
-- (void)showCategoryTypeId:(NSString*)typeId
-                   success:(SuccessBlockHandler)success
-                      fail:(FailureBlockHandler)fail;
 
-//获取商品列表
-- (void)loadGoodsList:(NSDictionary*)postParams
-                 type:(CZJHomeGetDataFromServerType)type
-              success:(SuccessBlockHandler)success
-                 fail:(FailureBlockHandler)failure;
-
-//获取商品列表筛选条件列表
-- (void)loadGoodsFilterTypes:(NSDictionary*)postParams
-                     success:(SuccessBlockHandler)success
-                        fail:(FailureBlockHandler)failure;
-
-//获取商品品牌列表或价格列表
-- (void)loadGoodsPriceOrBrandList:(NSDictionary*)postParams
-                             type:(NSString*)typeName
-                          success:(SuccessBlockHandler)success
-                             fail:(FailureBlockHandler)failure;
 
 //获取汽车品牌列表信息
 - (void)getCarBrandsList:(SuccessBlockHandler)success;
@@ -127,32 +106,6 @@ singleton_interface(FSBaseDataManager);
                                Success:(GeneralBlockHandler)success
                                   fail:(FailureBlockHandler)fail;
 
-//获取商品SKU
-- (void)loadGoodsSKU:(NSDictionary*)postParams
-             Success:(GeneralBlockHandler)success
-                fail:(FailureBlockHandler)fail;
-
-//获取商品优惠券列表
-- (void)loadShoppingCouponsCart:(NSDictionary*)postParams
-                        Success:(GeneralBlockHandler)success
-                           fail:(FailureBlockHandler)fail;
-
-//领取优惠券
-- (void)takeCoupons:(NSDictionary*)postParams
-            Success:(SuccessBlockHandler)success
-               fail:(FailureBlockHandler)fail;
-
-//获取评价列表
-- (void)loadUserEvalutions:(NSDictionary*)postParams
-                      type:(CZJHomeGetDataFromServerType)type
-                   Success:(GeneralBlockHandler)success
-                      fail:(FailureBlockHandler)fail;
-
-//获取评价回复列表
-- (void)loadUserEvalutionReplys:(NSDictionary*)postParams
-                           type:(CZJHomeGetDataFromServerType)type
-                        Success:(GeneralBlockHandler)success
-                           fail:(FailureBlockHandler)fail;
 
 
 //-------------------------门店数据------------------------------
@@ -171,34 +124,6 @@ singleton_interface(FSBaseDataManager);
 - (void)loadStoreDetail:(NSDictionary*)postParams
                 success:(SuccessBlockHandler)success
                    fail:(FailureBlockHandler)failure;
-
-//关注门店
-- (void)attentionStore:(NSDictionary*)postParams
-               success:(SuccessBlockHandler)success;
-
-//取消关注门店
-- (void)cancleAttentionStore:(NSDictionary*)postParams
-               success:(SuccessBlockHandler)success;
-
-//关注商品
-- (void)attentionGoods:(NSDictionary*)postParams
-               success:(SuccessBlockHandler)success;
-
-//取消关注商品
-- (void)cancleAttentionGoods:(NSDictionary*)postParams
-               success:(SuccessBlockHandler)success;
-
-//其他门店列表
-- (void)loadOtherStoreList:(NSDictionary*)postParams
-                   success:(SuccessBlockHandler)success
-                      fail:(FailureBlockHandler)failure;
-
-
-
-//-------------------------发现数据------------------------------
-//获取发现数据
-- (void)showDiscoverWithBlocksuccess:(SuccessBlockHandler)success
-                                fail:(FailureBlockHandler)fail;
 
 
 
@@ -233,11 +158,6 @@ singleton_interface(FSBaseDataManager);
 - (void)submitOrder:(NSDictionary*)postParams
             Success:(SuccessBlockHandler)success
                fail:(FailureBlockHandler)fail;
-
-//获取安装门店列表
-- (void)loadStoreSetupList:(NSDictionary*)postParams
-                   Success:(SuccessBlockHandler)success
-                      fail:(FailureBlockHandler)fail;
 
 //获取地址列表
 - (void)loadAddrList:(NSDictionary*)postParams
@@ -284,16 +204,6 @@ singleton_interface(FSBaseDataManager);
                       Success:(SuccessBlockHandler)success
                          fail:(FailureBlockHandler)fail;
 
-//获取已退换货列表
-- (void)getReturnedOrderList:(NSDictionary*)postParams
-                     Success:(SuccessBlockHandler)success
-                        fail:(FailureBlockHandler)fail;
-
-//获取可退换货列表
-- (void)getReturnableOrderList:(NSDictionary*)postParams
-                       Success:(SuccessBlockHandler)success
-                          fail:(FailureBlockHandler)fail;
-
 
 
 //-------------------------个人信息中心------------------------------
@@ -338,35 +248,6 @@ singleton_interface(FSBaseDataManager);
               Success:(SuccessBlockHandler)success
                  fail:(FailureBlockHandler)fail;
 
-//获取浏览记录
-- (void)loadScanList:(NSDictionary*)postParams
-             Success:(SuccessBlockHandler)success
-                fail:(FailureBlockHandler)fail;
-
-//清空浏览记录
-- (void)clearScanList:(NSDictionary*)postParams
-              Success:(SuccessBlockHandler)success
-                 fail:(FailureBlockHandler)fail;
-
-//搜索
-- (void)searchAnything:(NSDictionary*)postParams
-               Success:(SuccessBlockHandler)success
-                  fail:(FailureBlockHandler)fail;
-
-//获取服务分类
-- (void)loadServiceType:(NSDictionary*)postParams
-                Success:(SuccessBlockHandler)success
-                   fail:(FailureBlockHandler)fail;
-
-//获取关注列表
-- (void)loadMyAttentionList:(NSDictionary*)postParams
-                    success:(SuccessBlockHandler)success
-                       fail:(FailureBlockHandler)fail;
-
-//取消关注列表
-- (void)cancleAttentionList:(NSDictionary*)postParams
-                    Success:(SuccessBlockHandler)success
-                       fail:(FailureBlockHandler)fail;
 
 //通用(失败回调带参数)
 - (void)generalPost:(NSDictionary*)postParams
@@ -379,6 +260,15 @@ singleton_interface(FSBaseDataManager);
             success:(SuccessBlockHandler)success
                fail:(FailureBlockHandler)fail
        andServerAPI:(NSString*)api;
+
+
+
+//-------------------------注册登录------------------------------
+
+//验证码登录或密码登录
+- (void)loginWithPwdOrCode:(NSDictionary*)loginParams
+                   success:(SuccessBlockHandler)success
+                      fail:(SuccessBlockHandler)fail;
 
 
 //获取短信验证码

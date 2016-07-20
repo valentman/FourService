@@ -24,6 +24,8 @@ static NSString *const kFSServerAPILoginOut = @"http://119.29.135.211/Login/cust
 static NSString *const kFSServerAPIVerifyCode = @"http://119.29.135.211/Login/verify";              //验证码
 static NSString *const kFSServerAPICheckVerifyCode = @"http://119.29.135.211/Login/checkVerify";    //确认验证码
 
+static NSString *const kFSServerAPIGetMyInfo = @"http://119.29.135.211/Customer/customerInfo";      //个人信息
+
 
 static NSString *const kCZJServerAPIActivityCenter = @"chezhu/showActivityCenter.do";               //获取活动中心信息
 static NSString *const kCZJServerAPICarInfo = @"chezhu/showCarNews.do";                             //获取汽车资讯
@@ -292,6 +294,16 @@ static NSString *const kCZJStoryBoardIDRecord = @"myScanRecordSBID";            
 static NSString *const kCZJCollectionCellReuseIdMiaoSha = @"CZJMiaoShaCollectionCell";
 static NSString *const kCZJCollectionCellReuseIdLimit = @"CZJLimitCollectionCell";
 static NSString *const kCZJCollectionCellReuseIdGoodReco = @"CZJGoodsRecoCollectionCell";
+
+
+
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+static NSString *const kResoponCode = @"code";
+static NSString *const kResoponData = @"data";
+static NSString *const kResoponMessage = @"message";
+
+
 #endif /* FSDefinition_h */
 
 

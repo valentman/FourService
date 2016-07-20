@@ -55,6 +55,7 @@ CZJMyInfoShoppingCartCellDelegate
 - (void)viewWillAppear:(BOOL)animated
 {
     [self dealWithInitNavigationBar];
+    [USER_DEFAULT setBool:YES forKey:kCZJIsUserHaveLogined];
     if ([USER_DEFAULT boolForKey:kCZJIsUserHaveLogined]) {
         [self getMyInfoDataFromServer];
     }
@@ -178,10 +179,11 @@ CZJMyInfoShoppingCartCellDelegate
 
 - (void)getMyInfoDataFromServer
 {
+    
     if ([USER_DEFAULT boolForKey:kCZJIsUserHaveLogined])
     {
         [FSBaseDataInstance getUserInfo:nil Success:^(id json) {
-            NSDictionary* dict = [[PUtils DataFromJson:json] valueForKey:@"msg"];
+            NSDictionary* dict = [json valueForKey:kResoponData];
             DLog(@"%@",[dict description]);
             myInfoForm = [FSMyInfoForm objectWithKeyValues:dict];
             [self updateOrderData:dict];
