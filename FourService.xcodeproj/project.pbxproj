@@ -2347,8 +2347,8 @@
 		ECA233C91D37DB78004C2679 /* MyInfo */ = {
 			isa = PBXGroup;
 			children = (
-				EC7FC09C1D3A29EB0082ECB4 /* MyLogin */,
 				ECA233CA1D37DB78004C2679 /* Main */,
+				EC7FC09C1D3A29EB0082ECB4 /* MyLogin */,
 				ECA233CD1D37DB78004C2679 /* Other */,
 			);
 			path = MyInfo;
