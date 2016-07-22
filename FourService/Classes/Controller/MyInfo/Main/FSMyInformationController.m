@@ -26,7 +26,17 @@ CZJMyInfoShoppingCartCellDelegate
     NSArray* walletSubCellAry;          //我的钱包下子项数组
     NSInteger _currentTouchOrderListType;
     
-    FSMyInfoForm* myInfoForm;
+    FSPersonalForm* myInfoForm;
+    
+    
+    NSArray* discountNormalAry;
+    NSArray* discountUsedAry;
+    NSArray* discountExpiredAry;
+    NSArray* carListAry;
+    NSArray* customerViewdAry;
+    NSArray* customerFavoriteAry;
+    NSArray* shopCommentAry;
+    
 }
 @property (strong, nonatomic) UITableView *myTableView;
 @end
@@ -138,6 +148,15 @@ CZJMyInfoShoppingCartCellDelegate
     
     walletSubCellAry = @[dict7,dict8,dict9,dict0];
     
+    discountNormalAry = [NSArray array];
+    discountUsedAry  = [NSArray array];
+    discountExpiredAry  = [NSArray array];
+    carListAry  = [NSArray array];
+    customerViewdAry  = [NSArray array];
+    customerFavoriteAry  = [NSArray array];
+    shopCommentAry  = [NSArray array];
+    
+    
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshTabBarDotLabel) name:kCZJNotifiRefreshMessageReadStatus object:nil];
 }
 
@@ -185,8 +204,19 @@ CZJMyInfoShoppingCartCellDelegate
         [FSBaseDataInstance getUserInfo:nil Success:^(id json) {
             NSDictionary* dict = [json valueForKey:kResoponData];
             DLog(@"%@",[dict description]);
-            myInfoForm = [FSMyInfoForm objectWithKeyValues:dict];
-            [self updateOrderData:dict];
+            
+            //服务器返回数据本地化，全部转化为模型数据存储在数组中
+            myInfoForm = [FSPersonalForm objectWithKeyValues:dict];
+            discountNormalAry = [FSDiscountNormalForm objectArrayWithKeyValuesArray:[dict valueForKey:@"discount_normal"]];
+            discountUsedAry = [FSDiscountUsedForm objectArrayWithKeyValuesArray:[dict valueForKey:@"discount_used"]];
+            discountExpiredAry = [FSDiscountExpiredForm objectArrayWithKeyValuesArray:[dict valueForKey:@"discount_expired"]];
+            carListAry = [FSCarListForm objectArrayWithKeyValuesArray:[dict valueForKey:@"car_list"]];
+            customerViewdAry = [FSCustomerViewdForm objectArrayWithKeyValuesArray:[dict valueForKey:@"Customer_view"]];
+            customerFavoriteAry = [FSCustomerFavoriteForm objectArrayWithKeyValuesArray:[dict valueForKey:@"Customer_favorite"]];
+            shopCommentAry = [FSShopCommentForm objectArrayWithKeyValuesArray:[dict valueForKey:@"Shop_comment"]];
+            
+            //更新表格
+//            [self updateOrderData:dict];
             [self.myTableView reloadData];
         } fail:^{
             
@@ -434,7 +464,7 @@ CZJMyInfoShoppingCartCellDelegate
         {
             if ([PUtils isLoginIn:self andNaviBar:nil])
             {
-                [PUtils callHotLine:myInfoForm.hotline AndTarget:self.view];
+//                [PUtils callHotLine:FSPersonalForm.hotline AndTarget:self.view];
             }
         }
     }

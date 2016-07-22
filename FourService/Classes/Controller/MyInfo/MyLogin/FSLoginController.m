@@ -273,18 +273,18 @@ FDAlertViewDelegate
         [weakSelf.confirmBtn setBackgroundColor:kLoginColorRed];
         
         //先处理登录成功数据
-//        [CZJLoginModelInstance loginSuccess:json success:^{
-//            //再发送购物车数量请求
+        [self loginSuccess:json success:^{
+            //再发送购物车数量请求
 //            [CZJBaseDataInstance loadShoppingCartCount:nil Success:^(id json){
 //                [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
-//                [PUtils tipWithText:@"登录成功" andView:nil];
-//                [weakSelf exitOutAction:nil];
+                [PUtils tipWithText:@"登录成功" andView:nil];
+                [weakSelf exitOutAction:nil];
 //            } fail:^{
 //                [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
 //            }];
-//        } fail:^{
-//            [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
-//        }];
+        } fail:^{
+            [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
+        }];
     };
     SuccessBlockHandler failure = ^(id json){
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
@@ -328,12 +328,7 @@ FDAlertViewDelegate
                 fail:(GeneralBlockHandler)failBlock
 {
     NSDictionary* dict = [json valueForKey:@"data"];
-    FSBaseDataInstance.userInfoForm.chezhuId = [dict valueForKey:@"chezhuId"];
-    FSBaseDataInstance.userInfoForm.headPic = [dict valueForKey:@"headPic"];
-    FSBaseDataInstance.userInfoForm.imId = [dict valueForKey:@"imId"];
-    FSBaseDataInstance.userInfoForm.mobile = [dict valueForKey:@"mobile"];
-    FSBaseDataInstance.userInfoForm.name = [dict valueForKey:@"name"];
-    
+
     
     //登录成功，个人信息写入本地文件中
     if ([PUtils writeDictionaryToDocumentsDirectory:[FSBaseDataInstance.userInfoForm.keyValues mutableCopy] withPlistName:kCZJPlistFileUserBaseForm])
@@ -341,9 +336,9 @@ FDAlertViewDelegate
         [USER_DEFAULT setObject:[NSNumber numberWithBool:YES] forKey:kCZJIsUserHaveLogined];
         [USER_DEFAULT synchronize]; //强制更新到本地
         
-        //将个人信息存入数据管理单例类中，并刷新上传参数
-//        CZJBaseDataInstance.userInfoForm = self.usrBaseForm;
-//        [CZJBaseDataInstance refreshChezhuID];
+        //更新基本参数
+        [FSBaseDataInstance.params setValue:[dict valueForKey:@"identifier"] forKey:@"identifier"];
+        [FSBaseDataInstance.params setValue:[dict valueForKey:@"token"] forKey:@"token"];
         
         //注册个人推送
         [XGPush setAccount:FSBaseDataInstance.userInfoForm.chezhuId];

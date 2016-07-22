@@ -15,6 +15,17 @@
 		EC026F2F1D2B894700CA8CEB /* FSLotteryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC026F2D1D2B894700CA8CEB /* FSLotteryCell.xib */; };
 		EC026F331D2B897200CA8CEB /* FSRecommendInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC026F311D2B897200CA8CEB /* FSRecommendInfoCell.m */; };
 		EC026F341D2B897200CA8CEB /* FSRecommendInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC026F321D2B897200CA8CEB /* FSRecommendInfoCell.xib */; };
+		EC3A18E91D41F13F00F6F193 /* FSMyViewedController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3A18E81D41F13F00F6F193 /* FSMyViewedController.m */; };
+		EC3A18EC1D41F15500F6F193 /* FSMyPersonalInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3A18EB1D41F15500F6F193 /* FSMyPersonalInfoController.m */; };
+		EC3A18EF1D41F16700F6F193 /* FSMyAttentionController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3A18EE1D41F16700F6F193 /* FSMyAttentionController.m */; };
+		EC3A18F21D41F17B00F6F193 /* FSMyEvalutionController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3A18F11D41F17B00F6F193 /* FSMyEvalutionController.m */; };
+		EC3A18F51D41F18D00F6F193 /* FSMyOrderListController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3A18F41D41F18D00F6F193 /* FSMyOrderListController.m */; };
+		EC3A18F81D41F1AE00F6F193 /* FSMyDiscountController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3A18F71D41F1AE00F6F193 /* FSMyDiscountController.m */; };
+		EC3A18FB1D41F21C00F6F193 /* FSMyCarListController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3A18FA1D41F21C00F6F193 /* FSMyCarListController.m */; };
+		EC3A19001D41F2CE00F6F193 /* FSServiceListController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3A18FF1D41F2CE00F6F193 /* FSServiceListController.m */; };
+		EC3A19031D41F2DF00F6F193 /* FSStoreListController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3A19021D41F2DF00F6F193 /* FSStoreListController.m */; };
+		EC3A19061D41F31E00F6F193 /* FSServiceStepController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3A19051D41F31E00F6F193 /* FSServiceStepController.m */; };
+		EC3A190B1D41F37100F6F193 /* FSCommitOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3A190A1D41F37100F6F193 /* FSCommitOrderController.m */; };
 		EC5427091D23791F00F3B4BF /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5426F01D23791F00F3B4BF /* Accounts.framework */; };
 		EC54270A1D23791F00F3B4BF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5426F11D23791F00F3B4BF /* AudioToolbox.framework */; };
 		EC54270B1D23791F00F3B4BF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5426F21D23791F00F3B4BF /* AVFoundation.framework */; };
@@ -344,6 +355,28 @@
 		EC026F301D2B897200CA8CEB /* FSRecommendInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRecommendInfoCell.h; sourceTree = "<group>"; };
 		EC026F311D2B897200CA8CEB /* FSRecommendInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRecommendInfoCell.m; sourceTree = "<group>"; };
 		EC026F321D2B897200CA8CEB /* FSRecommendInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSRecommendInfoCell.xib; sourceTree = "<group>"; };
+		EC3A18E71D41F13F00F6F193 /* FSMyViewedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyViewedController.h; sourceTree = "<group>"; };
+		EC3A18E81D41F13F00F6F193 /* FSMyViewedController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyViewedController.m; sourceTree = "<group>"; };
+		EC3A18EA1D41F15500F6F193 /* FSMyPersonalInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyPersonalInfoController.h; sourceTree = "<group>"; };
+		EC3A18EB1D41F15500F6F193 /* FSMyPersonalInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyPersonalInfoController.m; sourceTree = "<group>"; };
+		EC3A18ED1D41F16700F6F193 /* FSMyAttentionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyAttentionController.h; sourceTree = "<group>"; };
+		EC3A18EE1D41F16700F6F193 /* FSMyAttentionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyAttentionController.m; sourceTree = "<group>"; };
+		EC3A18F01D41F17B00F6F193 /* FSMyEvalutionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyEvalutionController.h; sourceTree = "<group>"; };
+		EC3A18F11D41F17B00F6F193 /* FSMyEvalutionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyEvalutionController.m; sourceTree = "<group>"; };
+		EC3A18F31D41F18D00F6F193 /* FSMyOrderListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyOrderListController.h; sourceTree = "<group>"; };
+		EC3A18F41D41F18D00F6F193 /* FSMyOrderListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyOrderListController.m; sourceTree = "<group>"; };
+		EC3A18F61D41F1AE00F6F193 /* FSMyDiscountController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyDiscountController.h; sourceTree = "<group>"; };
+		EC3A18F71D41F1AE00F6F193 /* FSMyDiscountController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyDiscountController.m; sourceTree = "<group>"; };
+		EC3A18F91D41F21C00F6F193 /* FSMyCarListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyCarListController.h; sourceTree = "<group>"; };
+		EC3A18FA1D41F21C00F6F193 /* FSMyCarListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyCarListController.m; sourceTree = "<group>"; };
+		EC3A18FE1D41F2CE00F6F193 /* FSServiceListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSServiceListController.h; sourceTree = "<group>"; };
+		EC3A18FF1D41F2CE00F6F193 /* FSServiceListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSServiceListController.m; sourceTree = "<group>"; };
+		EC3A19011D41F2DF00F6F193 /* FSStoreListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSStoreListController.h; sourceTree = "<group>"; };
+		EC3A19021D41F2DF00F6F193 /* FSStoreListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSStoreListController.m; sourceTree = "<group>"; };
+		EC3A19041D41F31E00F6F193 /* FSServiceStepController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSServiceStepController.h; sourceTree = "<group>"; };
+		EC3A19051D41F31E00F6F193 /* FSServiceStepController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSServiceStepController.m; sourceTree = "<group>"; };
+		EC3A19091D41F37100F6F193 /* FSCommitOrderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCommitOrderController.h; sourceTree = "<group>"; };
+		EC3A190A1D41F37100F6F193 /* FSCommitOrderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCommitOrderController.m; sourceTree = "<group>"; };
 		EC5426F01D23791F00F3B4BF /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		EC5426F11D23791F00F3B4BF /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		EC5426F21D23791F00F3B4BF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -1063,6 +1096,140 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		EC3A18D41D41F00400F6F193 /* MyAttention */ = {
+			isa = PBXGroup;
+			children = (
+				EC3A18D51D41F00400F6F193 /* Cell */,
+				EC3A18ED1D41F16700F6F193 /* FSMyAttentionController.h */,
+				EC3A18EE1D41F16700F6F193 /* FSMyAttentionController.m */,
+			);
+			path = MyAttention;
+			sourceTree = "<group>";
+		};
+		EC3A18D51D41F00400F6F193 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		EC3A18D81D41F00400F6F193 /* MyEvalution */ = {
+			isa = PBXGroup;
+			children = (
+				EC3A18D91D41F00400F6F193 /* Cell */,
+				EC3A18F01D41F17B00F6F193 /* FSMyEvalutionController.h */,
+				EC3A18F11D41F17B00F6F193 /* FSMyEvalutionController.m */,
+			);
+			path = MyEvalution;
+			sourceTree = "<group>";
+		};
+		EC3A18D91D41F00400F6F193 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		EC3A18DC1D41F00400F6F193 /* MyOrder */ = {
+			isa = PBXGroup;
+			children = (
+				EC3A18DD1D41F00400F6F193 /* Cell */,
+				EC3A18F31D41F18D00F6F193 /* FSMyOrderListController.h */,
+				EC3A18F41D41F18D00F6F193 /* FSMyOrderListController.m */,
+			);
+			path = MyOrder;
+			sourceTree = "<group>";
+		};
+		EC3A18DD1D41F00400F6F193 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		EC3A18DE1D41F00400F6F193 /* MyPersonal */ = {
+			isa = PBXGroup;
+			children = (
+				EC3A18DF1D41F00400F6F193 /* Cell */,
+				EC3A18EA1D41F15500F6F193 /* FSMyPersonalInfoController.h */,
+				EC3A18EB1D41F15500F6F193 /* FSMyPersonalInfoController.m */,
+				EC3A18F91D41F21C00F6F193 /* FSMyCarListController.h */,
+				EC3A18FA1D41F21C00F6F193 /* FSMyCarListController.m */,
+			);
+			path = MyPersonal;
+			sourceTree = "<group>";
+		};
+		EC3A18DF1D41F00400F6F193 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		EC3A18E01D41F00400F6F193 /* MyWallet */ = {
+			isa = PBXGroup;
+			children = (
+				EC3A18E11D41F00500F6F193 /* Cell */,
+				EC3A18F61D41F1AE00F6F193 /* FSMyDiscountController.h */,
+				EC3A18F71D41F1AE00F6F193 /* FSMyDiscountController.m */,
+			);
+			path = MyWallet;
+			sourceTree = "<group>";
+		};
+		EC3A18E11D41F00500F6F193 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		EC3A18E31D41F06D00F6F193 /* MyViewed */ = {
+			isa = PBXGroup;
+			children = (
+				EC3A18E71D41F13F00F6F193 /* FSMyViewedController.h */,
+				EC3A18E81D41F13F00F6F193 /* FSMyViewedController.m */,
+			);
+			path = MyViewed;
+			sourceTree = "<group>";
+		};
+		EC3A18FC1D41F27E00F6F193 /* 4S */ = {
+			isa = PBXGroup;
+			children = (
+				EC3A18FD1D41F29B00F6F193 /* Cell */,
+				EC3A18FE1D41F2CE00F6F193 /* FSServiceListController.h */,
+				EC3A18FF1D41F2CE00F6F193 /* FSServiceListController.m */,
+				EC3A19011D41F2DF00F6F193 /* FSStoreListController.h */,
+				EC3A19021D41F2DF00F6F193 /* FSStoreListController.m */,
+				EC3A19041D41F31E00F6F193 /* FSServiceStepController.h */,
+				EC3A19051D41F31E00F6F193 /* FSServiceStepController.m */,
+			);
+			path = 4S;
+			sourceTree = "<group>";
+		};
+		EC3A18FD1D41F29B00F6F193 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		EC3A19071D41F34C00F6F193 /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				EC3A19081D41F36100F6F193 /* Cell */,
+				EC3A19091D41F37100F6F193 /* FSCommitOrderController.h */,
+				EC3A190A1D41F37100F6F193 /* FSCommitOrderController.m */,
+			);
+			path = Order;
+			sourceTree = "<group>";
+		};
+		EC3A19081D41F36100F6F193 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		EC5427221D23796400F3B4BF /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -1095,6 +1262,8 @@
 		EC5427271D237A6700F3B4BF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				EC3A19071D41F34C00F6F193 /* Order */,
+				EC3A18FC1D41F27E00F6F193 /* 4S */,
 				ECA233C91D37DB78004C2679 /* MyInfo */,
 				EC026F1E1D2B519400CA8CEB /* Home */,
 				EC542A451D237FF200F3B4BF /* BaseController */,
@@ -2348,7 +2517,13 @@
 			isa = PBXGroup;
 			children = (
 				ECA233CA1D37DB78004C2679 /* Main */,
+				EC3A18D41D41F00400F6F193 /* MyAttention */,
+				EC3A18D81D41F00400F6F193 /* MyEvalution */,
 				EC7FC09C1D3A29EB0082ECB4 /* MyLogin */,
+				EC3A18DC1D41F00400F6F193 /* MyOrder */,
+				EC3A18DE1D41F00400F6F193 /* MyPersonal */,
+				EC3A18E31D41F06D00F6F193 /* MyViewed */,
+				EC3A18E01D41F00400F6F193 /* MyWallet */,
 				ECA233CD1D37DB78004C2679 /* Other */,
 			);
 			path = MyInfo;
@@ -2512,6 +2687,7 @@
 				EC5429B61D237E7700F3B4BF /* MJRefreshBackGifFooter.m in Sources */,
 				EC5429FE1D237E7700F3B4BF /* SDWebImageDownloaderOperation.m in Sources */,
 				EC5429B31D237E7700F3B4BF /* MJRefreshAutoGifFooter.m in Sources */,
+				EC3A18EF1D41F16700F6F193 /* FSMyAttentionController.m in Sources */,
 				EC5429DF1D237E7700F3B4BF /* QNPHAssetFile.m in Sources */,
 				EC5429B91D237E7700F3B4BF /* MJRefreshGifHeader.m in Sources */,
 				EC542A091D237E7700F3B4BF /* UIActivityIndicatorView+AFNetworking.m in Sources */,
@@ -2522,6 +2698,7 @@
 				EC542AEF1D239B8A00F3B4BF /* Order.m in Sources */,
 				EC5429F41D237E7700F3B4BF /* QNUploadOption.m in Sources */,
 				EC542A741D23979500F3B4BF /* NSString+Valid.m in Sources */,
+				EC3A18FB1D41F21C00F6F193 /* FSMyCarListController.m in Sources */,
 				EC5429B21D237E7700F3B4BF /* MJRefreshHeader.m in Sources */,
 				EC5427821D237DE000F3B4BF /* BadgeButtonView.m in Sources */,
 				EC5427901D237DE000F3B4BF /* PBaseViewController.m in Sources */,
@@ -2542,6 +2719,7 @@
 				EC5429821D237E7700F3B4BF /* LJWKeyboardHandler.m in Sources */,
 				EC5429E31D237E7700F3B4BF /* QNDns.m in Sources */,
 				EC54295B1D237E7700F3B4BF /* AFURLConnectionOperation.m in Sources */,
+				EC3A18E91D41F13F00F6F193 /* FSMyViewedController.m in Sources */,
 				EC542A061D237E7700F3B4BF /* UIImageView+WebCache.m in Sources */,
 				EC5429781D237E7700F3B4BF /* KMCGeigerCounter.m in Sources */,
 				EC542A4C1D23802000F3B4BF /* FSWebViewJSI.m in Sources */,
@@ -2589,6 +2767,7 @@
 				EC5429941D237E7700F3B4BF /* MapViewController.m in Sources */,
 				EC54295D1D237E7700F3B4BF /* AFURLResponseSerialization.m in Sources */,
 				EC5429AF1D237E7700F3B4BF /* MJRefreshBackFooter.m in Sources */,
+				EC3A19031D41F2DF00F6F193 /* FSStoreListController.m in Sources */,
 				EC54278F1D237DE000F3B4BF /* FSTextView.m in Sources */,
 				EC542A101D237E7700F3B4BF /* VPImageCropperViewController.m in Sources */,
 				EC54278E1D237DE000F3B4BF /* PBaseTableViewCell.m in Sources */,
@@ -2599,6 +2778,7 @@
 				ECA233EC1D37DD98004C2679 /* UserBaseForm.m in Sources */,
 				EC5429581D237E7700F3B4BF /* AFHTTPSessionManager.m in Sources */,
 				EC542A131D237E7700F3B4BF /* WebViewJavascriptBridgeBase.m in Sources */,
+				EC3A19001D41F2CE00F6F193 /* FSServiceListController.m in Sources */,
 				EC542A1B1D237E7700F3B4BF /* ZXLocationManager.m in Sources */,
 				EC5429B41D237E7700F3B4BF /* MJRefreshAutoNormalFooter.m in Sources */,
 				EC7FC0A41D3A2B460082ECB4 /* FSRegisterController.m in Sources */,
@@ -2636,6 +2816,7 @@
 				EC542A781D23979500F3B4BF /* UIView+RGSize.m in Sources */,
 				EC7760DB1D2223D500E1A89F /* main.m in Sources */,
 				EC5429561D237E7700F3B4BF /* AFHTTPRequestOperation.m in Sources */,
+				EC3A18F21D41F17B00F6F193 /* FSMyEvalutionController.m in Sources */,
 				EC542A161D237E7700F3B4BF /* WebViewJsBridge.m in Sources */,
 				EC5429C21D237E7700F3B4BF /* CollectionHeader.m in Sources */,
 				EC542A441D237FBA00F3B4BF /* FSBaseAlertViewController.m in Sources */,
@@ -2684,6 +2865,7 @@
 				EC5429971D237E7700F3B4BF /* RegionAnnotationView.m in Sources */,
 				EC5427871D237DE000F3B4BF /* LoadingFailedAlertView.m in Sources */,
 				EC5429671D237E7700F3B4BF /* IMYWebView.m in Sources */,
+				EC3A19061D41F31E00F6F193 /* FSServiceStepController.m in Sources */,
 				EC542A3C1D237EF500F3B4BF /* PUtils.m in Sources */,
 				EC542A0A1D237E7700F3B4BF /* UIAlertView+AFNetworking.m in Sources */,
 				EC5429C91D237E7700F3B4BF /* MXPullDownCollectionViewCell.m in Sources */,
@@ -2716,14 +2898,17 @@
 				EC542A761D23979500F3B4BF /* UIScrollView+Touch.m in Sources */,
 				EC54297B1D237E7700F3B4BF /* KSDefaultFootRefreshView.m in Sources */,
 				EC5429E91D237E7700F3B4BF /* QNStats.m in Sources */,
+				EC3A190B1D41F37100F6F193 /* FSCommitOrderController.m in Sources */,
 				ECA233E91D37DD4F004C2679 /* FSMyInfoForm.m in Sources */,
 				EC542A731D23979500F3B4BF /* NSDictionary+NSDictonay_Unicode.m in Sources */,
 				EC5429FB1D237E7700F3B4BF /* SDWebImageCompat.m in Sources */,
 				EC5429AB1D237E7700F3B4BF /* NSObject+MJKeyValue.m in Sources */,
+				EC3A18F81D41F1AE00F6F193 /* FSMyDiscountController.m in Sources */,
 				EC542AF41D239B8A00F3B4BF /* NSDataEx.m in Sources */,
 				EC542A081D237E7700F3B4BF /* AFNetworkActivityIndicatorManager.m in Sources */,
 				EC542A021D237E7700F3B4BF /* UIImage+GIF.m in Sources */,
 				EC5429961D237E7700F3B4BF /* RegionAnnotation.m in Sources */,
+				EC3A18EC1D41F15500F6F193 /* FSMyPersonalInfoController.m in Sources */,
 				EC542A541D23815E00F3B4BF /* UIScrollView+EmptyDataSet.m in Sources */,
 				EC5429911D237E7700F3B4BF /* CheckInstalledMapAPP.m in Sources */,
 				EC5429F11D237E7700F3B4BF /* QNFormUpload.m in Sources */,
@@ -2739,6 +2924,7 @@
 				EC5427A01D237E0500F3B4BF /* FSLoginModelManager.m in Sources */,
 				EC5429931D237E7700F3B4BF /* LocIsBaidu.m in Sources */,
 				EC54297F1D237E7700F3B4BF /* UIScrollView+KS.m in Sources */,
+				EC3A18F51D41F18D00F6F193 /* FSMyOrderListController.m in Sources */,
 				EC542A751D23979500F3B4BF /* UIColor+WLZ_HexRGB.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,6 +8,37 @@
 
 #import "FSMyInfoForm.h"
 
-@implementation FSMyInfoForm
+@implementation FSPersonalForm
+@end
 
+
+@implementation FSDiscountForm
+@end
+
+
+@implementation FSDiscountNormalForm
+@end
+
+
+@implementation FSDiscountUsedForm
+@end
+
+
+@implementation FSDiscountExpiredForm
+@end
+
+
+@implementation FSCarListForm
+@end
+
+
+@implementation FSCustomerViewdForm
+@end
+
+
+@implementation FSCustomerFavoriteForm
+@end
+
+
+@implementation FSShopCommentForm
 @end

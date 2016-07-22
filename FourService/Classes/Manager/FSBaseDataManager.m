@@ -66,13 +66,9 @@ singleton_implementation(FSBaseDataManager);
 - (void)initPostBaseParameters
 {
     //固定请求参数确定
-    NSDictionary* _tmpparams = @{
-//    @"chezhuId" : (nil == self.userInfoForm.chezhuId) ? @"0" : self.userInfoForm.chezhuId,
-//                                 @"cityId" : (nil == _curCityID) ? @"0" : _curCityID,
-//                                 @"chezhuMobile" : (nil == self.userInfoForm.mobile) ? @"0" : self.userInfoForm.mobile,
-//                                 @"lng" : @(_curLocation.longitude),
-//                                 @"lat" : @(_curLocation.latitude),
-//                                 @"os" : @"ios",
+    NSDictionary* _tmpparams = @{@"identifier" : @"",
+                                 @"token" : @"",
+                                 @"os" : @"ios",
                                  @"suffix" : ((iPhone6Plus || iPhone6) ? @"@3x" : @"@2x")
                                  };
     _params = [_tmpparams mutableCopy];
