@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userPhoneLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userTypeLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *bgImage;
 
 - (IBAction)messageAction:(id)sender;
 
@@ -23,6 +24,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.bgImage.layer.cornerRadius = 10;
     // Initialization code
 }
 

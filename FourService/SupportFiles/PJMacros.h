@@ -117,7 +117,7 @@ CGSizeEqualToSize(CGSizeMake(1125, 2001), [[UIScreen mainScreen] currentMode].si
 #define JPGIMAGE(NAME) IMAGE(NAME,@"jpg")
 #define IMAGENAMED(NAME) [UIImage imageNamed:NAME]
 #define DefaultPlaceHolderCircle IMAGENAMED(@"placeholder_circle")
-#define DefaultPlaceHolderSquare IMAGENAMED(@"placeholder_square")
+#define DefaultPlaceHolderSquare IMAGENAMED(@"default_icon_car")
 #define DefaultPlaceHolderSquarePlus IMAGENAMED(@"placeholder_squarePlus")
 #define DefaultPlaceHolderRectangle IMAGENAMED(@"placeholder_rectangle")
 
@@ -151,6 +151,7 @@ CGSizeEqualToSize(CGSizeMake(1125, 2001), [[UIScreen mainScreen] currentMode].si
 #define LIGHTGRAYCOLOR [UIColor lightGrayColor]
 
 //本项目自定义颜色
+#define FSBLUECOLOR RGB(92, 137, 229)
 #define CZJBLUECOLOR RGB(44, 148, 255)
 #define CZJREDCOLOR RGB(251, 70, 78)
 #define CZJGRAYCOLOR RGB(180, 180, 180)

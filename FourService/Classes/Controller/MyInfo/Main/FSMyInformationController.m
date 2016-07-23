@@ -111,7 +111,7 @@ CZJMyInfoShoppingCartCellDelegate
                                     @"buttonImage":@"my_icon_pay",
                                     @"budge":@"0",
                                     @"item":@"nopay"} mutableCopy];
-    NSMutableDictionary* dict2 = [@{@"title":@"待施工",
+    NSMutableDictionary* dict2 = [@{@"title":@"服务中",
                                     @"buttonImage":@"my_icon_shigong",
                                     @"budge":@"0",
                                     @"item":@"nobuild"} mutableCopy];
@@ -123,17 +123,17 @@ CZJMyInfoShoppingCartCellDelegate
                                     @"buttonImage":@"my_icon_recommend",
                                     @"budge":@"0",
                                     @"item":@"noevaluate"} mutableCopy];
-    NSMutableDictionary* dict5 = [@{@"title":@"退换货",
+    NSMutableDictionary* dict5 = [@{@"title":@"已评价",
                                     @"buttonImage":@"my_icon_tuihuo",
                                     @"budge":@"0",
                                     @"item":@""} mutableCopy];
-    orderSubCellAry = @[dict1,dict2,dict4];
+    orderSubCellAry = @[dict1,dict2,dict4,dict5];
     
     walletSubCellAry = [NSArray array];
     NSMutableDictionary* dict6 = [@{@"title":@"红包",
                                     @"buttonTitle":@"0.0",
                                     @"item":@"redpacket"} mutableCopy];
-    NSMutableDictionary* dict7 = [@{@"title":@"积分卡",
+    NSMutableDictionary* dict7 = [@{@"title":@"积分",
                                     @"buttonTitle":@"0",
                                     @"item":@"pointCard"} mutableCopy];
     NSMutableDictionary* dict8 = [@{@"title":@"储值卡",
@@ -146,7 +146,7 @@ CZJMyInfoShoppingCartCellDelegate
                                     @"buttonTitle":@"0",
                                     @"item":@"coupon"} mutableCopy];
     
-    walletSubCellAry = @[dict7,dict8,dict9,dict0];
+    walletSubCellAry = @[dict7,dict0];
     
     discountNormalAry = [NSArray array];
     discountUsedAry  = [NSArray array];
@@ -254,24 +254,12 @@ CZJMyInfoShoppingCartCellDelegate
 #pragma mark-UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (0 == section)
-    {
-        return 4;
-    }
-    if (3 == section)
-    {
-        return 2;
-    }
-    else
-    {
-        return 2;
-    }
-    return 0;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -293,7 +281,7 @@ CZJMyInfoShoppingCartCellDelegate
             cell.separatorInset = HiddenCellSeparator;
             return cell;
         }
-        else if (1 == indexPath.row)
+        else
         {
             CZJMyInfoShoppingCartCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJMyInfoShoppingCartCell" forIndexPath:indexPath];
             //            NSString* shoppingCartCount = [USER_DEFAULT valueForKey:kUserDefaultShoppingCartCount];
@@ -301,8 +289,15 @@ CZJMyInfoShoppingCartCellDelegate
             //            [cell.shoppingBtn setBadgeLabelPosition:CGPointMake(cell.shoppingBtn.frame.size.width*0.95, 5)];
             cell.delegate = self;
             return cell;
+
         }
-        else if (2 == indexPath.row)
+    }
+    
+    
+    
+    else if (1 == indexPath.section)
+    {
+        if (0 == indexPath.row)
         {
             CZJGeneralCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralCell" forIndexPath:indexPath];
             [cell.imageView setImage:nil];
@@ -311,57 +306,23 @@ CZJMyInfoShoppingCartCellDelegate
             cell.detailLabel.hidden = NO;
             return cell;
         }
-        else
+        else if (1 == indexPath.row)
         {
+
             CZJGeneralSubCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralSubCell" forIndexPath:indexPath];
             cell.delegate = self;
             [cell setGeneralSubCell:orderSubCellAry andType:kCZJGeneralSubCellTypeOrder];
             return cell;
         }
     }
-    else if (1 == indexPath.section)
-    {
-        if (0 == indexPath.row)
-        {
-            CZJGeneralCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralCell"];
-            cell.imageView.image = IMAGENAMED(@"");
-            [cell.imageView setImage:IMAGENAMED(@"my_icon_wallet")];
-            cell.nameLabel.text = @"我的钱包";
-            cell.arrowImg.hidden = YES;
-            return cell;
-        }
-        else
-        {
-            CZJGeneralSubCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralSubCell" forIndexPath:indexPath];
-            cell.delegate = self;
-            [cell setGeneralSubCell:walletSubCellAry andType:kCZJGeneralSubCellTypeWallet];
-            return cell;
-        }
-    }
+
     else if (2 == indexPath.section)
     {
         if (0 == indexPath.row)
         {
             CZJGeneralCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralCell" forIndexPath:indexPath];
-            [cell.imageView setImage:IMAGENAMED(@"serve_icon_kefu")];
-            cell.nameLabel.text = @"在线客服";
-            return cell;
-        }
-        else
-        {
-            CZJGeneralCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralCell" forIndexPath:indexPath];
-            [cell.imageView setImage:IMAGENAMED(@"serve_icon_call")];
-            cell.nameLabel.text = @"电话咨询";
-            return cell;
-        }
-    }
-    else if (3 == indexPath.section)
-    {
-        if (0 == indexPath.row)
-        {
-            CZJGeneralCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralCell" forIndexPath:indexPath];
             [cell.imageView setImage:IMAGENAMED(@"my_icon_serve")];
-            cell.nameLabel.text = @"意见反馈";
+            cell.nameLabel.text = @"服务与反馈";
             return cell;
         }
         else
@@ -387,15 +348,7 @@ CZJMyInfoShoppingCartCellDelegate
         }
         else if (1 == indexPath.row)
         {
-            return 56;
-        }
-        else if (2 == indexPath.row)
-        {
-            return 46;
-        }
-        else
-        {
-            return 60;
+            return 66;
         }
     }
     else if (1 == indexPath.section)
@@ -418,10 +371,6 @@ CZJMyInfoShoppingCartCellDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (0 == section)
-    {
-        return 0;
-    }
     return 10;
 }
 
@@ -486,6 +435,19 @@ CZJMyInfoShoppingCartCellDelegate
         [self performSegueWithIdentifier:segueIdentifer sender:self];
     }
     
+}
+
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    //去掉tableview中section的headerview粘性
+    CGFloat sectionHeaderHeight = 10;
+    if (scrollView.contentOffset.y<=sectionHeaderHeight&&scrollView.contentOffset.y>=0) {
+        scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
+    }
+    else if (scrollView.contentOffset.y>=sectionHeaderHeight) {
+        scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);
+    }
 }
 
 #pragma mark- CZJGeneralSubCellDelegate
