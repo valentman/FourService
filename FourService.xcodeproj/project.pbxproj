@@ -15,6 +15,11 @@
 		EC026F2F1D2B894700CA8CEB /* FSLotteryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC026F2D1D2B894700CA8CEB /* FSLotteryCell.xib */; };
 		EC026F331D2B897200CA8CEB /* FSRecommendInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC026F311D2B897200CA8CEB /* FSRecommendInfoCell.m */; };
 		EC026F341D2B897200CA8CEB /* FSRecommendInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC026F321D2B897200CA8CEB /* FSRecommendInfoCell.xib */; };
+		EC18DE8C1D44FEF7006CB460 /* FSMyMessageCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC18DE8B1D44FEF7006CB460 /* FSMyMessageCenterController.m */; };
+		EC18DE911D450204006CB460 /* CZJMyMessageCenterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC18DE8F1D450204006CB460 /* CZJMyMessageCenterCell.m */; };
+		EC18DE921D450204006CB460 /* CZJMyMessageCenterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC18DE901D450204006CB460 /* CZJMyMessageCenterCell.xib */; };
+		EC18DE961D450CEA006CB460 /* CZJMyCarListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC18DE941D450CEA006CB460 /* CZJMyCarListCell.m */; };
+		EC18DE971D450CEA006CB460 /* CZJMyCarListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC18DE951D450CEA006CB460 /* CZJMyCarListCell.xib */; };
 		EC3A18E91D41F13F00F6F193 /* FSMyViewedController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3A18E81D41F13F00F6F193 /* FSMyViewedController.m */; };
 		EC3A18EC1D41F15500F6F193 /* FSMyPersonalInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3A18EB1D41F15500F6F193 /* FSMyPersonalInfoController.m */; };
 		EC3A18EF1D41F16700F6F193 /* FSMyAttentionController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3A18EE1D41F16700F6F193 /* FSMyAttentionController.m */; };
@@ -355,6 +360,14 @@
 		EC026F301D2B897200CA8CEB /* FSRecommendInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRecommendInfoCell.h; sourceTree = "<group>"; };
 		EC026F311D2B897200CA8CEB /* FSRecommendInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRecommendInfoCell.m; sourceTree = "<group>"; };
 		EC026F321D2B897200CA8CEB /* FSRecommendInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSRecommendInfoCell.xib; sourceTree = "<group>"; };
+		EC18DE8A1D44FEF7006CB460 /* FSMyMessageCenterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyMessageCenterController.h; sourceTree = "<group>"; };
+		EC18DE8B1D44FEF7006CB460 /* FSMyMessageCenterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyMessageCenterController.m; sourceTree = "<group>"; };
+		EC18DE8E1D450204006CB460 /* CZJMyMessageCenterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJMyMessageCenterCell.h; sourceTree = "<group>"; };
+		EC18DE8F1D450204006CB460 /* CZJMyMessageCenterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJMyMessageCenterCell.m; sourceTree = "<group>"; };
+		EC18DE901D450204006CB460 /* CZJMyMessageCenterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJMyMessageCenterCell.xib; sourceTree = "<group>"; };
+		EC18DE931D450CEA006CB460 /* CZJMyCarListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJMyCarListCell.h; sourceTree = "<group>"; };
+		EC18DE941D450CEA006CB460 /* CZJMyCarListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJMyCarListCell.m; sourceTree = "<group>"; };
+		EC18DE951D450CEA006CB460 /* CZJMyCarListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJMyCarListCell.xib; sourceTree = "<group>"; };
 		EC3A18E71D41F13F00F6F193 /* FSMyViewedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyViewedController.h; sourceTree = "<group>"; };
 		EC3A18E81D41F13F00F6F193 /* FSMyViewedController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyViewedController.m; sourceTree = "<group>"; };
 		EC3A18EA1D41F15500F6F193 /* FSMyPersonalInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyPersonalInfoController.h; sourceTree = "<group>"; };
@@ -1096,6 +1109,19 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		EC18DE8D1D450204006CB460 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EC18DE931D450CEA006CB460 /* CZJMyCarListCell.h */,
+				EC18DE941D450CEA006CB460 /* CZJMyCarListCell.m */,
+				EC18DE951D450CEA006CB460 /* CZJMyCarListCell.xib */,
+				EC18DE8E1D450204006CB460 /* CZJMyMessageCenterCell.h */,
+				EC18DE8F1D450204006CB460 /* CZJMyMessageCenterCell.m */,
+				EC18DE901D450204006CB460 /* CZJMyMessageCenterCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		EC3A18D41D41F00400F6F193 /* MyAttention */ = {
 			isa = PBXGroup;
 			children = (
@@ -1150,20 +1176,15 @@
 		EC3A18DE1D41F00400F6F193 /* MyPersonal */ = {
 			isa = PBXGroup;
 			children = (
-				EC3A18DF1D41F00400F6F193 /* Cell */,
+				EC18DE8D1D450204006CB460 /* Cell */,
 				EC3A18EA1D41F15500F6F193 /* FSMyPersonalInfoController.h */,
 				EC3A18EB1D41F15500F6F193 /* FSMyPersonalInfoController.m */,
 				EC3A18F91D41F21C00F6F193 /* FSMyCarListController.h */,
 				EC3A18FA1D41F21C00F6F193 /* FSMyCarListController.m */,
+				EC18DE8A1D44FEF7006CB460 /* FSMyMessageCenterController.h */,
+				EC18DE8B1D44FEF7006CB460 /* FSMyMessageCenterController.m */,
 			);
 			path = MyPersonal;
-			sourceTree = "<group>";
-		};
-		EC3A18DF1D41F00400F6F193 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		EC3A18E01D41F00400F6F193 /* MyWallet */ = {
@@ -1228,13 +1249,6 @@
 			children = (
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		EC5427221D23796400F3B4BF /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Assets;
 			sourceTree = "<group>";
 		};
 		EC5427231D23797200F3B4BF /* FrameWorks */ = {
@@ -2478,7 +2492,6 @@
 			isa = PBXGroup;
 			children = (
 				EC7760E51D2223D500E1A89F /* Assets.xcassets */,
-				EC5427221D23796400F3B4BF /* Assets */,
 				EC5427301D237AF500F3B4BF /* Base.lproj */,
 				EC5427261D237A6700F3B4BF /* Classes */,
 				EC5427231D23797200F3B4BF /* FrameWorks */,
@@ -2640,6 +2653,7 @@
 				EC54298C1D237E7700F3B4BF /* anjuke_icon_itis_position@2x.png in Resources */,
 				EC5429791D237E7700F3B4BF /* KMCGeigerCounterTick.aiff in Resources */,
 				EC026F2F1D2B894700CA8CEB /* FSLotteryCell.xib in Resources */,
+				EC18DE921D450204006CB460 /* CZJMyMessageCenterCell.xib in Resources */,
 				ECA233E61D37DC8F004C2679 /* CZJMyInfoShoppingCartCell.xib in Resources */,
 				EC5429A21D237E7700F3B4BF /* wl_map_icon_position_press.png in Resources */,
 				EC542A191D237E7700F3B4BF /* pop@3x.png in Resources */,
@@ -2648,6 +2662,7 @@
 				EC5427881D237DE000F3B4BF /* LoadingFailedAlertView.xib in Resources */,
 				EC54297D1D237E7700F3B4BF /* KSRefresh.bundle in Resources */,
 				EC54298B1D237E7700F3B4BF /* anjuke_icon_itis_position.png in Resources */,
+				EC18DE971D450CEA006CB460 /* CZJMyCarListCell.xib in Resources */,
 				EC542A181D237E7700F3B4BF /* pop@2x.png in Resources */,
 				EC5427351D237AF500F3B4BF /* LaunchScreen.storyboard in Resources */,
 				EC54299D1D237E7700F3B4BF /* wl_map_icon_4@2x.png in Resources */,
@@ -2753,6 +2768,7 @@
 				EC542AF31D239B8A00F3B4BF /* MD5DataSigner.m in Sources */,
 				EC5429681D237E7700F3B4BF /* IMY_NJKWebViewProgress.m in Sources */,
 				EC5429F91D237E7700F3B4BF /* NSData+ImageContentType.m in Sources */,
+				EC18DE961D450CEA006CB460 /* CZJMyCarListCell.m in Sources */,
 				EC542A051D237E7700F3B4BF /* UIImageView+HighlightedWebCache.m in Sources */,
 				EC5429F81D237E7700F3B4BF /* MKAnnotationView+WebCache.m in Sources */,
 				EC5429E41D237E7700F3B4BF /* QNDnspodEnterprise.m in Sources */,
@@ -2888,6 +2904,7 @@
 				EC5427861D237DE000F3B4BF /* FSImageView.m in Sources */,
 				EC5429CF1D237E7700F3B4BF /* OpenShare+Weibo.m in Sources */,
 				EC5429E81D237E7700F3B4BF /* QNSessionManager.m in Sources */,
+				EC18DE8C1D44FEF7006CB460 /* FSMyMessageCenterController.m in Sources */,
 				EC5429621D237E7700F3B4BF /* FZADScrollerView.m in Sources */,
 				EC542AF61D239B8A00F3B4BF /* RSADataSigner.m in Sources */,
 				ECA233E31D37DC8F004C2679 /* CZJMyInfoHeadCell.m in Sources */,
@@ -2909,6 +2926,7 @@
 				EC542A021D237E7700F3B4BF /* UIImage+GIF.m in Sources */,
 				EC5429961D237E7700F3B4BF /* RegionAnnotation.m in Sources */,
 				EC3A18EC1D41F15500F6F193 /* FSMyPersonalInfoController.m in Sources */,
+				EC18DE911D450204006CB460 /* CZJMyMessageCenterCell.m in Sources */,
 				EC542A541D23815E00F3B4BF /* UIScrollView+EmptyDataSet.m in Sources */,
 				EC5429911D237E7700F3B4BF /* CheckInstalledMapAPP.m in Sources */,
 				EC5429F11D237E7700F3B4BF /* QNFormUpload.m in Sources */,

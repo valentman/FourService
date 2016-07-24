@@ -95,7 +95,7 @@
         <!--门店列表-->
         <scene sceneID="lSz-Yi-SPo">
             <objects>
-                <viewController title="门店列表" id="Cj7-BH-LUW" customClass="FSStoreListController" sceneMemberID="viewController">
+                <viewController title="门店列表" extendedLayoutIncludesOpaqueBars="YES" hidesBottomBarWhenPushed="YES" id="Cj7-BH-LUW" customClass="FSStoreListController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="715-pi-KYT"/>
                         <viewControllerLayoutGuide type="bottom" id="zy5-ey-Ifa"/>
@@ -116,7 +116,7 @@
         <!--套餐步骤-->
         <scene sceneID="db9-XL-ptz">
             <objects>
-                <viewController title="套餐步骤" id="kff-U0-Rf3" customClass="FSServiceStepController" sceneMemberID="viewController">
+                <viewController title="套餐步骤" extendedLayoutIncludesOpaqueBars="YES" hidesBottomBarWhenPushed="YES" id="kff-U0-Rf3" customClass="FSServiceStepController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Oac-Sr-YrQ"/>
                         <viewControllerLayoutGuide type="bottom" id="pdJ-xe-KKv"/>
@@ -216,6 +216,8 @@
                         <segue destination="G1S-mu-PaA" kind="show" identifier="segueToCoupon" id="DSn-71-alL"/>
                         <segue destination="9u0-15-Wvd" kind="show" identifier="segueToPersonalInfo" id="2gJ-Ai-AFw"/>
                         <segue destination="ntg-IY-XeB" kind="show" identifier="segueToMyEvaluation" id="Xgo-BD-xbu"/>
+                        <segue destination="enW-6A-K1U" kind="show" identifier="segueToMyCarList" id="G8p-pj-PqS"/>
+                        <segue destination="vXY-mL-C2P" kind="show" identifier="segueToMessageCenter" id="krj-Jg-sHi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h6P-KK-BHo" sceneMemberID="firstResponder"/>
@@ -1315,9 +1317,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <connections>
-                        <segue destination="enW-6A-K1U" kind="show" identifier="segueToMyCarList" id="Mk8-7x-LXU"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tk6-7f-wBh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1654,6 +1653,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2nM-3k-lMy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1941" y="1926"/>
+        </scene>
+        <!--消息中心-->
+        <scene sceneID="NdB-yd-gFB">
+            <objects>
+                <viewController title="消息中心" extendedLayoutIncludesOpaqueBars="YES" hidesBottomBarWhenPushed="YES" id="vXY-mL-C2P" customClass="FSMyMessageCenterController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZIT-Qf-7u4"/>
+                        <viewControllerLayoutGuide type="bottom" id="SIE-7s-j0K"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="t3q-6x-cQf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9bN-Ml-dRb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2335" y="1923"/>
         </scene>
     </scenes>
     <resources>

@@ -70,6 +70,11 @@
             [btnView.viewBtn setBadgeNum:[[dict valueForKey:@"budge"] integerValue]];
             [btnView.viewBtn setBadgeLabelPosition:CGPointMake(btnView.viewBtn.frame.size.width*0.75, btnView.viewBtn.frame.size.height*0.1)];
         }
+        if (type == kCZJGeneralSubCellTypePersonal)
+        {
+            [btnView.viewBtn setBadgeNum:0];
+            [btnView.viewBtn setImage:IMAGENAMED([dict valueForKey:@"buttonImage"]) forState:UIControlStateNormal];
+        }
     }
 }
 

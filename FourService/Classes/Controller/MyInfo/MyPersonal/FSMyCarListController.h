@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FSMyCarListController : UIViewController
+@interface FSMyCarListController : PBaseViewController
 
 @end

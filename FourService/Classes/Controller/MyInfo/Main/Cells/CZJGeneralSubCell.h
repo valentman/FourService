@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #define kCZJGeneralSubCellTypeOrder 6001
 #define kCZJGeneralSubCellTypeWallet 6002
+#define kCZJGeneralSubCellTypePersonal 6003
 
 @protocol CZJGeneralSubCellDelegate <NSObject>
 

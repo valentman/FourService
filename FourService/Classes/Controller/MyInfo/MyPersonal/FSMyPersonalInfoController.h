@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FSMyPersonalInfoController : UIViewController
+@interface FSMyPersonalInfoController : PBaseViewController
 
 @end

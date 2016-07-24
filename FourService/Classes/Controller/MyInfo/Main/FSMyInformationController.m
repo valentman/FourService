@@ -13,17 +13,27 @@
 #import "CZJGeneralSubCell.h"
 #import "FSBaseDataManager.h"
 
+#import "FSMyDiscountController.h"
+#import "FSMyViewedController.h"
+#import "FSMyCarListController.h"
+#import "FSMyPersonalInfoController.h"
+#import "FSMyOrderListController.h"
+#import "FSMyEvalutionController.h"
+#import "FSMyAttentionController.h"
+
+
+
 @interface FSMyInformationController ()
 <
 UITableViewDataSource,
 UITableViewDelegate,
 CZJGeneralSubCellDelegate,
-CZJMyInfoHeadCellDelegate,
-CZJMyInfoShoppingCartCellDelegate
+CZJMyInfoHeadCellDelegate
 >
 {
-    NSArray* orderSubCellAry;           //订单cell下子项数组
-    NSArray* walletSubCellAry;          //我的钱包下子项数组
+    NSArray* personalCellAry;               //个人信息下子项数组
+    NSArray* orderSubCellAry;               //订单cell下子项数组
+    NSArray* walletSubCellAry;              //我的钱包下子项数组
     NSInteger _currentTouchOrderListType;
     
     FSPersonalForm* myInfoForm;
@@ -67,7 +77,7 @@ CZJMyInfoShoppingCartCellDelegate
     [self dealWithInitNavigationBar];
     [USER_DEFAULT setBool:YES forKey:kCZJIsUserHaveLogined];
     if ([USER_DEFAULT boolForKey:kCZJIsUserHaveLogined]) {
-        [self getMyInfoDataFromServer];
+//        [self getMyInfoDataFromServer];
     }
     else
     {
@@ -106,6 +116,21 @@ CZJMyInfoShoppingCartCellDelegate
 
 - (void)initDatas
 {
+    personalCellAry = [NSArray array];
+    NSDictionary* pDict0 = @{@"title":@"足迹",
+                             @"buttonImage":@"my_icon_pay",
+                             @"segueTo":@"segutToRecord"};
+    NSDictionary* pDict1 = @{@"title":@"收藏",
+                             @"buttonImage":@"my_icon_pay",
+                             @"segueTo":@"segueToMyAttention"};
+    NSDictionary* pDict2 = @{@"title":@"评价",
+                             @"buttonImage":@"my_icon_pay",
+                             @"segueTo":@"segueToMyEvaluation"};
+    NSDictionary* pDict3 = @{@"title":@"优惠券",
+                             @"buttonImage":@"my_icon_pay",
+                             @"segueTo":@"segueToCoupon"};
+    personalCellAry = @[pDict0,pDict1,pDict2,pDict3];
+    
     orderSubCellAry  = [NSArray array];
     NSMutableDictionary* dict1 = [@{@"title":@"待付款",
                                     @"buttonImage":@"my_icon_pay",
@@ -115,10 +140,6 @@ CZJMyInfoShoppingCartCellDelegate
                                     @"buttonImage":@"my_icon_shigong",
                                     @"budge":@"0",
                                     @"item":@"nobuild"} mutableCopy];
-    NSMutableDictionary* dict3 = [@{@"title":@"待收货",
-                                    @"buttonImage":@"my_icon_shouhuo",
-                                    @"budge":@"0",
-                                    @"item":@"noreceive"} mutableCopy];
     NSMutableDictionary* dict4 = [@{@"title":@"待评价",
                                     @"buttonImage":@"my_icon_recommend",
                                     @"budge":@"0",
@@ -130,23 +151,6 @@ CZJMyInfoShoppingCartCellDelegate
     orderSubCellAry = @[dict1,dict2,dict4,dict5];
     
     walletSubCellAry = [NSArray array];
-    NSMutableDictionary* dict6 = [@{@"title":@"红包",
-                                    @"buttonTitle":@"0.0",
-                                    @"item":@"redpacket"} mutableCopy];
-    NSMutableDictionary* dict7 = [@{@"title":@"积分",
-                                    @"buttonTitle":@"0",
-                                    @"item":@"pointCard"} mutableCopy];
-    NSMutableDictionary* dict8 = [@{@"title":@"储值卡",
-                                    @"buttonTitle":@"0",
-                                    @"item":@"memberCard"} mutableCopy];
-    NSMutableDictionary* dict9 = [@{@"title":@"套餐卡",
-                                    @"buttonTitle":@"0",
-                                    @"item":@"card"} mutableCopy];
-    NSMutableDictionary* dict0 = [@{@"title":@"优惠券",
-                                    @"buttonTitle":@"0",
-                                    @"item":@"coupon"} mutableCopy];
-    
-    walletSubCellAry = @[dict7,dict0];
     
     discountNormalAry = [NSArray array];
     discountUsedAry  = [NSArray array];
@@ -170,15 +174,14 @@ CZJMyInfoShoppingCartCellDelegate
 {
     self.view.backgroundColor = CZJNAVIBARBGCOLOR;
     
-    self.myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, PJ_SCREEN_WIDTH, PJ_SCREEN_HEIGHT - StatusBar_HEIGHT - NavigationBar_HEIGHT) style:UITableViewStylePlain];
+    self.myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, PJ_SCREEN_WIDTH, PJ_SCREEN_HEIGHT - Tabbar_HEIGHT) style:UITableViewStylePlain];
     self.myTableView.tableFooterView = [[UIView alloc]init];
     self.myTableView.delegate = self;
     self.myTableView.dataSource = self;
     self.myTableView.clipsToBounds = NO;
     self.myTableView.showsVerticalScrollIndicator = NO;
-    self.myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.myTableView.backgroundColor = CZJTableViewBGColor;
+    self.myTableView.backgroundColor = CZJNAVIBARBGCOLOR;
     [self.view addSubview:self.myTableView];
     NSArray* nibArys = @[@"CZJMyInfoHeadCell",
                          @"CZJMyInfoShoppingCartCell",
@@ -216,7 +219,6 @@ CZJMyInfoShoppingCartCellDelegate
             shopCommentAry = [FSShopCommentForm objectArrayWithKeyValuesArray:[dict valueForKey:@"Shop_comment"]];
             
             //更新表格
-//            [self updateOrderData:dict];
             [self.myTableView reloadData];
         } fail:^{
             
@@ -271,65 +273,53 @@ CZJMyInfoShoppingCartCellDelegate
             CZJMyInfoHeadCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJMyInfoHeadCell" forIndexPath:indexPath];
             cell.unLoginView.hidden = [USER_DEFAULT boolForKey:kCZJIsUserHaveLogined];
             cell.haveLoginView.hidden = ![USER_DEFAULT boolForKey:kCZJIsUserHaveLogined];
-//            [cell.messageBtn setBadgeNum:([CZJMessageInstance isAllReaded]? 0 : -1)];
-//            [cell.messageBtn setBadgeLabelPosition:CGPointMake(cell.messageBtn.size.width * 0.95, cell.messageBtn.size.height * 0.07)];
-//            if (CZJBaseDataInstance.userInfoForm && [USER_DEFAULT boolForKey:kCZJIsUserHaveLogined])
-//            {
-//                [cell setUserPersonalInfo:CZJBaseDataInstance.userInfoForm];
-//                cell.delegate = self;
-//            }
+            cell.delegate = self;
             cell.separatorInset = HiddenCellSeparator;
+            cell.contentView.backgroundColor = CZJNAVIBARBGCOLOR;
             return cell;
         }
         else
         {
-            CZJMyInfoShoppingCartCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJMyInfoShoppingCartCell" forIndexPath:indexPath];
-            //            NSString* shoppingCartCount = [USER_DEFAULT valueForKey:kUserDefaultShoppingCartCount];
-            //            [cell.shoppingBtn setBadgeNum:[shoppingCartCount integerValue]];
-            //            [cell.shoppingBtn setBadgeLabelPosition:CGPointMake(cell.shoppingBtn.frame.size.width*0.95, 5)];
+            CZJGeneralSubCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralSubCell" forIndexPath:indexPath];
             cell.delegate = self;
+            [cell setGeneralSubCell:personalCellAry andType:kCZJGeneralSubCellTypePersonal];
+            cell.backgroundColor = CZJNAVIBARBGCOLOR;
             return cell;
-
         }
     }
-    
-    
-    
     else if (1 == indexPath.section)
     {
         if (0 == indexPath.row)
         {
             CZJGeneralCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralCell" forIndexPath:indexPath];
             [cell.imageView setImage:nil];
-            [cell.imageView setImage:IMAGENAMED(@"my_icon_list")];
+            cell.nameLabelLeading.constant = 15;
             cell.nameLabel.text = @"我的订单";
             cell.detailLabel.hidden = NO;
             return cell;
         }
         else if (1 == indexPath.row)
         {
-
             CZJGeneralSubCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralSubCell" forIndexPath:indexPath];
             cell.delegate = self;
             [cell setGeneralSubCell:orderSubCellAry andType:kCZJGeneralSubCellTypeOrder];
             return cell;
         }
     }
-
     else if (2 == indexPath.section)
     {
         if (0 == indexPath.row)
         {
             CZJGeneralCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralCell" forIndexPath:indexPath];
-            [cell.imageView setImage:IMAGENAMED(@"my_icon_serve")];
             cell.nameLabel.text = @"服务与反馈";
+            cell.nameLabelLeading.constant = 15;
             return cell;
         }
         else
         {
             CZJGeneralCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralCell" forIndexPath:indexPath];
-            [cell.imageView setImage:IMAGENAMED(@"my_icon_set")];
             cell.nameLabel.text = @"设置";
+            cell.nameLabelLeading.constant = 15;
             cell.separatorInset = UIEdgeInsetsMake(46, PJ_SCREEN_WIDTH, 0, 0);
             return cell;
         }
@@ -344,7 +334,7 @@ CZJMyInfoShoppingCartCellDelegate
     {
         if (0 == indexPath.row)
         {
-            return 170;
+            return 250;
         }
         else if (1 == indexPath.row)
         {
@@ -371,6 +361,10 @@ CZJMyInfoShoppingCartCellDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+    if (0 == section)
+    {
+        return 0;
+    }
     return 10;
 }
 
@@ -384,57 +378,30 @@ CZJMyInfoShoppingCartCellDelegate
         {
             segueIdentifer = @"segueToPersonalInfo";
         }
-        if (2 == indexPath.row)
-        {
-            segueIdentifer = @"segueToMyOrderList";
-        }
     }
     if (1 == indexPath.section)
     {
         if (0 == indexPath.row)
         {
+            _currentTouchOrderListType = 0;
+            segueIdentifer = @"segueToMyOrderList";
         }
     }
     if (indexPath.section == 2)
     {
-        if (indexPath.row == 0) {
-            //如果没有登录则进入登录页面
-//            if ([PUtils isLoginIn:self andNaviBar:nil])
-//            {
-//                CZJChatViewController *chatController = [[CZJChatViewController alloc] initWithConversationChatter: CZJBaseDataInstance.userInfoForm.kefuId conversationType:EMConversationTypeChat];
-//                chatController.storeName = @"车之健客服";
-//                chatController.storeId = @"";
-//                chatController.storeImg = CZJBaseDataInstance.userInfoForm.kefuHead;
-//                chatController.hidesBottomBarWhenPushed = YES;
-//                [self.navigationController pushViewController:chatController animated:YES];
-//            }
-        }
-        else
+        if (indexPath.row == 0)
         {
-            if ([PUtils isLoginIn:self andNaviBar:nil])
-            {
-//                [PUtils callHotLine:FSPersonalForm.hotline AndTarget:self.view];
-            }
-        }
-    }
-    if (indexPath.section == 3)
-    {
-        if (indexPath.row == 0) {
-//            CZJOpinioFeedbackController* opinionVC = (CZJOpinioFeedbackController*)[PUtils getViewControllerFromStoryboard:kCZJStoryBoardFileMain andVCName:@"OpinionFeedBackSBID"];
-//            opinionVC.hidesBottomBarWhenPushed = YES;
-//            [self.navigationController pushViewController:opinionVC animated:YES];
+            segueIdentifer = @"segueToService";
         }
         else
         {
             segueIdentifer = @"segueToSetting";
         }
     }
-    
     if (segueIdentifer)
     {
         [self performSegueWithIdentifier:segueIdentifer sender:self];
     }
-    
 }
 
 
@@ -453,76 +420,17 @@ CZJMyInfoShoppingCartCellDelegate
 #pragma mark- CZJGeneralSubCellDelegate
 - (void)clickSubCellButton:(UIButton*)button andType:(int)subType
 {
-    _currentTouchOrderListType = button.tag;
+    NSInteger touchIndex = button.tag;
+    if (kCZJGeneralSubCellTypePersonal == subType)
+    {//个人信息
+        NSDictionary* dict = personalCellAry[touchIndex - 1];
+        NSString* segueIdentifier = [dict valueForKey:@"segueTo"];
+        [self performSegueWithIdentifier:segueIdentifier sender:self];
+    }
     if (kCZJGeneralSubCellTypeOrder == subType)
     {//订单
-        if (_currentTouchOrderListType < 5)
-        {
-            [self performSegueWithIdentifier:@"segueToMyOrderList" sender:self];
-        }
-        else
-        {
-            [self performSegueWithIdentifier:@"segueToMyReturnedList" sender:self];
-        }
-    }
-    else
-    {//钱包
-        NSString* segueId = @"";
-        switch (_currentTouchOrderListType)
-        {
-            case 1:
-                segueId = @"segueToPoint";
-                break;
-                
-            case 2:
-            {
-                segueId = @"segueToMemberCard";
-            }
-                break;
-                
-            case 3:
-                segueId = @"segueToCard";
-                break;
-                
-            case 4:
-                segueId = @"segueToCoupon";
-                break;
-                
-            default:
-                break;
-        }
-        if (![segueId isEqualToString:@""])
-        {
-            [self performSegueWithIdentifier:segueId sender:self];
-        }
-    }
-}
-
-
-
-#pragma mark- CZJMyInfoShoppingCartCellDelegate
-- (void)clickMyInfoShoppingCartCell:(id)sender
-{
-    UIButton* btn = (UIButton*)sender;
-    switch (btn.tag)
-    {
-        case 0:
-        {
-            //浏览记录
-            [self performSegueWithIdentifier:@"segutToRecord" sender:self];
-        }
-            break;
-        case 1:
-            //我的关注
-            [self performSegueWithIdentifier:@"segueToMyAttention" sender:self];
-            break;
-        case 2:
-            //我的评价
-            [self performSegueWithIdentifier:@"segueToMyEvaluation" sender:self];
-            break;
-            
-        default:
-            break;
+        _currentTouchOrderListType = touchIndex;
+        [self performSegueWithIdentifier:@"segueToMyOrderList" sender:self];
     }
 }
 
@@ -538,18 +446,13 @@ CZJMyInfoShoppingCartCellDelegate
     else
     {
         //浏览记录
-        [self performSegueWithIdentifier:@"segutToRecord" sender:self];
+        [self performSegueWithIdentifier:@"segueToMyCarList" sender:self];
     }
 }
 
 #pragma mark- CZJViewControllerDelegate
 - (void)didCancel:(id)controller
 {
-//    if ([controller isKindOfClass: [CZJLoginController class]] )
-//    {
-//        [self getMyInfoDataFromServer];
-//        [PUtils removeLoginViewFromCurrent:self];
-//    }
 }
 
 #pragma mark - Navigation
@@ -570,17 +473,7 @@ CZJMyInfoShoppingCartCellDelegate
 //        CZJMyInfoOrderListController* orderListVC = segue.destinationViewController;
 //        orderListVC.orderListTypeIndex = _currentTouchOrderListType;
     }
-    
-    if ([segue.identifier isEqualToString:@"segueToMyReturnedList"])
-    {
-//        CZJOrderListReturnedController* returnList = segue.destinationViewController;
-//        returnList.returnListType = CZJReturnListTypeReturned;
-    }
-    if ([segue.identifier isEqualToString:@"segueToShare"])
-    {
-//        CZJMyInfoShareController* shareVC = segue.destinationViewController;
-//        shareVC.myShareCode = myInfoForm.couponCode;
-    }
+
     if ([segue.identifier isEqualToString:@"segueToRedPacket"])
     {
 //        CZJMyWalletRedpacketController* redpackeVC = segue.destinationViewController;

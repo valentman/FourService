@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FSMyViewedController : UIViewController
+@interface FSMyViewedController : PBaseViewController
 
 @end
