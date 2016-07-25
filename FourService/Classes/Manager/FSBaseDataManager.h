@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
-//#import "CZJCarForm.h"
 //@class HomeForm;
 //@class CZJStoreForm;
 //@class CZJDiscoverForm;
@@ -20,14 +19,14 @@
 @interface FSBaseDataManager : NSObject
 {
 //    HomeForm* _homeForm;                            //首页信息
-//    CZJCarForm* _carForm;                           //汽车列表信息
+    FSCarForm* _carForm;                           //汽车列表信息
 //    CZJStoreForm* _storeForm;                       //门店信息
 //    FourServicepingCartForm* _shoppingCartForm;         //购物车信息
     UserBaseForm* _userInfoForm;                    //我的个人信息
-//
-//    CarBrandsForm* _carBrandForm;
-//    CarSeriesForm* _carSerialForm;
-//    CarModelForm* _carModealForm;
+
+    CarBrandsForm* _carBrandForm;
+    CarSeriesForm* _carSerialForm;
+    CarModelForm* _carModealForm;
     
     NSMutableDictionary* _discoverForms;            //发现信息
     NSMutableArray* _orderStoreCouponAry;           //订单结算页面可用优惠券列表
@@ -41,14 +40,14 @@
 }
 //--------------------服务器返回数据对象模型----------------------------
 //@property (nonatomic, retain) HomeForm* homeForm;
-//@property (nonatomic, retain) CZJCarForm* carForm;
+@property (nonatomic, retain) FSCarForm* carForm;
 //@property (nonatomic, retain) CZJStoreForm* storeForm;
 @property (nonatomic, retain) UserBaseForm* userInfoForm;
 //@property (nonatomic, retain) FourServicepingCartForm* shoppingCartForm;
-//
-//@property (nonatomic, retain) CarBrandsForm* carBrandForm;
-//@property (nonatomic, retain) CarSeriesForm* carSerialForm;
-//@property (nonatomic, retain) CarModelForm* carModealForm;
+
+@property (nonatomic, retain) CarBrandsForm* carBrandForm;
+@property (nonatomic, retain) CarSeriesForm* carSerialForm;
+@property (nonatomic, retain) CarModelForm* carModealForm;
 
 
 @property (nonatomic, retain) NSMutableDictionary* discoverForms;

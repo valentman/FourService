@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface FSMyCarListController : PBaseViewController
-
+@property (nonatomic, strong)NSArray* carListAry;
+- (void)getCarListFromServer;
 @end

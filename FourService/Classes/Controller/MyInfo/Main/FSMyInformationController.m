@@ -445,7 +445,7 @@ CZJMyInfoHeadCellDelegate
     }
     else
     {
-        //浏览记录
+        //车辆信息
         [self performSegueWithIdentifier:@"segueToMyCarList" sender:self];
     }
 }
@@ -468,6 +468,11 @@ CZJMyInfoHeadCellDelegate
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    if ([segue.identifier isEqualToString:@"segueToMyCarList"])
+    {
+        FSMyCarListController* carListVC = segue.destinationViewController;
+        carListVC.carListAry = carListAry;
+    }
     if ([segue.identifier isEqualToString:@"segueToMyOrderList"])
     {
 //        CZJMyInfoOrderListController* orderListVC = segue.destinationViewController;

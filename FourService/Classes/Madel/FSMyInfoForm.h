@@ -71,6 +71,10 @@
 @property (strong, nonatomic)NSString* update_time;
 @property (strong, nonatomic)NSString* car_type_name;
 @property (strong, nonatomic)NSString* car_model_name;
+@property (strong, nonatomic)NSString* car_brand_image;     //服务器须添加字段(品牌车标图)
+@property (strong, nonatomic)NSString* prov;                //服务器须添加字段(省份简称（如：川）)
+@property (strong, nonatomic)NSString* number;              //服务器须添加字段(地级市代号（如：L）)
+@property (strong, nonatomic)NSString* numberPlate;         //服务器须添加字段(车牌号（如：M8195）)
 @end
 
 

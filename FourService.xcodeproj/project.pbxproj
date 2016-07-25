@@ -344,6 +344,18 @@
 		ECA233E91D37DD4F004C2679 /* FSMyInfoForm.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA233E81D37DD4F004C2679 /* FSMyInfoForm.m */; };
 		ECA233EC1D37DD98004C2679 /* UserBaseForm.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA233EB1D37DD98004C2679 /* UserBaseForm.m */; };
 		ECBC6BC81D349A46003B7446 /* NSTimer_Pause.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBC6BC71D349A46003B7446 /* NSTimer_Pause.m */; };
+		ECD537F31D46523900D136EF /* CZJCarBrandChooseController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD537EE1D46523900D136EF /* CZJCarBrandChooseController.m */; };
+		ECD537F41D46523900D136EF /* CZJCarModelChooseController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD537F01D46523900D136EF /* CZJCarModelChooseController.m */; };
+		ECD537F51D46523900D136EF /* CZJCarSeriesChooseController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD537F21D46523900D136EF /* CZJCarSeriesChooseController.m */; };
+		ECD537F81D46550100D136EF /* CZJFilterBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD537F71D46550100D136EF /* CZJFilterBaseController.m */; };
+		ECD537FB1D4656B100D136EF /* FSCarForm.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD537FA1D4656B100D136EF /* FSCarForm.m */; };
+		ECD538031D4658DB00D136EF /* CZJCarBrandsListCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD537FE1D4658DB00D136EF /* CZJCarBrandsListCellTableViewCell.m */; };
+		ECD538041D4658DB00D136EF /* CZJCarBrandsListCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECD537FF1D4658DB00D136EF /* CZJCarBrandsListCellTableViewCell.xib */; };
+		ECD538051D4658DB00D136EF /* CZJHotBrandViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD538011D4658DB00D136EF /* CZJHotBrandViewCell.m */; };
+		ECD538061D4658DB00D136EF /* CZJHotBrandViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECD538021D4658DB00D136EF /* CZJHotBrandViewCell.xib */; };
+		ECD538091D46646600D136EF /* CZJAddMyCarController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD538081D46646600D136EF /* CZJAddMyCarController.m */; };
+		ECD5380E1D4666A900D136EF /* Address.plist in Resources */ = {isa = PBXBuildFile; fileRef = ECD5380B1D4666A900D136EF /* Address.plist */; };
+		ECD5380F1D4666A900D136EF /* GKHpickerAddressView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD5380D1D4666A900D136EF /* GKHpickerAddressView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1026,6 +1038,27 @@
 		ECA233EB1D37DD98004C2679 /* UserBaseForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserBaseForm.m; sourceTree = "<group>"; };
 		ECBC6BC61D349A46003B7446 /* NSTimer_Pause.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSTimer_Pause.h; sourceTree = "<group>"; };
 		ECBC6BC71D349A46003B7446 /* NSTimer_Pause.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSTimer_Pause.m; sourceTree = "<group>"; };
+		ECD537ED1D46523900D136EF /* CZJCarBrandChooseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJCarBrandChooseController.h; sourceTree = "<group>"; };
+		ECD537EE1D46523900D136EF /* CZJCarBrandChooseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJCarBrandChooseController.m; sourceTree = "<group>"; };
+		ECD537EF1D46523900D136EF /* CZJCarModelChooseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJCarModelChooseController.h; sourceTree = "<group>"; };
+		ECD537F01D46523900D136EF /* CZJCarModelChooseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJCarModelChooseController.m; sourceTree = "<group>"; };
+		ECD537F11D46523900D136EF /* CZJCarSeriesChooseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJCarSeriesChooseController.h; sourceTree = "<group>"; };
+		ECD537F21D46523900D136EF /* CZJCarSeriesChooseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJCarSeriesChooseController.m; sourceTree = "<group>"; };
+		ECD537F61D46550100D136EF /* CZJFilterBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJFilterBaseController.h; sourceTree = "<group>"; };
+		ECD537F71D46550100D136EF /* CZJFilterBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJFilterBaseController.m; sourceTree = "<group>"; };
+		ECD537F91D4656B100D136EF /* FSCarForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCarForm.h; sourceTree = "<group>"; };
+		ECD537FA1D4656B100D136EF /* FSCarForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCarForm.m; sourceTree = "<group>"; };
+		ECD537FD1D4658DB00D136EF /* CZJCarBrandsListCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJCarBrandsListCellTableViewCell.h; sourceTree = "<group>"; };
+		ECD537FE1D4658DB00D136EF /* CZJCarBrandsListCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJCarBrandsListCellTableViewCell.m; sourceTree = "<group>"; };
+		ECD537FF1D4658DB00D136EF /* CZJCarBrandsListCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJCarBrandsListCellTableViewCell.xib; sourceTree = "<group>"; };
+		ECD538001D4658DB00D136EF /* CZJHotBrandViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJHotBrandViewCell.h; sourceTree = "<group>"; };
+		ECD538011D4658DB00D136EF /* CZJHotBrandViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJHotBrandViewCell.m; sourceTree = "<group>"; };
+		ECD538021D4658DB00D136EF /* CZJHotBrandViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJHotBrandViewCell.xib; sourceTree = "<group>"; };
+		ECD538071D46646600D136EF /* CZJAddMyCarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJAddMyCarController.h; sourceTree = "<group>"; };
+		ECD538081D46646600D136EF /* CZJAddMyCarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJAddMyCarController.m; sourceTree = "<group>"; };
+		ECD5380B1D4666A900D136EF /* Address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Address.plist; sourceTree = "<group>"; };
+		ECD5380C1D4666A900D136EF /* GKHpickerAddressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKHpickerAddressView.h; sourceTree = "<group>"; };
+		ECD5380D1D4666A900D136EF /* GKHpickerAddressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKHpickerAddressView.m; sourceTree = "<group>"; };
 		ECEFBA851D2616A3000460A5 /* FSDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSDefinition.h; path = SupportFiles/FSDefinition.h; sourceTree = "<group>"; };
 		ECEFBA861D2616A3000460A5 /* PJMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PJMacros.h; path = SupportFiles/PJMacros.h; sourceTree = "<group>"; };
 		ECEFBA871D2616A3000460A5 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefix.pch; path = SupportFiles/Prefix.pch; sourceTree = "<group>"; };
@@ -1177,6 +1210,8 @@
 			isa = PBXGroup;
 			children = (
 				EC18DE8D1D450204006CB460 /* Cell */,
+				ECD538071D46646600D136EF /* CZJAddMyCarController.h */,
+				ECD538081D46646600D136EF /* CZJAddMyCarController.m */,
 				EC3A18EA1D41F15500F6F193 /* FSMyPersonalInfoController.h */,
 				EC3A18EB1D41F15500F6F193 /* FSMyPersonalInfoController.m */,
 				EC3A18F91D41F21C00F6F193 /* FSMyCarListController.h */,
@@ -1301,6 +1336,8 @@
 				EC542A581D23966700F3B4BF /* ProvinceForm.m */,
 				ECA233E71D37DD4F004C2679 /* FSMyInfoForm.h */,
 				ECA233E81D37DD4F004C2679 /* FSMyInfoForm.m */,
+				ECD537F91D4656B100D136EF /* FSCarForm.h */,
+				ECD537FA1D4656B100D136EF /* FSCarForm.m */,
 			);
 			path = Madel;
 			sourceTree = "<group>";
@@ -1393,6 +1430,7 @@
 		EC54272F1D237AC200F3B4BF /* ThirdSDK */ = {
 			isa = PBXGroup;
 			children = (
+				ECD5380A1D4666A900D136EF /* GKHLocationPicker */,
 				EC5427A41D237E7600F3B4BF /* AFNetworking */,
 				EC542A7B1D239B8A00F3B4BF /* Ali */,
 				EC5427B81D237E7600F3B4BF /* CCLocation */,
@@ -2291,6 +2329,7 @@
 		EC542A451D237FF200F3B4BF /* BaseController */ = {
 			isa = PBXGroup;
 			children = (
+				ECD537EC1D46523900D136EF /* CarSelectVC */,
 				EC542A461D23802000F3B4BF /* WebViewBridge */,
 			);
 			path = BaseController;
@@ -2580,6 +2619,45 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		ECD537EC1D46523900D136EF /* CarSelectVC */ = {
+			isa = PBXGroup;
+			children = (
+				ECD537FC1D4658DB00D136EF /* Cell */,
+				ECD537F61D46550100D136EF /* CZJFilterBaseController.h */,
+				ECD537F71D46550100D136EF /* CZJFilterBaseController.m */,
+				ECD537ED1D46523900D136EF /* CZJCarBrandChooseController.h */,
+				ECD537EE1D46523900D136EF /* CZJCarBrandChooseController.m */,
+				ECD537EF1D46523900D136EF /* CZJCarModelChooseController.h */,
+				ECD537F01D46523900D136EF /* CZJCarModelChooseController.m */,
+				ECD537F11D46523900D136EF /* CZJCarSeriesChooseController.h */,
+				ECD537F21D46523900D136EF /* CZJCarSeriesChooseController.m */,
+			);
+			path = CarSelectVC;
+			sourceTree = "<group>";
+		};
+		ECD537FC1D4658DB00D136EF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				ECD537FD1D4658DB00D136EF /* CZJCarBrandsListCellTableViewCell.h */,
+				ECD537FE1D4658DB00D136EF /* CZJCarBrandsListCellTableViewCell.m */,
+				ECD537FF1D4658DB00D136EF /* CZJCarBrandsListCellTableViewCell.xib */,
+				ECD538001D4658DB00D136EF /* CZJHotBrandViewCell.h */,
+				ECD538011D4658DB00D136EF /* CZJHotBrandViewCell.m */,
+				ECD538021D4658DB00D136EF /* CZJHotBrandViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		ECD5380A1D4666A900D136EF /* GKHLocationPicker */ = {
+			isa = PBXGroup;
+			children = (
+				ECD5380B1D4666A900D136EF /* Address.plist */,
+				ECD5380C1D4666A900D136EF /* GKHpickerAddressView.h */,
+				ECD5380D1D4666A900D136EF /* GKHpickerAddressView.m */,
+			);
+			path = GKHLocationPicker;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2637,8 +2715,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECD538041D4658DB00D136EF /* CZJCarBrandsListCellTableViewCell.xib in Resources */,
 				EC542A171D237E7700F3B4BF /* pop.png in Resources */,
 				ECA233E41D37DC8F004C2679 /* CZJMyInfoHeadCell.xib in Resources */,
+				ECD5380E1D4666A900D136EF /* Address.plist in Resources */,
 				EC54298E1D237E7700F3B4BF /* anjuke_icon_to_position1.png in Resources */,
 				EC54278C1D237DE000F3B4BF /* RefreshLocationBarView.xib in Resources */,
 				EC54296A1D237E7700F3B4BF /* JRSwizzle.podspec in Resources */,
@@ -2653,6 +2733,7 @@
 				EC54298C1D237E7700F3B4BF /* anjuke_icon_itis_position@2x.png in Resources */,
 				EC5429791D237E7700F3B4BF /* KMCGeigerCounterTick.aiff in Resources */,
 				EC026F2F1D2B894700CA8CEB /* FSLotteryCell.xib in Resources */,
+				ECD538061D4658DB00D136EF /* CZJHotBrandViewCell.xib in Resources */,
 				EC18DE921D450204006CB460 /* CZJMyMessageCenterCell.xib in Resources */,
 				ECA233E61D37DC8F004C2679 /* CZJMyInfoShoppingCartCell.xib in Resources */,
 				EC5429A21D237E7700F3B4BF /* wl_map_icon_position_press.png in Resources */,
@@ -2743,7 +2824,9 @@
 				EC54295E1D237E7700F3B4BF /* AFURLSessionManager.m in Sources */,
 				EC54295C1D237E7700F3B4BF /* AFURLRequestSerialization.m in Sources */,
 				EC026F331D2B897200CA8CEB /* FSRecommendInfoCell.m in Sources */,
+				ECD5380F1D4666A900D136EF /* GKHpickerAddressView.m in Sources */,
 				EC5429631D237E7700F3B4BF /* MZGuidePages.m in Sources */,
+				ECD537FB1D4656B100D136EF /* FSCarForm.m in Sources */,
 				ECA233E51D37DC8F004C2679 /* CZJMyInfoShoppingCartCell.m in Sources */,
 				EC542A4B1D23802000F3B4BF /* FSWebViewController.m in Sources */,
 				EC5429601D237E7700F3B4BF /* NIDropDown.m in Sources */,
@@ -2757,6 +2840,7 @@
 				EC542A141D237E7700F3B4BF /* WKWebViewJavascriptBridge.m in Sources */,
 				EC5429B81D237E7700F3B4BF /* MJRefreshBackStateFooter.m in Sources */,
 				EC5429DD1D237E7700F3B4BF /* QNFile.m in Sources */,
+				ECD538051D4658DB00D136EF /* CZJHotBrandViewCell.m in Sources */,
 				EC54297A1D237E7700F3B4BF /* KSAutoFootRefreshView.m in Sources */,
 				EC542AF01D239B8A00F3B4BF /* base64.m in Sources */,
 				EC5427801D237DE000F3B4BF /* BadgeButton.m in Sources */,
@@ -2773,6 +2857,7 @@
 				EC5429F81D237E7700F3B4BF /* MKAnnotationView+WebCache.m in Sources */,
 				EC5429E41D237E7700F3B4BF /* QNDnspodEnterprise.m in Sources */,
 				EC5429F71D237E7700F3B4BF /* QNHex.m in Sources */,
+				ECD538031D4658DB00D136EF /* CZJCarBrandsListCellTableViewCell.m in Sources */,
 				EC542A121D237E7700F3B4BF /* WebViewJavascriptBridge_JS.m in Sources */,
 				EC5427811D237DE000F3B4BF /* DynamicArrangeButtonCell.m in Sources */,
 				EC542A711D23979500F3B4BF /* NSDate+Category.m in Sources */,
@@ -2805,6 +2890,7 @@
 				EC542A411D237F5E00F3B4BF /* FSDateTime.m in Sources */,
 				EC5429CD1D237E7700F3B4BF /* OpenShare+QQ.m in Sources */,
 				EC5429E61D237E7700F3B4BF /* QNHttpManager.m in Sources */,
+				ECD537F51D46523900D136EF /* CZJCarSeriesChooseController.m in Sources */,
 				EC5429E11D237E7700F3B4BF /* QNSystem.m in Sources */,
 				EC7760DE1D2223D500E1A89F /* AppDelegate.m in Sources */,
 				EC5429891D237E7700F3B4BF /* LXDSegmentControl.m in Sources */,
@@ -2877,6 +2963,7 @@
 				EC542A721D23979500F3B4BF /* NSDateFormatter+Category.m in Sources */,
 				EC54278A1D237DE000F3B4BF /* BasePageControlView.m in Sources */,
 				EC026F241D2B523B00CA8CEB /* FSHomeForm.m in Sources */,
+				ECD537F41D46523900D136EF /* CZJCarModelChooseController.m in Sources */,
 				EC5429CC1D237E7700F3B4BF /* OpenShare+Alipay.m in Sources */,
 				EC5429971D237E7700F3B4BF /* RegionAnnotationView.m in Sources */,
 				EC5427871D237DE000F3B4BF /* LoadingFailedAlertView.m in Sources */,
@@ -2887,6 +2974,7 @@
 				EC5429C91D237E7700F3B4BF /* MXPullDownCollectionViewCell.m in Sources */,
 				EC5429EA1D237E7700F3B4BF /* QNUserAgent.m in Sources */,
 				EC5429D61D237E7700F3B4BF /* GTM_Base64.m in Sources */,
+				ECD538091D46646600D136EF /* CZJAddMyCarController.m in Sources */,
 				EC5429DB1D237E7700F3B4BF /* QNDomain.m in Sources */,
 				EC542A111D237E7700F3B4BF /* WebViewJavascriptBridge.m in Sources */,
 				EC54297C1D237E7700F3B4BF /* KSDefaultHeadRefreshView.m in Sources */,
@@ -2921,6 +3009,7 @@
 				EC5429FB1D237E7700F3B4BF /* SDWebImageCompat.m in Sources */,
 				EC5429AB1D237E7700F3B4BF /* NSObject+MJKeyValue.m in Sources */,
 				EC3A18F81D41F1AE00F6F193 /* FSMyDiscountController.m in Sources */,
+				ECD537F31D46523900D136EF /* CZJCarBrandChooseController.m in Sources */,
 				EC542AF41D239B8A00F3B4BF /* NSDataEx.m in Sources */,
 				EC542A081D237E7700F3B4BF /* AFNetworkActivityIndicatorManager.m in Sources */,
 				EC542A021D237E7700F3B4BF /* UIImage+GIF.m in Sources */,
@@ -2943,6 +3032,7 @@
 				EC5429931D237E7700F3B4BF /* LocIsBaidu.m in Sources */,
 				EC54297F1D237E7700F3B4BF /* UIScrollView+KS.m in Sources */,
 				EC3A18F51D41F18D00F6F193 /* FSMyOrderListController.m in Sources */,
+				ECD537F81D46550100D136EF /* CZJFilterBaseController.m in Sources */,
 				EC542A751D23979500F3B4BF /* UIColor+WLZ_HexRGB.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

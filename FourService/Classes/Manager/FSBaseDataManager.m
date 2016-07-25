@@ -13,9 +13,6 @@
 #import "FSErrorCodeManager.h"
 #import "CCLocationManager.h"
 #import "ZXLocationManager.h"
-//#import "HomeForm.h"
-//#import "CZJStoreForm.h"
-//#import "CZJCarForm.h"
 //#import "FourServicepingCartForm.h"
 //#import "CZJOrderForm.h"
 #import "UserBaseForm.h"
@@ -32,9 +29,9 @@
 @synthesize discoverForms = _discoverForms;
 @synthesize goodsTypesAry = _goodsTypesAry;
 @synthesize serviceTypesAry = _serviceTypesAry;
-//@synthesize carBrandForm = _carBrandForm;
-//@synthesize carModealForm = _carModealForm;
-//@synthesize carSerialForm = _carSerialForm;
+@synthesize carBrandForm = _carBrandForm;
+@synthesize carModealForm = _carModealForm;
+@synthesize carSerialForm = _carSerialForm;
 @synthesize orderPaymentTypeAry = _orderPaymentTypeAry;
 
 #pragma mark- implement
@@ -1107,83 +1104,6 @@ singleton_implementation(FSBaseDataManager);
                                    fail:failBlock];
 }
 
-//获取爱车列表
-- (void)getMyCarList:(NSDictionary*)postParams
-             Success:(SuccessBlockHandler)success
-                fail:(FailureBlockHandler)fail
-{
-    SuccessBlockHandler successBlock = ^(id json){
-        if ([self showAlertView:json])
-        {
-            success(json);
-        }
-    };
-    
-    FailureBlockHandler failBlock = ^(){
-        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
-    };
-    
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:self.params];
-    [params setValuesForKeysWithDictionary:postParams];
-    
-    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPIGetCarlist
-                             parameters:params
-                                success:successBlock
-                                   fail:failBlock];
-}
-
-//移除爱车
-- (void)removeMyCar:(NSDictionary*)postParams
-            Success:(SuccessBlockHandler)success
-               fail:(FailureBlockHandler)fail
-{
-    SuccessBlockHandler successBlock = ^(id json){
-        if ([self showAlertView:json])
-        {
-            success(json);
-        }
-    };
-    
-    FailureBlockHandler failBlock = ^(){
-        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
-    };
-    
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:self.params];
-    [params setValuesForKeysWithDictionary:postParams];
-    
-    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPIRemoveCar
-                             parameters:params
-                                success:successBlock
-                                   fail:failBlock];
-}
-
-//设置默认车辆
-- (void)setDefaultCar:(NSDictionary*)postParams
-              Success:(SuccessBlockHandler)success
-                 fail:(FailureBlockHandler)fail
-{
-    SuccessBlockHandler successBlock = ^(id json){
-        if ([self showAlertView:json])
-        {
-            success(json);
-        }
-    };
-    
-    FailureBlockHandler failBlock = ^(){
-        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
-    };
-    
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:self.params];
-    [params setValuesForKeysWithDictionary:postParams];
-    
-    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPISetDefaultCar
-                             parameters:params
-                                success:successBlock
-                                   fail:failBlock];
-}
 
 
 
@@ -1195,9 +1115,6 @@ singleton_implementation(FSBaseDataManager);
 {
     [self generalPost:loginParams success:success failure:fail andServerAPI:kFSServerAPILogin];
 }
-
-
-
 
 
 - (void)getAuthCodeWithIphone:(NSString*)phone
@@ -1228,6 +1145,31 @@ singleton_implementation(FSBaseDataManager);
                        fail:(FailureBlockHandler)fail
 {
     [self generalPost:postParams success:success fail:fail andServerAPI:kFSServerAPIRegister];
+}
+
+
+//获取爱车列表
+- (void)getMyCarList:(NSDictionary*)postParams
+             Success:(SuccessBlockHandler)success
+                fail:(FailureBlockHandler)fail
+{
+    [self generalPost:postParams success:success fail:fail andServerAPI:@"TODO"];
+}
+
+//移除爱车
+- (void)removeMyCar:(NSDictionary*)postParams
+            Success:(SuccessBlockHandler)success
+               fail:(FailureBlockHandler)fail
+{
+    [self generalPost:postParams success:success fail:fail andServerAPI:kFSServerAPIDeleteMyCar];
+}
+
+//设置默认车辆
+- (void)setDefaultCar:(NSDictionary*)postParams
+              Success:(SuccessBlockHandler)success
+                 fail:(FailureBlockHandler)fail
+{
+    [self generalPost:postParams success:success fail:fail andServerAPI:kFSServerAPIEditMyCar];
 }
 
 

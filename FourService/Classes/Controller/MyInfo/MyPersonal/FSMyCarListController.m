@@ -8,6 +8,8 @@
 
 #import "FSMyCarListController.h"
 #import "CZJMyCarListCell.h"
+#import "CZJCarBrandChooseController.h"
+#import "FSBaseDataManager.h"
 
 @interface FSMyCarListController ()
 <
@@ -15,6 +17,8 @@ UITableViewDataSource,
 UITableViewDelegate
 >
 @property (strong, nonatomic) UITableView *myTableView;
+
+- (IBAction)addMyCarAction:(id)sender;
 @end
 
 @implementation FSMyCarListController
@@ -27,16 +31,16 @@ UITableViewDelegate
 
 - (void)initDatas
 {
-    
 }
 
 - (void)initViews
 {
+    self.view.backgroundColor = CZJNAVIBARBGCOLOR;
     [self addCZJNaviBarView:CZJNaviBarViewTypeGeneral];
     self.naviBarView.mainTitleLabel.text = @"我的车辆";
     
     //消息中心表格视图
-    CGRect tableRect = CGRectMake(0, 64, PJ_SCREEN_WIDTH, PJ_SCREEN_HEIGHT - 64);
+    CGRect tableRect = CGRectMake(0, 64 + 46 + 10, PJ_SCREEN_WIDTH, PJ_SCREEN_HEIGHT - 64 - 56);
     self.myTableView = [[UITableView alloc]initWithFrame:tableRect style:UITableViewStylePlain];
     self.myTableView.tableFooterView = [[UIView alloc]init];
     self.myTableView.delegate = self;
@@ -55,6 +59,30 @@ UITableViewDelegate
     }
 }
 
+- (void)getCarListFromServer
+{
+    [FSBaseDataInstance getMyCarList:nil Success:^(id json) {
+        NSDictionary* dict = [PUtils DataFromJson:json];
+        DLog(@"%@", [dict description]);
+        
+        if (self.carListAry.count > 0) {
+            [PUtils removeNoDataAlertViewFromTarget:self.view];
+            self.myTableView.hidden = NO;
+            self.myTableView.delegate = self;
+            self.myTableView.dataSource = self;
+            [self.myTableView reloadData];
+        }
+        else
+        {
+            [self.myTableView reloadData];
+            self.myTableView.hidden = YES;
+            [PUtils showNoDataAlertViewOnTarget:self.view withPromptString:@"您还没有爱车，去添加吧/(ToT)/~~"];
+        }
+    } fail:^{
+        
+    }];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -68,18 +96,28 @@ UITableViewDelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return self.carListAry.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    FSCarListForm* carListForm = self.carListAry[indexPath.row];
+    
+    CZJMyCarListCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJMyCarListCell" forIndexPath:indexPath];
+    [cell.brandImg sd_setImageWithURL:[NSURL URLWithString:carListForm.car_brand_image] placeholderImage:DefaultPlaceHolderRectangle];
+    cell.carNameLabel.text = carListForm.car_type_name;
+    cell.carModelLabel.text = carListForm.car_model_name;
+    cell.carNumberPlate.text = [NSString stringWithFormat:@"%@%@-%@",carListForm.prov,carListForm.number,carListForm.numberPlate];
+    cell.setDefaultBtn.selected = carListForm.is_default;
+    if (indexPath.section == (self.carListAry.count - 1))
+        cell.separatorInset = HiddenCellSeparator;
     return nil;
 }
 
 #pragma mark-UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 0;
+    return 136;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -94,6 +132,13 @@ UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+}
+
+- (IBAction)addMyCarAction:(id)sender
+{
+    CZJCarBrandChooseController *svc = [[CZJCarBrandChooseController alloc] initWithType:CZJCarListTypeGeneral];
+    svc.viewFrom = @"carList";
+    [self.navigationController pushViewController:svc animated:YES];
 }
 
 @end
