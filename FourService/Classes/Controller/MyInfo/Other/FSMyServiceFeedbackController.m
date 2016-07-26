@@ -1,33 +1,22 @@
 //
-//  FSMyEvalutionController.m
+//  FSMyServiceFeedbackController.m
 //  FourService
 //
-//  Created by Joe.Pen on 7/22/16.
+//  Created by Joe.Pen on 7/26/16.
 //  Copyright © 2016 Joe.Pen. All rights reserved.
 //
 
-#import "FSMyEvalutionController.h"
+#import "FSMyServiceFeedbackController.h"
 
-@interface FSMyEvalutionController ()
+@interface FSMyServiceFeedbackController ()
 
 @end
 
-@implementation FSMyEvalutionController
+@implementation FSMyServiceFeedbackController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initDatas];
-    [self initViews];
-}
-
-- (void)initDatas
-{
-}
-
-- (void)initViews
-{
-    [self addCZJNaviBarView:CZJNaviBarViewTypeGeneral];
-    self.naviBarView.mainTitleLabel.text = @"评价";
+    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FSMyEvalutionController : UIViewController
+@interface FSMyEvalutionController : PBaseViewController
 
 @end

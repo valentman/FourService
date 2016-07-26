@@ -331,6 +331,10 @@
 		EC7FC0A31D3A2B460082ECB4 /* FSLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7FC09E1D3A2B460082ECB4 /* FSLoginController.m */; };
 		EC7FC0A41D3A2B460082ECB4 /* FSRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7FC0A01D3A2B460082ECB4 /* FSRegisterController.m */; };
 		EC7FC0A51D3A2B460082ECB4 /* ServiceProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7FC0A21D3A2B460082ECB4 /* ServiceProtocol.m */; };
+		EC9064671D47AC8500E9554F /* FSMyServiceFeedbackController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9064661D47AC8500E9554F /* FSMyServiceFeedbackController.m */; };
+		EC90646A1D47BE8C00E9554F /* CZJPageControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9064691D47BE8C00E9554F /* CZJPageControlView.m */; };
+		EC90646F1D47BF8A00E9554F /* CZJReceiveCouponsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC90646D1D47BF8A00E9554F /* CZJReceiveCouponsCell.m */; };
+		EC9064701D47BF8A00E9554F /* CZJReceiveCouponsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC90646E1D47BF8A00E9554F /* CZJReceiveCouponsCell.xib */; };
 		ECA233CE1D37DB78004C2679 /* FSMyInformationController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA233CC1D37DB78004C2679 /* FSMyInformationController.m */; };
 		ECA233D11D37DB91004C2679 /* FSSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA233D01D37DB91004C2679 /* FSSettingController.m */; };
 		ECA233DF1D37DC8F004C2679 /* CZJGeneralCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA233D41D37DC8F004C2679 /* CZJGeneralCell.m */; };
@@ -1016,6 +1020,13 @@
 		EC7FC0A01D3A2B460082ECB4 /* FSRegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRegisterController.m; sourceTree = "<group>"; };
 		EC7FC0A11D3A2B460082ECB4 /* ServiceProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceProtocol.h; sourceTree = "<group>"; };
 		EC7FC0A21D3A2B460082ECB4 /* ServiceProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceProtocol.m; sourceTree = "<group>"; };
+		EC9064651D47AC8500E9554F /* FSMyServiceFeedbackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyServiceFeedbackController.h; sourceTree = "<group>"; };
+		EC9064661D47AC8500E9554F /* FSMyServiceFeedbackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyServiceFeedbackController.m; sourceTree = "<group>"; };
+		EC9064681D47BE8C00E9554F /* CZJPageControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJPageControlView.h; sourceTree = "<group>"; };
+		EC9064691D47BE8C00E9554F /* CZJPageControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJPageControlView.m; sourceTree = "<group>"; };
+		EC90646C1D47BF8A00E9554F /* CZJReceiveCouponsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJReceiveCouponsCell.h; sourceTree = "<group>"; };
+		EC90646D1D47BF8A00E9554F /* CZJReceiveCouponsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJReceiveCouponsCell.m; sourceTree = "<group>"; };
+		EC90646E1D47BF8A00E9554F /* CZJReceiveCouponsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJReceiveCouponsCell.xib; sourceTree = "<group>"; };
 		ECA233CB1D37DB78004C2679 /* FSMyInformationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyInformationController.h; sourceTree = "<group>"; };
 		ECA233CC1D37DB78004C2679 /* FSMyInformationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyInformationController.m; sourceTree = "<group>"; };
 		ECA233CF1D37DB91004C2679 /* FSSettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSettingController.h; sourceTree = "<group>"; };
@@ -1225,18 +1236,11 @@
 		EC3A18E01D41F00400F6F193 /* MyWallet */ = {
 			isa = PBXGroup;
 			children = (
-				EC3A18E11D41F00500F6F193 /* Cell */,
+				EC90646B1D47BF8A00E9554F /* Cell */,
 				EC3A18F61D41F1AE00F6F193 /* FSMyDiscountController.h */,
 				EC3A18F71D41F1AE00F6F193 /* FSMyDiscountController.m */,
 			);
 			path = MyWallet;
-			sourceTree = "<group>";
-		};
-		EC3A18E11D41F00500F6F193 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		EC3A18E31D41F06D00F6F193 /* MyViewed */ = {
@@ -1527,6 +1531,8 @@
 		EC5427491D237DE000F3B4BF /* Conponets */ = {
 			isa = PBXGroup;
 			children = (
+				EC9064681D47BE8C00E9554F /* CZJPageControlView.h */,
+				EC9064691D47BE8C00E9554F /* CZJPageControlView.m */,
 				EC542A421D237FBA00F3B4BF /* FSBaseAlertViewController.h */,
 				EC542A431D237FBA00F3B4BF /* FSBaseAlertViewController.m */,
 				EC54274A1D237DE000F3B4BF /* FSAlertView.h */,
@@ -2565,6 +2571,16 @@
 			path = MyLogin;
 			sourceTree = "<group>";
 		};
+		EC90646B1D47BF8A00E9554F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EC90646C1D47BF8A00E9554F /* CZJReceiveCouponsCell.h */,
+				EC90646D1D47BF8A00E9554F /* CZJReceiveCouponsCell.m */,
+				EC90646E1D47BF8A00E9554F /* CZJReceiveCouponsCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		ECA233C91D37DB78004C2679 /* MyInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -2596,6 +2612,8 @@
 			children = (
 				ECA233CF1D37DB91004C2679 /* FSSettingController.h */,
 				ECA233D01D37DB91004C2679 /* FSSettingController.m */,
+				EC9064651D47AC8500E9554F /* FSMyServiceFeedbackController.h */,
+				EC9064661D47AC8500E9554F /* FSMyServiceFeedbackController.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -2750,6 +2768,7 @@
 				EC5429C51D237E7700F3B4BF /* MultilevelCollectionViewCell.xib in Resources */,
 				EC026F341D2B897200CA8CEB /* FSRecommendInfoCell.xib in Resources */,
 				EC5429BC1D237E7700F3B4BF /* MJRefresh.bundle in Resources */,
+				EC9064701D47BF8A00E9554F /* CZJReceiveCouponsCell.xib in Resources */,
 				EC5429751D237E7700F3B4BF /* LICENSE in Resources */,
 				EC54299B1D237E7700F3B4BF /* wl_map_icon_1_press@2x.png in Resources */,
 				EC542A151D237E7700F3B4BF /* WebViewJsBridge.js in Resources */,
@@ -2786,6 +2805,7 @@
 				EC3A18EF1D41F16700F6F193 /* FSMyAttentionController.m in Sources */,
 				EC5429DF1D237E7700F3B4BF /* QNPHAssetFile.m in Sources */,
 				EC5429B91D237E7700F3B4BF /* MJRefreshGifHeader.m in Sources */,
+				EC90646F1D47BF8A00E9554F /* CZJReceiveCouponsCell.m in Sources */,
 				EC542A091D237E7700F3B4BF /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				EC542A0E1D237E7700F3B4BF /* UIRefreshControl+AFNetworking.m in Sources */,
 				EC542A771D23979500F3B4BF /* UIView+Frame.m in Sources */,
@@ -2798,6 +2818,7 @@
 				EC5429B21D237E7700F3B4BF /* MJRefreshHeader.m in Sources */,
 				EC5427821D237DE000F3B4BF /* BadgeButtonView.m in Sources */,
 				EC5427901D237DE000F3B4BF /* PBaseViewController.m in Sources */,
+				EC9064671D47AC8500E9554F /* FSMyServiceFeedbackController.m in Sources */,
 				EC7FC0A31D3A2B460082ECB4 /* FSLoginController.m in Sources */,
 				EC54278B1D237DE000F3B4BF /* RefreshLocationBarView.m in Sources */,
 				EC5429CE1D237E7700F3B4BF /* OpenShare+Renren.m in Sources */,
@@ -2911,6 +2932,7 @@
 				EC5429C61D237E7700F3B4BF /* MultilevelTableViewCell.m in Sources */,
 				EC5429F01D237E7700F3B4BF /* QNConfiguration.m in Sources */,
 				EC5429A41D237E7700F3B4BF /* MBProgressHUD+Add.m in Sources */,
+				EC90646A1D47BE8C00E9554F /* CZJPageControlView.m in Sources */,
 				EC5427851D237DE000F3B4BF /* FSDeletableImageView.m in Sources */,
 				EC54279F1D237E0500F3B4BF /* FSErrorCodeManager.m in Sources */,
 				EC5429F31D237E7700F3B4BF /* QNUploadManager.m in Sources */,

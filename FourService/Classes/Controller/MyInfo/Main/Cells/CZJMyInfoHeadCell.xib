@@ -120,7 +120,7 @@
                                     <constraint firstAttribute="height" constant="10" id="yLX-R8-StW"/>
                                 </constraints>
                             </imageView>
-                            <button clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMl-OS-bcz" customClass="CZJButton">
+                            <button clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMl-OS-bcz" customClass="BadgeButton">
                                 <rect key="frame" x="190" y="15" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="DaO-ci-KFH"/>
@@ -195,7 +195,7 @@
     </objects>
     <resources>
         <image name="LJWButtonBarArrowRight.png" width="11" height="21"/>
-        <image name="my_icon_head.png" width="6" height="11"/>
+        <image name="my_icon_head.png" width="31" height="31"/>
         <image name="my_icon_pay" width="20" height="20"/>
         <image name="my_img_background.png" width="375" height="170"/>
         <image name="personal_icon_head" width="50" height="50"/>

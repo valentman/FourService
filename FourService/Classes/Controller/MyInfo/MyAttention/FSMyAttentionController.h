@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FSMyAttentionController : UIViewController
+@interface FSMyAttentionController : PBaseViewController
 
 @end

@@ -9,14 +9,43 @@
 #import "FSMyAttentionController.h"
 
 @interface FSMyAttentionController ()
-
+{
+    BOOL _isEdit;
+}
+@property (strong, nonatomic) UITableView *myTableView;
 @end
 
 @implementation FSMyAttentionController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self initDatas];
+    [self initViews];
+
+}
+
+- (void)initDatas
+{
+    _isEdit = NO;
+
+}
+
+- (void)initViews
+{
+    [self addCZJNaviBarView:CZJNaviBarViewTypeGeneral];
+    self.naviBarView.delegate = self;
+    self.naviBarView.mainTitleLabel.text = @"收藏";
+    
+    //右按钮
+    UIButton *rightBtn = [[ UIButton alloc ] initWithFrame : CGRectMake(PJ_SCREEN_WIDTH - 59 , 0 , 44 , 44 )];
+    [rightBtn setTitle:@"编辑" forState:UIControlStateNormal];
+    [rightBtn setTitle:@"完成" forState:UIControlStateSelected];
+    [rightBtn addTarget:self action:@selector(edit:) forControlEvents:UIControlEventTouchUpInside];
+    [rightBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [rightBtn setSelected:NO];
+    rightBtn.titleLabel.font = BOLDSYSTEMFONT(16);
+    [rightBtn setTag:1999];
+    [self.naviBarView addSubview:rightBtn];
 }
 
 - (void)didReceiveMemoryWarning {

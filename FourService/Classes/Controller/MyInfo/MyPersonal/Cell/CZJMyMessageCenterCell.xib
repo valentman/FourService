@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -16,7 +16,6 @@
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5uv-Sk-8KY" userLabel="storeNameLabel">
                         <rect key="frame" x="40" y="12" width="80" height="21"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="width" constant="80" id="Ihj-ug-dzn"/>
                             <constraint firstAttribute="height" constant="21" id="gAb-hw-KAc"/>
@@ -27,7 +26,6 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bs0-h2-Y6M" userLabel="notifyTime">
                         <rect key="frame" x="288" y="18" width="31" height="15"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="width" constant="31" id="3LG-lg-bML"/>
                         </constraints>
@@ -37,7 +35,6 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hv7-cT-FFL" userLabel="notifyContent">
                         <rect key="frame" x="40" y="41" width="279" height="20"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="YvH-UR-Yik"/>
                         </constraints>
@@ -47,7 +44,6 @@
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aHM-vL-Jei" userLabel="dotlabel">
                         <rect key="frame" x="17" y="19" width="8" height="8"/>
-                        <animations/>
                         <color key="backgroundColor" red="0.9843137264251709" green="0.27450981736183167" blue="0.30588236451148987" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="8" id="lVW-Qs-z7p"/>
@@ -64,7 +60,6 @@
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lhh-Fm-XiC">
                         <rect key="frame" x="10" y="27" width="23" height="26"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="26" id="6um-Zs-Zq0"/>
                             <constraint firstAttribute="width" constant="23" id="daw-as-bku"/>
@@ -73,7 +68,6 @@
                         <state key="selected" image="commit_btn_circle_sel.png"/>
                     </button>
                 </subviews>
-                <animations/>
                 <constraints>
                     <constraint firstItem="aHM-vL-Jei" firstAttribute="centerY" secondItem="5uv-Sk-8KY" secondAttribute="centerY" id="3cn-Dl-jjv"/>
                     <constraint firstAttribute="trailing" secondItem="Bs0-h2-Y6M" secondAttribute="trailing" constant="15" id="4bj-Qm-qac"/>
@@ -88,7 +82,6 @@
                     <constraint firstItem="Bs0-h2-Y6M" firstAttribute="bottom" secondItem="5uv-Sk-8KY" secondAttribute="bottom" id="yCO-GE-ZA6"/>
                 </constraints>
             </tableViewCellContentView>
-            <animations/>
             <connections>
                 <outlet property="dotLabel" destination="aHM-vL-Jei" id="c4Q-EA-xaE"/>
                 <outlet property="notifyContentHeight" destination="YvH-UR-Yik" id="jTE-MU-tla"/>
