@@ -1072,7 +1072,7 @@ singleton_implementation(FSBaseDataManager);
     [params setValuesForKeysWithDictionary:self.params];
     [params setValuesForKeysWithDictionary:postParams];
     
-    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPIUpdateUserInfo
+    [FSNetWorkInstance postJSONWithUrl:kFSServerAPIEditMyInfo
                              parameters:params
                                 success:successBlock
                                    fail:failBlock];

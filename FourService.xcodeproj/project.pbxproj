@@ -347,6 +347,7 @@
 		ECA233E61D37DC8F004C2679 /* CZJMyInfoShoppingCartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA233DE1D37DC8F004C2679 /* CZJMyInfoShoppingCartCell.xib */; };
 		ECA233E91D37DD4F004C2679 /* FSMyInfoForm.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA233E81D37DD4F004C2679 /* FSMyInfoForm.m */; };
 		ECA233EC1D37DD98004C2679 /* UserBaseForm.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA233EB1D37DD98004C2679 /* UserBaseForm.m */; };
+		ECB422B91D4912AA00D20A9D /* PWUploadImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB422B81D4912AA00D20A9D /* PWUploadImageButton.m */; };
 		ECBC6BC81D349A46003B7446 /* NSTimer_Pause.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBC6BC71D349A46003B7446 /* NSTimer_Pause.m */; };
 		ECD537F31D46523900D136EF /* CZJCarBrandChooseController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD537EE1D46523900D136EF /* CZJCarBrandChooseController.m */; };
 		ECD537F41D46523900D136EF /* CZJCarModelChooseController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD537F01D46523900D136EF /* CZJCarModelChooseController.m */; };
@@ -1047,6 +1048,8 @@
 		ECA233E81D37DD4F004C2679 /* FSMyInfoForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyInfoForm.m; sourceTree = "<group>"; };
 		ECA233EA1D37DD98004C2679 /* UserBaseForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserBaseForm.h; sourceTree = "<group>"; };
 		ECA233EB1D37DD98004C2679 /* UserBaseForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserBaseForm.m; sourceTree = "<group>"; };
+		ECB422B71D4912AA00D20A9D /* PWUploadImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWUploadImageButton.h; sourceTree = "<group>"; };
+		ECB422B81D4912AA00D20A9D /* PWUploadImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWUploadImageButton.m; sourceTree = "<group>"; };
 		ECBC6BC61D349A46003B7446 /* NSTimer_Pause.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSTimer_Pause.h; sourceTree = "<group>"; };
 		ECBC6BC71D349A46003B7446 /* NSTimer_Pause.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSTimer_Pause.m; sourceTree = "<group>"; };
 		ECD537ED1D46523900D136EF /* CZJCarBrandChooseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJCarBrandChooseController.h; sourceTree = "<group>"; };
@@ -1531,6 +1534,8 @@
 		EC5427491D237DE000F3B4BF /* Conponets */ = {
 			isa = PBXGroup;
 			children = (
+				ECB422B71D4912AA00D20A9D /* PWUploadImageButton.h */,
+				ECB422B81D4912AA00D20A9D /* PWUploadImageButton.m */,
 				EC9064681D47BE8C00E9554F /* CZJPageControlView.h */,
 				EC9064691D47BE8C00E9554F /* CZJPageControlView.m */,
 				EC542A421D237FBA00F3B4BF /* FSBaseAlertViewController.h */,
@@ -2868,6 +2873,7 @@
 				EC5429FD1D237E7700F3B4BF /* SDWebImageDownloader.m in Sources */,
 				EC5429BD1D237E7700F3B4BF /* MJRefreshConst.m in Sources */,
 				EC54295A1D237E7700F3B4BF /* AFSecurityPolicy.m in Sources */,
+				ECB422B91D4912AA00D20A9D /* PWUploadImageButton.m in Sources */,
 				EC5429641D237E7700F3B4BF /* GTMStackTrace.m in Sources */,
 				EC5429F21D237E7700F3B4BF /* QNResumeUpload.m in Sources */,
 				EC542AF31D239B8A00F3B4BF /* MD5DataSigner.m in Sources */,

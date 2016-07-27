@@ -10,4 +10,5 @@
 
 @interface FSMyPersonalInfoController : PBaseViewController
 
+@property (strong, nonatomic)FSPersonalForm* myinfor;
 @end
