@@ -13,15 +13,11 @@
 //@class CZJDiscoverForm;
 //@class FourServicepingCartForm;
 //@class CZJOrderStoreCouponsForm;
-//@class UserBaseForm;
 //@class CZJGoodsDetailForm;
 
 @interface FSBaseDataManager : NSObject
 {
-//    HomeForm* _homeForm;                            //首页信息
     FSCarForm* _carForm;                           //汽车列表信息
-//    CZJStoreForm* _storeForm;                       //门店信息
-//    FourServicepingCartForm* _shoppingCartForm;         //购物车信息
     UserBaseForm* _userInfoForm;                    //我的个人信息
 
     CarBrandsForm* _carBrandForm;
@@ -288,5 +284,9 @@ singleton_interface(FSBaseDataManager);
 - (void)userRegistWithParam:(NSDictionary*)postParams
                     success:(SuccessBlockHandler)success
                        fail:(FailureBlockHandler)fail;
+
+//读取个人信息
+- (void)loginWithDefaultInfoSuccess:(void (^)())success
+                               fail:(void (^)())fail;
 
 @end

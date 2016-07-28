@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UserBaseForm.h"
 
 @protocol CZJMyInfoHeadCellDelegate <NSObject>
 - (void)clickMyInfoHeadCell:(id)sender;
@@ -19,5 +18,5 @@
 @property (weak, nonatomic) IBOutlet UIView *haveLoginView;
 @property (weak, nonatomic) IBOutlet BadgeButton *messageBtn;
 
-- (void)setUserPersonalInfo:(UserBaseForm*)userinfo;
+- (void)setUserPersonalInfo:(UserBaseForm*)userinfo andDefaultCar:(FSCarListForm*)car;
 @end

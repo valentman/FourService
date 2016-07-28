@@ -9,7 +9,6 @@
 #import "FSLoginModelManager.h"
 #import "FSNetworkManager.h"
 #import "FSErrorCodeManager.h"
-//#import "UserBaseForm.h"
 #import "ZXLocationManager.h"
 #import "CCLocationManager.h"
 #import "FSBaseDataManager.h"

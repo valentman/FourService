@@ -41,10 +41,11 @@ UITableViewDelegate
 {
     self.title = @"选择品牌";
     
-    if (_carlistType == CZJCarListTypeGeneral)
+    if ([_viewFrom isEqualToString:@"carList"])
     {
         [self addCZJNaviBarViewWithNotHiddenNavi:CZJNaviBarViewTypeGeneral];
         self.naviBarView.btnBack.hidden = YES;
+        self.naviBarView.mainTitleLabel.text = @"选择品牌";
     }
     
     NSInteger width = PJ_SCREEN_WIDTH - (CZJCarListTypeFilter == _carlistType ? kMGLeftSpace  : 0);
@@ -203,7 +204,7 @@ UITableViewDelegate
         cell.imageViewHeight.constant = 40;
         cell.imageViewWidth.constant = 40;
         cell.nameLabel.textColor = BLACKCOLOR;
-        
+        cell.nameLabelLeading.constant = 65;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }

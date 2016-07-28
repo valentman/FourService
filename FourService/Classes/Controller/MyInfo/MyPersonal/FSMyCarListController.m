@@ -61,26 +61,20 @@ UITableViewDelegate
 
 - (void)getCarListFromServer
 {
-    [FSBaseDataInstance getMyCarList:nil Success:^(id json) {
-        NSDictionary* dict = [PUtils DataFromJson:json];
-        DLog(@"%@", [dict description]);
-        
-        if (self.carListAry.count > 0) {
-            [PUtils removeNoDataAlertViewFromTarget:self.view];
-            self.myTableView.hidden = NO;
-            self.myTableView.delegate = self;
-            self.myTableView.dataSource = self;
-            [self.myTableView reloadData];
-        }
-        else
-        {
-            [self.myTableView reloadData];
-            self.myTableView.hidden = YES;
-            [PUtils showNoDataAlertViewOnTarget:self.view withPromptString:@"您还没有爱车，去添加吧/(ToT)/~~"];
-        }
-    } fail:^{
-        
-    }];
+    if (self.carListAry.count <= 0)
+    {
+        [self.myTableView reloadData];
+        self.myTableView.hidden = YES;
+        [PUtils showNoDataAlertViewOnTarget:self.view withPromptString:@"您还没有爱车，去添加吧/(ToT)/~~"];
+    }
+    else
+    {
+        [PUtils removeNoDataAlertViewFromTarget:self.view];
+        self.myTableView.hidden = NO;
+        self.myTableView.delegate = self;
+        self.myTableView.dataSource = self;
+        [self.myTableView reloadData];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -104,14 +98,14 @@ UITableViewDelegate
     FSCarListForm* carListForm = self.carListAry[indexPath.row];
     
     CZJMyCarListCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJMyCarListCell" forIndexPath:indexPath];
-    [cell.brandImg sd_setImageWithURL:[NSURL URLWithString:carListForm.car_brand_image] placeholderImage:DefaultPlaceHolderRectangle];
+    [cell.brandImg sd_setImageWithURL:[NSURL URLWithString:carListForm.logo] placeholderImage:DefaultPlaceHolderRectangle];
     cell.carNameLabel.text = carListForm.car_type_name;
     cell.carModelLabel.text = carListForm.car_model_name;
-    cell.carNumberPlate.text = [NSString stringWithFormat:@"%@%@-%@",carListForm.prov,carListForm.number,carListForm.numberPlate];
+    cell.carNumberPlate.text = carListForm.car_num;
     cell.setDefaultBtn.selected = carListForm.is_default;
     if (indexPath.section == (self.carListAry.count - 1))
         cell.separatorInset = HiddenCellSeparator;
-    return nil;
+    return cell;
 }
 
 #pragma mark-UITableViewDelegate

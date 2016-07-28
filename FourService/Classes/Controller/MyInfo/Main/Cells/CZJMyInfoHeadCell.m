@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *userPhoneLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userTypeLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *bgImage;
+@property (weak, nonatomic) IBOutlet UILabel *myDefaultCarLabel;
 
 - (IBAction)messageAction:(id)sender;
 
@@ -34,15 +35,13 @@
     // Configure the view for the selected state
 }
 
-- (void)setUserPersonalInfo:(UserBaseForm*)userinfo
+- (void)setUserPersonalInfo:(UserBaseForm*)userinfo andDefaultCar:(FSCarListForm*)car
 {
-    self.userNameLabel.text = [PUtils isBlankString:userinfo.name] ? @"昵称" : userinfo.name;
-    self.userPhoneLabel.text = userinfo.mobile;
-    [self.userHeadImg sd_setImageWithURL:[NSURL URLWithString:userinfo.headPic] placeholderImage:IMAGENAMED(@"my_icon_head")];
+    self.userNameLabel.text = [PUtils isBlankString:userinfo.chinese_name] ? @"昵称" : userinfo.chinese_name;
+    self.userPhoneLabel.text = userinfo.customer_pho;
+    [self.userHeadImg sd_setImageWithURL:[NSURL URLWithString:userinfo.customer_photo] placeholderImage:IMAGENAMED(@"my_icon_head")];
     self.userHeadImg.clipsToBounds = YES;
-    self.userTypeLabel.text = userinfo.levelName;
-    self.userTypeLabel.layer.cornerRadius = 9;
-    self.userTypeLabel.layer.backgroundColor = RGBA(240, 240, 240,0.5).CGColor;
+    self.myDefaultCarLabel.text = [NSString stringWithFormat:@"我的车辆：%@ %@ %@",car.car_brand_name,car.car_model_name,car.car_type_name];
 }
 
 - (IBAction)messageAction:(id)sender

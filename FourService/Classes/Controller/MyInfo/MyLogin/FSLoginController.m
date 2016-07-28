@@ -274,14 +274,8 @@ FDAlertViewDelegate
         
         //先处理登录成功数据
         [self loginSuccess:json success:^{
-            //再发送购物车数量请求
-//            [CZJBaseDataInstance loadShoppingCartCount:nil Success:^(id json){
-//                [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
                 [PUtils tipWithText:@"登录成功" andView:nil];
                 [weakSelf exitOutAction:nil];
-//            } fail:^{
-//                [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
-//            }];
         } fail:^{
             [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
         }];
@@ -328,7 +322,8 @@ FDAlertViewDelegate
                 fail:(GeneralBlockHandler)failBlock
 {
     NSDictionary* dict = [json valueForKey:@"data"];
-
+    FSBaseDataInstance.userInfoForm.identifier = [dict valueForKey:@"identifier"];
+    FSBaseDataInstance.userInfoForm.token = [dict valueForKey:@"token"];
     
     //登录成功，个人信息写入本地文件中
     if ([PUtils writeDictionaryToDocumentsDirectory:[FSBaseDataInstance.userInfoForm.keyValues mutableCopy] withPlistName:kCZJPlistFileUserBaseForm])
@@ -341,15 +336,8 @@ FDAlertViewDelegate
         [FSBaseDataInstance.params setValue:[dict valueForKey:@"token"] forKey:@"token"];
         
         //注册个人推送
-        [XGPush setAccount:FSBaseDataInstance.userInfoForm.chezhuId];
-        
-        //注册环信
-//        EMError *errorss = [[EMClient sharedClient] loginWithUsername:CZJLoginModelInstance.usrBaseForm.imId password:@"123456"];
-//        if (!errorss)
-//        {
-//            [[EMClient sharedClient].options setIsAutoLogin:YES];
-//        }
-        
+        [XGPush setAccount:FSBaseDataInstance.userInfoForm.identifier];
+
         [[NSNotificationCenter defaultCenter]postNotificationName:kCZJNotifiLoginSuccess object:nil];
         
         if (sucessBlock)

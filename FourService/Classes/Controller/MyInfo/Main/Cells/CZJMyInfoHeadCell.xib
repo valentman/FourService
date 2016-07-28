@@ -82,7 +82,7 @@
                                 <color key="textColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="会员类型" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9At-Bf-k6a">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9At-Bf-k6a">
                                 <rect key="frame" x="97" y="66" width="60" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="LBx-RQ-lAk"/>
@@ -184,6 +184,7 @@
                 <outlet property="bgImage" destination="sau-by-EUj" id="trP-DW-eet"/>
                 <outlet property="haveLoginView" destination="ABF-5Y-qOp" id="ZVK-1P-hI6"/>
                 <outlet property="messageBtn" destination="eMl-OS-bcz" id="aJm-2v-J1b"/>
+                <outlet property="myDefaultCarLabel" destination="796-sm-SR5" id="f85-Aw-0Br"/>
                 <outlet property="unLoginView" destination="ffc-NE-hbV" id="rve-XK-Ccz"/>
                 <outlet property="userHeadImg" destination="GWr-Xv-uRo" id="XGm-1F-zJS"/>
                 <outlet property="userNameLabel" destination="l9O-3b-7et" id="keL-Kp-Pdu"/>

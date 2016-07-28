@@ -254,7 +254,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="my_icon_pay.png" width="20" height="20"/>
+        <image name="my_icon_pay.png" width="21" height="21"/>
         <image name="my_icon_recommend.png" width="20" height="20"/>
         <image name="my_icon_shigong.png" width="20" height="20"/>
         <image name="my_icon_shouhuo.png" width="20" height="20"/>

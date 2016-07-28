@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FSPersonalForm : NSObject
+@interface UserBaseForm : NSObject
 @property (strong, nonatomic)NSString* customer_id;
 @property (strong, nonatomic)NSString* chinese_name;
 @property (strong, nonatomic)NSString* english_name;
@@ -35,6 +35,17 @@
 @property (strong, nonatomic)NSString* identifier;
 @property (strong, nonatomic)NSString* token;
 @property (strong, nonatomic)NSString* timeout;
+@property (strong, nonatomic)NSArray* car_list;
+@property (strong, nonatomic)NSString* order_init_num;
+@property (strong, nonatomic)NSString* order_payed_num;
+@property (strong, nonatomic)NSString* order_finish_num;
+@property (strong, nonatomic)NSString* order_commented_num;
+@property (strong, nonatomic)NSString* discount_normal_num;
+@property (strong, nonatomic)NSString* discount_used_num;
+@property (strong, nonatomic)NSString* discount_expired_num;
+@property (strong, nonatomic)NSString* Customer_view_num;
+@property (strong, nonatomic)NSString* Customer_favorite_num;
+@property (strong, nonatomic)NSString* Customer_comment_num;
 @end
 
 
@@ -45,15 +56,6 @@
 @property (strong, nonatomic)NSString* get_time;
 @property (strong, nonatomic)NSString* get_way;
 @property (strong, nonatomic)NSString* discount_status;
-@end
-
-@interface FSDiscountNormalForm : FSDiscountForm
-@end
-
-@interface FSDiscountUsedForm : FSDiscountForm
-@end
-
-@interface FSDiscountExpiredForm : FSDiscountForm
 @end
 
 
@@ -69,12 +71,11 @@
 @property (strong, nonatomic)NSString* is_default;
 @property (strong, nonatomic)NSString* create_time;
 @property (strong, nonatomic)NSString* update_time;
+@property (strong, nonatomic)NSString* logo;
+@property (strong, nonatomic)NSString* car_num;
 @property (strong, nonatomic)NSString* car_type_name;
 @property (strong, nonatomic)NSString* car_model_name;
-@property (strong, nonatomic)NSString* car_brand_image;     //服务器须添加字段(品牌车标图)
-@property (strong, nonatomic)NSString* prov;                //服务器须添加字段(省份简称（如：川）)
-@property (strong, nonatomic)NSString* number;              //服务器须添加字段(地级市代号（如：L）)
-@property (strong, nonatomic)NSString* numberPlate;         //服务器须添加字段(车牌号（如：M8195）)
+@property (strong, nonatomic)NSString* car_brand_name;
 @end
 
 

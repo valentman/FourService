@@ -34,6 +34,36 @@
     NSURLCache *URLCache = [[NSURLCache alloc] initWithMemoryCapacity:40 * 1024 * 1024 diskCapacity:40 * 1024 * 1024 diskPath:nil];
     [NSURLCache setSharedURLCache:URLCache];
     
+    //------------------3.登录设置----------------
+    [FSBaseDataInstance loginWithDefaultInfoSuccess:^
+     {
+//         if (![USER_DEFAULT valueForKey:kCZJDefaultCityID] ||
+//             ![USER_DEFAULT valueForKey:kCZJDefaultyCityName])
+//         {
+//             [USER_DEFAULT setObject:kCZJChengduID forKey:kCZJDefaultCityID];
+//             [USER_DEFAULT setObject:kCZJChengdu forKey:kCZJDefaultyCityName];
+//             CZJLoginModelInstance.usrBaseForm.cityId = kCZJChengduID;
+//             CZJLoginModelInstance.usrBaseForm.cityName = kCZJChengdu;
+//             [CZJBaseDataInstance setCurCityName:kCZJChengdu];
+//         }
+//         else
+//         {
+//             CZJLoginModelInstance.usrBaseForm.cityId = [USER_DEFAULT valueForKey: kCZJDefaultCityID];
+//             CZJLoginModelInstance.usrBaseForm.cityName = [USER_DEFAULT valueForKey:kCZJDefaultyCityName];
+//             [CZJBaseDataInstance setCurCityName:[USER_DEFAULT valueForKey:kCZJDefaultyCityName]];
+//         }
+         
+//         UserBaseForm* userForm = CZJBaseDataInstance.userInfoForm;
+//         //应该先判断是否设置了自动登录，如果设置了，则不需要您再调用
+//         EMError *erroras = [[EMClient sharedClient] loginWithUsername:userForm.imId password:@"123456"];
+//         if (erroras)
+//         {
+//             DLog(@"*********%@",erroras.errorDescription);
+//         }
+     } fail:^{
+         
+     }];
+    
     //--------------------4.初始化定位-------------------
     if (IS_IOS8)
     {

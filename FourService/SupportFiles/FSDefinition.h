@@ -46,10 +46,10 @@ static NSString *const kFSServerAPIServiceStepList = @"Service/serviceStep";    
 
 
 
-static NSString *const kCZJServerAPILoadCarBrands = @"chezhu/loadCarBrandsV2.do";                   //获取汽车品牌列表
-static NSString *const kCZJServerAPILoadCarSeries = @"chezhu/loadCarSeries.do";                     //获取汽车品牌车系列表
+static NSString *const kCZJServerAPILoadCarBrands = @"http://czapp.chezhijian.com/appserver/chezhu/loadCarBrandsV2.do";                   //获取汽车品牌列表
+static NSString *const kCZJServerAPILoadCarSeries = @"http://czapp.chezhijian.com/appserver/chezhu/loadCarSeries.do";                     //获取汽车品牌车系列表
 
-static NSString *const kCZJServerAPILoadCarModels = @"chezhu/loadCarModels.do";                     //获取汽车品牌车系列表
+static NSString *const kCZJServerAPILoadCarModels = @"http://czapp.chezhijian.com/appserver/chezhu/loadCarModels.do";                     //获取汽车品牌车系列表
 static NSString *const kCZJServerAPIServiceDetail = @"chezhu/showServiceItemDetail.do";             //获取服务详情
 static NSString *const kCZJServerAPIServicePicDetail = @"chezhu/showServicePicDetail.do";           //获取服务图文详情
 static NSString *const kCZJServerAPIServiceBuyNoteDetail = @"chezhu/showServiceNoteDetail.do";      //获取服务购买须知详情

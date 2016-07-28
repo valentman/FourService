@@ -206,7 +206,7 @@ PBaseNaviagtionBarViewDelegate
         {//推荐信息
             FSRecommendInfoCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FSRecommendInfoCell" forIndexPath:indexPath];
             FSHomeNewsForm* newsForm = _newsArray[indexPath.row];
-            [cell.newsImageView sd_setImageWithURL:[NSURL URLWithString:newsForm.news_image_url]];
+            [cell.newsImageView sd_setImageWithURL:[NSURL URLWithString:[kCZJServerAddr stringByAppendingString:newsForm.news_image_url]]];
             cell.titleLabel.text = newsForm.title;
             cell.summerLabel.text = newsForm.summary;
             return cell;
@@ -309,11 +309,8 @@ PBaseNaviagtionBarViewDelegate
 }
 
 #pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
 }
 
 @end

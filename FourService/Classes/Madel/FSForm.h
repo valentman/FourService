@@ -11,7 +11,6 @@
 #import "FSHomeForm.h"
 #import "FSStartPageForm.h"
 #import "FSMyInfoForm.h"
-#import "UserBaseForm.h"
 #import "ProvinceForm.h"
 #import "FSCarForm.h"
 #import "FSDateTime.h"

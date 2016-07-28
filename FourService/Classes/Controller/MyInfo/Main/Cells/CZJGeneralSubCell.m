@@ -49,19 +49,27 @@
     for (int i =0; i < items.count; i++)
     {
         NSDictionary* dict = (NSDictionary*)items[i];
-        BadgeButtonView* btnView = [PUtils getXibViewByName:@"BadgeButtonView"];
-        CGRect btnViewRect = [PUtils viewFrameFromDynamic:CZJMarginMake(20, 0) size:CGSizeMake(60, 60) index:i divide:(int)items.count subWidth:0];
-        btnView.frame = btnViewRect;
-        [self addSubview:btnView];
-        [btnView.viewBtn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
-        btnView.viewBtn.tag = i + 1;
-        btnView.viewLabel.text = [dict valueForKey:@"title"];
-        if (type == kCZJGeneralSubCellTypeWallet)
+        BadgeButtonView* btnView;
+        if (!VIEWWITHTAG(self, i+1000)) {
+            btnView = [PUtils getXibViewByName:@"BadgeButtonView"];
+            CGRect btnViewRect = [PUtils viewFrameFromDynamic:CZJMarginMake(20, 0) size:CGSizeMake(60, 60) index:i divide:(int)items.count subWidth:0];
+            btnView.frame = btnViewRect;
+            [self addSubview:btnView];
+            [btnView.viewBtn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
+            btnView.tag = i + 1000;
+            btnView.viewLabel.text = [dict valueForKey:@"title"];
+        }
+        else
+        {
+            btnView = VIEWWITHTAG(self, i+1000);
+        }
+        
+        if (type == kCZJGeneralSubCellTypePersonal)
         {
             [btnView.viewBtn setImage:nil forState:UIControlStateNormal];
-            [btnView.viewBtn setTitle:[dict valueForKey:@"buttonTitle"] forState:UIControlStateNormal];
-            [btnView.viewBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-            btnView.viewBtn.titleLabel.font = SYSTEMFONT(12);
+            [btnView.viewBtn setTitle:[dict valueForKey:@"budge"] forState:UIControlStateNormal];
+            [btnView.viewBtn setTitleColor:CZJREDCOLOR forState:UIControlStateNormal];
+            btnView.viewBtn.titleLabel.font = BOLDSYSTEMFONT(14);
         }
         if (type == kCZJGeneralSubCellTypeOrder)
         {
@@ -69,11 +77,6 @@
             [btnView.viewBtn setImage:IMAGENAMED([dict valueForKey:@"buttonImage"]) forState:UIControlStateNormal];
             [btnView.viewBtn setBadgeNum:[[dict valueForKey:@"budge"] integerValue]];
             [btnView.viewBtn setBadgeLabelPosition:CGPointMake(btnView.viewBtn.frame.size.width*0.75, btnView.viewBtn.frame.size.height*0.1)];
-        }
-        if (type == kCZJGeneralSubCellTypePersonal)
-        {
-            [btnView.viewBtn setBadgeNum:0];
-            [btnView.viewBtn setImage:IMAGENAMED([dict valueForKey:@"buttonImage"]) forState:UIControlStateNormal];
         }
     }
 }

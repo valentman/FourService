@@ -36,16 +36,9 @@ CZJMyInfoHeadCellDelegate
     NSArray* walletSubCellAry;              //我的钱包下子项数组
     NSInteger _currentTouchOrderListType;
     
-    FSPersonalForm* myInfoForm;
-    
-    
-    NSArray* discountNormalAry;
-    NSArray* discountUsedAry;
-    NSArray* discountExpiredAry;
+    UserBaseForm* myInfoForm;
     NSArray* carListAry;
-    NSArray* customerViewdAry;
-    NSArray* customerFavoriteAry;
-    NSArray* shopCommentAry;
+    FSCarListForm* defaultCar;
     
 }
 @property (strong, nonatomic) UITableView *myTableView;
@@ -75,9 +68,8 @@ CZJMyInfoHeadCellDelegate
 - (void)viewWillAppear:(BOOL)animated
 {
     [self dealWithInitNavigationBar];
-    [USER_DEFAULT setBool:YES forKey:kCZJIsUserHaveLogined];
     if ([USER_DEFAULT boolForKey:kCZJIsUserHaveLogined]) {
-//        [self getMyInfoDataFromServer];
+        [self getMyInfoDataFromServer];
     }
     else
     {
@@ -116,51 +108,45 @@ CZJMyInfoHeadCellDelegate
 
 - (void)initDatas
 {
+    carListAry  = [NSArray array];
     personalCellAry = [NSArray array];
-    NSDictionary* pDict0 = @{@"title":@"足迹",
-                             @"buttonImage":@"my_icon_pay",
-                             @"segueTo":@"segutToRecord"};
-    NSDictionary* pDict1 = @{@"title":@"收藏",
-                             @"buttonImage":@"my_icon_pay",
-                             @"segueTo":@"segueToMyAttention"};
-    NSDictionary* pDict2 = @{@"title":@"评价",
-                             @"buttonImage":@"my_icon_pay",
-                             @"segueTo":@"segueToMyEvaluation"};
-    NSDictionary* pDict3 = @{@"title":@"优惠券",
-                             @"buttonImage":@"my_icon_pay",
-                             @"segueTo":@"segueToCoupon"};
+    NSMutableDictionary* pDict0 = [@{@"title":@"足迹",
+                             @"segueTo":@"segutToRecord",
+                             @"budge":@"0",
+                             @"item":@"Customer_view_num"}mutableCopy];
+    NSMutableDictionary* pDict1 = [@{@"title":@"收藏",
+                             @"segueTo":@"segueToMyAttention",
+                             @"budge":@"0",
+                             @"item":@"Customer_favorite_num"}mutableCopy];
+    NSMutableDictionary* pDict2 = [@{@"title":@"评价",
+                             @"segueTo":@"segueToMyEvaluation",
+                             @"budge":@"0",
+                             @"item":@"Customer_comment_num"}mutableCopy];
+    NSMutableDictionary* pDict3 = [@{@"title":@"优惠券",
+                             @"segueTo":@"segueToCoupon",
+                             @"budge":@"0",
+                             @"item":@"discount_normal_num"}mutableCopy];
     personalCellAry = @[pDict0,pDict1,pDict2,pDict3];
     
     orderSubCellAry  = [NSArray array];
     NSMutableDictionary* dict1 = [@{@"title":@"待付款",
                                     @"buttonImage":@"my_icon_pay",
                                     @"budge":@"0",
-                                    @"item":@"nopay"} mutableCopy];
+                                    @"item":@"order_payed_num"} mutableCopy];
     NSMutableDictionary* dict2 = [@{@"title":@"服务中",
                                     @"buttonImage":@"my_icon_shigong",
                                     @"budge":@"0",
-                                    @"item":@"nobuild"} mutableCopy];
+                                    @"item":@"order_init_num"} mutableCopy];
     NSMutableDictionary* dict4 = [@{@"title":@"待评价",
                                     @"buttonImage":@"my_icon_recommend",
                                     @"budge":@"0",
-                                    @"item":@"noevaluate"} mutableCopy];
+                                    @"item":@"order_finish_num"} mutableCopy];
     NSMutableDictionary* dict5 = [@{@"title":@"已评价",
                                     @"buttonImage":@"my_icon_tuihuo",
                                     @"budge":@"0",
-                                    @"item":@""} mutableCopy];
+                                    @"item":@"order_commented_num"} mutableCopy];
     orderSubCellAry = @[dict1,dict2,dict4,dict5];
-    
-    walletSubCellAry = [NSArray array];
-    
-    discountNormalAry = [NSArray array];
-    discountUsedAry  = [NSArray array];
-    discountExpiredAry  = [NSArray array];
-    carListAry  = [NSArray array];
-    customerViewdAry  = [NSArray array];
-    customerFavoriteAry  = [NSArray array];
-    shopCommentAry  = [NSArray array];
-    
-    
+
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshTabBarDotLabel) name:kCZJNotifiRefreshMessageReadStatus object:nil];
 }
 
@@ -201,7 +187,7 @@ CZJMyInfoHeadCellDelegate
 
 - (void)getMyInfoDataFromServer
 {
-    
+    __weak typeof (self) weakSelf = self;
     if ([USER_DEFAULT boolForKey:kCZJIsUserHaveLogined])
     {
         [FSBaseDataInstance getUserInfo:nil Success:^(id json) {
@@ -209,14 +195,9 @@ CZJMyInfoHeadCellDelegate
             DLog(@"%@",[dict description]);
             
             //服务器返回数据本地化，全部转化为模型数据存储在数组中
-            myInfoForm = [FSPersonalForm objectWithKeyValues:dict];
-            discountNormalAry = [FSDiscountNormalForm objectArrayWithKeyValuesArray:[dict valueForKey:@"discount_normal"]];
-            discountUsedAry = [FSDiscountUsedForm objectArrayWithKeyValuesArray:[dict valueForKey:@"discount_used"]];
-            discountExpiredAry = [FSDiscountExpiredForm objectArrayWithKeyValuesArray:[dict valueForKey:@"discount_expired"]];
+            myInfoForm = [UserBaseForm objectWithKeyValues:dict];
             carListAry = [FSCarListForm objectArrayWithKeyValuesArray:[dict valueForKey:@"car_list"]];
-            customerViewdAry = [FSCustomerViewdForm objectArrayWithKeyValuesArray:[dict valueForKey:@"Customer_view"]];
-            customerFavoriteAry = [FSCustomerFavoriteForm objectArrayWithKeyValuesArray:[dict valueForKey:@"Customer_favorite"]];
-            shopCommentAry = [FSShopCommentForm objectArrayWithKeyValuesArray:[dict valueForKey:@"Shop_comment"]];
+            [weakSelf updateOrderData:dict];
             
             //更新表格
             [self.myTableView reloadData];
@@ -237,13 +218,21 @@ CZJMyInfoHeadCellDelegate
             [orderDict setValue:count forKey:@"budge"];
         }
     }
-    for (NSDictionary* walletDict in walletSubCellAry)
+    for (NSDictionary* walletDict in personalCellAry)
     {
         NSString* itemName = [walletDict valueForKey:@"item"];
         if (![itemName isEqualToString:@""])
         {
             NSString* count = [dict valueForKey:itemName];
-            [walletDict setValue:count forKey:@"buttonTitle"];
+            [walletDict setValue:count forKey:@"budge"];
+        }
+    }
+    for (FSCarListForm* carForm in carListAry)
+    {
+        if (carForm.is_default)
+        {
+            defaultCar = carForm;
+            break;
         }
     }
 }
@@ -273,7 +262,11 @@ CZJMyInfoHeadCellDelegate
             CZJMyInfoHeadCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJMyInfoHeadCell" forIndexPath:indexPath];
             cell.unLoginView.hidden = [USER_DEFAULT boolForKey:kCZJIsUserHaveLogined];
             cell.haveLoginView.hidden = ![USER_DEFAULT boolForKey:kCZJIsUserHaveLogined];
-            cell.delegate = self;
+            if (FSBaseDataInstance.userInfoForm && [USER_DEFAULT boolForKey:kCZJIsUserHaveLogined])
+            {
+                [cell setUserPersonalInfo:myInfoForm andDefaultCar:defaultCar];
+                cell.delegate = self;
+            }
             cell.separatorInset = HiddenCellSeparator;
             cell.contentView.backgroundColor = CZJNAVIBARBGCOLOR;
             return cell;

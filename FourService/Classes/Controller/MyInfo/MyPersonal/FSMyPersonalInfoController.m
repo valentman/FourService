@@ -100,9 +100,9 @@ UITableViewDataSource
     if ([sexual isEqualToString:@"女"]) {
         sex = @"2";
     }
-    NSDictionary* params = @{@"chezhu.name": name, @"chezhu.sex":sex};
-    FSBaseDataInstance.userInfoForm.name = name;
-    FSBaseDataInstance.userInfoForm.sex = sexual;
+    NSDictionary* params = @{@"chinese_name": name, @"customer_sex":sex};
+    FSBaseDataInstance.userInfoForm.chinese_name = name;
+    FSBaseDataInstance.userInfoForm.customer_sex = sexual;
     
     [FSBaseDataInstance updateUserInfo:params Success:^(id json)
      {

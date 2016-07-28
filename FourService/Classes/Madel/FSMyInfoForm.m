@@ -8,23 +8,15 @@
 
 #import "FSMyInfoForm.h"
 
-@implementation FSPersonalForm
+@implementation UserBaseForm
++ (NSDictionary *)objectClassInArray
+{
+    return @{@"car_list" : @"FSCarListForm"};
+}
 @end
 
 
 @implementation FSDiscountForm
-@end
-
-
-@implementation FSDiscountNormalForm
-@end
-
-
-@implementation FSDiscountUsedForm
-@end
-
-
-@implementation FSDiscountExpiredForm
 @end
 
 

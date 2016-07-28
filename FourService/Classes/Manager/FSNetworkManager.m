@@ -118,7 +118,6 @@ singleton_implementation(FSNetworkManager)
     // 设置返回格式
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     manager.requestSerializer.timeoutInterval = 10.f;
     
     [manager POST:urlStr

@@ -15,7 +15,6 @@
 #import "ZXLocationManager.h"
 //#import "FourServicepingCartForm.h"
 //#import "CZJOrderForm.h"
-#import "UserBaseForm.h"
 #import "AppDelegate.h"
 
 @implementation FSBaseDataManager
@@ -47,14 +46,9 @@ singleton_implementation(FSBaseDataManager);
         _serviceTypesAry = [NSMutableArray array];
         _goodsTypesAry = [NSMutableArray array];
         _orderPaymentTypeAry = [NSArray array];
-        
-//        _homeForm = [[HomeForm alloc]init];
-//        _storeForm = [[CZJStoreForm alloc]init];
-//        _shoppingCartForm = [[FourServicepingCartForm alloc]init];
+
         _userInfoForm = [[UserBaseForm alloc]init];
         [self initPostBaseParameters];
-        NSArray* dict = [PUtils readArrayFromBundleDirectoryWithName:@"PaymentType"];
-//        _orderPaymentTypeAry = [CZJOrderTypeForm objectArrayWithKeyValuesArray:dict];
         return self;
     }
     return nil;
@@ -69,32 +63,12 @@ singleton_implementation(FSBaseDataManager);
                                  @"suffix" : ((iPhone6Plus || iPhone6) ? @"@3x" : @"@2x")
                                  };
     _params = [_tmpparams mutableCopy];
-    
-    //获取省份信息
-//    [self getAreaInfos];
-    //省份信息写入文件
-    NSDictionary* newdict = [PUtils readDictionaryFromDocumentsDirectoryWithPlistName:kCZJPlistFileProvinceCitys];
-//    [_storeForm setNewProvinceDataWithDictionary:newdict];
-    
-}
-
-- (NSArray*)orderPaymentTypeAry
-{
-//    for (CZJOrderTypeForm* form in _orderPaymentTypeAry)
-//    {
-//        form.isSelect = NO;
-//        if ([form.orderTypeName isEqualToString:@"支付宝支付"])
-//        {
-//            form.isSelect = YES;
-//        }
-//    }
-    return _orderPaymentTypeAry;
 }
 
 - (void)refreshChezhuID
 {
-//    [_params setValue:((nil == self.userInfoForm.chezhuId) ? @"0" : self.userInfoForm.chezhuId) forKey:@"chezhuId"];
-//    [_params setValue:((nil == self.userInfoForm.cityId) ? @"0" : self.userInfoForm.cityId) forKey:@"cityId"];
+    [_params setValue:((nil == self.userInfoForm.identifier) ? @"0" : self.userInfoForm.identifier) forKey:@"identifier"];
+    [_params setValue:((nil == self.userInfoForm.token) ? @"0" : self.userInfoForm.token) forKey:@"token"];
 //    [_params setValue:((nil == self.userInfoForm.mobile) ? @"0" : self.userInfoForm.mobile) forKey:@"chezhuMobile"];
 }
 
@@ -135,7 +109,6 @@ singleton_implementation(FSBaseDataManager);
 }
 
 - (BOOL)showAlertView:(id)info{
-//    NSDictionary* dict = [PUtils dictionaryFromJsonString:info];
     NSDictionary* dict = [NSDictionary dictionaryWithDictionary:info];
     NSString* msgKey = [[info valueForKey:@"code"] stringValue];
     if (![msgKey isEqual:@"0"]) {
@@ -328,13 +301,9 @@ singleton_implementation(FSBaseDataManager);
 - (void)getCarBrandsList:(SuccessBlockHandler)success
 {
     SuccessBlockHandler successBlock = ^(id json){
-        if ([self showAlertView:json])
-        {
-            NSDictionary* dict = [PUtils DataFromJson:json];
-//            _carForm = [[CZJCarForm alloc]init];
-//            [_carForm setNewCarBrandsFormDictionary:dict];
-            success(json);
-        }
+        _carForm = [[FSCarForm alloc]init];
+        [_carForm setNewCarBrandsFormDictionary:json];
+        success(json);
     };
     
     FailureBlockHandler failBlock = ^(){
@@ -343,13 +312,17 @@ singleton_implementation(FSBaseDataManager);
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setValuesForKeysWithDictionary:_params];
     
-//    if (!_carForm)
-//    {
-        [FSNetWorkInstance postJSONWithUrl:kCZJServerAPILoadCarBrands
-                                 parameters:params
-                                    success:successBlock
-                                       fail:failBlock];
-//    }
+    if (!_carForm)
+    {
+//        [FSNetWorkInstance postJSONWithUrl:kCZJServerAPILoadCarBrands
+//                                 parameters:params
+//                                    success:successBlock
+//                                       fail:failBlock];
+        [FSNetWorkInstance postJSONWithNoServerAPI:kCZJServerAPILoadCarBrands
+                                        parameters:params
+                                           success:successBlock
+                                              fail:failBlock];
+    }
 }
 
 - (void)loadCarSeriesWithBrandId:(NSString*)brandId
@@ -361,8 +334,8 @@ singleton_implementation(FSBaseDataManager);
     {
         if ([self showAlertView:json])
         {
-            NSDictionary* dict = [PUtils DataFromJson:json];
-//            [_carForm setNewCarSeriesWithDict:dict AndBrandName:brandName];
+//            NSDictionary* dict = [PUtils DataFromJson:json];
+            [_carForm setNewCarSeriesWithDict:json AndBrandName:brandName];
             DLog(@"login suc");
             success();
         }
@@ -375,10 +348,15 @@ singleton_implementation(FSBaseDataManager);
     [params setValuesForKeysWithDictionary:_params];
     [params setObject:brandId forKey:@"brandId"];
     
-    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPILoadCarSeries
-                            parameters:params
-                               success:successBlock
-                                  fail:failBlock];
+//    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPILoadCarSeries
+//                            parameters:params
+//                               success:successBlock
+//                                  fail:failBlock];
+    
+    [FSNetWorkInstance postJSONWithNoServerAPI:kCZJServerAPILoadCarSeries
+                                    parameters:params
+                                       success:successBlock
+                                          fail:failBlock];
 }
 
 - (void)loadCarModelSeriesId:(NSString*)seriesId
@@ -390,8 +368,8 @@ singleton_implementation(FSBaseDataManager);
     {
         if ([self showAlertView:json])
         {
-            NSDictionary* dict = [PUtils DataFromJson:json];
-//            [_carForm setNewCarModelsWithDict:dict ];
+//            NSDictionary* dict = [PUtils DataFromJson:json];
+            [_carForm setNewCarModelsWithDict:json ];
             success(json);
         }
     };
@@ -403,11 +381,14 @@ singleton_implementation(FSBaseDataManager);
     [params setValuesForKeysWithDictionary:_params];
     [params setObject:seriesId forKey:@"seriesId"];
     
-    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPILoadCarModels
-                            parameters:params
-                               success:successBlock
-                                  fail:failBlock];
-    
+//    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPILoadCarModels
+//                            parameters:params
+//                               success:successBlock
+//                                  fail:failBlock];
+    [FSNetWorkInstance postJSONWithNoServerAPI:kCZJServerAPILoadCarModels
+                                    parameters:params
+                                       success:successBlock
+                                          fail:failBlock];
 }
 
 
@@ -1170,6 +1151,22 @@ singleton_implementation(FSBaseDataManager);
                  fail:(FailureBlockHandler)fail
 {
     [self generalPost:postParams success:success fail:fail andServerAPI:kFSServerAPIEditMyCar];
+}
+
+//启动读出用户默认配置信息
+- (void)loginWithDefaultInfoSuccess:(void (^)())success
+                               fail:(void (^)())fail{
+    
+    NSDictionary* userDict = [PUtils readDictionaryFromDocumentsDirectoryWithPlistName:kCZJPlistFileUserBaseForm];
+    if (!userDict)
+    {
+        [USER_DEFAULT setBool:NO forKey:kCZJIsUserHaveLogined];
+        return;
+    }
+    self.userInfoForm = [[UserBaseForm alloc] init];
+    self.userInfoForm = [UserBaseForm objectWithKeyValues:userDict];
+    [self refreshChezhuID];
+    success();
 }
 
 
