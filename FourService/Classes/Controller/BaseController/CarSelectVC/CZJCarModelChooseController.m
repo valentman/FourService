@@ -34,8 +34,10 @@ UITableViewDelegate
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"选择车型";
-    self.view.backgroundColor = CZJNAVIBARBGCOLOR;
+    
+    [self addCZJNaviBarViewWithNotHiddenNavi:CZJNaviBarViewTypeGeneral];
+    self.naviBarView.mainTitleLabel.text = @"选择车型";
+    
     [self initTableView];
     [FSBaseDataInstance loadCarModelSeriesId:[NSString stringWithFormat:@"%d", self.carSeries.seriesId] Success:^()
      {

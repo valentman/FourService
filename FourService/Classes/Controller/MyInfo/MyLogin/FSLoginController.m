@@ -138,10 +138,10 @@ FDAlertViewDelegate
     [self.protocolView setHidden:NO];
     
     //按钮文字大小颜色随变
-    self.loginWithCodeBtn.titleLabel.textColor = [UIColor blackColor];
-    self.loginWithCodeBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-    self.loginWithPWDBtn.titleLabel.textColor = [UIColor grayColor];
-    self.loginWithPWDBtn.titleLabel.font = [UIFont systemFontOfSize:13];
+    [self.loginWithCodeBtn setTitleColor:BLACKCOLOR  forState:UIControlStateNormal];
+    [self.loginWithPWDBtn setTitleColor:GRAYCOLOR  forState:UIControlStateNormal];
+    self.loginWithCodeBtn.titleLabel.font = BOLDSYSTEMFONT(15);
+    self.loginWithPWDBtn.titleLabel.font = SYSTEMFONT(13);
     
     
     if (self.codeTextField.text.length == 0) {
@@ -172,10 +172,10 @@ FDAlertViewDelegate
     [self.protocolView setHidden:YES];
     
     //按钮文字大小颜色随变
-    self.loginWithCodeBtn.titleLabel.textColor = [UIColor grayColor];
-    self.loginWithCodeBtn.titleLabel.font = [UIFont systemFontOfSize:13];
-    self.loginWithPWDBtn.titleLabel.textColor = [UIColor blackColor];
-    self.loginWithPWDBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    [self.loginWithCodeBtn setTitleColor:GRAYCOLOR  forState:UIControlStateNormal];
+    [self.loginWithPWDBtn setTitleColor:BLACKCOLOR  forState:UIControlStateNormal];
+    self.loginWithCodeBtn.titleLabel.font = SYSTEMFONT(13);
+    self.loginWithPWDBtn.titleLabel.font = BOLDSYSTEMFONT(15);
     
     if (![PUtils isBlankString:self.phoneNumTextField.text])
     {

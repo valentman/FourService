@@ -29,7 +29,10 @@ UITableViewDataSource
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"选择车系";
+    
+    [self addCZJNaviBarViewWithNotHiddenNavi:CZJNaviBarViewTypeGeneral];
+    self.naviBarView.mainTitleLabel.text = @"选择车系";
+    
     self.view.backgroundColor = CZJNAVIBARBGCOLOR;
     [self initTableView];
 }

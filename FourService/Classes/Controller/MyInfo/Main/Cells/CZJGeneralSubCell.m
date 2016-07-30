@@ -50,18 +50,19 @@
     {
         NSDictionary* dict = (NSDictionary*)items[i];
         BadgeButtonView* btnView;
-        if (!VIEWWITHTAG(self, i+1000)) {
+        if (!VIEWWITHTAG(self, i + 1000)) {
             btnView = [PUtils getXibViewByName:@"BadgeButtonView"];
             CGRect btnViewRect = [PUtils viewFrameFromDynamic:CZJMarginMake(20, 0) size:CGSizeMake(60, 60) index:i divide:(int)items.count subWidth:0];
             btnView.frame = btnViewRect;
             [self addSubview:btnView];
             [btnView.viewBtn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
             btnView.tag = i + 1000;
+            btnView.viewBtn.tag = i + 1;
             btnView.viewLabel.text = [dict valueForKey:@"title"];
         }
         else
         {
-            btnView = VIEWWITHTAG(self, i+1000);
+            btnView = VIEWWITHTAG(self, i + 1000);
         }
         
         if (type == kCZJGeneralSubCellTypePersonal)

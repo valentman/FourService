@@ -14,31 +14,33 @@
 static NSString *const kCZJServerAddr = @"http://119.29.135.211/";      //线上正式环境
 
 //首页接口组 
-static NSString *const kFSServerAPIShowHome = @"Home/home";                   //获取首页数据
-static NSString *const kFSServerAPILottery = @"Home/lucky/activity_id/1";     //抽奖
+static NSString *const kFSServerAPIShowHome = @"Home/home";                             //获取首页数据
+static NSString *const kFSServerAPILottery = @"Home/lucky/activity_id/1";               //抽奖
 
 //登录模块接口组
-static NSString *const kFSServerAPIRegister = @"Login/register";                      //注册
-static NSString *const kFSServerAPILogin = @"Login/customerLogin";                    //登录
-static NSString *const kFSServerAPILoginOut = @"Login/customerLogout";                //注销
-static NSString *const kFSServerAPIVerifyCode = @"Login/verify";                      //验证码
-static NSString *const kFSServerAPICheckVerifyCode = @"Login/checkVerify";            //确认验证码
+static NSString *const kFSServerAPIRegister = @"Login/register";                        //注册
+static NSString *const kFSServerAPILogin = @"Login/customerLogin";                      //登录
+static NSString *const kFSServerAPILoginOut = @"Login/customerLogout";                  //注销
+static NSString *const kFSServerAPIVerifyCode = @"Login/verify";                        //验证码
+static NSString *const kFSServerAPICheckVerifyCode = @"Login/checkVerify";              //确认验证码
 
-static NSString *const kFSServerAPIGetMyInfo = @"Customer/customerInfo";              //个人信息
-static NSString *const kFSServerAPIEditMyInfo = @"Customer/editCustomer";             //编辑个人信息
-static NSString *const kFSServerAPIUploadHeadImage = @"Customer/uploadHeadImage";     //上传头像
-static NSString *const kFSServerAPIAddMyCar = @"Customer/addCustomerCar";             //增加车辆
-static NSString *const kFSServerAPIDeleteMyCar = @"Customer/delCustomerCar";          //删除车辆
-static NSString *const kFSServerAPIEditMyCar = @"Customer/editCustomerCar";           //编辑车辆
+static NSString *const kFSServerAPIGetMyInfo = @"Customer/customerInfo";                //个人信息
+static NSString *const kFSServerAPIEditMyInfo = @"Customer/editCustomer";               //编辑个人信息
+static NSString *const kFSServerAPIUploadHeadImage = @"Customer/uploadHeadImage";       //上传头像
+static NSString *const kFSServerAPIAddMyCar = @"Customer/addCustomerCar";               //增加车辆
+static NSString *const kFSServerAPIDeleteMyCar = @"Customer/delCustomerCar";            //删除车辆
+static NSString *const kFSServerAPIEditMyCar = @"Customer/editCustomerCar";             //编辑车辆
 
-static NSString *const kFSServerAPIServiceList = @"Service/serviceList";              //服务列表
-static NSString *const kFSServerAPIStoreList = @"Service/shopList";                   //门店列表
-static NSString *const kFSServerAPIStoreDetail = @"Service/shopInfo";                 //门店详情
-static NSString *const kFSServerAPIServiceStepList = @"Service/serviceStep";          //服务步骤列表
+static NSString *const kFSServerAPIServiceList = @"Service/serviceList";                //服务列表
+static NSString *const kFSServerAPIStoreList = @"Service/shopList";                     //门店列表
+static NSString *const kFSServerAPIStoreDetail = @"Service/shopInfo";                   //门店详情
+static NSString *const kFSServerAPIServiceStepList = @"Service/serviceStep";            //服务步骤列表
 
-
-
-
+static NSString *const kFSServerAPIScanList = @"Customer/customerShopViewList";         //足迹
+static NSString *const kFSServerAPIFavoriteList = @"Customer/customerShopViewList";     //收藏
+static NSString *const kFSServerAPIEvalutionList = @"";  //评价列表
+static NSString *const kFSServerAPIDiscountList = @"Customer/customerDiscountList";     //优惠券
+static NSString *const kFSServerAPIOrderList = @"Customer/customerOrderList";           //订单列表
 
 
 

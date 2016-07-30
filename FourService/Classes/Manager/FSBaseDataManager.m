@@ -112,7 +112,6 @@ singleton_implementation(FSBaseDataManager);
     NSDictionary* dict = [NSDictionary dictionaryWithDictionary:info];
     NSString* msgKey = [[info valueForKey:@"code"] stringValue];
     if (![msgKey isEqual:@"0"]) {
-//        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowErrorInfoWithErrorCode: stringValue]];
         [PUtils tipWithText:[dict valueForKey:@"message"] andView:nil];
         return NO;
     }
@@ -195,6 +194,31 @@ singleton_implementation(FSBaseDataManager);
 }
 
 
+- (void)generalUploadImage:(UIImage*)image
+                   withAPI:(NSString*)serverAPI
+                   Success:(SuccessBlockHandler)success
+                      fail:(FailureBlockHandler)fail
+{
+    SuccessBlockHandler successBlock = ^(id json){
+        if ([self showAlertView:json])
+        {
+            success(json);
+        }
+    };
+    
+    FailureBlockHandler failBlock = ^(){
+        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
+    };
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setValuesForKeysWithDictionary:self.params];
+    
+    [FSNetWorkInstance uploadImageWithUrl:serverAPI
+                                    Image:image
+                               Parameters:params
+                                  success:successBlock
+                                  failure:failBlock];
+}
+
 - (void)getAreaInfos
 {
     SuccessBlockHandler successBlock = ^(id json) {
@@ -216,19 +240,6 @@ singleton_implementation(FSBaseDataManager);
                                    fail:failBlock];
 }
 
-
--(void)getSomeInfoSuccess:(SuccessBlockHandler)success{
-//    NSString* tst = [self.userInfoForm.chezhuId stringByReplacingOccurrencesOfString:@"-" withString:@""];
-//    NSString* str = [NSString stringWithFormat:@"{\"chezhuId\":\"%@\",\"cityId\":\"%@\",\"mobile\":\"%@\",\"lat\":\"%@\",\"lng\":\"%@\"}",tst,_curCityID,self.userInfoForm.mobile,[NSNumber numberWithDouble:_curLocation.latitude],[NSNumber numberWithDouble:_curLocation.longitude]];
-//    if ([USER_DEFAULT boolForKey:kCZJIsUserHaveLogined])
-//    {
-//        success(str);
-//    }
-//    else
-//    {
-//        success(@"");
-//    }
-}
 
 
 #pragma mark- 首页
@@ -553,128 +564,8 @@ singleton_implementation(FSBaseDataManager);
 }
 
 
-
-#pragma mark- 购物车
-- (void)loadShoppingCart:(NSDictionary*)postParams
-                    type:(CZJHomeGetDataFromServerType)type
-                 Success:(GeneralBlockHandler)success
-                    fail:(FailureBlockHandler)fail
-{
-    SuccessBlockHandler successBlock = ^(id json)
-    {
-        if ([self showAlertView:json])
-        {
-//            NSDictionary* dict = [PUtils DataFromJson:json];
-//            if (CZJHomeGetDataFromServerTypeOne == type) {
-//                [_shoppingCartForm setNewShoppingCartDictionary:dict];
-//            }
-//            else if (CZJHomeGetDataFromServerTypeTwo == type)
-//            {
-//                [_shoppingCartForm appendNewShoppingCartData:dict];
-//            }
-            success(json);
-        }
-    };
-    
-    FailureBlockHandler failBlock = ^(){
-        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
-        fail();
-    };
-    
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:postParams];
-    [params setValuesForKeysWithDictionary:_params];
-    
-    
-    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPIShoppingCartList
-                             parameters:params
-                                success:successBlock
-                                   fail:failBlock];
-}
-
-- (void)loadShoppingCartCount:(NSDictionary*)postParams
-                      Success:(SuccessBlockHandler)success
-                         fail:(FailureBlockHandler)fail
-{
-    SuccessBlockHandler successBlock = ^(id json)
-    {
-        if ([self showAlertView:json])
-        {
-            if (success)
-            {
-                NSDictionary* dict = [PUtils DataFromJson:json];
-                [USER_DEFAULT setObject:[dict valueForKey:@"msg"] forKey:kUserDefaultShoppingCartCount];
-                success(json);
-            }
-        }
-    };
-    
-    FailureBlockHandler failBlock = ^(){
-        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
-    };
-    
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:_params];
-    [params setValuesForKeysWithDictionary:postParams];
-    
-    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPIShoppingCartCount
-                             parameters:params
-                                success:successBlock
-                                   fail:failBlock];
-}
-
-- (void)addProductToShoppingCart:(NSDictionary*)postParams
-                         Success:(SuccessBlockHandler)success
-                            fail:(FailureBlockHandler)fail
-{
-    SuccessBlockHandler successBlock = ^(id json)
-    {
-        if ([self showAlertView:json])
-        {
-            success(json);
-        }
-    };
-    
-    FailureBlockHandler failBlock = ^(){
-        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
-    };
-    
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:_params];
-    [params setValuesForKeysWithDictionary:postParams];
-    
-    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPIAddToShoppingCart
-                             parameters:params
-                                success:successBlock
-                                   fail:failBlock];
-}
-
-- (void)removeProductFromShoppingCart:(NSDictionary*)postParams
-                              Success:(GeneralBlockHandler)success
-                                 fail:(FailureBlockHandler)fail
-{
-    SuccessBlockHandler successBlock = ^(id json)
-    {
-        if ([self showAlertView:json])
-        {
-        }
-        success(json);
-    };
-    
-    FailureBlockHandler failBlock = ^(){
-        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
-    };
-    
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:_params];
-    [params setValuesForKeysWithDictionary:postParams];
-    
-    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPIDeleteShoppingCartInfo
-                             parameters:params
-                                success:successBlock
-                                   fail:failBlock];
-}
-
+#pragma mark- 订单
+//-------------------------订单数据------------------------------
 - (void)loadSettleOrder:(NSDictionary*)postParams
                 Success:(SuccessBlockHandler)success
                    fail:(FailureBlockHandler)fail
@@ -725,143 +616,6 @@ singleton_implementation(FSBaseDataManager);
     [params setValuesForKeysWithDictionary:postParams];
     
     [FSNetWorkInstance postJSONWithUrl:kCZJServerAPISubmitOrder
-                             parameters:params
-                                success:successBlock
-                                   fail:failBlock];
-}
-
-
-
-- (void)loadAddrList:(NSDictionary*)postParams
-             Success:(SuccessBlockHandler)success
-                fail:(FailureBlockHandler)fail
-{
-    SuccessBlockHandler successBlock = ^(id json)
-    {
-        if ([self showAlertView:json])
-        {
-            success(json);
-        }
-        
-    };
-    
-    FailureBlockHandler failBlock = ^(){
-        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
-    };
-    
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:_params];
-    [params setValuesForKeysWithDictionary:postParams];
-    
-    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPIGetAddrList
-                             parameters:params
-                                success:successBlock
-                                   fail:failBlock];
-}
-
-//添加地址
-- (void)addDeliveryAddr:(NSDictionary*)postParams
-                Success:(GeneralBlockHandler)success
-                   fail:(FailureBlockHandler)fail
-{
-    SuccessBlockHandler successBlock = ^(id json)
-    {
-        if ([self showAlertView:json])
-        {
-        }
-        success(json);
-    };
-    
-    FailureBlockHandler failBlock = ^(){
-        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
-    };
-    
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:_params];
-    [params setValuesForKeysWithDictionary:postParams];
-    
-    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPIAddAddr
-                             parameters:params
-                                success:successBlock
-                                   fail:failBlock];
-}
-
-//修改收货地址
-- (void)updateDeliveryAddr:(NSDictionary*)postParams
-                   Success:(GeneralBlockHandler)success
-                      fail:(FailureBlockHandler)fail
-{
-    SuccessBlockHandler successBlock = ^(id json)
-    {
-        if ([self showAlertView:json])
-        {
-        }
-        success(json);
-    };
-    
-    FailureBlockHandler failBlock = ^(){
-        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
-    };
-    
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:_params];
-    [params setValuesForKeysWithDictionary:postParams];
-    
-    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPIUpdateAddr
-                             parameters:params
-                                success:successBlock
-                                   fail:failBlock];
-}
-
-//删除收货地址
-- (void)removeDeliveryAddr:(NSDictionary*)postParams
-                   Success:(SuccessBlockHandler)success
-                      fail:(FailureBlockHandler)fail
-{
-    SuccessBlockHandler successBlock = ^(id json)
-    {
-        if ([self showAlertView:json])
-        {
-        }
-        success(json);
-    };
-    
-    FailureBlockHandler failBlock = ^(){
-        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
-    };
-    
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:_params];
-    [params setValuesForKeysWithDictionary:postParams];
-    
-    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPIRemoveAddr
-                             parameters:params
-                                success:successBlock
-                                   fail:failBlock];
-}
-
-//设置默认地址
-- (void)setDefaultAddr:(NSDictionary*)postParams
-               Success:(SuccessBlockHandler)success
-                  fail:(FailureBlockHandler)fail
-{
-    SuccessBlockHandler successBlock = ^(id json)
-    {
-        if ([self showAlertView:json])
-        {
-        }
-        success(json);
-    };
-    
-    FailureBlockHandler failBlock = ^(){
-        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
-    };
-    
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:_params];
-    [params setValuesForKeysWithDictionary:postParams];
-    
-    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPISetDefaultAddr
                              parameters:params
                                 success:successBlock
                                    fail:failBlock];
@@ -983,9 +737,8 @@ singleton_implementation(FSBaseDataManager);
 
 
 
-
-
-
+#pragma mark- 用户信息
+//-------------------------个人信息中心------------------------------
 //获取用户信息详情
 - (void)getUserInfo:(NSDictionary*)postParams
             Success:(SuccessBlockHandler)success
@@ -1004,34 +757,9 @@ singleton_implementation(FSBaseDataManager);
                   Success:(SuccessBlockHandler)success
                      fail:(FailureBlockHandler)fail
 {
-    [self generalUploadImage:image withAPI:kCZJServerAPIUploadHeadPic Success:success fail:fail];
+    [self generalUploadImage:image withAPI:kFSServerAPIUploadHeadImage Success:success fail:fail];
 }
 
-
-- (void)generalUploadImage:(UIImage*)image
-                   withAPI:(NSString*)serverAPI
-                   Success:(SuccessBlockHandler)success
-                      fail:(FailureBlockHandler)fail
-{
-    SuccessBlockHandler successBlock = ^(id json){
-        if ([self showAlertView:json])
-        {
-            success(json);
-        }
-    };
-    
-    FailureBlockHandler failBlock = ^(){
-        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
-    };
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:self.params];
-    
-    [FSNetWorkInstance uploadImageWithUrl:serverAPI
-                                     Image:image
-                                Parameters:params
-                                   success:successBlock
-                                   failure:failBlock];
-}
 
 //修改用户信息
 - (void)updateUserInfo:(NSDictionary*)postParams
@@ -1079,15 +807,63 @@ singleton_implementation(FSBaseDataManager);
     [params setValuesForKeysWithDictionary:self.params];
     [params setValuesForKeysWithDictionary:postParams];
     
-    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPIAddCar
+    [FSNetWorkInstance postJSONWithUrl:kFSServerAPIAddMyCar
                              parameters:params
                                 success:successBlock
                                    fail:failBlock];
 }
 
+//移除爱车
+- (void)removeMyCar:(NSDictionary*)postParams
+            Success:(SuccessBlockHandler)success
+               fail:(FailureBlockHandler)fail
+{
+    [self generalPost:postParams success:success fail:fail andServerAPI:kFSServerAPIDeleteMyCar];
+}
+
+//设置默认车辆
+- (void)setDefaultCar:(NSDictionary*)postParams
+              Success:(SuccessBlockHandler)success
+                 fail:(FailureBlockHandler)fail
+{
+    [self generalPost:postParams success:success fail:fail andServerAPI:kFSServerAPIEditMyCar];
+}
+
+//获取足迹列表
+- (void)getScanList:(NSDictionary*)postParams
+            Success:(SuccessBlockHandler)success
+               fail:(FailureBlockHandler)fail
+{
+    [self generalPost:postParams success:success fail:fail andServerAPI:kFSServerAPIScanList];
+}
+
+//获取收藏列表
+- (void)getFavoriteList:(NSDictionary*)postParams
+                Success:(SuccessBlockHandler)success
+                   fail:(FailureBlockHandler)fail
+{
+    [self generalPost:postParams success:success fail:fail andServerAPI:kFSServerAPIFavoriteList];
+}
+
+//获取评价列表
+- (void)getEvalutionList:(NSDictionary*)postParams
+                 Success:(SuccessBlockHandler)success
+                    fail:(FailureBlockHandler)fail
+{
+    [self generalPost:postParams success:success fail:fail andServerAPI:kFSServerAPIEvalutionList];
+}
+
+//优惠券
+- (void)getDiscountList:(NSDictionary*)postParams
+                Success:(SuccessBlockHandler)success
+                   fail:(FailureBlockHandler)fail
+{
+    [self generalPost:postParams success:success fail:fail andServerAPI:kFSServerAPIDiscountList];
+}
 
 
 
+#pragma mark- 注册登录
 //-------------------------注册登录------------------------------
 
 - (void)loginWithPwdOrCode:(NSDictionary*)loginParams
@@ -1095,6 +871,13 @@ singleton_implementation(FSBaseDataManager);
                       fail:(SuccessBlockHandler)fail
 {
     [self generalPost:loginParams success:success failure:fail andServerAPI:kFSServerAPILogin];
+}
+
+- (void)loginOut:(NSDictionary*)loginoutParams
+         success:(SuccessBlockHandler)success
+            fail:(SuccessBlockHandler)fail
+{
+    [self generalPost:loginoutParams success:success fail:fail andServerAPI:kFSServerAPILoginOut];
 }
 
 
@@ -1137,21 +920,7 @@ singleton_implementation(FSBaseDataManager);
     [self generalPost:postParams success:success fail:fail andServerAPI:@"TODO"];
 }
 
-//移除爱车
-- (void)removeMyCar:(NSDictionary*)postParams
-            Success:(SuccessBlockHandler)success
-               fail:(FailureBlockHandler)fail
-{
-    [self generalPost:postParams success:success fail:fail andServerAPI:kFSServerAPIDeleteMyCar];
-}
 
-//设置默认车辆
-- (void)setDefaultCar:(NSDictionary*)postParams
-              Success:(SuccessBlockHandler)success
-                 fail:(FailureBlockHandler)fail
-{
-    [self generalPost:postParams success:success fail:fail andServerAPI:kFSServerAPIEditMyCar];
-}
 
 //启动读出用户默认配置信息
 - (void)loginWithDefaultInfoSuccess:(void (^)())success

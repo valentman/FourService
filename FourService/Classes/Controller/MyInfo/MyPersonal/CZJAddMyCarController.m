@@ -44,11 +44,17 @@ UITextFieldDelegate
 @property (weak, nonatomic) IBOutlet UILabel *carPlateNumLabel;
 @property (weak, nonatomic) IBOutlet UIButton *defBtn;
 @property (weak, nonatomic) IBOutlet UITextField *plateNumTextField;
+@property (weak, nonatomic) IBOutlet UITextField *engineCodeTextField;
+@property (weak, nonatomic) IBOutlet UITextField *vinCodeTextField;
+@property (weak, nonatomic) IBOutlet UILabel *productDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *buyDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *maintainDateLabel;
 
 - (IBAction)setCarDefalutAction:(id)sender;
-
 - (IBAction)addMyCarAction:(id)sender;
 - (IBAction)chooseCarPlateNumAction:(id)sender;
+- (IBAction)chooseDateAction:(id)sender;
+
 @end
 
 @implementation CZJAddMyCarController
@@ -62,6 +68,9 @@ UITextFieldDelegate
 - (void)initViews
 {
     [PUtils customizeNavigationBarForTarget:self];
+    [self addCZJNaviBarView:CZJNaviBarViewTypeGeneral];
+    self.naviBarView.mainTitleLabel.text = @"编辑车辆信息";
+    
     self.view.backgroundColor = CZJNAVIBARBGCOLOR;
     self.viewOneLayoutHeight.constant = 0.3;
     self.viewTwoLayoutWidth.constant = 0.3;
@@ -158,25 +167,19 @@ UITextFieldDelegate
         [PUtils tipWithText:@"请输入正确的车牌" andView:nil];
         return;
     }
-    
-    CarBrandsForm* _carBrandForm = FSBaseDataInstance.carBrandForm;
-    CarSeriesForm* _carSerialForm = FSBaseDataInstance.carSerialForm;
+
     CarModelForm* _carModealForm = FSBaseDataInstance.carModealForm;
     
-    
-    NSMutableDictionary* carInfo = [@{ @"brandId": _carBrandForm.brandId,
-                                       @"brandName": _carBrandForm.name,
-                                       @"seriesId": [NSString stringWithFormat:@"%d",_carSerialForm.seriesId],
-                                       @"seriesName": _carSerialForm.name,
-                                       @"modelId": _carModealForm.modelId,
-                                       @"modelName" : _carModealForm.name,
-                                       @"numberPlate" : self.plateNumTextField.text,
-                                       @"prov": provinceStr,
-                                       @"number" : numverPlateStr,
-                                       @"logo" : FSBaseDataInstance.carBrandForm.icon,
-                                       @"dftFlag" : self.defBtn.selected ? @"true" : @"false"
+    NSMutableDictionary* carInfo = [@{ @"car_type_id": _carModealForm.modelId,
+                                       @"car_num" : self.plateNumTextField.text,
+                                       @"is_default" : self.defBtn.selected ? @"true" : @"false",
+                                       @"vin_code":self.vinCodeTextField.text ? self.vinCodeTextField.text : @"0",
+                                       @"engine_code":self.engineCodeTextField.text ? self.engineCodeTextField.text : @"0",
+                                       @"buy_date":self.buyDateLabel.text ? self.buyDateLabel.text : @"0",
+                                       @"product_date":self.productDateLabel.text ? self.productDateLabel.text : @"0",
+                                       @"maintain_date":self.maintainDateLabel.text ? self.maintainDateLabel.text : @"0"
                                        } mutableCopy];
-    [FSBaseDataInstance addMyCar:@{@"paramJson":[PUtils JsonFromData:carInfo]} Success:^(id json) {
+    [FSBaseDataInstance addMyCar:carInfo Success:^(id json) {
         [PUtils tipWithText:@"添加成功" andView:nil];
         NSArray* vcs = self.navigationController.viewControllers;
         for (id controller in vcs)
@@ -221,6 +224,9 @@ UITextFieldDelegate
         [_pickerView selectRow:currentSelectNum inComponent:1 animated:YES];
     }
 
+}
+
+- (IBAction)chooseDateAction:(id)sender {
 }
 
 

@@ -41,7 +41,14 @@
     self.userPhoneLabel.text = userinfo.customer_pho;
     [self.userHeadImg sd_setImageWithURL:[NSURL URLWithString:userinfo.customer_photo] placeholderImage:IMAGENAMED(@"my_icon_head")];
     self.userHeadImg.clipsToBounds = YES;
-    self.myDefaultCarLabel.text = [NSString stringWithFormat:@"我的车辆：%@ %@ %@",car.car_brand_name,car.car_model_name,car.car_type_name];
+    NSString* carStr = @"暂无车辆";
+    if (car.car_brand_name &&
+        car.car_model_name &&
+        car.car_type_name)
+    {
+        carStr = [NSString stringWithFormat:@"%@ %@ %@",car.car_brand_name,car.car_model_name,car.car_type_name];
+    }
+    self.myDefaultCarLabel.text = [NSString stringWithFormat:@"我的车辆：%@",carStr];
 }
 
 - (IBAction)messageAction:(id)sender

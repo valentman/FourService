@@ -15,6 +15,9 @@
 		EC026F2F1D2B894700CA8CEB /* FSLotteryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC026F2D1D2B894700CA8CEB /* FSLotteryCell.xib */; };
 		EC026F331D2B897200CA8CEB /* FSRecommendInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC026F311D2B897200CA8CEB /* FSRecommendInfoCell.m */; };
 		EC026F341D2B897200CA8CEB /* FSRecommendInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC026F321D2B897200CA8CEB /* FSRecommendInfoCell.xib */; };
+		EC1261A41D4CEA700082378D /* FSStoreServiceForm.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1261A31D4CEA700082378D /* FSStoreServiceForm.m */; };
+		EC1261AE1D4CECB90082378D /* CZJGoodsAttentionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1261AC1D4CECB90082378D /* CZJGoodsAttentionCell.m */; };
+		EC1261AF1D4CECB90082378D /* CZJGoodsAttentionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC1261AD1D4CECB90082378D /* CZJGoodsAttentionCell.xib */; };
 		EC18DE8C1D44FEF7006CB460 /* FSMyMessageCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC18DE8B1D44FEF7006CB460 /* FSMyMessageCenterController.m */; };
 		EC18DE911D450204006CB460 /* CZJMyMessageCenterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC18DE8F1D450204006CB460 /* CZJMyMessageCenterCell.m */; };
 		EC18DE921D450204006CB460 /* CZJMyMessageCenterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC18DE901D450204006CB460 /* CZJMyMessageCenterCell.xib */; };
@@ -377,6 +380,11 @@
 		EC026F301D2B897200CA8CEB /* FSRecommendInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRecommendInfoCell.h; sourceTree = "<group>"; };
 		EC026F311D2B897200CA8CEB /* FSRecommendInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRecommendInfoCell.m; sourceTree = "<group>"; };
 		EC026F321D2B897200CA8CEB /* FSRecommendInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSRecommendInfoCell.xib; sourceTree = "<group>"; };
+		EC1261A21D4CEA700082378D /* FSStoreServiceForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSStoreServiceForm.h; sourceTree = "<group>"; };
+		EC1261A31D4CEA700082378D /* FSStoreServiceForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSStoreServiceForm.m; sourceTree = "<group>"; };
+		EC1261AB1D4CECB90082378D /* CZJGoodsAttentionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJGoodsAttentionCell.h; sourceTree = "<group>"; };
+		EC1261AC1D4CECB90082378D /* CZJGoodsAttentionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJGoodsAttentionCell.m; sourceTree = "<group>"; };
+		EC1261AD1D4CECB90082378D /* CZJGoodsAttentionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJGoodsAttentionCell.xib; sourceTree = "<group>"; };
 		EC18DE8A1D44FEF7006CB460 /* FSMyMessageCenterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyMessageCenterController.h; sourceTree = "<group>"; };
 		EC18DE8B1D44FEF7006CB460 /* FSMyMessageCenterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyMessageCenterController.m; sourceTree = "<group>"; };
 		EC18DE8E1D450204006CB460 /* CZJMyMessageCenterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJMyMessageCenterCell.h; sourceTree = "<group>"; };
@@ -1155,6 +1163,16 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		EC1261A51D4CEC470082378D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EC1261AB1D4CECB90082378D /* CZJGoodsAttentionCell.h */,
+				EC1261AC1D4CECB90082378D /* CZJGoodsAttentionCell.m */,
+				EC1261AD1D4CECB90082378D /* CZJGoodsAttentionCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		EC18DE8D1D450204006CB460 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1248,6 +1266,7 @@
 		EC3A18E31D41F06D00F6F193 /* MyViewed */ = {
 			isa = PBXGroup;
 			children = (
+				EC1261A51D4CEC470082378D /* Cell */,
 				EC3A18E71D41F13F00F6F193 /* FSMyViewedController.h */,
 				EC3A18E81D41F13F00F6F193 /* FSMyViewedController.m */,
 			);
@@ -1342,6 +1361,8 @@
 				ECA233E81D37DD4F004C2679 /* FSMyInfoForm.m */,
 				ECD537F91D4656B100D136EF /* FSCarForm.h */,
 				ECD537FA1D4656B100D136EF /* FSCarForm.m */,
+				EC1261A21D4CEA700082378D /* FSStoreServiceForm.h */,
+				EC1261A31D4CEA700082378D /* FSStoreServiceForm.m */,
 			);
 			path = Madel;
 			sourceTree = "<group>";
@@ -2776,6 +2797,7 @@
 				EC5429751D237E7700F3B4BF /* LICENSE in Resources */,
 				EC54299B1D237E7700F3B4BF /* wl_map_icon_1_press@2x.png in Resources */,
 				EC542A151D237E7700F3B4BF /* WebViewJsBridge.js in Resources */,
+				EC1261AF1D4CECB90082378D /* CZJGoodsAttentionCell.xib in Resources */,
 				EC54277F1D237DE000F3B4BF /* FSButtomView.xib in Resources */,
 				ECA233E01D37DC8F004C2679 /* CZJGeneralCell.xib in Resources */,
 				EC542AEB1D239B8A00F3B4BF /* AlipaySDK.bundle in Resources */,
@@ -2964,6 +2986,7 @@
 				EC5429651D237E7700F3B4BF /* iConsole.m in Sources */,
 				EC5429A61D237E7700F3B4BF /* MJConst.m in Sources */,
 				EC542AF71D239B8A00F3B4BF /* RSADataVerifier.m in Sources */,
+				EC1261AE1D4CECB90082378D /* CZJGoodsAttentionCell.m in Sources */,
 				EC5429EB1D237E7700F3B4BF /* QNHijackingDetectWrapper.m in Sources */,
 				EC542A7A1D23979500F3B4BF /* UIViewController+HUD.m in Sources */,
 				EC026F2E1D2B894700CA8CEB /* FSLotteryCell.m in Sources */,
@@ -3008,6 +3031,7 @@
 				EC5429861D237E7700F3B4BF /* UIViewController+LJWKeyboardHandlerHelper.m in Sources */,
 				EC5429AD1D237E7700F3B4BF /* NSString+MJExtension.m in Sources */,
 				EC5429EE1D237E7700F3B4BF /* QNReachability.m in Sources */,
+				EC1261A41D4CEA700082378D /* FSStoreServiceForm.m in Sources */,
 				EC542A0F1D237E7700F3B4BF /* UIWebView+AFNetworking.m in Sources */,
 				EC5429B51D237E7700F3B4BF /* MJRefreshAutoStateFooter.m in Sources */,
 				EC5427911D237DE000F3B4BF /* LSPageScrollView.m in Sources */,

@@ -10,6 +10,7 @@
 #import "LJWKeyboardHandlerHeaders.h"
 #import "FSLoginController.h"
 #import "FSBaseDataManager.h"
+#import "XGPush.h"
 #define kLoginColorRed RGB(255, 102, 102)
 
 
@@ -55,6 +56,7 @@ FDAlertViewDelegate
 @property (weak, nonatomic) IBOutlet UIView *rePwdView;
 @property (weak, nonatomic) IBOutlet UIView *codeView;
 @property (weak, nonatomic) IBOutlet UIView *protocolView;
+@property (weak, nonatomic) IBOutlet UIView *phoneNumView;
 
 @property (weak, nonatomic) IBOutlet UILabel *daojishiLab;
 @property (weak, nonatomic) IBOutlet UIButton *isPasswordTypeBtn;
@@ -86,7 +88,7 @@ FDAlertViewDelegate
 - (void)initViews
 {
     //顶部步骤按钮颜色
-    [self setStageButtonColor:RegistStageTypeVerifyCode];
+    [self setStageButtonColor:RegistStageTypeSetPwd];
     
     self.phoneNumTextField.delegate = self;
     self.pwdTextField.delegate = self;
@@ -114,7 +116,6 @@ FDAlertViewDelegate
     [self.agreeProtocolBtn setImage:[UIImage imageNamed:@"login_icon_select"] forState:UIControlStateNormal];
     [self.agreeProtocolBtn setSelected:YES];
     
-
     
     if (![PUtils isBlankString:self.phoneNum])
     {
@@ -126,8 +127,6 @@ FDAlertViewDelegate
     vertifySuccessDict = [NSDictionary dictionary];
     isIdentityVerify = YES;
     [self.daojishiLab setHidden:YES];
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -187,7 +186,7 @@ FDAlertViewDelegate
 //        };
         
         //临时用图片验证码代替
-        [self.imageCode sd_setImageWithURL:[NSURL URLWithString:kFSServerAPIVerifyCode] placeholderImage:nil options:SDWebImageRefreshCached completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        [self.imageCode sd_setImageWithURL:[NSURL URLWithString:ConnectString(kCZJServerAddr, kFSServerAPIVerifyCode) ] placeholderImage:nil options:SDWebImageRefreshCached completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             [self.getCodeBtn setEnabled:NO];
             [self.getCodeBtn setHidden:YES];
         }];
@@ -198,20 +197,29 @@ FDAlertViewDelegate
 - (IBAction)confirmAction:(id)sender
 {
     [self.view endEditing:YES];
-
-//    NSDictionary* params = @{@"customer_pho":self.phoneNumTextField.text,
-//                             @"password" : self.pwdTextField.text,
-//                             @"repassword" : self.repeatPwdTextField.text,
-//                             @"verify" : self.codeTextField.text};
-//    SuccessBlockHandler success = ^(id json)
-//    {
-//        DLog(@"%@",json);
-//    };
-//    FailureBlockHandler failure = ^(){
-//        
-//    };
-//    
-//    [FSBaseDataInstance userRegistWithParam:params success:success fail:failure];
+    __weak typeof(self) weakSelf = self;
+    NSDictionary* params = @{@"customer_pho":self.phoneNumTextField.text,
+                             @"password" : self.pwdTextField.text,
+                             @"repassword" : self.repeatPwdTextField.text,
+                             @"verify" : self.codeTextField.text};
+    SuccessBlockHandler success = ^(id json)
+    {
+        [weakSelf setStageButtonColor:RegistStageTypeSuccess];
+        
+        [weakSelf loginSuccess:json success:^{
+            [PUtils tipWithText:@"登录成功" andView:nil];
+            [weakSelf exitAction:nil];
+        } fail:^{
+            
+        }];
+    };
+    FailureBlockHandler failure = ^(){
+        
+    };
+    
+    [FSBaseDataInstance userRegistWithParam:params success:success fail:failure];
+    
+    return;
 
     
     //验证手机有效性
@@ -238,24 +246,7 @@ FDAlertViewDelegate
             //顶部身份验证和设置密码栏重置
             [self setStageButtonColor:currentStageType];
             
-            //密码栏显示，验证码栏和服务协议隐藏
-            [self.view layoutIfNeeded];
-            [UIView animateWithDuration:0.5 animations:^{
-                //遍历查找view的heigh约束，并修改它
-                [self.codeView setHidden:YES];
-                [self.pwdView setHidden:NO];
-                [self.rePwdView setHidden:NO];
-                [self.protocolView setHidden:YES];
-                self.confirmBtnTop.constant = 120;
-                //更新约束  在某个时刻约束会被还原成frame使视图显示
-                [self.view layoutIfNeeded];
-            } completion:^(BOOL finished) {
-                [self.confirmBtn setEnabled:YES];
-                self.confirmBtn.backgroundColor = CZJREDCOLOR;
-            }];
             
-            self.phoneNumTextField.enabled = NO;
-            self.phoneNumTextField.textColor = [UIColor lightGrayColor];
             
         };
         FailureBlockHandler failure = ^{
@@ -446,9 +437,88 @@ FDAlertViewDelegate
 - (void)setStageButtonColor:(RegistStageType)stageNum
 {
     currentStageType = stageNum;
-    self.identityButton.titleLabel.textColor = (stageNum == 1) ? BLACKCOLOR : CZJGRAYCOLOR;
-    self.setPWDButton.titleLabel.textColor = (stageNum == 2) ? BLACKCOLOR : CZJGRAYCOLOR;
-    self.registSuccessButton.titleLabel.textColor = (stageNum == 3) ? BLACKCOLOR : CZJGRAYCOLOR;
+    [self.identityButton setTitleColor:((stageNum == RegistStageTypeVerifyCode) ? BLACKCOLOR : CZJGRAYCOLOR) forState:UIControlStateNormal];
+    [self.setPWDButton setTitleColor:((stageNum == RegistStageTypeSetPwd) ? BLACKCOLOR : CZJGRAYCOLOR) forState:UIControlStateNormal];
+    [self.registSuccessButton setTitleColor:((stageNum == RegistStageTypeSuccess) ? BLACKCOLOR : CZJGRAYCOLOR) forState:UIControlStateNormal];
+    self.identityButton.titleLabel.font = (stageNum == RegistStageTypeVerifyCode) ? BOLDSYSTEMFONT(15) :SYSTEMFONT(14);
+    self.setPWDButton.titleLabel.font = (stageNum == RegistStageTypeSetPwd) ? BOLDSYSTEMFONT(15) :SYSTEMFONT(14);
+    self.registSuccessButton.titleLabel.font = (stageNum == RegistStageTypeSuccess) ? BOLDSYSTEMFONT(15) :SYSTEMFONT(14);
+    
+    switch (stageNum) {
+        case RegistStageTypeVerifyCode: {
+            
+            break;
+        }
+        case RegistStageTypeSetPwd: {
+            //密码栏显示，验证码栏和服务协议隐藏
+            [self.view layoutIfNeeded];
+            [UIView animateWithDuration:0.5 animations:^{
+                //遍历查找view的heigh约束，并修改它
+                [self.codeView setHidden:YES];
+                [self.pwdView setHidden:NO];
+                [self.rePwdView setHidden:NO];
+                [self.protocolView setHidden:YES];
+                self.confirmBtnTop.constant = 150;
+                //更新约束  在某个时刻约束会被还原成frame使视图显示
+                [self.view layoutIfNeeded];
+            } completion:^(BOOL finished) {
+                [self.confirmBtn setEnabled:YES];
+                self.confirmBtn.backgroundColor = CZJREDCOLOR;
+            }];
+            
+//            self.phoneNumTextField.enabled = NO;
+//            self.phoneNumTextField.textColor = [UIColor lightGrayColor];
+            break;
+        }
+        case RegistStageTypeSuccess: {
+            [self.phoneNumView setHidden:YES];
+            [self.codeView setHidden:YES];
+            [self.pwdView setHidden:YES];
+            [self.rePwdView setHidden:YES];
+            [self.protocolView setHidden:YES];
+            [self.confirmBtn setHidden:YES];
+            break;
+        }
+    }
+}
+
+- (void)loginSuccess:(id)json
+             success:(GeneralBlockHandler)sucessBlock
+                fail:(GeneralBlockHandler)failBlock
+{
+    NSDictionary* dict = [json valueForKey:@"data"];
+    FSBaseDataInstance.userInfoForm.identifier = [dict valueForKey:@"identifier"];
+    FSBaseDataInstance.userInfoForm.token = [dict valueForKey:@"token"];
+    
+    //登录成功，个人信息写入本地文件中
+    if ([PUtils writeDictionaryToDocumentsDirectory:[FSBaseDataInstance.userInfoForm.keyValues mutableCopy] withPlistName:kCZJPlistFileUserBaseForm])
+    {
+        [USER_DEFAULT setObject:[NSNumber numberWithBool:YES] forKey:kCZJIsUserHaveLogined];
+        [USER_DEFAULT synchronize]; //强制更新到本地
+        
+        //更新基本参数
+        [FSBaseDataInstance.params setValue:[dict valueForKey:@"identifier"] forKey:@"identifier"];
+        [FSBaseDataInstance.params setValue:[dict valueForKey:@"token"] forKey:@"token"];
+        
+        //注册个人推送
+        [XGPush setAccount:FSBaseDataInstance.userInfoForm.identifier];
+        
+        [[NSNotificationCenter defaultCenter]postNotificationName:kCZJNotifiLoginSuccess object:nil];
+        
+        if (sucessBlock)
+        {
+            sucessBlock();
+        }
+    }
+    else
+    {
+        [PUtils tipWithText:@"登录超时，请重新操作" andView:nil];
+        if (failBlock)
+        {
+            failBlock();
+        }
+    }
+    
 }
 
 @end

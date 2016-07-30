@@ -177,52 +177,54 @@ UITableViewDataSource
     
     __weak typeof(self) weak = self;
     [self showFSAlertView:@"确定退出" andConfirmHandler:^{
-        //清除所有数据
-        //省份信息
-        [FileManager removeItemAtPath:[DocumentsDirectory stringByAppendingPathComponent:kCZJPlistFileProvinceCitys] error:nil];
-        //搜索历史
-        [FileManager removeItemAtPath:[DocumentsDirectory stringByAppendingPathComponent:kCZJPlistFileSearchHistory] error:nil];
-        //默认收货地址
-        [FileManager removeItemAtPath:[DocumentsDirectory stringByAppendingPathComponent:kCZJPlistFileDefaultDeliveryAddr] error:nil];
-        
-        //车主信息
-        [FileManager removeItemAtPath:[DocumentsDirectory stringByAppendingPathComponent:kCZJPlistFileUserBaseForm] error:nil];
-        
-        [USER_DEFAULT setValue:@"" forKey:kUserDefaultTimeDay];
-        [USER_DEFAULT setValue:@"" forKey:kUserDefaultTimeMin];
-        [USER_DEFAULT setValue:@"" forKey:kUserDefaultRandomCode];
-        
-        [USER_DEFAULT setValue:@"" forKey:kUserDefaultChoosedCarModelType];
-        [USER_DEFAULT setValue:@"" forKey:kUserDefaultChoosedCarModelID];
-        [USER_DEFAULT setValue:@"" forKey:kUserDefaultChoosedBrandID];
-        [USER_DEFAULT setValue:@"" forKey:kUserDefaultStartPrice];
-        [USER_DEFAULT setValue:@"" forKey:kUserDefaultEndPrice];
-        [USER_DEFAULT setValue:@"false" forKey:kUSerDefaultStockFlag];
-        [USER_DEFAULT setValue:@"false" forKey:kUSerDefaultPromotionFlag];
-        [USER_DEFAULT setValue:@"false" forKey:kUSerDefaultRecommendFlag];
-        [USER_DEFAULT setValue:@"" forKey:kUserDefaultServicePlace];
-        [USER_DEFAULT setValue:@"" forKey:kUserDefaultDetailStoreItemPid];
-        [USER_DEFAULT setValue:@"" forKey:kUserDefaultDetailItemCode];
-        
-        [USER_DEFAULT setObject:@"" forKey:kUSerDefaultSexual];
-        [USER_DEFAULT setValue:@"" forKey:kUserDefaultStartPageUrl];
-        [USER_DEFAULT setValue:@"" forKey:kUserDefaultStartPageImagePath];
-        [USER_DEFAULT setValue:@"" forKey:kUserDefaultStartPageForm];
-        [USER_DEFAULT setObject:[NSNumber numberWithBool:NO] forKey:kCZJIsUserHaveLogined];
-        [USER_DEFAULT setObject:@"0" forKey:kUserDefaultShoppingCartCount];
-        [USER_DEFAULT setObject:@"" forKey:kCZJDefaultCityID];
-        [USER_DEFAULT setObject:@"" forKey:kCZJDefaultyCityName];
-        [USER_DEFAULT synchronize];
-        
-        FSBaseDataInstance.userInfoForm = nil;
-//        CZJLoginModelInstance.usrBaseForm = nil;
-        [FSBaseDataInstance refreshChezhuID];
-        
-        
-        [weak.navigationController popViewControllerAnimated:YES];
-        [PUtils tipWithText:@"退出成功" andView:nil];
-        [[NSNotificationCenter defaultCenter]postNotificationName:kCZJNotifiLoginOut object:nil];
-        [weak hideWindow];
+        [FSBaseDataInstance loginOut:@{} success:^(id json) {
+            //清除所有数据
+            //省份信息
+            [FileManager removeItemAtPath:[DocumentsDirectory stringByAppendingPathComponent:kCZJPlistFileProvinceCitys] error:nil];
+            //搜索历史
+            [FileManager removeItemAtPath:[DocumentsDirectory stringByAppendingPathComponent:kCZJPlistFileSearchHistory] error:nil];
+            //默认收货地址
+            [FileManager removeItemAtPath:[DocumentsDirectory stringByAppendingPathComponent:kCZJPlistFileDefaultDeliveryAddr] error:nil];
+            
+            //车主信息
+            [FileManager removeItemAtPath:[DocumentsDirectory stringByAppendingPathComponent:kCZJPlistFileUserBaseForm] error:nil];
+            
+            [USER_DEFAULT setValue:@"" forKey:kUserDefaultTimeDay];
+            [USER_DEFAULT setValue:@"" forKey:kUserDefaultTimeMin];
+            [USER_DEFAULT setValue:@"" forKey:kUserDefaultRandomCode];
+            
+            [USER_DEFAULT setValue:@"" forKey:kUserDefaultChoosedCarModelType];
+            [USER_DEFAULT setValue:@"" forKey:kUserDefaultChoosedCarModelID];
+            [USER_DEFAULT setValue:@"" forKey:kUserDefaultChoosedBrandID];
+            [USER_DEFAULT setValue:@"" forKey:kUserDefaultStartPrice];
+            [USER_DEFAULT setValue:@"" forKey:kUserDefaultEndPrice];
+            [USER_DEFAULT setValue:@"false" forKey:kUSerDefaultStockFlag];
+            [USER_DEFAULT setValue:@"false" forKey:kUSerDefaultPromotionFlag];
+            [USER_DEFAULT setValue:@"false" forKey:kUSerDefaultRecommendFlag];
+            [USER_DEFAULT setValue:@"" forKey:kUserDefaultServicePlace];
+            [USER_DEFAULT setValue:@"" forKey:kUserDefaultDetailStoreItemPid];
+            [USER_DEFAULT setValue:@"" forKey:kUserDefaultDetailItemCode];
+            
+            [USER_DEFAULT setObject:@"" forKey:kUSerDefaultSexual];
+            [USER_DEFAULT setValue:@"" forKey:kUserDefaultStartPageUrl];
+            [USER_DEFAULT setValue:@"" forKey:kUserDefaultStartPageImagePath];
+            [USER_DEFAULT setValue:@"" forKey:kUserDefaultStartPageForm];
+            [USER_DEFAULT setObject:[NSNumber numberWithBool:NO] forKey:kCZJIsUserHaveLogined];
+            [USER_DEFAULT setObject:@"0" forKey:kUserDefaultShoppingCartCount];
+            [USER_DEFAULT setObject:@"" forKey:kCZJDefaultCityID];
+            [USER_DEFAULT setObject:@"" forKey:kCZJDefaultyCityName];
+            [USER_DEFAULT synchronize];
+            
+            FSBaseDataInstance.userInfoForm = nil;
+            [FSBaseDataInstance refreshChezhuID];
+            
+            [weak.navigationController popViewControllerAnimated:YES];
+            [PUtils tipWithText:@"退出成功" andView:nil];
+            [[NSNotificationCenter defaultCenter]postNotificationName:kCZJNotifiLoginOut object:nil];
+            [weak hideWindow];
+        } fail:^(id json) {
+            
+        }];
     } andCancleHandler:nil];
     
 }

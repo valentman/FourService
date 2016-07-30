@@ -52,9 +52,6 @@ singleton_implementation(FSNetworkManager)
     // 设置返回类型
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",@"text/plain", nil];
     
-    // 设置返回格式
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    
     NSString* path =  [self getPath:urlStr];
     
     [manager POST:path parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {

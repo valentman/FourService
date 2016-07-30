@@ -185,11 +185,11 @@
     NSString* jsString = [self getJavaScriptString];
     
     //JS注入
-    [FSBaseDataInstance getSomeInfoSuccess:^(id dic){
-        NSString* javastring = [NSString stringWithFormat:jsString, methodList, dic];
-        [webView stringByEvaluatingJavaScriptFromString:javastring];
-        DLog(@"\nwebView:%p, javastring:%@",_webView,javastring);
-    }];
+//    [FSBaseDataInstance getSomeInfoSuccess:^(id dic){
+//        NSString* javastring = [NSString stringWithFormat:jsString, methodList, dic];
+//        [webView stringByEvaluatingJavaScriptFromString:javastring];
+//        DLog(@"\nwebView:%p, javastring:%@",_webView,javastring);
+//    }];
 }
 
 @end

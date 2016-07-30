@@ -12,5 +12,5 @@
 @property (strong, nonatomic) UIButton* touchBtn;
 @property (strong, nonatomic) UIImageView* bgImageView;
 @property (weak, nonatomic) UIViewController* targetController;
-@property (weak, nonatomic) SuccessBlockHandler successBlock;
+@property (strong, nonatomic) SuccessBlockHandler successBlock;
 @end

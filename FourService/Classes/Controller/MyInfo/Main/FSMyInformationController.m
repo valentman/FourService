@@ -111,7 +111,7 @@ CZJMyInfoHeadCellDelegate
     carListAry  = [NSArray array];
     personalCellAry = [NSArray array];
     NSMutableDictionary* pDict0 = [@{@"title":@"足迹",
-                             @"segueTo":@"segutToRecord",
+                             @"segueTo":@"segueToRecord",
                              @"budge":@"0",
                              @"item":@"Customer_view_num"}mutableCopy];
     NSMutableDictionary* pDict1 = [@{@"title":@"收藏",
@@ -192,7 +192,6 @@ CZJMyInfoHeadCellDelegate
     {
         [FSBaseDataInstance getUserInfo:nil Success:^(id json) {
             NSDictionary* dict = [json valueForKey:kResoponData];
-            DLog(@"%@",[dict description]);
             
             //服务器返回数据本地化，全部转化为模型数据存储在数组中
             myInfoForm = [UserBaseForm objectWithKeyValues:dict];
@@ -461,6 +460,11 @@ CZJMyInfoHeadCellDelegate
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    if ([segue.identifier isEqualToString:@"segueToPersonalInfo"])
+    {
+        FSMyPersonalInfoController* myPersonal = segue.destinationViewController;
+        myPersonal.myinfor = myInfoForm;
+    }
     if ([segue.identifier isEqualToString:@"segueToMyCarList"])
     {
         FSMyCarListController* carListVC = segue.destinationViewController;

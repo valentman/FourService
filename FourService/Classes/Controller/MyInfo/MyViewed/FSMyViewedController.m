@@ -8,6 +8,7 @@
 
 #import "FSMyViewedController.h"
 #import "FSBaseDataManager.h"
+#import "CZJGoodsAttentionCell.h"
 
 @interface FSMyViewedController ()
 <
@@ -47,23 +48,7 @@ UITableViewDelegate
 - (void)initViews
 {
     [self addCZJNaviBarView:CZJNaviBarViewTypeGeneral];
-//    if (!self.fromMessage) {
-//        self.naviBarView.mainTitleLabel.text = @"浏览记录";
-//        //右按钮
-//        UIButton *rightBtn = [[ UIButton alloc ] initWithFrame : CGRectMake(PJ_SCREEN_WIDTH - 59 , 0 , 44 , 44 )];
-//        [rightBtn setTitle:@"清空" forState:UIControlStateNormal];
-//        [rightBtn addTarget:self action:@selector(edit:) forControlEvents:UIControlEventTouchUpInside];
-//        [rightBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-//        [rightBtn setSelected:NO];
-//        rightBtn.titleLabel.font = SYSTEMFONT(16);
-//        [rightBtn setTag:1999];
-//        [self.naviBarView addSubview: rightBtn];
-//    }
-//    else
-//    {
-        self.naviBarView.mainTitleLabel.text = @"足迹";
-//    }
-    
+    self.naviBarView.mainTitleLabel.text = @"足迹";
     
     self.myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, PJ_SCREEN_WIDTH, PJ_SCREEN_HEIGHT - StatusBar_HEIGHT - NavigationBar_HEIGHT) style:UITableViewStylePlain];
     self.myTableView.tableFooterView = [[UIView alloc]init];
@@ -90,62 +75,54 @@ UITableViewDelegate
 
 - (void)getScanListFromServer
 {
-//    __weak typeof(self) weak = self;
-//    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//    NSDictionary* params = @{@"page": @(self.page)};
-//    if (!self.fromMessage)
-//    {
-//        params = @{@"page": @(self.page)};
-//    }
-//    else
-//    {
-//        params = @{@"page": @(self.page),@"storeId" :self.storeId};
-//    }
-//    [CZJUtils removeNoDataAlertViewFromTarget:self.view];
-//    [CZJUtils removeReloadAlertViewFromTarget:self.view];
-//    [CZJBaseDataInstance loadScanList:params Success:^(id json) {
-//        [MBProgressHUD hideAllHUDsForView:self.view animated:NO];
-//        
-//        //========获取数据返回，判断数据大于0不==========
-//        NSArray* tmpAry = [[CZJUtils DataFromJson:json] valueForKey:@"msg"];
-//        if (CZJHomeGetDataFromServerTypeTwo == _getdataType)
-//        {
-//            [scanListAry addObjectsFromArray: [CZJMyScanRecordForm objectArrayWithKeyValuesArray:tmpAry]];
-//            if (tmpAry.count < 20)
-//            {
-//                [refreshFooter noticeNoMoreData];
-//            }
-//            else
-//            {
-//                [weak.myTableView.footer endRefreshing];
-//            }
-//        }
-//        else
-//        {
-//            scanListAry = [[CZJMyScanRecordForm objectArrayWithKeyValuesArray:tmpAry] mutableCopy];
-//        }
-//        
-//        VIEWWITHTAG(self.navigationController.navigationBar, 1999).hidden = (scanListAry.count == 0);
-//        if (scanListAry.count == 0)
-//        {
-//            self.myTableView.hidden = YES;
-//            [CZJUtils showNoDataAlertViewOnTarget:self.view withPromptString:@"木有浏览记录/(ToT)/~~"];
-//        }
-//        else
-//        {
-//            self.myTableView.hidden = (scanListAry.count == 0);
-//            self.myTableView.delegate = self;
-//            self.myTableView.dataSource = self;
-//            [self.myTableView reloadData];
-//            self.myTableView.footer.hidden = self.myTableView.mj_contentH < self.myTableView.frame.size.height;
-//        }
-//    }
-//                                 fail:^{
-//                                     [MBProgressHUD hideAllHUDsForView:self.view animated:NO];
-//                                     [CZJUtils showReloadAlertViewOnTarget:weak.view withReloadHandle:^{
-//                                         [weak getScanListFromServer];
-//                                     }];
-//                                 }];
+    __weak typeof(self) weak = self;
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    NSDictionary* params = @{@"page_num": @(self.page)};
+    [PUtils removeNoDataAlertViewFromTarget:self.view];
+    [PUtils removeReloadAlertViewFromTarget:self.view];
+    [FSBaseDataInstance getScanList:params Success:^(id json) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:NO];
+        
+        //========获取数据返回，判断数据大于0不==========
+        NSArray* tmpAry = [json valueForKey:kResoponData];
+        if (CZJHomeGetDataFromServerTypeTwo == _getdataType)
+        {
+            [scanListAry addObjectsFromArray: [FSStoreDetailForm objectArrayWithKeyValuesArray:tmpAry]];
+            if (tmpAry.count < 20)
+            {
+                [refreshFooter noticeNoMoreData];
+            }
+            else
+            {
+                [weak.myTableView.footer endRefreshing];
+            }
+        }
+        else
+        {
+            scanListAry = [[FSStoreDetailForm objectArrayWithKeyValuesArray:tmpAry] mutableCopy];
+        }
+        
+        VIEWWITHTAG(self.navigationController.navigationBar, 1999).hidden = (scanListAry.count == 0);
+        if (scanListAry.count == 0)
+        {
+            self.myTableView.hidden = YES;
+            [PUtils showNoDataAlertViewOnTarget:self.view withPromptString:@"木有浏览记录/(ToT)/~~"];
+        }
+        else
+        {
+            self.myTableView.hidden = (scanListAry.count == 0);
+            self.myTableView.delegate = self;
+            self.myTableView.dataSource = self;
+            [self.myTableView reloadData];
+            self.myTableView.footer.hidden = self.myTableView.mj_contentH < self.myTableView.frame.size.height;
+        }
+    }
+                                 fail:^{
+                                     [MBProgressHUD hideAllHUDsForView:self.view animated:NO];
+                                     [PUtils showReloadAlertViewOnTarget:weak.view withReloadHandle:^{
+                                         [weak getScanListFromServer];
+                                     }];
+                                 }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -162,9 +139,9 @@ UITableViewDelegate
 //            VIEWWITHTAG(self.navigationController.navigationBar, 1999).hidden = (scanListAry.count == 0);
 //            self.myTableView.hidden = (scanListAry.count == 0);
 //            [self.myTableView reloadData];
-//            [CZJUtils showNoDataAlertViewOnTarget:self.view withPromptString:@"木有浏览记录/(ToT)/~~"];
+//            [PUtils showNoDataAlertViewOnTarget:self.view withPromptString:@"木有浏览记录/(ToT)/~~"];
 //        } fail:^{
-//            [CZJUtils tipWithText:@"服务器异常，清除失败" andView:weak.view];
+//            [PUtils tipWithText:@"服务器异常，清除失败" andView:weak.view];
 //        }];
         [weak hideWindow];
         [weak.navigationItem.rightBarButtonItem setEnabled:true];
@@ -185,28 +162,27 @@ UITableViewDelegate
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    FSCustomerViewdForm* form = scanListAry[indexPath.row];
-//    CZJGoodsAttentionCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGoodsAttentionCell" forIndexPath:indexPath];
-//    //关注图片
+    FSStoreDetailForm* form = scanListAry[indexPath.row];
+    CZJGoodsAttentionCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGoodsAttentionCell" forIndexPath:indexPath];
+    //关注图片
 //    [cell.goodImg sd_setImageWithURL:[NSURL URLWithString:form.itemImg] placeholderImage:DefaultPlaceHolderSquare];
-//    
-//    //关注名称
-//    CGSize nameSize = [CZJUtils calculateStringSizeWithString:form.itemName Font:SYSTEMFONT(15) Width:PJ_SCREEN_WIDTH - 115];
-//    cell.goodNameLabel.text = form.itemName;
-//    cell.goodNameLayoutHeight.constant = nameSize.height > 15 ? nameSize.height + 5 : 15;
-//    
-//    //关注价格
+    
+    //关注名称
+    CGSize nameSize = [PUtils calculateStringSizeWithString:form.shop_name Font:SYSTEMFONT(15) Width:PJ_SCREEN_WIDTH - 115];
+    cell.goodNameLabel.text = form.shop_name;
+    cell.goodNameLayoutHeight.constant = nameSize.height > 15 ? nameSize.height + 5 : 15;
+    
+    //关注价格
 //    cell.priceLabel.text = form.currentPrice;
-//    cell.priceButton.constant = 10;
-//    
-//    //好评等隐藏
-//    cell.goodrateName.hidden = YES;
-//    cell.evaluateLabel.hidden = YES;
-//    cell.dealName.hidden = YES;
-//    cell.dealCountLabel.hidden = YES;
-//    cell.separatorInset = HiddenCellSeparator;
-//    return cell;
-    return nil;
+    cell.priceButton.constant = 10;
+    
+    //好评等隐藏
+    cell.goodrateName.hidden = YES;
+    cell.evaluateLabel.hidden = YES;
+    cell.dealName.hidden = YES;
+    cell.dealCountLabel.hidden = YES;
+    cell.separatorInset = HiddenCellSeparator;
+    return cell;
 }
 
 #pragma mark-UITableViewDelegate

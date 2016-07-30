@@ -31,7 +31,7 @@ VPImageCropperDelegate
         [self.touchBtn setTitle:@"" forState:UIControlStateNormal];
         [self.touchBtn setTitleColor:BLACKCOLOR forState:UIControlStateNormal];
         self.touchBtn.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
-        self.touchBtn.backgroundColor = BLUECOLOR;
+        self.touchBtn.backgroundColor = CLEARCOLOR;
         [self addSubview:self.touchBtn];
         [self.touchBtn addTarget:self action:@selector(showActionSheet:) forControlEvents:UIControlEventTouchUpInside];
         

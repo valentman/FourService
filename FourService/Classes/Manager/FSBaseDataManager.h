@@ -62,8 +62,28 @@ singleton_interface(FSBaseDataManager);
 
 - (void)initPostBaseParameters;
 - (void)refreshChezhuID;
+
+
+//-------------------------通用接口------------------------------
+//通用(失败回调带参数)
+- (void)generalPost:(NSDictionary*)postParams
+            success:(SuccessBlockHandler)success
+            failure:(SuccessBlockHandler)failure
+       andServerAPI:(NSString*)api;
+
+//通用(失败回调不带参数)
+- (void)generalPost:(NSDictionary*)postParams
+            success:(SuccessBlockHandler)success
+               fail:(FailureBlockHandler)fail
+       andServerAPI:(NSString*)api;
+
+//上传图片通用(失败回调不带参数)
+- (void)generalUploadImage:(UIImage*)image
+                   withAPI:(NSString*)serverAPI
+                   Success:(SuccessBlockHandler)success
+                      fail:(FailureBlockHandler)fail;
+
 - (void)getAreaInfos;
--(void)getSomeInfoSuccess:(SuccessBlockHandler)success;
 
 //-------------------------首页数据------------------------------
 //获取首页数据
@@ -74,9 +94,10 @@ singleton_interface(FSBaseDataManager);
 
 
 
-
 //获取汽车品牌列表信息
 - (void)getCarBrandsList:(SuccessBlockHandler)success;
+
+
 
 //获取汽车品牌车系列表
 - (void) loadCarSeriesWithBrandId:(NSString*)brandId
@@ -123,26 +144,6 @@ singleton_interface(FSBaseDataManager);
 
 
 //-------------------------订单数据------------------------------
-//获取购物车信息
-- (void)loadShoppingCart:(NSDictionary*)postParams
-                    type:(CZJHomeGetDataFromServerType)type
-                 Success:(GeneralBlockHandler)success
-                    fail:(FailureBlockHandler)fail;
-
-//获取购物车数量
-- (void)loadShoppingCartCount:(NSDictionary*)postParams
-                      Success:(SuccessBlockHandler)success
-                         fail:(FailureBlockHandler)fail;
-
-//加入购物车
-- (void)addProductToShoppingCart:(NSDictionary*)postParams
-                         Success:(SuccessBlockHandler)success
-                            fail:(FailureBlockHandler)fail;
-
-//删除购物车物品
-- (void)removeProductFromShoppingCart:(NSDictionary*)postParams
-                              Success:(GeneralBlockHandler)success
-                                 fail:(FailureBlockHandler)fail;
 
 //获取结算页数据
 - (void)loadSettleOrder:(NSDictionary*)postParams
@@ -153,31 +154,6 @@ singleton_interface(FSBaseDataManager);
 - (void)submitOrder:(NSDictionary*)postParams
             Success:(SuccessBlockHandler)success
                fail:(FailureBlockHandler)fail;
-
-//获取地址列表
-- (void)loadAddrList:(NSDictionary*)postParams
-             Success:(SuccessBlockHandler)success
-                fail:(FailureBlockHandler)fail;
-
-//添加地址
-- (void)addDeliveryAddr:(NSDictionary*)postParams
-                Success:(GeneralBlockHandler)success
-                   fail:(FailureBlockHandler)fail;
-
-//修改收货地址
-- (void)updateDeliveryAddr:(NSDictionary*)postParams
-                Success:(GeneralBlockHandler)success
-                   fail:(FailureBlockHandler)fail;
-
-//删除收货地址
-- (void)removeDeliveryAddr:(NSDictionary*)postParams
-                   Success:(SuccessBlockHandler)success
-                      fail:(FailureBlockHandler)fail;
-
-//设置默认地址
-- (void)setDefaultAddr:(NSDictionary*)postParams
-               Success:(SuccessBlockHandler)success
-                  fail:(FailureBlockHandler)fail;
 
 //获取订单列表
 - (void)getOrderList:(NSDictionary*)postParams
@@ -213,11 +189,6 @@ singleton_interface(FSBaseDataManager);
                   Success:(SuccessBlockHandler)success
                      fail:(FailureBlockHandler)fail;
 
-- (void)generalUploadImage:(UIImage*)image
-                   withAPI:(NSString*)serverAPI
-                   Success:(SuccessBlockHandler)success
-                      fail:(FailureBlockHandler)fail;
-
 //修改用户信息
 - (void)updateUserInfo:(NSDictionary*)postParams
                Success:(SuccessBlockHandler)success
@@ -243,18 +214,25 @@ singleton_interface(FSBaseDataManager);
               Success:(SuccessBlockHandler)success
                  fail:(FailureBlockHandler)fail;
 
+//获取足迹列表
+- (void)getScanList:(NSDictionary*)postParams
+            Success:(SuccessBlockHandler)success
+               fail:(FailureBlockHandler)fail;
 
-//通用(失败回调带参数)
-- (void)generalPost:(NSDictionary*)postParams
-            success:(SuccessBlockHandler)success
-            failure:(SuccessBlockHandler)failure
-       andServerAPI:(NSString*)api;
+//获取收藏列表
+- (void)getFavoriteList:(NSDictionary*)postParams
+                Success:(SuccessBlockHandler)success
+                   fail:(FailureBlockHandler)fail;
 
-//通用(失败回调不带参数)
-- (void)generalPost:(NSDictionary*)postParams
-            success:(SuccessBlockHandler)success
-               fail:(FailureBlockHandler)fail
-       andServerAPI:(NSString*)api;
+//获取评价列表
+- (void)getEvalutionList:(NSDictionary*)postParams
+                 Success:(SuccessBlockHandler)success
+                    fail:(FailureBlockHandler)fail;
+
+//优惠券
+- (void)getDiscountList:(NSDictionary*)postParams
+                Success:(SuccessBlockHandler)success
+                   fail:(FailureBlockHandler)fail;
 
 
 
@@ -264,6 +242,11 @@ singleton_interface(FSBaseDataManager);
 - (void)loginWithPwdOrCode:(NSDictionary*)loginParams
                    success:(SuccessBlockHandler)success
                       fail:(SuccessBlockHandler)fail;
+
+//退出登录
+- (void)loginOut:(NSDictionary*)loginoutParams
+         success:(SuccessBlockHandler)success
+            fail:(SuccessBlockHandler)fail;
 
 
 //获取短信验证码

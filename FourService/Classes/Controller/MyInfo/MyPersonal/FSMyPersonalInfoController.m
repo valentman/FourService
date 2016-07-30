@@ -89,18 +89,21 @@ UITableViewDataSource
 {
     [self.view endEditing:YES];
     NSString* name = nameTextField.text;
-    NSString* sexual = [self.myTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]].detailTextLabel.text;
+    NSString* sexual = ((CZJGeneralCell*)[self.myTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]]).detailLabel.text;
     NSString* sex;
     if ([sexual isEqualToString:@"保密"]) {
-        sex = @"0";
+        sex = @"2";
     }
     if ([sexual isEqualToString:@"男"]) {
         sex = @"1";
     }
     if ([sexual isEqualToString:@"女"]) {
-        sex = @"2";
+        sex = @"0";
     }
-    NSDictionary* params = @{@"chinese_name": name, @"customer_sex":sex};
+    NSDictionary* params = @{@"chinese_name": name,
+                             @"customer_sex":sex,
+                             @"customer_photo":self.myinfor.customer_photo};
+    
     FSBaseDataInstance.userInfoForm.chinese_name = name;
     FSBaseDataInstance.userInfoForm.customer_sex = sexual;
     
@@ -140,14 +143,23 @@ UITableViewDataSource
     switch (indexPath.row) {
         case 0:
         {
+            __weak typeof(self) weakSelf = self;
             PWUploadImageButton* imagebutton = [[PWUploadImageButton alloc] initWithFrame:CGRectMake(PJ_SCREEN_WIDTH - 50 - 40, 5, 55, 55)];
             [imagebutton.bgImageView sd_setImageWithURL:[NSURL URLWithString:self.myinfor.customer_photo] placeholderImage:nil];
+            imagebutton.bgImageView.clipsToBounds = YES;
+            imagebutton.bgImageView.layer.cornerRadius = 27.5;
             imagebutton.targetController = self;
+            
             SuccessBlockHandler success = ^(id json)
             {
                 UIImage* uploadHead = (UIImage*)json;
                 [FSBaseDataInstance uploadUserHeadPic:nil Image:uploadHead Success:^(id json) {
                     DLog(@"%@",[json description]);
+                    NSArray* urlAry = [json valueForKey:@"data"];
+                    NSDictionary* dict = urlAry.firstObject;
+                    NSArray* keys = [dict allKeys];
+                    weakSelf.myinfor.customer_photo = ConnectString(kCZJServerAddr,[dict valueForKey:keys.firstObject]);
+                    [weakSelf.myTableView reloadData];
                 } fail:^{
                     
                 }];
@@ -156,15 +168,35 @@ UITableViewDataSource
             [cell addSubview:imagebutton];
         }
             break;
+            
         case 1:
             nameTextField.text = self.myinfor.chinese_name;
             [cell addSubview:nameTextField];
             break;
+            
         case 2:
             cell.detailLabel.text = self.myinfor.customer_pho;
             break;
+            
         case 3:
-            cell.detailLabel.text = self.myinfor.customer_sex;
+        {
+            NSString* sexual;
+            switch ([self.myinfor.customer_sex integerValue]) {
+                case 0:
+                    sexual = @"女";
+                    break;
+                case 1:
+                    sexual = @"男";
+                    break;
+                case 2:
+                    sexual = @"保密";
+                    break;
+                    
+                default:
+                    break;
+            }
+            cell.detailLabel.text = sexual;
+        }
             break;
             
         default:
@@ -195,6 +227,11 @@ UITableViewDataSource
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
 }
 
 @end

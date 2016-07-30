@@ -31,14 +31,14 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="all_arrow_next.png" translatesAutoresizingMaskIntoConstraints="NO" id="DLh-vG-E1W">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="all_arrow_next" translatesAutoresizingMaskIntoConstraints="NO" id="DLh-vG-E1W">
                         <rect key="frame" x="300" y="17" width="5" height="10"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="5" id="kdG-0b-0ng"/>
                             <constraint firstAttribute="height" constant="10" id="rxF-rQ-Yqq"/>
                         </constraints>
                     </imageView>
-                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="查看全部订单" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EI7-FV-nYW">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EI7-FV-nYW">
                         <rect key="frame" x="140" y="14" width="150" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="150" id="V7a-Xo-CkZ"/>
@@ -86,6 +86,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="all_arrow_next.png" width="6" height="11"/>
+        <image name="all_arrow_next" width="6" height="11"/>
     </resources>
 </document>

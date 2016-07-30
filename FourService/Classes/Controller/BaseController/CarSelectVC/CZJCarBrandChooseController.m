@@ -44,7 +44,6 @@ UITableViewDelegate
     if ([_viewFrom isEqualToString:@"carList"])
     {
         [self addCZJNaviBarViewWithNotHiddenNavi:CZJNaviBarViewTypeGeneral];
-        self.naviBarView.btnBack.hidden = YES;
         self.naviBarView.mainTitleLabel.text = @"选择品牌";
     }
     

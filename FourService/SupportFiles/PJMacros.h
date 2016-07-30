@@ -256,7 +256,7 @@ ULog(xx, ##__VA_ARGS__); \
 
 //位置
 #define CGPointPositionMiddle CGPointMake(PJ_SCREEN_WIDTH*0.5,PJ_SCREEN_HEIGHT*0.5)
-
+#define ConnectString(a,b) [a stringByAppendingString:b]
 
 //------------------------单例宏---------------------------
 //@interface

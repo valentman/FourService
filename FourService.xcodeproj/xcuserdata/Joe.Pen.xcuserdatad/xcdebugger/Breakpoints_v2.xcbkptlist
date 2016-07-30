@@ -26,7 +26,7 @@
                   moduleName = "FourService"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Joe.Pen/Documents/GitCode/FourService/FourService/ThirdSDK/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "491415759.914993"
+                  timestampString = "491581864.740248"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1249"
@@ -41,7 +41,7 @@
                   moduleName = "FourService"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Joe.Pen/Documents/GitCode/FourService/FourService/ThirdSDK/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "491415759.915177"
+                  timestampString = "491581864.740375"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1249"
@@ -74,7 +74,7 @@
                   moduleName = "FourService"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Joe.Pen/Documents/GitCode/FourService/FourService/ThirdSDK/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "491415759.930473"
+                  timestampString = "491581864.752094"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1328"
@@ -89,7 +89,7 @@
                   moduleName = "FourService"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Joe.Pen/Documents/GitCode/FourService/FourService/ThirdSDK/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "491415759.9307"
+                  timestampString = "491581864.752213"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1328"
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FourService/Classes/Controller/MyInfo/MyLogin/FSRegisterController.m"
-            timestampString = "490635702.544068"
+            timestampString = "491577998.745669"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "225"
-            endingLineNumber = "225"
+            startingLineNumber = "233"
+            endingLineNumber = "233"
             landmarkName = "-confirmAction:"
             landmarkType = "5">
          </BreakpointContent>
@@ -121,24 +121,8 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FourService/Classes/Controller/MyInfo/Main/FSMyInformationController.m"
-            timestampString = "491413692.424401"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "426"
-            endingLineNumber = "426"
-            landmarkName = "-clickSubCellButton:andType:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "FourService/Classes/Controller/MyInfo/MyLogin/FSLoginController.m"
-            timestampString = "491399644.191418"
+            timestampString = "491575043.714439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "268"
@@ -154,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FourService/Classes/Controller/MyInfo/MyLogin/FSLoginController.m"
-            timestampString = "491409794.732436"
+            timestampString = "491575043.714439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "329"
@@ -170,12 +154,140 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FourService/Classes/Controller/MyInfo/MyLogin/FSLoginController.m"
-            timestampString = "491408629.590354"
+            timestampString = "491575043.714439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "324"
             endingLineNumber = "324"
             landmarkName = "-loginSuccess:success:fail:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FourService/Classes/Controller/MyInfo/Main/FSMyInformationController.m"
+            timestampString = "491577998.745669"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "436"
+            endingLineNumber = "436"
+            landmarkName = "-clickMyInfoHeadCell:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FourService/Classes/Controller/MyInfo/MyPersonal/FSMyPersonalInfoController.m"
+            timestampString = "491556778.012263"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "-saveMyInfo:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FourService/Classes/Controller/MyInfo/MyLogin/FSRegisterController.m"
+            timestampString = "491577464.089772"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "489"
+            endingLineNumber = "489"
+            landmarkName = "-loginSuccess:success:fail:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FourService/Classes/Controller/MyInfo/MyLogin/FSRegisterController.m"
+            timestampString = "491577599.792633"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
+            landmarkName = "-confirmAction:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FourService/Classes/Controller/MyInfo/MyPersonal/CZJAddMyCarController.m"
+            timestampString = "491579091.62226"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
+            landmarkName = "-addMyCarAction:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FourService/Classes/Manager/FSBaseDataManager.m"
+            timestampString = "491579096.478741"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "796"
+            endingLineNumber = "796"
+            landmarkName = "-addMyCar:Success:fail:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FourService/Classes/Manager/FSBaseDataManager.m"
+            timestampString = "491579097.4506"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "803"
+            endingLineNumber = "803"
+            landmarkName = "-addMyCar:Success:fail:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FourService/Classes/Controller/MyInfo/Main/Cells/CZJMyInfoHeadCell.m"
+            timestampString = "491581702.813198"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "-setUserPersonalInfo:andDefaultCar:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
