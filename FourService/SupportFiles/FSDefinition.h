@@ -37,7 +37,7 @@ static NSString *const kFSServerAPIStoreDetail = @"Service/shopInfo";           
 static NSString *const kFSServerAPIServiceStepList = @"Service/serviceStep";            //服务步骤列表
 
 static NSString *const kFSServerAPIScanList = @"Customer/customerShopViewList";         //足迹
-static NSString *const kFSServerAPIFavoriteList = @"Customer/customerShopViewList";     //收藏
+static NSString *const kFSServerAPIFavoriteList = @"Customer/customerShopFavoriteList";     //收藏
 static NSString *const kFSServerAPIEvalutionList = @"";  //评价列表
 static NSString *const kFSServerAPIDiscountList = @"Customer/customerDiscountList";     //优惠券
 static NSString *const kFSServerAPIOrderList = @"Customer/customerOrderList";           //订单列表

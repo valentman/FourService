@@ -38,7 +38,7 @@
 @property (strong, nonatomic) NSString* searchStr;
 
 /* 自定导航栏 */
-@property (nonatomic, strong) PBaseNaviagtionBarView* naviBarView;
+@property (nonatomic, strong) __block PBaseNaviagtionBarView* naviBarView;
 
 /* typeID */
 @property (strong, nonatomic) NSString *typeId;

@@ -17,4 +17,5 @@
 @property (strong, nonatomic) NSMutableArray* activeties;
 @property (weak, nonatomic) id<FSImageViewTouchDelegate> delegate;
 
-- (void)someMethodNeedUse:(NSIndexPath *)indexPath DataModel:(NSMutableArray*)array;@end
+- (void)someMethodNeedUse:(NSIndexPath *)indexPath DataModel:(NSArray*)array;
+@end

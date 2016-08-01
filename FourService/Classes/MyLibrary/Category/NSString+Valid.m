@@ -21,4 +21,21 @@
     return [predicate evaluateWithObject:self];
 }
 
++ (BOOL)isEmpty:(NSString*)text{
+    if ([text isEqual:[NSNull null]]) {
+        return YES;
+    }
+    else if ([text isKindOfClass:[NSNull class]])
+    {
+        return YES;
+    }
+    else if (text == nil){
+        return YES;
+    } else if ([@"" isEqualToString:text]){
+        
+        return YES;
+    }
+    return NO;
+}
+
 @end

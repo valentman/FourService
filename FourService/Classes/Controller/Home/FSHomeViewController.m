@@ -11,6 +11,7 @@
 #import "FSLotteryCell.h"
 #import "FSRecommendInfoCell.h"
 #import "FSBaseDataManager.h"
+#import "WKWebViewTest.h"
 
 @interface FSHomeViewController ()
 <
@@ -26,9 +27,12 @@ PBaseNaviagtionBarViewDelegate
     int page;                                       //分页页码
     
     //数据数组
-    NSMutableArray* _activityArray;                 //活动信息
-    NSMutableArray* _newsArray;            //推荐信息
-    NSMutableArray* _lotteryArray;                  //抽奖信息
+    NSArray* _bannerArray;                   //滚动条信息
+    NSArray* _activityArray;                 //活动信息
+    NSArray* _adArray;                       //广告信息
+    NSArray* _newsArray;                     //推荐信息
+    NSArray* _lotteryArray;                  //抽奖信息
+    NSMutableArray* _integredAry;            //整合信息
     
     __block BOOL _isAllRefresh;
     __block BOOL _isLotteryRefresh;
@@ -56,9 +60,12 @@ PBaseNaviagtionBarViewDelegate
     _isRecommendRefresh = NO;
     _isJumpToAnotherView = NO;
     
-    _activityArray = [NSMutableArray array];
-    _newsArray = [NSMutableArray array];
-    _lotteryArray = [NSMutableArray array];
+    _activityArray = [NSArray array];
+    _newsArray = [NSArray array];
+    _lotteryArray = [NSArray array];
+    _bannerArray = [NSArray array];
+    _adArray = [NSArray array];
+    _integredAry = [NSMutableArray array];
 }
 
 
@@ -119,12 +126,15 @@ PBaseNaviagtionBarViewDelegate
 {
     [FSBaseDataInstance showHomeType:CZJHomeGetDataFromServerTypeOne page:0 Success:^(id json) {
         NSDictionary* jsondata = [[NSDictionary dictionaryWithDictionary:json] valueForKey:@"data"];
-        _activityArray = [[FSHomeBannerForm objectArrayWithKeyValuesArray:[jsondata objectForKey:@"banner"]] mutableCopy];
-        _lotteryArray = [[FSHomeLuckyForm objectArrayWithKeyValuesArray:[jsondata objectForKey:@"lucky"]] mutableCopy];
-        _newsArray = [[FSHomeNewsForm objectArrayWithKeyValuesArray:[jsondata objectForKey:@"news"]] mutableCopy];
+        _activityArray = [FSHomeActivityForm objectArrayWithKeyValuesArray:[jsondata objectForKey:@"activity"]] ;
+        _bannerArray = [FSHomeBannerForm objectArrayWithKeyValuesArray:[jsondata objectForKey:@"banner"]];
+        _lotteryArray = [FSHomeLuckyForm objectArrayWithKeyValuesArray:[jsondata objectForKey:@"lucky"]];
+        _newsArray = [FSHomeNewsForm objectArrayWithKeyValuesArray:[jsondata objectForKey:@"news"]];
+        _adArray = [FSHomeAdvertiseForm objectArrayWithKeyValuesArray:[jsondata objectForKey:@"ad"]];
+        [_integredAry addObjectsFromArray:_activityArray];
+        [_integredAry addObjectsFromArray:_newsArray];
+        [_integredAry addObjectsFromArray:_adArray];
         [self.myTableView reloadData];
-    
-        DLog(@"%@",[jsondata description]);
     } fail:^{
         
     }];
@@ -174,7 +184,7 @@ PBaseNaviagtionBarViewDelegate
 {
     if (2 == section)
     {
-        return _newsArray.count;
+        return _integredAry.count;
     }
     return 1;
 }
@@ -186,9 +196,9 @@ PBaseNaviagtionBarViewDelegate
         case 0:
         {//ad广告展示
             FSActivityCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSActivityCell" forIndexPath:indexPath];
-            if (_activityArray.count > 0 && _isAllRefresh)
+            if (_bannerArray.count > 0 && _isAllRefresh)
             {
-                [cell someMethodNeedUse:indexPath DataModel:_activityArray];
+                [cell someMethodNeedUse:indexPath DataModel:_bannerArray];
                 cell.delegate = self;
             }
             return cell;
@@ -205,7 +215,7 @@ PBaseNaviagtionBarViewDelegate
         case 2:
         {//推荐信息
             FSRecommendInfoCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FSRecommendInfoCell" forIndexPath:indexPath];
-            FSHomeNewsForm* newsForm = _newsArray[indexPath.row];
+            FSHomeNewsForm* newsForm = _integredAry[indexPath.row];
             [cell.newsImageView sd_setImageWithURL:[NSURL URLWithString:[kCZJServerAddr stringByAppendingString:newsForm.news_image_url]]];
             cell.titleLabel.text = newsForm.title;
             cell.summerLabel.text = newsForm.summary;
@@ -251,7 +261,11 @@ PBaseNaviagtionBarViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    if (2 == indexPath.section)
+    {
+        FSHomeNewsForm* newsForm = _integredAry[indexPath.row];
+        [self showActivityHtmlWithUrl:newsForm.url];
+    }
 }
 
 

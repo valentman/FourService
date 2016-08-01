@@ -30,6 +30,7 @@
 @property(nonatomic, strong) NSString* shop_wechat;
 @property(nonatomic, strong) NSString* shop_weibo;
 @property(nonatomic, strong) NSString* shop_zone;
+@property(nonatomic, strong) NSString* shop_img;
 @property(nonatomic, strong) NSString* view_time;
 
 @end

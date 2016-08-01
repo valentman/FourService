@@ -10,8 +10,8 @@
 #import "FSWebViewJSI.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "IMYWebView.h"
-//#import "CZJCommitOrderController.h"
 #import "ShareMessage.h"
+#import <WebKit/WebKit.h>
 
 @interface FSWebViewController ()
 <
@@ -24,6 +24,7 @@ DZNEmptyDataSetDelegate
 }
 @property (strong, nonatomic)FSWebViewJSI* webViewJSI;
 @property (strong, nonatomic)IMYWebView* myWebView;
+@property (nonatomic) UIProgressView *progressView;
 @property (nonatomic, getter=didFailLoading) BOOL failedLoading;
 
 @end
@@ -51,25 +52,21 @@ DZNEmptyDataSetDelegate
     self.myWebView = [[IMYWebView alloc]initWithFrame:CGRectMake(0, 64, PJ_SCREEN_WIDTH, PJ_SCREEN_HEIGHT - 64)];
     [self.myWebView setDelegate:self];
     [self.view addSubview:self.myWebView];
-    self.view.backgroundColor = CZJNAVIBARBGCOLOR;
-    self.myWebView.backgroundColor = CZJNAVIBARBGCOLOR;
-    self.myWebView.scrollView.backgroundColor = CZJNAVIBARBGCOLOR;
+    [self.myWebView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:NULL];
     
-    //webView JS交互接口
-//    self.webViewJSI = [FSWebViewJSI bridgeForWebView:_myWebView webViewDelegate:self];
-//    self.webViewJSI.JSIDelegate = self;
-    
+    self.progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
+    self.progressView.frame = CGRectMake(0, 64, PJ_SCREEN_WIDTH, 2);
+    [self.view addSubview:self.progressView];
     
     //URLRequest
     if (_cur_url)
     {
-        NSURL *url = [NSURL URLWithString:_cur_url];
-        [self loadHtml:url];
+        if (![_cur_url hasPrefix:@"http://"])
+        {
+            _cur_url = [NSString stringWithFormat:@"%@%@",@"http://",_cur_url];
+        }
+        [self.myWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_cur_url]]];
     }
-}
-
-- (void)loadHtml:(NSURL*)surl{
-    [self.myWebView loadRequest:[NSURLRequest requestWithURL:surl]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -82,12 +79,33 @@ DZNEmptyDataSetDelegate
     self.hidesBottomBarWhenPushed = YES;
 }
 
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"estimatedProgress"] && object == self.myWebView) {
+        [self.progressView setAlpha:1.0f];
+        [self.progressView setProgress:self.myWebView.estimatedProgress animated:YES];
+        
+        if(self.myWebView.estimatedProgress >= 1.0f) {
+            [UIView animateWithDuration:0.3 delay:0.3 options:UIViewAnimationOptionCurveEaseOut animations:^{
+                [self.progressView setAlpha:0.0f];
+            } completion:^(BOOL finished) {
+                [self.progressView setProgress:0.0f animated:NO];
+            }];
+        }
+    }
+    else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
 }
 
+- (void)dealloc {
+    [self.myWebView removeObserver:self forKeyPath:@"estimatedProgress"];
+}
 
 #pragma mark - PBaseNaviagtionBarViewDelegate(自定义导航栏按钮回调)
 - (void)clickEventCallBack:(nullable id)sender
@@ -113,7 +131,19 @@ DZNEmptyDataSetDelegate
 }
 
 
-#pragma mark - UIWebViewDelegate （WebView代理方法）
+#pragma mark- IMYWebViewDelegate
+- (void)webViewDidStartLoad:(IMYWebView *)webView
+{
+}
+
+- (void)webViewDidFinishLoad:(IMYWebView *)webView
+{
+    __weak typeof(self) weakSelf = self;
+    [webView evaluateJavaScript:@"document.title" completionHandler:^(id json, NSError * error) {
+        weakSelf.naviBarView.mainTitleLabel.text = json;
+    }];
+}
+
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
     self.failedLoading = NO;
@@ -128,16 +158,6 @@ DZNEmptyDataSetDelegate
     
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView{
-    self.naviBarView.mainTitleLabel.text = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
-    
-    //网上找的解决Webview内存泄露的方法：
-    //http://blog.csdn.net/primer_programer/article/details/24855329
-    [USER_DEFAULT setInteger:0 forKey:@"WebKitCacheModelPreferenceKey"];
-    [USER_DEFAULT setBool:NO forKey:@"WebKitDiskImageCacheEnabled"];//自己添加的，原文没有提到。
-    [USER_DEFAULT setBool:NO forKey:@"WebKitOfflineWebApplicationCacheEnabled"];//自己添加的，原文没有提到。
-    [USER_DEFAULT synchronize];
-}
 
 
 #pragma mark - jsActionDelegate （JS网页交互代理）
@@ -160,12 +180,6 @@ DZNEmptyDataSetDelegate
 {
     if ([PUtils isLoginIn:self andNaviBar:self.naviBarView])
     {
-//        UINavigationController* commitVC = (UINavigationController*)[PUtils getViewControllerFromStoryboard:kCZJStoryBoardFileMain andVCName:@"OrderSettleNavi"];
-//        CZJCommitOrderController* settleOrder = ((CZJCommitOrderController*)commitVC.toPBaseViewController);
-//        settleOrder.settleParamsAry = _settleOrderAry;
-//        settleOrder.isUseCouponAble = couponUseable;
-//        settleOrder.detaiViewType = CZJDetailTypeService;
-//        [self presentViewController:commitVC animated:YES completion:nil];
     }
 }
 
@@ -201,10 +215,5 @@ DZNEmptyDataSetDelegate
                                          image:imageData];
     }];
 }
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-}
-
 
 @end

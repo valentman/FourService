@@ -11,6 +11,10 @@
 #import "CZJGoodsAttentionCell.h"
 
 @interface FSMyAttentionController ()
+<
+UITableViewDelegate,
+UITableViewDataSource
+>
 {
     BOOL _isEdit;
     NSMutableArray* attentionListAry;
@@ -27,7 +31,7 @@
     [super viewDidLoad];
     [self initDatas];
     [self initViews];
-
+    [self getFavoriteListFromServer];
 }
 
 - (void)initDatas
@@ -39,7 +43,6 @@
 - (void)initViews
 {
     [self addCZJNaviBarView:CZJNaviBarViewTypeGeneral];
-    self.naviBarView.delegate = self;
     self.naviBarView.mainTitleLabel.text = @"收藏";
     
     //右按钮
@@ -70,7 +73,7 @@
     refreshFooter = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^(){
         _getdataType = CZJHomeGetDataFromServerTypeTwo;
         weak.page++;
-        [weak getScanListFromServer];;
+        [weak getFavoriteListFromServer];;
     }];
     self.myTableView.footer = refreshFooter;
     self.myTableView.footer.hidden = YES;
@@ -81,7 +84,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)getScanListFromServer
+- (void)getFavoriteListFromServer
 {
     __weak typeof(self) weak = self;
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -128,7 +131,7 @@
                                fail:^{
                                    [MBProgressHUD hideAllHUDsForView:self.view animated:NO];
                                    [PUtils showReloadAlertViewOnTarget:weak.view withReloadHandle:^{
-                                       [weak getScanListFromServer];
+                                       [weak getFavoriteListFromServer];
                                    }];
                                }];
 }
@@ -168,8 +171,9 @@
 {
     FSStoreDetailForm* form = attentionListAry[indexPath.row];
     CZJGoodsAttentionCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGoodsAttentionCell" forIndexPath:indexPath];
+    NSString* urlstr = ConnectString(kCZJServerAddr, @"1");
     //关注图片
-    //    [cell.goodImg sd_setImageWithURL:[NSURL URLWithString:form.itemImg] placeholderImage:DefaultPlaceHolderSquare];
+    [cell.goodImg sd_setImageWithURL:[NSURL URLWithString:urlstr] placeholderImage:DefaultPlaceHolderSquare];
     
     //关注名称
     CGSize nameSize = [PUtils calculateStringSizeWithString:form.shop_name Font:SYSTEMFONT(15) Width:PJ_SCREEN_WIDTH - 115];

@@ -116,12 +116,12 @@ UITableViewDelegate
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [PUtils removeNoDataAlertViewFromTarget:self.view];
     [PUtils removeReloadAlertViewFromTarget:self.view];
-    [_params setValue:@(page) forKey:@"page"];
-    [FSBaseDataInstance generalPost:_params success:^(id json) {
+    [_params setValue:@(page) forKey:@"page_num"];
+    [FSBaseDataInstance getDiscountList:_params Success:^(id json) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:NO];
         //========获取数据返回，判断数据大于0不==========
-        DLog(@"%@",[[PUtils DataFromJson:json] description]);
-        NSArray* tmpAry = [[PUtils DataFromJson:json] valueForKey:@"msg"];
+        
+        NSArray* tmpAry = [json valueForKey:kResoponData];
         if (CZJHomeGetDataFromServerTypeTwo == _getdataType)
         {
             [_couponList addObjectsFromArray: [FSDiscountForm objectArrayWithKeyValuesArray:tmpAry]];
@@ -158,7 +158,7 @@ UITableViewDelegate
         [PUtils showReloadAlertViewOnTarget:weak.view withReloadHandle:^{
             [weak getCouponListFromServer];
         }];
-    } andServerAPI:kCZJServerAPIShowCouponsList];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -185,12 +185,13 @@ UITableViewDelegate
     cell.couponsViewLayoutWidth.constant = PJ_SCREEN_WIDTH - 40;
     cell.couponPriceLabel.font = SYSTEMFONT(45);
     NSString* priceStri;
-//    switch ([couponForm.type integerValue])
-//    {
-//        case 1://代金券
-//            priceStri = [NSString stringWithFormat:@"￥%d",[couponForm.value intValue]];
-//            break;
-//            
+    switch ([couponForm.discount_type integerValue])
+    {
+        case 1://代金券
+            priceStri = [NSString stringWithFormat:@"￥%d",[couponForm.discount_num intValue]];
+            cell.useableLimitLabel.text = [NSString stringWithFormat:@"%@",couponForm.discount_name];
+            break;
+            
 //        case 2://满减券
 //            priceStri = [NSString stringWithFormat:@"￥%d",[couponForm.value intValue]];
 //            cell.useableLimitLabel.text = [NSString stringWithFormat:@"满%@可用",couponForm.validMoney];
@@ -202,14 +203,14 @@ UITableViewDelegate
 //            cell.useableLimitLabel.text = @"凭券到店消费";
 //            cell.couponPriceLabel.font = SYSTEMFONT(30);
 //            break;
-//            
-//        default:
-//            break;
-//    }
+            
+        default:
+            break;
+    }
     
     //左上角价格
     CGSize priceSize = [PUtils calculateTitleSizeWithString:priceStri WithFont:cell.couponPriceLabel.font];
-//    cell.couponPriceLabelLayout.constant = priceSize.width + ([couponForm.type integerValue] == 3 ? 10 : 0);
+    cell.couponPriceLabelLayout.constant = priceSize.width + ([couponForm.discount_type integerValue] == 3 ? 10 : 0);
     cell.couponPriceLabel.text = priceStri;
     
     
@@ -222,10 +223,10 @@ UITableViewDelegate
 //    cell.storeNameLabel.text = storeNameStr;
     
     //右下角有限期
-//    cell.receiveTimeLabel.text = couponForm.validEndTime;
+    cell.receiveTimeLabel.text = couponForm.dead_time;
 //    [cell setCellWithCouponType:_couponType andServiceType:![couponForm.validServiceId isEqualToString:@"0"]];
-//    cell.couponPriceLabel.keyWord = @"￥";
-//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.couponPriceLabel.keyWord = @"￥";
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -251,7 +252,7 @@ UITableViewDelegate
 - (void)viewDidLoad {
     [super viewDidLoad];
     _couponType = 0;
-    _params = [@{@"type":@(_couponType), @"page":@"1"}mutableCopy];
+    _params = [@{@"discount_status":@(_couponType), @"page_num":@"1"}mutableCopy];
     [self getCouponListFromServer];
 }
 
@@ -265,7 +266,7 @@ UITableViewDelegate
 - (void)viewDidLoad {
     [super viewDidLoad];
     _couponType = 1;
-    _params = [@{@"type":@(_couponType), @"page":@"1"}mutableCopy];
+    _params = [@{@"discount_status":@(_couponType), @"page_num":@"1"}mutableCopy];
     [self getCouponListFromServer];
 }
 
@@ -279,7 +280,7 @@ UITableViewDelegate
 - (void)viewDidLoad {
     [super viewDidLoad];
     _couponType = 2;
-    _params = [@{@"type":@(_couponType), @"page":@"1"}mutableCopy];
+    _params = [@{@"discount_status":@(_couponType), @"page_num":@"1"}mutableCopy];
     [self getCouponListFromServer];
 }
 

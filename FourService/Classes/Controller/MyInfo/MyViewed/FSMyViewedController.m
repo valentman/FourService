@@ -164,8 +164,9 @@ UITableViewDelegate
 {
     FSStoreDetailForm* form = scanListAry[indexPath.row];
     CZJGoodsAttentionCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGoodsAttentionCell" forIndexPath:indexPath];
+    NSString* urlstr = ConnectString(kCZJServerAddr, @"1");
     //关注图片
-//    [cell.goodImg sd_setImageWithURL:[NSURL URLWithString:form.itemImg] placeholderImage:DefaultPlaceHolderSquare];
+    [cell.goodImg sd_setImageWithURL:[NSURL URLWithString:urlstr] placeholderImage:DefaultPlaceHolderSquare];
     
     //关注名称
     CGSize nameSize = [PUtils calculateStringSizeWithString:form.shop_name Font:SYSTEMFONT(15) Width:PJ_SCREEN_WIDTH - 115];

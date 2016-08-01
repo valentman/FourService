@@ -10,6 +10,7 @@
 #import "FSBaseDataManager.h"
 #import "CZJGeneralCell.h"
 #import "PWUploadImageButton.h"
+#import "FSChooseSexualController.h"
 
 @interface FSMyPersonalInfoController ()
 <
@@ -112,6 +113,11 @@ UITableViewDataSource
          [PUtils tipWithText:@"修改成功" andView:self.view];
          [self.navigationController popViewControllerAnimated:true];
      }fail:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.myTableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -226,7 +232,12 @@ UITableViewDataSource
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    if (3 == indexPath.row)
+    {
+        FSChooseSexualController* sexual = [[FSChooseSexualController alloc]init];
+        sexual.myinfor = self.myinfor;
+        [self.navigationController pushViewController:sexual animated:YES];
+    }
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event

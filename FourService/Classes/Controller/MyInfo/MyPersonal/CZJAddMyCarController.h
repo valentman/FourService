@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface CZJAddMyCarController : PBaseViewController
-
+@property (strong, nonatomic)FSCarListForm* carForm;
 @end

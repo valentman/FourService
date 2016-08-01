@@ -87,10 +87,6 @@ UITextFieldDelegate
 
 - (void)initDatas
 {
-    self.carNameLabel.text = [NSString stringWithFormat:@"%@ %@", FSBaseDataInstance.carBrandForm.name,FSBaseDataInstance.carSerialForm.name];
-    self.carModelLabel.text = FSBaseDataInstance.carModealForm.name;
-    [self.carBrandImg sd_setImageWithURL:[NSURL URLWithString:FSBaseDataInstance.carBrandForm.icon] placeholderImage:DefaultPlaceHolderSquare];
-    
     provinceAry = [PUtils readArrayFromBundleDirectoryWithName:@"Province"];
     numberPlateAry = @[@"A",
                        @"B",
@@ -132,9 +128,33 @@ UITextFieldDelegate
         curProvince = [ZXLocationManager sharedZXLocationManager].province;
         curCity = [ZXLocationManager sharedZXLocationManager].city;
     }
-    provinceStr = @"川";
-    numverPlateStr = @"A";
-    _carPlateNumLabel.text = [NSString stringWithFormat:@"%@%@",provinceStr, numverPlateStr];
+    
+    if (!_carForm)
+    {
+        self.carNameLabel.text = [NSString stringWithFormat:@"%@ %@", FSBaseDataInstance.carBrandForm.name,FSBaseDataInstance.carSerialForm.name];
+        self.carModelLabel.text = FSBaseDataInstance.carModealForm.name;
+        [self.carBrandImg sd_setImageWithURL:[NSURL URLWithString:FSBaseDataInstance.carBrandForm.icon] placeholderImage:DefaultPlaceHolderSquare];
+        
+        provinceStr = @"川";
+        numverPlateStr = @"A";
+        _carPlateNumLabel.text = [NSString stringWithFormat:@"%@%@",provinceStr, numverPlateStr];
+    }
+    else
+    {
+        self.carNameLabel.text  = [NSString stringWithFormat:@"%@ %@", _carForm.car_brand_name,_carForm.car_model_name];
+        self.carModelLabel.text = _carForm.car_type_name;
+        [self.carBrandImg sd_setImageWithURL:[NSURL URLWithString:FSBaseDataInstance.carBrandForm.icon] placeholderImage:DefaultPlaceHolderSquare];
+        NSArray* carNumAry = [_carForm.car_num componentsSeparatedByString:@"-"];
+        self.carPlateNumLabel.text = carNumAry.firstObject;
+        self.plateNumTextField.text = carNumAry.lastObject;
+        self.defBtn.selected = _carForm.is_default;
+        self.vinCodeTextField.text = _carForm.vin_code;
+        self.engineCodeTextField.text = _carForm.engine_code;
+        self.buyDateLabel.text = _carForm.buy_date;
+        self.productDateLabel.text = _carForm.product_date;
+        self.maintainDateLabel.text = _carForm.maintain_date;
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -215,18 +235,24 @@ UITextFieldDelegate
     
     if (currentSelectPro > 0)
     {
-//        [self pickerView:_pickerView didSelectRow:currentSelectPro inComponent:0];
         [_pickerView selectRow:currentSelectPro inComponent:0 animated:YES];
     }
     if (currentSelectNum > 0)
     {
-//        [self pickerView:_pickerView didSelectRow:currentSelectNum inComponent:1];
         [_pickerView selectRow:currentSelectNum inComponent:1 animated:YES];
     }
 
 }
 
-- (IBAction)chooseDateAction:(id)sender {
+- (IBAction)chooseDateAction:(id)sender
+{
+    [self.view endEditing:YES];
+    _pickerView = [[UIDatePicker alloc]init];
+    _pickerView.delegate = self;
+    _pickerView.dataSource = self;
+    LewPickerController *pickerController = [[LewPickerController alloc]initWithDelegate:self];
+    pickerController.pickerView = _pickerView;
+    pickerController.titleLabel.text = @"选择省市代码";
 }
 
 

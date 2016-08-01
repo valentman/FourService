@@ -50,12 +50,19 @@
 
 
 @interface FSDiscountForm : NSObject
+@property (strong, nonatomic)NSString* create_time;
 @property (strong, nonatomic)NSString* customer_discount_id;
-@property (strong, nonatomic)NSString* discount_id;
 @property (strong, nonatomic)NSString* customer_id;
+@property (strong, nonatomic)NSString* dead_time;
+@property (strong, nonatomic)NSString* discount_desc;
+@property (strong, nonatomic)NSString* discount_id;
+@property (strong, nonatomic)NSString* discount_image;
+@property (strong, nonatomic)NSString* discount_name;
+@property (strong, nonatomic)NSString* discount_num;
+@property (strong, nonatomic)NSString* discount_status;
+@property (strong, nonatomic)NSString* discount_type;
 @property (strong, nonatomic)NSString* get_time;
 @property (strong, nonatomic)NSString* get_way;
-@property (strong, nonatomic)NSString* discount_status;
 @end
 
 

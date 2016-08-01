@@ -19,7 +19,7 @@
     [super setSelected:selected animated:animated];
 }
 
-- (void)someMethodNeedUse:(NSIndexPath *)indexPath DataModel:(NSMutableArray*)array
+- (void)someMethodNeedUse:(NSIndexPath *)indexPath DataModel:(NSArray*)array
 {
     self.isInit = YES;
     [_imageArray removeAllObjects];
@@ -44,7 +44,7 @@
 - (void)didSelectImageAtIndexPath:(NSInteger)indexPath
 {
     NSLog(@"didSelectImageIndexPath = %ld", indexPath);
-    FSActivityForm* tmp = [_activeties objectAtIndex:indexPath];
+    FSHomeActivityForm* tmp = [_activeties objectAtIndex:indexPath];
     [self.delegate showActivityHtmlWithUrl:tmp.url];
 }
 

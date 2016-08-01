@@ -8,9 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FSHomeForm : NSObject
-
-@end
 
 @interface FSHomeBannerForm : NSObject
 @property (strong, nonatomic)NSString* create_time;
@@ -47,8 +44,28 @@
 @property (strong, nonatomic)NSString* weight;
 @end
 
-@interface FSActivityForm : NSObject
-@property(nonatomic, strong) NSString* activityId;
-@property(nonatomic, strong) NSString* img;
-@property(nonatomic, strong) NSString* url;
+@interface FSHomeActivityForm : NSObject
+@property (strong, nonatomic)NSString* create_time;
+@property (strong, nonatomic)NSString* news_id;
+@property (strong, nonatomic)NSString* news_image_url;
+@property (strong, nonatomic)NSString* news_place;
+@property (strong, nonatomic)NSString* news_script;
+@property (strong, nonatomic)NSString* news_type;
+@property (strong, nonatomic)NSString* summary;
+@property (strong, nonatomic)NSString* title;
+@property (strong, nonatomic)NSString* url;
+@property (strong, nonatomic)NSString* weight;
+@end
+
+@interface FSHomeAdvertiseForm : NSObject
+@property (strong, nonatomic)NSString* create_time;
+@property (strong, nonatomic)NSString* news_id;
+@property (strong, nonatomic)NSString* news_image_url;
+@property (strong, nonatomic)NSString* news_place;
+@property (strong, nonatomic)NSString* news_script;
+@property (strong, nonatomic)NSString* news_type;
+@property (strong, nonatomic)NSString* summary;
+@property (strong, nonatomic)NSString* title;
+@property (strong, nonatomic)NSString* url;
+@property (strong, nonatomic)NSString* weight;
 @end

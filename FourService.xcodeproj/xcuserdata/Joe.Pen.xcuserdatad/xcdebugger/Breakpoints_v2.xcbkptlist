@@ -26,7 +26,7 @@
                   moduleName = "FourService"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Joe.Pen/Documents/GitCode/FourService/FourService/ThirdSDK/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "491581864.740248"
+                  timestampString = "491758726.591171"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1249"
@@ -41,7 +41,7 @@
                   moduleName = "FourService"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Joe.Pen/Documents/GitCode/FourService/FourService/ThirdSDK/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "491581864.740375"
+                  timestampString = "491758726.591377"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1249"
@@ -74,7 +74,7 @@
                   moduleName = "FourService"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Joe.Pen/Documents/GitCode/FourService/FourService/ThirdSDK/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "491581864.752094"
+                  timestampString = "491758726.592195"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1328"
@@ -89,7 +89,7 @@
                   moduleName = "FourService"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Joe.Pen/Documents/GitCode/FourService/FourService/ThirdSDK/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "491581864.752213"
+                  timestampString = "491758726.592288"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1328"
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FourService/Classes/Controller/MyInfo/MyPersonal/FSMyPersonalInfoController.m"
-            timestampString = "491556778.012263"
+            timestampString = "491652246.105484"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "-saveMyInfo:"
             landmarkType = "5">
          </BreakpointContent>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FourService/Classes/Controller/MyInfo/MyPersonal/CZJAddMyCarController.m"
-            timestampString = "491579091.62226"
+            timestampString = "491655670.909472"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
             landmarkName = "-addMyCarAction:"
             landmarkType = "5">
          </BreakpointContent>
@@ -281,13 +281,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FourService/Classes/Controller/MyInfo/Main/Cells/CZJMyInfoHeadCell.m"
-            timestampString = "491581702.813198"
+            filePath = "FourService/Classes/Controller/BaseController/WebViewBridge/FSWebViewController.m"
+            timestampString = "491650754.367162"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "-setUserPersonalInfo:andDefaultCar:"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "-initViews"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FourService/Classes/Controller/BaseController/WebViewBridge/FSWebViewController.m"
+            timestampString = "491650757.272634"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "-initViews"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

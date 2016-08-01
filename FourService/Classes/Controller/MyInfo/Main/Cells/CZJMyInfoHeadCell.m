@@ -48,7 +48,7 @@
     {
         carStr = [NSString stringWithFormat:@"%@ %@ %@",car.car_brand_name,car.car_model_name,car.car_type_name];
     }
-    self.myDefaultCarLabel.text = [NSString stringWithFormat:@"我的车辆：%@",carStr];
+    self.myDefaultCarLabel.text = [NSString stringWithFormat:@"%@",carStr];
 }
 
 - (IBAction)messageAction:(id)sender

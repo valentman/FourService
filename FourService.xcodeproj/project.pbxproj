@@ -339,6 +339,7 @@
 		EC90646A1D47BE8C00E9554F /* CZJPageControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9064691D47BE8C00E9554F /* CZJPageControlView.m */; };
 		EC90646F1D47BF8A00E9554F /* CZJReceiveCouponsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC90646D1D47BF8A00E9554F /* CZJReceiveCouponsCell.m */; };
 		EC9064701D47BF8A00E9554F /* CZJReceiveCouponsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC90646E1D47BF8A00E9554F /* CZJReceiveCouponsCell.xib */; };
+		EC9271F31D4E00EC00B8EABF /* FSChooseSexualController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9271F21D4E00EC00B8EABF /* FSChooseSexualController.m */; };
 		ECA233CE1D37DB78004C2679 /* FSMyInformationController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA233CC1D37DB78004C2679 /* FSMyInformationController.m */; };
 		ECA233D11D37DB91004C2679 /* FSSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA233D01D37DB91004C2679 /* FSSettingController.m */; };
 		ECA233DF1D37DC8F004C2679 /* CZJGeneralCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA233D41D37DC8F004C2679 /* CZJGeneralCell.m */; };
@@ -1037,6 +1038,8 @@
 		EC90646C1D47BF8A00E9554F /* CZJReceiveCouponsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJReceiveCouponsCell.h; sourceTree = "<group>"; };
 		EC90646D1D47BF8A00E9554F /* CZJReceiveCouponsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJReceiveCouponsCell.m; sourceTree = "<group>"; };
 		EC90646E1D47BF8A00E9554F /* CZJReceiveCouponsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJReceiveCouponsCell.xib; sourceTree = "<group>"; };
+		EC9271F11D4E00EC00B8EABF /* FSChooseSexualController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSChooseSexualController.h; sourceTree = "<group>"; };
+		EC9271F21D4E00EC00B8EABF /* FSChooseSexualController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSChooseSexualController.m; sourceTree = "<group>"; };
 		ECA233CB1D37DB78004C2679 /* FSMyInformationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyInformationController.h; sourceTree = "<group>"; };
 		ECA233CC1D37DB78004C2679 /* FSMyInformationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyInformationController.m; sourceTree = "<group>"; };
 		ECA233CF1D37DB91004C2679 /* FSSettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSettingController.h; sourceTree = "<group>"; };
@@ -1249,6 +1252,8 @@
 				EC3A18FA1D41F21C00F6F193 /* FSMyCarListController.m */,
 				EC18DE8A1D44FEF7006CB460 /* FSMyMessageCenterController.h */,
 				EC18DE8B1D44FEF7006CB460 /* FSMyMessageCenterController.m */,
+				EC9271F11D4E00EC00B8EABF /* FSChooseSexualController.h */,
+				EC9271F21D4E00EC00B8EABF /* FSChooseSexualController.m */,
 			);
 			path = MyPersonal;
 			sourceTree = "<group>";
@@ -2913,6 +2918,7 @@
 				EC5429D11D237E7700F3B4BF /* OpenShare.m in Sources */,
 				EC5429D51D237E7700F3B4BF /* WyzAlbumViewController.m in Sources */,
 				EC5429591D237E7700F3B4BF /* AFNetworkReachabilityManager.m in Sources */,
+				EC9271F31D4E00EC00B8EABF /* FSChooseSexualController.m in Sources */,
 				EC5429941D237E7700F3B4BF /* MapViewController.m in Sources */,
 				EC54295D1D237E7700F3B4BF /* AFURLResponseSerialization.m in Sources */,
 				EC5429AF1D237E7700F3B4BF /* MJRefreshBackFooter.m in Sources */,

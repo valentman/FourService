@@ -8,8 +8,7 @@
 
 #import "FSHomeForm.h"
 
-@implementation FSHomeForm
-@end
+
 
 @implementation FSHomeBannerForm
 @end
@@ -20,5 +19,8 @@
 @implementation FSHomeNewsForm
 @end
 
-@implementation FSActivityForm
+@implementation FSHomeActivityForm
+@end
+
+@implementation FSHomeAdvertiseForm
 @end

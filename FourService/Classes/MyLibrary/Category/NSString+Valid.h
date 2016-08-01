@@ -15,5 +15,5 @@
 @interface NSString (Valid)
 
 - (BOOL)isChinese;
-
++ (BOOL)isEmpty:(NSString*)text;
 @end

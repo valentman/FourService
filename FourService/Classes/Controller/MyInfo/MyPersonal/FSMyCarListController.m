@@ -11,6 +11,7 @@
 #import "CZJGeneralCell.h"
 #import "CZJCarBrandChooseController.h"
 #import "FSBaseDataManager.h"
+#import "CZJAddMyCarController.h"
 
 @interface FSMyCarListController ()
 <
@@ -140,10 +141,13 @@ CZJMyCarListCellDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    FSCarListForm* carListForm = self.carListAry[indexPath.section];
+    CZJAddMyCarController* addCarVC = (CZJAddMyCarController*)[PUtils getViewControllerFromStoryboard:kCZJStoryBoardFileMain andVCName:@"addMyCarSBID"];
+    addCarVC.carForm = carListForm;
+    [self.navigationController pushViewController:addCarVC animated:YES];
 }
 
-- (IBAction)addMyCarAction:(id)sender
+- (void)addMyCarAction:(id)sender
 {
     CZJCarBrandChooseController *svc = [[CZJCarBrandChooseController alloc] initWithType:CZJCarListTypeGeneral];
     svc.viewFrom = @"carList";
