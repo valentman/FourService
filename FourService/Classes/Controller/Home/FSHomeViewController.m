@@ -11,7 +11,6 @@
 #import "FSLotteryCell.h"
 #import "FSRecommendInfoCell.h"
 #import "FSBaseDataManager.h"
-#import "WKWebViewTest.h"
 
 @interface FSHomeViewController ()
 <
@@ -24,7 +23,7 @@ PBaseNaviagtionBarViewDelegate
     MJRefreshAutoNormalFooter* refreshFooter;
     MJRefreshGifHeader* refreshHeader;
     
-    int page;                                       //分页页码
+    int page;                                //分页页码
     
     //数据数组
     NSArray* _bannerArray;                   //滚动条信息

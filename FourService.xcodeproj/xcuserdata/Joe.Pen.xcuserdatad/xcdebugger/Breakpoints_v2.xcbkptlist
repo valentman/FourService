@@ -26,7 +26,7 @@
                   moduleName = "FourService"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Joe.Pen/Documents/GitCode/FourService/FourService/ThirdSDK/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "491758726.591171"
+                  timestampString = "491843640.876853"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1249"
@@ -41,7 +41,7 @@
                   moduleName = "FourService"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Joe.Pen/Documents/GitCode/FourService/FourService/ThirdSDK/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "491758726.591377"
+                  timestampString = "491843640.876995"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1249"
@@ -74,7 +74,7 @@
                   moduleName = "FourService"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Joe.Pen/Documents/GitCode/FourService/FourService/ThirdSDK/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "491758726.592195"
+                  timestampString = "491843640.904841"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1328"
@@ -89,7 +89,7 @@
                   moduleName = "FourService"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Joe.Pen/Documents/GitCode/FourService/FourService/ThirdSDK/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "491758726.592288"
+                  timestampString = "491843640.904948"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1328"
@@ -234,76 +234,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FourService/Classes/Controller/MyInfo/MyPersonal/CZJAddMyCarController.m"
-            timestampString = "491655670.909472"
+            timestampString = "491843624.384596"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
             landmarkName = "-addMyCarAction:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FourService/Classes/Manager/FSBaseDataManager.m"
-            timestampString = "491579096.478741"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "796"
-            endingLineNumber = "796"
-            landmarkName = "-addMyCar:Success:fail:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FourService/Classes/Manager/FSBaseDataManager.m"
-            timestampString = "491579097.4506"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "803"
-            endingLineNumber = "803"
-            landmarkName = "-addMyCar:Success:fail:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FourService/Classes/Controller/BaseController/WebViewBridge/FSWebViewController.m"
-            timestampString = "491650754.367162"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "-initViews"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FourService/Classes/Controller/BaseController/WebViewBridge/FSWebViewController.m"
-            timestampString = "491650757.272634"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "-initViews"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

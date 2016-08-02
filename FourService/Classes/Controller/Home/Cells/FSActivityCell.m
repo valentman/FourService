@@ -25,7 +25,9 @@
     [_imageArray removeAllObjects];
     _activeties = [array mutableCopy];
     for (FSHomeBannerForm* tmp in array) {
-        [_imageArray addObject:[kCZJServerAddr stringByAppendingString:tmp.news_image_url]];
+        if (tmp.news_image_url) {
+            [_imageArray addObject:[kCZJServerAddr stringByAppendingString:tmp.news_image_url]];
+        }
     }
     [self loadImageData];
 }

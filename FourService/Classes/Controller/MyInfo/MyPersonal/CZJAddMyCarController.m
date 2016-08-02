@@ -26,7 +26,9 @@ UITextFieldDelegate
     NSArray* provinceAry;
     NSArray* numberPlateAry;
     UIPickerView *_pickerView;
+    UIDatePicker* _datePickerView;
     __block UIView* _backgroundView;
+    UIButton* _currentSelectDateBtn;
     
     NSString* provinceStr;
     NSString* numverPlateStr;
@@ -46,9 +48,10 @@ UITextFieldDelegate
 @property (weak, nonatomic) IBOutlet UITextField *plateNumTextField;
 @property (weak, nonatomic) IBOutlet UITextField *engineCodeTextField;
 @property (weak, nonatomic) IBOutlet UITextField *vinCodeTextField;
-@property (weak, nonatomic) IBOutlet UILabel *productDateLabel;
-@property (weak, nonatomic) IBOutlet UILabel *buyDateLabel;
-@property (weak, nonatomic) IBOutlet UILabel *maintainDateLabel;
+
+@property (weak, nonatomic) IBOutlet UIButton *productBtn;
+@property (weak, nonatomic) IBOutlet UIButton *buyDateBtn;
+@property (weak, nonatomic) IBOutlet UIButton *maintainDateBtn;
 
 - (IBAction)setCarDefalutAction:(id)sender;
 - (IBAction)addMyCarAction:(id)sender;
@@ -150,9 +153,9 @@ UITextFieldDelegate
         self.defBtn.selected = _carForm.is_default;
         self.vinCodeTextField.text = _carForm.vin_code;
         self.engineCodeTextField.text = _carForm.engine_code;
-        self.buyDateLabel.text = _carForm.buy_date;
-        self.productDateLabel.text = _carForm.product_date;
-        self.maintainDateLabel.text = _carForm.maintain_date;
+        [self.buyDateBtn setTitle:_carForm.buy_date forState:UIControlStateNormal];
+        [self.productBtn setTitle:_carForm.product_date forState:UIControlStateNormal];
+        [self.maintainDateBtn setTitle:_carForm.maintain_date forState:UIControlStateNormal];
     }
     
 }
@@ -190,14 +193,17 @@ UITextFieldDelegate
 
     CarModelForm* _carModealForm = FSBaseDataInstance.carModealForm;
     
-    NSMutableDictionary* carInfo = [@{ @"car_type_id": _carModealForm.modelId,
-                                       @"car_num" : self.plateNumTextField.text,
+    NSString* modelId = _carModealForm ? _carModealForm.modelId: _carForm.car_type_id;
+    
+    NSMutableDictionary* carInfo = [@{ @"car_id" : _carForm ? _carForm.car_id : @"",
+                                       @"car_type_id": modelId,
+                                       @"car_num" : [NSString stringWithFormat:@"%@-%@",self.carPlateNumLabel.text, self.plateNumTextField.text],
                                        @"is_default" : self.defBtn.selected ? @"true" : @"false",
                                        @"vin_code":self.vinCodeTextField.text ? self.vinCodeTextField.text : @"0",
                                        @"engine_code":self.engineCodeTextField.text ? self.engineCodeTextField.text : @"0",
-                                       @"buy_date":self.buyDateLabel.text ? self.buyDateLabel.text : @"0",
-                                       @"product_date":self.productDateLabel.text ? self.productDateLabel.text : @"0",
-                                       @"maintain_date":self.maintainDateLabel.text ? self.maintainDateLabel.text : @"0"
+                                       @"buy_date":self.buyDateBtn.titleLabel.text ? self.buyDateBtn.titleLabel.text : @"0",
+                                       @"product_date":self.productBtn.titleLabel.text ? self.productBtn.titleLabel.text : @"0",
+                                       @"maintain_date":self.maintainDateBtn.titleLabel.text ? self.maintainDateBtn.titleLabel.text : @"0"
                                        } mutableCopy];
     [FSBaseDataInstance addMyCar:carInfo Success:^(id json) {
         [PUtils tipWithText:@"添加成功" andView:nil];
@@ -247,14 +253,36 @@ UITextFieldDelegate
 - (IBAction)chooseDateAction:(id)sender
 {
     [self.view endEditing:YES];
-    _pickerView = [[UIDatePicker alloc]init];
-    _pickerView.delegate = self;
-    _pickerView.dataSource = self;
+    _datePickerView = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 350, 320, 216)];
+    _datePickerView.datePickerMode = UIDatePickerModeDate;
+    NSCalendar* calender = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    [_datePickerView setCalendar:calender];
+    // 设置当前显示时间
+    [_datePickerView setDate:[NSDate date] animated:YES];
+    // 设置时区
+    [_datePickerView setTimeZone:[NSTimeZone localTimeZone]];
+    // 设置显示最大时间（此处为当前时间）
+    [_datePickerView setMaximumDate:[NSDate date]];
+    [_datePickerView setLocale:[[NSLocale alloc]initWithLocaleIdentifier:@"zh_Hans_CN"]];
+    // 当值发生改变的时候调用的方法
+    [_datePickerView addTarget:self action:@selector(datePickerValueChanged:) forControlEvents:UIControlEventValueChanged];
+
     LewPickerController *pickerController = [[LewPickerController alloc]initWithDelegate:self];
-    pickerController.pickerView = _pickerView;
-    pickerController.titleLabel.text = @"选择省市代码";
+    pickerController.pickerView = _datePickerView;
+    pickerController.titleLabel.text = @"选择日期";
+    [self.view addSubview:_backgroundView];
+    [UIView animateWithDuration:0.35 animations:^{
+        _backgroundView.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.1];
+    }];
+    [pickerController showInView:self.view];
+    _currentSelectDateBtn = (UIButton*)sender;
 }
 
+
+- (void)datePickerValueChanged:(UIDatePicker*)sender
+{
+    DLog(@"%@",sender.date);
+}
 
 #pragma mark - UITextFieldDelegate
 - (void)textFieldDidEndEditing:(UITextField *)textField
@@ -302,12 +330,25 @@ UITextFieldDelegate
 
 #pragma mark - LewPickerControllerDelegate
 - (BOOL)lewPickerControllerShouldOKButtonPressed:(LewPickerController *)pickerController{
-    currentSelectPro = [_pickerView selectedRowInComponent:0];
-    currentSelectNum = [_pickerView selectedRowInComponent:1];
-    provinceStr = provinceAry[currentSelectPro];
-    numverPlateStr = numberPlateAry[currentSelectNum];
-    NSString *numberPlate = [NSString stringWithFormat:@"%@%@",provinceStr,numverPlateStr];
-    _carPlateNumLabel.text = numberPlate;
+    if ([pickerController.pickerView isKindOfClass:[UIPickerView class]])
+    {
+        currentSelectPro = [_pickerView selectedRowInComponent:0];
+        currentSelectNum = [_pickerView selectedRowInComponent:1];
+        provinceStr = provinceAry[currentSelectPro];
+        numverPlateStr = numberPlateAry[currentSelectNum];
+        NSString *numberPlate = [NSString stringWithFormat:@"%@%@",provinceStr,numverPlateStr];
+        _carPlateNumLabel.text = numberPlate;
+    }
+    else if ([pickerController.pickerView isKindOfClass:[UIDatePicker class]])
+    {
+        NSDate *selected = _datePickerView.date;
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];//修改时区为东8区
+        NSString *destDateString = [dateFormatter stringFromDate:selected];
+        [_currentSelectDateBtn setTitle:@"" forState:UIControlStateNormal];
+        [_currentSelectDateBtn setTitle:destDateString forState:UIControlStateNormal];
+        DLog(@"%@",destDateString);
+    }
     [self closeBackgroundView];
     return  YES;
 }
