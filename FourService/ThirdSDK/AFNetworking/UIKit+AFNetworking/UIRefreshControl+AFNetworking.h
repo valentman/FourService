@@ -1,5 +1,6 @@
-// UIActivityIndicatorView+AFNetworking.h
-// Copyright (c) 2011–2015 Alamofire Software Foundation (http://alamofire.org/)
+// UIRefreshControl+AFNetworking.m
+//
+// Copyright (c) 2011–2016 Alamofire Software Foundation ( http://alamofire.org/ )
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -21,43 +22,32 @@
 
 #import <Foundation/Foundation.h>
 
-#import <Availability.h>
+#import <TargetConditionals.h>
 
-#if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
+#if TARGET_OS_IOS
 
 #import <UIKit/UIKit.h>
 
-@class AFURLConnectionOperation;
+NS_ASSUME_NONNULL_BEGIN
 
 /**
- This category adds methods to the UIKit framework's `UIActivityIndicatorView` class. The methods in this category provide support for automatically starting and stopping animation depending on the loading state of a request operation or session task.
+ This category adds methods to the UIKit framework's `UIRefreshControl` class. The methods in this category provide support for automatically beginning and ending refreshing depending on the loading state of a session task.
  */
-@interface UIActivityIndicatorView (AFNetworking)
+@interface UIRefreshControl (AFNetworking)
 
-///----------------------------------
-/// @name Animating for Session Tasks
-///----------------------------------
+///-----------------------------------
+/// @name Refreshing for Session Tasks
+///-----------------------------------
 
 /**
- Binds the animating state to the state of the specified task.
-
+ Binds the refreshing state to the state of the specified task.
+ 
  @param task The task. If `nil`, automatic updating from any previously specified operation will be disabled.
  */
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 70000
-- (void)setAnimatingWithStateOfTask:(nullable NSURLSessionTask *)task;
-#endif
-
-///---------------------------------------
-/// @name Animating for Request Operations
-///---------------------------------------
-
-/**
- Binds the animating state to the execution state of the specified operation.
-
- @param operation The operation. If `nil`, automatic updating from any previously specified operation will be disabled.
- */
-- (void)setAnimatingWithStateOfOperation:(nullable AFURLConnectionOperation *)operation;
+- (void)setRefreshingWithStateOfTask:(NSURLSessionTask *)task;
 
 @end
+
+NS_ASSUME_NONNULL_END
 
 #endif

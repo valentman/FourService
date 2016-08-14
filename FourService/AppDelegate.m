@@ -17,6 +17,9 @@
 #import "XGSetting.h"
 #import "JRSwizzle.h"
 #import "KMCGeigerCounter.h"
+#import "FSServiceListController.h"
+#import "FSMyInformationController.h"
+#import "YQSlideMenuController.h"
 
 @interface AppDelegate ()
 
@@ -132,8 +135,14 @@
 #else
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 #endif
-    UIViewController *_CZJRootViewController = [PUtils getViewControllerFromStoryboard:kCZJStoryBoardFileMain andVCName:kCZJStoryBoardIDHomeView];
-    self.window.rootViewController = _CZJRootViewController;
+    UIViewController *contentViewController = [PUtils getViewControllerFromStoryboard:kCZJStoryBoardFileMain andVCName:@"4S"];
+    
+    UIViewController* leftMenuViewController = [PUtils getViewControllerFromStoryboard:kCZJStoryBoardFileMain andVCName:@"4SMyInfo"];
+    YQSlideMenuController *sideMenuController = [[YQSlideMenuController alloc] initWithContentViewController:contentViewController
+                                                                                      leftMenuViewController:leftMenuViewController];
+    UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:sideMenuController];
+    sideMenuController.scaleContent = NO;
+    self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
     
     

@@ -21,6 +21,8 @@
 #import "FSMyEvalutionController.h"
 #import "FSMyAttentionController.h"
 
+#import "YQSlideMenuController.h"
+
 
 
 @interface FSMyInformationController ()
@@ -49,7 +51,6 @@ CZJMyInfoHeadCellDelegate
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initDatas];
-    [self initViews];
 }
 
 - (void)dealWithInitNavigationBar
@@ -106,6 +107,12 @@ CZJMyInfoHeadCellDelegate
 {
 }
 
+- (void)viewDidLayoutSubviews
+{
+    self.view.frame = CGRectMake(0, 0, PJ_SCREEN_WIDTH - 100, PJ_SCREEN_HEIGHT);
+    [self initViews];
+}
+
 - (void)initDatas
 {
     carListAry  = [NSArray array];
@@ -114,11 +121,11 @@ CZJMyInfoHeadCellDelegate
                              @"segueTo":@"segueToRecord",
                              @"budge":@"0",
                              @"item":@"Customer_view_num"}mutableCopy];
-    NSMutableDictionary* pDict1 = [@{@"title":@"收藏",
+    NSMutableDictionary* pDict1 = [@{@"title":@"我的收藏",
                              @"segueTo":@"segueToMyAttention",
                              @"budge":@"0",
                              @"item":@"Customer_favorite_num"}mutableCopy];
-    NSMutableDictionary* pDict2 = [@{@"title":@"评价",
+    NSMutableDictionary* pDict2 = [@{@"title":@"我的评价",
                              @"segueTo":@"segueToMyEvaluation",
                              @"budge":@"0",
                              @"item":@"Customer_comment_num"}mutableCopy];
@@ -160,7 +167,7 @@ CZJMyInfoHeadCellDelegate
 {
     self.view.backgroundColor = CZJNAVIBARBGCOLOR;
     
-    self.myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, PJ_SCREEN_WIDTH, PJ_SCREEN_HEIGHT - Tabbar_HEIGHT) style:UITableViewStylePlain];
+    self.myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.size.width, PJ_SCREEN_HEIGHT - Tabbar_HEIGHT) style:UITableViewStylePlain];
     self.myTableView.tableFooterView = [[UIView alloc]init];
     self.myTableView.delegate = self;
     self.myTableView.dataSource = self;
@@ -183,6 +190,9 @@ CZJMyInfoHeadCellDelegate
     self.myTableView.showsVerticalScrollIndicator = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
+    UIView* buttomView = [PUtils getXibViewByName:@"FSMyinfoButtomView"];
+    buttomView.frame = CGRectMake(0, PJ_SCREEN_HEIGHT - 50, self.view.size.width, 50);
+    [self.view addSubview:buttomView];
 }
 
 - (void)getMyInfoDataFromServer
@@ -249,6 +259,19 @@ CZJMyInfoHeadCellDelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    switch (section) {
+        case 0:
+            return 1;
+            break;
+        case 1:
+            return 2;
+            break;
+        case 2:
+            return personalCellAry.count;
+            break;
+        default:
+            break;
+    }
     return 2;
 }
 
@@ -270,14 +293,6 @@ CZJMyInfoHeadCellDelegate
             cell.contentView.backgroundColor = CZJNAVIBARBGCOLOR;
             return cell;
         }
-        else
-        {
-            CZJGeneralSubCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralSubCell" forIndexPath:indexPath];
-            cell.delegate = self;
-            [cell setGeneralSubCell:personalCellAry andType:kCZJGeneralSubCellTypePersonal];
-            cell.backgroundColor = CZJNAVIBARBGCOLOR;
-            return cell;
-        }
     }
     else if (1 == indexPath.section)
     {
@@ -292,29 +307,23 @@ CZJMyInfoHeadCellDelegate
         }
         else if (1 == indexPath.row)
         {
-            CZJGeneralSubCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralSubCell" forIndexPath:indexPath];
-            cell.delegate = self;
-            [cell setGeneralSubCell:orderSubCellAry andType:kCZJGeneralSubCellTypeOrder];
+            CZJGeneralCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralCell" forIndexPath:indexPath];
+            [cell.imageView setImage:nil];
+            cell.nameLabelLeading.constant = 15;
+            cell.nameLabel.text = @"我的车辆";
+            cell.detailLabel.hidden = NO;
             return cell;
         }
     }
     else if (2 == indexPath.section)
     {
-        if (0 == indexPath.row)
-        {
-            CZJGeneralCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralCell" forIndexPath:indexPath];
-            cell.nameLabel.text = @"服务与反馈";
-            cell.nameLabelLeading.constant = 15;
-            return cell;
-        }
-        else
-        {
-            CZJGeneralCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralCell" forIndexPath:indexPath];
-            cell.nameLabel.text = @"设置";
-            cell.nameLabelLeading.constant = 15;
-            cell.separatorInset = UIEdgeInsetsMake(46, PJ_SCREEN_WIDTH, 0, 0);
-            return cell;
-        }
+        NSDictionary* dict = personalCellAry[indexPath.row];
+        CZJGeneralCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralCell" forIndexPath:indexPath];
+        [cell.imageView setImage:nil];
+        cell.nameLabelLeading.constant = 15;
+        cell.nameLabel.text = [dict valueForKey:@"title"];
+        cell.detailLabel.hidden = NO;
+        return cell;
     }
     return nil;
 }
@@ -324,25 +333,7 @@ CZJMyInfoHeadCellDelegate
 {
     if (0 == indexPath.section)
     {
-        if (0 == indexPath.row)
-        {
-            return 250;
-        }
-        else if (1 == indexPath.row)
-        {
-            return 66;
-        }
-    }
-    else if (1 == indexPath.section)
-    {
-        if (0 == indexPath.row)
-        {
-            return 46;
-        }
-        else
-        {
-            return 60;
-        }
+        return 200;
     }
     else
     {
@@ -357,7 +348,7 @@ CZJMyInfoHeadCellDelegate
     {
         return 0;
     }
-    return 10;
+    return 0;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -368,7 +359,12 @@ CZJMyInfoHeadCellDelegate
     {
         if (0 == indexPath.row)
         {
-            segueIdentifer = @"segueToPersonalInfo";
+//            segueIdentifer = @"segueToPersonalInfo";
+            FSMyPersonalInfoController* myPersonal = (FSMyPersonalInfoController*)[PUtils getViewControllerFromStoryboard:kCZJStoryBoardFileMain andVCName:@"4SMyInfo"];
+//            myPersonal.myinfor = myInfoForm;
+            UIViewController* pVC = self.parentViewController;
+            UINavigationController* naV = pVC.navigationController;
+            [naV pushViewController:myPersonal animated:YES];
         }
     }
     if (1 == indexPath.section)
@@ -378,17 +374,15 @@ CZJMyInfoHeadCellDelegate
             _currentTouchOrderListType = 0;
             segueIdentifer = @"segueToMyOrderList";
         }
+        if (1 == indexPath.row)
+        {
+            segueIdentifer = @"segueToMyCarList";
+        }
     }
     if (indexPath.section == 2)
     {
-        if (indexPath.row == 0)
-        {
-            segueIdentifer = @"segueToService";
-        }
-        else
-        {
-            segueIdentifer = @"segueToSetting";
-        }
+        NSDictionary* dict = personalCellAry[indexPath.row];
+        segueIdentifer = [dict valueForKey:@"segueTo"];
     }
     if (segueIdentifer)
     {
@@ -435,11 +429,11 @@ CZJMyInfoHeadCellDelegate
         //消息中心
         [self performSegueWithIdentifier:@"segueToMessageCenter" sender:self];
     }
-    else
-    {
-        //车辆信息
-        [self performSegueWithIdentifier:@"segueToMyCarList" sender:self];
-    }
+//    else
+//    {
+//        //车辆信息
+//        [self performSegueWithIdentifier:@"segueToMyCarList" sender:self];
+//    }
 }
 
 #pragma mark- CZJViewControllerDelegate
@@ -454,7 +448,12 @@ CZJMyInfoHeadCellDelegate
     if ([identifier isEqualToString:@"segueToSetting"] ||
         [PUtils isLoginIn:self andNaviBar:nil])
     {
-        [super performSegueWithIdentifier:identifier sender:sender];
+        UIViewController* parentVC = self.parentViewController;
+        if ([parentVC isKindOfClass:[YQSlideMenuController class]])
+        {
+            [parentVC performSegueWithIdentifier:identifier sender:sender];
+        }
+        
     }
 }
 
@@ -468,18 +467,12 @@ CZJMyInfoHeadCellDelegate
     if ([segue.identifier isEqualToString:@"segueToMyCarList"])
     {
         FSMyCarListController* carListVC = segue.destinationViewController;
-        carListVC.carListAry = carListAry;
+        carListVC.carListAry = [carListAry mutableCopy];
     }
     if ([segue.identifier isEqualToString:@"segueToMyOrderList"])
     {
 //        CZJMyInfoOrderListController* orderListVC = segue.destinationViewController;
 //        orderListVC.orderListTypeIndex = _currentTouchOrderListType;
-    }
-
-    if ([segue.identifier isEqualToString:@"segueToRedPacket"])
-    {
-//        CZJMyWalletRedpacketController* redpackeVC = segue.destinationViewController;
-//        redpackeVC.redPacketNum = myInfoForm.redpacket;
     }
     if ([segue.identifier isEqualToString:@"segueToService"])
     {

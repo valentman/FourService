@@ -29,7 +29,7 @@
     
     NSMutableArray* _goodsTypesAry;
     NSMutableArray* _serviceTypesAry;
-    NSMutableDictionary *_params;                   //post参数字典
+    NSMutableDictionary *_baseParams;                   //post参数字典
     
     //固定数据
     NSArray* _orderPaymentTypeAry;           //支付方式数组（暂时固定为三个支付方式）
@@ -56,7 +56,7 @@
 @property (nonatomic, retain) NSString* curCityName;                    //用户当前城市
 @property (nonatomic, retain) NSString* curCityID;                    //用户当前城市ID
 @property (nonatomic, retain) NSString* curProvinceID;                    //用户当前省份ID
-@property (nonatomic) NSMutableDictionary *params;
+@property (nonatomic) NSMutableDictionary *baseParams;
 
 singleton_interface(FSBaseDataManager);
 
@@ -271,5 +271,10 @@ singleton_interface(FSBaseDataManager);
 //读取个人信息
 - (void)loginWithDefaultInfoSuccess:(void (^)())success
                                fail:(void (^)())fail;
+
+//-------------------------注册登录------------------------------
+//获取服务列表
+- (void)getServiceList:(SuccessBlockHandler)success
+                  fail:(FailureBlockHandler)fail;
 
 @end

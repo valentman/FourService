@@ -105,7 +105,7 @@
     
     //2.扫一扫按钮
     CGRect btnScanRect = CGRectMake(0, 0, 44, 44);
-    _btnScan = [[UIButton alloc]initWithFrame:btnScanRect];
+    _btnScan = [[BadgeButton alloc]initWithFrame:btnScanRect];
     [_btnScan setBackgroundImage:[UIImage imageNamed:saoyisaoBtnImageName] forState:UIControlStateNormal];
     [_btnScan addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
     [_btnScan setTag:CZJButtonTypeHomeScan];
@@ -113,7 +113,7 @@
     
     //3.返回按钮
     CGRect btnBackRect = CGRectMake(0, 0, 44, 44);
-    _btnBack = [[ UIButton alloc ]initWithFrame:btnBackRect];
+    _btnBack = [[ BadgeButton alloc ]initWithFrame:btnBackRect];
     [_btnBack setBackgroundImage:[UIImage imageNamed:@"prodetail_btn_backnor"] forState:UIControlStateNormal];
     [_btnBack addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
     [_btnBack setTag:CZJButtonTypeNaviBarBack];
@@ -121,7 +121,7 @@
     
     //4.更多按钮
     CGRect btnMoreRect = CGRectMake(CGRectGetMaxX(_selfBounds) - 58, 2, 40, 40);
-    _btnMore = [[ UIButton alloc ]initWithFrame:btnMoreRect];
+    _btnMore = [[ BadgeButton alloc ]initWithFrame:btnMoreRect];
     [_btnMore setBackgroundImage:[UIImage imageNamed:@"prodetail_btn_more"] forState:UIControlStateNormal];
     [_btnMore addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
     [_btnMore setTag:CZJButtonTypeNaviBarMore];
@@ -130,7 +130,7 @@
     
     //5.购物车按钮
     CGRect btnShopRect = CGRectMake(CGRectGetMaxX(_selfBounds) - 44, 0, 44, 44);
-    _btnShop = [[UIButton alloc]initWithFrame:btnShopRect];
+    _btnShop = [[BadgeButton alloc]initWithFrame:btnShopRect];
     [_btnShop setBackgroundImage:[UIImage imageNamed:shopBtnImageName] forState:UIControlStateNormal];
     [_btnShop addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
     [_btnShop setTag:CZJButtonTypeHomeShopping];
@@ -157,7 +157,7 @@
     
     //6.列表分类按钮
     CGRect btnArrangeRect = CGRectMake(CGRectGetMaxX(_selfBounds) - 44, 10, 24, 24);
-    _btnArrange = [[UIButton alloc]initWithFrame:btnArrangeRect];
+    _btnArrange = [[BadgeButton alloc]initWithFrame:btnArrangeRect];
     [_btnArrange setBackgroundImage:[UIImage imageNamed:arrangeBtnImageName] forState:UIControlStateNormal];
     [_btnArrange addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
     [_btnArrange setTag:CZJButtonTypeNaviArrange];

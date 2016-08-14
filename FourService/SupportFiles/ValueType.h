@@ -164,6 +164,7 @@ CG_INLINE CZJMargin CZJMarginMake(CGFloat horisideMargin, CGFloat vertiMiddleMar
 
 typedef void (^MGBasicBlock)();
 typedef void (^BadgeButtonBlock)(UIButton* button);
+typedef void (^ProgressBlockHandler)(NSProgress* progress);
 typedef void (^SuccessBlockHandler)(id json);
 typedef void (^FailureBlockHandler)();
 typedef void (^GeneralBlockHandler)();

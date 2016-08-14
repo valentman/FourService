@@ -51,7 +51,7 @@
 #import "MBProgressHUD.h"
 #import "FDAlertView.h"
 //七牛
-#import "QiniuSDK.h"
+//#import "QiniuSDK.h"
 #import "OpenShare.h"
 
 //环信聊天

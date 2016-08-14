@@ -23,7 +23,7 @@
 //@synthesize homeForm = _homeForm;
 //@synthesize carForm = _carForm;
 //@synthesize storeForm = _storeForm;
-@synthesize params = _params;
+@synthesize baseParams = _baseParams;
 //@synthesize shoppingCartForm = _shoppingCartForm;
 @synthesize discoverForms = _discoverForms;
 @synthesize goodsTypesAry = _goodsTypesAry;
@@ -40,7 +40,7 @@ singleton_implementation(FSBaseDataManager);
 {
     if (self = [super init])
     {
-        _params = [NSMutableDictionary dictionary];
+        _baseParams = [NSMutableDictionary dictionary];
         _discoverForms = [NSMutableDictionary dictionary];
         _orderStoreCouponAry = [NSMutableArray array];
         _serviceTypesAry = [NSMutableArray array];
@@ -62,13 +62,13 @@ singleton_implementation(FSBaseDataManager);
                                  @"os" : @"ios",
                                  @"suffix" : ((iPhone6Plus || iPhone6) ? @"@3x" : @"@2x")
                                  };
-    _params = [_tmpparams mutableCopy];
+    _baseParams = [_tmpparams mutableCopy];
 }
 
 - (void)refreshChezhuID
 {
-    [_params setValue:((nil == self.userInfoForm.identifier) ? @"0" : self.userInfoForm.identifier) forKey:@"identifier"];
-    [_params setValue:((nil == self.userInfoForm.token) ? @"0" : self.userInfoForm.token) forKey:@"token"];
+    [_baseParams setValue:((nil == self.userInfoForm.identifier) ? @"0" : self.userInfoForm.identifier) forKey:@"identifier"];
+    [_baseParams setValue:((nil == self.userInfoForm.token) ? @"0" : self.userInfoForm.token) forKey:@"token"];
 //    [_params setValue:((nil == self.userInfoForm.mobile) ? @"0" : self.userInfoForm.mobile) forKey:@"chezhuMobile"];
 }
 
@@ -84,8 +84,8 @@ singleton_implementation(FSBaseDataManager);
     {
         _curLocation = curLocation;
     }
-    [_params setValue:@(self.curLocation.longitude) forKey:@"lng"];
-    [_params setValue:@(self.curLocation.latitude) forKey:@"lat"];
+    [_baseParams setValue:@(self.curLocation.longitude) forKey:@"lng"];
+    [_baseParams setValue:@(self.curLocation.latitude) forKey:@"lat"];
 }
 
 - (void)setCurCityName:(NSString *)curCity
@@ -150,7 +150,7 @@ singleton_implementation(FSBaseDataManager);
     };
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:self.params];
+    [params setValuesForKeysWithDictionary:self.baseParams];
     [params setValuesForKeysWithDictionary:postParams];
     
     [FSNetWorkInstance postJSONWithUrl:api
@@ -184,7 +184,7 @@ singleton_implementation(FSBaseDataManager);
     };
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:self.params];
+    [params setValuesForKeysWithDictionary:self.baseParams];
     [params setValuesForKeysWithDictionary:postParams];
     
     [FSNetWorkInstance postJSONWithUrl:api
@@ -194,29 +194,61 @@ singleton_implementation(FSBaseDataManager);
 }
 
 
-- (void)generalUploadImage:(UIImage*)image
-                   withAPI:(NSString*)serverAPI
-                   Success:(SuccessBlockHandler)success
-                      fail:(FailureBlockHandler)fail
+- (void)generalUploadImages:(NSArray*)_imageAry
+                      param:(NSDictionary*)_params
+                   progress:(ProgressBlockHandler)_progress
+                    success:(SuccessBlockHandler)_success
+                    failure:(FailureBlockHandler)_fail
+                     andUrl:(NSString*)_url
 {
+//    SuccessBlockHandler successBlock = ^(id json){
+//        if ([self showAlertView:json])
+//        {
+//            success(json);
+//        }
+//    };
+//    
+//    FailureBlockHandler failBlock = ^(){
+//        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
+//    };
+//    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+//    [params setValuesForKeysWithDictionary:self.params];
+//    
+//    [FSNetWorkInstance uploadImageWithUrl:serverAPI
+//                                    Image:image
+//                               Parameters:params
+//                                  success:successBlock
+//                                  failure:failBlock];
+    
     SuccessBlockHandler successBlock = ^(id json){
         if ([self showAlertView:json])
         {
-            success(json);
+            _success(json);
+        }
+        else if (_fail)
+        {
+            _fail();
         }
     };
     
     FailureBlockHandler failBlock = ^(){
-        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
+        if (_fail) {
+            _fail();
+        }
     };
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:self.params];
     
-    [FSNetWorkInstance uploadImageWithUrl:serverAPI
-                                    Image:image
-                               Parameters:params
-                                  success:successBlock
-                                  failure:failBlock];
+    NSMutableDictionary* params = [NSMutableDictionary dictionary];
+    [params setValuesForKeysWithDictionary:_params];
+    [params setValue:@"files" forKey:@"action"];
+    [params setValuesForKeysWithDictionary:self.baseParams];
+    
+    [FSNetWorkInstance uploadData:_imageAry
+                        parameter:params
+                            toURL:_url
+                         progress:_progress
+                           sccess:successBlock
+                          failure:failBlock];
+    
 }
 
 - (void)getAreaInfos
@@ -235,7 +267,7 @@ singleton_implementation(FSBaseDataManager);
     FailureBlockHandler failBlock = ^{
     };
     [FSNetWorkInstance postJSONWithUrl:kCZJServerAPIGetCitys
-                             parameters:_params
+                             parameters:_baseParams
                                 success:successBlock
                                    fail:failBlock];
 }
@@ -280,7 +312,7 @@ singleton_implementation(FSBaseDataManager);
             case CZJHomeGetDataFromServerTypeOne:
             {
                 explicitUrl = kFSServerAPIShowHome;
-                [params setValuesForKeysWithDictionary:_params];
+                [params setValuesForKeysWithDictionary:_baseParams];
             }
                 break;
                 
@@ -321,18 +353,14 @@ singleton_implementation(FSBaseDataManager);
         [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
     };
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:_params];
+    [params setValuesForKeysWithDictionary:_baseParams];
     
     if (!_carForm)
     {
-//        [FSNetWorkInstance postJSONWithUrl:kCZJServerAPILoadCarBrands
-//                                 parameters:params
-//                                    success:successBlock
-//                                       fail:failBlock];
-        [FSNetWorkInstance postJSONWithNoServerAPI:kCZJServerAPILoadCarBrands
-                                        parameters:params
-                                           success:successBlock
-                                              fail:failBlock];
+        [FSNetWorkInstance postJSONWithUrl:kFSServerAPIGetCarBrands
+                                parameters:params
+                                   success:successBlock
+                                      fail:failBlock];
     }
 }
 
@@ -345,7 +373,6 @@ singleton_implementation(FSBaseDataManager);
     {
         if ([self showAlertView:json])
         {
-//            NSDictionary* dict = [PUtils DataFromJson:json];
             [_carForm setNewCarSeriesWithDict:json AndBrandName:brandName];
             DLog(@"login suc");
             success();
@@ -356,18 +383,13 @@ singleton_implementation(FSBaseDataManager);
         [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
     };
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:_params];
+    [params setValuesForKeysWithDictionary:_baseParams];
     [params setObject:brandId forKey:@"brandId"];
     
-//    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPILoadCarSeries
-//                            parameters:params
-//                               success:successBlock
-//                                  fail:failBlock];
-    
-    [FSNetWorkInstance postJSONWithNoServerAPI:kCZJServerAPILoadCarSeries
-                                    parameters:params
-                                       success:successBlock
-                                          fail:failBlock];
+    [FSNetWorkInstance postJSONWithUrl:kFSServerAPIGetCarModels
+                            parameters:params
+                               success:successBlock
+                                  fail:failBlock];
 }
 
 - (void)loadCarModelSeriesId:(NSString*)seriesId
@@ -379,7 +401,6 @@ singleton_implementation(FSBaseDataManager);
     {
         if ([self showAlertView:json])
         {
-//            NSDictionary* dict = [PUtils DataFromJson:json];
             [_carForm setNewCarModelsWithDict:json ];
             success(json);
         }
@@ -389,17 +410,13 @@ singleton_implementation(FSBaseDataManager);
         [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
     };
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:_params];
+    [params setValuesForKeysWithDictionary:_baseParams];
     [params setObject:seriesId forKey:@"seriesId"];
-    
-//    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPILoadCarModels
-//                            parameters:params
-//                               success:successBlock
-//                                  fail:failBlock];
-    [FSNetWorkInstance postJSONWithNoServerAPI:kCZJServerAPILoadCarModels
-                                    parameters:params
-                                       success:successBlock
-                                          fail:failBlock];
+
+    [FSNetWorkInstance postJSONWithUrl:kFSServerAPIGetCarTypes
+                            parameters:params
+                               success:successBlock
+                                  fail:failBlock];
 }
 
 
@@ -422,7 +439,7 @@ singleton_implementation(FSBaseDataManager);
         [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
     };
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:_params];
+    [params setValuesForKeysWithDictionary:_baseParams];
     [params setObject:storeItemPid forKey:@"storeItemPid"];
     NSString* apiUrl;
     if (CZJDetailTypeGoods == type)
@@ -458,7 +475,7 @@ singleton_implementation(FSBaseDataManager);
         [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
     };
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:_params];
+    [params setValuesForKeysWithDictionary:_baseParams];
     [params setObject:storeId forKey:@"storeId"];
 
     NSString* apiUrl;
@@ -500,7 +517,7 @@ singleton_implementation(FSBaseDataManager);
         failure();
     };
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:_params];
+    [params setValuesForKeysWithDictionary:_baseParams];
     [params setValuesForKeysWithDictionary:postParams];
     
     [FSNetWorkInstance postJSONWithUrl:kCZJServerAPIGetNearbyStores
@@ -529,7 +546,7 @@ singleton_implementation(FSBaseDataManager);
     };
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:self.params];
+    [params setValuesForKeysWithDictionary:self.baseParams];
     [params setValuesForKeysWithDictionary:postParams];
     
     [FSNetWorkInstance postJSONWithUrl:kCZJServerAPILoadGoodsInStore
@@ -554,7 +571,7 @@ singleton_implementation(FSBaseDataManager);
     };
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:self.params];
+    [params setValuesForKeysWithDictionary:self.baseParams];
     [params setValuesForKeysWithDictionary:postParams];
     
     [FSNetWorkInstance postJSONWithUrl:kCZJServerAPIGetStoreDetail
@@ -583,7 +600,7 @@ singleton_implementation(FSBaseDataManager);
     };
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:_params];
+    [params setValuesForKeysWithDictionary:self.baseParams];
     [params setValuesForKeysWithDictionary:postParams];
     
     [FSNetWorkInstance postJSONWithUrl:kCZJServerAPISettleOrders
@@ -612,7 +629,7 @@ singleton_implementation(FSBaseDataManager);
     };
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:_params];
+    [params setValuesForKeysWithDictionary:self.baseParams];
     [params setValuesForKeysWithDictionary:postParams];
     
     [FSNetWorkInstance postJSONWithUrl:kCZJServerAPISubmitOrder
@@ -639,7 +656,7 @@ singleton_implementation(FSBaseDataManager);
     };
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:self.params];
+    [params setValuesForKeysWithDictionary:self.baseParams];
     [params setValuesForKeysWithDictionary:postParams];
     
     [FSNetWorkInstance postJSONWithUrl:kCZJServerAPIGetOrderList
@@ -674,7 +691,7 @@ singleton_implementation(FSBaseDataManager);
     };
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:self.params];
+    [params setValuesForKeysWithDictionary:self.baseParams];
     [params setValuesForKeysWithDictionary:postParams];
     
     [FSNetWorkInstance postJSONWithUrl:kCZJServerAPIGetOrderDetail
@@ -700,7 +717,7 @@ singleton_implementation(FSBaseDataManager);
     };
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:self.params];
+    [params setValuesForKeysWithDictionary:self.baseParams];
     [params setValuesForKeysWithDictionary:postParams];
     
     [FSNetWorkInstance postJSONWithUrl:kCZJServerAPICarCheck
@@ -726,7 +743,7 @@ singleton_implementation(FSBaseDataManager);
     };
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:self.params];
+    [params setValuesForKeysWithDictionary:self.baseParams];
     [params setValuesForKeysWithDictionary:postParams];
     
     [FSNetWorkInstance postJSONWithUrl:kCZJServerAPIBuildingProgress
@@ -745,7 +762,7 @@ singleton_implementation(FSBaseDataManager);
                fail:(FailureBlockHandler)fail
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:self.params];
+    [params setValuesForKeysWithDictionary:self.baseParams];
     [params setValuesForKeysWithDictionary:postParams];
     [self generalPost:params success:success fail:fail andServerAPI:kFSServerAPIGetMyInfo];
 }
@@ -778,7 +795,7 @@ singleton_implementation(FSBaseDataManager);
     };
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:self.params];
+    [params setValuesForKeysWithDictionary:self.baseParams];
     [params setValuesForKeysWithDictionary:postParams];
     
     [FSNetWorkInstance postJSONWithUrl:kFSServerAPIEditMyInfo
@@ -804,7 +821,7 @@ singleton_implementation(FSBaseDataManager);
     };
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:self.params];
+    [params setValuesForKeysWithDictionary:self.baseParams];
     [params setValuesForKeysWithDictionary:postParams];
     
     [FSNetWorkInstance postJSONWithUrl:kFSServerAPIAddMyCar
@@ -939,4 +956,9 @@ singleton_implementation(FSBaseDataManager);
 }
 
 
+- (void)getServiceList:(SuccessBlockHandler)success
+                  fail:(FailureBlockHandler)fail
+{
+    [self generalPost:nil success:success fail:fail andServerAPI:kFSServerAPIServiceList];
+}
 @end

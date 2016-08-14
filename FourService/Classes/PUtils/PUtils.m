@@ -1109,6 +1109,16 @@ void tapToHidePopViewAction(id sender, SEL _cmd)
     return rect;
 }
 
+
++ (CGRect)viewFrameFromDynamic:(CZJMargin)margin
+                          size:(CGSize)viewSize
+                         index:(int)index
+                        divide:(int)divide
+                      subWidth:(int)width
+{
+    return [self viewFrameFromDynamic:margin width:PJ_SCREEN_WIDTH size:viewSize index:index divide:divide subWidth:width];
+}
+
 /**
  * @margin
  * @viewSize
@@ -1117,6 +1127,7 @@ void tapToHidePopViewAction(id sender, SEL _cmd)
  * @筛选界面专用，没有间距限制
  */
 + (CGRect)viewFrameFromDynamic:(CZJMargin)margin
+                         width:(int)cellWidth
                           size:(CGSize)viewSize
                          index:(int)index
                         divide:(int)divide
@@ -1127,7 +1138,7 @@ void tapToHidePopViewAction(id sender, SEL _cmd)
     // 行数
     int row = index/divide;
     // 动态调整中间间距
-    CGFloat horiMiddleMargin = (PJ_SCREEN_WIDTH - width - divide*viewSize.width - 2*margin.horisideMargin) / (divide-1);
+    CGFloat horiMiddleMargin = (cellWidth - width - divide*viewSize.width - 2*margin.horisideMargin) / (divide-1);
     // 很据列数和行数算出x、y
     int childX = column * (viewSize.width + horiMiddleMargin);
     int childY = row * (viewSize.height + margin.vertiMiddleMargin);

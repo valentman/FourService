@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FSServiceListController : UIViewController
+@interface FSServiceListController : PBaseViewController
 
 @end

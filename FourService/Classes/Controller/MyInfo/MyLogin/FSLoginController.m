@@ -332,8 +332,8 @@ FDAlertViewDelegate
         [USER_DEFAULT synchronize]; //强制更新到本地
         
         //更新基本参数
-        [FSBaseDataInstance.params setValue:[dict valueForKey:@"identifier"] forKey:@"identifier"];
-        [FSBaseDataInstance.params setValue:[dict valueForKey:@"token"] forKey:@"token"];
+        [FSBaseDataInstance.baseParams setValue:[dict valueForKey:@"identifier"] forKey:@"identifier"];
+        [FSBaseDataInstance.baseParams setValue:[dict valueForKey:@"token"] forKey:@"token"];
         
         //注册个人推送
         [XGPush setAccount:FSBaseDataInstance.userInfoForm.identifier];

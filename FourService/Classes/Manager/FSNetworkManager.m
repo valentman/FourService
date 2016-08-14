@@ -7,8 +7,10 @@
 //
 
 #import "FSNetworkManager.h"
-#import "AFNetworking.h"
-#import "UIImageView+AFNetworking.h"
+#import <AVFoundation/AVFoundation.h>
+
+static NSString* const ImageName = @"image";
+static NSString* const ImageFileName = @"imageFile";
 
 @implementation FSNetworkManager
 
@@ -22,56 +24,38 @@ singleton_implementation(FSNetworkManager)
     return nil;
 }
 
-//检测网络状态
+
+
+
 - (void)checkNetWorkStatus
 {
-    /**
-     AFNetworkReachabilityStatusUnknown          = -1,  // 未知
-     AFNetworkReachabilityStatusNotReachable     = 0,   // 无连接
-     AFNetworkReachabilityStatusReachableViaWWAN = 1,   // 3G 花钱
-     AFNetworkReachabilityStatusReachableViaWiFi = 2,   // WiFi
-     */
-    // 如果要检测网络状态的变化,必须用检测管理器的单例的startMonitoring
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status)
+     {
+         switch (status)
+         {
+             case AFNetworkReachabilityStatusUnknown:
+                 DLog(@"未知网络状态");
+                 break;
+             case AFNetworkReachabilityStatusNotReachable:
+                 DLog(@"无网络");
+                 break;
+             case AFNetworkReachabilityStatusReachableViaWWAN:
+                 DLog(@"手机移动网络连接");
+                 break;
+             case AFNetworkReachabilityStatusReachableViaWiFi:
+                 DLog(@"Wifi连接");
+                 break;
+             default:
+                 break;
+         }
+     }];
+    
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
-    
-    // 检测网络连接的单例,网络变化时的回调方法
-    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-    }];
 }
 
-
-
-//上传图片
-- (void)uploadImageWithUrl:(NSString *)urlStr
-                     Image:(UIImage *)image
-                Parameters:(id)parameters
-                   success:(SuccessBlockHandler)success
-                   failure:(FailureBlockHandler)failure {
-    
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    // 设置返回类型
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",@"text/plain", nil];
-    
-    NSString* path =  [self getPath:urlStr];
-    
-    [manager POST:path parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        NSData *imageData = UIImageJPEGRepresentation(image, 1);
-        
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        formatter.dateFormat = @"yyyyMMddHHmmss";
-        //        NSString *str = [formatter stringFromDate:[NSDate date]];
-        //        NSString *fileName = [NSString stringWithFormat:@"%@.jpg", str];
-        
-        // 上传图片，以文件流的格式
-        [formData appendPartWithFileData:imageData name:@"file" fileName:@"file.jpg" mimeType:@"image/jpeg"];
-    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        success(responseObject);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        failure(error);
-    }];
+- (NSString*)getPath:(NSString*)cmd{
+    return [NSString stringWithFormat:@"%@%@",kCZJServerAddr,cmd];
 }
-
-
 
 - (void)postJSONWithUrl:(NSString *)urlStr
              parameters:(id)parameters
@@ -85,6 +69,7 @@ singleton_implementation(FSNetworkManager)
     [self postJSONWithUrl:path withRequestType:AFRequestTypeGet parameters:parameters success:success fail:fail];
 }
 
+
 - (void)postJSONWithUrl:(NSString *)urlStr
         withRequestType:(AFRequestType)requestType
              parameters:(id)parameters
@@ -93,168 +78,198 @@ singleton_implementation(FSNetworkManager)
 {
     if (AFRequestTypePost == requestType)
     {
-        [self postJSONWithNoServerAPI:urlStr parameters:parameters success:success fail:fail];
+        [self postDataWithUrl:urlStr parameters:parameters success:success fail:fail];
     }
     else if (AFRequestTypeGet == requestType)
     {
-        [self GetJSONDataWithUrl:urlStr parameter:parameters success:success fail:fail];
+        [self getDataWithUrl:urlStr parameters:parameters success:success fail:fail];
     }
 }
 
-
-//Post请求网络数据
-- (void)postJSONWithNoServerAPI:(NSString *)urlStr
-                     parameters:(id)parameters
-                        success:(SuccessBlockHandler)success
-                           fail:(FailureBlockHandler)fail
+//POST方法获取数据
+- (void)postDataWithUrl:(NSString*)_urlStr
+             parameters:(id)_parameters
+                success:(void (^)(id responseObject))_success
+                   fail:(void (^)())_failure
 {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    // 设置返回类型
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",@"text/plain", nil];
+    AFHTTPSessionManager* manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer.timeoutInterval = 10;
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/plain",@"text/json",@"application/json",@"text/javascript",@"text/html", @"application/javascript", @"text/js", nil];
+    _urlStr = [_urlStr stringByReplacingOccurrencesOfString:@" " withString:@""];
     
-    // 设置返回格式
-    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 10.f;
-    
-    [manager POST:urlStr
-       parameters:parameters
-          success:^(AFHTTPRequestOperation *operation, id responseObject){
-              DLog();
-              if (success)
-              {
-                  success(responseObject);
-              }
-          }
-          failure:^(AFHTTPRequestOperation *operation, NSError *error){
-              if (fail) {
-                  fail();
-              }
-          }
-     ];
-}
-
-
-
-//Get请求网络数据
-- (void)GetJSONDataWithUrl:(NSString *)url
-                 parameter:(id)parameter
-                   success:(SuccessBlockHandler) success
-                      fail:(FailureBlockHandler)fail
-{
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    
-//    parameter = @{@"format": @"json"};
-    
-    // 网络访问是异步的,回调是主线程的,因此程序员不用管在主线程更新UI的事情
-    [manager GET:url
-      parameters:parameter
-         success:^(AFHTTPRequestOperation *operation, id responseObject) {
-             if (success) {
-                 DLog(@"%@",[responseObject description]);
-                 success(responseObject);
-             }
-         }
-         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-             NSLog(@"%@", error);
-             if (fail) {
-                 fail();
-             }
-         }];
-    
-    
-}
-
-- (void)sessionDownloadWithUrl:(NSString *)urlStr success:(void (^)(NSURL *fileURL))success fail:(void (^)())fail
-{
-    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:config];
-    
-    NSString *urlString = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
-    NSURLSessionDownloadTask *task = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
-        // 指定下载文件保存的路径
-        // 将下载文件保存在缓存路径中
-        NSString *cacheDir = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];
-        NSString *path = [cacheDir stringByAppendingPathComponent:response.suggestedFilename];
+    [manager POST:_urlStr parameters:_parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
-        /**    URLWithString返回的是网络的URL,如果使用本地URL,需要注意
-         * @eg NSURL *fileURL1 = [NSURL URLWithString:path];
-         */
-        NSURL *fileURL = [NSURL fileURLWithPath:path];
-        
-        if (success) {
-            success(fileURL);
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (_success) {
+            _success(responseObject);
         }
-        
-        return fileURL;
-    } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
-        NSLog(@"%@ %@", filePath, error);
-        if (fail) {
-            fail();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (_failure) {
+            _failure();
         }
     }];
-    [task resume];
 }
 
 
-- (NSString*)getPath:(NSString*)cmd{
-    return [NSString stringWithFormat:@"%@%@",kCZJServerAddr,cmd];
-}
-
-- (void)postJSONWithParameters:(id)parameters
-                       success:(void (^)(id))success
-                          fail:(void (^)())fail{
-    
-    [self postJSONWithUrl:@"http://192.168.0.148:8080/appserver/chezhu/register.do" parameters:parameters success:success fail:fail];
-}
-
-
-- (void)loadImagePath:(NSString*)path callback:(void (^)(id responseObject))callfun{
-    
-    NSURL *url = [NSURL URLWithString:path];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    operation.responseSerializer = [AFImageResponseSerializer serializer];
-    
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        callfun(responseObject);
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-        NSLog(@"Error: %@", error);
-    }];
-    
-    [operation start];
-}
-
-
-- (void)saveImage:(UIImage *)image withFilename:(NSString *)filename
+//GET方法获取数据
+- (void)getDataWithUrl:(NSString*)_urlStr
+            parameters:(id)_parameters
+               success:(void (^)(id responseObject))_success
+                  fail:(void (^)())_failure
 {
-    NSString *path;
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    path = [paths[0] stringByAppendingPathComponent:@"HTTPClientImages/"];
-	   
-    BOOL isDir;
+    AFHTTPSessionManager* manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer.timeoutInterval = 10;
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/plain",@"text/json",@"application/json",@"text/javascript",@"text/html", @"application/javascript", @"text/js", nil];
+    _urlStr = [_urlStr stringByReplacingOccurrencesOfString:@" " withString:@""];
     
-    if(![[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDir]) {
-        if(!isDir) {
-            NSError *error;
-            [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
+    [manager GET:_urlStr parameters:_parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (_success) {
+            _success(responseObject);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (_failure) {
+            _failure();
+        }
+    }];
+}
+
+//下载数据
+- (void)downloadDataWithURL:(NSString*)_urlStr
+                   progress:(void (^)(NSProgress *))_progress
+                    success:(void (^)(id responseObject))_success
+{
+    AFHTTPSessionManager* manager = [AFHTTPSessionManager manager];
+    _urlStr = [_urlStr stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:_urlStr]];
+    NSURLSessionDownloadTask* downloadTask = [manager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
+        if (_progress) {
+            _progress(downloadProgress);
+        }
+    } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
+        NSString* filePath = CachesDirectory;
+        return [NSURL URLWithString:filePath];
+    } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
+        if (_success) {
+            _success(response);
+        }
+    }];
+    [downloadTask resume];
+}
+
+//上传图片文件（可多张）
+- (void)uploadData:(NSArray*)_uploadImageAry
+         parameter:(id)_parameter
+             toURL:(NSString*)_urlStr
+          progress:(void (^)(NSProgress *))_progress
+            sccess:(void (^)(id responseObject))_success
+           failure:(void (^)())_fail
+{
+    AFHTTPSessionManager* manager = [AFHTTPSessionManager manager];
+    _urlStr = [_urlStr stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    
+    [manager POST:_urlStr parameters:_parameter constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+        for(NSInteger i = 0; i < _uploadImageAry.count; i++)
+        {
+            UIImage* image = _uploadImageAry[i];
             
-            NSLog(@"%@",error);
+            NSData *imageData = UIImageJPEGRepresentation(image, 0);
+            NSString * Name = [NSString stringWithFormat:@"%@%zi", ImageName, i+1];
+            NSString * fileName = [NSString stringWithFormat:@"%@%zi.jpeg", ImageFileName,i+1];
+            
+            [formData appendPartWithFileData:imageData name:Name fileName:fileName mimeType:@"image/jpeg"];
         }
-    }
-    
-    path = [path stringByAppendingPathComponent:filename];
-    NSData *imageData = UIImagePNGRepresentation(image);
-    NSLog(@"Written: %d",[imageData writeToFile:path atomically:YES]);
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        if (_progress) {
+            _progress(uploadProgress);
+        }
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (_success) {
+            _success(responseObject);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (error) {
+            DLog(@"Error::%@",[error description]);
+            [PUtils tipWithText:[error description] andView:nil];
+            _fail();
+        }
+    }];
 }
 
+//上传音频文件
+- (void)uploadVoice:(NSData*)_voiceData
+         parameters:(id)_param
+              toURL:(NSString*)_urlStr
+           progress:(void (^)(NSProgress *))_progress
+            success:(void (^)(id responseObject))_success
+            failure:(void (^)())_fail
+{
+    AFHTTPSessionManager* manager = [AFHTTPSessionManager manager];
+    _urlStr = [_urlStr stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    [manager POST:_urlStr parameters:_param constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"yyyyMMddHHmmss";
+        NSString *str = [formatter stringFromDate:[NSDate date]];
+        NSString *fileName = [NSString stringWithFormat:@"%@.amr", str];
+        [formData appendPartWithFileData:_voiceData name:@"voice" fileName:fileName mimeType:@"amr/mp3/wmr"];
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        if (_progress) {
+            _progress(uploadProgress);
+        }
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (_success) {
+            _success(responseObject);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (error) {
+            DLog(@"Error::%@",[error description]);
+            _fail();
+        }
+    }];
+}
+
+//上传视频文件
+- (void)uploadVideo:(NSData*)_videoData
+         parameters:(id)_param
+              toURL:(NSString*)_urlStr
+           progress:(void (^)(NSProgress *))_progress
+            success:(void (^)(id responseObject))_success
+            failure:(void (^)())_fail
+{
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    _urlStr = [_urlStr stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    [manager POST:_urlStr parameters:_param constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"yyyyMMddHHmmss";
+        NSString *str = [formatter stringFromDate:[NSDate date]];
+        NSString *fileName = [NSString stringWithFormat:@"%@.mp4", str];
+        [formData appendPartWithFileData:_videoData name:@"video" fileName:fileName mimeType:@"video/mpeg4"];
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        if (_progress) {
+            _progress(uploadProgress);
+        }
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (_success) {
+            _success(responseObject);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (error) {
+            DLog(@"Error::%@",[error description]);
+            _fail();
+        }
+    }];
+}
 
 
 @end

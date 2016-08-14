@@ -67,7 +67,7 @@
         <!--4S服务-->
         <scene sceneID="MQt-BT-8Iu">
             <objects>
-                <viewController id="LVN-Jt-Wqd" customClass="FSServiceListController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="4S" id="LVN-Jt-Wqd" customClass="FSServiceListController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="F2f-MN-0jJ"/>
                         <viewControllerLayoutGuide type="bottom" id="2S3-wi-FTJ"/>
@@ -192,7 +192,7 @@
         <!--我的-->
         <scene sceneID="UFh-yS-owY">
             <objects>
-                <viewController id="aLb-2g-ELH" customClass="FSMyInformationController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="4SMyInfo" id="aLb-2g-ELH" customClass="FSMyInformationController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="i4W-Fv-7Wt"/>
                         <viewControllerLayoutGuide type="bottom" id="An4-g8-D7V"/>

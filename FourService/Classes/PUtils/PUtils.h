@@ -137,6 +137,12 @@
                          index:(int)index
                         divide:(int)divide
                       subWidth:(int)width;
++ (CGRect)viewFrameFromDynamic:(CZJMargin)margin
+                         width:(int)cellWidth
+                          size:(CGSize)viewSize
+                         index:(int)index
+                        divide:(int)divide
+                      subWidth:(int)width;
 
 //-----------------------------拍照或选取相册图片处理方法---------------------------
 + (BOOL)isCameraAvailable:(UIViewController*)base;
