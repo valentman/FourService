@@ -1,2 +1,6 @@
 
 *.a
+
+FourService/Classes/Controller/MyInfo/.DS_Store
+
+FourService.xcodeproj/project.xcworkspace/xcuserdata/Joe.Pen.xcuserdatad/UserInterfaceState.xcuserstate
