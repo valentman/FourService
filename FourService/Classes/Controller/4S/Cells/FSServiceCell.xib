@@ -15,9 +15,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="70" height="99"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="knM-fA-iVV">
-                        <rect key="frame" x="0.0" y="0.0" width="70" height="99"/>
-                    </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qPK-6H-kKA">
                         <rect key="frame" x="0.0" y="-5" width="70" height="70"/>
                         <constraints>
@@ -36,23 +33,18 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="knM-fA-iVV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="1iN-t3-KoQ"/>
                     <constraint firstAttribute="bottom" secondItem="p1i-O0-ROc" secondAttribute="bottom" id="FaJ-Lx-Dac"/>
                     <constraint firstItem="p1i-O0-ROc" firstAttribute="top" secondItem="qPK-6H-kKA" secondAttribute="bottom" constant="10" id="Fy0-80-gWd"/>
-                    <constraint firstAttribute="trailing" secondItem="knM-fA-iVV" secondAttribute="trailing" id="Hko-Hy-2dV"/>
-                    <constraint firstAttribute="bottom" secondItem="knM-fA-iVV" secondAttribute="bottom" id="LWZ-mo-bGa"/>
-                    <constraint firstItem="knM-fA-iVV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="QaD-ke-CFr"/>
                     <constraint firstAttribute="trailing" secondItem="p1i-O0-ROc" secondAttribute="trailing" id="bm8-ow-Kf5"/>
                     <constraint firstItem="p1i-O0-ROc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="boB-sG-Osh"/>
                     <constraint firstItem="qPK-6H-kKA" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="mMX-dg-lEc"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="cellBtn" destination="knM-fA-iVV" id="ojL-v2-Y9D"/>
                 <outlet property="cellImage" destination="qPK-6H-kKA" id="Cax-e4-A1y"/>
                 <outlet property="cellLabel" destination="p1i-O0-ROc" id="Dpk-bV-NTH"/>
             </connections>
-            <point key="canvasLocation" x="322.5" y="285"/>
+            <point key="canvasLocation" x="322" y="285"/>
         </tableViewCell>
     </objects>
 </document>

@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface FSServiceCell : UICollectionViewCell
-@property (weak, nonatomic) IBOutlet UIButton *cellBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *cellImage;
 @property (weak, nonatomic) IBOutlet UILabel *cellLabel;
 @end

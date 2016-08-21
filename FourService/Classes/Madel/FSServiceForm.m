@@ -11,3 +11,26 @@
 @implementation FSServiceListForm
 
 @end
+
+@implementation FSStoreImageForm
+
+@end
+
+@implementation FSStoreInfoForm
++ (NSDictionary *)objectClassInArray
+{
+    return @{@"shop_image_list" : @"FSStoreImageForm",
+             @"service_list" : @"FSStoreServiceListForm"};
+}
+@end
+
+@implementation FSServiceStepForm
++ (NSDictionary *)objectClassInArray
+{
+    return @{@"product_list" : @"FSServiceStepProductForm"};
+}
+@end
+
+
+@implementation FSServiceStepProductForm
+@end

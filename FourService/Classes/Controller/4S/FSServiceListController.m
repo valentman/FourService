@@ -10,7 +10,10 @@
 #import "FSTopCarInfoBarView.h"
 #import "FSBaseDataManager.h"
 #import "FSServiceCell.h"
+#import "FSStoreListController.h"
 #import "UIButton+AFNetworking.h"
+#import "PJBrowserView.h"
+#import "FSTopAddCarCell.h"
 
 @interface FSServiceListController ()
 <
@@ -18,7 +21,6 @@ UICollectionViewDelegate,
 UICollectionViewDataSource
 >
 {
-    FSTopCarInfoBarView* carInfoBarView;
     UserBaseForm* userInfoForm;
     NSDictionary* todoThingDict;
     NSArray* serviceAry;
@@ -72,48 +74,54 @@ UICollectionViewDataSource
     UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
     flowLayout.minimumInteritemSpacing=0.f;//左右间隔
     flowLayout.minimumLineSpacing=10.f;
-    self.myCollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 114, PJ_SCREEN_WIDTH, PJ_SCREEN_HEIGHT - 114) collectionViewLayout:flowLayout];
+    self.myCollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 20 + 44 + kMovieBrowserHeight, PJ_SCREEN_WIDTH, PJ_SCREEN_HEIGHT - 20 - 44 - kMovieBrowserHeight) collectionViewLayout:flowLayout];
     self.myCollectionView.delegate = self;
     self.myCollectionView.dataSource = self;
     self.myCollectionView.clipsToBounds = YES;
-    self.myCollectionView.backgroundColor = WHITECOLOR;
-    self.myCollectionView.scrollEnabled = YES;
+    self.myCollectionView.alwaysBounceVertical = YES;
+    self.myCollectionView.userInteractionEnabled = YES;
     UINib *nib=[UINib nibWithNibName:kServiceCollectionViewCell bundle:nil];
     [self.myCollectionView registerNib: nib forCellWithReuseIdentifier:kServiceCollectionViewCell];
     [self.view addSubview:self.myCollectionView];
     
     //naviBar
     [self addCZJNaviBarView:CZJNaviBarViewTypeMain];
+    [self.naviBarView setSize:CGSizeMake(PJ_SCREEN_WIDTH, 44 + kMovieBrowserHeight)];
     self.naviBarView.mainTitleLabel.text = @"4S服务";
+    self.naviBarView.buttomSeparator.hidden = YES;
     self.naviBarView.backgroundColor = CZJREDCOLOR;
-    
-    //carInfoBar
-    carInfoBarView = [PUtils getXibViewByName:@"FSTopCarInfoBarView"];
-    carInfoBarView.frame = CGRectMake(0, 63, PJ_SCREEN_WIDTH, 50);
-    carInfoBarView.backgroundColor = CZJREDCOLOR;
-    [self.view addSubview:carInfoBarView];
 }
 
 - (void)updateTopViewsWhenGetDataSuccess
 {
     //提取出当前默认车辆，如果没有，则显示添加车辆
+    
+    //carInfoBar
+    NSMutableArray* carViewItems = [NSMutableArray array];
     if (userInfoForm.car_list.count > 0)
     {
-        FSCarListForm* carForm;
-        for (carForm in userInfoForm.car_list)
+        for (FSCarListForm* carForm in userInfoForm.car_list)
         {
-            if (carForm.is_default)
-            {
-                break;
-            }
+            FSTopCarInfoBarView* carInfoBarView = [PUtils getXibViewByName:@"FSTopCarInfoBarView"];
+            [carInfoBarView.iconImageView sd_setImageWithURL:[NSURL URLWithString:carForm.logo] placeholderImage:DefaultPlaceHolderCircle];
+            carInfoBarView.numberLabel.text = carForm.car_num;
+            carInfoBarView.carTypeLabel.text = [NSString stringWithFormat:@"%@ %@ %@",carForm.car_brand_name,carForm.car_model_name, carForm.car_type_name];
+            carInfoBarView.frame = CGRectMake(0, 0, PJ_SCREEN_WIDTH, kMovieBrowserHeight);
+            [carViewItems addObject:carInfoBarView];
         }
-        [carInfoBarView.iconImageView sd_setImageWithURL:[NSURL URLWithString:carForm.logo] placeholderImage:DefaultPlaceHolderSquare];
-        carInfoBarView.titleLabel.text = [NSString stringWithFormat:@"%@ %@ %@",carForm.car_brand_name,carForm.car_model_name,carForm.car_type_name];
     }
     else
     {
-        
+        FSTopAddCarCell* addcarView = [PUtils getXibViewByName:@"FSTopAddCarCell"];
+        addcarView.backgroundColor = GRAYCOLOR;
+        [carViewItems addObject:addcarView];
     }
+    
+
+    PJBrowserView* browserView = [[PJBrowserView alloc] initWithFrame:CGRectMake(0, 44, PJ_SCREEN_WIDTH, kMovieBrowserHeight) items:carViewItems];
+    browserView.backgroundColor = BLUECOLOR;
+    [self.naviBarView addSubview:browserView];
+
     
     //左上角个人头像信息
     [self.naviBarView.btnScan setFrame:CGRectMake(20, 0, 44, 44)];
@@ -164,12 +172,21 @@ UICollectionViewDataSource
 
 //返回
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    return UIEdgeInsetsMake(0, 10, 10, 10);
+    return UIEdgeInsetsMake(10, 10, 10, 10);
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    FSServiceListForm* serviceListForm = serviceAry[indexPath.item];
+    DLog(@"%@",serviceListForm.service_type_name);
     
+    
+    
+//    FSStoreListController* storeListVC = [[FSStoreListController alloc]init];
+//    [self.navigationController pushViewController:storeListVC animated:YES];
+    
+    [self performSegueWithIdentifier:@"segueToStoreList" sender:self];
 }
+
 
 @end

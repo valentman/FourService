@@ -35,13 +35,9 @@
 		EC3A19031D41F2DF00F6F193 /* FSStoreListController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3A19021D41F2DF00F6F193 /* FSStoreListController.m */; };
 		EC3A19061D41F31E00F6F193 /* FSServiceStepController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3A19051D41F31E00F6F193 /* FSServiceStepController.m */; };
 		EC3A190B1D41F37100F6F193 /* FSCommitOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3A190A1D41F37100F6F193 /* FSCommitOrderController.m */; };
-		EC474B351D5EBE4400B54B0F /* FSTopCarInfoBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC474B331D5EBE4400B54B0F /* FSTopCarInfoBarView.m */; };
-		EC474B361D5EBE4400B54B0F /* FSTopCarInfoBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC474B341D5EBE4400B54B0F /* FSTopCarInfoBarView.xib */; };
 		EC474B3A1D5EFCAB00B54B0F /* FSMyinfoButtomView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC474B381D5EFCAB00B54B0F /* FSMyinfoButtomView.m */; };
 		EC474B3B1D5EFCAB00B54B0F /* FSMyinfoButtomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC474B391D5EFCAB00B54B0F /* FSMyinfoButtomView.xib */; };
 		EC474B3E1D5F700000B54B0F /* FSServiceForm.m in Sources */ = {isa = PBXBuildFile; fileRef = EC474B3D1D5F700000B54B0F /* FSServiceForm.m */; };
-		EC474B421D5F72A500B54B0F /* FSServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC474B401D5F72A500B54B0F /* FSServiceCell.m */; };
-		EC474B431D5F72A500B54B0F /* FSServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC474B411D5F72A500B54B0F /* FSServiceCell.xib */; };
 		EC5427091D23791F00F3B4BF /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5426F01D23791F00F3B4BF /* Accounts.framework */; };
 		EC54270A1D23791F00F3B4BF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5426F11D23791F00F3B4BF /* AudioToolbox.framework */; };
 		EC54270B1D23791F00F3B4BF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5426F21D23791F00F3B4BF /* AVFoundation.framework */; };
@@ -327,6 +323,19 @@
 		ECA82A441D58CDE600F05C52 /* YQSlideMenuImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECA82A411D58CDE600F05C52 /* YQSlideMenuImages.xcassets */; };
 		ECB422B91D4912AA00D20A9D /* PWUploadImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB422B81D4912AA00D20A9D /* PWUploadImageButton.m */; };
 		ECBC6BC81D349A46003B7446 /* NSTimer_Pause.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBC6BC71D349A46003B7446 /* NSTimer_Pause.m */; };
+		ECBFD5E61D69403400662B5E /* FSServiceStepCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBFD5DE1D69403400662B5E /* FSServiceStepCell.m */; };
+		ECBFD5E71D69403400662B5E /* FSServiceStepCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECBFD5DF1D69403400662B5E /* FSServiceStepCell.xib */; };
+		ECBFD5E81D69403400662B5E /* FSServiceStopProCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBFD5E11D69403400662B5E /* FSServiceStopProCell.m */; };
+		ECBFD5E91D69403400662B5E /* FSServiceStopProCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECBFD5E21D69403400662B5E /* FSServiceStopProCell.xib */; };
+		ECBFD5EA1D69403400662B5E /* FSServiceStoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBFD5E41D69403400662B5E /* FSServiceStoreCell.m */; };
+		ECBFD5EB1D69403400662B5E /* FSServiceStoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECBFD5E51D69403400662B5E /* FSServiceStoreCell.xib */; };
+		ECBFD5EF1D69408A00662B5E /* FSTopCarInfoBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBFD5ED1D69408A00662B5E /* FSTopCarInfoBarView.m */; };
+		ECBFD5F01D69408A00662B5E /* FSTopCarInfoBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECBFD5EE1D69408A00662B5E /* FSTopCarInfoBarView.xib */; };
+		ECBFD5F41D6940BC00662B5E /* FSServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBFD5F21D6940BC00662B5E /* FSServiceCell.m */; };
+		ECBFD5F51D6940BC00662B5E /* FSServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECBFD5F31D6940BC00662B5E /* FSServiceCell.xib */; };
+		ECBFD5F81D69920600662B5E /* PJBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBFD5F71D69920600662B5E /* PJBrowserView.m */; };
+		ECBFD5FC1D69F46600662B5E /* FSTopAddCarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBFD5FA1D69F46600662B5E /* FSTopAddCarCell.m */; };
+		ECBFD5FD1D69F46600662B5E /* FSTopAddCarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECBFD5FB1D69F46600662B5E /* FSTopAddCarCell.xib */; };
 		ECD537F31D46523900D136EF /* CZJCarBrandChooseController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD537EE1D46523900D136EF /* CZJCarBrandChooseController.m */; };
 		ECD537F41D46523900D136EF /* CZJCarModelChooseController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD537F01D46523900D136EF /* CZJCarModelChooseController.m */; };
 		ECD537F51D46523900D136EF /* CZJCarSeriesChooseController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD537F21D46523900D136EF /* CZJCarSeriesChooseController.m */; };
@@ -391,17 +400,11 @@
 		EC3A19051D41F31E00F6F193 /* FSServiceStepController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSServiceStepController.m; sourceTree = "<group>"; };
 		EC3A19091D41F37100F6F193 /* FSCommitOrderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCommitOrderController.h; sourceTree = "<group>"; };
 		EC3A190A1D41F37100F6F193 /* FSCommitOrderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCommitOrderController.m; sourceTree = "<group>"; };
-		EC474B321D5EBE4400B54B0F /* FSTopCarInfoBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSTopCarInfoBarView.h; path = FourService/Classes/Controller/MyInfo/MyPersonal/FSTopCarInfoBarView.h; sourceTree = SOURCE_ROOT; };
-		EC474B331D5EBE4400B54B0F /* FSTopCarInfoBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSTopCarInfoBarView.m; path = FourService/Classes/Controller/MyInfo/MyPersonal/FSTopCarInfoBarView.m; sourceTree = SOURCE_ROOT; };
-		EC474B341D5EBE4400B54B0F /* FSTopCarInfoBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FSTopCarInfoBarView.xib; path = FourService/Classes/Controller/MyInfo/MyPersonal/FSTopCarInfoBarView.xib; sourceTree = SOURCE_ROOT; };
 		EC474B371D5EFCAB00B54B0F /* FSMyinfoButtomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyinfoButtomView.h; sourceTree = "<group>"; };
 		EC474B381D5EFCAB00B54B0F /* FSMyinfoButtomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyinfoButtomView.m; sourceTree = "<group>"; };
 		EC474B391D5EFCAB00B54B0F /* FSMyinfoButtomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSMyinfoButtomView.xib; sourceTree = "<group>"; };
 		EC474B3C1D5F700000B54B0F /* FSServiceForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSServiceForm.h; sourceTree = "<group>"; };
 		EC474B3D1D5F700000B54B0F /* FSServiceForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSServiceForm.m; sourceTree = "<group>"; };
-		EC474B3F1D5F72A500B54B0F /* FSServiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSServiceCell.h; path = FourService/Classes/Madel/FSServiceCell.h; sourceTree = SOURCE_ROOT; };
-		EC474B401D5F72A500B54B0F /* FSServiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSServiceCell.m; path = FourService/Classes/Madel/FSServiceCell.m; sourceTree = SOURCE_ROOT; };
-		EC474B411D5F72A500B54B0F /* FSServiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FSServiceCell.xib; path = FourService/Classes/Madel/FSServiceCell.xib; sourceTree = SOURCE_ROOT; };
 		EC5426F01D23791F00F3B4BF /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		EC5426F11D23791F00F3B4BF /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		EC5426F21D23791F00F3B4BF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -973,6 +976,26 @@
 		ECB422B81D4912AA00D20A9D /* PWUploadImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWUploadImageButton.m; sourceTree = "<group>"; };
 		ECBC6BC61D349A46003B7446 /* NSTimer_Pause.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSTimer_Pause.h; sourceTree = "<group>"; };
 		ECBC6BC71D349A46003B7446 /* NSTimer_Pause.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSTimer_Pause.m; sourceTree = "<group>"; };
+		ECBFD5DD1D69403400662B5E /* FSServiceStepCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSServiceStepCell.h; sourceTree = "<group>"; };
+		ECBFD5DE1D69403400662B5E /* FSServiceStepCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSServiceStepCell.m; sourceTree = "<group>"; };
+		ECBFD5DF1D69403400662B5E /* FSServiceStepCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSServiceStepCell.xib; sourceTree = "<group>"; };
+		ECBFD5E01D69403400662B5E /* FSServiceStopProCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSServiceStopProCell.h; sourceTree = "<group>"; };
+		ECBFD5E11D69403400662B5E /* FSServiceStopProCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSServiceStopProCell.m; sourceTree = "<group>"; };
+		ECBFD5E21D69403400662B5E /* FSServiceStopProCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSServiceStopProCell.xib; sourceTree = "<group>"; };
+		ECBFD5E31D69403400662B5E /* FSServiceStoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSServiceStoreCell.h; sourceTree = "<group>"; };
+		ECBFD5E41D69403400662B5E /* FSServiceStoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSServiceStoreCell.m; sourceTree = "<group>"; };
+		ECBFD5E51D69403400662B5E /* FSServiceStoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSServiceStoreCell.xib; sourceTree = "<group>"; };
+		ECBFD5EC1D69408A00662B5E /* FSTopCarInfoBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTopCarInfoBarView.h; sourceTree = "<group>"; };
+		ECBFD5ED1D69408A00662B5E /* FSTopCarInfoBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTopCarInfoBarView.m; sourceTree = "<group>"; };
+		ECBFD5EE1D69408A00662B5E /* FSTopCarInfoBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSTopCarInfoBarView.xib; sourceTree = "<group>"; };
+		ECBFD5F11D6940BC00662B5E /* FSServiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSServiceCell.h; sourceTree = "<group>"; };
+		ECBFD5F21D6940BC00662B5E /* FSServiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSServiceCell.m; sourceTree = "<group>"; };
+		ECBFD5F31D6940BC00662B5E /* FSServiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSServiceCell.xib; sourceTree = "<group>"; };
+		ECBFD5F61D69920600662B5E /* PJBrowserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJBrowserView.h; sourceTree = "<group>"; };
+		ECBFD5F71D69920600662B5E /* PJBrowserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJBrowserView.m; sourceTree = "<group>"; };
+		ECBFD5F91D69F46600662B5E /* FSTopAddCarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTopAddCarCell.h; sourceTree = "<group>"; };
+		ECBFD5FA1D69F46600662B5E /* FSTopAddCarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTopAddCarCell.m; sourceTree = "<group>"; };
+		ECBFD5FB1D69F46600662B5E /* FSTopAddCarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSTopAddCarCell.xib; sourceTree = "<group>"; };
 		ECD537ED1D46523900D136EF /* CZJCarBrandChooseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJCarBrandChooseController.h; sourceTree = "<group>"; };
 		ECD537EE1D46523900D136EF /* CZJCarBrandChooseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJCarBrandChooseController.m; sourceTree = "<group>"; };
 		ECD537EF1D46523900D136EF /* CZJCarModelChooseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJCarModelChooseController.h; sourceTree = "<group>"; };
@@ -1192,7 +1215,7 @@
 		EC3A18FC1D41F27E00F6F193 /* 4S */ = {
 			isa = PBXGroup;
 			children = (
-				EC3A18FD1D41F29B00F6F193 /* Cell */,
+				ECBFD5DC1D693F9500662B5E /* Cells */,
 				EC3A18FE1D41F2CE00F6F193 /* FSServiceListController.h */,
 				EC3A18FF1D41F2CE00F6F193 /* FSServiceListController.m */,
 				EC3A19011D41F2DF00F6F193 /* FSStoreListController.h */,
@@ -1201,19 +1224,6 @@
 				EC3A19051D41F31E00F6F193 /* FSServiceStepController.m */,
 			);
 			path = 4S;
-			sourceTree = "<group>";
-		};
-		EC3A18FD1D41F29B00F6F193 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				EC474B321D5EBE4400B54B0F /* FSTopCarInfoBarView.h */,
-				EC474B331D5EBE4400B54B0F /* FSTopCarInfoBarView.m */,
-				EC474B341D5EBE4400B54B0F /* FSTopCarInfoBarView.xib */,
-				EC474B3F1D5F72A500B54B0F /* FSServiceCell.h */,
-				EC474B401D5F72A500B54B0F /* FSServiceCell.m */,
-				EC474B411D5F72A500B54B0F /* FSServiceCell.xib */,
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		EC3A19071D41F34C00F6F193 /* Order */ = {
@@ -1521,6 +1531,8 @@
 				EC5427711D237DE000F3B4BF /* PBaseViewController.m */,
 				EC5427721D237DE000F3B4BF /* LSPageScrollView.h */,
 				EC5427731D237DE000F3B4BF /* LSPageScrollView.m */,
+				ECBFD5F61D69920600662B5E /* PJBrowserView.h */,
+				ECBFD5F71D69920600662B5E /* PJBrowserView.m */,
 			);
 			path = Conponets;
 			sourceTree = "<group>";
@@ -2490,6 +2502,31 @@
 			path = YQSlideMenuController;
 			sourceTree = "<group>";
 		};
+		ECBFD5DC1D693F9500662B5E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				ECBFD5F11D6940BC00662B5E /* FSServiceCell.h */,
+				ECBFD5F21D6940BC00662B5E /* FSServiceCell.m */,
+				ECBFD5F31D6940BC00662B5E /* FSServiceCell.xib */,
+				ECBFD5DD1D69403400662B5E /* FSServiceStepCell.h */,
+				ECBFD5DE1D69403400662B5E /* FSServiceStepCell.m */,
+				ECBFD5DF1D69403400662B5E /* FSServiceStepCell.xib */,
+				ECBFD5E01D69403400662B5E /* FSServiceStopProCell.h */,
+				ECBFD5E11D69403400662B5E /* FSServiceStopProCell.m */,
+				ECBFD5E21D69403400662B5E /* FSServiceStopProCell.xib */,
+				ECBFD5E31D69403400662B5E /* FSServiceStoreCell.h */,
+				ECBFD5E41D69403400662B5E /* FSServiceStoreCell.m */,
+				ECBFD5E51D69403400662B5E /* FSServiceStoreCell.xib */,
+				ECBFD5EC1D69408A00662B5E /* FSTopCarInfoBarView.h */,
+				ECBFD5ED1D69408A00662B5E /* FSTopCarInfoBarView.m */,
+				ECBFD5EE1D69408A00662B5E /* FSTopCarInfoBarView.xib */,
+				ECBFD5F91D69F46600662B5E /* FSTopAddCarCell.h */,
+				ECBFD5FA1D69F46600662B5E /* FSTopAddCarCell.m */,
+				ECBFD5FB1D69F46600662B5E /* FSTopAddCarCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		ECD537EC1D46523900D136EF /* CarSelectVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -2588,8 +2625,9 @@
 			files = (
 				ECD538041D4658DB00D136EF /* CZJCarBrandsListCellTableViewCell.xib in Resources */,
 				EC542A171D237E7700F3B4BF /* pop.png in Resources */,
+				ECBFD5EB1D69403400662B5E /* FSServiceStoreCell.xib in Resources */,
 				ECA233E41D37DC8F004C2679 /* CZJMyInfoHeadCell.xib in Resources */,
-				EC474B431D5F72A500B54B0F /* FSServiceCell.xib in Resources */,
+				ECBFD5E91D69403400662B5E /* FSServiceStopProCell.xib in Resources */,
 				ECD5380E1D4666A900D136EF /* Address.plist in Resources */,
 				EC54298E1D237E7700F3B4BF /* anjuke_icon_to_position1.png in Resources */,
 				EC54278C1D237DE000F3B4BF /* RefreshLocationBarView.xib in Resources */,
@@ -2610,16 +2648,17 @@
 				EC18DE921D450204006CB460 /* CZJMyMessageCenterCell.xib in Resources */,
 				ECA233E61D37DC8F004C2679 /* CZJMyInfoShoppingCartCell.xib in Resources */,
 				EC5429A21D237E7700F3B4BF /* wl_map_icon_position_press.png in Resources */,
-				EC474B361D5EBE4400B54B0F /* FSTopCarInfoBarView.xib in Resources */,
 				EC542A191D237E7700F3B4BF /* pop@3x.png in Resources */,
 				EC5429841D237E7700F3B4BF /* Resources.bundle in Resources */,
 				EC54299F1D237E7700F3B4BF /* wl_map_icon_5@2x.png in Resources */,
 				EC5427881D237DE000F3B4BF /* LoadingFailedAlertView.xib in Resources */,
+				ECBFD5FD1D69F46600662B5E /* FSTopAddCarCell.xib in Resources */,
 				EC474B3B1D5EFCAB00B54B0F /* FSMyinfoButtomView.xib in Resources */,
 				EC54297D1D237E7700F3B4BF /* KSRefresh.bundle in Resources */,
 				EC54298B1D237E7700F3B4BF /* anjuke_icon_itis_position.png in Resources */,
 				EC18DE971D450CEA006CB460 /* CZJMyCarListCell.xib in Resources */,
 				EC542A181D237E7700F3B4BF /* pop@2x.png in Resources */,
+				ECBFD5E71D69403400662B5E /* FSServiceStepCell.xib in Resources */,
 				EC2AC68A1D4A4EDF0065D67C /* Province.plist in Resources */,
 				EC5427351D237AF500F3B4BF /* LaunchScreen.storyboard in Resources */,
 				EC54299D1D237E7700F3B4BF /* wl_map_icon_4@2x.png in Resources */,
@@ -2629,8 +2668,10 @@
 				EC9064701D47BF8A00E9554F /* CZJReceiveCouponsCell.xib in Resources */,
 				EC5429751D237E7700F3B4BF /* LICENSE in Resources */,
 				EC54299B1D237E7700F3B4BF /* wl_map_icon_1_press@2x.png in Resources */,
+				ECBFD5F51D6940BC00662B5E /* FSServiceCell.xib in Resources */,
 				EC542A151D237E7700F3B4BF /* WebViewJsBridge.js in Resources */,
 				EC1261AF1D4CECB90082378D /* CZJGoodsAttentionCell.xib in Resources */,
+				ECBFD5F01D69408A00662B5E /* FSTopCarInfoBarView.xib in Resources */,
 				EC54277F1D237DE000F3B4BF /* FSButtomView.xib in Resources */,
 				ECA233E01D37DC8F004C2679 /* CZJGeneralCell.xib in Resources */,
 				EC542AEB1D239B8A00F3B4BF /* AlipaySDK.bundle in Resources */,
@@ -2667,6 +2708,7 @@
 				EC542A771D23979500F3B4BF /* UIView+Frame.m in Sources */,
 				EC5429B71D237E7700F3B4BF /* MJRefreshBackNormalFooter.m in Sources */,
 				EC5429761D237E7700F3B4BF /* README.markdown in Sources */,
+				ECBFD5EF1D69408A00662B5E /* FSTopCarInfoBarView.m in Sources */,
 				EC542AEF1D239B8A00F3B4BF /* Order.m in Sources */,
 				EC542A741D23979500F3B4BF /* NSString+Valid.m in Sources */,
 				EC3A18FB1D41F21C00F6F193 /* FSMyCarListController.m in Sources */,
@@ -2683,6 +2725,7 @@
 				EC5429921D237E7700F3B4BF /* LocationChange.m in Sources */,
 				EC5429BE1D237E7700F3B4BF /* UIScrollView+MJExtension.m in Sources */,
 				EC5429B01D237E7700F3B4BF /* MJRefreshComponent.m in Sources */,
+				ECBFD5F81D69920600662B5E /* PJBrowserView.m in Sources */,
 				EC5429C81D237E7700F3B4BF /* MultilevelMenu.m in Sources */,
 				EC542AF11D239B8A00F3B4BF /* DataSigner.m in Sources */,
 				EC5429A51D237E7700F3B4BF /* MBProgressHUD.m in Sources */,
@@ -2725,7 +2768,6 @@
 				ECB422B91D4912AA00D20A9D /* PWUploadImageButton.m in Sources */,
 				EC5429641D237E7700F3B4BF /* GTMStackTrace.m in Sources */,
 				EC542AF31D239B8A00F3B4BF /* MD5DataSigner.m in Sources */,
-				EC474B421D5F72A500B54B0F /* FSServiceCell.m in Sources */,
 				EC5429681D237E7700F3B4BF /* IMY_NJKWebViewProgress.m in Sources */,
 				EC5429F91D237E7700F3B4BF /* NSData+ImageContentType.m in Sources */,
 				EC18DE961D450CEA006CB460 /* CZJMyCarListCell.m in Sources */,
@@ -2735,6 +2777,7 @@
 				EC542A121D237E7700F3B4BF /* WebViewJavascriptBridge_JS.m in Sources */,
 				EC5427811D237DE000F3B4BF /* DynamicArrangeButtonCell.m in Sources */,
 				EC542A711D23979500F3B4BF /* NSDate+Category.m in Sources */,
+				ECBFD5E81D69403400662B5E /* FSServiceStopProCell.m in Sources */,
 				EC5429D21D237E7700F3B4BF /* CALayer+Anim.m in Sources */,
 				EC5429D11D237E7700F3B4BF /* OpenShare.m in Sources */,
 				EC5429D51D237E7700F3B4BF /* WyzAlbumViewController.m in Sources */,
@@ -2806,6 +2849,7 @@
 				EC542AF91D239B8A00F3B4BF /* payRequsestHandler.mm in Sources */,
 				EC5429651D237E7700F3B4BF /* iConsole.m in Sources */,
 				EC5429A61D237E7700F3B4BF /* MJConst.m in Sources */,
+				ECBFD5E61D69403400662B5E /* FSServiceStepCell.m in Sources */,
 				EC542AF71D239B8A00F3B4BF /* RSADataVerifier.m in Sources */,
 				EC95ED521D606A63005A50B7 /* UIRefreshControl+AFNetworking.m in Sources */,
 				EC1261AE1D4CECB90082378D /* CZJGoodsAttentionCell.m in Sources */,
@@ -2814,6 +2858,7 @@
 				EC5429BB1D237E7700F3B4BF /* MJRefreshStateHeader.m in Sources */,
 				EC54295F1D237E7700F3B4BF /* CCLocationManager.m in Sources */,
 				EC542AF81D239B8A00F3B4BF /* ApiXml.mm in Sources */,
+				ECBFD5EA1D69403400662B5E /* FSServiceStoreCell.m in Sources */,
 				EC5429D01D237E7700F3B4BF /* OpenShare+Weixin.m in Sources */,
 				EC542A001D237E7700F3B4BF /* SDWebImagePrefetcher.m in Sources */,
 				EC542AF51D239B8A00F3B4BF /* openssl_wrapper.m in Sources */,
@@ -2822,6 +2867,7 @@
 				EC474B3E1D5F700000B54B0F /* FSServiceForm.m in Sources */,
 				EC54278D1D237DE000F3B4BF /* StarRageView.m in Sources */,
 				EC54277A1D237DE000F3B4BF /* FSAlertView.m in Sources */,
+				ECBFD5F41D6940BC00662B5E /* FSServiceCell.m in Sources */,
 				EC026F291D2B852F00CA8CEB /* FSActivityCell.m in Sources */,
 				EC542A721D23979500F3B4BF /* NSDateFormatter+Category.m in Sources */,
 				EC54278A1D237DE000F3B4BF /* BasePageControlView.m in Sources */,
@@ -2831,10 +2877,10 @@
 				EC5429CC1D237E7700F3B4BF /* OpenShare+Alipay.m in Sources */,
 				EC5429971D237E7700F3B4BF /* RegionAnnotationView.m in Sources */,
 				EC5427871D237DE000F3B4BF /* LoadingFailedAlertView.m in Sources */,
+				ECBFD5FC1D69F46600662B5E /* FSTopAddCarCell.m in Sources */,
 				EC5429671D237E7700F3B4BF /* IMYWebView.m in Sources */,
 				EC3A19061D41F31E00F6F193 /* FSServiceStepController.m in Sources */,
 				EC542A3C1D237EF500F3B4BF /* PUtils.m in Sources */,
-				EC474B351D5EBE4400B54B0F /* FSTopCarInfoBarView.m in Sources */,
 				EC5429C91D237E7700F3B4BF /* MXPullDownCollectionViewCell.m in Sources */,
 				ECD538091D46646600D136EF /* CZJAddMyCarController.m in Sources */,
 				EC542A111D237E7700F3B4BF /* WebViewJavascriptBridge.m in Sources */,

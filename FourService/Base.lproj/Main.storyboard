@@ -85,7 +85,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
                     <connections>
-                        <segue destination="Cj7-BH-LUW" kind="show" id="qmt-7V-RAx"/>
+                        <segue destination="Cj7-BH-LUW" kind="show" identifier="segueToStoreList" id="qmt-7V-RAx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ZD-FO-5xM" sceneMemberID="firstResponder"/>
@@ -172,7 +172,7 @@
         <!--设置-->
         <scene sceneID="quG-UB-a8u">
             <objects>
-                <viewController title="设置" extendedLayoutIncludesOpaqueBars="YES" hidesBottomBarWhenPushed="YES" id="k6x-Bq-BOQ" customClass="FSSettingController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settingSBID" title="设置" extendedLayoutIncludesOpaqueBars="YES" hidesBottomBarWhenPushed="YES" id="k6x-Bq-BOQ" customClass="FSSettingController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6fC-7L-kpJ"/>
                         <viewControllerLayoutGuide type="bottom" id="BqU-af-He4"/>
@@ -1162,7 +1162,7 @@
         <!--关注列表-->
         <scene sceneID="KIp-Kc-KgM">
             <objects>
-                <viewController storyboardIdentifier="myAttentionSBID" title="关注列表" extendedLayoutIncludesOpaqueBars="YES" hidesBottomBarWhenPushed="YES" id="fBV-Fc-eaW" customClass="FSMyAttentionController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="favoriteSBID" title="关注列表" extendedLayoutIncludesOpaqueBars="YES" hidesBottomBarWhenPushed="YES" id="fBV-Fc-eaW" customClass="FSMyAttentionController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="psd-2r-nR0"/>
                         <viewControllerLayoutGuide type="bottom" id="RFg-of-hw3"/>
@@ -1251,7 +1251,7 @@
         <!--浏览记录-->
         <scene sceneID="Tcy-vv-NHM">
             <objects>
-                <viewController storyboardIdentifier="myScanRecordSBID" extendedLayoutIncludesOpaqueBars="YES" hidesBottomBarWhenPushed="YES" id="co8-V8-sAY" customClass="FSMyViewedController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="viewedSBID" extendedLayoutIncludesOpaqueBars="YES" hidesBottomBarWhenPushed="YES" id="co8-V8-sAY" customClass="FSMyViewedController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="elJ-ui-OzO"/>
                         <viewControllerLayoutGuide type="bottom" id="IGK-Zv-Urk"/>
@@ -1270,7 +1270,7 @@
         <!--优惠券-->
         <scene sceneID="Wye-Rp-hin">
             <objects>
-                <viewController title="优惠券" extendedLayoutIncludesOpaqueBars="YES" hidesBottomBarWhenPushed="YES" id="G1S-mu-PaA" customClass="FSMyDiscountController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="couponSBID" title="优惠券" extendedLayoutIncludesOpaqueBars="YES" hidesBottomBarWhenPushed="YES" id="G1S-mu-PaA" customClass="FSMyDiscountController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="R1w-V2-B1w"/>
                         <viewControllerLayoutGuide type="bottom" id="k8Y-ou-Yp9"/>
@@ -1289,7 +1289,7 @@
         <!--个人信息-->
         <scene sceneID="jZK-81-8tM">
             <objects>
-                <viewController title="个人信息" extendedLayoutIncludesOpaqueBars="YES" hidesBottomBarWhenPushed="YES" id="9u0-15-Wvd" customClass="FSMyPersonalInfoController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="personalSBID" title="个人信息" extendedLayoutIncludesOpaqueBars="YES" hidesBottomBarWhenPushed="YES" id="9u0-15-Wvd" customClass="FSMyPersonalInfoController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vKx-qS-ZP7"/>
                         <viewControllerLayoutGuide type="bottom" id="V0K-bo-0na"/>
@@ -1699,7 +1699,7 @@
         <!--我的评价-->
         <scene sceneID="GTa-dU-bDS">
             <objects>
-                <viewController title="我的评价" extendedLayoutIncludesOpaqueBars="YES" hidesBottomBarWhenPushed="YES" id="ntg-IY-XeB" customClass="FSMyEvalutionController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="evaluateSBID" title="我的评价" extendedLayoutIncludesOpaqueBars="YES" hidesBottomBarWhenPushed="YES" id="ntg-IY-XeB" customClass="FSMyEvalutionController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ocy-y0-pNN"/>
                         <viewControllerLayoutGuide type="bottom" id="Rsl-SY-u4e"/>
@@ -1718,7 +1718,7 @@
         <!--消息中心-->
         <scene sceneID="NdB-yd-gFB">
             <objects>
-                <viewController title="消息中心" extendedLayoutIncludesOpaqueBars="YES" hidesBottomBarWhenPushed="YES" id="vXY-mL-C2P" customClass="FSMyMessageCenterController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="messageCenterSBID" title="消息中心" extendedLayoutIncludesOpaqueBars="YES" hidesBottomBarWhenPushed="YES" id="vXY-mL-C2P" customClass="FSMyMessageCenterController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZIT-Qf-7u4"/>
                         <viewControllerLayoutGuide type="bottom" id="SIE-7s-j0K"/>
@@ -1763,6 +1763,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wll-rl-pD2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="774" y="3337"/>
+        </scene>
+        <!--订单列表-->
+        <scene sceneID="9gN-cd-OaV">
+            <objects>
+                <viewController storyboardIdentifier="orderListSBID" title="订单列表" extendedLayoutIncludesOpaqueBars="YES" hidesBottomBarWhenPushed="YES" id="t4f-ZH-arn" userLabel="订单列表" customClass="FSMyOrderListController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sxh-F1-96l"/>
+                        <viewControllerLayoutGuide type="bottom" id="nS2-gP-EZx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zR5-Bm-9ME">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="k9h-yp-RdW">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="k9h-yp-RdW" firstAttribute="top" secondItem="sxh-F1-96l" secondAttribute="bottom" constant="44" id="ANI-ON-QUn"/>
+                            <constraint firstAttribute="trailing" secondItem="k9h-yp-RdW" secondAttribute="trailing" id="kwY-tZ-k6h"/>
+                            <constraint firstItem="nS2-gP-EZx" firstAttribute="top" secondItem="k9h-yp-RdW" secondAttribute="bottom" id="t6Y-XI-zIx"/>
+                            <constraint firstItem="k9h-yp-RdW" firstAttribute="leading" secondItem="zR5-Bm-9ME" secondAttribute="leading" id="uxK-0L-tVS"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="lsU-Oc-uON"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9nw-U3-EFp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="392" y="2674"/>
         </scene>
     </scenes>
     <resources>

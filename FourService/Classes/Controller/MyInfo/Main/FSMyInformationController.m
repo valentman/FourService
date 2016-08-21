@@ -20,8 +20,19 @@
 #import "FSMyOrderListController.h"
 #import "FSMyEvalutionController.h"
 #import "FSMyAttentionController.h"
+#import "FSMyinfoButtomView.h"
 
 #import "YQSlideMenuController.h"
+
+NSString* const kMessageCenter = @"messageCenterSBID";
+NSString* const kMyPersonalInfoVc = @"personalSBID";
+NSString* const kMyOrderListVc = @"orderListSBID";
+NSString* const kMyCarListVc = @"carListSBID";
+NSString* const kMyViewedVc = @"viewedSBID";
+NSString* const kMyFavoriteVc = @"favoriteSBID";
+NSString* const kMyEvaluateListVc = @"evaluateSBID";
+NSString* const kMyCouponListVc = @"couponSBID";
+NSString* const kMySettingVc = @"settingSBID";
 
 
 
@@ -29,12 +40,10 @@
 <
 UITableViewDataSource,
 UITableViewDelegate,
-CZJGeneralSubCellDelegate,
 CZJMyInfoHeadCellDelegate
 >
 {
     NSArray* personalCellAry;               //个人信息下子项数组
-    NSArray* orderSubCellAry;               //订单cell下子项数组
     NSArray* walletSubCellAry;              //我的钱包下子项数组
     NSInteger _currentTouchOrderListType;
     
@@ -72,17 +81,6 @@ CZJMyInfoHeadCellDelegate
     if ([USER_DEFAULT boolForKey:kCZJIsUserHaveLogined]) {
         [self getMyInfoDataFromServer];
     }
-    else
-    {
-        for (NSMutableDictionary* orderDict in orderSubCellAry)
-        {
-            [orderDict setValue:@"0" forKey:@"budge"];
-        }
-        for (NSDictionary* walletDict in walletSubCellAry)
-        {
-            [walletDict setValue:@"0" forKey:@"buttonTitle"];
-        }
-    }
     [self.myTableView reloadData];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     DLog();
@@ -118,41 +116,19 @@ CZJMyInfoHeadCellDelegate
     carListAry  = [NSArray array];
     personalCellAry = [NSArray array];
     NSMutableDictionary* pDict0 = [@{@"title":@"足迹",
-                             @"segueTo":@"segueToRecord",
-                             @"budge":@"0",
-                             @"item":@"Customer_view_num"}mutableCopy];
+                                     @"segueTo":kMyViewedVc}mutableCopy];
     NSMutableDictionary* pDict1 = [@{@"title":@"我的收藏",
-                             @"segueTo":@"segueToMyAttention",
-                             @"budge":@"0",
-                             @"item":@"Customer_favorite_num"}mutableCopy];
+                                     @"segueTo":kMyFavoriteVc}mutableCopy];
     NSMutableDictionary* pDict2 = [@{@"title":@"我的评价",
-                             @"segueTo":@"segueToMyEvaluation",
-                             @"budge":@"0",
-                             @"item":@"Customer_comment_num"}mutableCopy];
+                                     @"segueTo":kMyEvaluateListVc}mutableCopy];
     NSMutableDictionary* pDict3 = [@{@"title":@"优惠券",
-                             @"segueTo":@"segueToCoupon",
-                             @"budge":@"0",
-                             @"item":@"discount_normal_num"}mutableCopy];
-    personalCellAry = @[pDict0,pDict1,pDict2,pDict3];
+                                     @"segueTo":kMyCouponListVc}mutableCopy];
+    NSMutableDictionary* pDict4 = [@{@"title":@"我的订单",
+                                     @"segueTo":kMyOrderListVc}mutableCopy];
+    NSMutableDictionary* pDict5 = [@{@"title":@"我的车辆",
+                                     @"segueTo":kMyCarListVc}mutableCopy];
+    personalCellAry = @[pDict4,pDict5,pDict0,pDict1,pDict2,pDict3];
     
-    orderSubCellAry  = [NSArray array];
-    NSMutableDictionary* dict1 = [@{@"title":@"待付款",
-                                    @"buttonImage":@"my_icon_pay",
-                                    @"budge":@"0",
-                                    @"item":@"order_payed_num"} mutableCopy];
-    NSMutableDictionary* dict2 = [@{@"title":@"服务中",
-                                    @"buttonImage":@"my_icon_shigong",
-                                    @"budge":@"0",
-                                    @"item":@"order_init_num"} mutableCopy];
-    NSMutableDictionary* dict4 = [@{@"title":@"待评价",
-                                    @"buttonImage":@"my_icon_recommend",
-                                    @"budge":@"0",
-                                    @"item":@"order_finish_num"} mutableCopy];
-    NSMutableDictionary* dict5 = [@{@"title":@"已评价",
-                                    @"buttonImage":@"my_icon_tuihuo",
-                                    @"budge":@"0",
-                                    @"item":@"order_commented_num"} mutableCopy];
-    orderSubCellAry = @[dict1,dict2,dict4,dict5];
 
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshTabBarDotLabel) name:kCZJNotifiRefreshMessageReadStatus object:nil];
 }
@@ -177,9 +153,7 @@ CZJMyInfoHeadCellDelegate
     self.myTableView.backgroundColor = CZJNAVIBARBGCOLOR;
     [self.view addSubview:self.myTableView];
     NSArray* nibArys = @[@"CZJMyInfoHeadCell",
-                         @"CZJMyInfoShoppingCartCell",
-                         @"CZJGeneralCell",
-                         @"CZJGeneralSubCell"
+                         @"CZJGeneralCell"
                          ];
     
     for (id cells in nibArys) {
@@ -190,7 +164,7 @@ CZJMyInfoHeadCellDelegate
     self.myTableView.showsVerticalScrollIndicator = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    UIView* buttomView = [PUtils getXibViewByName:@"FSMyinfoButtomView"];
+    FSMyinfoButtomView* buttomView = [PUtils getXibViewByName:@"FSMyinfoButtomView"];
     buttomView.frame = CGRectMake(0, PJ_SCREEN_HEIGHT - 50, self.view.size.width, 50);
     [self.view addSubview:buttomView];
 }
@@ -206,43 +180,12 @@ CZJMyInfoHeadCellDelegate
             //服务器返回数据本地化，全部转化为模型数据存储在数组中
             myInfoForm = [UserBaseForm objectWithKeyValues:dict];
             carListAry = [FSCarListForm objectArrayWithKeyValuesArray:[dict valueForKey:@"car_list"]];
-            [weakSelf updateOrderData:dict];
             
             //更新表格
-            [self.myTableView reloadData];
+            [weakSelf.myTableView reloadData];
         } fail:^{
             
         }];
-    }
-}
-
-- (void)updateOrderData:(NSDictionary*)dict
-{
-    for (NSMutableDictionary* orderDict in orderSubCellAry)
-    {
-        NSString* itemName = [orderDict valueForKey:@"item"];
-        if (![itemName isEqualToString:@""])
-        {
-            NSString* count = [dict valueForKey:itemName];
-            [orderDict setValue:count forKey:@"budge"];
-        }
-    }
-    for (NSDictionary* walletDict in personalCellAry)
-    {
-        NSString* itemName = [walletDict valueForKey:@"item"];
-        if (![itemName isEqualToString:@""])
-        {
-            NSString* count = [dict valueForKey:itemName];
-            [walletDict setValue:count forKey:@"budge"];
-        }
-    }
-    for (FSCarListForm* carForm in carListAry)
-    {
-        if (carForm.is_default)
-        {
-            defaultCar = carForm;
-            break;
-        }
     }
 }
 
@@ -254,7 +197,7 @@ CZJMyInfoHeadCellDelegate
 #pragma mark-UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -264,9 +207,6 @@ CZJMyInfoHeadCellDelegate
             return 1;
             break;
         case 1:
-            return 2;
-            break;
-        case 2:
             return personalCellAry.count;
             break;
         default:
@@ -295,27 +235,6 @@ CZJMyInfoHeadCellDelegate
         }
     }
     else if (1 == indexPath.section)
-    {
-        if (0 == indexPath.row)
-        {
-            CZJGeneralCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralCell" forIndexPath:indexPath];
-            [cell.imageView setImage:nil];
-            cell.nameLabelLeading.constant = 15;
-            cell.nameLabel.text = @"我的订单";
-            cell.detailLabel.hidden = NO;
-            return cell;
-        }
-        else if (1 == indexPath.row)
-        {
-            CZJGeneralCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralCell" forIndexPath:indexPath];
-            [cell.imageView setImage:nil];
-            cell.nameLabelLeading.constant = 15;
-            cell.nameLabel.text = @"我的车辆";
-            cell.detailLabel.hidden = NO;
-            return cell;
-        }
-    }
-    else if (2 == indexPath.section)
     {
         NSDictionary* dict = personalCellAry[indexPath.row];
         CZJGeneralCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralCell" forIndexPath:indexPath];
@@ -353,43 +272,27 @@ CZJMyInfoHeadCellDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString* segueIdentifer;
-    
+    NSString* sbIdentifer;
     if (0 == indexPath.section)
     {
-        if (0 == indexPath.row)
-        {
-//            segueIdentifer = @"segueToPersonalInfo";
-            FSMyPersonalInfoController* myPersonal = (FSMyPersonalInfoController*)[PUtils getViewControllerFromStoryboard:kCZJStoryBoardFileMain andVCName:@"4SMyInfo"];
-//            myPersonal.myinfor = myInfoForm;
-            UIViewController* pVC = self.parentViewController;
-            UINavigationController* naV = pVC.navigationController;
-            [naV pushViewController:myPersonal animated:YES];
-        }
+        sbIdentifer = kMyPersonalInfoVc;
     }
     if (1 == indexPath.section)
     {
-        if (0 == indexPath.row)
-        {
-            _currentTouchOrderListType = 0;
-            segueIdentifer = @"segueToMyOrderList";
-        }
-        if (1 == indexPath.row)
-        {
-            segueIdentifer = @"segueToMyCarList";
-        }
+        sbIdentifer = [personalCellAry[indexPath.row]valueForKey:@"segueTo"];
     }
-    if (indexPath.section == 2)
+    
+    UIViewController* nextVC = [PUtils getViewControllerFromStoryboard:kCZJStoryBoardFileMain andVCName:sbIdentifer];
+    if ([sbIdentifer isEqualToString:kMyPersonalInfoVc])
     {
-        NSDictionary* dict = personalCellAry[indexPath.row];
-        segueIdentifer = [dict valueForKey:@"segueTo"];
+        ((FSMyPersonalInfoController*)nextVC).myinfor = myInfoForm;
     }
-    if (segueIdentifer)
+    if ([sbIdentifer isEqualToString:kMyCarListVc])
     {
-        [self performSegueWithIdentifier:segueIdentifer sender:self];
+        ((FSMyCarListController*)nextVC).carListAry = [carListAry mutableCopy];
     }
+    [((YQSlideMenuController*)self.parentViewController) showViewController:nextVC sender:nil];
 }
-
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
@@ -403,82 +306,14 @@ CZJMyInfoHeadCellDelegate
     }
 }
 
-#pragma mark- CZJGeneralSubCellDelegate
-- (void)clickSubCellButton:(UIButton*)button andType:(int)subType
-{
-    NSInteger touchIndex = button.tag;
-    if (kCZJGeneralSubCellTypePersonal == subType)
-    {//个人信息
-        NSDictionary* dict = personalCellAry[touchIndex - 1];
-        NSString* segueIdentifier = [dict valueForKey:@"segueTo"];
-        [self performSegueWithIdentifier:segueIdentifier sender:self];
-    }
-    if (kCZJGeneralSubCellTypeOrder == subType)
-    {//订单
-        _currentTouchOrderListType = touchIndex;
-        [self performSegueWithIdentifier:@"segueToMyOrderList" sender:self];
-    }
-}
-
-
 #pragma mark- CZJMyInfoHeadCellDelegate
 -(void)clickMyInfoHeadCell:(id)sender
 {
     if (0 == ((UIButton*)sender).tag)
     {
         //消息中心
-        [self performSegueWithIdentifier:@"segueToMessageCenter" sender:self];
-    }
-//    else
-//    {
-//        //车辆信息
-//        [self performSegueWithIdentifier:@"segueToMyCarList" sender:self];
-//    }
-}
-
-#pragma mark- CZJViewControllerDelegate
-- (void)didCancel:(id)controller
-{
-}
-
-#pragma mark - Navigation
-- (void)performSegueWithIdentifier:(NSString *)identifier sender:(id)sender
-{
-    //如果没有登录则进入登录页面
-    if ([identifier isEqualToString:@"segueToSetting"] ||
-        [PUtils isLoginIn:self andNaviBar:nil])
-    {
-        UIViewController* parentVC = self.parentViewController;
-        if ([parentVC isKindOfClass:[YQSlideMenuController class]])
-        {
-            [parentVC performSegueWithIdentifier:identifier sender:sender];
-        }
-        
+        UIViewController* nextVC = [PUtils getViewControllerFromStoryboard:kCZJStoryBoardFileMain andVCName:kMessageCenter];
+        [((YQSlideMenuController*)self.parentViewController) showViewController:nextVC sender:nil];
     }
 }
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"segueToPersonalInfo"])
-    {
-        FSMyPersonalInfoController* myPersonal = segue.destinationViewController;
-        myPersonal.myinfor = myInfoForm;
-    }
-    if ([segue.identifier isEqualToString:@"segueToMyCarList"])
-    {
-        FSMyCarListController* carListVC = segue.destinationViewController;
-        carListVC.carListAry = [carListAry mutableCopy];
-    }
-    if ([segue.identifier isEqualToString:@"segueToMyOrderList"])
-    {
-//        CZJMyInfoOrderListController* orderListVC = segue.destinationViewController;
-//        orderListVC.orderListTypeIndex = _currentTouchOrderListType;
-    }
-    if ([segue.identifier isEqualToString:@"segueToService"])
-    {
-//        CZJMyInfoServiceFeedbackController* serviceFeedBack = segue.destinationViewController;
-//        serviceFeedBack.hotLine = myInfoForm.hotline;
-    }
-}
-
 @end
