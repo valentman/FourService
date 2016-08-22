@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FSStoreListController : UIViewController
+@interface FSStoreListController : PBaseViewController
 
+@property (strong, nonatomic) NSString* serviceId;
 @end

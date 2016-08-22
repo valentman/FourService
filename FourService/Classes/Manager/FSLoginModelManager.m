@@ -46,96 +46,96 @@ singleton_implementation(FSLoginModelManager)
 }
 
 
-- (void)getAuthCodeWithIphone:(NSString*)phone
-                       success:(void (^)())success
-                          fail:(void (^)())fail{
-    NSDictionary *params = @{@"mobile" : phone};
-    
-    SuccessBlockHandler successBlock = ^(id json)
-    {
-        if ([self showAlertView:json]) {
-            success(json);
-            DLog(@"获取验证码成功");
-        }
-    };
-    FailureBlockHandler failure = ^()
-    {
-        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
-        fail();
-    };
-    
-    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPILoginSendVerifiCode
-                             parameters:params
-                                success:successBlock
-                                   fail:failure];
-}
+//- (void)getAuthCodeWithIphone:(NSString*)phone
+//                       success:(void (^)())success
+//                          fail:(void (^)())fail{
+//    NSDictionary *params = @{@"mobile" : phone};
+//    
+//    SuccessBlockHandler successBlock = ^(id json)
+//    {
+//        if ([self showAlertView:json]) {
+//            success(json);
+//            DLog(@"获取验证码成功");
+//        }
+//    };
+//    FailureBlockHandler failure = ^()
+//    {
+//        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
+//        fail();
+//    };
+//    
+//    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPILoginSendVerifiCode
+//                             parameters:params
+//                                success:successBlock
+//                                   fail:failure];
+//}
 
 
-- (void)loginWithAuthCode:(NSString*)codeNum
-              mobilePhone:(NSString*)phoneNum
-                  success:(SuccessBlockHandler)success
-                     fali:(SuccessBlockHandler)fail
-{
-    NSDictionary *params = @{@"mobile" : phoneNum,
-                             @"code" : codeNum};
-    
-    SuccessBlockHandler successBlock = ^(id json)
-    {
-        if ([self showAlertView:json]) {
-            success(json);
-        }
-        else
-        {
-            if (fail) {
-                fail(json);
-            }
-        }
-    };
-    FailureBlockHandler failure = ^()
-    {
-        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
-    };
-    
-    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPILoginInByVerifiCode
-                             parameters:params
-                                success:successBlock
-                                   fail:failure];
-}
+//- (void)loginWithAuthCode:(NSString*)codeNum
+//              mobilePhone:(NSString*)phoneNum
+//                  success:(SuccessBlockHandler)success
+//                     fali:(SuccessBlockHandler)fail
+//{
+//    NSDictionary *params = @{@"mobile" : phoneNum,
+//                             @"code" : codeNum};
+//    
+//    SuccessBlockHandler successBlock = ^(id json)
+//    {
+//        if ([self showAlertView:json]) {
+//            success(json);
+//        }
+//        else
+//        {
+//            if (fail) {
+//                fail(json);
+//            }
+//        }
+//    };
+//    FailureBlockHandler failure = ^()
+//    {
+//        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
+//    };
+//    
+//    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPILoginInByVerifiCode
+//                             parameters:params
+//                                success:successBlock
+//                                   fail:failure];
+//}
 
 
-- (void)loginWithPassword:(NSString*)pwd
-              mobilePhone:(NSString*)phoneNum
-                  success:(SuccessBlockHandler)success
-                     fali:(SuccessBlockHandler)fail
-{
-    NSDictionary *params = @{@"mobile" : phoneNum,
-                             @"passwd" : pwd};
-    
-    SuccessBlockHandler successBlock = ^(id json)
-    {
-        if ([self showAlertView:json]) {
-            success(json);
-        }
-        else
-        {
-            if (fail) {
-                fail(json);
-            }
-        }
-    };
-    FailureBlockHandler failure = ^()
-    {
-        if (fail) {
-            fail(nil);
-        }
-        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
-    };
-    
-    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPILoginInByPassword
-                             parameters:params
-                                success:successBlock
-                                   fail:failure];
-}
+//- (void)loginWithPassword:(NSString*)pwd
+//              mobilePhone:(NSString*)phoneNum
+//                  success:(SuccessBlockHandler)success
+//                     fali:(SuccessBlockHandler)fail
+//{
+//    NSDictionary *params = @{@"mobile" : phoneNum,
+//                             @"passwd" : pwd};
+//    
+//    SuccessBlockHandler successBlock = ^(id json)
+//    {
+//        if ([self showAlertView:json]) {
+//            success(json);
+//        }
+//        else
+//        {
+//            if (fail) {
+//                fail(json);
+//            }
+//        }
+//    };
+//    FailureBlockHandler failure = ^()
+//    {
+//        if (fail) {
+//            fail(nil);
+//        }
+//        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
+//    };
+//    
+//    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPILoginInByPassword
+//                             parameters:params
+//                                success:successBlock
+//                                   fail:failure];
+//}
 
 - (void)loginSuccess:(id)json
              success:(GeneralBlockHandler)sucessBlock
@@ -193,34 +193,34 @@ singleton_implementation(FSLoginModelManager)
 
 }
 
-- (void)setPassword:(NSDictionary*)params
-            success:(GeneralBlockHandler)success
-               fali:(GeneralBlockHandler)fail;
-{
-    SuccessBlockHandler successBlock = ^(id json)
-    {
-        if ([self showAlertView:json])
-        {
-            NSDictionary* dict = [PUtils DataFromJson:json] ;
-            success(json);
-            DLog(@"设置密码成功");
-//            self.usrBaseForm.chezhuId = [[dict valueForKey:@"msg"] valueForKey:@"chezhuId"];
-//            self.usrBaseForm.mobile = [[dict valueForKey:@"msg"] valueForKey:@"mobile"];
-//            self.usrBaseForm.cityName = [[dict valueForKey:@"msg"] valueForKey:@"cityName"];
-//            self.usrBaseForm.cityId = [[dict valueForKey:@"msg"] valueForKey:@"cityId"];
-        }
-    };
-    FailureBlockHandler failure = ^()
-    {
-        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
-        fail();
-    };
-    
-    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPIRegisterSetPassword
-                             parameters:params
-                                success:successBlock
-                                   fail:failure];
-}
+//- (void)setPassword:(NSDictionary*)params
+//            success:(GeneralBlockHandler)success
+//               fali:(GeneralBlockHandler)fail;
+//{
+//    SuccessBlockHandler successBlock = ^(id json)
+//    {
+//        if ([self showAlertView:json])
+//        {
+//            NSDictionary* dict = [PUtils DataFromJson:json] ;
+//            success(json);
+//            DLog(@"设置密码成功");
+////            self.usrBaseForm.chezhuId = [[dict valueForKey:@"msg"] valueForKey:@"chezhuId"];
+////            self.usrBaseForm.mobile = [[dict valueForKey:@"msg"] valueForKey:@"mobile"];
+////            self.usrBaseForm.cityName = [[dict valueForKey:@"msg"] valueForKey:@"cityName"];
+////            self.usrBaseForm.cityId = [[dict valueForKey:@"msg"] valueForKey:@"cityId"];
+//        }
+//    };
+//    FailureBlockHandler failure = ^()
+//    {
+//        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
+//        fail();
+//    };
+//    
+//    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPIRegisterSetPassword
+//                             parameters:params
+//                                success:successBlock
+//                                   fail:failure];
+//}
 
 
 - (void)loginWithDefaultInfoSuccess:(void (^)())success

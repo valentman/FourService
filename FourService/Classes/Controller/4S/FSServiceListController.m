@@ -72,14 +72,15 @@ UICollectionViewDataSource
 - (void)initViews
 {
     UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
-    flowLayout.minimumInteritemSpacing=0.f;//左右间隔
-    flowLayout.minimumLineSpacing=10.f;
+//    flowLayout.minimumInteritemSpacing=0.f;//左右间隔
+//    flowLayout.minimumLineSpacing=10.f;
     self.myCollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 20 + 44 + kMovieBrowserHeight, PJ_SCREEN_WIDTH, PJ_SCREEN_HEIGHT - 20 - 44 - kMovieBrowserHeight) collectionViewLayout:flowLayout];
     self.myCollectionView.delegate = self;
     self.myCollectionView.dataSource = self;
     self.myCollectionView.clipsToBounds = YES;
     self.myCollectionView.alwaysBounceVertical = YES;
     self.myCollectionView.userInteractionEnabled = YES;
+    self.myCollectionView.backgroundColor = WHITECOLOR;
     UINib *nib=[UINib nibWithNibName:kServiceCollectionViewCell bundle:nil];
     [self.myCollectionView registerNib: nib forCellWithReuseIdentifier:kServiceCollectionViewCell];
     [self.view addSubview:self.myCollectionView];
@@ -164,7 +165,8 @@ UICollectionViewDataSource
 
 //返回collectionCell尺寸
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    int width =  (PJ_SCREEN_WIDTH - 40)/3;
+    DLog(@"PJ_SCREEN_WIDTH:%f",PJ_SCREEN_WIDTH);
+    int width =  (PJ_SCREEN_WIDTH - 37*2 - 42*2)/3;
     int height = 130;
     return CGSizeMake(width, height);
 }
@@ -172,7 +174,7 @@ UICollectionViewDataSource
 
 //返回
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    return UIEdgeInsetsMake(10, 10, 10, 10);
+    return UIEdgeInsetsMake(10, 36, 10, 36);
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
