@@ -106,7 +106,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="kff-U0-Rf3" kind="show" id="7G7-Ct-KUk"/>
+                        <segue destination="kff-U0-Rf3" kind="show" identifier="segueToStep" id="7G7-Ct-KUk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e4f-z4-6Jv" userLabel="First Responder" sceneMemberID="firstResponder"/>

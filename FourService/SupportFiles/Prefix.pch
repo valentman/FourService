@@ -50,6 +50,7 @@
 
 #import "MBProgressHUD.h"
 #import "FDAlertView.h"
+#import "YXSpritesLoadingView.h"
 //七牛
 //#import "QiniuSDK.h"
 #import "OpenShare.h"

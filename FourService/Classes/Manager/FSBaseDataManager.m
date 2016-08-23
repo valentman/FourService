@@ -500,31 +500,31 @@ singleton_implementation(FSBaseDataManager);
 
 
 #pragma mark- 门店
-- (void)showStoreWithParams:(NSDictionary*)postParams
-                       type:(CZJHomeGetDataFromServerType)type
-                    success:(SuccessBlockHandler)success
-                       fail:(FailureBlockHandler)failure
-{
-    SuccessBlockHandler successBlock = ^(id json){
-        if ([self showAlertView:json])
-        {
-            success(json);
-        }
-    };
-    
-    FailureBlockHandler failBlock = ^(){
-        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
-        failure();
-    };
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:_baseParams];
-    [params setValuesForKeysWithDictionary:postParams];
-    
-    [FSNetWorkInstance postJSONWithUrl:kFSServerAPIStoreList
-                             parameters:params
-                                success:successBlock
-                                   fail:failBlock];
-}
+//- (void)showStoreWithParams:(NSDictionary*)postParams
+//                       type:(CZJHomeGetDataFromServerType)type
+//                    success:(SuccessBlockHandler)success
+//                       fail:(FailureBlockHandler)failure
+//{
+//    SuccessBlockHandler successBlock = ^(id json){
+//        if ([self showAlertView:json])
+//        {
+//            success(json);
+//        }
+//    };
+//    
+//    FailureBlockHandler failBlock = ^(){
+//        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
+//        failure();
+//    };
+//    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+//    [params setValuesForKeysWithDictionary:_baseParams];
+//    [params setValuesForKeysWithDictionary:postParams];
+//    
+//    [FSNetWorkInstance postJSONWithUrl:kFSServerAPIStoreList
+//                             parameters:params
+//                                success:successBlock
+//                                   fail:failBlock];
+//}
 
 //- (void)loadStoreInfo:(NSDictionary*)postParams
 //                success:(SuccessBlockHandler)success
@@ -960,5 +960,29 @@ singleton_implementation(FSBaseDataManager);
                   fail:(FailureBlockHandler)fail
 {
     [self generalPost:nil success:success fail:fail andServerAPI:kFSServerAPIServiceList];
+}
+
+- (void)getStoreList:(NSDictionary*)postParams
+                type:(CZJHomeGetDataFromServerType)type
+             success:(SuccessBlockHandler)success
+                fail:(FailureBlockHandler)failure
+{
+    [self generalPost:postParams success:success fail:failure andServerAPI:kFSServerAPIStoreList];
+}
+
+//获取门店详细信息
+- (void)getStoreDetailInfo:(NSDictionary*)postParams
+                   success:(SuccessBlockHandler)success
+                      fail:(FailureBlockHandler)fail
+{
+    [self generalPost:postParams success:success fail:fail andServerAPI:kFSServerAPIStoreDetail];
+}
+
+//获取服务步骤列表
+- (void)getServiceStepList:(NSDictionary*)postParams
+                   success:(SuccessBlockHandler)success
+                      fail:(FailureBlockHandler)fail
+{
+    [self generalPost:postParams success:success fail:fail andServerAPI:kFSServerAPIServiceStepList];
 }
 @end

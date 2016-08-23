@@ -261,7 +261,7 @@ CZJGeneralSubCellDelegate
             return 1;
             break;
         case 2:
-            return orderSubCellAry.count;
+            return orderSubCellAry.count + 1;
             break;
         case 3:
             return 2;
@@ -293,7 +293,7 @@ CZJGeneralSubCellDelegate
         {
             CZJGeneralSubCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralSubCell" forIndexPath:indexPath];
             cell.delegate = self;
-            [cell setGeneralSubCell:orderSubCellAry andType:kCZJGeneralSubCellTypeOrder];
+            [cell setGeneralSubCell:personalCellAry andType:kCZJGeneralSubCellTypeOrder];
             return cell;
         }
             
@@ -306,6 +306,7 @@ CZJGeneralSubCellDelegate
                 cell.imageView.image = IMAGENAMED(@"");
                 [cell.imageView setImage:IMAGENAMED(@"my_icon_wallet")];
                 cell.nameLabel.text = @"我的订单";
+                cell.detailLabel.text = @"查看全部订单";
             }
             else
             {
@@ -318,31 +319,13 @@ CZJGeneralSubCellDelegate
         {
             CZJGeneralCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralCell"];
             cell.nameLabel.text = [otherCellAry[indexPath.row] valueForKey:@"title"];
+            return cell;
         }
             break;
             
         default:
             break;
     }
-    if (0 == indexPath.section)
-    {
-        if (0 == indexPath.row)
-        {
-            
-        }
-    }
-    else if (1 == indexPath.section)
-    {
-        NSDictionary* dict = personalCellAry[indexPath.row];
-        CZJGeneralCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralCell" forIndexPath:indexPath];
-        [cell.imageView setImage:nil];
-        cell.nameLabelLeading.constant = 15;
-        cell.nameLabel.text = [dict valueForKey:@"title"];
-        cell.detailLabel.hidden = NO;
-        return cell;
-    }
-    
-    
     return nil;
 }
 
@@ -376,13 +359,30 @@ CZJGeneralSubCellDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString* sbIdentifer;
-    if (0 == indexPath.section)
+    switch (indexPath.section)
     {
-        sbIdentifer = kMyPersonalInfoVc;
-    }
-    if (1 == indexPath.section)
-    {
-        sbIdentifer = [personalCellAry[indexPath.row]valueForKey:@"segueTo"];
+        case 0:
+            //如果没有登录则进入登录页面
+            if ([PUtils isLoginIn:self andNaviBar:nil])
+            {
+                sbIdentifer = kMyPersonalInfoVc;
+            }
+            break;
+            
+        case 1:
+//            sbIdentifer = [personalCellAry[indexPath.row]valueForKey:@"segueTo"];
+            break;
+            
+        case 2:
+            sbIdentifer = [orderSubCellAry[indexPath.row - 1] valueForKey:@"segueTo"];
+            break;
+            
+        case 3:
+            sbIdentifer = [otherCellAry[indexPath.row]valueForKey:@"segueTo"];
+            break;
+            
+        default:
+            break;
     }
     [self myInforShowNextViewController:sbIdentifer];
 }
@@ -421,6 +421,8 @@ CZJGeneralSubCellDelegate
 
 - (void)myInforShowNextViewController:(NSString*)sbIdentifer
 {
+    if (!sbIdentifer)
+        return;
     UIViewController* nextVC = [PUtils getViewControllerFromStoryboard:kCZJStoryBoardFileMain andVCName:sbIdentifer];
     if ([sbIdentifer isEqualToString:kMyPersonalInfoVc])
     {

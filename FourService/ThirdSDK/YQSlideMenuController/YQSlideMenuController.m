@@ -140,7 +140,7 @@ static double const DurationAnimation = 0.3f;
     
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         self.menuMoving = YES;
-//        [self updateContentViewShadow];
+        [self updateContentViewShadow];
     }else if(recognizer.state == UIGestureRecognizerStateChanged){
         CGFloat menuVisibleWidth = self.view.bounds.size.width-self.realContentViewVisibleWidth;
         if (_scaleContent) {
