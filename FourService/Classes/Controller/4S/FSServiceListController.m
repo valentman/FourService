@@ -180,15 +180,14 @@ UICollectionViewDataSource
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     FSServiceListForm* serviceListForm = serviceAry[indexPath.item];
-    DLog(@"%@",serviceListForm.service_type_name);
-    
-    
-    
-//    FSStoreListController* storeListVC = [[FSStoreListController alloc]init];
-//    [self.navigationController pushViewController:storeListVC animated:YES];
-    
-    [self performSegueWithIdentifier:@"segueToStoreList" sender:self];
+    [self performSegueWithIdentifier:@"segueToStoreList" sender:serviceListForm.service_type_id];
 }
 
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(nullable id)sender
+{
+    FSStoreListController* storeListVC = segue.destinationViewController;
+    storeListVC.serviceId = sender;
+}
 
 @end

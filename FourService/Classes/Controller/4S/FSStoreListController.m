@@ -8,10 +8,11 @@
 
 #import "FSStoreListController.h"
 #import "FSBaseDataManager.h"
+#import "FSServiceStepController.h"
 
 @interface FSStoreListController ()<UITableViewDelegate,UITableViewDataSource>
-
-@property (strong, nonatomic)UITableView* myTableView;
+@property (strong, nonatomic) __block NSArray* storeList;
+@property (strong, nonatomic) UITableView* myTableView;
 @end
 
 @implementation FSStoreListController
@@ -24,7 +25,7 @@
 
 - (void)initViews
 {
-    [self addCZJNaviBarView:CZJNaviBarViewTypeMain];
+    [self addCZJNaviBarView:CZJNaviBarViewTypeGeneral];
     self.naviBarView.mainTitleLabel.text = @"选择门店";
 }
 
@@ -38,7 +39,6 @@
         self.myTableView.dataSource = self;
         self.myTableView.clipsToBounds = NO;
         self.myTableView.showsVerticalScrollIndicator = NO;
-        self.myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.automaticallyAdjustsScrollViewInsets = NO;
         self.myTableView.backgroundColor = CZJTableViewBGColor;
         [self.view addSubview:self.myTableView];
@@ -56,8 +56,13 @@
 - (void)getDataFromServer
 {
     NSDictionary* params = @{@"service_type_id" : self.serviceId};
-    [FSBaseDataInstance showStoreWithParams:params type:CZJHomeGetDataFromServerTypeOne success:^(id json) {
-        
+    __weak typeof (self) weakSelf = self;
+    [YXSpritesLoadingView showWithText:nil andShimmering:NO andBlurEffect:NO];
+    [FSBaseDataInstance getStoreList:params type:CZJHomeGetDataFromServerTypeOne success:^(id json) {
+        [YXSpritesLoadingView dismiss];
+        NSArray* tmpAry = [json valueForKey:kResoponData];
+        _storeList = [FSStoreInfoForm objectArrayWithKeyValuesArray:tmpAry];
+        [weakSelf.myTableView reloadData];
     } fail:^{
         
     }];
@@ -76,18 +81,19 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return _storeList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return nil;
+    UITableViewCell* cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];;
+    return cell;
 }
 
 #pragma mark-UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 0;
+    return 100;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -101,7 +107,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    FSStoreInfoForm* storeInfo = _storeList[indexPath.row];
+    [self performSegueWithIdentifier:@"segueToStep" sender:storeInfo];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    FSServiceStepController* serviceStepVC = segue.destinationViewController;
+    serviceStepVC.serviceID = ((FSStoreInfoForm*)sender).shop_service_type_id;
+    serviceStepVC.shopID = ((FSStoreInfoForm*)sender).shop_id;
 }
 
 @end

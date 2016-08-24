@@ -110,70 +110,70 @@ singleton_interface(FSBaseDataManager);
                      Success:(GeneralBlockHandler)success
                         fail:(FailureBlockHandler)fail;
 
-//获取商品或服务详情
-- (void)loadDetailsWithType:(CZJDetailType)type
-            AndStoreItemPid:(NSString*)storeItemPid
-                    Success:(GeneralBlockHandler)success
-                       fail:(FailureBlockHandler)fail;
+////获取商品或服务详情
+//- (void)loadDetailsWithType:(CZJDetailType)type
+//            AndStoreItemPid:(NSString*)storeItemPid
+//                    Success:(GeneralBlockHandler)success
+//                       fail:(FailureBlockHandler)fail;
 
 //获取详情界面热门推荐列表
-- (void)loadDetailHotRecommendWithType:(CZJDetailType)type
-                            andStoreId:(NSString*)storeId
-                               Success:(GeneralBlockHandler)success
-                                  fail:(FailureBlockHandler)fail;
+//- (void)loadDetailHotRecommendWithType:(CZJDetailType)type
+//                            andStoreId:(NSString*)storeId
+//                               Success:(GeneralBlockHandler)success
+//                                  fail:(FailureBlockHandler)fail;
 
 
 
 //-------------------------门店数据------------------------------
 //获取门店数据
-- (void)showStoreWithParams:(NSDictionary*)postParams
-                       type:(CZJHomeGetDataFromServerType)type
-                    success:(SuccessBlockHandler)success
-                       fail:(FailureBlockHandler)failure;
+//- (void)showStoreWithParams:(NSDictionary*)postParams
+//                       type:(CZJHomeGetDataFromServerType)type
+//                    success:(SuccessBlockHandler)success
+//                       fail:(FailureBlockHandler)failure;
 
 //门店信息详情
-- (void)loadStoreInfo:(NSDictionary*)postParams
-                success:(SuccessBlockHandler)success
-                   fail:(FailureBlockHandler)failure;
+//- (void)loadStoreInfo:(NSDictionary*)postParams
+//                success:(SuccessBlockHandler)success
+//                   fail:(FailureBlockHandler)failure;
 
 //门店服务商品详情
-- (void)loadStoreDetail:(NSDictionary*)postParams
-                success:(SuccessBlockHandler)success
-                   fail:(FailureBlockHandler)failure;
+//- (void)loadStoreDetail:(NSDictionary*)postParams
+//                success:(SuccessBlockHandler)success
+//                   fail:(FailureBlockHandler)failure;
 
 
 
 //-------------------------订单数据------------------------------
 
 //获取结算页数据
-- (void)loadSettleOrder:(NSDictionary*)postParams
-                Success:(SuccessBlockHandler)success
-                   fail:(FailureBlockHandler)fail;
+//- (void)loadSettleOrder:(NSDictionary*)postParams
+//                Success:(SuccessBlockHandler)success
+//                   fail:(FailureBlockHandler)fail;
 
 //提交订单
-- (void)submitOrder:(NSDictionary*)postParams
-            Success:(SuccessBlockHandler)success
-               fail:(FailureBlockHandler)fail;
+//- (void)submitOrder:(NSDictionary*)postParams
+//            Success:(SuccessBlockHandler)success
+//               fail:(FailureBlockHandler)fail;
 
 //获取订单列表
-- (void)getOrderList:(NSDictionary*)postParams
-             Success:(SuccessBlockHandler)success
-                fail:(FailureBlockHandler)fail;
+//- (void)getOrderList:(NSDictionary*)postParams
+//             Success:(SuccessBlockHandler)success
+//                fail:(FailureBlockHandler)fail;
 
 //获取订单详情
-- (void)getOrderDetail:(NSDictionary*)postParams
-               Success:(SuccessBlockHandler)success
-                  fail:(FailureBlockHandler)fail;
+//- (void)getOrderDetail:(NSDictionary*)postParams
+//               Success:(SuccessBlockHandler)success
+//                  fail:(FailureBlockHandler)fail;
 
 //车况检查
-- (void)getOrderCarCheck:(NSDictionary*)postParams
-                 Success:(SuccessBlockHandler)success
-                    fail:(FailureBlockHandler)fail;
+//- (void)getOrderCarCheck:(NSDictionary*)postParams
+//                 Success:(SuccessBlockHandler)success
+//                    fail:(FailureBlockHandler)fail;
 
 //施工进度
-- (void)getOrderBuildProgress:(NSDictionary*)postParams
-                      Success:(SuccessBlockHandler)success
-                         fail:(FailureBlockHandler)fail;
+//- (void)getOrderBuildProgress:(NSDictionary*)postParams
+//                      Success:(SuccessBlockHandler)success
+//                         fail:(FailureBlockHandler)fail;
 
 
 
@@ -276,5 +276,21 @@ singleton_interface(FSBaseDataManager);
 //获取服务列表
 - (void)getServiceList:(SuccessBlockHandler)success
                   fail:(FailureBlockHandler)fail;
+
+//获取提供服务的门店列表
+- (void)getStoreList:(NSDictionary*)postParams
+                type:(CZJHomeGetDataFromServerType)type
+             success:(SuccessBlockHandler)success
+                fail:(FailureBlockHandler)failure;
+
+//获取门店详细信息
+- (void)getStoreDetailInfo:(NSDictionary*)postParams
+                   success:(SuccessBlockHandler)success
+                      fail:(FailureBlockHandler)fail;
+
+//获取服务步骤列表
+- (void)getServiceStepList:(NSDictionary*)postParams
+                   success:(SuccessBlockHandler)success
+                      fail:(FailureBlockHandler)fail;
 
 @end

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FSServiceStepController : UIViewController
+@interface FSServiceStepController : PBaseViewController
 
+@property (strong, nonatomic) NSString* shopID;
+@property (strong, nonatomic) NSString* serviceID;
 @end
