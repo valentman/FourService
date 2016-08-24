@@ -1,5 +1,5 @@
 //
-//  FSServiceStopProCell.h
+//  FSServiceStepGoodsCell.h
 //  FourService
 //
 //  Created by Joe.Pen on 8/16/16.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FSServiceStopProCell : UITableViewCell
+@interface FSServiceStepGoodsCell : UITableViewCell
 
 @end
