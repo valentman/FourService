@@ -336,6 +336,7 @@
 		ECBFD5F81D69920600662B5E /* PJBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBFD5F71D69920600662B5E /* PJBrowserView.m */; };
 		ECBFD5FC1D69F46600662B5E /* FSTopAddCarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBFD5FA1D69F46600662B5E /* FSTopAddCarCell.m */; };
 		ECBFD5FD1D69F46600662B5E /* FSTopAddCarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECBFD5FB1D69F46600662B5E /* FSTopAddCarCell.xib */; };
+		ECD3DEB91D6DA1CA00166B7A /* FSCommitOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD3DEB81D6DA1CA00166B7A /* FSCommitOrderController.m */; };
 		ECD537F31D46523900D136EF /* CZJCarBrandChooseController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD537EE1D46523900D136EF /* CZJCarBrandChooseController.m */; };
 		ECD537F41D46523900D136EF /* CZJCarModelChooseController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD537F01D46523900D136EF /* CZJCarModelChooseController.m */; };
 		ECD537F51D46523900D136EF /* CZJCarSeriesChooseController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD537F21D46523900D136EF /* CZJCarSeriesChooseController.m */; };
@@ -996,6 +997,8 @@
 		ECBFD5F91D69F46600662B5E /* FSTopAddCarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTopAddCarCell.h; sourceTree = "<group>"; };
 		ECBFD5FA1D69F46600662B5E /* FSTopAddCarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTopAddCarCell.m; sourceTree = "<group>"; };
 		ECBFD5FB1D69F46600662B5E /* FSTopAddCarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSTopAddCarCell.xib; sourceTree = "<group>"; };
+		ECD3DEB71D6DA1CA00166B7A /* FSCommitOrderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCommitOrderController.h; sourceTree = "<group>"; };
+		ECD3DEB81D6DA1CA00166B7A /* FSCommitOrderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCommitOrderController.m; sourceTree = "<group>"; };
 		ECD537ED1D46523900D136EF /* CZJCarBrandChooseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJCarBrandChooseController.h; sourceTree = "<group>"; };
 		ECD537EE1D46523900D136EF /* CZJCarBrandChooseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJCarBrandChooseController.m; sourceTree = "<group>"; };
 		ECD537EF1D46523900D136EF /* CZJCarModelChooseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJCarModelChooseController.h; sourceTree = "<group>"; };
@@ -1222,6 +1225,8 @@
 				EC3A19021D41F2DF00F6F193 /* FSStoreListController.m */,
 				EC3A19041D41F31E00F6F193 /* FSServiceStepController.h */,
 				EC3A19051D41F31E00F6F193 /* FSServiceStepController.m */,
+				ECD3DEB71D6DA1CA00166B7A /* FSCommitOrderController.h */,
+				ECD3DEB81D6DA1CA00166B7A /* FSCommitOrderController.m */,
 			);
 			path = 4S;
 			sourceTree = "<group>";
@@ -2934,6 +2939,7 @@
 				EC3A18F51D41F18D00F6F193 /* FSMyOrderListController.m in Sources */,
 				ECD537F81D46550100D136EF /* CZJFilterBaseController.m in Sources */,
 				EC542A751D23979500F3B4BF /* UIColor+WLZ_HexRGB.m in Sources */,
+				ECD3DEB91D6DA1CA00166B7A /* FSCommitOrderController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

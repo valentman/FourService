@@ -47,7 +47,7 @@
                     <view clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ABF-5Y-qOp">
                         <rect key="frame" x="40" y="40" width="240" height="119"/>
                         <subviews>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="my_img_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="sau-by-EUj">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="myInfo_topBg" translatesAutoresizingMaskIntoConstraints="NO" id="sau-by-EUj">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="119"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="personal_icon_head" translatesAutoresizingMaskIntoConstraints="NO" id="GWr-Xv-uRo">
@@ -132,7 +132,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="zJ7-Co-bLI" secondAttribute="bottom" id="57y-hu-IMz"/>
@@ -196,9 +196,9 @@
     </objects>
     <resources>
         <image name="LJWButtonBarArrowRight.png" width="11" height="21"/>
+        <image name="myInfo_topBg" width="297" height="149"/>
         <image name="my_icon_head.png" width="31" height="31"/>
         <image name="my_icon_pay" width="20" height="20"/>
-        <image name="my_img_background.png" width="375" height="170"/>
         <image name="personal_icon_head" width="50" height="50"/>
     </resources>
 </document>
