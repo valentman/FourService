@@ -85,7 +85,7 @@ CZJGeneralSubCellDelegate
         [self getMyInfoDataFromServer];
     }
     [self.myTableView reloadData];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:YES];
     DLog();
 }
 
@@ -101,11 +101,7 @@ CZJGeneralSubCellDelegate
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
 }
 
 - (void)viewDidLayoutSubviews
@@ -171,7 +167,10 @@ CZJGeneralSubCellDelegate
 
 - (void)initViews
 {
-    self.view.backgroundColor = CZJNAVIBARBGCOLOR;
+    self.view.backgroundColor = WHITECOLOR;
+    UIImageView* imageV = [[UIImageView alloc]initWithFrame:self.view.bounds];
+    [imageV setImage:IMAGENAMED(@"myInfo_bg")];
+    [self.view addSubview:imageV];
     
     self.myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.size.width, PJ_SCREEN_HEIGHT - Tabbar_HEIGHT) style:UITableViewStylePlain];
     self.myTableView.tableFooterView = [[UIView alloc]init];
@@ -180,7 +179,7 @@ CZJGeneralSubCellDelegate
     self.myTableView.clipsToBounds = NO;
     self.myTableView.showsVerticalScrollIndicator = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.myTableView.backgroundColor = CZJNAVIBARBGCOLOR;
+    self.myTableView.backgroundColor = CLEARCOLOR;
     [self.view addSubview:self.myTableView];
     NSArray* nibArys = @[@"CZJMyInfoHeadCell",
                          @"CZJGeneralCell",
@@ -197,6 +196,7 @@ CZJGeneralSubCellDelegate
     
     FSMyinfoButtomView* buttomView = [PUtils getXibViewByName:@"FSMyinfoButtomView"];
     buttomView.frame = CGRectMake(0, PJ_SCREEN_HEIGHT - 50, self.view.size.width, 50);
+    buttomView.backgroundColor = CLEARCOLOR;
     [self.view addSubview:buttomView];
 }
 
@@ -279,13 +279,14 @@ CZJGeneralSubCellDelegate
             CZJMyInfoHeadCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJMyInfoHeadCell" forIndexPath:indexPath];
             cell.unLoginView.hidden = [USER_DEFAULT boolForKey:kCZJIsUserHaveLogined];
             cell.haveLoginView.hidden = ![USER_DEFAULT boolForKey:kCZJIsUserHaveLogined];
+            
             if (FSBaseDataInstance.userInfoForm && [USER_DEFAULT boolForKey:kCZJIsUserHaveLogined])
             {
                 [cell setUserPersonalInfo:myInfoForm andDefaultCar:defaultCar];
                 cell.delegate = self;
             }
+            cell.backgroundColor = CLEARCOLOR;
             cell.separatorInset = HiddenCellSeparator;
-            cell.contentView.backgroundColor = CZJNAVIBARBGCOLOR;
             return cell;
         }
             break;
@@ -293,6 +294,7 @@ CZJGeneralSubCellDelegate
         {
             CZJGeneralSubCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralSubCell" forIndexPath:indexPath];
             cell.delegate = self;
+            cell.backgroundColor = CLEARCOLOR;
             [cell setGeneralSubCell:personalCellAry andType:kCZJGeneralSubCellTypeOrder];
             return cell;
         }
@@ -301,6 +303,7 @@ CZJGeneralSubCellDelegate
         case 2:
         {
             CZJGeneralCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralCell"];
+            cell.backgroundColor = CLEARCOLOR;
             if (0 == indexPath.row)
             {
                 cell.imageView.image = IMAGENAMED(@"");
@@ -318,6 +321,7 @@ CZJGeneralSubCellDelegate
         case 3:
         {
             CZJGeneralCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralCell"];
+            cell.backgroundColor = CLEARCOLOR;
             cell.nameLabel.text = [otherCellAry[indexPath.row] valueForKey:@"title"];
             return cell;
         }
