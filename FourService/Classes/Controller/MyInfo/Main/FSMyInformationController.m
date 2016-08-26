@@ -42,7 +42,8 @@ NSString* const kMyOpinionVc = @"opinionSBID";
 UITableViewDataSource,
 UITableViewDelegate,
 CZJMyInfoHeadCellDelegate,
-CZJGeneralSubCellDelegate
+CZJGeneralSubCellDelegate,
+FSMyInfoButtomViewDelegate
 >
 {
     NSArray* personalCellAry;               //个人信息下子项数组
@@ -85,7 +86,6 @@ CZJGeneralSubCellDelegate
         [self getMyInfoDataFromServer];
     }
     [self.myTableView reloadData];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:YES];
     DLog();
 }
 
@@ -106,7 +106,6 @@ CZJGeneralSubCellDelegate
 
 - (void)viewDidLayoutSubviews
 {
-    self.view.frame = CGRectMake(0, 0, PJ_SCREEN_WIDTH - 100, PJ_SCREEN_HEIGHT);
     [self initViews];
 }
 
@@ -116,25 +115,27 @@ CZJGeneralSubCellDelegate
     
     otherCellAry = [NSArray array];
     NSMutableDictionary* pDict0 = [@{@"title":@"足迹",
+                                     @"buttonImage":@"myInfo_viewed",
                                      @"segueTo":kMyViewedVc}mutableCopy];
     NSMutableDictionary* pDict1 = [@{@"title":@"反馈咨询",
+                                     @"buttonImage":@"myInfo_fankui",
                                      @"segueTo":kMyOpinionVc}mutableCopy];
     otherCellAry = @[pDict0,pDict1];
     
     personalCellAry = [NSArray array];
     NSMutableDictionary* dict1 = [@{@"title":@"优惠券",
-                                    @"buttonImage":@"my_icon_pay",
-                                    @"budge":@"0",
+                                    @"buttonImage":@"myInfo_coupon",
+                                    @"budge":@"4",
                                     @"item":@"nopay",
                                     @"segueTo":kMyCouponListVc} mutableCopy];
     NSMutableDictionary* dict2 = [@{@"title":@"收藏",
-                                    @"buttonImage":@"my_icon_shigong",
-                                    @"budge":@"0",
+                                    @"buttonImage":@"myInfo_favorite",
+                                    @"budge":@"5",
                                     @"item":@"nobuild",
                                     @"segueTo":kMyFavoriteVc} mutableCopy];
     NSMutableDictionary* dict3 = [@{@"title":@"我的车辆",
-                                    @"buttonImage":@"my_icon_shouhuo",
-                                    @"budge":@"0",
+                                    @"buttonImage":@"myInfo_car",
+                                    @"budge":@"6",
                                     @"item":@"noreceive",
                                     @"segueTo":kMyCarListVc} mutableCopy];
     
@@ -197,6 +198,7 @@ CZJGeneralSubCellDelegate
     FSMyinfoButtomView* buttomView = [PUtils getXibViewByName:@"FSMyinfoButtomView"];
     buttomView.frame = CGRectMake(0, PJ_SCREEN_HEIGHT - 50, self.view.size.width, 50);
     buttomView.backgroundColor = CLEARCOLOR;
+    buttomView.delegate = self;
     [self.view addSubview:buttomView];
 }
 
@@ -306,14 +308,33 @@ CZJGeneralSubCellDelegate
             cell.backgroundColor = CLEARCOLOR;
             if (0 == indexPath.row)
             {
-                cell.imageView.image = IMAGENAMED(@"");
-                [cell.imageView setImage:IMAGENAMED(@"my_icon_wallet")];
+                [cell.headImgView setImage:IMAGENAMED(@"myInfo_order")];
                 cell.nameLabel.text = @"我的订单";
                 cell.detailLabel.text = @"查看全部订单";
+                cell.detailLabel.textColor = RGB(230, 230, 230);
+                cell.detailLabel.alpha = 0.8;
+                cell.nameLabel.textColor = WHITECOLOR;
+                cell.nameLabel.font = SYSTEMFONT(16);
             }
             else
             {
                 cell.nameLabel.text = [orderSubCellAry[indexPath.row - 1] valueForKey:@"title"];
+                cell.nameLabel.textColor = WHITECOLOR;
+                if (!VIEWWITHTAG(cell, 99))
+                {
+                    UILabel* badgeLabel = [[UILabel alloc]init];
+                    badgeLabel.layer.backgroundColor = CZJREDCOLOR.CGColor;
+                    badgeLabel.layer.cornerRadius = 10;
+                    badgeLabel.textColor = WHITECOLOR;
+                    badgeLabel.textAlignment = NSTextAlignmentCenter;
+                    [badgeLabel setTag:99];
+                    [badgeLabel setSize:CGSizeMake(20, 20)];
+                    [badgeLabel setPosition:CGPointMake(110, 23) atAnchorPoint:CGPointMiddle];
+                    [cell addSubview:badgeLabel];
+                    [badgeLabel setText:@"5"];
+                }
+                
+
             }
             return cell;
         }
@@ -323,6 +344,9 @@ CZJGeneralSubCellDelegate
             CZJGeneralCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralCell"];
             cell.backgroundColor = CLEARCOLOR;
             cell.nameLabel.text = [otherCellAry[indexPath.row] valueForKey:@"title"];
+            cell.nameLabel.textColor = WHITECOLOR;
+            [cell.headImgView setImage:IMAGENAMED([otherCellAry[indexPath.row] valueForKey:@"buttonImage"])];
+            cell.nameLabel.font = SYSTEMFONT(16);
             return cell;
         }
             break;
@@ -374,7 +398,6 @@ CZJGeneralSubCellDelegate
             break;
             
         case 1:
-//            sbIdentifer = [personalCellAry[indexPath.row]valueForKey:@"segueTo"];
             break;
             
         case 2:
@@ -418,8 +441,15 @@ CZJGeneralSubCellDelegate
 - (void)clickSubCellButton:(UIButton*)button andType:(int)subType
 {
     _currentTouchOrderListType = button.tag;
-    NSDictionary* dict = personalCellAry[_currentTouchOrderListType];
+    NSDictionary* dict = personalCellAry[_currentTouchOrderListType - 1];
     [self myInforShowNextViewController:[dict valueForKey:@"segueTo"]];
+}
+
+
+#pragma mark - FSMyInfoButtomViewDelegate
+- (void)clickButtomBtnCallBack:(id)sender
+{
+    [self myInforShowNextViewController:kMySettingVc];
 }
 
 

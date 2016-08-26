@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="60" height="59"/>
+                <rect key="frame" x="0.0" y="0.0" width="60" height="59.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="17L-EQ-0Ed" customClass="BadgeButton">
@@ -28,7 +28,7 @@
                         </state>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="购物车" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLn-AY-xNL">
-                        <rect key="frame" x="0.0" y="33" width="60" height="21"/>
+                        <rect key="frame" x="0.0" y="38.5" width="60" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="iiT-rj-83X"/>
                         </constraints>
@@ -41,7 +41,7 @@
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="17L-EQ-0Ed" secondAttribute="trailing" id="3Yk-DA-4Sm"/>
                     <constraint firstItem="17L-EQ-0Ed" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="8FP-KO-vio"/>
-                    <constraint firstAttribute="bottom" secondItem="BLn-AY-xNL" secondAttribute="bottom" constant="5" id="bFZ-Ww-MPE"/>
+                    <constraint firstAttribute="bottom" secondItem="BLn-AY-xNL" secondAttribute="bottom" id="bFZ-Ww-MPE"/>
                     <constraint firstAttribute="trailing" secondItem="BLn-AY-xNL" secondAttribute="trailing" id="kQC-yY-Llf"/>
                     <constraint firstItem="BLn-AY-xNL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="tu6-PZ-NNd"/>
                     <constraint firstItem="17L-EQ-0Ed" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="uD8-pD-DJm"/>

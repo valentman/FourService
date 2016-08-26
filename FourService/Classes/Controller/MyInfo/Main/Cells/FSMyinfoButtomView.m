@@ -8,6 +8,10 @@
 
 #import "FSMyinfoButtomView.h"
 
+@interface FSMyinfoButtomView ()
+
+@end
+
 @implementation FSMyinfoButtomView
 
 - (void)awakeFromNib {
@@ -21,4 +25,11 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)btnAction:(id)sender
+{
+    if ([_delegate respondsToSelector:@selector(clickButtomBtnCallBack:)])
+    {
+        [_delegate clickButtomBtnCallBack:sender];
+    }
+}
 @end

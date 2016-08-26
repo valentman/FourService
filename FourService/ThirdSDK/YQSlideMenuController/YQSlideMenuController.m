@@ -54,7 +54,8 @@ static double const DurationAnimation = 0.3f;
     _contentViewShadowOffset = CGSizeZero;
     _contentViewShadowOpacity = 0.4f;
     _contentViewShadowRadius = 5.0f;
-    _contentViewVisibleWidth = 100.0f;
+    
+    _contentViewVisibleWidth = 47.0f;
     _contentViewScale = 1.0f;
     _menuHidden = YES;
     _scaleContent = YES;
@@ -67,15 +68,16 @@ static double const DurationAnimation = 0.3f;
     [self.view addSubview:self.contentViewContainer];
     
     self.menuViewContainer.frame = self.view.bounds;
+    self.menuViewContainer.backgroundColor = REDCOLOR;
     self.contentViewContainer.frame = self.view.bounds;
     self.gestureRecognizerView.frame = self.view.bounds;
     
     if (self.leftMenuViewController) {
         [self addChildViewController:self.leftMenuViewController];
-        self.leftMenuViewController.view.frame = self.view.bounds;
+        self.leftMenuViewController.view.frame = CGRectMake(0, 0, self.view.bounds.size.width - _contentViewVisibleWidth, self.view.bounds.size.height);
         self.leftMenuViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [self.menuViewContainer addSubview:self.leftMenuViewController.view];
-//        [self.leftMenuViewController didMoveToParentViewController:self];
+        [self.leftMenuViewController didMoveToParentViewController:self];
     }
  
     NSAssert(self.contentViewController, @"内容视图不能为空");
@@ -83,7 +85,7 @@ static double const DurationAnimation = 0.3f;
     [self addChildViewController:self.contentViewController];
     self.contentViewController.view.frame = self.view.bounds;
     [self.contentViewContainer addSubview:self.contentViewController.view];
-//    [self.contentViewController didMoveToParentViewController:self];
+    [self.contentViewController didMoveToParentViewController:self];
     
     
     self.edgePanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognizer:)];

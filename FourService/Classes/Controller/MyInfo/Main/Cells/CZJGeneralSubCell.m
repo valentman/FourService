@@ -52,13 +52,15 @@
         BadgeButtonView* btnView;
         if (!VIEWWITHTAG(self, i + 1000)) {
             btnView = [PUtils getXibViewByName:@"BadgeButtonView"];
-            CGRect btnViewRect = [PUtils viewFrameFromDynamic:CZJMarginMake(20, 0) width:self.size.width size:CGSizeMake(60, 60) index:i divide:(int)items.count subWidth:0];
+            CGRect btnViewRect = [PUtils viewFrameFromDynamic:CZJMarginMake(20, 0) width:self.size.width size:CGSizeMake(80, 60) index:i divide:(int)items.count subWidth:0];
             btnView.frame = btnViewRect;
             [self addSubview:btnView];
             [btnView.viewBtn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
             btnView.tag = i + 1000;
             btnView.viewBtn.tag = i + 1;
             btnView.viewLabel.text = [dict valueForKey:@"title"];
+            btnView.viewLabel.textColor = WHITECOLOR;
+            btnView.viewLabel.font = SYSTEMFONT(16);
         }
         else
         {
@@ -77,7 +79,7 @@
             [btnView.viewBtn setBadgeNum:0];
             [btnView.viewBtn setImage:IMAGENAMED([dict valueForKey:@"buttonImage"]) forState:UIControlStateNormal];
             [btnView.viewBtn setBadgeNum:[[dict valueForKey:@"budge"] integerValue]];
-            [btnView.viewBtn setBadgeLabelPosition:CGPointMake(btnView.viewBtn.frame.size.width*0.75, btnView.viewBtn.frame.size.height*0.1)];
+            [btnView.viewBtn setBadgeLabelPosition:CGPointMake(btnView.viewBtn.size.width + 5, 0)];
         }
     }
 }

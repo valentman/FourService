@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nnR-y0-1KE">
@@ -19,13 +19,14 @@
                         <constraints>
                             <constraint firstAttribute="width" constant="60" id="efy-kz-Ygu"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-3" maxY="0.0"/>
-                        <state key="normal" title="设置" image="my_icon_set">
-                            <color key="titleColor" red="0.36078431370000003" green="0.53725490200000003" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
-                        </state>
+                        <state key="normal" title="设置" image="myInfo_setting"/>
+                        <connections>
+                            <action selector="btnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="PwB-XU-DQa"/>
+                        </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q2e-1Q-QGi">
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q2e-1Q-QGi">
                         <rect key="frame" x="130" y="0.0" width="60" height="43"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="60" id="jQ7-pK-SVL"/>
@@ -36,7 +37,7 @@
                             <color key="titleColor" red="0.36078431370000003" green="0.53725490200000003" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DUo-ya-AL3">
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DUo-ya-AL3">
                         <rect key="frame" x="240" y="0.0" width="60" height="43"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="60" id="xWb-DD-yts"/>
@@ -63,6 +64,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="myInfo_setting" width="18" height="18"/>
         <image name="my_icon_set" width="18" height="18"/>
     </resources>
 </document>

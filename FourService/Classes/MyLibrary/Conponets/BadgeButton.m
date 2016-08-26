@@ -33,8 +33,6 @@
             [_badgeLabel setTag:99];
             [self addSubview:_badgeLabel];
         }
-            
-        CGRect labelRect;
         if (-1 == badgeNum)
         {
             [_badgeLabel setSize:CGSizeMake(8, 8)];
@@ -43,15 +41,16 @@
         else
         {
             NSString* badgeStr = [NSString stringWithFormat:@"%ld", badgeNum];
-            CGSize labelSize = [PUtils calculateTitleSizeWithString:badgeStr AndFontSize:10];
-            [_badgeLabel setSize:CGSizeMake(labelSize.width < 15 ? 15 : labelSize.width, 15)];
+            CGSize labelSize = [PUtils calculateTitleSizeWithString:badgeStr AndFontSize:14];
+            
+            [_badgeLabel setSize:CGSizeMake(labelSize.width < 20 ? 20 : labelSize.width, 20)];
             _badgeLabel.text = badgeStr;
             _badgeLabel.textColor = [UIColor whiteColor];
             _badgeLabel.textAlignment = NSTextAlignmentCenter;
-            _badgeLabel.font = SYSTEMFONT(10);
-            _badgeLabel.layer.cornerRadius = 7.5;
+            _badgeLabel.font = SYSTEMFONT(14);
+            _badgeLabel.layer.cornerRadius = 10;
         }
-        [self setBadgeLabelPosition:CGPointMake(self.bounds.size.width, 0)];
+        [self setBadgeLabelPosition:CGPointMake(self.size.width, 0)];
         _badgeLabel.hidden = NO;
     }
 

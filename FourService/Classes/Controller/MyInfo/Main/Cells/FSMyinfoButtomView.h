@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FSMyinfoButtomView : UITableViewCell
+@protocol FSMyInfoButtomViewDelegate <NSObject>
 
+- (void)clickButtomBtnCallBack:(id)sender;
+
+@end
+
+@interface FSMyinfoButtomView : UITableViewCell
+- (IBAction)btnAction:(id)sender;
+
+@property (weak, nonatomic) id<FSMyInfoButtomViewDelegate> delegate;
 @end
