@@ -74,7 +74,8 @@ typedef NS_ENUM(NSInteger, CZJNaviBarViewType)
     CZJNaviBarViewTypeMain,             //主界面导航栏
     CZJNaviBarViewTypeGeneral,          //仿系统导航栏
     CZJNaviBarViewTypeScan,             //扫描界面导航栏
-    CZJNaviBarViewTypeSearch            //仅有搜索栏导航栏
+    CZJNaviBarViewTypeSearch,           //仅有搜索栏导航栏
+    CZJNaviBarViewTypeFourservice       //4s服务主界面
 };
 
 typedef NS_ENUM(NSInteger, CZJViewMoveOrientation)

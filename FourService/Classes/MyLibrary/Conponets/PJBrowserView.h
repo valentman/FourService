@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#define kMovieBrowserHeight 125.0
+#define kMovieBrowserHeight 160
 
 @class PJBrowserView;
 

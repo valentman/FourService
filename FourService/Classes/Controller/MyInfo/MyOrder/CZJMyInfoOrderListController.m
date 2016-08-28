@@ -12,16 +12,16 @@
 //#import "CZJOrderForm.h"
 #import "CZJPageControlView.h"
 #import "CZJOrderListBaseController.h"
-#import "CZJMyOrderDetailController.h"
-#import "CZJOrderBuildingController.h"
-#import "CZJOrderEvaluateController.h"
-#import "CZJOrderLogisticsController.h"
-#import "CZJOrderCarCheckController.h"
-#import "CZJOrderListReturnedController.h"
+//#import "CZJMyOrderDetailController.h"
+//#import "CZJOrderBuildingController.h"
+//#import "CZJOrderEvaluateController.h"
+//#import "CZJOrderLogisticsController.h"
+//#import "CZJOrderCarCheckController.h"
+//#import "CZJOrderListReturnedController.h"
 #import "CZJPopPayViewController.h"
-#import "CZJMiaoShaTimesView.h"
-#import "CZJPaymentManager.h"
-#import "OpenShareHeader.h"
+//#import "CZJMiaoShaTimesView.h"
+//#import "CZJPaymentManager.h"
+//#import "OpenShareHeader.h"
 
 @interface CZJMyInfoOrderListController ()
 <
@@ -34,6 +34,7 @@ CZJPopPayViewDelegate
     CZJOrderListForm* currentTouchedOrderListForm;
     NSString* orderNoString;
     NSInteger currentIndex;
+    GeneralBlockHandler hidePayViewBlock;
     float totalMoney;
     NSArray* orderListAry;
 }
@@ -198,15 +199,15 @@ CZJPopPayViewDelegate
             break;
         case CZJOrderListCellBtnTypeConfirm:
         {
-            __weak typeof(self) weak = self;
-            [self showCZJAlertView:@"亲,是否确认收货" andConfirmHandler:^{
-                [CZJBaseDataInstance generalPost:@{@"orderNo" : currentTouchedOrderListForm.orderNo} success:^(id json) {
-                    [[NSNotificationCenter defaultCenter] postNotificationName:kCZJNotifiRefreshOrderlist object:nil];
-                }  fail:^{
-                    
-                } andServerAPI:kCZJServerAPIReceiveGoods];
-                [weak hideWindow];
-            } andCancleHandler:nil];
+//            __weak typeof(self) weak = self;
+//            [self showFSAlertView:@"亲,是否确认收货" andConfirmHandler:^{
+//                [FSBaseDataInstance generalPost:@{@"orderNo" : currentTouchedOrderListForm.orderNo} success:^(id json) {
+//                    [[NSNotificationCenter defaultCenter] postNotificationName:kCZJNotifiRefreshOrderlist object:nil];
+//                }  fail:^{
+//                    
+//                } andServerAPI:kCZJServerAPIReceiveGoods];
+//                [weak hideWindow];
+//            } andCancleHandler:nil];
         }
             break;
         case CZJOrderListCellBtnTypeCheckCar:
@@ -218,16 +219,16 @@ CZJPopPayViewDelegate
         case CZJOrderListCellBtnTypeCancel:
         {
             __weak typeof(self) weak = self;
-            [self showCZJAlertView:@"亲,是否确认取消订单" andConfirmHandler:^{
-                [CZJBaseDataInstance generalPost    :@{@"orderNo" : currentTouchedOrderListForm.orderNo} success:^(id json) {
-                    NSDictionary* dict = [CZJUtils DataFromJson:json];
-                    DLog(@"%@",[dict description]);
-                     [[NSNotificationCenter defaultCenter] postNotificationName:kCZJNotifiRefreshOrderlist object:nil];
-                }  fail:^{
-                    
-                } andServerAPI:kCZJServerAPICancelOrder];
-                [weak hideWindow];
-            } andCancleHandler:nil];
+//            [self showCZJAlertView:@"亲,是否确认取消订单" andConfirmHandler:^{
+//                [CZJBaseDataInstance generalPost    :@{@"orderNo" : currentTouchedOrderListForm.orderNo} success:^(id json) {
+//                    NSDictionary* dict = [PUtils DataFromJson:json];
+//                    DLog(@"%@",[dict description]);
+//                     [[NSNotificationCenter defaultCenter] postNotificationName:kCZJNotifiRefreshOrderlist object:nil];
+//                }  fail:^{
+//                    
+//                } andServerAPI:kCZJServerAPICancelOrder];
+//                [weak hideWindow];
+//            } andCancleHandler:nil];
         }
             break;
         case CZJOrderListCellBtnTypePay:
@@ -250,10 +251,10 @@ CZJPopPayViewDelegate
     payPopView.delegate = self;
     payPopView.orderMoney = orderMoney;
     
-    float popViewHeight = CZJBaseDataInstance.orderPaymentTypeAry.count * 70 + 60 +50.5;
+    float popViewHeight = FSBaseDataInstance.orderPaymentTypeAry.count * 70 + 60 +50.5;
     self.popWindowInitialRect = VERTICALHIDERECT(0);
     self.popWindowDestineRect = VERTICALSHOWRECT(popViewHeight);
-    [CZJUtils showMyWindowOnTarget:self withPopVc:payPopView];
+    [PUtils showMyWindowOnTarget:self withPopVc:payPopView];
     __weak typeof(self) weak = self;
     
     hidePayViewBlock = ^{
@@ -280,54 +281,54 @@ CZJPopPayViewDelegate
     NSDictionary* params = @{@"orderIds" : orderNoString, @"totalMoney" : [NSString stringWithFormat:@"%f",totalMoney]};
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     __weak typeof(self) weak = self;
-    [CZJBaseDataInstance generalPost:params success:^(id json) {
-        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-        [CZJUtils performBlock:hidePayViewBlock afterDelay:0.5];
-        NSDictionary* dict = [[CZJUtils DataFromJson:json] valueForKey:@"msg"];
-        CZJPaymentOrderForm* paymentOrderForm = [[CZJPaymentOrderForm alloc] init];
-        paymentOrderForm.order_no = [dict valueForKey:@"payNo"];
-        paymentOrderForm.order_name = [NSString stringWithFormat:@"订单%@",[dict valueForKey:@"payNo"]];
-        paymentOrderForm.order_description = @"支付宝你个SB";
-        paymentOrderForm.order_price = [dict valueForKey:@"totalMoney"];
-        paymentOrderForm.order_for = @"pay";
-        if ([selectOrderTypeForm.orderTypeName isEqualToString:@"微信支付"])
-        {
-            if ([OpenShare isWeixinInstalled])
-            {
-                [CZJPaymentInstance weixinPay:self OrderInfo:paymentOrderForm Success:^(NSDictionary *message) {
-                    DLog(@"微信支付成功");
-                } Fail:^(NSDictionary *message, NSError *error) {
-                    [CZJUtils tipWithText:@"微信支付失败" andView:weak.view];
-                }];
-            }
-            else
-            {
-                UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-                UIAlertView* alertview = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"您的手机未安装微信客户端，请安装后支付" delegate:window cancelButtonTitle:@"收到" otherButtonTitles:nil, nil];
-                [alertview show];
-            }
-        }
-        if ([selectOrderTypeForm.orderTypeName isEqualToString:@"支付宝支付"])
-        {
-            if ([OpenShare isAlipayInstalled])
-            {
-                [CZJPaymentInstance aliPay:self OrderInfo:paymentOrderForm Success:^(NSDictionary *message) {
-                    DLog(@"支付宝支付成功");
-                } Fail:^(NSDictionary *message, NSError *error) {
-                    [CZJUtils tipWithText:@"支付宝支付失败" andView:weak.view];
-                }];
-            }
-            else
-            {
-                UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-                UIAlertView* alertview = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"您的手机未安装支付宝客户端，请安装后支付" delegate:window cancelButtonTitle:@"收到" otherButtonTitles:nil, nil];
-                [alertview show];
-            }
-            
-        }
-    }  fail:^{
-        
-    } andServerAPI:kCZJServerAPIOrderToPay];
+//    [FSBaseDataInstance generalPost:params success:^(id json) {
+//        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+//        [PUtils performBlock:hidePayViewBlock afterDelay:0.5];
+//        NSDictionary* dict = [[PUtils DataFromJson:json] valueForKey:@"msg"];
+//        CZJPaymentOrderForm* paymentOrderForm = [[CZJPaymentOrderForm alloc] init];
+//        paymentOrderForm.order_no = [dict valueForKey:@"payNo"];
+//        paymentOrderForm.order_name = [NSString stringWithFormat:@"订单%@",[dict valueForKey:@"payNo"]];
+//        paymentOrderForm.order_description = @"支付宝你个SB";
+//        paymentOrderForm.order_price = [dict valueForKey:@"totalMoney"];
+//        paymentOrderForm.order_for = @"pay";
+//        if ([selectOrderTypeForm.orderTypeName isEqualToString:@"微信支付"])
+//        {
+//            if ([OpenShare isWeixinInstalled])
+//            {
+//                [CZJPaymentInstance weixinPay:self OrderInfo:paymentOrderForm Success:^(NSDictionary *message) {
+//                    DLog(@"微信支付成功");
+//                } Fail:^(NSDictionary *message, NSError *error) {
+//                    [PUtils tipWithText:@"微信支付失败" andView:weak.view];
+//                }];
+//            }
+//            else
+//            {
+//                UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+//                UIAlertView* alertview = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"您的手机未安装微信客户端，请安装后支付" delegate:window cancelButtonTitle:@"收到" otherButtonTitles:nil, nil];
+//                [alertview show];
+//            }
+//        }
+//        if ([selectOrderTypeForm.orderTypeName isEqualToString:@"支付宝支付"])
+//        {
+//            if ([OpenShare isAlipayInstalled])
+//            {
+//                [CZJPaymentInstance aliPay:self OrderInfo:paymentOrderForm Success:^(NSDictionary *message) {
+//                    DLog(@"支付宝支付成功");
+//                } Fail:^(NSDictionary *message, NSError *error) {
+//                    [PUtils tipWithText:@"支付宝支付失败" andView:weak.view];
+//                }];
+//            }
+//            else
+//            {
+//                UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+//                UIAlertView* alertview = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"您的手机未安装支付宝客户端，请安装后支付" delegate:window cancelButtonTitle:@"收到" otherButtonTitles:nil, nil];
+//                [alertview show];
+//            }
+//            
+//        }
+//    }  fail:^{
+//        
+//    } andServerAPI:kCZJServerAPIOrderToPay];
 }
 
 - (IBAction)mergeToPayAction:(id)sender
@@ -339,38 +340,38 @@ CZJPopPayViewDelegate
 {
     if ([segue.identifier isEqualToString:@"segueToOrderDetail"])
     {
-        CZJMyOrderDetailController* orderDetailVC = segue.destinationViewController;
-        [orderDetailVC setOrderNo:currentTouchedOrderListForm.orderNo];
-        [orderDetailVC setOrderDetailType:CZJOrderDetailTypeGeneral];
+//        CZJMyOrderDetailController* orderDetailVC = segue.destinationViewController;
+//        [orderDetailVC setOrderNo:currentTouchedOrderListForm.orderNo];
+//        [orderDetailVC setOrderDetailType:CZJOrderDetailTypeGeneral];
     }
     if ([segue.identifier isEqualToString:@"segueToBuildingProgress"])
     {
-        CZJOrderBuildingController* orderBuildProgressVC = segue.destinationViewController;
-        orderBuildProgressVC.status = currentTouchedOrderListForm.status;
-        [orderBuildProgressVC setOrderNo:currentTouchedOrderListForm.orderNo];
+//        CZJOrderBuildingController* orderBuildProgressVC = segue.destinationViewController;
+//        orderBuildProgressVC.status = currentTouchedOrderListForm.status;
+//        [orderBuildProgressVC setOrderNo:currentTouchedOrderListForm.orderNo];
     }
     if ([segue.identifier isEqualToString:@"segueToCarCheck"])
     {
-        CZJOrderCarCheckController* orderCarCheckVC = segue.destinationViewController;
-        [orderCarCheckVC setOrderNo:currentTouchedOrderListForm.orderNo];
+//        CZJOrderCarCheckController* orderCarCheckVC = segue.destinationViewController;
+//        [orderCarCheckVC setOrderNo:currentTouchedOrderListForm.orderNo];
     }
     if ([segue.identifier isEqualToString:@"segueToEvaluate"])
     {
-        CZJOrderEvaluateController* orderEvaluateVC = segue.destinationViewController;
-        CZJOrderDetailForm* evalutaeDetailForm = [[CZJOrderDetailForm alloc] init];
-        evalutaeDetailForm.orderNo = currentTouchedOrderListForm.orderNo;
-        evalutaeDetailForm.storeId = currentTouchedOrderListForm.storeId;
-        evalutaeDetailForm.items = currentTouchedOrderListForm.items;
-        evalutaeDetailForm.createTime = currentTouchedOrderListForm.createTime;
-        orderEvaluateVC.orderDetailForm = evalutaeDetailForm;
-        
-        [orderEvaluateVC setOrderNo:currentTouchedOrderListForm.orderNo];
+//        CZJOrderEvaluateController* orderEvaluateVC = segue.destinationViewController;
+//        CZJOrderDetailForm* evalutaeDetailForm = [[CZJOrderDetailForm alloc] init];
+//        evalutaeDetailForm.orderNo = currentTouchedOrderListForm.orderNo;
+//        evalutaeDetailForm.storeId = currentTouchedOrderListForm.storeId;
+//        evalutaeDetailForm.items = currentTouchedOrderListForm.items;
+//        evalutaeDetailForm.createTime = currentTouchedOrderListForm.createTime;
+//        orderEvaluateVC.orderDetailForm = evalutaeDetailForm;
+//        
+//        [orderEvaluateVC setOrderNo:currentTouchedOrderListForm.orderNo];
     }
     if ([segue.identifier isEqualToString:@"segueToMyReturnableList"])
     {
-        CZJOrderListReturnedController* returnList = segue.destinationViewController;
-        returnList.returnListType = CZJReturnListTypeReturnable;
-        returnList.orderNo = currentTouchedOrderListForm.orderNo;
+//        CZJOrderListReturnedController* returnList = segue.destinationViewController;
+//        returnList.returnListType = CZJReturnListTypeReturnable;
+//        returnList.orderNo = currentTouchedOrderListForm.orderNo;
     }
 }
 

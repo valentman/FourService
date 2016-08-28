@@ -21,6 +21,6 @@
 @property (nonatomic, assign)float orderMoney;
 @property (nonatomic, weak)id<CZJPopPayViewDelegate> delegate;
 
-- (void)setCancleBarItemHandle:(CZJGeneralBlock)basicBlock;
+- (void)setCancleBarItemHandle:(GeneralBlockHandler)basicBlock;
 
 @end

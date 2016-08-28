@@ -204,7 +204,7 @@ UITableViewDataSource
     FSCustomerViewdForm* dict = attentionListAry[indexPath.row];
     //    if (!self.fromMessage)
     //    {
-    //        [CZJUtils showGoodsServiceDetailView:self.navigationController andItemPid:dict.storeItemPid detailType:[dict.itemType intValue] == 0 ? CZJDetailTypeGoods : CZJDetailTypeService];
+    //        [PUtils showGoodsServiceDetailView:self.navigationController andItemPid:dict.storeItemPid detailType:[dict.itemType intValue] == 0 ? CZJDetailTypeGoods : CZJDetailTypeService];
     //    }
     //    else
     //    {

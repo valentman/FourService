@@ -93,7 +93,6 @@ FSMyInfoButtomViewDelegate
 {
     //要将NaviBar设为隐藏是因为navibar会吃掉点击事件，导致右上角浏览记录按钮获取不到点击事件
     self.navigationController.navigationBarHidden = YES;
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
     [self.tabBarController.tabBar setTintColor:RGB(235, 20, 20)];
     _currentTouchOrderListType = 0;
     DLog();
@@ -101,7 +100,6 @@ FSMyInfoButtomViewDelegate
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
 }
 
 - (void)viewDidLayoutSubviews

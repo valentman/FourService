@@ -12,29 +12,29 @@
             <rect key="frame" x="0.0" y="0.0" width="70" height="100"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="70" height="99.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="70" height="99"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qPK-6H-kKA">
-                        <rect key="frame" x="0.0" y="-5" width="70" height="70"/>
+                        <rect key="frame" x="-2" y="-2" width="74" height="74"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="qPK-6H-kKA" secondAttribute="height" multiplier="1:1" id="BeI-8M-ATx"/>
-                            <constraint firstAttribute="width" constant="70" id="Ub5-SP-UVR"/>
+                            <constraint firstAttribute="width" constant="74" id="Ub5-SP-UVR"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p1i-O0-ROc">
-                        <rect key="frame" x="0.0" y="75" width="70" height="24"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="洗车" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p1i-O0-ROc">
+                        <rect key="frame" x="0.0" y="81" width="70" height="18"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="24" id="5yM-tg-Sbo"/>
+                            <constraint firstAttribute="height" constant="18" id="5yM-tg-Sbo"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <color key="textColor" red="0.0" green="0.49803921568627452" blue="0.70980392156862748" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="p1i-O0-ROc" secondAttribute="bottom" id="FaJ-Lx-Dac"/>
-                    <constraint firstItem="p1i-O0-ROc" firstAttribute="top" secondItem="qPK-6H-kKA" secondAttribute="bottom" constant="10" id="Fy0-80-gWd"/>
+                    <constraint firstItem="p1i-O0-ROc" firstAttribute="top" secondItem="qPK-6H-kKA" secondAttribute="bottom" constant="9" id="Fy0-80-gWd"/>
                     <constraint firstAttribute="trailing" secondItem="p1i-O0-ROc" secondAttribute="trailing" id="bm8-ow-Kf5"/>
                     <constraint firstItem="p1i-O0-ROc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="boB-sG-Osh"/>
                     <constraint firstItem="qPK-6H-kKA" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="mMX-dg-lEc"/>

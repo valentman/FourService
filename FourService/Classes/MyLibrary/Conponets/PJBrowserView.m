@@ -10,11 +10,11 @@
 
 #define kBaseTag 100
 #define kScreenWidth  [UIScreen mainScreen].bounds.size.width
-#define kItemSpacing 50.0
-#define kItemWidth  60.0
-#define kItemHeight 85.0
-#define kItemSelectedWidth  80.0
-#define kItemSelectedHeight 108.0
+#define kItemSpacing 0
+#define kItemWidth  120
+#define kItemHeight 140
+#define kItemSelectedWidth  135
+#define kItemSelectedHeight 160
 #define kScrollViewContentOffset (kScreenWidth / 2.0 - (kItemWidth / 2.0 + kItemSpacing))
 
 @interface PJBrowserView () <UIScrollViewDelegate>
@@ -71,10 +71,11 @@
     _scrollView.delegate = self;
     _scrollView.contentInset = UIEdgeInsetsMake(0, kScrollViewContentOffset, 0, kScrollViewContentOffset);
     _scrollView.contentSize = CGSizeMake((kItemWidth + kItemSpacing) * self.items.count + kItemSpacing, kMovieBrowserHeight);
+
     
     NSInteger i = 0;
     for (UIView* movie in self.items) {
-        UIView *itemView = [[UIView alloc] initWithFrame:CGRectMake((kItemSpacing + kItemWidth) * i + kItemSpacing, kMovieBrowserHeight - kItemHeight, kItemWidth, kItemHeight)];
+        UIView *itemView = [[UIView alloc] initWithFrame:CGRectMake((kItemSpacing + kItemWidth) * i + kItemSpacing, 0, kItemWidth, kItemHeight)];
         [_scrollView addSubview:itemView];
 
         [itemView addSubview:movie];
@@ -101,6 +102,7 @@
             
             UIView *leftView = self.items[index];
             leftView.layer.borderColor = [UIColor colorWithWhite:1 alpha:scale].CGColor;
+            leftView.contentScaleFactor = scale;
             height = kItemHeight + (kItemSelectedHeight - kItemHeight) * scale;
             width = kItemWidth + (kItemSelectedWidth - kItemWidth) * scale;
             leftView.frame = CGRectMake(-(width - kItemWidth) / 2, -(height - kItemHeight), width, height);

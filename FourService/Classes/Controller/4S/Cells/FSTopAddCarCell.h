@@ -9,4 +9,5 @@
 #import <UIKit/UIKit.h>
 @interface FSTopAddCarCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *addBtnImage;
 @end

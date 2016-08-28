@@ -65,6 +65,9 @@
 
 - (void)initWithButtonsWithType:(CZJNaviBarViewType)type
 {
+    _backgroundImageView = [[UIImageView alloc]initWithFrame:self.bounds];
+    [self addSubview:_backgroundImageView];
+    
     //状态栏颜色
     CGRect statusviewbound = CGRectMake(0, -20, _selfBounds.size.width, 20);
     UIView* _statusBarBgView = [[UIView alloc]initWithFrame:statusviewbound];
@@ -79,7 +82,7 @@
     
     //------------------------------------初始化按钮组------------------------------------
     //1.搜索栏按钮
-    CGRect searchaBarRect = CGRectMake(CGRectGetMinX(_selfBounds) + 44, 2 ,
+    CGRect searchaBarRect = CGRectMake(CGRectGetMinX(_selfBounds) + 44, 22 ,
                                        _selfBounds.size.width - (44 * 2), 40);
     _customSearchBar = [[UISearchBar alloc] initWithFrame:searchaBarRect];
     _customSearchBar.delegate = self;
@@ -104,7 +107,7 @@
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setTextColor:[UIColor blueColor]];
     
     //2.扫一扫按钮
-    CGRect btnScanRect = CGRectMake(0, 0, 44, 44);
+    CGRect btnScanRect = CGRectMake(0, 20, 44, 44);
     _btnScan = [[BadgeButton alloc]initWithFrame:btnScanRect];
     [_btnScan setBackgroundImage:[UIImage imageNamed:saoyisaoBtnImageName] forState:UIControlStateNormal];
     [_btnScan addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -112,7 +115,7 @@
     [_btnScan setHidden:YES];
     
     //3.返回按钮
-    CGRect btnBackRect = CGRectMake(0, 0, 44, 44);
+    CGRect btnBackRect = CGRectMake(0, 20, 44, 44);
     _btnBack = [[ BadgeButton alloc ]initWithFrame:btnBackRect];
     [_btnBack setBackgroundImage:[UIImage imageNamed:@"prodetail_btn_backnor"] forState:UIControlStateNormal];
     [_btnBack addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -120,7 +123,7 @@
     [_btnBack setHidden:YES];
     
     //4.更多按钮
-    CGRect btnMoreRect = CGRectMake(CGRectGetMaxX(_selfBounds) - 58, 2, 40, 40);
+    CGRect btnMoreRect = CGRectMake(CGRectGetMaxX(_selfBounds) - 58, 22, 40, 40);
     _btnMore = [[ BadgeButton alloc ]initWithFrame:btnMoreRect];
     [_btnMore setBackgroundImage:[UIImage imageNamed:@"prodetail_btn_more"] forState:UIControlStateNormal];
     [_btnMore addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -129,14 +132,14 @@
 
     
     //5.购物车按钮
-    CGRect btnShopRect = CGRectMake(CGRectGetMaxX(_selfBounds) - 44, 0, 44, 44);
+    CGRect btnShopRect = CGRectMake(CGRectGetMaxX(_selfBounds) - 44, 20, 44, 44);
     _btnShop = [[BadgeButton alloc]initWithFrame:btnShopRect];
     [_btnShop setBackgroundImage:[UIImage imageNamed:shopBtnImageName] forState:UIControlStateNormal];
     [_btnShop addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
     [_btnShop setTag:CZJButtonTypeHomeShopping];
     [_btnShop setHidden:YES];
     //购物车右上角数量角标
-    _btnShopBadgeLabel = [[UILabel alloc]initWithFrame:CGRectMake(25, 0, 16, 16)];
+    _btnShopBadgeLabel = [[UILabel alloc]initWithFrame:CGRectMake(25, 20, 16, 16)];
     _btnShopBadgeLabel.textColor = [UIColor whiteColor];
     NSString* shoppingCartCount = [USER_DEFAULT valueForKey:kUserDefaultShoppingCartCount];
     if ([shoppingCartCount intValue]<= 0)
@@ -164,12 +167,12 @@
     [_btnArrange setHidden:YES];
 
     //标题
-    _mainTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(60, 14, PJ_SCREEN_WIDTH - 120, 16)];
+    _mainTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(60, 30, PJ_SCREEN_WIDTH - 120, 20)];
     _mainTitleLabel.font = BOLDSYSTEMFONT(20);
     _mainTitleLabel.textAlignment = NSTextAlignmentCenter;
     _mainTitleLabel.hidden = YES;
     
-    _buttomSeparator = [[UIView alloc]initWithFrame:CGRectMake(0, 43, PJ_SCREEN_WIDTH, 0.5)];
+    _buttomSeparator = [[UIView alloc]initWithFrame:CGRectMake(0, 63, PJ_SCREEN_WIDTH, 0.5)];
     _buttomSeparator.backgroundColor = CZJNAVIBARBGCOLOR;
     _buttomSeparator.hidden = YES;
     
@@ -290,13 +293,23 @@
             _customSearchBar.frame = CGRectMake(10, 2, PJ_SCREEN_WIDTH - 20, 40);
             break;
             
+        case CZJNaviBarViewTypeFourservice:
+            _customSearchBar.hidden = YES;
+            _mainTitleLabel.hidden = NO;
+            [_mainTitleLabel setPosition:CGPointMake(PJ_SCREEN_WIDTH*0.5, 40) atAnchorPoint:CGPointTopMiddle];
+
+            _btnMore.hidden = NO;
+            [_btnMore setPosition:CGPointMake(PJ_SCREEN_WIDTH - 20, 25) atAnchorPoint:CGPointTopRight];
+            _btnMore.titleLabel.font = SYSTEMFONT(15);
+            [_btnMore setBackgroundImage:NULL forState:UIControlStateNormal];
+            break;
+            
         default:
             break;
     }
 
     [self addSubview:_customSearchBar];
     [self addSubview:_btnScan];
-//    [self addSubview:_btnShop];
     [self addSubview:_btnBack];
     [self addSubview:_btnMore];
     [self addSubview:_btnArrange];

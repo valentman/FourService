@@ -10,7 +10,7 @@
 #import "CZJOrderForm.h"
 #import "CZJOrderTypeCell.h"
 #import "CZJOrderListPayCell.h"
-#import "CZJBaseDataManager.h"
+#import "FSBaseDataManager.h"
 
 @interface CZJPopPayViewController ()
 <
@@ -58,7 +58,7 @@ CZJOrderListPayCellDelegate
 
 - (void)initTableView
 {
-    _orderTypeAry = CZJBaseDataInstance.orderPaymentTypeAry;
+    _orderTypeAry = FSBaseDataInstance.orderPaymentTypeAry;
     for (CZJOrderTypeForm* form in _orderTypeAry)
     {
         if ([form.orderTypeName isEqualToString:@"支付宝支付"])
@@ -95,7 +95,7 @@ CZJOrderListPayCellDelegate
     if(self.basicBlock)self.basicBlock();
 }
 
-- (void)setCancleBarItemHandle:(CZJGeneralBlock)basicBlock
+- (void)setCancleBarItemHandle:(GeneralBlockHandler)basicBlock
 {
     self.basicBlock = basicBlock;
 }
@@ -128,7 +128,7 @@ CZJOrderListPayCellDelegate
     else
     {
         CZJOrderTypeCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJOrderTypeCell" forIndexPath:indexPath];
-        [cell setOrderTypeForm:_orderTypeAry[indexPath.row]];
+//        [cell setOrderTypeForm:_orderTypeAry[indexPath.row]];
         cell.separatorInset = IndentCellSeparator(20);
         if (_orderTypeAry.count - 1 == indexPath.row)
         {

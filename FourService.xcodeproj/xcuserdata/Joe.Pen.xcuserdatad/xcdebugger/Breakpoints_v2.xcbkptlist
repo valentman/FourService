@@ -22,31 +22,16 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__76-[AFJSONRequestSerializer requestBySerializingRequest:withParameters:error:]_block_invoke"
-                  moduleName = "FourService"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Joe.Pen/Documents/GitHubCode/FourService/FourService/ThirdSDK/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "493896703.926091"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1250"
-                  endingLineNumber = "1250"
-                  offsetFromSymbolStart = "224">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
                   symbolName = "__copy_helper_block_.1065"
                   moduleName = "FourService"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Joe.Pen/Documents/GitHubCode/FourService/FourService/ThirdSDK/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "493896703.926307"
+                  urlString = "file:///Users/Joe.Pen/Documents/GitCode/FourService/FourService/ThirdSDK/AFNetworking/AFURLRequestSerialization.m"
+                  timestampString = "494093901.815849"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1250"
                   endingLineNumber = "1250"
-                  offsetFromSymbolStart = "116">
+                  offsetFromSymbolStart = "108">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -55,13 +40,13 @@
                   symbolName = "__destroy_helper_block_.1066"
                   moduleName = "FourService"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Joe.Pen/Documents/GitHubCode/FourService/FourService/ThirdSDK/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "493896703.926398"
+                  urlString = "file:///Users/Joe.Pen/Documents/GitCode/FourService/FourService/ThirdSDK/AFNetworking/AFURLRequestSerialization.m"
+                  timestampString = "494093901.816198"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1250"
                   endingLineNumber = "1250"
-                  offsetFromSymbolStart = "64">
+                  offsetFromSymbolStart = "59">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -88,28 +73,13 @@
                   symbolName = "__84-[AFPropertyListRequestSerializer requestBySerializingRequest:withParameters:error:]_block_invoke"
                   moduleName = "FourService"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Joe.Pen/Documents/GitHubCode/FourService/FourService/ThirdSDK/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "493896703.941252"
+                  urlString = "file:///Users/Joe.Pen/Documents/GitCode/FourService/FourService/ThirdSDK/AFNetworking/AFURLRequestSerialization.m"
+                  timestampString = "494093901.824653"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1329"
                   endingLineNumber = "1329"
-                  offsetFromSymbolStart = "224">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__copy_helper_block_.1089"
-                  moduleName = "FourService"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Joe.Pen/Documents/GitHubCode/FourService/FourService/ThirdSDK/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "493896703.941598"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1329"
-                  endingLineNumber = "1329"
-                  offsetFromSymbolStart = "116">
+                  offsetFromSymbolStart = "235">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -118,13 +88,13 @@
                   symbolName = "__destroy_helper_block_.1090"
                   moduleName = "FourService"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Joe.Pen/Documents/GitHubCode/FourService/FourService/ThirdSDK/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "493896703.941706"
+                  urlString = "file:///Users/Joe.Pen/Documents/GitCode/FourService/FourService/ThirdSDK/AFNetworking/AFURLRequestSerialization.m"
+                  timestampString = "494093901.825131"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1329"
                   endingLineNumber = "1329"
-                  offsetFromSymbolStart = "64">
+                  offsetFromSymbolStart = "59">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -222,6 +192,22 @@
             startingLineNumber = "67"
             endingLineNumber = "67"
             landmarkName = "-getDataFromServer"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FourService/Classes/Controller/4S/FSStoreListController.m"
+            timestampString = "494093898.894333"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "-getStoreDataFromServer"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

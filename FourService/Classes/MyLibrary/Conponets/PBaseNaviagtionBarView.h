@@ -27,6 +27,7 @@
 @property(nullable, strong, nonatomic)UISearchBar* customSearchBar;                 //搜索栏
 @property(nullable, strong, nonatomic)UILabel* mainTitleLabel;                      //正中标题
 @property(nullable, strong, nonatomic)UIView* buttomSeparator;                      //底部分割线
+@property(nullable, strong, nonatomic)UIImageView* backgroundImageView;
 @property (nonatomic, assign) CZJDetailType detailType;
 
 

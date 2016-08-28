@@ -43,7 +43,7 @@
             NSString* badgeStr = [NSString stringWithFormat:@"%ld", badgeNum];
             CGSize labelSize = [PUtils calculateTitleSizeWithString:badgeStr AndFontSize:14];
             
-            [_badgeLabel setSize:CGSizeMake(labelSize.width < 20 ? 20 : labelSize.width, 20)];
+            [_badgeLabel setSize:CGSizeMake(labelSize.width < 20 ? 20 : labelSize.width + 5, 20)];
             _badgeLabel.text = badgeStr;
             _badgeLabel.textColor = [UIColor whiteColor];
             _badgeLabel.textAlignment = NSTextAlignmentCenter;
@@ -58,7 +58,7 @@
 
 - (void)setBadgeLabelPosition:(CGPoint)pt
 {
-    [_badgeLabel setPosition:pt atAnchorPoint:CGPointTopRight];
+    [_badgeLabel setPosition:pt atAnchorPoint:CGPointZero];
 }
 
 @end

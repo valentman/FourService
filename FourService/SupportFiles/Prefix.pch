@@ -35,6 +35,7 @@
 #import "FSForm.h"
 #import "FSDeletableImageView.h"
 #import "FSImageView.h"
+#import "CZJTableViewCell.h"
 
 #import "CALayer+UIColor.h"
 #import "UIView+Frame.h"

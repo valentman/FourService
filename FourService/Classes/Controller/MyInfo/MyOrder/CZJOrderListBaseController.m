@@ -62,7 +62,7 @@ CZJOrderListCellDelegate
 //    {
 //        viewRect = CGRectMake(0, 0, PJ_SCREEN_WIDTH, PJ_SCREEN_HEIGHT- 114 - 60);
 //        CGRect buttomRect = CGRectMake(0, PJ_SCREEN_HEIGHT - 114 - 60, PJ_SCREEN_WIDTH,60);
-//        _noPayButtomView = [CZJUtils getXibViewByName:@"CZJOrderListNoPayButtomView"];
+//        _noPayButtomView = [PUtils getXibViewByName:@"CZJOrderListNoPayButtomView"];
 //        _noPayButtomView.frame = buttomRect;
 //        if (iPhone4 || iPhone5)
 //        {
@@ -99,15 +99,15 @@ CZJOrderListCellDelegate
 //    MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 //    hud.completionBlock = ^{
 //    };
-//    [CZJUtils removeNoDataAlertViewFromTarget:self.view];
-//    [CZJUtils removeReloadAlertViewFromTarget:self.view];
+//    [PUtils removeNoDataAlertViewFromTarget:self.view];
+//    [PUtils removeReloadAlertViewFromTarget:self.view];
 //    [_params setValue:@(self.page) forKey:@"page"];
 //    
 //    [CZJBaseDataInstance getOrderList:_params Success:^(id json) {
 //        [MBProgressHUD hideAllHUDsForView:self.view animated:NO];
-//        DLog(@"orderList:%@",[[CZJUtils DataFromJson:json] description]);
+//        DLog(@"orderList:%@",[[PUtils DataFromJson:json] description]);
 //        //========获取数据返回，判断数据大于0不==========
-//        NSArray* tmpAry = [[CZJUtils DataFromJson:json] valueForKey:@"msg"];
+//        NSArray* tmpAry = [[PUtils DataFromJson:json] valueForKey:@"msg"];
 //        if (CZJHomeGetDataFromServerTypeTwo == _getdataType)
 //        {
 //            [_orderList addObjectsFromArray: [CZJOrderListForm objectArrayWithKeyValuesArray:tmpAry]];
@@ -133,7 +133,7 @@ CZJOrderListCellDelegate
 //        if (_orderList.count == 0)
 //        {
 //            self.myTableView.hidden = YES;
-//            [CZJUtils showNoDataAlertViewOnTarget:self.view withPromptString:_noDataPrompt];
+//            [PUtils showNoDataAlertViewOnTarget:self.view withPromptString:_noDataPrompt];
 //            if ([[_params valueForKey:@"type"] isEqualToString:@"1"])
 //            {
 ////                _noPayButtomView.hidden = YES;
@@ -153,7 +153,7 @@ CZJOrderListCellDelegate
 //        }
 //    } fail:^{
 //        [MBProgressHUD hideAllHUDsForView:self.view animated:NO];
-//        [CZJUtils showReloadAlertViewOnTarget:weak.view withReloadHandle:^{
+//        [PUtils showReloadAlertViewOnTarget:weak.view withReloadHandle:^{
 //            [weak getOrderListFromServer];
 //        }];
 //    }];

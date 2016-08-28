@@ -303,8 +303,6 @@
 		EC542B121D23A40700F3B4BF /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EC542B111D23A40700F3B4BF /* libicucore.tbd */; };
 		EC542B141D23A42800F3B4BF /* libresolv.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EC542B131D23A42800F3B4BF /* libresolv.9.tbd */; };
 		EC542B161D23A51B00F3B4BF /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC542B151D23A51B00F3B4BF /* CoreMotion.framework */; };
-		EC5759B61D6DEFCA009F3F5D /* CZJOneButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5759B41D6DEFCA009F3F5D /* CZJOneButtonCell.m */; };
-		EC5759B71D6DEFCA009F3F5D /* CZJOneButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC5759B51D6DEFCA009F3F5D /* CZJOneButtonCell.xib */; };
 		EC5759BB1D6DF029009F3F5D /* CZJOrderTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5759B91D6DF029009F3F5D /* CZJOrderTypeCell.m */; };
 		EC5759BC1D6DF029009F3F5D /* CZJOrderTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC5759BA1D6DF029009F3F5D /* CZJOrderTypeCell.xib */; };
 		EC7760DB1D2223D500E1A89F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7760DA1D2223D500E1A89F /* main.m */; };
@@ -329,6 +327,8 @@
 		EC95ED531D606A63005A50B7 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = EC95ED4A1D606A63005A50B7 /* UIWebView+AFNetworking.m */; };
 		EC95ED5C1D606F89005A50B7 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC95ED591D606F89005A50B7 /* AFHTTPSessionManager.m */; };
 		EC95ED5D1D606F89005A50B7 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC95ED5B1D606F89005A50B7 /* AFURLSessionManager.m */; };
+		EC9AA4841D71569C000F4592 /* FSHomeNotifyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9AA4821D71569C000F4592 /* FSHomeNotifyCell.m */; };
+		EC9AA4851D71569C000F4592 /* FSHomeNotifyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC9AA4831D71569C000F4592 /* FSHomeNotifyCell.xib */; };
 		ECA233CE1D37DB78004C2679 /* FSMyInformationController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA233CC1D37DB78004C2679 /* FSMyInformationController.m */; };
 		ECA233D11D37DB91004C2679 /* FSSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA233D01D37DB91004C2679 /* FSSettingController.m */; };
 		ECA233DF1D37DC8F004C2679 /* CZJGeneralCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA233D41D37DC8F004C2679 /* CZJGeneralCell.m */; };
@@ -340,6 +340,7 @@
 		ECA233E51D37DC8F004C2679 /* CZJMyInfoShoppingCartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA233DD1D37DC8F004C2679 /* CZJMyInfoShoppingCartCell.m */; };
 		ECA233E61D37DC8F004C2679 /* CZJMyInfoShoppingCartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA233DE1D37DC8F004C2679 /* CZJMyInfoShoppingCartCell.xib */; };
 		ECA233E91D37DD4F004C2679 /* FSMyInfoForm.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA233E81D37DD4F004C2679 /* FSMyInfoForm.m */; };
+		ECA540A31D7091F7002F6001 /* CZJTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA540A21D7091F7002F6001 /* CZJTableViewCell.m */; };
 		ECA82A421D58CDE600F05C52 /* UIViewController+YQSlideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA82A3E1D58CDE600F05C52 /* UIViewController+YQSlideMenu.m */; };
 		ECA82A431D58CDE600F05C52 /* YQSlideMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA82A401D58CDE600F05C52 /* YQSlideMenuController.m */; };
 		ECA82A441D58CDE600F05C52 /* YQSlideMenuImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECA82A411D58CDE600F05C52 /* YQSlideMenuImages.xcassets */; };
@@ -966,9 +967,6 @@
 		EC542B111D23A40700F3B4BF /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		EC542B131D23A42800F3B4BF /* libresolv.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.9.tbd; path = usr/lib/libresolv.9.tbd; sourceTree = SDKROOT; };
 		EC542B151D23A51B00F3B4BF /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
-		EC5759B31D6DEFCA009F3F5D /* CZJOneButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJOneButtonCell.h; sourceTree = "<group>"; };
-		EC5759B41D6DEFCA009F3F5D /* CZJOneButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJOneButtonCell.m; sourceTree = "<group>"; };
-		EC5759B51D6DEFCA009F3F5D /* CZJOneButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJOneButtonCell.xib; sourceTree = "<group>"; };
 		EC5759B81D6DF029009F3F5D /* CZJOrderTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJOrderTypeCell.h; sourceTree = "<group>"; };
 		EC5759B91D6DF029009F3F5D /* CZJOrderTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJOrderTypeCell.m; sourceTree = "<group>"; };
 		EC5759BA1D6DF029009F3F5D /* CZJOrderTypeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJOrderTypeCell.xib; sourceTree = "<group>"; };
@@ -1017,6 +1015,9 @@
 		EC95ED591D606F89005A50B7 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
 		EC95ED5A1D606F89005A50B7 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		EC95ED5B1D606F89005A50B7 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		EC9AA4811D71569C000F4592 /* FSHomeNotifyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHomeNotifyCell.h; sourceTree = "<group>"; };
+		EC9AA4821D71569C000F4592 /* FSHomeNotifyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHomeNotifyCell.m; sourceTree = "<group>"; };
+		EC9AA4831D71569C000F4592 /* FSHomeNotifyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSHomeNotifyCell.xib; sourceTree = "<group>"; };
 		ECA233CB1D37DB78004C2679 /* FSMyInformationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyInformationController.h; sourceTree = "<group>"; };
 		ECA233CC1D37DB78004C2679 /* FSMyInformationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyInformationController.m; sourceTree = "<group>"; };
 		ECA233CF1D37DB91004C2679 /* FSSettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSettingController.h; sourceTree = "<group>"; };
@@ -1035,6 +1036,8 @@
 		ECA233DE1D37DC8F004C2679 /* CZJMyInfoShoppingCartCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJMyInfoShoppingCartCell.xib; sourceTree = "<group>"; };
 		ECA233E71D37DD4F004C2679 /* FSMyInfoForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyInfoForm.h; sourceTree = "<group>"; };
 		ECA233E81D37DD4F004C2679 /* FSMyInfoForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyInfoForm.m; sourceTree = "<group>"; };
+		ECA540A11D7091F7002F6001 /* CZJTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJTableViewCell.h; sourceTree = "<group>"; };
+		ECA540A21D7091F7002F6001 /* CZJTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJTableViewCell.m; sourceTree = "<group>"; };
 		ECA82A3D1D58CDE600F05C52 /* UIViewController+YQSlideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+YQSlideMenu.h"; sourceTree = "<group>"; };
 		ECA82A3E1D58CDE600F05C52 /* UIViewController+YQSlideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+YQSlideMenu.m"; sourceTree = "<group>"; };
 		ECA82A3F1D58CDE600F05C52 /* YQSlideMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQSlideMenuController.h; sourceTree = "<group>"; };
@@ -1594,6 +1597,8 @@
 		EC5427491D237DE000F3B4BF /* Conponets */ = {
 			isa = PBXGroup;
 			children = (
+				ECA540A11D7091F7002F6001 /* CZJTableViewCell.h */,
+				ECA540A21D7091F7002F6001 /* CZJTableViewCell.m */,
 				ECB422B71D4912AA00D20A9D /* PWUploadImageButton.h */,
 				ECB422B81D4912AA00D20A9D /* PWUploadImageButton.m */,
 				EC9064681D47BE8C00E9554F /* CZJPageControlView.h */,
@@ -2429,9 +2434,6 @@
 				EC5759B81D6DF029009F3F5D /* CZJOrderTypeCell.h */,
 				EC5759B91D6DF029009F3F5D /* CZJOrderTypeCell.m */,
 				EC5759BA1D6DF029009F3F5D /* CZJOrderTypeCell.xib */,
-				EC5759B31D6DEFCA009F3F5D /* CZJOneButtonCell.h */,
-				EC5759B41D6DEFCA009F3F5D /* CZJOneButtonCell.m */,
-				EC5759B51D6DEFCA009F3F5D /* CZJOneButtonCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -2660,6 +2662,9 @@
 				ECBFD5F91D69F46600662B5E /* FSTopAddCarCell.h */,
 				ECBFD5FA1D69F46600662B5E /* FSTopAddCarCell.m */,
 				ECBFD5FB1D69F46600662B5E /* FSTopAddCarCell.xib */,
+				EC9AA4811D71569C000F4592 /* FSHomeNotifyCell.h */,
+				EC9AA4821D71569C000F4592 /* FSHomeNotifyCell.m */,
+				EC9AA4831D71569C000F4592 /* FSHomeNotifyCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -2830,7 +2835,6 @@
 				ECA233E61D37DC8F004C2679 /* CZJMyInfoShoppingCartCell.xib in Resources */,
 				EC5429A21D237E7700F3B4BF /* wl_map_icon_position_press.png in Resources */,
 				EC542A191D237E7700F3B4BF /* pop@3x.png in Resources */,
-				EC5759B71D6DEFCA009F3F5D /* CZJOneButtonCell.xib in Resources */,
 				EC5429841D237E7700F3B4BF /* Resources.bundle in Resources */,
 				EC54299F1D237E7700F3B4BF /* wl_map_icon_5@2x.png in Resources */,
 				EC5427881D237DE000F3B4BF /* LoadingFailedAlertView.xib in Resources */,
@@ -2838,6 +2842,7 @@
 				EC474B3B1D5EFCAB00B54B0F /* FSMyinfoButtomView.xib in Resources */,
 				EC0662961D7048DD006B62D2 /* CZJOrderReturnedListCell.xib in Resources */,
 				EC54297D1D237E7700F3B4BF /* KSRefresh.bundle in Resources */,
+				EC9AA4851D71569C000F4592 /* FSHomeNotifyCell.xib in Resources */,
 				EC0662901D7048DD006B62D2 /* CZJOrderListCell.xib in Resources */,
 				EC54298B1D237E7700F3B4BF /* anjuke_icon_itis_position.png in Resources */,
 				EC18DE971D450CEA006CB460 /* CZJMyCarListCell.xib in Resources */,
@@ -3128,7 +3133,7 @@
 				EC542A541D23815E00F3B4BF /* UIScrollView+EmptyDataSet.m in Sources */,
 				ECCEE3881D6C8AAE0034D4F2 /* FBShimmeringLayer.m in Sources */,
 				EC5429911D237E7700F3B4BF /* CheckInstalledMapAPP.m in Sources */,
-				EC5759B61D6DEFCA009F3F5D /* CZJOneButtonCell.m in Sources */,
+				ECA540A31D7091F7002F6001 /* CZJTableViewCell.m in Sources */,
 				ECBC6BC81D349A46003B7446 /* NSTimer_Pause.m in Sources */,
 				EC5429771D237E7700F3B4BF /* JTImageButton.m in Sources */,
 				EC5429FC1D237E7700F3B4BF /* SDWebImageDecoder.m in Sources */,
@@ -3136,6 +3141,7 @@
 				EC542A011D237E7700F3B4BF /* UIButton+WebCache.m in Sources */,
 				EC5429AC1D237E7700F3B4BF /* NSObject+MJProperty.m in Sources */,
 				EC5429801D237E7700F3B4BF /* LewPickerController.m in Sources */,
+				EC9AA4841D71569C000F4592 /* FSHomeNotifyCell.m in Sources */,
 				EC5427A01D237E0500F3B4BF /* FSLoginModelManager.m in Sources */,
 				EC5429931D237E7700F3B4BF /* LocIsBaidu.m in Sources */,
 				EC0662701D7045FF006B62D2 /* CZJPopPayViewController.m in Sources */,

@@ -188,7 +188,7 @@
         self.goodsNameLabel.text = goodsForm.itemName;
         self.goodsModel.text = goodsForm.itemSku;
         self.priceLabel.text = [NSString stringWithFormat:@"￥%.2f",[goodsForm.currentPrice floatValue]];
-        CGSize priceSize = [CZJUtils calculateTitleSizeWithString:self.priceLabel.text AndFontSize:14];
+        CGSize priceSize = [PUtils calculateTitleSizeWithString:self.priceLabel.text AndFontSize:14];
         self.priceLabelWidth.constant = priceSize.width + 20;
         self.numLabel.text = [NSString stringWithFormat:@"×%@",goodsForm.itemCount];
     }

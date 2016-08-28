@@ -282,8 +282,8 @@ FDAlertViewDelegate
     };
     SuccessBlockHandler failure = ^(id json){
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-        NSDictionary* dict = [PUtils DataFromJson:json];
-        [PUtils tipWithText:[dict valueForKey:@"msg"] onView:weakSelf.view];
+//        NSDictionary* dict = [PUtils FDataFromJsonF:json];
+        [PUtils tipWithText:[json valueForKey:@"msg"] onView:weakSelf.view];
         [weakSelf.confirmBtn setEnabled:YES];
         [weakSelf.confirmBtn setBackgroundColor:kLoginColorRed];
     };

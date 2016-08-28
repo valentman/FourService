@@ -48,7 +48,7 @@ UIGestureRecognizerDelegate
 
 - (void)addCZJNaviBarViewWithNotHiddenNavi:(CZJNaviBarViewType)naviBarViewType
 {
-    _naviBarView = [[PBaseNaviagtionBarView alloc]initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, 44) AndType:naviBarViewType];
+    _naviBarView = [[PBaseNaviagtionBarView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 64) AndType:naviBarViewType];
     _naviBarView.delegate = self;
     [self.view addSubview:_naviBarView];
     self.navigationController.interactivePopGestureRecognizer.delegate = self;

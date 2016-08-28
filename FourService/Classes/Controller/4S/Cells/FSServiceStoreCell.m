@@ -13,12 +13,22 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    _discountPriceLabel.keyWordFont = SYSTEMFONT(18);
+    _originPriceLabel.keyWordFont = SYSTEMFONT(8);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)setPaymentAvaiable:(id)types
+{
+    self.zhifubaoImage.hidden = types;
+    self.weixinImage.hidden = types;
+    self.yinlianImage.hidden = types;
+    self.cashImage.hidden = types;
 }
 
 @end
