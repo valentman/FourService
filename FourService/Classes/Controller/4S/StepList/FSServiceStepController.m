@@ -8,6 +8,10 @@
 
 #import "FSServiceStepController.h"
 #import "FSBaseDataManager.h"
+#import "FSServiceStepCell.h"
+#import "FSServiceStepGoodsCell.h"
+#import "FSStoreInfoCell.h"
+#import "CZJGeneralCell.h"
 
 @interface FSServiceStepController ()
 <
@@ -30,6 +34,13 @@ UITableViewDataSource
 {
     [self addCZJNaviBarView:CZJNaviBarViewTypeGeneral];
     self.naviBarView.mainTitleLabel.text = @"选择项目";
+    self.naviBarView.mainTitleLabel.textColor = WHITECOLOR;
+    self.naviBarView.backgroundImageView.frame = self.naviBarView.frame;
+    [self.naviBarView.backgroundImageView setImage:IMAGENAMED(@"home_topBg")];
+    self.naviBarView.clipsToBounds = YES;
+    [self.naviBarView.btnMore setBackgroundImage:nil forState:UIControlStateNormal];
+    [self.naviBarView.btnMore setImage:IMAGENAMED(@"shop_share") forState:UIControlStateNormal];
+    self.naviBarView.btnMore.hidden = NO;
 }
 
 - (UITableView*)myTableView
@@ -40,15 +51,17 @@ UITableViewDataSource
         self.myTableView.tableFooterView = [[UIView alloc]init];
         self.myTableView.delegate = self;
         self.myTableView.dataSource = self;
-        self.myTableView.scrollEnabled = NO;
         self.myTableView.clipsToBounds = NO;
         self.myTableView.showsVerticalScrollIndicator = NO;
         self.myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.automaticallyAdjustsScrollViewInsets = NO;
         self.myTableView.backgroundColor = CZJTableViewBGColor;
         [self.view addSubview:self.myTableView];
-        
-        NSArray* nibArys = @[];
+        [self.view sendSubviewToBack:self.myTableView];
+        NSArray* nibArys = @[@"FSServiceStepCell",
+                             @"FSServiceStepGoodsCell",
+                             @"FSStoreInfoCell",
+                             @"CZJGeneralCell"];
         
         for (id cells in nibArys) {
             UINib *nib=[UINib nibWithNibName:cells bundle:nil];
@@ -81,23 +94,94 @@ UITableViewDataSource
 #pragma mark-UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return _serviceStepAry.count;
+    return _serviceStepAry.count + 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    switch (section) {
+        case 0:
+            return 1;
+            break;
+            
+        case 1:
+            return 2;
+            break;
+            
+        case 2:
+            return _serviceStepAry.count;
+            break;
+            
+        default:
+            break;
+    }
     return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    switch (indexPath.section)
+    {
+        case 0:
+        {
+            
+            if (0 == indexPath.row)
+            {
+                FSStoreInfoCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FSStoreInfoCell" forIndexPath:indexPath];
+                [cell.storeBgImageView sd_setImageWithURL:[NSURL URLWithString:@"https://img7-tuhu-cn.alikunlun.com/Images/Marketing/Shops/c63b293d-f057-4311-bb7a-4c1d35fda13d.jpg@230w_230h_100Q.jpg"]];
+                return cell;
+            }
+
+        }
+            break;
+            
+        case 1:
+        {
+            CZJGeneralCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralCell" forIndexPath:indexPath];
+            if (0 == indexPath.row)
+            {
+                [cell.headImgView setImage:IMAGENAMED(@"shop_location")];
+                cell.nameLabel.text = @"成都市天仁路399号";
+            }
+            if (1 == indexPath.row)
+            {
+                [cell.headImgView setImage:IMAGENAMED(@"shop_phone")];
+                cell.nameLabel.text = @"028-86889898";
+            }
+            return cell;
+        }
+            break;
+            
+        case 2:
+        {
+            FSServiceStepCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FSServiceStepCell" forIndexPath:indexPath];
+            return cell;
+        }
+            break;
+            
+        default:
+            break;
+    }
     return nil;
 }
 
 #pragma mark-UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 0;
+    switch (indexPath.section)
+    {
+        case 0:
+            return 167;
+            break;
+            
+        case 1:
+            return 46;
+            break;
+            
+        default:
+            break;
+    }
+    return 50;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

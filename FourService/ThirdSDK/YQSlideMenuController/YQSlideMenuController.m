@@ -12,7 +12,7 @@ static CGFloat const LeftMarginGesture = 45.0f;
 static CGFloat const MinScaleContentView = 0.8f;
 static CGFloat const MoveDistanceMenuView = 50.0f;
 static CGFloat const MinScaleMenuView = 0.8f;
-static double const DurationAnimation = 0.3f;
+static double const DurationAnimation = 0.4f;
 @interface YQSlideMenuController ()<UIGestureRecognizerDelegate>
 @property (nonatomic, strong) UIView *menuViewContainer;
 @property (nonatomic, strong) UIView *contentViewContainer;

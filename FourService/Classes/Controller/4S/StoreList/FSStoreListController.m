@@ -55,7 +55,6 @@ MXPullDownMenuDelegate
     self.naviBarView.clipsToBounds = YES;
     [self.naviBarView.btnMore setBackgroundImage:nil forState:UIControlStateNormal];
     [self.naviBarView.btnMore setImage:IMAGENAMED(@"shop_btn_map") forState:UIControlStateNormal];
-    
     self.naviBarView.btnMore.hidden = NO;
     
     //下拉菜单
@@ -82,7 +81,9 @@ MXPullDownMenuDelegate
         self.myTableView.showsVerticalScrollIndicator = NO;
         self.automaticallyAdjustsScrollViewInsets = NO;
         self.myTableView.backgroundColor = CZJTableViewBGColor;
+        
         [self.view addSubview:self.myTableView];
+        [self.view sendSubviewToBack:self.myTableView];
         UINib *nib=[UINib nibWithNibName:@"FSServiceStoreCell" bundle:nil];
         [self.myTableView registerNib:nib forCellReuseIdentifier:@"FSServiceStoreCell"];
 
@@ -108,14 +109,15 @@ MXPullDownMenuDelegate
     [PUtils removeReloadAlertViewFromTarget:self.view];
     if (_getdataType == CZJHomeGetDataFromServerTypeOne)
     {
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     }
     [YXSpritesLoadingView showWithText:nil andShimmering:NO andBlurEffect:NO];
     [FSBaseDataInstance getStoreList:params type:CZJHomeGetDataFromServerTypeOne success:^(id json) {
         [YXSpritesLoadingView dismiss];
         //返回数据
-        NSArray* tmpAry = [json valueForKey:kResoponData];
-       
+        NSArray* tmpAry = [NSArray array];
+        tmpAry = [json valueForKey:kResoponData];
+        NSInteger count = [tmpAry isKindOfClass:[NSNull class]] ? 0 : tmpAry.count;
         //刷新或是第一次加载情况
         if (CZJHomeGetDataFromServerTypeOne == _getdataType) {
             [_storeList removeAllObjects];
@@ -128,7 +130,7 @@ MXPullDownMenuDelegate
         }
         
         [weakSelf.myTableView reloadData];
-        if (tmpAry.count < 10)
+        if (count < 10)
         {
             [weakSelf.myTableView.footer noticeNoMoreData];
         }

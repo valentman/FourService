@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="129"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="129.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ylh-6W-aRl">
@@ -212,12 +212,13 @@
                 <outlet property="yinlianImage" destination="4X5-gU-Pap" id="dPT-Hx-crA"/>
                 <outlet property="zhifubaoImage" destination="mtG-MI-Suj" id="VMG-JZ-KWt"/>
             </connections>
+            <point key="canvasLocation" x="265" y="73"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="commit_icon_weixin" width="20" height="20"/>
-        <image name="commit_icon_yinlian" width="20" height="20"/>
-        <image name="commit_icon_yue" width="20" height="20"/>
-        <image name="commit_icon_zhifubao" width="20" height="20"/>
+        <image name="commit_icon_weixin" width="13" height="13"/>
+        <image name="commit_icon_yinlian" width="13" height="13"/>
+        <image name="commit_icon_yue" width="13" height="13"/>
+        <image name="commit_icon_zhifubao" width="13" height="13"/>
     </resources>
 </document>
