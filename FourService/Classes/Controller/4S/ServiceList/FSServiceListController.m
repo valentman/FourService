@@ -47,6 +47,7 @@ PBaseNaviagtionBarViewDelegate
 - (void)initData
 {
     [self getDataFromServer];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getDataFromServer) name:kCZJNotifiLoginSuccess object:nil];
 }
 
 - (void)getDataFromServer

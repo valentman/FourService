@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XJf-9o-OIR">
@@ -80,27 +80,27 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9KI-vO-0X3">
                         <rect key="frame" x="159" y="0.0" width="161" height="43"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMS-V5-Ztl">
-                                <rect key="frame" x="70" y="14" width="31" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥688" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMS-V5-Ztl">
+                                <rect key="frame" x="70" y="14" width="41" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="NOl-Mk-H4E"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7r2-TQ-N5k">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7r2-TQ-N5k">
                                 <rect key="frame" x="126" y="12" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="4pf-0h-GJo"/>
                                     <constraint firstAttribute="width" constant="20" id="DgS-Rw-uYZ"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" image="shop_btn_unSel"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="7r2-TQ-N5k" firstAttribute="leading" secondItem="cMS-V5-Ztl" secondAttribute="trailing" constant="25" id="HZi-lz-DVq"/>
+                            <constraint firstItem="7r2-TQ-N5k" firstAttribute="leading" secondItem="cMS-V5-Ztl" secondAttribute="trailing" constant="15" id="HZi-lz-DVq"/>
                             <constraint firstItem="cMS-V5-Ztl" firstAttribute="centerY" secondItem="9KI-vO-0X3" secondAttribute="centerY" id="aZp-Jw-2cw"/>
                             <constraint firstAttribute="trailing" secondItem="7r2-TQ-N5k" secondAttribute="trailing" constant="15" id="b0e-UK-EgZ"/>
                             <constraint firstAttribute="width" constant="161" id="gMY-M6-HfT"/>
@@ -128,4 +128,7 @@
             <point key="canvasLocation" x="344" y="289"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="shop_btn_unSel" width="31" height="31"/>
+    </resources>
 </document>

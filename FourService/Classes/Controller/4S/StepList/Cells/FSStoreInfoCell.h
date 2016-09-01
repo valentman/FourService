@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FSStoreInfoCell : UITableViewCell
+@interface FSStoreInfoCell : CZJTableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *storeBgImageView;
 @property (weak, nonatomic) IBOutlet UILabel *storeTypeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *storeNameLabel;

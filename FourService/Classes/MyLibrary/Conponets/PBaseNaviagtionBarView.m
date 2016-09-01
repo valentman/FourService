@@ -66,6 +66,7 @@
 - (void)initWithButtonsWithType:(CZJNaviBarViewType)type
 {
     _backgroundImageView = [[UIImageView alloc]initWithFrame:self.bounds];
+    [_backgroundImageView setImage:IMAGENAMED(@"home_topBg")];
     [self addSubview:_backgroundImageView];
     
     //状态栏颜色

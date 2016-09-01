@@ -12,6 +12,7 @@
 #import "FSServiceStepGoodsCell.h"
 #import "FSStoreInfoCell.h"
 #import "CZJGeneralCell.h"
+#import "CZJOrderListPayCell.h"
 
 @interface FSServiceStepController ()
 <
@@ -41,6 +42,10 @@ UITableViewDataSource
     [self.naviBarView.btnMore setBackgroundImage:nil forState:UIControlStateNormal];
     [self.naviBarView.btnMore setImage:IMAGENAMED(@"shop_share") forState:UIControlStateNormal];
     self.naviBarView.btnMore.hidden = NO;
+    
+    CZJOrderListPayCell* payCell = [PUtils getXibViewByName:@"CZJOrderListPayCell"];
+    payCell.frame = CGRectMake(0, PJ_SCREEN_HEIGHT - 50, PJ_SCREEN_WIDTH, 50);
+    [self.view addSubview:payCell];
 }
 
 - (UITableView*)myTableView
@@ -128,6 +133,7 @@ UITableViewDataSource
             if (0 == indexPath.row)
             {
                 FSStoreInfoCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FSStoreInfoCell" forIndexPath:indexPath];
+                
                 [cell.storeBgImageView sd_setImageWithURL:[NSURL URLWithString:@"https://img7-tuhu-cn.alikunlun.com/Images/Marketing/Shops/c63b293d-f057-4311-bb7a-4c1d35fda13d.jpg@230w_230h_100Q.jpg"]];
                 return cell;
             }
@@ -194,6 +200,26 @@ UITableViewDataSource
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString* sbIdentifer;
+    switch (indexPath.section)
+    {
+        case 0:
+            sbIdentifer = @"segueToStoreDetail";
+            break;
+            
+        case 1:
+            sbIdentifer = @"segueToStoreMap";
+            break;
+            
+        default:
+            break;
+    }
+    if (sbIdentifer)
+        [self performSegueWithIdentifier:sbIdentifer sender:nil];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     
 }

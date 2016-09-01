@@ -29,8 +29,6 @@
 		EC0662901D7048DD006B62D2 /* CZJOrderListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC06627F1D7048DD006B62D2 /* CZJOrderListCell.xib */; };
 		EC0662911D7048DD006B62D2 /* CZJOrderListNoPayButtomView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0662811D7048DD006B62D2 /* CZJOrderListNoPayButtomView.m */; };
 		EC0662921D7048DD006B62D2 /* CZJOrderListNoPayButtomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC0662821D7048DD006B62D2 /* CZJOrderListNoPayButtomView.xib */; };
-		EC0662931D7048DD006B62D2 /* CZJOrderListPayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0662841D7048DD006B62D2 /* CZJOrderListPayCell.m */; };
-		EC0662941D7048DD006B62D2 /* CZJOrderListPayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC0662851D7048DD006B62D2 /* CZJOrderListPayCell.xib */; };
 		EC0662951D7048DD006B62D2 /* CZJOrderReturnedListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0662871D7048DD006B62D2 /* CZJOrderReturnedListCell.m */; };
 		EC0662961D7048DD006B62D2 /* CZJOrderReturnedListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC0662881D7048DD006B62D2 /* CZJOrderReturnedListCell.xib */; };
 		EC1261A41D4CEA700082378D /* FSStoreServiceForm.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1261A31D4CEA700082378D /* FSStoreServiceForm.m */; };
@@ -42,6 +40,20 @@
 		EC18DE961D450CEA006CB460 /* CZJMyCarListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC18DE941D450CEA006CB460 /* CZJMyCarListCell.m */; };
 		EC18DE971D450CEA006CB460 /* CZJMyCarListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC18DE951D450CEA006CB460 /* CZJMyCarListCell.xib */; };
 		EC2AC68A1D4A4EDF0065D67C /* Province.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC2AC6891D4A4EDF0065D67C /* Province.plist */; };
+		EC3220F41D77A3C500E4019C /* FSStoreDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3220F31D77A3C500E4019C /* FSStoreDetailController.m */; };
+		EC3220F71D77A3DD00E4019C /* FSGoodsDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3220F61D77A3DD00E4019C /* FSGoodsDetailController.m */; };
+		EC3220FA1D77A40000E4019C /* FSStoreMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3220F91D77A40000E4019C /* FSStoreMapController.m */; };
+		EC3220FC1D77A63000E4019C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC3220FB1D77A63000E4019C /* MapKit.framework */; };
+		EC3221021D77A6BF00E4019C /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC3220FF1D77A6BF00E4019C /* MAMapKit.framework */; };
+		EC3221031D77A6BF00E4019C /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC3221001D77A6BF00E4019C /* AMapSearchKit.framework */; };
+		EC3221041D77A6BF00E4019C /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC3221011D77A6BF00E4019C /* MAMapKit.framework */; };
+		EC32210C1D77A7AF00E4019C /* CZJCustomAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3221071D77A7AF00E4019C /* CZJCustomAnnotationView.m */; };
+		EC32210D1D77A7AF00E4019C /* CZJCustomCallOutView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3221091D77A7AF00E4019C /* CZJCustomCallOutView.m */; };
+		EC32210E1D77A7AF00E4019C /* CZJMAAroundAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = EC32210B1D77A7AF00E4019C /* CZJMAAroundAnnotation.m */; };
+		EC3221121D77A81B00E4019C /* CZJStoreMapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3221101D77A81B00E4019C /* CZJStoreMapCell.m */; };
+		EC3221131D77A81B00E4019C /* CZJStoreMapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC3221111D77A81B00E4019C /* CZJStoreMapCell.xib */; };
+		EC3221161D77A87A00E4019C /* CZJStoreForm.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3221151D77A87A00E4019C /* CZJStoreForm.m */; };
+		EC3221191D77A8AE00E4019C /* CZJStoreMAAroundForm.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3221181D77A8AE00E4019C /* CZJStoreMAAroundForm.m */; };
 		EC3A18E91D41F13F00F6F193 /* FSMyViewedController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3A18E81D41F13F00F6F193 /* FSMyViewedController.m */; };
 		EC3A18EC1D41F15500F6F193 /* FSMyPersonalInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3A18EB1D41F15500F6F193 /* FSMyPersonalInfoController.m */; };
 		EC3A18EF1D41F16700F6F193 /* FSMyAttentionController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3A18EE1D41F16700F6F193 /* FSMyAttentionController.m */; };
@@ -321,6 +333,9 @@
 		EC542B161D23A51B00F3B4BF /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC542B151D23A51B00F3B4BF /* CoreMotion.framework */; };
 		EC5759BB1D6DF029009F3F5D /* CZJOrderTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5759B91D6DF029009F3F5D /* CZJOrderTypeCell.m */; };
 		EC5759BC1D6DF029009F3F5D /* CZJOrderTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC5759BA1D6DF029009F3F5D /* CZJOrderTypeCell.xib */; };
+		EC6E3CFB1D7860FE00DA5588 /* CZJProvinceForm.m in Sources */ = {isa = PBXBuildFile; fileRef = EC6E3CFA1D7860FE00DA5588 /* CZJProvinceForm.m */; };
+		EC6E3CFF1D78786700DA5588 /* CZJOrderListPayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC6E3CFD1D78786700DA5588 /* CZJOrderListPayCell.m */; };
+		EC6E3D001D78786700DA5588 /* CZJOrderListPayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC6E3CFE1D78786700DA5588 /* CZJOrderListPayCell.xib */; };
 		EC7760DB1D2223D500E1A89F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7760DA1D2223D500E1A89F /* main.m */; };
 		EC7760DE1D2223D500E1A89F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7760DD1D2223D500E1A89F /* AppDelegate.m */; };
 		EC7760E61D2223D500E1A89F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC7760E51D2223D500E1A89F /* Assets.xcassets */; };
@@ -423,9 +438,6 @@
 		EC0662801D7048DD006B62D2 /* CZJOrderListNoPayButtomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJOrderListNoPayButtomView.h; sourceTree = "<group>"; };
 		EC0662811D7048DD006B62D2 /* CZJOrderListNoPayButtomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJOrderListNoPayButtomView.m; sourceTree = "<group>"; };
 		EC0662821D7048DD006B62D2 /* CZJOrderListNoPayButtomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJOrderListNoPayButtomView.xib; sourceTree = "<group>"; };
-		EC0662831D7048DD006B62D2 /* CZJOrderListPayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJOrderListPayCell.h; sourceTree = "<group>"; };
-		EC0662841D7048DD006B62D2 /* CZJOrderListPayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJOrderListPayCell.m; sourceTree = "<group>"; };
-		EC0662851D7048DD006B62D2 /* CZJOrderListPayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJOrderListPayCell.xib; sourceTree = "<group>"; };
 		EC0662861D7048DD006B62D2 /* CZJOrderReturnedListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJOrderReturnedListCell.h; sourceTree = "<group>"; };
 		EC0662871D7048DD006B62D2 /* CZJOrderReturnedListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJOrderReturnedListCell.m; sourceTree = "<group>"; };
 		EC0662881D7048DD006B62D2 /* CZJOrderReturnedListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJOrderReturnedListCell.xib; sourceTree = "<group>"; };
@@ -443,6 +455,29 @@
 		EC18DE941D450CEA006CB460 /* CZJMyCarListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJMyCarListCell.m; sourceTree = "<group>"; };
 		EC18DE951D450CEA006CB460 /* CZJMyCarListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJMyCarListCell.xib; sourceTree = "<group>"; };
 		EC2AC6891D4A4EDF0065D67C /* Province.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Province.plist; sourceTree = "<group>"; };
+		EC3220F21D77A3C500E4019C /* FSStoreDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSStoreDetailController.h; sourceTree = "<group>"; };
+		EC3220F31D77A3C500E4019C /* FSStoreDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSStoreDetailController.m; sourceTree = "<group>"; };
+		EC3220F51D77A3DD00E4019C /* FSGoodsDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSGoodsDetailController.h; sourceTree = "<group>"; };
+		EC3220F61D77A3DD00E4019C /* FSGoodsDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSGoodsDetailController.m; sourceTree = "<group>"; };
+		EC3220F81D77A40000E4019C /* FSStoreMapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSStoreMapController.h; sourceTree = "<group>"; };
+		EC3220F91D77A40000E4019C /* FSStoreMapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSStoreMapController.m; sourceTree = "<group>"; };
+		EC3220FB1D77A63000E4019C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		EC3220FF1D77A6BF00E4019C /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
+		EC3221001D77A6BF00E4019C /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
+		EC3221011D77A6BF00E4019C /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
+		EC3221061D77A7AF00E4019C /* CZJCustomAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJCustomAnnotationView.h; sourceTree = "<group>"; };
+		EC3221071D77A7AF00E4019C /* CZJCustomAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJCustomAnnotationView.m; sourceTree = "<group>"; };
+		EC3221081D77A7AF00E4019C /* CZJCustomCallOutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJCustomCallOutView.h; sourceTree = "<group>"; };
+		EC3221091D77A7AF00E4019C /* CZJCustomCallOutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJCustomCallOutView.m; sourceTree = "<group>"; };
+		EC32210A1D77A7AF00E4019C /* CZJMAAroundAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJMAAroundAnnotation.h; sourceTree = "<group>"; };
+		EC32210B1D77A7AF00E4019C /* CZJMAAroundAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJMAAroundAnnotation.m; sourceTree = "<group>"; };
+		EC32210F1D77A81B00E4019C /* CZJStoreMapCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJStoreMapCell.h; sourceTree = "<group>"; };
+		EC3221101D77A81B00E4019C /* CZJStoreMapCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJStoreMapCell.m; sourceTree = "<group>"; };
+		EC3221111D77A81B00E4019C /* CZJStoreMapCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJStoreMapCell.xib; sourceTree = "<group>"; };
+		EC3221141D77A87A00E4019C /* CZJStoreForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJStoreForm.h; sourceTree = "<group>"; };
+		EC3221151D77A87A00E4019C /* CZJStoreForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJStoreForm.m; sourceTree = "<group>"; };
+		EC3221171D77A8AE00E4019C /* CZJStoreMAAroundForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJStoreMAAroundForm.h; sourceTree = "<group>"; };
+		EC3221181D77A8AE00E4019C /* CZJStoreMAAroundForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJStoreMAAroundForm.m; sourceTree = "<group>"; };
 		EC3A18E71D41F13F00F6F193 /* FSMyViewedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyViewedController.h; sourceTree = "<group>"; };
 		EC3A18E81D41F13F00F6F193 /* FSMyViewedController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyViewedController.m; sourceTree = "<group>"; };
 		EC3A18EA1D41F15500F6F193 /* FSMyPersonalInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyPersonalInfoController.h; sourceTree = "<group>"; };
@@ -996,6 +1031,11 @@
 		EC5759B81D6DF029009F3F5D /* CZJOrderTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJOrderTypeCell.h; sourceTree = "<group>"; };
 		EC5759B91D6DF029009F3F5D /* CZJOrderTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJOrderTypeCell.m; sourceTree = "<group>"; };
 		EC5759BA1D6DF029009F3F5D /* CZJOrderTypeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJOrderTypeCell.xib; sourceTree = "<group>"; };
+		EC6E3CF91D7860FE00DA5588 /* CZJProvinceForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJProvinceForm.h; sourceTree = "<group>"; };
+		EC6E3CFA1D7860FE00DA5588 /* CZJProvinceForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJProvinceForm.m; sourceTree = "<group>"; };
+		EC6E3CFC1D78786700DA5588 /* CZJOrderListPayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJOrderListPayCell.h; sourceTree = "<group>"; };
+		EC6E3CFD1D78786700DA5588 /* CZJOrderListPayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJOrderListPayCell.m; sourceTree = "<group>"; };
+		EC6E3CFE1D78786700DA5588 /* CZJOrderListPayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJOrderListPayCell.xib; sourceTree = "<group>"; };
 		EC7760D61D2223D500E1A89F /* FourService.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FourService.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC7760DA1D2223D500E1A89F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EC7760DC1D2223D500E1A89F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../AppDelegate.h; sourceTree = "<group>"; };
@@ -1120,7 +1160,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC3220FC1D77A63000E4019C /* MapKit.framework in Frameworks */,
 				EC542B161D23A51B00F3B4BF /* CoreMotion.framework in Frameworks */,
+				EC3221041D77A6BF00E4019C /* MAMapKit.framework in Frameworks */,
 				EC542B141D23A42800F3B4BF /* libresolv.9.tbd in Frameworks */,
 				EC542B121D23A40700F3B4BF /* libicucore.tbd in Frameworks */,
 				EC542B101D23A3FC00F3B4BF /* libresolv.tbd in Frameworks */,
@@ -1144,11 +1186,13 @@
 				EC542B041D239EA100F3B4BF /* libXG-SDK.a in Frameworks */,
 				EC5427111D23791F00F3B4BF /* CoreTelephony.framework in Frameworks */,
 				EC5427121D23791F00F3B4BF /* CoreText.framework in Frameworks */,
+				EC3221031D77A6BF00E4019C /* AMapSearchKit.framework in Frameworks */,
 				EC542AEE1D239B8A00F3B4BF /* libssl.a in Frameworks */,
 				EC5427131D23791F00F3B4BF /* Foundation.framework in Frameworks */,
 				EC5427141D23791F00F3B4BF /* libc++.tbd in Frameworks */,
 				EC5427151D23791F00F3B4BF /* libsqlite3.0.tbd in Frameworks */,
 				EC5427161D23791F00F3B4BF /* libsqlite3.tbd in Frameworks */,
+				EC3221021D77A6BF00E4019C /* MAMapKit.framework in Frameworks */,
 				EC5427171D23791F00F3B4BF /* libstdc++.6.0.9.tbd in Frameworks */,
 				EC5427181D23791F00F3B4BF /* libz.tbd in Frameworks */,
 				EC5427191D23791F00F3B4BF /* NotificationCenter.framework in Frameworks */,
@@ -1213,6 +1257,77 @@
 				EC18DE901D450204006CB460 /* CZJMyMessageCenterCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		EC3220EE1D77A36F00E4019C /* GoodsDetail */ = {
+			isa = PBXGroup;
+			children = (
+				EC3220EF1D77A36F00E4019C /* Cells */,
+				EC3220F51D77A3DD00E4019C /* FSGoodsDetailController.h */,
+				EC3220F61D77A3DD00E4019C /* FSGoodsDetailController.m */,
+			);
+			path = GoodsDetail;
+			sourceTree = "<group>";
+		};
+		EC3220EF1D77A36F00E4019C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		EC3220F01D77A36F00E4019C /* StoreDetail */ = {
+			isa = PBXGroup;
+			children = (
+				EC3221051D77A7AF00E4019C /* AMap */,
+				EC3220F11D77A36F00E4019C /* Cells */,
+				EC3220F21D77A3C500E4019C /* FSStoreDetailController.h */,
+				EC3220F31D77A3C500E4019C /* FSStoreDetailController.m */,
+				EC3220F81D77A40000E4019C /* FSStoreMapController.h */,
+				EC3220F91D77A40000E4019C /* FSStoreMapController.m */,
+			);
+			path = StoreDetail;
+			sourceTree = "<group>";
+		};
+		EC3220F11D77A36F00E4019C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				EC32210F1D77A81B00E4019C /* CZJStoreMapCell.h */,
+				EC3221101D77A81B00E4019C /* CZJStoreMapCell.m */,
+				EC3221111D77A81B00E4019C /* CZJStoreMapCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		EC3220FD1D77A6BF00E4019C /* AMap3DMap */ = {
+			isa = PBXGroup;
+			children = (
+				EC3220FE1D77A6BF00E4019C /* AMap3DMap */,
+				EC3221001D77A6BF00E4019C /* AMapSearchKit.framework */,
+				EC3221011D77A6BF00E4019C /* MAMapKit.framework */,
+			);
+			path = AMap3DMap;
+			sourceTree = "<group>";
+		};
+		EC3220FE1D77A6BF00E4019C /* AMap3DMap */ = {
+			isa = PBXGroup;
+			children = (
+				EC3220FF1D77A6BF00E4019C /* MAMapKit.framework */,
+			);
+			path = AMap3DMap;
+			sourceTree = "<group>";
+		};
+		EC3221051D77A7AF00E4019C /* AMap */ = {
+			isa = PBXGroup;
+			children = (
+				EC3221061D77A7AF00E4019C /* CZJCustomAnnotationView.h */,
+				EC3221071D77A7AF00E4019C /* CZJCustomAnnotationView.m */,
+				EC3221081D77A7AF00E4019C /* CZJCustomCallOutView.h */,
+				EC3221091D77A7AF00E4019C /* CZJCustomCallOutView.m */,
+				EC32210A1D77A7AF00E4019C /* CZJMAAroundAnnotation.h */,
+				EC32210B1D77A7AF00E4019C /* CZJMAAroundAnnotation.m */,
+			);
+			path = AMap;
 			sourceTree = "<group>";
 		};
 		EC3A18D41D41F00400F6F193 /* MyAttention */ = {
@@ -1283,9 +1398,6 @@
 				EC0662801D7048DD006B62D2 /* CZJOrderListNoPayButtomView.h */,
 				EC0662811D7048DD006B62D2 /* CZJOrderListNoPayButtomView.m */,
 				EC0662821D7048DD006B62D2 /* CZJOrderListNoPayButtomView.xib */,
-				EC0662831D7048DD006B62D2 /* CZJOrderListPayCell.h */,
-				EC0662841D7048DD006B62D2 /* CZJOrderListPayCell.m */,
-				EC0662851D7048DD006B62D2 /* CZJOrderListPayCell.xib */,
 				EC0662861D7048DD006B62D2 /* CZJOrderReturnedListCell.h */,
 				EC0662871D7048DD006B62D2 /* CZJOrderReturnedListCell.m */,
 				EC0662881D7048DD006B62D2 /* CZJOrderReturnedListCell.xib */,
@@ -1337,8 +1449,8 @@
 				EC4597EE1D757960004424A4 /* ServiceList */,
 				EC45980A1D757960004424A4 /* StoreList */,
 				EC4597FE1D757960004424A4 /* StepList */,
-				EC4598081D757960004424A4 /* StoreDetail */,
-				EC4598231D7579A8004424A4 /* GoodsDetail */,
+				EC3220F01D77A36F00E4019C /* StoreDetail */,
+				EC3220EE1D77A36F00E4019C /* GoodsDetail */,
 			);
 			name = FourS;
 			path = 4S;
@@ -1396,6 +1508,9 @@
 		EC4597FF1D757960004424A4 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				EC6E3CFC1D78786700DA5588 /* CZJOrderListPayCell.h */,
+				EC6E3CFD1D78786700DA5588 /* CZJOrderListPayCell.m */,
+				EC6E3CFE1D78786700DA5588 /* CZJOrderListPayCell.xib */,
 				EC4598001D757960004424A4 /* FSServiceStepCell.h */,
 				EC4598011D757960004424A4 /* FSServiceStepCell.m */,
 				EC4598021D757960004424A4 /* FSServiceStepCell.xib */,
@@ -1405,21 +1520,6 @@
 				EC4598241D757F2E004424A4 /* FSStoreInfoCell.h */,
 				EC4598251D757F2E004424A4 /* FSStoreInfoCell.m */,
 				EC4598261D757F2E004424A4 /* FSStoreInfoCell.xib */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		EC4598081D757960004424A4 /* StoreDetail */ = {
-			isa = PBXGroup;
-			children = (
-				EC4598091D757960004424A4 /* Cells */,
-			);
-			path = StoreDetail;
-			sourceTree = "<group>";
-		};
-		EC4598091D757960004424A4 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1442,13 +1542,6 @@
 				EC45980E1D757960004424A4 /* FSServiceStoreCell.xib */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		EC4598231D7579A8004424A4 /* GoodsDetail */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = GoodsDetail;
 			sourceTree = "<group>";
 		};
 		EC5427231D23797200F3B4BF /* FrameWorks */ = {
@@ -1489,8 +1582,14 @@
 		EC5427281D237A6700F3B4BF /* Madel */ = {
 			isa = PBXGroup;
 			children = (
+				EC6E3CF91D7860FE00DA5588 /* CZJProvinceForm.h */,
+				EC6E3CFA1D7860FE00DA5588 /* CZJProvinceForm.m */,
 				EC0662711D704762006B62D2 /* CZJOrderForm.h */,
 				EC0662721D704762006B62D2 /* CZJOrderForm.m */,
+				EC3221141D77A87A00E4019C /* CZJStoreForm.h */,
+				EC3221151D77A87A00E4019C /* CZJStoreForm.m */,
+				EC3221171D77A8AE00E4019C /* CZJStoreMAAroundForm.h */,
+				EC3221181D77A8AE00E4019C /* CZJStoreMAAroundForm.m */,
 				EC542A3F1D237F5E00F3B4BF /* FSDateTime.h */,
 				EC542A401D237F5E00F3B4BF /* FSDateTime.m */,
 				EC542A4D1D23805C00F3B4BF /* FSForm.h */,
@@ -1572,6 +1671,16 @@
 				EC5426F91D23791F00F3B4BF /* CoreText.framework */,
 				EC5426FA1D23791F00F3B4BF /* Foundation.framework */,
 				EC542B071D23A35200F3B4BF /* ImageIO.framework */,
+				EC5426FB1D23791F00F3B4BF /* libc++.tbd */,
+				EC542B0D1D23A3F200F3B4BF /* libiconv.tbd */,
+				EC542B111D23A40700F3B4BF /* libicucore.tbd */,
+				EC542B131D23A42800F3B4BF /* libresolv.9.tbd */,
+				EC542B0F1D23A3FC00F3B4BF /* libresolv.tbd */,
+				EC5426FC1D23791F00F3B4BF /* libsqlite3.0.tbd */,
+				EC5426FD1D23791F00F3B4BF /* libsqlite3.tbd */,
+				EC5426FE1D23791F00F3B4BF /* libstdc++.6.0.9.tbd */,
+				EC5426FF1D23791F00F3B4BF /* libz.tbd */,
+				EC3220FB1D77A63000E4019C /* MapKit.framework */,
 				EC542B0B1D23A36B00F3B4BF /* MobileCoreServices.framework */,
 				EC5427001D23791F00F3B4BF /* NotificationCenter.framework */,
 				EC542AFB1D239C3000F3B4BF /* OpenAL.framework */,
@@ -1584,15 +1693,6 @@
 				EC5427061D23791F00F3B4BF /* SystemConfiguration.framework */,
 				EC5427071D23791F00F3B4BF /* UIKit.framework */,
 				EC5427081D23791F00F3B4BF /* WebKit.framework */,
-				EC5426FB1D23791F00F3B4BF /* libc++.tbd */,
-				EC542B0D1D23A3F200F3B4BF /* libiconv.tbd */,
-				EC542B111D23A40700F3B4BF /* libicucore.tbd */,
-				EC542B131D23A42800F3B4BF /* libresolv.9.tbd */,
-				EC542B0F1D23A3FC00F3B4BF /* libresolv.tbd */,
-				EC5426FC1D23791F00F3B4BF /* libsqlite3.0.tbd */,
-				EC5426FD1D23791F00F3B4BF /* libsqlite3.tbd */,
-				EC5426FE1D23791F00F3B4BF /* libstdc++.6.0.9.tbd */,
-				EC5426FF1D23791F00F3B4BF /* libz.tbd */,
 			);
 			name = System;
 			sourceTree = "<group>";
@@ -1600,9 +1700,7 @@
 		EC54272F1D237AC200F3B4BF /* ThirdSDK */ = {
 			isa = PBXGroup;
 			children = (
-				ECCEE3751D6C8AAE0034D4F2 /* YXFrameAnimation */,
-				ECA82A3C1D58CDE600F05C52 /* YQSlideMenuController */,
-				ECD5380A1D4666A900D136EF /* GKHLocationPicker */,
+				EC3220FD1D77A6BF00E4019C /* AMap3DMap */,
 				EC5427A41D237E7600F3B4BF /* AFNetworking */,
 				EC542A7B1D239B8A00F3B4BF /* Ali */,
 				EC5427B81D237E7600F3B4BF /* CCLocation */,
@@ -1610,6 +1708,7 @@
 				EC542A4E1D23815E00F3B4BF /* EmptyDataSet */,
 				EC5427BE1D237E7600F3B4BF /* FDAlertView */,
 				EC5427C11D237E7600F3B4BF /* FZADScrollView */,
+				ECD5380A1D4666A900D136EF /* GKHLocationPicker */,
 				EC5427C41D237E7600F3B4BF /* GuidePages */,
 				EC5427C71D237E7600F3B4BF /* iConsole */,
 				EC5427CE1D237E7600F3B4BF /* ImagePlayerView */,
@@ -1639,6 +1738,8 @@
 				EC5429491D237E7700F3B4BF /* WebViewJsBridge */,
 				EC542AE31D239B8A00F3B4BF /* Weixin */,
 				EC542B001D239EA100F3B4BF /* XinGe */,
+				ECA82A3C1D58CDE600F05C52 /* YQSlideMenuController */,
+				ECCEE3751D6C8AAE0034D4F2 /* YXFrameAnimation */,
 				EC54294D1D237E7700F3B4BF /* ZHPickView */,
 				EC5429531D237E7700F3B4BF /* ZXLocation */,
 			);
@@ -2880,6 +2981,7 @@
 				ECCEE3901D6C8AAE0034D4F2 /* request_loading_7@2x.png in Resources */,
 				EC542A171D237E7700F3B4BF /* pop.png in Resources */,
 				ECA233E41D37DC8F004C2679 /* CZJMyInfoHeadCell.xib in Resources */,
+				EC6E3D001D78786700DA5588 /* CZJOrderListPayCell.xib in Resources */,
 				ECCEE38F1D6C8AAE0034D4F2 /* request_loading_6@2x.png in Resources */,
 				ECCEE38E1D6C8AAE0034D4F2 /* request_loading_5@2x.png in Resources */,
 				ECD5380E1D4666A900D136EF /* Address.plist in Resources */,
@@ -2902,6 +3004,7 @@
 				EC5429791D237E7700F3B4BF /* KMCGeigerCounterTick.aiff in Resources */,
 				EC026F2F1D2B894700CA8CEB /* FSLotteryCell.xib in Resources */,
 				ECA82A441D58CDE600F05C52 /* YQSlideMenuImages.xcassets in Resources */,
+				EC3221131D77A81B00E4019C /* CZJStoreMapCell.xib in Resources */,
 				ECD538061D4658DB00D136EF /* CZJHotBrandViewCell.xib in Resources */,
 				EC18DE921D450204006CB460 /* CZJMyMessageCenterCell.xib in Resources */,
 				ECA233E61D37DC8F004C2679 /* CZJMyInfoShoppingCartCell.xib in Resources */,
@@ -2925,7 +3028,6 @@
 				ECCEE38D1D6C8AAE0034D4F2 /* request_loading_4@2x.png in Resources */,
 				EC5429C51D237E7700F3B4BF /* MultilevelCollectionViewCell.xib in Resources */,
 				EC06628C1D7048DD006B62D2 /* CZJCommitReturnTypeCell.xib in Resources */,
-				EC0662941D7048DD006B62D2 /* CZJOrderListPayCell.xib in Resources */,
 				EC026F341D2B897200CA8CEB /* FSRecommendInfoCell.xib in Resources */,
 				EC5429BC1D237E7700F3B4BF /* MJRefresh.bundle in Resources */,
 				EC9064701D47BF8A00E9554F /* CZJReceiveCouponsCell.xib in Resources */,
@@ -2973,7 +3075,6 @@
 				EC5429B61D237E7700F3B4BF /* MJRefreshBackGifFooter.m in Sources */,
 				EC5429FE1D237E7700F3B4BF /* SDWebImageDownloaderOperation.m in Sources */,
 				EC5429B31D237E7700F3B4BF /* MJRefreshAutoGifFooter.m in Sources */,
-				EC0662931D7048DD006B62D2 /* CZJOrderListPayCell.m in Sources */,
 				EC3A18EF1D41F16700F6F193 /* FSMyAttentionController.m in Sources */,
 				EC5429B91D237E7700F3B4BF /* MJRefreshGifHeader.m in Sources */,
 				EC90646F1D47BF8A00E9554F /* CZJReceiveCouponsCell.m in Sources */,
@@ -2992,11 +3093,13 @@
 				EC5429CE1D237E7700F3B4BF /* OpenShare+Renren.m in Sources */,
 				EC95ED5D1D606F89005A50B7 /* AFURLSessionManager.m in Sources */,
 				EC5429A91D237E7700F3B4BF /* MJType.m in Sources */,
+				EC3221121D77A81B00E4019C /* CZJStoreMapCell.m in Sources */,
 				EC026F211D2B51A800CA8CEB /* FSHomeViewController.m in Sources */,
 				EC5429921D237E7700F3B4BF /* LocationChange.m in Sources */,
 				EC5429BE1D237E7700F3B4BF /* UIScrollView+MJExtension.m in Sources */,
 				EC5429B01D237E7700F3B4BF /* MJRefreshComponent.m in Sources */,
 				ECBFD5F81D69920600662B5E /* PJBrowserView.m in Sources */,
+				EC32210C1D77A7AF00E4019C /* CZJCustomAnnotationView.m in Sources */,
 				EC5429C81D237E7700F3B4BF /* MultilevelMenu.m in Sources */,
 				EC542AF11D239B8A00F3B4BF /* DataSigner.m in Sources */,
 				EC5429A51D237E7700F3B4BF /* MBProgressHUD.m in Sources */,
@@ -3066,6 +3169,7 @@
 				EC5429AF1D237E7700F3B4BF /* MJRefreshBackFooter.m in Sources */,
 				EC54278F1D237DE000F3B4BF /* FSTextView.m in Sources */,
 				EC542A101D237E7700F3B4BF /* VPImageCropperViewController.m in Sources */,
+				EC3221191D77A8AE00E4019C /* CZJStoreMAAroundForm.m in Sources */,
 				EC54278E1D237DE000F3B4BF /* PBaseTableViewCell.m in Sources */,
 				EC542A031D237E7700F3B4BF /* UIImage+MultiFormat.m in Sources */,
 				EC45981A1D757960004424A4 /* FSServiceStepCell.m in Sources */,
@@ -3075,6 +3179,7 @@
 				EC95ED4C1D606A63005A50B7 /* AFImageDownloader.m in Sources */,
 				EC7FC0A51D3A2B460082ECB4 /* ServiceProtocol.m in Sources */,
 				EC542A131D237E7700F3B4BF /* WebViewJavascriptBridgeBase.m in Sources */,
+				EC32210E1D77A7AF00E4019C /* CZJMAAroundAnnotation.m in Sources */,
 				EC542A1B1D237E7700F3B4BF /* ZXLocationManager.m in Sources */,
 				EC5429B41D237E7700F3B4BF /* MJRefreshAutoNormalFooter.m in Sources */,
 				EC7FC0A41D3A2B460082ECB4 /* FSRegisterController.m in Sources */,
@@ -3102,6 +3207,7 @@
 				EC5429A81D237E7700F3B4BF /* MJProperty.m in Sources */,
 				EC5429C61D237E7700F3B4BF /* MultilevelTableViewCell.m in Sources */,
 				EC5429A41D237E7700F3B4BF /* MBProgressHUD+Add.m in Sources */,
+				EC32210D1D77A7AF00E4019C /* CZJCustomCallOutView.m in Sources */,
 				EC90646A1D47BE8C00E9554F /* CZJPageControlView.m in Sources */,
 				EC5427851D237DE000F3B4BF /* FSDeletableImageView.m in Sources */,
 				EC54279F1D237E0500F3B4BF /* FSErrorCodeManager.m in Sources */,
@@ -3147,9 +3253,11 @@
 				EC54278D1D237DE000F3B4BF /* StarRageView.m in Sources */,
 				EC54277A1D237DE000F3B4BF /* FSAlertView.m in Sources */,
 				EC026F291D2B852F00CA8CEB /* FSActivityCell.m in Sources */,
+				EC3220F41D77A3C500E4019C /* FSStoreDetailController.m in Sources */,
 				EC542A721D23979500F3B4BF /* NSDateFormatter+Category.m in Sources */,
 				EC06626D1D7044E5006B62D2 /* CZJOrderListBaseController.m in Sources */,
 				EC06628F1D7048DD006B62D2 /* CZJOrderListCell.m in Sources */,
+				EC6E3CFF1D78786700DA5588 /* CZJOrderListPayCell.m in Sources */,
 				EC54278A1D237DE000F3B4BF /* BasePageControlView.m in Sources */,
 				EC026F241D2B523B00CA8CEB /* FSHomeForm.m in Sources */,
 				EC95ED531D606A63005A50B7 /* UIWebView+AFNetworking.m in Sources */,
@@ -3160,6 +3268,7 @@
 				EC5427871D237DE000F3B4BF /* LoadingFailedAlertView.m in Sources */,
 				EC0662911D7048DD006B62D2 /* CZJOrderListNoPayButtomView.m in Sources */,
 				EC5429671D237E7700F3B4BF /* IMYWebView.m in Sources */,
+				EC3220F71D77A3DD00E4019C /* FSGoodsDetailController.m in Sources */,
 				EC542A3C1D237EF500F3B4BF /* PUtils.m in Sources */,
 				EC5429C91D237E7700F3B4BF /* MXPullDownCollectionViewCell.m in Sources */,
 				ECD538091D46646600D136EF /* CZJAddMyCarController.m in Sources */,
@@ -3172,9 +3281,11 @@
 				EC1261A41D4CEA700082378D /* FSStoreServiceForm.m in Sources */,
 				EC5429B51D237E7700F3B4BF /* MJRefreshAutoStateFooter.m in Sources */,
 				EC5427911D237DE000F3B4BF /* LSPageScrollView.m in Sources */,
+				EC3221161D77A87A00E4019C /* CZJStoreForm.m in Sources */,
 				EC5429FA1D237E7700F3B4BF /* SDImageCache.m in Sources */,
 				EC542A531D23815E00F3B4BF /* UIColor+Hexadecimal.m in Sources */,
 				EC5429C11D237E7700F3B4BF /* MMLabel.m in Sources */,
+				EC3220FA1D77A40000E4019C /* FSStoreMapController.m in Sources */,
 				EC54277E1D237DE000F3B4BF /* FSButtomView.m in Sources */,
 				EC5427861D237DE000F3B4BF /* FSImageView.m in Sources */,
 				EC95ED4D1D606A63005A50B7 /* AFNetworkActivityIndicatorManager.m in Sources */,
@@ -3197,6 +3308,7 @@
 				EC5759BB1D6DF029009F3F5D /* CZJOrderTypeCell.m in Sources */,
 				EC3A18F81D41F1AE00F6F193 /* FSMyDiscountController.m in Sources */,
 				ECD537F31D46523900D136EF /* CZJCarBrandChooseController.m in Sources */,
+				EC6E3CFB1D7860FE00DA5588 /* CZJProvinceForm.m in Sources */,
 				EC542AF41D239B8A00F3B4BF /* NSDataEx.m in Sources */,
 				EC542A021D237E7700F3B4BF /* UIImage+GIF.m in Sources */,
 				EC5429961D237E7700F3B4BF /* RegionAnnotation.m in Sources */,
@@ -3337,11 +3449,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FourService/",
 					"$(PROJECT_DIR)/FourService/ThirdSDK",
 					"$(PROJECT_DIR)/FourService/ThirdSDK/Ali",
+					"$(PROJECT_DIR)/FourService/ThirdSDK/AMap3DMap/AMap3DMap",
+					"$(PROJECT_DIR)/FourService/ThirdSDK/AMap3DMap",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/FourService/SupportFiles/Prefix.pch";
@@ -3372,11 +3487,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FourService/",
 					"$(PROJECT_DIR)/FourService/ThirdSDK",
 					"$(PROJECT_DIR)/FourService/ThirdSDK/Ali",
+					"$(PROJECT_DIR)/FourService/ThirdSDK/AMap3DMap/AMap3DMap",
+					"$(PROJECT_DIR)/FourService/ThirdSDK/AMap3DMap",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/FourService/SupportFiles/Prefix.pch";

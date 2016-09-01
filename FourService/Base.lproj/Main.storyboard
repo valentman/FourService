@@ -126,10 +126,69 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="Hsb-8S-CcF" kind="show" identifier="segueToStoreDetail" id="3yh-vH-aVA"/>
+                        <segue destination="FKM-L2-yCa" kind="show" identifier="segueToStoreMap" id="OSt-SW-yvj"/>
+                        <segue destination="kgU-R2-bo3" kind="show" identifier="segueToOrder" id="Fvc-VM-i6G"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="84b-YW-cL8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1553" y="1287"/>
+        </scene>
+        <!--商品详情-->
+        <scene sceneID="mRk-fw-C2J">
+            <objects>
+                <viewController title="商品详情" id="kgU-R2-bo3" customClass="FSGoodsDetailController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JUk-1u-hX5"/>
+                        <viewControllerLayoutGuide type="bottom" id="cB2-M4-JrD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KJd-f9-oQg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w8X-CC-FkU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2701" y="1287"/>
+        </scene>
+        <!--门店详情-->
+        <scene sceneID="cgj-MU-HQN">
+            <objects>
+                <viewController title="门店详情" id="Hsb-8S-CcF" customClass="FSStoreDetailController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DGH-bM-kjt"/>
+                        <viewControllerLayoutGuide type="bottom" id="q3d-4u-AxG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3ik-jS-x41">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cRG-Oz-ftq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1941" y="1287"/>
+        </scene>
+        <!--门店地图-->
+        <scene sceneID="Ieh-cp-gKd">
+            <objects>
+                <viewController title="门店地图" id="FKM-L2-yCa" customClass="FSStoreMapController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Jxv-Kn-sCz"/>
+                        <viewControllerLayoutGuide type="bottom" id="eSy-Gd-3zd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fX6-jn-jVV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bmc-ic-Z9A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2319" y="1287"/>
         </scene>
         <!--4S服务-->
         <scene sceneID="gTw-mL-QXr">
