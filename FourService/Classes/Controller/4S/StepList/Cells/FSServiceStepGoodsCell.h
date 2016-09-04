@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FSServiceStepGoodsCell : UITableViewCell
+@interface FSServiceStepGoodsCell : UITableViewCell<UIGestureRecognizerDelegate>
 
+@property (strong, nonatomic)UISwipeGestureRecognizer *swipeLeft;
 @end

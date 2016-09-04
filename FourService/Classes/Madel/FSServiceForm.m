@@ -25,6 +25,15 @@
 @end
 
 @implementation FSServiceStepForm
+- (instancetype)init
+{
+    if (self == [super init]) {
+        self.is_expand = NO;
+        return self;
+    }
+    return nil;
+}
+
 + (NSDictionary *)objectClassInArray
 {
     return @{@"product_list" : @"FSServiceStepProductForm"};

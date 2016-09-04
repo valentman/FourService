@@ -10,4 +10,6 @@
 
 @interface FSServiceStepCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIView *editView;
+@property (weak, nonatomic) IBOutlet UIView *priceView;
 @end

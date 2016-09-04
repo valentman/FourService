@@ -13,6 +13,7 @@
 #import "FSStoreInfoCell.h"
 #import "CZJGeneralCell.h"
 #import "CZJOrderListPayCell.h"
+#import "FSGoodsDetailController.h"
 
 @interface FSServiceStepController ()
 <
@@ -104,21 +105,18 @@ UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    switch (section) {
-        case 0:
-            return 1;
-            break;
-            
-        case 1:
-            return 2;
-            break;
-            
-        case 2:
-            return _serviceStepAry.count;
-            break;
-            
-        default:
-            break;
+    if (0 == section)
+    {
+        return 1;
+    }
+    else if (1 == section)
+    {
+        return 2;
+    }
+    else
+    {
+        FSServiceStepForm* stepForm = _serviceStepAry[section - 2];
+        return stepForm.is_expand ? (stepForm.product_list.count + 1) : 1;
     }
     return 0;
 }
@@ -137,7 +135,6 @@ UITableViewDataSource
                 [cell.storeBgImageView sd_setImageWithURL:[NSURL URLWithString:@"https://img7-tuhu-cn.alikunlun.com/Images/Marketing/Shops/c63b293d-f057-4311-bb7a-4c1d35fda13d.jpg@230w_230h_100Q.jpg"]];
                 return cell;
             }
-
         }
             break;
             
@@ -158,14 +155,21 @@ UITableViewDataSource
         }
             break;
             
-        case 2:
-        {
-            FSServiceStepCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FSServiceStepCell" forIndexPath:indexPath];
-            return cell;
-        }
-            break;
-            
         default:
+        {
+            FSServiceStepForm* stepForm = _serviceStepAry[indexPath.section - 2];
+            
+            if (stepForm.is_expand && indexPath.row > 0)
+            {
+                FSServiceStepGoodsCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FSServiceStepGoodsCell" forIndexPath:indexPath];
+                return cell;
+            }
+            else
+            {
+                FSServiceStepCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FSServiceStepCell" forIndexPath:indexPath];
+                return cell;
+            }
+        }
             break;
     }
     return nil;
@@ -202,6 +206,7 @@ UITableViewDataSource
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString* sbIdentifer;
+    id senderData;
     switch (indexPath.section)
     {
         case 0:
@@ -211,17 +216,83 @@ UITableViewDataSource
         case 1:
             sbIdentifer = @"segueToStoreMap";
             break;
-            
+
         default:
+        {
+            FSServiceStepForm* stepForm = _serviceStepAry[indexPath.section - 2];
+            if (stepForm.is_expand && indexPath.row > 0)
+            {
+                sbIdentifer = @"segueToGoodsDetail";
+                senderData = (FSServiceStepProductForm*)stepForm.product_list[indexPath.row - 1];
+            }
+            else
+            {
+                stepForm.is_expand = !stepForm.is_expand;
+                [tableView reloadData];
+            }
+        }
             break;
     }
     if (sbIdentifer)
-        [self performSegueWithIdentifier:sbIdentifer sender:nil];
+        [self performSegueWithIdentifier:sbIdentifer sender:senderData];
+}
+
+-(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section > 2 && indexPath.row > 0)
+    {
+        return UITableViewCellEditingStyleNone;
+    }
+    return UITableViewCellEditingStyleNone;
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section > 2 && indexPath.row > 0)
+    {
+        return @"四川汉子";
+    }
+    return @"";
+}
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
+    }
+    switch (editingStyle) {
+        case UITableViewCellEditingStyleNone: {
+            DLog(@"no");
+            break;
+        }
+        case UITableViewCellEditingStyleDelete: {
+            DLog(@"dele");
+            break;
+        }
+        case UITableViewCellEditingStyleInsert: {
+            DLog(@"inset");
+            break;
+        }
+    }
+}
+
+- (void)tableView:(UITableView*)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    DLog();
+}
+
+- (void)tableView:(UITableView*)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    DLog();
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    
+    if ([segue.identifier isEqualToString:@"segueToGoodsDetail"])
+    {
+        FSGoodsDetailController* goodsDetail = segue.destinationViewController;
+        goodsDetail.productForm = sender;
+    }
 }
 
 @end

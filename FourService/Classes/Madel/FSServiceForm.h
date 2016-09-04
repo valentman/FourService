@@ -82,6 +82,7 @@
 @property (strong, nonatomic) NSString* desc_image;
 @property (strong, nonatomic) NSString* create_time;
 @property (strong, nonatomic) NSArray* product_list;
+@property (assign, nonatomic) BOOL is_expand;
 @end
 
 //服务步骤里面相关商品数据

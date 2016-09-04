@@ -125,6 +125,10 @@
                     <constraint firstAttribute="bottom" secondItem="fPV-r1-iFg" secondAttribute="bottom" id="uIL-rD-XLA"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="editView" destination="fPV-r1-iFg" id="CKc-rh-7Ga"/>
+                <outlet property="priceView" destination="9KI-vO-0X3" id="Vee-DW-e2Z"/>
+            </connections>
             <point key="canvasLocation" x="344" y="289"/>
         </tableViewCell>
     </objects>

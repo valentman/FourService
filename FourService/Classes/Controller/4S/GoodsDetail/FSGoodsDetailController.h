@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface FSGoodsDetailController : UIViewController
-
+@property (strong, nonatomic) FSServiceStepProductForm* productForm;
 @end
