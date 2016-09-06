@@ -61,7 +61,6 @@
 		EC3A18F51D41F18D00F6F193 /* FSMyOrderListController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3A18F41D41F18D00F6F193 /* FSMyOrderListController.m */; };
 		EC3A18F81D41F1AE00F6F193 /* FSMyDiscountController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3A18F71D41F1AE00F6F193 /* FSMyDiscountController.m */; };
 		EC3A18FB1D41F21C00F6F193 /* FSMyCarListController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3A18FA1D41F21C00F6F193 /* FSMyCarListController.m */; };
-		EC3A190B1D41F37100F6F193 /* FSCommitOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3A190A1D41F37100F6F193 /* FSCommitOrderController.m */; };
 		EC4598111D757960004424A4 /* FSHomeNotifyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4597F11D757960004424A4 /* FSHomeNotifyCell.m */; };
 		EC4598121D757960004424A4 /* FSHomeNotifyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4597F21D757960004424A4 /* FSHomeNotifyCell.xib */; };
 		EC4598131D757960004424A4 /* FSServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4597F41D757960004424A4 /* FSServiceCell.m */; };
@@ -331,8 +330,6 @@
 		EC542B121D23A40700F3B4BF /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EC542B111D23A40700F3B4BF /* libicucore.tbd */; };
 		EC542B141D23A42800F3B4BF /* libresolv.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EC542B131D23A42800F3B4BF /* libresolv.9.tbd */; };
 		EC542B161D23A51B00F3B4BF /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC542B151D23A51B00F3B4BF /* CoreMotion.framework */; };
-		EC5759BB1D6DF029009F3F5D /* CZJOrderTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5759B91D6DF029009F3F5D /* CZJOrderTypeCell.m */; };
-		EC5759BC1D6DF029009F3F5D /* CZJOrderTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC5759BA1D6DF029009F3F5D /* CZJOrderTypeCell.xib */; };
 		EC6E3CFB1D7860FE00DA5588 /* CZJProvinceForm.m in Sources */ = {isa = PBXBuildFile; fileRef = EC6E3CFA1D7860FE00DA5588 /* CZJProvinceForm.m */; };
 		EC6E3CFF1D78786700DA5588 /* CZJOrderListPayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC6E3CFD1D78786700DA5588 /* CZJOrderListPayCell.m */; };
 		EC6E3D001D78786700DA5588 /* CZJOrderListPayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC6E3CFE1D78786700DA5588 /* CZJOrderListPayCell.xib */; };
@@ -343,6 +340,10 @@
 		EC7FC0A31D3A2B460082ECB4 /* FSLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7FC09E1D3A2B460082ECB4 /* FSLoginController.m */; };
 		EC7FC0A41D3A2B460082ECB4 /* FSRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7FC0A01D3A2B460082ECB4 /* FSRegisterController.m */; };
 		EC7FC0A51D3A2B460082ECB4 /* ServiceProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7FC0A21D3A2B460082ECB4 /* ServiceProtocol.m */; };
+		EC857B9B1D7F069E00DF2D02 /* CZJOrderTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC857B971D7F069E00DF2D02 /* CZJOrderTypeCell.m */; };
+		EC857B9C1D7F069E00DF2D02 /* CZJOrderTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC857B981D7F069E00DF2D02 /* CZJOrderTypeCell.xib */; };
+		EC857BA01D7F0CFE00DF2D02 /* FSPageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC857B9E1D7F0CFE00DF2D02 /* FSPageCell.m */; };
+		EC857BA11D7F0CFE00DF2D02 /* FSPageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC857B9F1D7F0CFE00DF2D02 /* FSPageCell.xib */; };
 		EC9064671D47AC8500E9554F /* FSMyServiceFeedbackController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9064661D47AC8500E9554F /* FSMyServiceFeedbackController.m */; };
 		EC90646A1D47BE8C00E9554F /* CZJPageControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9064691D47BE8C00E9554F /* CZJPageControlView.m */; };
 		EC90646F1D47BF8A00E9554F /* CZJReceiveCouponsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC90646D1D47BF8A00E9554F /* CZJReceiveCouponsCell.m */; };
@@ -493,8 +494,6 @@
 		EC3A18F71D41F1AE00F6F193 /* FSMyDiscountController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyDiscountController.m; sourceTree = "<group>"; };
 		EC3A18F91D41F21C00F6F193 /* FSMyCarListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyCarListController.h; sourceTree = "<group>"; };
 		EC3A18FA1D41F21C00F6F193 /* FSMyCarListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyCarListController.m; sourceTree = "<group>"; };
-		EC3A19091D41F37100F6F193 /* FSCommitOrderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCommitOrderController.h; sourceTree = "<group>"; };
-		EC3A190A1D41F37100F6F193 /* FSCommitOrderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCommitOrderController.m; sourceTree = "<group>"; };
 		EC4597F01D757960004424A4 /* FSHomeNotifyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHomeNotifyCell.h; sourceTree = "<group>"; };
 		EC4597F11D757960004424A4 /* FSHomeNotifyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHomeNotifyCell.m; sourceTree = "<group>"; };
 		EC4597F21D757960004424A4 /* FSHomeNotifyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSHomeNotifyCell.xib; sourceTree = "<group>"; };
@@ -1029,9 +1028,6 @@
 		EC542B111D23A40700F3B4BF /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		EC542B131D23A42800F3B4BF /* libresolv.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.9.tbd; path = usr/lib/libresolv.9.tbd; sourceTree = SDKROOT; };
 		EC542B151D23A51B00F3B4BF /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
-		EC5759B81D6DF029009F3F5D /* CZJOrderTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJOrderTypeCell.h; sourceTree = "<group>"; };
-		EC5759B91D6DF029009F3F5D /* CZJOrderTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJOrderTypeCell.m; sourceTree = "<group>"; };
-		EC5759BA1D6DF029009F3F5D /* CZJOrderTypeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJOrderTypeCell.xib; sourceTree = "<group>"; };
 		EC6E3CF91D7860FE00DA5588 /* CZJProvinceForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJProvinceForm.h; sourceTree = "<group>"; };
 		EC6E3CFA1D7860FE00DA5588 /* CZJProvinceForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJProvinceForm.m; sourceTree = "<group>"; };
 		EC6E3CFC1D78786700DA5588 /* CZJOrderListPayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJOrderListPayCell.h; sourceTree = "<group>"; };
@@ -1051,6 +1047,12 @@
 		EC7FC0A01D3A2B460082ECB4 /* FSRegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRegisterController.m; sourceTree = "<group>"; };
 		EC7FC0A11D3A2B460082ECB4 /* ServiceProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceProtocol.h; sourceTree = "<group>"; };
 		EC7FC0A21D3A2B460082ECB4 /* ServiceProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceProtocol.m; sourceTree = "<group>"; };
+		EC857B961D7F069E00DF2D02 /* CZJOrderTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJOrderTypeCell.h; sourceTree = "<group>"; };
+		EC857B971D7F069E00DF2D02 /* CZJOrderTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJOrderTypeCell.m; sourceTree = "<group>"; };
+		EC857B981D7F069E00DF2D02 /* CZJOrderTypeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJOrderTypeCell.xib; sourceTree = "<group>"; };
+		EC857B9D1D7F0CFE00DF2D02 /* FSPageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPageCell.h; sourceTree = "<group>"; };
+		EC857B9E1D7F0CFE00DF2D02 /* FSPageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPageCell.m; sourceTree = "<group>"; };
+		EC857B9F1D7F0CFE00DF2D02 /* FSPageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSPageCell.xib; sourceTree = "<group>"; };
 		EC9064651D47AC8500E9554F /* FSMyServiceFeedbackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyServiceFeedbackController.h; sourceTree = "<group>"; };
 		EC9064661D47AC8500E9554F /* FSMyServiceFeedbackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyServiceFeedbackController.m; sourceTree = "<group>"; };
 		EC9064681D47BE8C00E9554F /* CZJPageControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJPageControlView.h; sourceTree = "<group>"; };
@@ -1460,16 +1462,6 @@
 			path = 4S;
 			sourceTree = "<group>";
 		};
-		EC3A19071D41F34C00F6F193 /* Order */ = {
-			isa = PBXGroup;
-			children = (
-				EC5759B21D6DEFCA009F3F5D /* Cell */,
-				EC3A19091D41F37100F6F193 /* FSCommitOrderController.h */,
-				EC3A190A1D41F37100F6F193 /* FSCommitOrderController.m */,
-			);
-			path = Order;
-			sourceTree = "<group>";
-		};
 		EC4597EE1D757960004424A4 /* ServiceList */ = {
 			isa = PBXGroup;
 			children = (
@@ -1524,6 +1516,9 @@
 				EC4598241D757F2E004424A4 /* FSStoreInfoCell.h */,
 				EC4598251D757F2E004424A4 /* FSStoreInfoCell.m */,
 				EC4598261D757F2E004424A4 /* FSStoreInfoCell.xib */,
+				EC857B9D1D7F0CFE00DF2D02 /* FSPageCell.h */,
+				EC857B9E1D7F0CFE00DF2D02 /* FSPageCell.m */,
+				EC857B9F1D7F0CFE00DF2D02 /* FSPageCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1578,7 +1573,6 @@
 				EC5759B01D6DE3D9009F3F5D /* Goods */,
 				EC026F1E1D2B519400CA8CEB /* Home */,
 				ECA233C91D37DB78004C2679 /* MyInfo */,
-				EC3A19071D41F34C00F6F193 /* Order */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2633,19 +2627,10 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		EC5759B21D6DEFCA009F3F5D /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				EC5759B81D6DF029009F3F5D /* CZJOrderTypeCell.h */,
-				EC5759B91D6DF029009F3F5D /* CZJOrderTypeCell.m */,
-				EC5759BA1D6DF029009F3F5D /* CZJOrderTypeCell.xib */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
 		EC6E89241D7EE7A300829220 /* CommitOrder */ = {
 			isa = PBXGroup;
 			children = (
+				EC857B921D7F069E00DF2D02 /* Cell */,
 				EC6E89251D7EE7BE00829220 /* FSCommitOrderController.h */,
 				EC6E89261D7EE7BE00829220 /* FSCommitOrderController.m */,
 			);
@@ -2705,6 +2690,16 @@
 				EC7FC0A21D3A2B460082ECB4 /* ServiceProtocol.m */,
 			);
 			path = MyLogin;
+			sourceTree = "<group>";
+		};
+		EC857B921D7F069E00DF2D02 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EC857B961D7F069E00DF2D02 /* CZJOrderTypeCell.h */,
+				EC857B971D7F069E00DF2D02 /* CZJOrderTypeCell.m */,
+				EC857B981D7F069E00DF2D02 /* CZJOrderTypeCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		EC90646B1D47BF8A00E9554F /* Cell */ = {
@@ -3040,12 +3035,13 @@
 				EC4598141D757960004424A4 /* FSServiceCell.xib in Resources */,
 				ECCEE38D1D6C8AAE0034D4F2 /* request_loading_4@2x.png in Resources */,
 				EC5429C51D237E7700F3B4BF /* MultilevelCollectionViewCell.xib in Resources */,
+				EC857BA11D7F0CFE00DF2D02 /* FSPageCell.xib in Resources */,
 				EC06628C1D7048DD006B62D2 /* CZJCommitReturnTypeCell.xib in Resources */,
 				EC026F341D2B897200CA8CEB /* FSRecommendInfoCell.xib in Resources */,
 				EC5429BC1D237E7700F3B4BF /* MJRefresh.bundle in Resources */,
 				EC9064701D47BF8A00E9554F /* CZJReceiveCouponsCell.xib in Resources */,
 				EC5429751D237E7700F3B4BF /* LICENSE in Resources */,
-				EC5759BC1D6DF029009F3F5D /* CZJOrderTypeCell.xib in Resources */,
+				EC857B9C1D7F069E00DF2D02 /* CZJOrderTypeCell.xib in Resources */,
 				EC54299B1D237E7700F3B4BF /* wl_map_icon_1_press@2x.png in Resources */,
 				EC542A151D237E7700F3B4BF /* WebViewJsBridge.js in Resources */,
 				EC1261AF1D4CECB90082378D /* CZJGoodsAttentionCell.xib in Resources */,
@@ -3170,6 +3166,7 @@
 				ECD538031D4658DB00D136EF /* CZJCarBrandsListCellTableViewCell.m in Sources */,
 				EC542A121D237E7700F3B4BF /* WebViewJavascriptBridge_JS.m in Sources */,
 				EC5427811D237DE000F3B4BF /* DynamicArrangeButtonCell.m in Sources */,
+				EC857B9B1D7F069E00DF2D02 /* CZJOrderTypeCell.m in Sources */,
 				EC542A711D23979500F3B4BF /* NSDate+Category.m in Sources */,
 				EC5429D21D237E7700F3B4BF /* CALayer+Anim.m in Sources */,
 				EC5429D11D237E7700F3B4BF /* OpenShare.m in Sources */,
@@ -3215,6 +3212,7 @@
 				EC5429AE1D237E7700F3B4BF /* MJRefreshAutoFooter.m in Sources */,
 				EC5429D31D237E7700F3B4BF /* CALayer+Transition.m in Sources */,
 				EC5429831D237E7700F3B4BF /* LJWKeyboardToolBar.m in Sources */,
+				EC857BA01D7F0CFE00DF2D02 /* FSPageCell.m in Sources */,
 				EC45981F1D757960004424A4 /* FSServiceStoreCell.m in Sources */,
 				ECA82A421D58CDE600F05C52 /* UIViewController+YQSlideMenu.m in Sources */,
 				EC5429C41D237E7700F3B4BF /* MultilevelCollectionViewCell.m in Sources */,
@@ -3312,14 +3310,12 @@
 				EC542A701D23979500F3B4BF /* CALayer+UIColor.m in Sources */,
 				EC542A761D23979500F3B4BF /* UIScrollView+Touch.m in Sources */,
 				EC54297B1D237E7700F3B4BF /* KSDefaultFootRefreshView.m in Sources */,
-				EC3A190B1D41F37100F6F193 /* FSCommitOrderController.m in Sources */,
 				ECA233E91D37DD4F004C2679 /* FSMyInfoForm.m in Sources */,
 				EC0662891D7048DD006B62D2 /* CZJCommitReturnReasonCell.m in Sources */,
 				EC542A731D23979500F3B4BF /* NSDictionary+NSDictonay_Unicode.m in Sources */,
 				EC5429FB1D237E7700F3B4BF /* SDWebImageCompat.m in Sources */,
 				EC06628D1D7048DD006B62D2 /* CZJOneButtonCell.m in Sources */,
 				EC5429AB1D237E7700F3B4BF /* NSObject+MJKeyValue.m in Sources */,
-				EC5759BB1D6DF029009F3F5D /* CZJOrderTypeCell.m in Sources */,
 				EC3A18F81D41F1AE00F6F193 /* FSMyDiscountController.m in Sources */,
 				ECD537F31D46523900D136EF /* CZJCarBrandChooseController.m in Sources */,
 				EC6E3CFB1D7860FE00DA5588 /* CZJProvinceForm.m in Sources */,

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FSServiceStoreCell : UITableViewCell
+@interface FSServiceStoreCell : CZJTableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *storeImage;
 @property (weak, nonatomic) IBOutlet UIImageView *zhifubaoImage;

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FSServiceStepCell : UITableViewCell
+@interface FSServiceStepCell : CZJTableViewCell
 
 @property (weak, nonatomic) IBOutlet UIView *editView;
 @property (weak, nonatomic) IBOutlet UIView *priceView;

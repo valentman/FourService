@@ -13,6 +13,7 @@
 #import "FSStoreInfoCell.h"
 #import "CZJGeneralCell.h"
 #import "CZJOrderListPayCell.h"
+#import "FSPageCell.h"
 #import "FSGoodsDetailController.h"
 
 @interface FSServiceStepController ()
@@ -53,13 +54,12 @@ UITableViewDataSource
 {
     if (!_myTableView)
     {
-        self.myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, PJ_SCREEN_WIDTH, PJ_SCREEN_HEIGHT - StatusBar_HEIGHT - NavigationBar_HEIGHT) style:UITableViewStylePlain];
+        self.myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, PJ_SCREEN_WIDTH, PJ_SCREEN_HEIGHT - StatusBar_HEIGHT - NavigationBar_HEIGHT - 50) style:UITableViewStylePlain];
         self.myTableView.tableFooterView = [[UIView alloc]init];
         self.myTableView.delegate = self;
         self.myTableView.dataSource = self;
         self.myTableView.clipsToBounds = NO;
         self.myTableView.showsVerticalScrollIndicator = NO;
-        self.myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.automaticallyAdjustsScrollViewInsets = NO;
         self.myTableView.backgroundColor = CZJTableViewBGColor;
         [self.view addSubview:self.myTableView];
@@ -67,7 +67,8 @@ UITableViewDataSource
         NSArray* nibArys = @[@"FSServiceStepCell",
                              @"FSServiceStepGoodsCell",
                              @"FSStoreInfoCell",
-                             @"CZJGeneralCell"];
+                             @"CZJGeneralCell",
+                             @"FSPageCell"];
         
         for (id cells in nibArys) {
             UINib *nib=[UINib nibWithNibName:cells bundle:nil];
@@ -100,7 +101,7 @@ UITableViewDataSource
 #pragma mark-UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return _serviceStepAry.count + 2;
+    return _serviceStepAry.count + 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -113,9 +114,13 @@ UITableViewDataSource
     {
         return 2;
     }
+    else if (2 == section)
+    {
+        return 1;
+    }
     else
     {
-        FSServiceStepForm* stepForm = _serviceStepAry[section - 2];
+        FSServiceStepForm* stepForm = _serviceStepAry[section - 3];
         return stepForm.is_expand ? (stepForm.product_list.count + 1) : 1;
     }
     return 0;
@@ -155,18 +160,40 @@ UITableViewDataSource
         }
             break;
             
+        case 2:
+        {
+            FSPageCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FSPageCell" forIndexPath:indexPath];
+
+            return cell;
+        }
+            break;
+            
         default:
         {
-            FSServiceStepForm* stepForm = _serviceStepAry[indexPath.section - 2];
+            FSServiceStepForm* stepForm = _serviceStepAry[indexPath.section - 3];
             
             if (stepForm.is_expand && indexPath.row > 0)
             {
                 FSServiceStepGoodsCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FSServiceStepGoodsCell" forIndexPath:indexPath];
+                if (indexPath.row == stepForm.product_list.count)
+                {
+                    [cell setSeparatorViewHidden:NO];
+                }
                 return cell;
             }
             else
             {
                 FSServiceStepCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FSServiceStepCell" forIndexPath:indexPath];
+                if (!stepForm.is_expand)
+                {
+                    [cell setSeparatorViewHidden:NO];
+                }
+                else
+                {
+                    [cell setSeparatorViewHidden:YES];
+                    cell.separatorInset = IndentCellSeparator(0);
+                }
+                
                 return cell;
             }
         }
@@ -185,10 +212,19 @@ UITableViewDataSource
             break;
             
         case 1:
+        case 2:
             return 46;
             break;
             
         default:
+            if (0 == indexPath.row)
+            {
+                return 46;
+            }
+            else
+            {
+                return 85;
+            }
             break;
     }
     return 50;
@@ -196,11 +232,12 @@ UITableViewDataSource
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (0 == section)
+    if (1 == section || 2 == section)
     {
-        return 0;
+        return 10;
     }
-    return 10;
+    
+    return 0;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -214,12 +251,19 @@ UITableViewDataSource
             break;
             
         case 1:
-            sbIdentifer = @"segueToStoreMap";
+            if (0 == indexPath.row)
+            {
+                sbIdentifer = @"segueToStoreMap";
+            }
+            if (1 == indexPath.row)
+            {
+                [PUtils callHotLine:@"028-86889898" AndTarget:nil];
+            }
             break;
 
         default:
         {
-            FSServiceStepForm* stepForm = _serviceStepAry[indexPath.section - 2];
+            FSServiceStepForm* stepForm = _serviceStepAry[indexPath.section - 3];
             if (stepForm.is_expand && indexPath.row > 0)
             {
                 sbIdentifer = @"segueToGoodsDetail";
@@ -294,5 +338,7 @@ UITableViewDataSource
         goodsDetail.productForm = sender;
     }
 }
+
+
 
 @end
