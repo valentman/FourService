@@ -336,6 +336,7 @@
 		EC6E3CFB1D7860FE00DA5588 /* CZJProvinceForm.m in Sources */ = {isa = PBXBuildFile; fileRef = EC6E3CFA1D7860FE00DA5588 /* CZJProvinceForm.m */; };
 		EC6E3CFF1D78786700DA5588 /* CZJOrderListPayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC6E3CFD1D78786700DA5588 /* CZJOrderListPayCell.m */; };
 		EC6E3D001D78786700DA5588 /* CZJOrderListPayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC6E3CFE1D78786700DA5588 /* CZJOrderListPayCell.xib */; };
+		EC6E89271D7EE7BE00829220 /* FSCommitOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC6E89261D7EE7BE00829220 /* FSCommitOrderController.m */; };
 		EC7760DB1D2223D500E1A89F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7760DA1D2223D500E1A89F /* main.m */; };
 		EC7760DE1D2223D500E1A89F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7760DD1D2223D500E1A89F /* AppDelegate.m */; };
 		EC7760E61D2223D500E1A89F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC7760E51D2223D500E1A89F /* Assets.xcassets */; };
@@ -1036,6 +1037,8 @@
 		EC6E3CFC1D78786700DA5588 /* CZJOrderListPayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJOrderListPayCell.h; sourceTree = "<group>"; };
 		EC6E3CFD1D78786700DA5588 /* CZJOrderListPayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJOrderListPayCell.m; sourceTree = "<group>"; };
 		EC6E3CFE1D78786700DA5588 /* CZJOrderListPayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJOrderListPayCell.xib; sourceTree = "<group>"; };
+		EC6E89251D7EE7BE00829220 /* FSCommitOrderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCommitOrderController.h; sourceTree = "<group>"; };
+		EC6E89261D7EE7BE00829220 /* FSCommitOrderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCommitOrderController.m; sourceTree = "<group>"; };
 		EC7760D61D2223D500E1A89F /* FourService.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FourService.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC7760DA1D2223D500E1A89F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EC7760DC1D2223D500E1A89F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../AppDelegate.h; sourceTree = "<group>"; };
@@ -1449,6 +1452,7 @@
 				EC4597EE1D757960004424A4 /* ServiceList */,
 				EC45980A1D757960004424A4 /* StoreList */,
 				EC4597FE1D757960004424A4 /* StepList */,
+				EC6E89241D7EE7A300829220 /* CommitOrder */,
 				EC3220F01D77A36F00E4019C /* StoreDetail */,
 				EC3220EE1D77A36F00E4019C /* GoodsDetail */,
 			);
@@ -2639,6 +2643,15 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		EC6E89241D7EE7A300829220 /* CommitOrder */ = {
+			isa = PBXGroup;
+			children = (
+				EC6E89251D7EE7BE00829220 /* FSCommitOrderController.h */,
+				EC6E89261D7EE7BE00829220 /* FSCommitOrderController.m */,
+			);
+			path = CommitOrder;
+			sourceTree = "<group>";
+		};
 		EC7760CD1D2223D500E1A89F = {
 			isa = PBXGroup;
 			children = (
@@ -3116,6 +3129,7 @@
 				EC4598131D757960004424A4 /* FSServiceCell.m in Sources */,
 				EC542AEA1D239B8A00F3B4BF /* AliPayManager.m in Sources */,
 				EC5429AA1D237E7700F3B4BF /* NSObject+MJCoding.m in Sources */,
+				EC6E89271D7EE7BE00829220 /* FSCommitOrderController.m in Sources */,
 				EC54295C1D237E7700F3B4BF /* AFURLRequestSerialization.m in Sources */,
 				EC026F331D2B897200CA8CEB /* FSRecommendInfoCell.m in Sources */,
 				ECD5380F1D4666A900D136EF /* GKHpickerAddressView.m in Sources */,
