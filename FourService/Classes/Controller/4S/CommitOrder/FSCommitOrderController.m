@@ -9,6 +9,7 @@
 #import "FSCommitOrderController.h"
 #import "CZJGeneralCell.h"
 #import "CZJOrderTypeCell.h"
+#import "CZJDeliveryAddrCell.h"
 
 @interface FSCommitOrderController ()
 <
@@ -53,7 +54,8 @@ UITableViewDataSource
     [self.view addSubview:self.myTableView];
     
     NSArray* nibArys = @[@"CZJGeneralCell",
-                         @"CZJOrderTypeCell"
+                         @"CZJOrderTypeCell",
+                         @"CZJDeliveryAddrCell"
                          ];
     
     for (id cells in nibArys) {
