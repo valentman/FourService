@@ -16,6 +16,7 @@
     self.swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
     [self addGestureRecognizer:_swipeLeft];
     self.swipeLeft.delegate = self;
+    self.operateViewLeading.constant = PJ_SCREEN_WIDTH;
     // Initialization code
 }
 
@@ -54,17 +55,17 @@
     
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    DLog();
-}
-- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event
-{
-    DLog();
-}
-
-- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event
-{
-    DLog();
-}
+//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+//{
+//    DLog();
+//}
+//- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event
+//{
+//    DLog();
+//}
+//
+//- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event
+//{
+//    DLog();
+//}
 @end

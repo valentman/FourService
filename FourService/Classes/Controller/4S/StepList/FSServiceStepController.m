@@ -15,11 +15,13 @@
 #import "CZJOrderListPayCell.h"
 #import "FSPageCell.h"
 #import "FSGoodsDetailController.h"
+#import "FSCommitOrderController.h"
 
 @interface FSServiceStepController ()
 <
 UITableViewDelegate,
-UITableViewDataSource
+UITableViewDataSource,
+CZJOrderListPayCellDelegate
 >
 @property (strong, nonatomic) __block NSArray* serviceStepAry;
 @property (strong, nonatomic)UITableView* myTableView;
@@ -47,6 +49,7 @@ UITableViewDataSource
     
     CZJOrderListPayCell* payCell = [PUtils getXibViewByName:@"CZJOrderListPayCell"];
     payCell.frame = CGRectMake(0, PJ_SCREEN_HEIGHT - 50, PJ_SCREEN_WIDTH, 50);
+    payCell.delegate = self;
     [self.view addSubview:payCell];
 }
 
@@ -174,7 +177,12 @@ UITableViewDataSource
             
             if (stepForm.is_expand && indexPath.row > 0)
             {
+                FSServiceStepProductForm* stepProductForm = stepForm.product_list[indexPath.row - 1];
                 FSServiceStepGoodsCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FSServiceStepGoodsCell" forIndexPath:indexPath];
+                [cell.productImageView sd_setImageWithURL:[NSURL URLWithString:stepProductForm.product_image] placeholderImage:DefaultPlaceHolderSquare];
+                cell.productNameLabel.text = stepProductForm.product_name;
+                cell.productNumLabel.text = stepProductForm.product_num;
+                cell.productPriceLabel.text = stepProductForm.product_price;
                 if (indexPath.row == stepForm.product_list.count)
                 {
                     [cell setSeparatorViewHidden:NO];
@@ -330,6 +338,11 @@ UITableViewDataSource
     DLog();
 }
 
+- (void)clickToPay:(id)sender
+{
+    [self performSegueWithIdentifier:@"segueToCommitOrder" sender:nil];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"segueToGoodsDetail"])
@@ -337,8 +350,12 @@ UITableViewDataSource
         FSGoodsDetailController* goodsDetail = segue.destinationViewController;
         goodsDetail.productForm = sender;
     }
+    if ([segue.identifier isEqualToString:@"segueToCommitOrder"])
+    {
+        FSCommitOrderController* commitOrder = segue.destinationViewController;
+        
+    }
 }
-
 
 
 @end

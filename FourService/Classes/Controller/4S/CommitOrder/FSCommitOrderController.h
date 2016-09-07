@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FSCommitOrderController : UIViewController
+@interface FSCommitOrderController : PBaseViewController
 
 @end

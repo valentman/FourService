@@ -10,5 +10,14 @@
 
 @interface FSServiceStepGoodsCell : CZJTableViewCell<UIGestureRecognizerDelegate>
 
+@property (weak, nonatomic) IBOutlet UIImageView *productImageView;
+@property (weak, nonatomic) IBOutlet UIView *productInfoView;
+@property (weak, nonatomic) IBOutlet UILabel *productNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *productNumLabel;
+@property (weak, nonatomic) IBOutlet UILabel *productPriceLabel;
+
+@property (weak, nonatomic) IBOutlet UIView *operateView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *operateViewLeading;
+
 @property (strong, nonatomic)UISwipeGestureRecognizer *swipeLeft;
 @end
