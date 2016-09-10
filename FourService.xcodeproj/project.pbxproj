@@ -330,6 +330,10 @@
 		EC542B121D23A40700F3B4BF /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EC542B111D23A40700F3B4BF /* libicucore.tbd */; };
 		EC542B141D23A42800F3B4BF /* libresolv.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EC542B131D23A42800F3B4BF /* libresolv.9.tbd */; };
 		EC542B161D23A51B00F3B4BF /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC542B151D23A51B00F3B4BF /* CoreMotion.framework */; };
+		EC54B6BA1D8068980082E029 /* CZJDeliveryAddrCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC54B6B81D8068980082E029 /* CZJDeliveryAddrCell.m */; };
+		EC54B6BB1D8068980082E029 /* CZJDeliveryAddrCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC54B6B91D8068980082E029 /* CZJDeliveryAddrCell.xib */; };
+		EC54B6BF1D8068EA0082E029 /* CZJAddDeliveryAddrCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC54B6BD1D8068EA0082E029 /* CZJAddDeliveryAddrCell.m */; };
+		EC54B6C01D8068EA0082E029 /* CZJAddDeliveryAddrCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC54B6BE1D8068EA0082E029 /* CZJAddDeliveryAddrCell.xib */; };
 		EC6E3CFB1D7860FE00DA5588 /* CZJProvinceForm.m in Sources */ = {isa = PBXBuildFile; fileRef = EC6E3CFA1D7860FE00DA5588 /* CZJProvinceForm.m */; };
 		EC6E3CFF1D78786700DA5588 /* CZJOrderListPayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC6E3CFD1D78786700DA5588 /* CZJOrderListPayCell.m */; };
 		EC6E3D001D78786700DA5588 /* CZJOrderListPayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC6E3CFE1D78786700DA5588 /* CZJOrderListPayCell.xib */; };
@@ -1028,6 +1032,12 @@
 		EC542B111D23A40700F3B4BF /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		EC542B131D23A42800F3B4BF /* libresolv.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.9.tbd; path = usr/lib/libresolv.9.tbd; sourceTree = SDKROOT; };
 		EC542B151D23A51B00F3B4BF /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		EC54B6B71D8068980082E029 /* CZJDeliveryAddrCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJDeliveryAddrCell.h; sourceTree = "<group>"; };
+		EC54B6B81D8068980082E029 /* CZJDeliveryAddrCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJDeliveryAddrCell.m; sourceTree = "<group>"; };
+		EC54B6B91D8068980082E029 /* CZJDeliveryAddrCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJDeliveryAddrCell.xib; sourceTree = "<group>"; };
+		EC54B6BC1D8068EA0082E029 /* CZJAddDeliveryAddrCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJAddDeliveryAddrCell.h; sourceTree = "<group>"; };
+		EC54B6BD1D8068EA0082E029 /* CZJAddDeliveryAddrCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJAddDeliveryAddrCell.m; sourceTree = "<group>"; };
+		EC54B6BE1D8068EA0082E029 /* CZJAddDeliveryAddrCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJAddDeliveryAddrCell.xib; sourceTree = "<group>"; };
 		EC6E3CF91D7860FE00DA5588 /* CZJProvinceForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJProvinceForm.h; sourceTree = "<group>"; };
 		EC6E3CFA1D7860FE00DA5588 /* CZJProvinceForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJProvinceForm.m; sourceTree = "<group>"; };
 		EC6E3CFC1D78786700DA5588 /* CZJOrderListPayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJOrderListPayCell.h; sourceTree = "<group>"; };
@@ -2695,6 +2705,12 @@
 		EC857B921D7F069E00DF2D02 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				EC54B6BC1D8068EA0082E029 /* CZJAddDeliveryAddrCell.h */,
+				EC54B6BD1D8068EA0082E029 /* CZJAddDeliveryAddrCell.m */,
+				EC54B6BE1D8068EA0082E029 /* CZJAddDeliveryAddrCell.xib */,
+				EC54B6B71D8068980082E029 /* CZJDeliveryAddrCell.h */,
+				EC54B6B81D8068980082E029 /* CZJDeliveryAddrCell.m */,
+				EC54B6B91D8068980082E029 /* CZJDeliveryAddrCell.xib */,
 				EC857B961D7F069E00DF2D02 /* CZJOrderTypeCell.h */,
 				EC857B971D7F069E00DF2D02 /* CZJOrderTypeCell.m */,
 				EC857B981D7F069E00DF2D02 /* CZJOrderTypeCell.xib */,
@@ -2995,6 +3011,7 @@
 				ECD5380E1D4666A900D136EF /* Address.plist in Resources */,
 				EC54298E1D237E7700F3B4BF /* anjuke_icon_to_position1.png in Resources */,
 				EC54278C1D237DE000F3B4BF /* RefreshLocationBarView.xib in Resources */,
+				EC54B6BB1D8068980082E029 /* CZJDeliveryAddrCell.xib in Resources */,
 				EC54296A1D237E7700F3B4BF /* JRSwizzle.podspec in Resources */,
 				EC5427831D237DE000F3B4BF /* BadgeButtonView.xib in Resources */,
 				EC5427361D237AF500F3B4BF /* Main.storyboard in Resources */,
@@ -3010,6 +3027,7 @@
 				ECCEE38A1D6C8AAE0034D4F2 /* request_loading_1@2x.png in Resources */,
 				EC54298C1D237E7700F3B4BF /* anjuke_icon_itis_position@2x.png in Resources */,
 				EC5429791D237E7700F3B4BF /* KMCGeigerCounterTick.aiff in Resources */,
+				EC54B6C01D8068EA0082E029 /* CZJAddDeliveryAddrCell.xib in Resources */,
 				EC026F2F1D2B894700CA8CEB /* FSLotteryCell.xib in Resources */,
 				ECA82A441D58CDE600F05C52 /* YQSlideMenuImages.xcassets in Resources */,
 				EC3221131D77A81B00E4019C /* CZJStoreMapCell.xib in Resources */,
@@ -3153,6 +3171,7 @@
 				EC5429FD1D237E7700F3B4BF /* SDWebImageDownloader.m in Sources */,
 				EC5429BD1D237E7700F3B4BF /* MJRefreshConst.m in Sources */,
 				EC4598191D757960004424A4 /* FSServiceListController.m in Sources */,
+				EC54B6BF1D8068EA0082E029 /* CZJAddDeliveryAddrCell.m in Sources */,
 				EC45981E1D757960004424A4 /* FSServiceStepController.m in Sources */,
 				EC54295A1D237E7700F3B4BF /* AFSecurityPolicy.m in Sources */,
 				ECB422B91D4912AA00D20A9D /* PWUploadImageButton.m in Sources */,
@@ -3182,6 +3201,7 @@
 				EC542A101D237E7700F3B4BF /* VPImageCropperViewController.m in Sources */,
 				EC3221191D77A8AE00E4019C /* CZJStoreMAAroundForm.m in Sources */,
 				EC54278E1D237DE000F3B4BF /* PBaseTableViewCell.m in Sources */,
+				EC54B6BA1D8068980082E029 /* CZJDeliveryAddrCell.m in Sources */,
 				EC542A031D237E7700F3B4BF /* UIImage+MultiFormat.m in Sources */,
 				EC45981A1D757960004424A4 /* FSServiceStepCell.m in Sources */,
 				EC5429D41D237E7700F3B4BF /* PhotoView.m in Sources */,
