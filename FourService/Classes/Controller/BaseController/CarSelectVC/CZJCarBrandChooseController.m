@@ -176,7 +176,7 @@ UITableViewDelegate
                 CZJHotBrandViewCell* hotCell = [PUtils getXibViewByName:@"CZJHotBrandViewCell"];
                 hotCell.frame = hotBrandRect;
                 [hotCell.brandImg sd_setImageWithURL:[NSURL URLWithString:brandForm.icon] placeholderImage:DefaultPlaceHolderSquare];
-                hotCell.brandName.text = brandForm.name;
+                hotCell.brandName.text = brandForm.car_brand_name;
                 [hotCell.hotBrandBtn setTag:i];
                 [hotCell.hotBrandBtn addTarget:self action:@selector(hotBtnClick:) forControlEvents:UIControlEventTouchUpInside];
                 [cell addSubview:hotCell];
@@ -193,7 +193,7 @@ UITableViewDelegate
         CarBrandsForm* obj = [brands objectAtIndex:indexPath.row];
         
         cell.arrowImg.hidden = YES;
-        cell.nameLabel.text = obj.name;
+        cell.nameLabel.text = obj.car_brand_name;
         [cell.headImgView sd_setImageWithURL:[NSURL URLWithString:obj.icon]
                           placeholderImage:DefaultPlaceHolderSquare
                                  completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL){

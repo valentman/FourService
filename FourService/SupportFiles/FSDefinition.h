@@ -11,7 +11,7 @@
 
 //----------------------------服务器接口-------------------------------
 //服务地址
-static NSString *const kCZJServerAddr = @"http://119.29.135.211/";                              //线上正式环境
+static NSString *const kCZJServerAddr = @"http://www.carnettech.com/";                              //线上正式环境
 
 //首页接口组 
 static NSString *const kFSServerAPIShowHome = @"Home/home";                                     //获取首页数据

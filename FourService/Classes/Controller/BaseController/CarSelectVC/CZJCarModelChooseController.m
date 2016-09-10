@@ -39,7 +39,7 @@ UITableViewDelegate
     self.naviBarView.mainTitleLabel.text = @"选择车型";
     
     [self initTableView];
-    [FSBaseDataInstance loadCarModelSeriesId:[NSString stringWithFormat:@"%d", self.carSeries.seriesId] Success:^()
+    [FSBaseDataInstance loadCarModelSeriesId:[NSString stringWithFormat:@"%d", self.carSeries.car_model_id] Success:^()
      {
          [self initData];
      } fail:^(){}];
@@ -81,11 +81,11 @@ UITableViewDelegate
     _curCarBrandName.textColor = [UIColor grayColor];
     _curCarBrandName.font = [UIFont systemFontOfSize:16];
     _curCarBrandName.textAlignment = NSTextAlignmentLeft;
-    _curCarBrandName.text = _carBrand.name;
+    _curCarBrandName.text = _carBrand.car_brand_name;
     [self.view addSubview:_curCarBrandName];
     
     //箭头
-    CGSize titleSize = [PUtils calculateTitleSizeWithString:self.carBrand.name AndFontSize:16];
+    CGSize titleSize = [PUtils calculateTitleSizeWithString:self.carBrand.car_brand_name AndFontSize:16];
     _nextArrowImg = [[UIImageView alloc]initWithFrame:CGRectMake(80 + titleSize.width+ 5, StatusBar_HEIGHT + NavigationBar_HEIGHT + 26, 5, 10)];
     [_nextArrowImg setImage:[UIImage imageNamed:@"all_arrow_next"]];
     [self.view addSubview:_nextArrowImg];
@@ -95,7 +95,7 @@ UITableViewDelegate
     _curCarSerieName.textColor = [UIColor grayColor];
     _curCarSerieName.font = [UIFont systemFontOfSize:16];
     _curCarSerieName.textAlignment = NSTextAlignmentLeft;
-    _curCarSerieName.text = _carSeries.name;
+    _curCarSerieName.text = _carSeries.car_model_name;
     [self.view addSubview:_curCarSerieName];
     
 }
@@ -120,7 +120,7 @@ UITableViewDelegate
         [cell addSubview:nameLabel];
     }
     CarModelForm* obj = [_carModels objectAtIndex:indexPath.row];
-    ((UILabel*)VIEWWITHTAG(cell, 1999)).text = obj.name;
+    ((UILabel*)VIEWWITHTAG(cell, 1999)).text = obj.car_type_name;
     
     cell.separatorInset = UIEdgeInsetsMake(0, 50, 0, 0);
     return cell;
@@ -142,8 +142,8 @@ UITableViewDelegate
     }
     else if (CZJCarListTypeFilter == _carlistType)
     {
-        [USER_DEFAULT setValue:[NSString stringWithFormat:@"%@ %@",_carBrand.name,_carSeries.name] forKey:kUserDefaultChoosedCarModelType];
-        [USER_DEFAULT setValue:_currentSelect.modelId forKey:kUserDefaultChoosedCarModelID];
+        [USER_DEFAULT setValue:[NSString stringWithFormat:@"%@ %@",_carBrand.car_brand_name,_carSeries.car_model_id] forKey:kUserDefaultChoosedCarModelType];
+        [USER_DEFAULT setValue:_currentSelect.car_model_id forKey:kUserDefaultChoosedCarModelID];
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         [self.navigationController popToRootViewControllerAnimated:YES];
         [[NSNotificationCenter defaultCenter]postNotificationName:@"ChooseCartype" object:nil];

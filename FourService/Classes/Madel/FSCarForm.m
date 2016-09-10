@@ -25,7 +25,8 @@
 
 -(void)setNewCarBrandsFormDictionary:(NSDictionary*)dict
 {
-    NSArray* carbrands = [[dict valueForKey:@"msg"] valueForKey:@"brands"];
+    NSArray* carbrands = [dict valueForKey:kResoponData];
+    
     for (NSDictionary* dictone in carbrands) {
         CarBrandsForm* tmp_ser = [CarBrandsForm objectWithKeyValues:dictone];
         if (tmp_ser.popular)
@@ -52,22 +53,22 @@
     [_carSeries removeAllObjects];
     //对车牌数据进行整理
     NSArray* array = [dict valueForKey:@"msg"];
-    for (NSDictionary* dict in array) {
-        CarSeriesForm* Obj = [CarSeriesForm objectWithKeyValues:dict];
-        
-        if (_carSeries.count > 0 && [_carSeries objectForKey:Obj.groupName]) {
-            [[_carSeries objectForKey:Obj.groupName] addObject:Obj];
-        }else{
-            NSMutableArray* tmp_series = [NSMutableArray array];
-            [tmp_series addObject:Obj];
-            if (Obj.groupName || [Obj.groupName isEqualToString:@" "]) {
-                [_carSeries setValue:tmp_series forKey:Obj.groupName];
-            }else{
-                [_carSeries setValue:tmp_series forKey:brandName];
-            }
-            
-        }
-    }
+//    for (NSDictionary* dict in array) {
+//        CarSeriesForm* Obj = [CarSeriesForm objectWithKeyValues:dict];
+//        
+//        if (_carSeries.count > 0 && [_carSeries objectForKey:Obj.groupName]) {
+//            [[_carSeries objectForKey:Obj.groupName] addObject:Obj];
+//        }else{
+//            NSMutableArray* tmp_series = [NSMutableArray array];
+//            [tmp_series addObject:Obj];
+//            if (Obj.groupName || [Obj.groupName isEqualToString:@" "]) {
+//                [_carSeries setValue:tmp_series forKey:Obj.groupName];
+//            }else{
+//                [_carSeries setValue:tmp_series forKey:brandName];
+//            }
+//            
+//        }
+//    }
 }
 
 - (void)setNewCarModelsWithDict:(NSDictionary*)dict

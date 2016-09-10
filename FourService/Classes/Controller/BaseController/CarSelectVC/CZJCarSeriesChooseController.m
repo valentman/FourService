@@ -40,7 +40,7 @@ UITableViewDataSource
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [FSBaseDataInstance loadCarSeriesWithBrandId:self.carBrand.brandId BrandName:self.carBrand.name Success:^(){
+    [FSBaseDataInstance loadCarSeriesWithBrandId:self.carBrand.car_brand_id BrandName:self.carBrand.car_brand_name Success:^(){
         [self initData];
         [self.tableView reloadData];
     } fail:^(){
@@ -84,7 +84,7 @@ UITableViewDataSource
     [_curCarBrandLogo sd_setImageWithURL:[NSURL URLWithString:self.carBrand.icon]
                         placeholderImage:DefaultPlaceHolderSquare
                                completed:nil];
-    _curCarBrandName.text = self.carBrand.name;
+    _curCarBrandName.text = self.carBrand.car_brand_name;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -120,7 +120,7 @@ UITableViewDataSource
     
     cell.separatorInset = UIEdgeInsetsMake(0, 50, 0, 0);
     
-    ((UILabel*)VIEWWITHTAG(cell, 1999)).text = obj.name;
+    ((UILabel*)VIEWWITHTAG(cell, 1999)).text = obj.car_model_name;
     return cell;
 }
 

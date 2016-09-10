@@ -134,8 +134,8 @@ UITextFieldDelegate
     
     if (!_carForm)
     {
-        self.carNameLabel.text = [NSString stringWithFormat:@"%@ %@", FSBaseDataInstance.carBrandForm.name,FSBaseDataInstance.carSerialForm.name];
-        self.carModelLabel.text = FSBaseDataInstance.carModealForm.name;
+        self.carNameLabel.text = [NSString stringWithFormat:@"%@ %@", FSBaseDataInstance.carBrandForm.car_brand_name,FSBaseDataInstance.carSerialForm.car_model_name];
+        self.carModelLabel.text = FSBaseDataInstance.carModealForm.car_type_name;
         [self.carBrandImg sd_setImageWithURL:[NSURL URLWithString:FSBaseDataInstance.carBrandForm.icon] placeholderImage:DefaultPlaceHolderSquare];
         
         provinceStr = @"川";
@@ -193,7 +193,7 @@ UITextFieldDelegate
 
     CarModelForm* _carModealForm = FSBaseDataInstance.carModealForm;
     
-    NSString* modelId = _carModealForm ? _carModealForm.modelId: _carForm.car_type_id;
+    NSString* modelId = _carModealForm ? _carModealForm.car_model_id: _carForm.car_type_id;
     
     NSMutableDictionary* carInfo = [@{ @"car_id" : _carForm ? _carForm.car_id : @"",
                                        @"car_type_id": modelId,

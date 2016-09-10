@@ -34,20 +34,23 @@
 @interface CarBrandsForm : NSObject
 @property(nonatomic, strong) NSString* icon;
 @property(nonatomic, strong) NSString* initial;
-@property(nonatomic, strong) NSString* name;
-@property(nonatomic, strong) NSString* brandId;
+@property(nonatomic, strong) NSString* car_brand_name;
+@property(nonatomic, strong) NSString* car_brand_id;
 @property(nonatomic, assign) BOOL popular;
 @end
 
 //---------------------汽车车系信息----------------------
 @interface CarSeriesForm : NSObject
-@property(nonatomic,strong)NSString* groupName;
-@property(nonatomic,strong)NSString* name;
-@property(nonatomic,assign)int seriesId;
+@property(nonatomic,strong)NSString* brand_id;
+@property(nonatomic,strong)NSString* car_model_id;
+@property(nonatomic,strong)NSString* car_model_name;
 @end
 
+
 //---------------------汽车车型信息----------------------
-@interface CarModelForm : NSObject
-@property(nonatomic,strong)NSString* modelId;
-@property(nonatomic,strong)NSString* name;
+@interface  CarModelForm : NSObject
+@property(nonatomic,strong)NSString* car_type_id;
+@property(nonatomic,strong)NSString* car_model_id;
+@property(nonatomic,strong)NSString* car_type_name;
+@property(nonatomic,assign)int seriesId;
 @end
