@@ -24,6 +24,13 @@
 }
 @end
 
+@implementation FSServiceSegmentTypeForm
++ (NSDictionary *)objectClassInArray
+{
+    return @{@"step_list" : @"FSServiceStepForm"};
+}
+@end
+
 @implementation FSServiceStepForm
 - (instancetype)init
 {

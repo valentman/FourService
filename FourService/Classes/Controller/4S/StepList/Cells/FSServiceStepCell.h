@@ -12,4 +12,16 @@
 
 @property (weak, nonatomic) IBOutlet UIView *editView;
 @property (weak, nonatomic) IBOutlet UIView *priceView;
+
+@property (weak, nonatomic) IBOutlet UIImageView *stepImageView;
+@property (weak, nonatomic) IBOutlet UILabel *stemNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *stepDescLabel;
+
+@property (weak, nonatomic) IBOutlet UIButton *saveBtn;
+
+@property (weak, nonatomic) IBOutlet UILabel *stepPriceLabel;
+@property (weak, nonatomic) IBOutlet UIButton *stepSelectBtn;
+@property (weak, nonatomic) IBOutlet UIButton *editBtn;
+@property (weak, nonatomic) IBOutlet UIButton *acceptBtn;
+
 @end

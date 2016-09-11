@@ -21,9 +21,13 @@
 <
 UITableViewDelegate,
 UITableViewDataSource,
-CZJOrderListPayCellDelegate
+CZJOrderListPayCellDelegate,
+FSPageCellDelegate
 >
-@property (strong, nonatomic) __block NSArray* serviceStepAry;
+@property (strong, nonatomic) __block NSMutableArray* serviceStepAry;
+@property (strong, nonatomic) __block NSMutableArray* serviceTypeAry;
+@property (strong, nonatomic) __block NSMutableArray* titleArray;
+@property (assign, nonatomic) NSInteger currentSelectIndex;
 @property (strong, nonatomic)UITableView* myTableView;
 @end
 
@@ -31,8 +35,17 @@ CZJOrderListPayCellDelegate
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initDatas];
     [self initViews];
     [self getDataFromServer];
+}
+
+- (void)initDatas
+{
+    _currentSelectIndex = 0;
+    _serviceStepAry = [NSMutableArray array];
+    _serviceTypeAry = [NSMutableArray array];
+    _titleArray = [NSMutableArray array];
 }
 
 - (void)initViews
@@ -88,11 +101,23 @@ CZJOrderListPayCellDelegate
     [FSBaseDataInstance getServiceStepList:params success:^(id json) {
         DLog(@"%@",[json description]);
         NSArray* tmpAry = [json valueForKey:kResoponData];
-        _serviceStepAry = [FSServiceStepForm objectArrayWithKeyValuesArray:tmpAry];
+        _serviceTypeAry = [[FSServiceSegmentTypeForm objectArrayWithKeyValuesArray:tmpAry] mutableCopy];
+        [weakSelf dealWithStepAry];
         [weakSelf.myTableView reloadData];
     } fail:^{
         
     }];
+}
+
+- (void)dealWithStepAry
+{
+    for (FSServiceSegmentTypeForm* form in _serviceTypeAry)
+    {
+        NSDictionary* dict = @{kSegmentViewMainTitleKey : form.item_name,
+                               kSegmentViewSubTitleKey : form.item_desc};
+        [_titleArray addObject:dict];
+    }
+    _serviceStepAry = [((FSServiceSegmentTypeForm*)_serviceTypeAry[_currentSelectIndex]).step_list mutableCopy];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -166,7 +191,10 @@ CZJOrderListPayCellDelegate
         case 2:
         {
             FSPageCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FSPageCell" forIndexPath:indexPath];
-
+            [cell setTitleArray:_titleArray];
+            [cell setCurrentTouchIndex:_currentSelectIndex];
+            [cell setSeparatorViewHidden:NO];
+            cell.delegate = self;
             return cell;
         }
             break;
@@ -201,7 +229,8 @@ CZJOrderListPayCellDelegate
                     [cell setSeparatorViewHidden:YES];
                     cell.separatorInset = IndentCellSeparator(0);
                 }
-                
+                cell.stemNameLabel.text = stepForm.step_name;
+                cell.stepDescLabel.text = stepForm.step_desc;
                 return cell;
             }
         }
@@ -355,6 +384,16 @@ CZJOrderListPayCellDelegate
         FSCommitOrderController* commitOrder = segue.destinationViewController;
         
     }
+}
+
+
+#pragma mark- FSPageCellDelegate
+- (void)segmentButtonTouchHandle:(NSInteger)toucheIndex
+{
+    _currentSelectIndex = toucheIndex;
+    [_serviceStepAry removeAllObjects];
+    _serviceStepAry = [((FSServiceSegmentTypeForm*)_serviceTypeAry[_currentSelectIndex]).step_list mutableCopy];
+    [self.myTableView reloadData];
 }
 
 

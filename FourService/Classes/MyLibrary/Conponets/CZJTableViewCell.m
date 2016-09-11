@@ -19,7 +19,7 @@
     CGRect cellRect = self.frame;
     _separatorView = [[UIView alloc]init];
     _separatorView.backgroundColor = CZJGRAYCOLOR;
-    _separatorView.frame = CGRectMake(0, cellRect.size.height + 1, PJ_SCREEN_WIDTH, 0.5);
+    _separatorView.frame = CGRectMake(0, cellRect.size.height + 3, PJ_SCREEN_WIDTH, 0.5);
     [self addSubview:_separatorView];
     _separatorView.hidden = YES;
     

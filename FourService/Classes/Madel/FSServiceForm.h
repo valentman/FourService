@@ -73,6 +73,19 @@
 @property (strong, nonatomic) NSArray* shop_image_list;
 @end
 
+//服务套餐ABC数据
+@interface FSServiceSegmentTypeForm : NSObject
+@property (strong, nonatomic) NSString* shop_service_type_item_id;
+@property (strong, nonatomic) NSString* shop_service_type_id;
+@property (strong, nonatomic) NSString* item_name;
+@property (strong, nonatomic) NSString* item_desc;
+@property (strong, nonatomic) NSString* item_cost;
+@property (strong, nonatomic) NSString* desc_image;
+@property (strong, nonatomic) NSString* create_time;
+@property (strong, nonatomic) NSString* creator;
+@property (strong, nonatomic) NSArray* step_list;
+@end
+
 //服务步骤数据
 @interface FSServiceStepForm : NSObject
 @property (strong, nonatomic) NSString* shop_service_step_id;

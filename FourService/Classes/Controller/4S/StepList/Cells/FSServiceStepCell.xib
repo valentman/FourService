@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -126,8 +126,16 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="acceptBtn" destination="B6G-I2-R2f" id="L1H-Uy-hbR"/>
+                <outlet property="editBtn" destination="9iy-ZD-lwB" id="eTG-Os-gr3"/>
                 <outlet property="editView" destination="fPV-r1-iFg" id="CKc-rh-7Ga"/>
                 <outlet property="priceView" destination="9KI-vO-0X3" id="Vee-DW-e2Z"/>
+                <outlet property="saveBtn" destination="sYL-Sg-GIw" id="wTQ-QI-1xg"/>
+                <outlet property="stemNameLabel" destination="sIJ-Fu-OXN" id="1wE-Bf-vJO"/>
+                <outlet property="stepDescLabel" destination="TlS-9W-COY" id="mYz-DQ-Mq9"/>
+                <outlet property="stepImageView" destination="XJf-9o-OIR" id="I7Z-YG-PDy"/>
+                <outlet property="stepPriceLabel" destination="cMS-V5-Ztl" id="hoO-s7-3dn"/>
+                <outlet property="stepSelectBtn" destination="7r2-TQ-N5k" id="vhA-AT-McM"/>
             </connections>
             <point key="canvasLocation" x="344" y="289"/>
         </tableViewCell>

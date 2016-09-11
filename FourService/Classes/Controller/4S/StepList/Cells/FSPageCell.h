@@ -8,8 +8,25 @@
 
 #import <UIKit/UIKit.h>
 
+
+static NSString* const kSegmentViewMainTitleKey = @"mainTitleKey";
+static NSString* const kSegmentViewSubTitleKey = @"subTitleKey";
+
+@protocol FSPageCellDelegate <NSObject>
+
+- (void)segmentButtonTouchHandle:(NSInteger)toucheIndex;
+
+@end
+
 @interface FSPageCell : CZJTableViewCell
-@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentView;
-- (IBAction)segmentChooseAction:(id)sender;
+@property (strong, nonatomic) NSArray* titleArray;
+@property (weak, nonatomic) id<FSPageCellDelegate> delegate;
+@property (assign, nonatomic) NSInteger currentTouchIndex;
+@end
+
+@interface FSSegmentView : UIControl
+@property (strong, nonatomic) UILabel* mainTitleLabel;
+@property (strong, nonatomic) UILabel* subTitleLabel;
+@property (strong, nonatomic) UIView* lineView;
 
 @end

@@ -322,6 +322,8 @@ FDAlertViewDelegate
                 fail:(GeneralBlockHandler)failBlock
 {
     NSDictionary* dict = [json valueForKey:@"data"];
+    NSString* identifer = [dict valueForKey:@"identifier"];
+    NSString* token = [dict valueForKey:@"token"];
     FSBaseDataInstance.userInfoForm.identifier = [dict valueForKey:@"identifier"];
     FSBaseDataInstance.userInfoForm.token = [dict valueForKey:@"token"];
     
