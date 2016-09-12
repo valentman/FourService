@@ -985,4 +985,25 @@ singleton_implementation(FSBaseDataManager);
 {
     [self generalPost:postParams success:success fail:fail andServerAPI:kFSServerAPIServiceStepList];
 }
+
+- (void)getProductChangeableList:(NSDictionary*)postParams
+                         success:(SuccessBlockHandler)success
+                            fail:(FailureBlockHandler)fail
+{
+    [self generalPost:postParams success:success fail:fail andServerAPI:kFSserverAPIProductChangeable];
+}
+
+- (void)getProductDetailInfo:(NSDictionary*)postParams
+                     success:(SuccessBlockHandler)success
+                        fail:(FailureBlockHandler)fail
+{
+    [self generalPost:postParams success:success fail:fail andServerAPI:kFSServerAPIProductDetailInfo];
+}
+
+- (void)getProductEvaluationList:(NSDictionary*)postParams
+                         success:(SuccessBlockHandler)success
+                            fail:(FailureBlockHandler)fail
+{
+    [self generalPost:postParams success:success fail:fail andServerAPI:kFSServerAPIProductEvaluate];
+}
 @end

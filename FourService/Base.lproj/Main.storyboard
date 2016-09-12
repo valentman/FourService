@@ -113,6 +113,24 @@
             </objects>
             <point key="canvasLocation" x="1159" y="1287"/>
         </scene>
+        <!--Product Change Controller-->
+        <scene sceneID="eaK-hY-Fbm">
+            <objects>
+                <viewController id="NF7-ZY-YCi" customClass="FSProductChangeController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Jco-Ub-caC"/>
+                        <viewControllerLayoutGuide type="bottom" id="yLV-Wi-jgd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fJy-Yn-1Bh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lbE-C6-dc8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1941" y="649"/>
+        </scene>
         <!--套餐步骤-->
         <scene sceneID="db9-XL-ptz">
             <objects>
@@ -131,6 +149,7 @@
                         <segue destination="FKM-L2-yCa" kind="show" identifier="segueToStoreMap" id="OSt-SW-yvj"/>
                         <segue destination="kgU-R2-bo3" kind="show" identifier="segueToGoodsDetail" id="Fvc-VM-i6G"/>
                         <segue destination="xXw-BA-cHS" kind="show" identifier="segueToCommitOrder" id="aNs-rw-q1S"/>
+                        <segue destination="NF7-ZY-YCi" kind="show" identifier="segueToProductChange" id="Ip4-Lj-d99"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="84b-YW-cL8" userLabel="First Responder" sceneMemberID="firstResponder"/>

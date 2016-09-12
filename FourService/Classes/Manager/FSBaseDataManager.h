@@ -272,7 +272,7 @@ singleton_interface(FSBaseDataManager);
 - (void)loginWithDefaultInfoSuccess:(void (^)())success
                                fail:(void (^)())fail;
 
-//-------------------------注册登录------------------------------
+//------------------------- 服务步骤 ------------------------------
 //获取服务列表
 - (void)getServiceList:(SuccessBlockHandler)success
                   fail:(FailureBlockHandler)fail;
@@ -292,5 +292,20 @@ singleton_interface(FSBaseDataManager);
 - (void)getServiceStepList:(NSDictionary*)postParams
                    success:(SuccessBlockHandler)success
                       fail:(FailureBlockHandler)fail;
+
+//获取可更换商品列表
+- (void)getProductChangeableList:(NSDictionary*)postParams
+                         success:(SuccessBlockHandler)success
+                            fail:(FailureBlockHandler)fail;
+
+//商品详情
+- (void)getProductDetailInfo:(NSDictionary*)postParams
+                     success:(SuccessBlockHandler)success
+                        fail:(FailureBlockHandler)fail;
+
+//商品评论列表
+- (void)getProductEvaluationList:(NSDictionary*)postParams
+                         success:(SuccessBlockHandler)success
+                            fail:(FailureBlockHandler)fail;
 
 @end

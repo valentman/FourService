@@ -334,6 +334,9 @@
 		EC54B6BB1D8068980082E029 /* CZJDeliveryAddrCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC54B6B91D8068980082E029 /* CZJDeliveryAddrCell.xib */; };
 		EC54B6BF1D8068EA0082E029 /* CZJAddDeliveryAddrCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC54B6BD1D8068EA0082E029 /* CZJAddDeliveryAddrCell.m */; };
 		EC54B6C01D8068EA0082E029 /* CZJAddDeliveryAddrCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC54B6BE1D8068EA0082E029 /* CZJAddDeliveryAddrCell.xib */; };
+		EC5E26A31D86FB480040986B /* FSProductChangeController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5E26A21D86FB480040986B /* FSProductChangeController.m */; };
+		EC5E26A71D8703560040986B /* FSProductChangeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5E26A51D8703560040986B /* FSProductChangeCell.m */; };
+		EC5E26A81D8703560040986B /* FSProductChangeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC5E26A61D8703560040986B /* FSProductChangeCell.xib */; };
 		EC6E3CFB1D7860FE00DA5588 /* CZJProvinceForm.m in Sources */ = {isa = PBXBuildFile; fileRef = EC6E3CFA1D7860FE00DA5588 /* CZJProvinceForm.m */; };
 		EC6E3CFF1D78786700DA5588 /* CZJOrderListPayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC6E3CFD1D78786700DA5588 /* CZJOrderListPayCell.m */; };
 		EC6E3D001D78786700DA5588 /* CZJOrderListPayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC6E3CFE1D78786700DA5588 /* CZJOrderListPayCell.xib */; };
@@ -1038,6 +1041,11 @@
 		EC54B6BC1D8068EA0082E029 /* CZJAddDeliveryAddrCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJAddDeliveryAddrCell.h; sourceTree = "<group>"; };
 		EC54B6BD1D8068EA0082E029 /* CZJAddDeliveryAddrCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJAddDeliveryAddrCell.m; sourceTree = "<group>"; };
 		EC54B6BE1D8068EA0082E029 /* CZJAddDeliveryAddrCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJAddDeliveryAddrCell.xib; sourceTree = "<group>"; };
+		EC5E26A11D86FB480040986B /* FSProductChangeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSProductChangeController.h; sourceTree = "<group>"; };
+		EC5E26A21D86FB480040986B /* FSProductChangeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSProductChangeController.m; sourceTree = "<group>"; };
+		EC5E26A41D8703560040986B /* FSProductChangeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSProductChangeCell.h; sourceTree = "<group>"; };
+		EC5E26A51D8703560040986B /* FSProductChangeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSProductChangeCell.m; sourceTree = "<group>"; };
+		EC5E26A61D8703560040986B /* FSProductChangeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSProductChangeCell.xib; sourceTree = "<group>"; };
 		EC6E3CF91D7860FE00DA5588 /* CZJProvinceForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJProvinceForm.h; sourceTree = "<group>"; };
 		EC6E3CFA1D7860FE00DA5588 /* CZJProvinceForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJProvinceForm.m; sourceTree = "<group>"; };
 		EC6E3CFC1D78786700DA5588 /* CZJOrderListPayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJOrderListPayCell.h; sourceTree = "<group>"; };
@@ -1507,6 +1515,8 @@
 				EC4597FF1D757960004424A4 /* Cells */,
 				EC4598061D757960004424A4 /* FSServiceStepController.h */,
 				EC4598071D757960004424A4 /* FSServiceStepController.m */,
+				EC5E26A11D86FB480040986B /* FSProductChangeController.h */,
+				EC5E26A21D86FB480040986B /* FSProductChangeController.m */,
 			);
 			path = StepList;
 			sourceTree = "<group>";
@@ -1514,6 +1524,9 @@
 		EC4597FF1D757960004424A4 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				EC5E26A41D8703560040986B /* FSProductChangeCell.h */,
+				EC5E26A51D8703560040986B /* FSProductChangeCell.m */,
+				EC5E26A61D8703560040986B /* FSProductChangeCell.xib */,
 				EC6E3CFC1D78786700DA5588 /* CZJOrderListPayCell.h */,
 				EC6E3CFD1D78786700DA5588 /* CZJOrderListPayCell.m */,
 				EC6E3CFE1D78786700DA5588 /* CZJOrderListPayCell.xib */,
@@ -3051,6 +3064,7 @@
 				EC5427351D237AF500F3B4BF /* LaunchScreen.storyboard in Resources */,
 				EC54299D1D237E7700F3B4BF /* wl_map_icon_4@2x.png in Resources */,
 				EC4598141D757960004424A4 /* FSServiceCell.xib in Resources */,
+				EC5E26A81D8703560040986B /* FSProductChangeCell.xib in Resources */,
 				ECCEE38D1D6C8AAE0034D4F2 /* request_loading_4@2x.png in Resources */,
 				EC5429C51D237E7700F3B4BF /* MultilevelCollectionViewCell.xib in Resources */,
 				EC857BA11D7F0CFE00DF2D02 /* FSPageCell.xib in Resources */,
@@ -3136,6 +3150,7 @@
 				EC54298A1D237E7700F3B4BF /* LXDSegmentControlConfiguration.m in Sources */,
 				EC5429821D237E7700F3B4BF /* LJWKeyboardHandler.m in Sources */,
 				EC3A18E91D41F13F00F6F193 /* FSMyViewedController.m in Sources */,
+				EC5E26A31D86FB480040986B /* FSProductChangeController.m in Sources */,
 				EC542A061D237E7700F3B4BF /* UIImageView+WebCache.m in Sources */,
 				EC95ED501D606A63005A50B7 /* UIImageView+AFNetworking.m in Sources */,
 				EC5429781D237E7700F3B4BF /* KMCGeigerCounter.m in Sources */,
@@ -3202,6 +3217,7 @@
 				EC3221191D77A8AE00E4019C /* CZJStoreMAAroundForm.m in Sources */,
 				EC54278E1D237DE000F3B4BF /* PBaseTableViewCell.m in Sources */,
 				EC54B6BA1D8068980082E029 /* CZJDeliveryAddrCell.m in Sources */,
+				EC5E26A71D8703560040986B /* FSProductChangeCell.m in Sources */,
 				EC542A031D237E7700F3B4BF /* UIImage+MultiFormat.m in Sources */,
 				EC45981A1D757960004424A4 /* FSServiceStepCell.m in Sources */,
 				EC5429D41D237E7700F3B4BF /* PhotoView.m in Sources */,
