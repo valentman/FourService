@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FSGoodsDetailController : UIViewController
+@interface FSGoodsDetailController : PBaseViewController
 @property (strong, nonatomic) FSServiceStepProductForm* productForm;
 @end

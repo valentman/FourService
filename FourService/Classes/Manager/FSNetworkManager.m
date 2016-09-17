@@ -25,8 +25,6 @@ singleton_implementation(FSNetworkManager)
 }
 
 
-
-
 - (void)checkNetWorkStatus
 {
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status)
@@ -63,7 +61,7 @@ singleton_implementation(FSNetworkManager)
                    fail:(FailureBlockHandler)fail
 {
     NSString* path =  [self getPath:urlStr];
-    DLog(@"\nServerAPI:%@, \nParameter:%@",path,[parameters description]);
+    iLog(@"\nServerAPI:%@, \nParameter:%@",path,[parameters description]);
     
     //这里暂时设置成Get方式。
     [self postJSONWithUrl:path withRequestType:AFRequestTypeGet parameters:parameters success:success fail:fail];

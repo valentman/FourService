@@ -7,8 +7,6 @@
 //
 
 
-
-
 #import <Foundation/Foundation.h>
 //服务项目数据、服务列表
 @interface FSServiceListForm : NSObject
@@ -71,6 +69,29 @@
 @property (strong, nonatomic) NSString* lng;
 @property (strong, nonatomic) NSArray* service_list;
 @property (strong, nonatomic) NSArray* shop_image_list;
+@property (strong, nonatomic) NSArray* comment_list;
+@end
+
+@interface FSStoreCommentForm : NSObject
+@property(nonatomic, strong) NSString* order_comment_id;
+@property(nonatomic, strong) NSString* shop_id;
+@property(nonatomic, strong) NSString* order_id;
+@property(nonatomic, strong) NSString* customer_id;
+@property(nonatomic, strong) NSString* comment_time;
+@property(nonatomic, strong) NSString* content;
+@property(nonatomic, strong) NSString* comment_status;
+@property(nonatomic, strong) NSString* comment_score;
+@property(nonatomic, strong) NSString* username;
+@property(nonatomic, strong) NSString* customer_pho;
+@property(nonatomic, strong) NSArray* comment_image_list;
+@end
+
+@interface FSStoreCommentImageForm : NSObject
+@property(nonatomic, strong) NSString* order_comment_image_id;
+@property(nonatomic, strong) NSString* order_comment_id;
+@property(nonatomic, strong) NSString* image_name;
+@property(nonatomic, strong) NSString* image_url;
+@property(nonatomic, strong) NSString* create_time;
 @end
 
 //服务套餐ABC数据
@@ -112,4 +133,63 @@
 @property (strong, nonatomic) NSString* product_num;
 @property (strong, nonatomic) NSString* product_type_id;
 @property (strong, nonatomic) NSString* product_item_id;
+@end
+
+
+//商品详情数据
+@interface FSProductDetailForm : NSObject
+@property (strong, nonatomic) NSString* product_id;
+@property (strong, nonatomic) NSString* type_id;
+@property (strong, nonatomic) NSString* brand_id;
+@property (strong, nonatomic) NSString* product_item_id;
+@property (strong, nonatomic) NSString* product_name;
+@property (strong, nonatomic) NSString* product_desc;
+@property (strong, nonatomic) NSString* product_bar_code;
+@property (strong, nonatomic) NSString* product_section_code;
+@property (strong, nonatomic) NSString* production_date;
+@property (strong, nonatomic) NSString* product_material;
+@property (strong, nonatomic) NSString* product_type;
+@property (strong, nonatomic) NSString* product_like_num;
+@property (strong, nonatomic) NSString* product_view_num;
+@property (strong, nonatomic) NSString* product_comment_num;
+@property (strong, nonatomic) NSString* product_favorite_num;
+@property (strong, nonatomic) NSString* product_buy_num;
+@property (strong, nonatomic) NSArray* product_image_list;
+@property (strong, nonatomic) NSString* item_name;
+@property (strong, nonatomic) NSString* item_color;
+@property (strong, nonatomic) NSString* item_size;
+@property (strong, nonatomic) NSString* sale_price;
+@property (strong, nonatomic) NSString* stock;
+@property (strong, nonatomic) NSArray* comment_list;
+@end
+
+
+//商品图片
+@interface FSProductImageForm : NSObject
+@property (strong, nonatomic) NSString* img_id;
+@property (strong, nonatomic) NSString* product_id;
+@property (strong, nonatomic) NSString* img_url;
+@property (strong, nonatomic) NSString* img_name;
+@end
+
+
+//评论列表
+@interface FSCommentForm : NSObject
+@property (strong, nonatomic) NSString* comment_id;
+@property (strong, nonatomic) NSString* product_id;
+@property (strong, nonatomic) NSString* customer_id;
+@property (strong, nonatomic) NSString* product_comment;
+@property (strong, nonatomic) NSString* comment_time;
+@property (strong, nonatomic) NSString* comment_status;
+@property (strong, nonatomic) NSString* username;
+@property (strong, nonatomic) NSString* customer_pho;
+@property (strong, nonatomic) NSArray* comment_image_list;
+@end
+
+//评论图片
+@interface FSCommentImageForm : NSObject
+@property (strong, nonatomic) NSString* product_comment_image_id;
+@property (strong, nonatomic) NSString* product_comment_id;
+@property (strong, nonatomic) NSString* image_name;
+@property (strong, nonatomic) NSString* image_url;
 @end

@@ -49,6 +49,9 @@ singleton_implementation(FSBaseDataManager);
 
         _userInfoForm = [[UserBaseForm alloc]init];
         [self initPostBaseParameters];
+        
+        NSArray* dict = [PUtils readArrayFromBundleDirectoryWithName:@"PaymentType"];
+        _orderPaymentTypeAry = [CZJOrderTypeForm objectArrayWithKeyValuesArray:dict];
         return self;
     }
     return nil;
@@ -63,6 +66,19 @@ singleton_implementation(FSBaseDataManager);
                                  @"suffix" : ((iPhone6Plus || iPhone6) ? @"@3x" : @"@2x")
                                  };
     _baseParams = [_tmpparams mutableCopy];
+}
+
+- (NSArray*)orderPaymentTypeAry
+{
+    for (CZJOrderTypeForm* form in _orderPaymentTypeAry)
+    {
+        form.isSelect = NO;
+        if ([form.orderTypeName isEqualToString:@"到店支付"])
+        {
+            form.isSelect = YES;
+        }
+    }
+    return _orderPaymentTypeAry;
 }
 
 - (void)refreshChezhuID

@@ -88,6 +88,7 @@
 
 @interface CZJOrderTypeForm : NSObject
 @property(strong, nonatomic)NSString* orderTypeName;
+@property(strong, nonatomic)NSString* orderTypeImgSelect;
 @property(strong, nonatomic)NSString* orderTypeImg;
 @property(assign) BOOL isSelect;
 @end

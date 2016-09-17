@@ -210,6 +210,11 @@ FSMyInfoButtomViewDelegate
             
             //服务器返回数据本地化，全部转化为模型数据存储在数组中
             myInfoForm = [UserBaseForm objectWithKeyValues:dict];
+            myInfoForm.identifier = FSBaseDataInstance.userInfoForm.identifier;
+            myInfoForm.token = FSBaseDataInstance.userInfoForm.token;
+            FSBaseDataInstance.userInfoForm = myInfoForm;
+            [PUtils writeDictionaryToDocumentsDirectory:[FSBaseDataInstance.userInfoForm.keyValues mutableCopy] withPlistName:kCZJPlistFileUserBaseForm];
+
             carListAry = [FSCarListForm objectArrayWithKeyValuesArray:[dict valueForKey:@"car_list"]];
             [weakSelf updateOrderData:dict];
             //更新表格

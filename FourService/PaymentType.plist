@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>isSelect</key>
+		<true/>
+		<key>orderTypeName</key>
+		<string>到店支付</string>
+		<key>orderTypeImg</key>
+		<string>orderCommit_PayInStoreGray</string>
+		<key>orderTypeImgSelect</key>
+		<string>orderCommit_PayInStore</string>
+	</dict>
+	<dict>
+		<key>isSelect</key>
+		<false/>
+		<key>orderTypeName</key>
+		<string>在线支付</string>
+		<key>orderTypeImg</key>
+		<string>orderCommit_PayOnLineGray</string>
+		<key>orderTypeImgSelect</key>
+		<string>orderCommit_PayOnLine</string>
+	</dict>
+</array>
+</plist>

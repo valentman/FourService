@@ -135,7 +135,6 @@
 		EC5427911D237DE000F3B4BF /* LSPageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5427731D237DE000F3B4BF /* LSPageScrollView.m */; };
 		EC54279E1D237E0500F3B4BF /* FSBaseDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5427931D237E0500F3B4BF /* FSBaseDataManager.m */; };
 		EC54279F1D237E0500F3B4BF /* FSErrorCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5427951D237E0500F3B4BF /* FSErrorCodeManager.m */; };
-		EC5427A01D237E0500F3B4BF /* FSLoginModelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5427971D237E0500F3B4BF /* FSLoginModelManager.m */; };
 		EC5427A11D237E0500F3B4BF /* FSMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5427991D237E0500F3B4BF /* FSMessageManager.m */; };
 		EC5427A21D237E0500F3B4BF /* FSNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC54279B1D237E0500F3B4BF /* FSNetworkManager.m */; };
 		EC5427A31D237E0500F3B4BF /* FSPaymentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC54279D1D237E0500F3B4BF /* FSPaymentManager.m */; };
@@ -334,6 +333,11 @@
 		EC54B6BB1D8068980082E029 /* CZJDeliveryAddrCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC54B6B91D8068980082E029 /* CZJDeliveryAddrCell.xib */; };
 		EC54B6BF1D8068EA0082E029 /* CZJAddDeliveryAddrCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC54B6BD1D8068EA0082E029 /* CZJAddDeliveryAddrCell.m */; };
 		EC54B6C01D8068EA0082E029 /* CZJAddDeliveryAddrCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC54B6BE1D8068EA0082E029 /* CZJAddDeliveryAddrCell.xib */; };
+		EC57A2B61D8B7111006DDA7F /* FSOrderContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC57A2B41D8B7111006DDA7F /* FSOrderContactCell.m */; };
+		EC57A2B71D8B7111006DDA7F /* FSOrderContactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC57A2B51D8B7111006DDA7F /* FSOrderContactCell.xib */; };
+		EC57A2BB1D8B79BD006DDA7F /* FSOrderProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC57A2B91D8B79BD006DDA7F /* FSOrderProductCell.m */; };
+		EC57A2BC1D8B79BD006DDA7F /* FSOrderProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC57A2BA1D8B79BD006DDA7F /* FSOrderProductCell.xib */; };
+		EC57A2C01D8BD990006DDA7F /* PaymentType.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC57A2BF1D8BD990006DDA7F /* PaymentType.plist */; };
 		EC5E26A31D86FB480040986B /* FSProductChangeController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5E26A21D86FB480040986B /* FSProductChangeController.m */; };
 		EC5E26A71D8703560040986B /* FSProductChangeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5E26A51D8703560040986B /* FSProductChangeCell.m */; };
 		EC5E26A81D8703560040986B /* FSProductChangeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC5E26A61D8703560040986B /* FSProductChangeCell.xib */; };
@@ -408,6 +412,18 @@
 		ECD538091D46646600D136EF /* CZJAddMyCarController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD538081D46646600D136EF /* CZJAddMyCarController.m */; };
 		ECD5380E1D4666A900D136EF /* Address.plist in Resources */ = {isa = PBXBuildFile; fileRef = ECD5380B1D4666A900D136EF /* Address.plist */; };
 		ECD5380F1D4666A900D136EF /* GKHpickerAddressView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD5380D1D4666A900D136EF /* GKHpickerAddressView.m */; };
+		ECDDD4EB1D8CDF20009082DB /* FSProductNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDDD4E91D8CDF20009082DB /* FSProductNameCell.m */; };
+		ECDDD4EC1D8CDF20009082DB /* FSProductNameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECDDD4EA1D8CDF20009082DB /* FSProductNameCell.xib */; };
+		ECDDD4F01D8CE1C8009082DB /* CZJDetailReturnableAnyWayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDDD4EE1D8CE1C8009082DB /* CZJDetailReturnableAnyWayCell.m */; };
+		ECDDD4F11D8CE1C8009082DB /* CZJDetailReturnableAnyWayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECDDD4EF1D8CE1C8009082DB /* CZJDetailReturnableAnyWayCell.xib */; };
+		ECDDD4F51D8CE20C009082DB /* FSProductPriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDDD4F31D8CE20C009082DB /* FSProductPriceCell.m */; };
+		ECDDD4F61D8CE20C009082DB /* FSProductPriceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECDDD4F41D8CE20C009082DB /* FSProductPriceCell.xib */; };
+		ECDDD4FA1D8CE736009082DB /* FSProductEvaluateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDDD4F81D8CE736009082DB /* FSProductEvaluateCell.m */; };
+		ECDDD4FB1D8CE736009082DB /* FSProductEvaluateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECDDD4F91D8CE736009082DB /* FSProductEvaluateCell.xib */; };
+		ECDDD4FF1D8CEB95009082DB /* FSProductEvaluateHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDDD4FD1D8CEB95009082DB /* FSProductEvaluateHeadCell.m */; };
+		ECDDD5001D8CEB95009082DB /* FSProductEvaluateHeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECDDD4FE1D8CEB95009082DB /* FSProductEvaluateHeadCell.xib */; };
+		ECDDD5041D8CF069009082DB /* CZJOrderTypeExpandCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDDD5021D8CF069009082DB /* CZJOrderTypeExpandCell.m */; };
+		ECDDD5051D8CF069009082DB /* CZJOrderTypeExpandCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECDDD5031D8CF069009082DB /* CZJOrderTypeExpandCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -607,8 +623,6 @@
 		EC5427931D237E0500F3B4BF /* FSBaseDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBaseDataManager.m; sourceTree = "<group>"; };
 		EC5427941D237E0500F3B4BF /* FSErrorCodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSErrorCodeManager.h; sourceTree = "<group>"; };
 		EC5427951D237E0500F3B4BF /* FSErrorCodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSErrorCodeManager.m; sourceTree = "<group>"; };
-		EC5427961D237E0500F3B4BF /* FSLoginModelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSLoginModelManager.h; sourceTree = "<group>"; };
-		EC5427971D237E0500F3B4BF /* FSLoginModelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSLoginModelManager.m; sourceTree = "<group>"; };
 		EC5427981D237E0500F3B4BF /* FSMessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMessageManager.h; sourceTree = "<group>"; };
 		EC5427991D237E0500F3B4BF /* FSMessageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMessageManager.m; sourceTree = "<group>"; };
 		EC54279A1D237E0500F3B4BF /* FSNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSNetworkManager.h; sourceTree = "<group>"; };
@@ -1041,6 +1055,13 @@
 		EC54B6BC1D8068EA0082E029 /* CZJAddDeliveryAddrCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJAddDeliveryAddrCell.h; sourceTree = "<group>"; };
 		EC54B6BD1D8068EA0082E029 /* CZJAddDeliveryAddrCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJAddDeliveryAddrCell.m; sourceTree = "<group>"; };
 		EC54B6BE1D8068EA0082E029 /* CZJAddDeliveryAddrCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJAddDeliveryAddrCell.xib; sourceTree = "<group>"; };
+		EC57A2B31D8B7111006DDA7F /* FSOrderContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSOrderContactCell.h; sourceTree = "<group>"; };
+		EC57A2B41D8B7111006DDA7F /* FSOrderContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSOrderContactCell.m; sourceTree = "<group>"; };
+		EC57A2B51D8B7111006DDA7F /* FSOrderContactCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSOrderContactCell.xib; sourceTree = "<group>"; };
+		EC57A2B81D8B79BD006DDA7F /* FSOrderProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSOrderProductCell.h; sourceTree = "<group>"; };
+		EC57A2B91D8B79BD006DDA7F /* FSOrderProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSOrderProductCell.m; sourceTree = "<group>"; };
+		EC57A2BA1D8B79BD006DDA7F /* FSOrderProductCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSOrderProductCell.xib; sourceTree = "<group>"; };
+		EC57A2BF1D8BD990006DDA7F /* PaymentType.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PaymentType.plist; sourceTree = "<group>"; };
 		EC5E26A11D86FB480040986B /* FSProductChangeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSProductChangeController.h; sourceTree = "<group>"; };
 		EC5E26A21D86FB480040986B /* FSProductChangeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSProductChangeController.m; sourceTree = "<group>"; };
 		EC5E26A41D8703560040986B /* FSProductChangeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSProductChangeCell.h; sourceTree = "<group>"; };
@@ -1172,6 +1193,24 @@
 		ECD5380B1D4666A900D136EF /* Address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Address.plist; sourceTree = "<group>"; };
 		ECD5380C1D4666A900D136EF /* GKHpickerAddressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKHpickerAddressView.h; sourceTree = "<group>"; };
 		ECD5380D1D4666A900D136EF /* GKHpickerAddressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKHpickerAddressView.m; sourceTree = "<group>"; };
+		ECDDD4E81D8CDF20009082DB /* FSProductNameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSProductNameCell.h; sourceTree = "<group>"; };
+		ECDDD4E91D8CDF20009082DB /* FSProductNameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSProductNameCell.m; sourceTree = "<group>"; };
+		ECDDD4EA1D8CDF20009082DB /* FSProductNameCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSProductNameCell.xib; sourceTree = "<group>"; };
+		ECDDD4ED1D8CE1C8009082DB /* CZJDetailReturnableAnyWayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJDetailReturnableAnyWayCell.h; sourceTree = "<group>"; };
+		ECDDD4EE1D8CE1C8009082DB /* CZJDetailReturnableAnyWayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJDetailReturnableAnyWayCell.m; sourceTree = "<group>"; };
+		ECDDD4EF1D8CE1C8009082DB /* CZJDetailReturnableAnyWayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJDetailReturnableAnyWayCell.xib; sourceTree = "<group>"; };
+		ECDDD4F21D8CE20C009082DB /* FSProductPriceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSProductPriceCell.h; sourceTree = "<group>"; };
+		ECDDD4F31D8CE20C009082DB /* FSProductPriceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSProductPriceCell.m; sourceTree = "<group>"; };
+		ECDDD4F41D8CE20C009082DB /* FSProductPriceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSProductPriceCell.xib; sourceTree = "<group>"; };
+		ECDDD4F71D8CE736009082DB /* FSProductEvaluateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSProductEvaluateCell.h; sourceTree = "<group>"; };
+		ECDDD4F81D8CE736009082DB /* FSProductEvaluateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSProductEvaluateCell.m; sourceTree = "<group>"; };
+		ECDDD4F91D8CE736009082DB /* FSProductEvaluateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSProductEvaluateCell.xib; sourceTree = "<group>"; };
+		ECDDD4FC1D8CEB95009082DB /* FSProductEvaluateHeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSProductEvaluateHeadCell.h; sourceTree = "<group>"; };
+		ECDDD4FD1D8CEB95009082DB /* FSProductEvaluateHeadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSProductEvaluateHeadCell.m; sourceTree = "<group>"; };
+		ECDDD4FE1D8CEB95009082DB /* FSProductEvaluateHeadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSProductEvaluateHeadCell.xib; sourceTree = "<group>"; };
+		ECDDD5011D8CF069009082DB /* CZJOrderTypeExpandCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJOrderTypeExpandCell.h; sourceTree = "<group>"; };
+		ECDDD5021D8CF069009082DB /* CZJOrderTypeExpandCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJOrderTypeExpandCell.m; sourceTree = "<group>"; };
+		ECDDD5031D8CF069009082DB /* CZJOrderTypeExpandCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJOrderTypeExpandCell.xib; sourceTree = "<group>"; };
 		ECEFBA851D2616A3000460A5 /* FSDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSDefinition.h; path = SupportFiles/FSDefinition.h; sourceTree = "<group>"; };
 		ECEFBA861D2616A3000460A5 /* PJMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PJMacros.h; path = SupportFiles/PJMacros.h; sourceTree = "<group>"; };
 		ECEFBA871D2616A3000460A5 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefix.pch; path = SupportFiles/Prefix.pch; sourceTree = "<group>"; };
@@ -1295,6 +1334,24 @@
 		EC3220EF1D77A36F00E4019C /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				ECDDD4E81D8CDF20009082DB /* FSProductNameCell.h */,
+				ECDDD4E91D8CDF20009082DB /* FSProductNameCell.m */,
+				ECDDD4EA1D8CDF20009082DB /* FSProductNameCell.xib */,
+				ECDDD4ED1D8CE1C8009082DB /* CZJDetailReturnableAnyWayCell.h */,
+				ECDDD4EE1D8CE1C8009082DB /* CZJDetailReturnableAnyWayCell.m */,
+				ECDDD4EF1D8CE1C8009082DB /* CZJDetailReturnableAnyWayCell.xib */,
+				ECDDD4F21D8CE20C009082DB /* FSProductPriceCell.h */,
+				ECDDD4F31D8CE20C009082DB /* FSProductPriceCell.m */,
+				ECDDD4F41D8CE20C009082DB /* FSProductPriceCell.xib */,
+				ECDDD4F71D8CE736009082DB /* FSProductEvaluateCell.h */,
+				ECDDD4F81D8CE736009082DB /* FSProductEvaluateCell.m */,
+				ECDDD4F91D8CE736009082DB /* FSProductEvaluateCell.xib */,
+				ECDDD4FC1D8CEB95009082DB /* FSProductEvaluateHeadCell.h */,
+				ECDDD4FD1D8CEB95009082DB /* FSProductEvaluateHeadCell.m */,
+				ECDDD4FE1D8CEB95009082DB /* FSProductEvaluateHeadCell.xib */,
+				ECDDD5011D8CF069009082DB /* CZJOrderTypeExpandCell.h */,
+				ECDDD5021D8CF069009082DB /* CZJOrderTypeExpandCell.m */,
+				ECDDD5031D8CF069009082DB /* CZJOrderTypeExpandCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1639,8 +1696,6 @@
 				EC5427931D237E0500F3B4BF /* FSBaseDataManager.m */,
 				EC5427941D237E0500F3B4BF /* FSErrorCodeManager.h */,
 				EC5427951D237E0500F3B4BF /* FSErrorCodeManager.m */,
-				EC5427961D237E0500F3B4BF /* FSLoginModelManager.h */,
-				EC5427971D237E0500F3B4BF /* FSLoginModelManager.m */,
 				EC5427981D237E0500F3B4BF /* FSMessageManager.h */,
 				EC5427991D237E0500F3B4BF /* FSMessageManager.m */,
 				EC54279A1D237E0500F3B4BF /* FSNetworkManager.h */,
@@ -2691,6 +2746,7 @@
 		EC7760D91D2223D500E1A89F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EC57A2BF1D8BD990006DDA7F /* PaymentType.plist */,
 				EC2AC6891D4A4EDF0065D67C /* Province.plist */,
 				ECEFBA851D2616A3000460A5 /* FSDefinition.h */,
 				ECEFBA861D2616A3000460A5 /* PJMacros.h */,
@@ -2727,6 +2783,12 @@
 				EC857B961D7F069E00DF2D02 /* CZJOrderTypeCell.h */,
 				EC857B971D7F069E00DF2D02 /* CZJOrderTypeCell.m */,
 				EC857B981D7F069E00DF2D02 /* CZJOrderTypeCell.xib */,
+				EC57A2B31D8B7111006DDA7F /* FSOrderContactCell.h */,
+				EC57A2B41D8B7111006DDA7F /* FSOrderContactCell.m */,
+				EC57A2B51D8B7111006DDA7F /* FSOrderContactCell.xib */,
+				EC57A2B81D8B79BD006DDA7F /* FSOrderProductCell.h */,
+				EC57A2B91D8B79BD006DDA7F /* FSOrderProductCell.m */,
+				EC57A2BA1D8B79BD006DDA7F /* FSOrderProductCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -3031,6 +3093,7 @@
 				EC45981B1D757960004424A4 /* FSServiceStepCell.xib in Resources */,
 				EC5429981D237E7700F3B4BF /* wl_map_icon_1.png in Resources */,
 				EC54299A1D237E7700F3B4BF /* wl_map_icon_1_press.png in Resources */,
+				ECDDD5001D8CEB95009082DB /* FSProductEvaluateHeadCell.xib in Resources */,
 				EC06628E1D7048DD006B62D2 /* CZJOneButtonCell.xib in Resources */,
 				EC54277D1D237DE000F3B4BF /* FSBackgroundPromptView.xib in Resources */,
 				EC4598121D757960004424A4 /* FSHomeNotifyCell.xib in Resources */,
@@ -3049,15 +3112,18 @@
 				ECA233E61D37DC8F004C2679 /* CZJMyInfoShoppingCartCell.xib in Resources */,
 				EC5429A21D237E7700F3B4BF /* wl_map_icon_position_press.png in Resources */,
 				EC4598161D757960004424A4 /* FSTopAddCarCell.xib in Resources */,
+				ECDDD5051D8CF069009082DB /* CZJOrderTypeExpandCell.xib in Resources */,
 				EC542A191D237E7700F3B4BF /* pop@3x.png in Resources */,
 				EC5429841D237E7700F3B4BF /* Resources.bundle in Resources */,
 				EC54299F1D237E7700F3B4BF /* wl_map_icon_5@2x.png in Resources */,
 				EC5427881D237DE000F3B4BF /* LoadingFailedAlertView.xib in Resources */,
+				EC57A2B71D8B7111006DDA7F /* FSOrderContactCell.xib in Resources */,
 				EC474B3B1D5EFCAB00B54B0F /* FSMyinfoButtomView.xib in Resources */,
 				EC0662961D7048DD006B62D2 /* CZJOrderReturnedListCell.xib in Resources */,
 				EC54297D1D237E7700F3B4BF /* KSRefresh.bundle in Resources */,
 				EC0662901D7048DD006B62D2 /* CZJOrderListCell.xib in Resources */,
 				EC54298B1D237E7700F3B4BF /* anjuke_icon_itis_position.png in Resources */,
+				EC57A2BC1D8B79BD006DDA7F /* FSOrderProductCell.xib in Resources */,
 				EC18DE971D450CEA006CB460 /* CZJMyCarListCell.xib in Resources */,
 				EC542A181D237E7700F3B4BF /* pop@2x.png in Resources */,
 				EC2AC68A1D4A4EDF0065D67C /* Province.plist in Resources */,
@@ -3081,13 +3147,17 @@
 				EC45981D1D757960004424A4 /* FSServiceStepGoodsCell.xib in Resources */,
 				EC4598201D757960004424A4 /* FSServiceStoreCell.xib in Resources */,
 				EC54277F1D237DE000F3B4BF /* FSButtomView.xib in Resources */,
+				ECDDD4FB1D8CE736009082DB /* FSProductEvaluateCell.xib in Resources */,
 				ECA233E01D37DC8F004C2679 /* CZJGeneralCell.xib in Resources */,
 				ECCEE38B1D6C8AAE0034D4F2 /* request_loading_2@2x.png in Resources */,
 				EC542AEB1D239B8A00F3B4BF /* AlipaySDK.bundle in Resources */,
 				EC5429CA1D237E7700F3B4BF /* MXPullDownCollectionViewCell.xib in Resources */,
 				EC7760E61D2223D500E1A89F /* Assets.xcassets in Resources */,
 				EC5429C31D237E7700F3B4BF /* CollectionHeader.xib in Resources */,
+				EC57A2C01D8BD990006DDA7F /* PaymentType.plist in Resources */,
 				EC54299C1D237E7700F3B4BF /* wl_map_icon_4.png in Resources */,
+				ECDDD4EC1D8CDF20009082DB /* FSProductNameCell.xib in Resources */,
+				ECDDD4F61D8CE20C009082DB /* FSProductPriceCell.xib in Resources */,
 				EC026F2A1D2B852F00CA8CEB /* FSActivityCell.xib in Resources */,
 				EC06628A1D7048DD006B62D2 /* CZJCommitReturnReasonCell.xib in Resources */,
 				EC54277B1D237DE000F3B4BF /* FSAlertView.xib in Resources */,
@@ -3101,6 +3171,7 @@
 				EC5429991D237E7700F3B4BF /* wl_map_icon_1@2x.png in Resources */,
 				ECCEE3911D6C8AAE0034D4F2 /* request_loading_8@2x.png in Resources */,
 				EC4598181D757960004424A4 /* FSTopCarInfoBarView.xib in Resources */,
+				ECDDD4F11D8CE1C8009082DB /* CZJDetailReturnableAnyWayCell.xib in Resources */,
 				ECA233E21D37DC8F004C2679 /* CZJGeneralSubCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3121,6 +3192,7 @@
 				EC90646F1D47BF8A00E9554F /* CZJReceiveCouponsCell.m in Sources */,
 				EC542A771D23979500F3B4BF /* UIView+Frame.m in Sources */,
 				EC5429B71D237E7700F3B4BF /* MJRefreshBackNormalFooter.m in Sources */,
+				EC57A2BB1D8B79BD006DDA7F /* FSOrderProductCell.m in Sources */,
 				EC5429761D237E7700F3B4BF /* README.markdown in Sources */,
 				EC542AEF1D239B8A00F3B4BF /* Order.m in Sources */,
 				EC542A741D23979500F3B4BF /* NSString+Valid.m in Sources */,
@@ -3158,6 +3230,7 @@
 				EC4598131D757960004424A4 /* FSServiceCell.m in Sources */,
 				EC542AEA1D239B8A00F3B4BF /* AliPayManager.m in Sources */,
 				EC5429AA1D237E7700F3B4BF /* NSObject+MJCoding.m in Sources */,
+				ECDDD4F51D8CE20C009082DB /* FSProductPriceCell.m in Sources */,
 				EC6E89271D7EE7BE00829220 /* FSCommitOrderController.m in Sources */,
 				EC54295C1D237E7700F3B4BF /* AFURLRequestSerialization.m in Sources */,
 				EC026F331D2B897200CA8CEB /* FSRecommendInfoCell.m in Sources */,
@@ -3187,6 +3260,7 @@
 				EC5429BD1D237E7700F3B4BF /* MJRefreshConst.m in Sources */,
 				EC4598191D757960004424A4 /* FSServiceListController.m in Sources */,
 				EC54B6BF1D8068EA0082E029 /* CZJAddDeliveryAddrCell.m in Sources */,
+				ECDDD4EB1D8CDF20009082DB /* FSProductNameCell.m in Sources */,
 				EC45981E1D757960004424A4 /* FSServiceStepController.m in Sources */,
 				EC54295A1D237E7700F3B4BF /* AFSecurityPolicy.m in Sources */,
 				ECB422B91D4912AA00D20A9D /* PWUploadImageButton.m in Sources */,
@@ -3204,6 +3278,8 @@
 				EC542A711D23979500F3B4BF /* NSDate+Category.m in Sources */,
 				EC5429D21D237E7700F3B4BF /* CALayer+Anim.m in Sources */,
 				EC5429D11D237E7700F3B4BF /* OpenShare.m in Sources */,
+				ECDDD4FA1D8CE736009082DB /* FSProductEvaluateCell.m in Sources */,
+				ECDDD5041D8CF069009082DB /* CZJOrderTypeExpandCell.m in Sources */,
 				EC4598171D757960004424A4 /* FSTopCarInfoBarView.m in Sources */,
 				EC5429D51D237E7700F3B4BF /* WyzAlbumViewController.m in Sources */,
 				EC5429591D237E7700F3B4BF /* AFNetworkReachabilityManager.m in Sources */,
@@ -3215,6 +3291,7 @@
 				EC54278F1D237DE000F3B4BF /* FSTextView.m in Sources */,
 				EC542A101D237E7700F3B4BF /* VPImageCropperViewController.m in Sources */,
 				EC3221191D77A8AE00E4019C /* CZJStoreMAAroundForm.m in Sources */,
+				ECDDD4FF1D8CEB95009082DB /* FSProductEvaluateHeadCell.m in Sources */,
 				EC54278E1D237DE000F3B4BF /* PBaseTableViewCell.m in Sources */,
 				EC54B6BA1D8068980082E029 /* CZJDeliveryAddrCell.m in Sources */,
 				EC5E26A71D8703560040986B /* FSProductChangeCell.m in Sources */,
@@ -3287,6 +3364,7 @@
 				EC542AF71D239B8A00F3B4BF /* RSADataVerifier.m in Sources */,
 				EC95ED521D606A63005A50B7 /* UIRefreshControl+AFNetworking.m in Sources */,
 				EC1261AE1D4CECB90082378D /* CZJGoodsAttentionCell.m in Sources */,
+				ECDDD4F01D8CE1C8009082DB /* CZJDetailReturnableAnyWayCell.m in Sources */,
 				EC542A7A1D23979500F3B4BF /* UIViewController+HUD.m in Sources */,
 				EC026F2E1D2B894700CA8CEB /* FSLotteryCell.m in Sources */,
 				EC5429BB1D237E7700F3B4BF /* MJRefreshStateHeader.m in Sources */,
@@ -3320,6 +3398,7 @@
 				EC542A3C1D237EF500F3B4BF /* PUtils.m in Sources */,
 				EC5429C91D237E7700F3B4BF /* MXPullDownCollectionViewCell.m in Sources */,
 				ECD538091D46646600D136EF /* CZJAddMyCarController.m in Sources */,
+				EC57A2B61D8B7111006DDA7F /* FSOrderContactCell.m in Sources */,
 				EC542A111D237E7700F3B4BF /* WebViewJavascriptBridge.m in Sources */,
 				EC54297C1D237E7700F3B4BF /* KSDefaultHeadRefreshView.m in Sources */,
 				ECA233CE1D37DB78004C2679 /* FSMyInformationController.m in Sources */,
@@ -3374,7 +3453,6 @@
 				EC542A011D237E7700F3B4BF /* UIButton+WebCache.m in Sources */,
 				EC5429AC1D237E7700F3B4BF /* NSObject+MJProperty.m in Sources */,
 				EC5429801D237E7700F3B4BF /* LewPickerController.m in Sources */,
-				EC5427A01D237E0500F3B4BF /* FSLoginModelManager.m in Sources */,
 				EC5429931D237E7700F3B4BF /* LocIsBaidu.m in Sources */,
 				EC0662701D7045FF006B62D2 /* CZJPopPayViewController.m in Sources */,
 				EC54297F1D237E7700F3B4BF /* UIScrollView+KS.m in Sources */,

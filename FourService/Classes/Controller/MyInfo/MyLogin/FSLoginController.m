@@ -322,13 +322,11 @@ FDAlertViewDelegate
                 fail:(GeneralBlockHandler)failBlock
 {
     NSDictionary* dict = [json valueForKey:@"data"];
-    NSString* identifer = [dict valueForKey:@"identifier"];
-    NSString* token = [dict valueForKey:@"token"];
     FSBaseDataInstance.userInfoForm.identifier = [dict valueForKey:@"identifier"];
     FSBaseDataInstance.userInfoForm.token = [dict valueForKey:@"token"];
     
     //登录成功，个人信息写入本地文件中
-    if ([PUtils writeDictionaryToDocumentsDirectory:[FSBaseDataInstance.userInfoForm.keyValues mutableCopy] withPlistName:kCZJPlistFileUserBaseForm])
+    if ([PUtils writeDictionaryToDocumentsDirectory:[dict mutableCopy] withPlistName:kCZJPlistFileUserBaseForm])
     {
         [USER_DEFAULT setObject:[NSNumber numberWithBool:YES] forKey:kCZJIsUserHaveLogined];
         [USER_DEFAULT synchronize]; //强制更新到本地

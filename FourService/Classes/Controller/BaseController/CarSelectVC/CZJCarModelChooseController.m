@@ -39,7 +39,7 @@ UITableViewDelegate
     self.naviBarView.mainTitleLabel.text = @"选择车型";
     
     [self initTableView];
-    [FSBaseDataInstance loadCarModelSeriesId:[NSString stringWithFormat:@"%d", self.carSeries.car_model_id] Success:^()
+    [FSBaseDataInstance loadCarModelSeriesId:[NSString stringWithFormat:@"%@", self.carSeries.car_model_id] Success:^()
      {
          [self initData];
      } fail:^(){}];

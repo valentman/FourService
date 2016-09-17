@@ -112,7 +112,7 @@ CZJMyCarListCellDelegate
     FSCarListForm* carListForm = self.carListAry[indexPath.section];
     
     CZJMyCarListCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJMyCarListCell" forIndexPath:indexPath];
-    [cell.brandImg sd_setImageWithURL:[NSURL URLWithString:carListForm.logo] placeholderImage:DefaultPlaceHolderRectangle];
+    [cell.brandImg sd_setImageWithURL:[NSURL URLWithString:carListForm.icon] placeholderImage:DefaultPlaceHolderRectangle];
     cell.tag  = indexPath.section;
     cell.carNameLabel.text = carListForm.car_type_name;
     cell.carModelLabel.text = carListForm.car_model_name;

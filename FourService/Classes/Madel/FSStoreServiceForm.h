@@ -34,3 +34,5 @@
 @property(nonatomic, strong) NSString* view_time;
 
 @end
+
+

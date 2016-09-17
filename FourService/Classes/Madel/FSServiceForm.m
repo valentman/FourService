@@ -9,18 +9,17 @@
 #import "FSServiceForm.h"
 
 @implementation FSServiceListForm
-
 @end
 
 @implementation FSStoreImageForm
-
 @end
 
 @implementation FSStoreInfoForm
 + (NSDictionary *)objectClassInArray
 {
     return @{@"shop_image_list" : @"FSStoreImageForm",
-             @"service_list" : @"FSStoreServiceListForm"};
+             @"service_list" : @"FSStoreServiceListForm",
+             @"comment_list" : @"FSStoreCommentImageForm"};
 }
 @end
 
@@ -49,4 +48,29 @@
 
 
 @implementation FSServiceStepProductForm
+@end
+
+
+
+
+
+@implementation FSProductDetailForm
++ (NSDictionary *)objectClassInArray
+{
+    return @{@"comment_list" : @"FSCommentForm",
+             @"product_image_list" : @"FSProductImageForm"};
+}
+@end
+
+@implementation FSProductImageForm
+@end
+
+@implementation FSCommentForm
++ (NSDictionary *)objectClassInArray
+{
+    return @{@"comment_image_list" : @"FSCommentImageForm"};
+}
+@end
+
+@implementation FSCommentImageForm
 @end
