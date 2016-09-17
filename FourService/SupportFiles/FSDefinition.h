@@ -44,6 +44,7 @@ static NSString *const kFSServerAPIOrderList = @"Customer/customerOrderList";   
 static NSString *const kFSServerAPIServiceList = @"Service/serviceList";                        //服务列表
 static NSString *const kFSServerAPIStoreList = @"Service/shopList";                             //门店列表
 static NSString *const kFSServerAPIStoreDetail = @"Service/shopInfo";                           //门店详情
+static NSString *const kFSServerAPIStoreEvaluate = @"Service/shopCommentList";                  //门店评论列表
 static NSString *const kFSServerAPIServiceStepList = @"Service/serviceStep";                    //服务步骤列表
 static NSString *const kFSserverAPIProductChangeable= @"";                                      //可更换商品列表
 static NSString *const kFSServerAPIProductDetailInfo = @"/Service/productInfo";                 //商品详情

@@ -994,6 +994,14 @@ singleton_implementation(FSBaseDataManager);
     [self generalPost:postParams success:success fail:fail andServerAPI:kFSServerAPIStoreDetail];
 }
 
+//门店评论列表
+- (void)getStoreEvaluationList:(NSDictionary*)postParams
+                       success:(SuccessBlockHandler)success
+                          fail:(FailureBlockHandler)fail
+{
+    [self generalPost:postParams success:success fail:fail andServerAPI:kFSServerAPIStoreEvaluate];
+}
+
 //获取服务步骤列表
 - (void)getServiceStepList:(NSDictionary*)postParams
                    success:(SuccessBlockHandler)success
@@ -1002,6 +1010,7 @@ singleton_implementation(FSBaseDataManager);
     [self generalPost:postParams success:success fail:fail andServerAPI:kFSServerAPIServiceStepList];
 }
 
+//获取步骤商品可更换列表
 - (void)getProductChangeableList:(NSDictionary*)postParams
                          success:(SuccessBlockHandler)success
                             fail:(FailureBlockHandler)fail
@@ -1009,6 +1018,7 @@ singleton_implementation(FSBaseDataManager);
     [self generalPost:postParams success:success fail:fail andServerAPI:kFSserverAPIProductChangeable];
 }
 
+//获取商品详情
 - (void)getProductDetailInfo:(NSDictionary*)postParams
                      success:(SuccessBlockHandler)success
                         fail:(FailureBlockHandler)fail
@@ -1016,6 +1026,7 @@ singleton_implementation(FSBaseDataManager);
     [self generalPost:postParams success:success fail:fail andServerAPI:kFSServerAPIProductDetailInfo];
 }
 
+//获取商品评论列表
 - (void)getProductEvaluationList:(NSDictionary*)postParams
                          success:(SuccessBlockHandler)success
                             fail:(FailureBlockHandler)fail

@@ -272,6 +272,8 @@ singleton_interface(FSBaseDataManager);
 - (void)loginWithDefaultInfoSuccess:(void (^)())success
                                fail:(void (^)())fail;
 
+
+
 //------------------------- 服务步骤 ------------------------------
 //获取服务列表
 - (void)getServiceList:(SuccessBlockHandler)success
@@ -287,6 +289,19 @@ singleton_interface(FSBaseDataManager);
 - (void)getStoreDetailInfo:(NSDictionary*)postParams
                    success:(SuccessBlockHandler)success
                       fail:(FailureBlockHandler)fail;
+
+/**
+ *  获取门店评论列表
+ *
+ *  @param postParams 参数结构： @{@"shop_id" : @"",
+                                 @"page_num" : @"",
+                                 @"page_size" : @""}
+ *  @param success
+ *  @param fail
+ */
+- (void)getStoreEvaluationList:(NSDictionary*)postParams
+                       success:(SuccessBlockHandler)success
+                          fail:(FailureBlockHandler)fail;
 
 //获取服务步骤列表
 - (void)getServiceStepList:(NSDictionary*)postParams
