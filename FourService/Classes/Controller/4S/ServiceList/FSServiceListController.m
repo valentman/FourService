@@ -54,7 +54,8 @@ PBaseNaviagtionBarViewDelegate
 {
     __weak typeof(self) weakSelf = self;
     [FSBaseDataInstance getServiceList:^(id json) {
-        NSDictionary* tmpDict = [json valueForKey:@"data"];
+        DLog(@"%@",[json description]);
+        NSDictionary* tmpDict = json[kResoponData];
         serviceAry = [FSServiceListForm objectArrayWithKeyValuesArray:[tmpDict valueForKey:@"type_list"]];
         userInfoForm = [UserBaseForm objectWithKeyValues:[tmpDict valueForKey:@"customer_info"]];
         todoThingDict = [tmpDict valueForKey:@"todo_list"];
@@ -98,11 +99,13 @@ PBaseNaviagtionBarViewDelegate
     self.naviBarView.mainTitleLabel.text = @"养车人家";
     self.naviBarView.mainTitleLabel.textColor = WHITECOLOR;
     self.naviBarView.btnBack.hidden = NO;
+    [self.naviBarView.btnBack setSize:CGSizeMake(40, 40)];
+    self.naviBarView.btnBack.layer.cornerRadius = 20;
     [self.naviBarView.btnBack setPosition:CGPointMake(12, 28) atAnchorPoint:CGPointZero];
     [self.naviBarView.btnBack setBackgroundImageForState:UIControlStateNormal withURL:[NSURL URLWithString:userInfoForm.customer_pho] placeholderImage:DefaultPlaceHolderCircle];
     [self.naviBarView.btnBack addTarget:self action:@selector(clickHeadBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [self.naviBarView.btnBack setBadgeNum:223];
-    [self.naviBarView.btnBack setBadgeLabelPosition:CGPointMake(30, 0)];
+    [self.naviBarView.btnBack setBadgeNum:22];
+    [self.naviBarView.btnBack setBadgeLabelPosition:CGPointMake(50, 0)];
     
     [self.naviBarView.btnMore setTitle:@"成都" forState:UIControlStateNormal];
     
@@ -128,10 +131,9 @@ PBaseNaviagtionBarViewDelegate
         for (FSCarListForm* carForm in userInfoForm.car_list)
         {
             FSTopCarInfoBarView* carInfoBarView = [PUtils getXibViewByName:@"FSTopCarInfoBarView"];
-            [carInfoBarView.iconImageView sd_setImageWithURL:[NSURL URLWithString:@"http://sc.jb51.net/uploads/allimg/140110/8-140110233559300.jpg"] placeholderImage:DefaultPlaceHolderCircle];
+            [carInfoBarView.iconImageView sd_setImageWithURL:[NSURL URLWithString:ConnectString(kCZJServerAddr, carForm.icon)] placeholderImage:DefaultPlaceHolderCircle];
             carInfoBarView.numberLabel.text = carForm.car_num;
             carInfoBarView.carTypeLabel.text = [NSString stringWithFormat:@"%@%@%@",carForm.car_brand_name,carForm.car_model_name, carForm.car_type_name];
-//            carInfoBarView.frame = CGRectMake(0, 0, PJ_SCREEN_WIDTH, kMovieBrowserHeight);
             carInfoBarView.backgroundColor = CLEARCOLOR;
             [carViewItems addObject:carInfoBarView];
         }

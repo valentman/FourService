@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -15,11 +15,11 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lp9-HQ-uDm">
-                        <rect key="frame" x="5" y="83" width="125" height="27"/>
+                        <rect key="frame" x="5" y="73" width="125" height="27"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="27" id="qDb-NO-dfw"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <userDefinedRuntimeAttributes>
@@ -34,12 +34,9 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dsf-MW-ZXn">
-                        <rect key="frame" x="0.0" y="115" width="135" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="XXo-be-Cjn"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dsf-MW-ZXn">
+                        <rect key="frame" x="0.0" y="105" width="135" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -56,7 +53,7 @@
                     <constraint firstItem="dsf-MW-ZXn" firstAttribute="top" secondItem="Lp9-HQ-uDm" secondAttribute="bottom" constant="5" id="7cy-Bs-a8y"/>
                     <constraint firstAttribute="trailing" secondItem="Lp9-HQ-uDm" secondAttribute="trailing" constant="5" id="CaI-vp-kol"/>
                     <constraint firstItem="dsf-MW-ZXn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Ch9-7x-HpH"/>
-                    <constraint firstItem="Lp9-HQ-uDm" firstAttribute="top" secondItem="XBI-VZ-j5O" secondAttribute="bottom" constant="10" id="DDh-fL-LKh"/>
+                    <constraint firstItem="Lp9-HQ-uDm" firstAttribute="top" secondItem="XBI-VZ-j5O" secondAttribute="bottom" id="DDh-fL-LKh"/>
                     <constraint firstItem="XBI-VZ-j5O" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="U0G-TF-Rs7"/>
                     <constraint firstAttribute="trailing" secondItem="dsf-MW-ZXn" secondAttribute="trailing" id="XF9-MF-cdV"/>
                     <constraint firstItem="XBI-VZ-j5O" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ZlZ-An-g8d"/>

@@ -30,6 +30,8 @@
             _badgeLabel = [[UILabel alloc]init];
             _badgeLabel.hidden = YES;
             _badgeLabel.layer.backgroundColor = CZJREDCOLOR.CGColor;
+            _badgeLabel.layer.borderColor = WHITECOLOR.CGColor;
+            _badgeLabel.layer.borderWidth = 1.5 ;
             [_badgeLabel setTag:99];
             [self addSubview:_badgeLabel];
         }
@@ -43,14 +45,14 @@
             NSString* badgeStr = [NSString stringWithFormat:@"%ld", badgeNum];
             CGSize labelSize = [PUtils calculateTitleSizeWithString:badgeStr AndFontSize:14];
             
-            [_badgeLabel setSize:CGSizeMake(labelSize.width < 20 ? 20 : labelSize.width + 5, 20)];
+            [_badgeLabel setSize:CGSizeMake(labelSize.width < 15 ? 20 : labelSize.width + 10, 20)];
             _badgeLabel.text = badgeStr;
             _badgeLabel.textColor = [UIColor whiteColor];
             _badgeLabel.textAlignment = NSTextAlignmentCenter;
             _badgeLabel.font = SYSTEMFONT(14);
             _badgeLabel.layer.cornerRadius = 10;
+            [self setBadgeLabelPosition:CGPointMake(self.size.width, 0)];
         }
-        [self setBadgeLabelPosition:CGPointMake(self.size.width, 0)];
         _badgeLabel.hidden = NO;
     }
 
@@ -58,7 +60,8 @@
 
 - (void)setBadgeLabelPosition:(CGPoint)pt
 {
-    [_badgeLabel setPosition:pt atAnchorPoint:CGPointZero];
+    DLog(@"x:%f,y:%f",pt.x,pt.y);
+    [_badgeLabel setPosition:pt atAnchorPoint:CGPointTopRight];
 }
 
 @end

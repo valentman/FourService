@@ -194,7 +194,7 @@ FSMyInfoButtomViewDelegate
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     FSMyinfoButtomView* buttomView = [PUtils getXibViewByName:@"FSMyinfoButtomView"];
-    buttomView.frame = CGRectMake(0, PJ_SCREEN_HEIGHT - 50, self.view.size.width, 50);
+    buttomView.frame = CGRectMake(0, PJ_SCREEN_HEIGHT - 60, self.view.size.width, 50);
     buttomView.backgroundColor = CLEARCOLOR;
     buttomView.delegate = self;
     [self.view addSubview:buttomView];
@@ -316,6 +316,7 @@ FSMyInfoButtomViewDelegate
                 cell.detailLabel.text = @"查看全部订单";
                 cell.detailLabel.textColor = RGB(230, 230, 230);
                 cell.detailLabel.alpha = 0.8;
+                cell.detailLabel.font = SYSTEMFONT(14);
                 cell.nameLabel.textColor = WHITECOLOR;
                 cell.nameLabel.font = SYSTEMFONT(16);
             }
@@ -329,11 +330,14 @@ FSMyInfoButtomViewDelegate
                     badgeLabel.layer.backgroundColor = CZJREDCOLOR.CGColor;
                     badgeLabel.layer.cornerRadius = 10;
                     badgeLabel.textColor = WHITECOLOR;
+                    badgeLabel.layer.borderColor = WHITECOLOR.CGColor;
+                    badgeLabel.layer.borderWidth = 1.5 ;
                     badgeLabel.textAlignment = NSTextAlignmentCenter;
                     [badgeLabel setTag:99];
                     [badgeLabel setSize:CGSizeMake(20, 20)];
                     [badgeLabel setPosition:CGPointMake(110, 23) atAnchorPoint:CGPointMiddle];
                     [cell addSubview:badgeLabel];
+                    badgeLabel.font = SYSTEMFONT(14);
                     [badgeLabel setText:@"5"];
                 }
                 
@@ -365,10 +369,10 @@ FSMyInfoButtomViewDelegate
 {
     switch (indexPath.section) {
         case 0:
-            return 200;
+            return 220;
             break;
         case 1:
-            return 100;
+            return 90;
             break;
             
         default:

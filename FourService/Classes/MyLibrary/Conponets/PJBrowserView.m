@@ -12,7 +12,7 @@
 #define kScreenWidth  [UIScreen mainScreen].bounds.size.width
 #define kItemSpacing 0
 #define kItemWidth  120
-#define kItemHeight 140
+#define kItemHeight 150
 #define kItemSelectedWidth  135
 #define kItemSelectedHeight 160
 #define kScrollViewContentOffset (kScreenWidth / 2.0 - (kItemWidth / 2.0 + kItemSpacing))

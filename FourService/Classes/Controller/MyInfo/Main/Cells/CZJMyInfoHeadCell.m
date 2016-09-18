@@ -13,9 +13,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *userHeadImg;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userPhoneLabel;
-@property (weak, nonatomic) IBOutlet UILabel *userTypeLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *bgImage;
-@property (weak, nonatomic) IBOutlet UILabel *myDefaultCarLabel;
+
 
 - (IBAction)messageAction:(id)sender;
 
@@ -26,6 +25,10 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.bgImage.layer.cornerRadius = 10;
+    self.userPhoneLabel.layer.borderWidth = 1.0;
+    self.userPhoneLabel.layer.borderColor = WHITECOLOR.CGColor;
+    self.userPhoneLabel.layer.cornerRadius = 11;
+    [self.userPhoneLabel.layer setMasksToBounds:YES];
     // Initialization code
 }
 
@@ -41,14 +44,6 @@
     self.userPhoneLabel.text = userinfo.customer_pho;
     [self.userHeadImg sd_setImageWithURL:[NSURL URLWithString:userinfo.customer_photo] placeholderImage:IMAGENAMED(@"my_icon_head")];
     self.userHeadImg.clipsToBounds = YES;
-    NSString* carStr = @"暂无车辆";
-    if (car.car_brand_name &&
-        car.car_model_name &&
-        car.car_type_name)
-    {
-        carStr = [NSString stringWithFormat:@"%@ %@ %@",car.car_brand_name,car.car_model_name,car.car_type_name];
-    }
-    self.myDefaultCarLabel.text = [NSString stringWithFormat:@"%@",carStr];
 }
 
 - (IBAction)messageAction:(id)sender

@@ -52,7 +52,7 @@
         BadgeButtonView* btnView;
         if (!VIEWWITHTAG(self, i + 1000)) {
             btnView = [PUtils getXibViewByName:@"BadgeButtonView"];
-            CGRect btnViewRect = [PUtils viewFrameFromDynamic:CZJMarginMake(20, 0) width:self.size.width size:CGSizeMake(80, 60) index:i divide:(int)items.count subWidth:0];
+            CGRect btnViewRect = [PUtils viewFrameFromDynamic:CZJMarginMake(20, 10) width:self.size.width size:CGSizeMake(80, 70) index:i divide:(int)items.count subWidth:0];
             btnView.frame = btnViewRect;
             [self addSubview:btnView];
             [btnView.viewBtn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -79,7 +79,7 @@
             [btnView.viewBtn setBadgeNum:0];
             [btnView.viewBtn setImage:IMAGENAMED([dict valueForKey:@"buttonImage"]) forState:UIControlStateNormal];
             [btnView.viewBtn setBadgeNum:[[dict valueForKey:@"budge"] integerValue]];
-            [btnView.viewBtn setBadgeLabelPosition:CGPointMake(btnView.viewBtn.size.width + 5, 0)];
+            [btnView.viewBtn setBadgeLabelPosition:CGPointMake(80*0.8, 0)];
         }
     }
 }
