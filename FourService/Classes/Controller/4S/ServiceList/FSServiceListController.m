@@ -102,7 +102,7 @@ PBaseNaviagtionBarViewDelegate
     [self.naviBarView.btnBack setSize:CGSizeMake(40, 40)];
     self.naviBarView.btnBack.layer.cornerRadius = 20;
     [self.naviBarView.btnBack setPosition:CGPointMake(12, 28) atAnchorPoint:CGPointZero];
-    [self.naviBarView.btnBack setBackgroundImageForState:UIControlStateNormal withURL:[NSURL URLWithString:userInfoForm.customer_pho] placeholderImage:DefaultPlaceHolderCircle];
+    [self.naviBarView.btnBack setBackgroundImageForState:UIControlStateNormal withURL:[NSURL URLWithString:ConnectString(kCZJServerAddr,userInfoForm.customer_pho)] placeholderImage:DefaultPlaceHolderCircle];
     [self.naviBarView.btnBack addTarget:self action:@selector(clickHeadBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.naviBarView.btnBack setBadgeNum:22];
     [self.naviBarView.btnBack setBadgeLabelPosition:CGPointMake(50, 0)];
@@ -175,8 +175,7 @@ PBaseNaviagtionBarViewDelegate
     FSServiceCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kServiceCollectionViewCell forIndexPath:indexPath];
     FSServiceListForm* serviceListForm = serviceAry[indexPath.item];
     cell.cellLabel.text = serviceListForm.service_type_name;
-    [cell.cellImage setImage:IMAGENAMED(@"home_baoyang")];
-//    [cell.cellImage sd_setImageWithURL:[NSURL URLWithString:serviceListForm.service_type_image] placeholderImage:DefaultPlaceHolderCircle];
+    [cell.cellImage sd_setImageWithURL:[NSURL URLWithString:ConnectString(kCZJServerAddr, serviceListForm.service_type_image)] placeholderImage:DefaultPlaceHolderCircle];
     return cell;
 }
 

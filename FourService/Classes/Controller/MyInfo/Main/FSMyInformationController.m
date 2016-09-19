@@ -64,6 +64,11 @@ FSMyInfoButtomViewDelegate
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initDatas];
+    
+    if ([USER_DEFAULT boolForKey:kCZJIsUserHaveLogined]) {
+        [self getMyInfoDataFromServer];
+    }
+    [self.myTableView reloadData];
 }
 
 - (void)dealWithInitNavigationBar
@@ -82,10 +87,6 @@ FSMyInfoButtomViewDelegate
 - (void)viewWillAppear:(BOOL)animated
 {
     [self dealWithInitNavigationBar];
-    if ([USER_DEFAULT boolForKey:kCZJIsUserHaveLogined]) {
-        [self getMyInfoDataFromServer];
-    }
-    [self.myTableView reloadData];
     DLog();
 }
 
@@ -210,8 +211,9 @@ FSMyInfoButtomViewDelegate
             
             //服务器返回数据本地化，全部转化为模型数据存储在数组中
             myInfoForm = [UserBaseForm objectWithKeyValues:dict];
-            myInfoForm.identifier = FSBaseDataInstance.userInfoForm.identifier;
-            myInfoForm.token = FSBaseDataInstance.userInfoForm.token;
+            UserBaseForm* identiForm = FSBaseDataInstance.userInfoForm;
+            myInfoForm.identifier = identiForm.identifier;
+            myInfoForm.token = identiForm.token;
             FSBaseDataInstance.userInfoForm = myInfoForm;
             [PUtils writeDictionaryToDocumentsDirectory:[FSBaseDataInstance.userInfoForm.keyValues mutableCopy] withPlistName:kCZJPlistFileUserBaseForm];
 
@@ -219,9 +221,7 @@ FSMyInfoButtomViewDelegate
             [weakSelf updateOrderData:dict];
             //更新表格
             [weakSelf.myTableView reloadData];
-        } fail:^{
-            
-        }];
+        } fail:^{}];
     }
 }
 

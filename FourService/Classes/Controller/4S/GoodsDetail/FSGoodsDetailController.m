@@ -95,6 +95,7 @@ UITableViewDataSource
     NSDictionary* params = @{@"product_id" : _productForm.product_id};
     weaky(self);
     [FSBaseDataInstance getProductDetailInfo:params success:^(id json) {
+        DLog(@"%@",json);
         productDetailForm = [FSProductDetailForm objectWithKeyValues:json[kResoponData]];
         [weakSelf.myTableView reloadData];
     } fail:^{
