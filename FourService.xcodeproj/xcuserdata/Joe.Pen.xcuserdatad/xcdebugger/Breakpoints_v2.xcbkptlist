@@ -26,7 +26,7 @@
                   moduleName = "FourService"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Joe.Pen/Documents/GitCode/FourService/FourService/ThirdSDK/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "495984273.431362"
+                  timestampString = "496079289.883687"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1250"
@@ -41,7 +41,7 @@
                   moduleName = "FourService"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Joe.Pen/Documents/GitCode/FourService/FourService/ThirdSDK/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "495984273.431497"
+                  timestampString = "496079289.883818"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1250"
@@ -56,7 +56,7 @@
                   moduleName = "FourService"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Joe.Pen/Documents/GitCode/FourService/FourService/ThirdSDK/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "495984273.431593"
+                  timestampString = "496079289.883908"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1250"
@@ -89,7 +89,7 @@
                   moduleName = "FourService"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Joe.Pen/Documents/GitCode/FourService/FourService/ThirdSDK/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "495984273.456107"
+                  timestampString = "496079289.897329"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1329"
@@ -104,7 +104,7 @@
                   moduleName = "FourService"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Joe.Pen/Documents/GitCode/FourService/FourService/ThirdSDK/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "495984273.456214"
+                  timestampString = "496079289.897441"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1329"
@@ -119,7 +119,7 @@
                   moduleName = "FourService"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Joe.Pen/Documents/GitCode/FourService/FourService/ThirdSDK/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "495984273.456442"
+                  timestampString = "496079289.897526"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1329"
@@ -232,11 +232,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FourService/Classes/Controller/4S/StepList/FSServiceStepController.m"
-            timestampString = "495302317.318884"
+            timestampString = "496079220.670496"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "334"
-            endingLineNumber = "334"
+            startingLineNumber = "347"
+            endingLineNumber = "347"
             landmarkName = "-tableView:titleForDeleteConfirmationButtonForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -254,22 +254,6 @@
             startingLineNumber = "99"
             endingLineNumber = "99"
             landmarkName = "-getGoodsDetailFromServer"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FourService/Classes/Controller/MyInfo/MyLogin/FSLoginController.m"
-            timestampString = "495982419.223766"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "268"
-            endingLineNumber = "268"
-            landmarkName = "-confirmLoginAction:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -68,16 +68,6 @@ PBaseNaviagtionBarViewDelegate
     }];
 }
 
-- (void)viewWillLayoutSubviews
-{
-    DLog();
-}
-
-- (void)viewDidLayoutSubviews
-{
-    DLog();
-    
-}
 
 - (void)initViews
 {
@@ -101,8 +91,9 @@ PBaseNaviagtionBarViewDelegate
     self.naviBarView.btnBack.hidden = NO;
     [self.naviBarView.btnBack setSize:CGSizeMake(40, 40)];
     self.naviBarView.btnBack.layer.cornerRadius = 20;
+    [self.naviBarView.btnBack setBackgroundImage:nil forState:UIControlStateNormal];
+    [self.naviBarView.btnBack setClipsToBounds:YES];
     [self.naviBarView.btnBack setPosition:CGPointMake(12, 28) atAnchorPoint:CGPointZero];
-    [self.naviBarView.btnBack setBackgroundImageForState:UIControlStateNormal withURL:[NSURL URLWithString:ConnectString(kCZJServerAddr,userInfoForm.customer_pho)] placeholderImage:DefaultPlaceHolderCircle];
     [self.naviBarView.btnBack addTarget:self action:@selector(clickHeadBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.naviBarView.btnBack setBadgeNum:22];
     [self.naviBarView.btnBack setBadgeLabelPosition:CGPointMake(50, 0)];
@@ -147,6 +138,13 @@ PBaseNaviagtionBarViewDelegate
 
     PJBrowserView* browserView = [[PJBrowserView alloc] initWithFrame:CGRectMake(0, 87, PJ_SCREEN_WIDTH, kMovieBrowserHeight) items:carViewItems];
     [self.naviBarView addSubview:browserView];
+    
+    NSURL* headImgUrl;
+    if (userInfoForm.customer_photo ) {
+        headImgUrl = [NSURL URLWithString:userInfoForm.customer_photo];
+    }
+    
+    [self.naviBarView.btnBack setBackgroundImageForState:UIControlStateNormal withURL:headImgUrl placeholderImage:DefaultPlaceHolderCircle];
 }
 
 - (void)viewDidAppear:(BOOL)animated

@@ -115,24 +115,40 @@
 @property (strong, nonatomic) NSString* step_desc;
 @property (strong, nonatomic) NSString* desc_image;
 @property (strong, nonatomic) NSString* create_time;
+@property (assign, nonatomic) float stepPrice;
 @property (strong, nonatomic) NSArray* product_list;
 @property (assign, nonatomic) BOOL is_expand;
 @end
 
 //服务步骤里面相关商品数据
 @interface FSServiceStepProductForm : NSObject
-@property (strong, nonatomic) NSString* order_step_product_id;
-@property (strong, nonatomic) NSString* product_id;
-@property (strong, nonatomic) NSString* shop_service_step_id;
-@property (strong, nonatomic) NSString* creater;
+@property (strong, nonatomic) NSString* brand_id;
 @property (strong, nonatomic) NSString* create_time;
-@property (strong, nonatomic) NSString* product_name;
-@property (strong, nonatomic) NSString* product_image;
-@property (strong, nonatomic) NSString* product_price;
-@property (strong, nonatomic) NSString* product_script;
-@property (strong, nonatomic) NSString* product_num;
-@property (strong, nonatomic) NSString* product_type_id;
+@property (strong, nonatomic) NSString* creater;
+@property (strong, nonatomic) NSString* item_color;
+@property (strong, nonatomic) NSString* item_name;
+@property (strong, nonatomic) NSString* item_size;
+@property (strong, nonatomic) NSString* product_bar_code;
+@property (strong, nonatomic) NSString* product_buy_num;
+@property (strong, nonatomic) NSString* product_comment_num;
+@property (strong, nonatomic) NSString* product_desc;
+@property (strong, nonatomic) NSString* product_favorite_num;
+@property (strong, nonatomic) NSString* product_id;
 @property (strong, nonatomic) NSString* product_item_id;
+@property (strong, nonatomic) NSString* product_like_num;
+@property (strong, nonatomic) NSString* product_material;
+@property (strong, nonatomic) NSString* product_name;
+@property (strong, nonatomic) NSString* product_section_code;
+@property (strong, nonatomic) NSString* product_type;
+@property (strong, nonatomic) NSString* product_view_num;
+@property (strong, nonatomic) NSString* production_date;
+@property (strong, nonatomic) NSString* sale_price;
+@property (strong, nonatomic) NSString* service_step_product_id;
+@property (strong, nonatomic) NSString* shop_service_step_id;
+@property (strong, nonatomic) NSString* stock;
+@property (strong, nonatomic) NSString* sub_type_id;
+@property (strong, nonatomic) NSString* sub_type_name;
+@property (strong, nonatomic) NSString* type_name;
 @end
 
 

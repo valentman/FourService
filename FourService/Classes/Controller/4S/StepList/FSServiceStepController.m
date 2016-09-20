@@ -118,6 +118,15 @@ FSPageCellDelegate
         [_titleArray addObject:dict];
     }
     _serviceStepAry = [((FSServiceSegmentTypeForm*)_serviceTypeAry[_currentSelectIndex]).step_list mutableCopy];
+    for (FSServiceStepForm* stepForm in _serviceStepAry)
+    {
+        float price = 0;
+        for (FSServiceStepProductForm* stepProductForm in stepForm.product_list)
+        {
+            price += [stepProductForm.sale_price floatValue]*[stepProductForm.product_buy_num floatValue];
+        }
+        stepForm.stepPrice = price;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -207,10 +216,10 @@ FSPageCellDelegate
             {
                 FSServiceStepProductForm* stepProductForm = stepForm.product_list[indexPath.row - 1];
                 FSServiceStepGoodsCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FSServiceStepGoodsCell" forIndexPath:indexPath];
-                [cell.productImageView sd_setImageWithURL:[NSURL URLWithString:stepProductForm.product_image] placeholderImage:DefaultPlaceHolderSquare];
+                [cell.productImageView sd_setImageWithURL:[NSURL URLWithString:nil] placeholderImage:DefaultPlaceHolderSquare];
                 cell.productNameLabel.text = stepProductForm.product_name;
-                cell.productNumLabel.text = stepProductForm.product_num;
-                cell.productPriceLabel.text = stepProductForm.product_price;
+                cell.productNumLabel.text = [NSString stringWithFormat:@"×%@",stepProductForm.product_buy_num];
+                cell.productPriceLabel.text = stepProductForm.sale_price;
                 if (indexPath.row == stepForm.product_list.count)
                 {
                     [cell setSeparatorViewHidden:NO];
@@ -229,8 +238,12 @@ FSPageCellDelegate
                     [cell setSeparatorViewHidden:YES];
                     cell.separatorInset = IndentCellSeparator(0);
                 }
+                cell.editView.hidden = !stepForm.is_expand;
+                cell.stepImageButton.selected = stepForm.is_expand;
+                cell.stepSelectBtn.selected = stepForm.is_expand;
                 cell.stemNameLabel.text = stepForm.step_name;
                 cell.stepDescLabel.text = stepForm.step_desc;
+                cell.stepPriceLabel.text = [NSString stringWithFormat:@"￥%.2f",stepForm.stepPrice];
                 return cell;
             }
         }

@@ -21,6 +21,10 @@
                             <constraint firstAttribute="height" constant="70" id="6mn-zb-Ocs"/>
                         </constraints>
                     </imageView>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AIH-Vf-7cB">
+                        <rect key="frame" x="95" y="0.0" width="225" height="84"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZAc-lp-Mc5">
                         <rect key="frame" x="95" y="7" width="210" height="70"/>
                         <subviews>
@@ -33,8 +37,17 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="×1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VaS-pw-Ax4">
-                                <rect key="frame" x="0.0" y="55" width="60" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥19.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJ5-Jl-ObQ">
+                                <rect key="frame" x="0.0" y="52" width="53" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="gPf-Yr-Tu4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="×1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VaS-pw-Ax4">
+                                <rect key="frame" x="63" y="54" width="60" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="5qx-Kg-Klb"/>
                                     <constraint firstAttribute="height" constant="15" id="a8d-jw-PWJ"/>
@@ -43,30 +56,17 @@
                                 <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥19.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJ5-Jl-ObQ">
-                                <rect key="frame" x="157" y="49" width="53" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="gPf-Yr-Tu4"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="VaS-pw-Ax4" secondAttribute="bottom" id="8nt-9T-9d5"/>
                             <constraint firstAttribute="bottom" secondItem="qJ5-Jl-ObQ" secondAttribute="bottom" id="9SS-iH-Kpq"/>
-                            <constraint firstItem="VaS-pw-Ax4" firstAttribute="leading" secondItem="ZAc-lp-Mc5" secondAttribute="leading" id="Caq-yY-HqF"/>
-                            <constraint firstAttribute="trailing" secondItem="qJ5-Jl-ObQ" secondAttribute="trailing" id="EL5-C1-AM1"/>
+                            <constraint firstItem="qJ5-Jl-ObQ" firstAttribute="leading" secondItem="JIo-R8-kPq" secondAttribute="leading" id="9Vo-NN-HWG"/>
+                            <constraint firstItem="VaS-pw-Ax4" firstAttribute="centerY" secondItem="qJ5-Jl-ObQ" secondAttribute="centerY" id="T2e-8r-L40"/>
                             <constraint firstItem="JIo-R8-kPq" firstAttribute="leading" secondItem="ZAc-lp-Mc5" secondAttribute="leading" id="Ts2-4V-xLp"/>
                             <constraint firstItem="JIo-R8-kPq" firstAttribute="top" secondItem="ZAc-lp-Mc5" secondAttribute="top" id="sMz-Qy-QbR"/>
                             <constraint firstAttribute="trailing" secondItem="JIo-R8-kPq" secondAttribute="trailing" id="w1V-jS-2bI"/>
+                            <constraint firstItem="VaS-pw-Ax4" firstAttribute="leading" secondItem="qJ5-Jl-ObQ" secondAttribute="trailing" constant="10" id="xzx-eY-Pbk"/>
                         </constraints>
-                    </view>
-                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AIH-Vf-7cB">
-                        <rect key="frame" x="95" y="0.0" width="225" height="85"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </subviews>
                 <constraints>

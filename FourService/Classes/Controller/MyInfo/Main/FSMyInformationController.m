@@ -69,6 +69,7 @@ FSMyInfoButtomViewDelegate
         [self getMyInfoDataFromServer];
     }
     [self.myTableView reloadData];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getMyInfoDataFromServer) name:kCZJNotifiLoginSuccess object:nil];
 }
 
 - (void)dealWithInitNavigationBar
