@@ -113,6 +113,8 @@ MXPullDownMenuDelegate
     }
     [YXSpritesLoadingView showWithText:nil andShimmering:NO andBlurEffect:NO];
     [FSBaseDataInstance getStoreList:params type:CZJHomeGetDataFromServerTypeOne success:^(id json) {
+        
+        DLog(@"%@",[json description]);
         [YXSpritesLoadingView dismiss];
         //返回数据
         NSArray* tmpAry = [NSArray array];
@@ -193,10 +195,15 @@ MXPullDownMenuDelegate
     FSServiceStoreCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FSServiceStoreCell" forIndexPath:indexPath];
     
     //门店图片
-    [cell.storeImage sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:DefaultPlaceHolderSquare];
+    NSURL* imgUrl;
+    if (((FSStoreImageForm*)storeInfoForm.shop_image_list.firstObject).image_url)
+    {
+        imgUrl = [NSURL URLWithString:ConnectString(kCZJServerAddr,((FSStoreImageForm*)storeInfoForm.shop_image_list.firstObject).image_url)];
+    }
+    [cell.storeImage sd_setImageWithURL:imgUrl placeholderImage:DefaultPlaceHolderSquare];
     
     //门店名称
-    cell.storeNameLabel.text = @"成都南门凯德天府店";
+    cell.storeNameLabel.text = storeInfoForm.shop_name;
     
     //折扣价
     NSString* discountPriceStr = [NSString stringWithFormat:@"￥%@",@"28"];
@@ -213,7 +220,7 @@ MXPullDownMenuDelegate
     cell.originPriceLabel.keyWord = @"￥";
     
     //开门时间
-    cell.openTimeLabel.text = @"09:00-20:00";
+    cell.openTimeLabel.text = storeInfoForm.service_time;
     
     //评价分数和单数
     cell.evaluateScoreLabel.text = @"5.0";
@@ -224,7 +231,7 @@ MXPullDownMenuDelegate
     cell.distanceLabel.text = [NSString stringWithFormat:@"%@km",@"2.9" ];
     
     //门店类型
-    cell.storeTypeLabel.text = @"4S店";
+    cell.storeTypeLabel.text = @"快修店";
     
     //设置支付方式
     [cell setPaymentAvaiable:nil];

@@ -20,4 +20,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *operateViewLeading;
 
 @property (strong, nonatomic)UISwipeGestureRecognizer *swipeLeft;
+
+- (void)setChooseCount:(NSInteger)chooseCount;
 @end

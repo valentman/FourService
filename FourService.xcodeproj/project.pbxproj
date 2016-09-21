@@ -31,6 +31,7 @@
 		EC0662921D7048DD006B62D2 /* CZJOrderListNoPayButtomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC0662821D7048DD006B62D2 /* CZJOrderListNoPayButtomView.xib */; };
 		EC0662951D7048DD006B62D2 /* CZJOrderReturnedListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0662871D7048DD006B62D2 /* CZJOrderReturnedListCell.m */; };
 		EC0662961D7048DD006B62D2 /* CZJOrderReturnedListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC0662881D7048DD006B62D2 /* CZJOrderReturnedListCell.xib */; };
+		EC0DD3D81D92DB2700DB6BCC /* WLZ_ChangeCountView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0DD3D71D92DB2700DB6BCC /* WLZ_ChangeCountView.m */; };
 		EC1261A41D4CEA700082378D /* FSStoreServiceForm.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1261A31D4CEA700082378D /* FSStoreServiceForm.m */; };
 		EC1261AE1D4CECB90082378D /* CZJGoodsAttentionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1261AC1D4CECB90082378D /* CZJGoodsAttentionCell.m */; };
 		EC1261AF1D4CECB90082378D /* CZJGoodsAttentionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC1261AD1D4CECB90082378D /* CZJGoodsAttentionCell.xib */; };
@@ -466,6 +467,8 @@
 		EC0662861D7048DD006B62D2 /* CZJOrderReturnedListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJOrderReturnedListCell.h; sourceTree = "<group>"; };
 		EC0662871D7048DD006B62D2 /* CZJOrderReturnedListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJOrderReturnedListCell.m; sourceTree = "<group>"; };
 		EC0662881D7048DD006B62D2 /* CZJOrderReturnedListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJOrderReturnedListCell.xib; sourceTree = "<group>"; };
+		EC0DD3D61D92DB2700DB6BCC /* WLZ_ChangeCountView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLZ_ChangeCountView.h; sourceTree = "<group>"; };
+		EC0DD3D71D92DB2700DB6BCC /* WLZ_ChangeCountView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLZ_ChangeCountView.m; sourceTree = "<group>"; };
 		EC1261A21D4CEA700082378D /* FSStoreServiceForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSStoreServiceForm.h; sourceTree = "<group>"; };
 		EC1261A31D4CEA700082378D /* FSStoreServiceForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSStoreServiceForm.m; sourceTree = "<group>"; };
 		EC1261AB1D4CECB90082378D /* CZJGoodsAttentionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJGoodsAttentionCell.h; sourceTree = "<group>"; };
@@ -1581,6 +1584,8 @@
 		EC4597FF1D757960004424A4 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				EC0DD3D61D92DB2700DB6BCC /* WLZ_ChangeCountView.h */,
+				EC0DD3D71D92DB2700DB6BCC /* WLZ_ChangeCountView.m */,
 				EC5E26A41D8703560040986B /* FSProductChangeCell.h */,
 				EC5E26A51D8703560040986B /* FSProductChangeCell.m */,
 				EC5E26A61D8703560040986B /* FSProductChangeCell.xib */,
@@ -3275,6 +3280,7 @@
 				EC542A121D237E7700F3B4BF /* WebViewJavascriptBridge_JS.m in Sources */,
 				EC5427811D237DE000F3B4BF /* DynamicArrangeButtonCell.m in Sources */,
 				EC857B9B1D7F069E00DF2D02 /* CZJOrderTypeCell.m in Sources */,
+				EC0DD3D81D92DB2700DB6BCC /* WLZ_ChangeCountView.m in Sources */,
 				EC542A711D23979500F3B4BF /* NSDate+Category.m in Sources */,
 				EC5429D21D237E7700F3B4BF /* CALayer+Anim.m in Sources */,
 				EC5429D11D237E7700F3B4BF /* OpenShare.m in Sources */,

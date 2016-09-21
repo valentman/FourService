@@ -113,20 +113,23 @@ FSPageCellDelegate
 {
     for (FSServiceSegmentTypeForm* form in _serviceTypeAry)
     {
+        for (FSServiceStepForm* stepForm in form.step_list)
+        {
+            float price = 0;
+            for (FSServiceStepProductForm* stepProductForm in stepForm.product_list)
+            {
+                price += [stepProductForm.sale_price floatValue]*[stepProductForm.product_buy_num floatValue];
+            }
+            stepForm.stepPrice = price;
+        }
+        
         NSDictionary* dict = @{kSegmentViewMainTitleKey : form.item_name,
                                kSegmentViewSubTitleKey : form.item_desc};
+        
         [_titleArray addObject:dict];
     }
     _serviceStepAry = [((FSServiceSegmentTypeForm*)_serviceTypeAry[_currentSelectIndex]).step_list mutableCopy];
-    for (FSServiceStepForm* stepForm in _serviceStepAry)
-    {
-        float price = 0;
-        for (FSServiceStepProductForm* stepProductForm in stepForm.product_list)
-        {
-            price += [stepProductForm.sale_price floatValue]*[stepProductForm.product_buy_num floatValue];
-        }
-        stepForm.stepPrice = price;
-    }
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -220,6 +223,10 @@ FSPageCellDelegate
                 cell.productNameLabel.text = stepProductForm.product_name;
                 cell.productNumLabel.text = [NSString stringWithFormat:@"×%@",stepProductForm.product_buy_num];
                 cell.productPriceLabel.text = stepProductForm.sale_price;
+                
+                [cell setChooseCount:[stepProductForm.product_buy_num integerValue]];
+                cell.operateView.hidden = NO;
+                cell.productInfoView.hidden = stepForm.is_Edit;
                 if (indexPath.row == stepForm.product_list.count)
                 {
                     [cell setSeparatorViewHidden:NO];
@@ -238,18 +245,51 @@ FSPageCellDelegate
                     [cell setSeparatorViewHidden:YES];
                     cell.separatorInset = IndentCellSeparator(0);
                 }
+                cell.cellIndex = indexPath;
                 cell.editView.hidden = !stepForm.is_expand;
+                cell.priceView.hidden = stepForm.is_expand;
                 cell.stepImageButton.selected = stepForm.is_expand;
                 cell.stepSelectBtn.selected = stepForm.is_expand;
                 cell.stemNameLabel.text = stepForm.step_name;
                 cell.stepDescLabel.text = stepForm.step_desc;
                 cell.stepPriceLabel.text = [NSString stringWithFormat:@"￥%.2f",stepForm.stepPrice];
+                [cell.editBtn addTarget:self action:@selector(stepEdit:) forControlEvents:UIControlEventTouchUpInside];
+                [cell.acceptBtn addTarget:self action:@selector(stepAccept:) forControlEvents:UIControlEventTouchUpInside];
                 return cell;
             }
         }
             break;
     }
     return nil;
+}
+
+- (void)stepEdit:(UIButton*)sender
+{
+    id suerview1 = [sender superview];
+    id superview2 = [suerview1 superview];
+    id superView3 = [superview2 superview];
+    if ([superView3 isKindOfClass:[FSServiceStepCell class]])
+    {
+        NSIndexPath* indepath = ((FSServiceStepCell*)superView3).cellIndex;
+        FSServiceStepForm* stepForm = _serviceStepAry[indepath.section - 3];
+        stepForm.is_Edit = YES;
+        [self.myTableView reloadData];
+    }
+    
+}
+
+- (void)stepAccept:(id)sender
+{
+    id suerview1 = [sender superview];
+    id superview2 = [suerview1 superview];
+    id superView3 = [superview2 superview];
+    if ([superView3 isKindOfClass:[FSServiceStepCell class]])
+    {
+        NSIndexPath* indepath = ((FSServiceStepCell*)superView3).cellIndex;
+        FSServiceStepForm* stepForm = _serviceStepAry[indepath.section - 3];
+        stepForm.is_Edit = NO;
+        [self.myTableView reloadData];
+    }
 }
 
 #pragma mark-UITableViewDelegate

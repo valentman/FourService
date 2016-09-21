@@ -98,6 +98,7 @@
 - (void)setTitleArray:(NSArray *)titleArray
 {
     _titleArray = titleArray;
+    [self removeAllSubViews];
     //获取数量
     NSInteger titleCount = _titleArray.count;
     _segmentWidth = PJ_SCREEN_WIDTH/titleCount;
@@ -122,7 +123,7 @@
 
 - (void)moveButtomLine:(NSInteger)index
 {
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.2 animations:^{
         _underLineView.frame = CGRectMake(index * _segmentWidth, self.bounds.size.height, _segmentWidth, 1);
     } completion:^(BOOL finished) {
         if ([_delegate respondsToSelector:@selector(segmentButtonTouchHandle:)]) {

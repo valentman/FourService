@@ -21,10 +21,6 @@
                             <constraint firstAttribute="height" constant="70" id="6mn-zb-Ocs"/>
                         </constraints>
                     </imageView>
-                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AIH-Vf-7cB">
-                        <rect key="frame" x="95" y="0.0" width="225" height="84"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZAc-lp-Mc5">
                         <rect key="frame" x="95" y="7" width="210" height="70"/>
                         <subviews>
@@ -68,6 +64,22 @@
                             <constraint firstItem="VaS-pw-Ax4" firstAttribute="leading" secondItem="qJ5-Jl-ObQ" secondAttribute="trailing" constant="10" id="xzx-eY-Pbk"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AIH-Vf-7cB">
+                        <rect key="frame" x="95" y="0.0" width="225" height="84"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sc-FS-Kgd">
+                                <rect key="frame" x="92" y="31" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5sc-FS-Kgd" firstAttribute="centerX" secondItem="AIH-Vf-7cB" secondAttribute="centerX" id="QdC-32-NSl"/>
+                            <constraint firstItem="5sc-FS-Kgd" firstAttribute="centerY" secondItem="AIH-Vf-7cB" secondAttribute="centerY" id="Wi2-al-Ncs"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="ZAc-lp-Mc5" secondAttribute="trailing" constant="15" id="2WV-89-e78"/>
@@ -91,7 +103,7 @@
                 <outlet property="productNumLabel" destination="VaS-pw-Ax4" id="9W3-cB-jwo"/>
                 <outlet property="productPriceLabel" destination="qJ5-Jl-ObQ" id="dH4-hA-iE1"/>
             </connections>
-            <point key="canvasLocation" x="234" y="318.5"/>
+            <point key="canvasLocation" x="247" y="307.5"/>
         </tableViewCell>
     </objects>
 </document>

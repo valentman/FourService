@@ -67,6 +67,7 @@
 @property (strong, nonatomic) NSString* shop_pho;
 @property (strong, nonatomic) NSString* lat;
 @property (strong, nonatomic) NSString* lng;
+@property (strong, nonatomic) NSString* service_time;
 @property (strong, nonatomic) NSArray* service_list;
 @property (strong, nonatomic) NSArray* shop_image_list;
 @property (strong, nonatomic) NSArray* comment_list;
@@ -118,6 +119,7 @@
 @property (assign, nonatomic) float stepPrice;
 @property (strong, nonatomic) NSArray* product_list;
 @property (assign, nonatomic) BOOL is_expand;
+@property (assign, nonatomic) BOOL is_Edit;
 @end
 
 //服务步骤里面相关商品数据

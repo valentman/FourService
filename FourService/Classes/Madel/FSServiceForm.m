@@ -35,6 +35,7 @@
 {
     if (self == [super init]) {
         self.is_expand = NO;
+        self.is_Edit = NO;
         return self;
     }
     return nil;

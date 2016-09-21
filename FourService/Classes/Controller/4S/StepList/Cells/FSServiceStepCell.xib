@@ -14,12 +14,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z9L-Xt-akJ">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z9L-Xt-akJ">
                         <rect key="frame" x="15" y="7" width="30" height="30"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="IJh-5i-Bum"/>
                             <constraint firstAttribute="height" constant="30" id="KOj-FN-t55"/>
                         </constraints>
+                        <state key="normal" backgroundImage="orderCommit_PayInStoreGray"/>
+                        <state key="selected" backgroundImage="orderCommit_PayInStore"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小保养服务" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIJ-Fu-OXN">
                         <rect key="frame" x="53" y="7" width="65" height="15"/>
@@ -39,19 +41,11 @@
                         <color key="textColor" red="0.67843137254901964" green="0.67843137254901964" blue="0.67843137254901964" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sYL-Sg-GIw">
-                        <rect key="frame" x="259" y="7" width="46" height="30"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="46" id="6Wa-9u-fgM"/>
-                            <constraint firstAttribute="height" constant="30" id="w9f-Eq-J2Z"/>
-                        </constraints>
-                        <state key="normal" title="保存"/>
-                    </button>
-                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fPV-r1-iFg">
-                        <rect key="frame" x="159" y="0.0" width="161" height="43"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fPV-r1-iFg">
+                        <rect key="frame" x="170" y="0.0" width="100" height="43"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9iy-ZD-lwB">
-                                <rect key="frame" x="71" y="7" width="30" height="30"/>
+                                <rect key="frame" x="10" y="7" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="Uvp-MB-JEE"/>
                                     <constraint firstAttribute="height" constant="30" id="abQ-4J-bsP"/>
@@ -59,7 +53,7 @@
                                 <state key="normal" title="编辑"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B6G-I2-R2f">
-                                <rect key="frame" x="116" y="7" width="30" height="30"/>
+                                <rect key="frame" x="55" y="7" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="hJi-s2-EpJ"/>
                                     <constraint firstAttribute="height" constant="30" id="yAE-Si-vJy"/>
@@ -69,7 +63,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="161" id="Eht-lX-5uw"/>
+                            <constraint firstAttribute="width" constant="100" id="Eht-lX-5uw"/>
                             <constraint firstItem="B6G-I2-R2f" firstAttribute="leading" secondItem="9iy-ZD-lwB" secondAttribute="trailing" constant="15" id="Gyo-Dt-vTj"/>
                             <constraint firstItem="9iy-ZD-lwB" firstAttribute="centerY" secondItem="fPV-r1-iFg" secondAttribute="centerY" id="Ih4-Tr-Nbw"/>
                             <constraint firstAttribute="trailing" secondItem="B6G-I2-R2f" secondAttribute="trailing" constant="15" id="MWJ-Il-XME"/>
@@ -110,13 +104,11 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="z9L-Xt-akJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="5GT-Ck-nzh"/>
-                    <constraint firstAttribute="trailing" secondItem="sYL-Sg-GIw" secondAttribute="trailing" constant="15" id="Aex-Ja-Uut"/>
                     <constraint firstItem="fPV-r1-iFg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="D7m-1r-okf"/>
                     <constraint firstItem="z9L-Xt-akJ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="DgT-6m-o5S"/>
-                    <constraint firstItem="sYL-Sg-GIw" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="EOK-AB-Hyh"/>
                     <constraint firstAttribute="trailing" secondItem="9KI-vO-0X3" secondAttribute="trailing" id="NX5-H7-qTs"/>
                     <constraint firstItem="TlS-9W-COY" firstAttribute="leading" secondItem="sIJ-Fu-OXN" secondAttribute="leading" id="SIN-zc-OpK"/>
-                    <constraint firstAttribute="trailing" secondItem="fPV-r1-iFg" secondAttribute="trailing" id="ZlZ-uO-YJS"/>
+                    <constraint firstAttribute="trailing" secondItem="fPV-r1-iFg" secondAttribute="trailing" constant="50" id="ZlZ-uO-YJS"/>
                     <constraint firstItem="TlS-9W-COY" firstAttribute="bottom" secondItem="z9L-Xt-akJ" secondAttribute="bottom" id="au7-7t-VVN"/>
                     <constraint firstAttribute="bottom" secondItem="9KI-vO-0X3" secondAttribute="bottom" id="gvw-zX-gMl"/>
                     <constraint firstItem="9KI-vO-0X3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="sqW-gG-t8W"/>
@@ -130,7 +122,6 @@
                 <outlet property="editBtn" destination="9iy-ZD-lwB" id="eTG-Os-gr3"/>
                 <outlet property="editView" destination="fPV-r1-iFg" id="CKc-rh-7Ga"/>
                 <outlet property="priceView" destination="9KI-vO-0X3" id="Vee-DW-e2Z"/>
-                <outlet property="saveBtn" destination="sYL-Sg-GIw" id="wTQ-QI-1xg"/>
                 <outlet property="stemNameLabel" destination="sIJ-Fu-OXN" id="1wE-Bf-vJO"/>
                 <outlet property="stepDescLabel" destination="TlS-9W-COY" id="mYz-DQ-Mq9"/>
                 <outlet property="stepImageButton" destination="z9L-Xt-akJ" id="AQA-yd-c7t"/>
@@ -141,6 +132,8 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="orderCommit_PayInStore" width="20" height="20"/>
+        <image name="orderCommit_PayInStoreGray" width="20" height="20"/>
         <image name="shop_btn_sel" width="31" height="31"/>
         <image name="shop_btn_unSel" width="31" height="31"/>
     </resources>
