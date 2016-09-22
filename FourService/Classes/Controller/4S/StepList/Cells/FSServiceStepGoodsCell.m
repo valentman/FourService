@@ -23,18 +23,20 @@
     self.swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
     [self addGestureRecognizer:_swipeLeft];
     self.swipeLeft.delegate = self;
-    self.operateViewLeading.constant = PJ_SCREEN_WIDTH;
+//    self.operateViewLeading.constant = PJ_SCREEN_WIDTH;
     
     BadgeButtonView *deleteBtn = [PUtils getXibViewByName:@"BadgeButtonView"];
-    [deleteBtn setSize:CGSizeMake(50, 60)];
-    [deleteBtn setPosition:CGPointMake(140, self.size.height*0.5) atAnchorPoint:CGPointMiddle];
+    [deleteBtn setSize:CGSizeMake(60, 70)];
+    [deleteBtn setPosition:CGPointMake(150, self.size.height*0.5) atAnchorPoint:CGPointMiddle];
     deleteBtn.viewLabel.text = @"删除";
     [deleteBtn.viewBtn setImage:IMAGENAMED(@"productDelete") forState:UIControlStateNormal];
+    [deleteBtn.viewBtn addTarget:self action:@selector(deleteAction:) forControlEvents:UIControlEventTouchUpInside];
     BadgeButtonView *changeBtn = [PUtils getXibViewByName:@"BadgeButtonView"];
-    [changeBtn setSize:CGSizeMake(50, 60)];
-    [changeBtn setPosition:CGPointMake(210, self.size.height*0.5) atAnchorPoint:CGPointMiddle];
+    [changeBtn setSize:CGSizeMake(60, 70)];
+    [changeBtn setPosition:CGPointMake(220, self.size.height*0.5) atAnchorPoint:CGPointMiddle];
     changeBtn.viewLabel.text = @"更换";
-    [deleteBtn.viewBtn setImage:IMAGENAMED(@"productChange") forState:UIControlStateNormal];
+    [changeBtn.viewBtn setImage:IMAGENAMED(@"productChange") forState:UIControlStateNormal];
+    [changeBtn.viewBtn addTarget:self action:@selector(changeAction:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.operateView addSubview:deleteBtn];
     [self.operateView addSubview:changeBtn];
@@ -53,6 +55,8 @@
     if (!self.changeView)
     {
         self.changeView = [[WLZ_ChangeCountView alloc]initWithFrame:CGRectMake(0, 5, 100,35)  totalCount: 99];
+        [self.changeView setSize:CGSizeMake(100, 35)];
+        [self.changeView setPosition:CGPointMake(10, self.size.height*0.5) atAnchorPoint:CGPointLeftMiddle];
     }
     
     self.changeView.choosedCount =self.choosedCount;
@@ -85,7 +89,11 @@
     }
     
     _changeView.numberFD.text=[NSString stringWithFormat:@"%zi",self.choosedCount];
-    _changeView.choosedCount = self.choosedCount;
+    if ([self.delegate respondsToSelector:@selector(updateProductNum:andIndex:)])
+    {
+        [self.delegate updateProductNum:self.choosedCount andIndex:self.cellIndex];
+    }
+//    _changeView.choosedCount = self.choosedCount;
 //    self.goodsInfoForm.itemCount = _changeView.numberFD.text;
 //    self.goodsInfoForm.isSelect=_chooseBtn.selected;
 //    [self calculatePriceNumber];
@@ -109,10 +117,30 @@
         
     }
     _changeView.numberFD.text=[NSString stringWithFormat:@"%zi",self.choosedCount];
-    _changeView.choosedCount = self.choosedCount;
+    if ([self.delegate respondsToSelector:@selector(updateProductNum:andIndex:)])
+    {
+        [self.delegate updateProductNum:self.choosedCount andIndex:self.cellIndex];
+    }
+//    _changeView.choosedCount = self.choosedCount;
 //    self.goodsInfoForm.itemCount = _changeView.numberFD.text;
 //    self.goodsInfoForm.isSelect=_chooseBtn.selected;
 //    [self calculatePriceNumber];
+}
+
+- (void)changeAction:(UIButton*)sender
+{
+    if ([self.delegate respondsToSelector:@selector(changeProduct:)])
+    {
+        [self.delegate changeProduct:self.cellIndex];
+    }
+}
+
+- (void)deleteAction:(UIButton*)sender
+{
+    if ([self.delegate respondsToSelector:@selector(deleteProduct:)])
+    {
+        [self.delegate deleteProduct:self.cellIndex];
+    }
 }
 
 @end

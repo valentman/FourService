@@ -22,7 +22,8 @@
 UITableViewDelegate,
 UITableViewDataSource,
 CZJOrderListPayCellDelegate,
-FSPageCellDelegate
+FSPageCellDelegate,
+FSServiceStepGoodsDelegate
 >
 @property (strong, nonatomic) __block NSMutableArray* serviceStepAry;
 @property (strong, nonatomic) __block NSMutableArray* serviceTypeAry;
@@ -219,6 +220,8 @@ FSPageCellDelegate
             {
                 FSServiceStepProductForm* stepProductForm = stepForm.product_list[indexPath.row - 1];
                 FSServiceStepGoodsCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FSServiceStepGoodsCell" forIndexPath:indexPath];
+                cell.delegate = self;
+                cell.cellIndex = indexPath;
                 [cell.productImageView sd_setImageWithURL:[NSURL URLWithString:nil] placeholderImage:DefaultPlaceHolderSquare];
                 cell.productNameLabel.text = stepProductForm.product_name;
                 cell.productNumLabel.text = [NSString stringWithFormat:@"×%@",stepProductForm.product_buy_num];
@@ -247,7 +250,6 @@ FSPageCellDelegate
                 }
                 cell.cellIndex = indexPath;
                 cell.editView.hidden = !stepForm.is_expand;
-                cell.priceView.hidden = stepForm.is_expand;
                 cell.stepImageButton.selected = stepForm.is_expand;
                 cell.stepSelectBtn.selected = stepForm.is_expand;
                 cell.stemNameLabel.text = stepForm.step_name;
@@ -447,6 +449,22 @@ FSPageCellDelegate
     [_serviceStepAry removeAllObjects];
     _serviceStepAry = [((FSServiceSegmentTypeForm*)_serviceTypeAry[_currentSelectIndex]).step_list mutableCopy];
     [self.myTableView reloadData];
+}
+
+#pragma mark- FSServiceStepGoodsDelegate
+- (void)deleteProduct:(NSIndexPath*)indexPath
+{
+    iLog(@"delete:%ld, %ld",indexPath.section,indexPath.row);
+}
+
+- (void)changeProduct:(NSIndexPath*)indexPath
+{
+    iLog(@"change:%ld, %ld",indexPath.section,indexPath.row);
+}
+
+- (void)updateProductNum:(NSInteger)productNum andIndex:(NSIndexPath*)indexPath
+{
+    iLog(@"update:%ld, %ld, %ld",productNum, indexPath.section,indexPath.row);
 }
 
 
