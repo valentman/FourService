@@ -80,13 +80,15 @@
             <connections>
                 <outlet property="operateView" destination="bEk-jz-CvH" id="cKa-0f-Rfp"/>
                 <outlet property="operateViewLeading" destination="HDB-nj-wDw" id="aiV-mn-MUY"/>
+                <outlet property="productImageHeight" destination="6mn-zb-Ocs" id="3aY-DS-fUt"/>
                 <outlet property="productImageView" destination="Xve-rS-TwR" id="0RI-no-Ggc"/>
+                <outlet property="productImageWidth" destination="3Sv-Kx-LMg" id="60C-An-NyK"/>
                 <outlet property="productInfoView" destination="ZAc-lp-Mc5" id="JuR-mN-iga"/>
                 <outlet property="productNameLabel" destination="JIo-R8-kPq" id="pIw-1g-yQj"/>
                 <outlet property="productNumLabel" destination="VaS-pw-Ax4" id="9W3-cB-jwo"/>
                 <outlet property="productPriceLabel" destination="qJ5-Jl-ObQ" id="dH4-hA-iE1"/>
             </connections>
-            <point key="canvasLocation" x="280" y="303"/>
+            <point key="canvasLocation" x="-312" y="-33"/>
         </tableViewCell>
     </objects>
 </document>

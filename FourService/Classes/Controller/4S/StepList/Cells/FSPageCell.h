@@ -19,7 +19,7 @@ static NSString* const kSegmentViewSubTitleKey = @"subTitleKey";
 @end
 
 @interface FSPageCell : CZJTableViewCell
-@property (strong, nonatomic) NSArray* titleArray;
+@property (strong, nonatomic) NSMutableArray* titleArray;
 @property (weak, nonatomic) id<FSPageCellDelegate> delegate;
 @property (assign, nonatomic) NSInteger currentTouchIndex;
 @end

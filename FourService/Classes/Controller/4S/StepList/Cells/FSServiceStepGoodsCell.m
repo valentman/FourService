@@ -13,6 +13,9 @@
 @interface FSServiceStepGoodsCell ()
 @property (strong, nonatomic) WLZ_ChangeCountView *changeView;
 @property(nonatomic,assign)NSInteger choosedCount;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *productImageWidth;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *productImageHeight;
+
 @end
 
 @implementation FSServiceStepGoodsCell
@@ -23,23 +26,29 @@
     self.swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
     [self addGestureRecognizer:_swipeLeft];
     self.swipeLeft.delegate = self;
-//    self.operateViewLeading.constant = PJ_SCREEN_WIDTH;
+    
+    
+    NSInteger operateViewWidth = PJ_SCREEN_WIDTH - 90;
     
     BadgeButtonView *deleteBtn = [PUtils getXibViewByName:@"BadgeButtonView"];
     [deleteBtn setSize:CGSizeMake(60, 70)];
-    [deleteBtn setPosition:CGPointMake(150, self.size.height*0.5) atAnchorPoint:CGPointMiddle];
+    [deleteBtn setPosition:CGPointMake(operateViewWidth - (iPhone5 ? 0 : 10), self.size.height*0.5) atAnchorPoint:CGPointRightMiddle];
     deleteBtn.viewLabel.text = @"删除";
     [deleteBtn.viewBtn setImage:IMAGENAMED(@"productDelete") forState:UIControlStateNormal];
     [deleteBtn.viewBtn addTarget:self action:@selector(deleteAction:) forControlEvents:UIControlEventTouchUpInside];
     BadgeButtonView *changeBtn = [PUtils getXibViewByName:@"BadgeButtonView"];
     [changeBtn setSize:CGSizeMake(60, 70)];
-    [changeBtn setPosition:CGPointMake(220, self.size.height*0.5) atAnchorPoint:CGPointMiddle];
+    [changeBtn setPosition:CGPointMake(operateViewWidth - 60 - (iPhone5 ? 0 :20), self.size.height*0.5) atAnchorPoint:CGPointRightMiddle];
     changeBtn.viewLabel.text = @"更换";
     [changeBtn.viewBtn setImage:IMAGENAMED(@"productChange") forState:UIControlStateNormal];
     [changeBtn.viewBtn addTarget:self action:@selector(changeAction:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.operateView addSubview:deleteBtn];
     [self.operateView addSubview:changeBtn];
+    
+    self.productImageWidth.constant = 70;
+    self.productImageHeight.constant = 70;
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -56,7 +65,7 @@
     {
         self.changeView = [[WLZ_ChangeCountView alloc]initWithFrame:CGRectMake(0, 5, 100,35)  totalCount: 99];
         [self.changeView setSize:CGSizeMake(100, 35)];
-        [self.changeView setPosition:CGPointMake(10, self.size.height*0.5) atAnchorPoint:CGPointLeftMiddle];
+        [self.changeView setPosition:CGPointMake(iPhone5 ? 10 :20, self.size.height*0.5) atAnchorPoint:CGPointLeftMiddle];
     }
     
     self.changeView.choosedCount =self.choosedCount;

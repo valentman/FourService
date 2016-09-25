@@ -154,6 +154,7 @@ CGSizeEqualToSize(CGSizeMake(1125, 2001), [[UIScreen mainScreen] currentMode].si
 #define FSYellow UIColorFromHEX(0xF75411,1)
 
 //本项目自定义颜色
+#define FSBLUECOLOR2 RGB (77,181,255)
 #define FSBLUECOLOR RGB(92, 137, 229)
 #define CZJBLUECOLOR RGB(44, 148, 255)
 #define CZJREDCOLOR RGB(251, 70, 78)

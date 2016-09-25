@@ -90,19 +90,15 @@
     // Configure the view for the selected state
 }
 
-- (void)setCurrentTouchIndex:(NSInteger)currentTouchIndex
-{
-    _underLineView.frame = CGRectMake(currentTouchIndex * _segmentWidth, self.bounds.size.height, _segmentWidth, 1);
-}
-
 - (void)setTitleArray:(NSArray *)titleArray
 {
-    _titleArray = titleArray;
+    [_titleArray removeAllObjects];
+    _titleArray = [titleArray mutableCopy];
     [self removeAllSubViews];
     //获取数量
     NSInteger titleCount = _titleArray.count;
     _segmentWidth = PJ_SCREEN_WIDTH/titleCount;
-    CGSize setmentViewSize = CGSizeMake(_segmentWidth, self.bounds.size.height);
+    CGSize setmentViewSize = CGSizeMake(_segmentWidth, self.bounds.size.height - 2);
     for (int i = 0; i < titleCount; i++)
     {
         CGRect segFrame = [PUtils viewFramFromDynamic:CZJMarginMake(0, 0) size:setmentViewSize index:i divide:3];
@@ -111,9 +107,11 @@
         [segview initLabels:_titleArray[i]];
         [segview addTarget:self action:@selector(segmentButtonTouche:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:segview];
+        [self sendSubviewToBack:segview];
     }
-    _underLineView.frame = CGRectMake(0, self.bounds.size.height - 2, _segmentWidth, 2);
+    _underLineView.frame = CGRectMake(0, self.bounds.size.height, _segmentWidth, 2);
     [self addSubview:_underLineView];
+    [self bringSubviewToFront:_underLineView];
 }
 
 - (void)segmentButtonTouche:(UIButton*)sender
@@ -124,7 +122,7 @@
 - (void)moveButtomLine:(NSInteger)index
 {
     [UIView animateWithDuration:0.2 animations:^{
-        _underLineView.frame = CGRectMake(index * _segmentWidth, self.bounds.size.height, _segmentWidth, 1);
+        _underLineView.frame = CGRectMake(index * _segmentWidth, self.bounds.size.height, _segmentWidth, 2);
     } completion:^(BOOL finished) {
         if ([_delegate respondsToSelector:@selector(segmentButtonTouchHandle:)]) {
             [_delegate segmentButtonTouchHandle:index];

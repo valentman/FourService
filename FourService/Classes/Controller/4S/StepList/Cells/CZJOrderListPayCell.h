@@ -17,7 +17,7 @@
 @interface CZJOrderListPayCell : CZJTableViewCell
 @property (weak, nonatomic)id<CZJOrderListPayCellDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UILabel *orderMoneyLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *orderMoneyWidth;
+@property (weak, nonatomic) IBOutlet UIButton *orderButton;
 
 - (IBAction)payAction:(id)sender;
 @end

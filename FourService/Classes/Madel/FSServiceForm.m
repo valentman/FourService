@@ -34,7 +34,7 @@
 - (instancetype)init
 {
     if (self == [super init]) {
-        self.is_expand = NO;
+        self.is_expand = YES;
         self.is_Edit = NO;
         return self;
     }
@@ -49,6 +49,10 @@
 
 
 @implementation FSServiceStepProductForm
++ (NSDictionary *)objectClassInArray
+{
+    return @{@"product_image_list" : @"FSProductImageForm"};
+}
 @end
 
 

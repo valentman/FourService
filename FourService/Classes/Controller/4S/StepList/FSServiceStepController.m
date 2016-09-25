@@ -16,6 +16,7 @@
 #import "FSPageCell.h"
 #import "FSGoodsDetailController.h"
 #import "FSCommitOrderController.h"
+#import "FSProductChangeController.h"
 
 @interface FSServiceStepController ()
 <
@@ -23,13 +24,15 @@ UITableViewDelegate,
 UITableViewDataSource,
 CZJOrderListPayCellDelegate,
 FSPageCellDelegate,
-FSServiceStepGoodsDelegate
+FSServiceStepGoodsDelegate,
+FSProductChangeDelegate
 >
 @property (strong, nonatomic) __block NSMutableArray* serviceStepAry;
 @property (strong, nonatomic) __block NSMutableArray* serviceTypeAry;
 @property (strong, nonatomic) __block NSMutableArray* titleArray;
 @property (assign, nonatomic) NSInteger currentSelectIndex;
 @property (strong, nonatomic)UITableView* myTableView;
+@property (strong, nonatomic) CZJOrderListPayCell* payCell;
 @end
 
 @implementation FSServiceStepController
@@ -53,7 +56,6 @@ FSServiceStepGoodsDelegate
 {
     [self addCZJNaviBarView:CZJNaviBarViewTypeGeneral];
     self.naviBarView.mainTitleLabel.text = @"选择项目";
-    self.naviBarView.mainTitleLabel.textColor = WHITECOLOR;
     self.naviBarView.backgroundImageView.frame = self.naviBarView.frame;
     [self.naviBarView.backgroundImageView setImage:IMAGENAMED(@"home_topBg")];
     self.naviBarView.clipsToBounds = YES;
@@ -61,10 +63,10 @@ FSServiceStepGoodsDelegate
     [self.naviBarView.btnMore setImage:IMAGENAMED(@"shop_share") forState:UIControlStateNormal];
     self.naviBarView.btnMore.hidden = NO;
     
-    CZJOrderListPayCell* payCell = [PUtils getXibViewByName:@"CZJOrderListPayCell"];
-    payCell.frame = CGRectMake(0, PJ_SCREEN_HEIGHT - 50, PJ_SCREEN_WIDTH, 50);
-    payCell.delegate = self;
-    [self.view addSubview:payCell];
+    _payCell = [PUtils getXibViewByName:@"CZJOrderListPayCell"];
+    _payCell.frame = CGRectMake(0, PJ_SCREEN_HEIGHT - 50, PJ_SCREEN_WIDTH, 50);
+    _payCell.delegate = self;
+    [self.view addSubview:_payCell];
 }
 
 - (UITableView*)myTableView
@@ -114,24 +116,45 @@ FSServiceStepGoodsDelegate
 {
     for (FSServiceSegmentTypeForm* form in _serviceTypeAry)
     {
-        for (FSServiceStepForm* stepForm in form.step_list)
-        {
-            float price = 0;
-            for (FSServiceStepProductForm* stepProductForm in stepForm.product_list)
-            {
-                price += [stepProductForm.sale_price floatValue]*[stepProductForm.product_buy_num floatValue];
-            }
-            stepForm.stepPrice = price;
-        }
-        
         NSDictionary* dict = @{kSegmentViewMainTitleKey : form.item_name,
                                kSegmentViewSubTitleKey : form.item_desc};
         
         [_titleArray addObject:dict];
     }
     _serviceStepAry = [((FSServiceSegmentTypeForm*)_serviceTypeAry[_currentSelectIndex]).step_list mutableCopy];
-
+    
+    [self calculateTotalSelectedServicePrice];
 }
+
+- (void)calculateTotalSelectedServicePrice
+{
+    float totalPrice = 0;
+    for (FSServiceStepForm* productForm in _serviceStepAry)
+    {
+        float price = 0;
+        for (FSServiceStepProductForm* stepProductForm in productForm.product_list)
+        {
+            price += [stepProductForm.sale_price floatValue]*[stepProductForm.product_buy_num floatValue];
+        }
+        productForm.stepPrice = price;
+        
+        if (productForm.is_expand)
+        {
+            totalPrice += productForm.stepPrice;
+        }
+    }
+    _payCell.orderMoneyLabel.text = [NSString stringWithFormat:@"￥%.2f",totalPrice];
+    _payCell.orderButton.enabled = YES;
+    [_payCell.orderButton setBackgroundColor:FSBLUECOLOR2];
+    if (totalPrice == 0)
+    {
+        _payCell.orderButton.enabled = NO;
+        [_payCell.orderButton setBackgroundColor:CZJGRAYCOLOR];
+    }
+    
+    [self.myTableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(3, _serviceStepAry.count)] withRowAnimation:UITableViewRowAnimationFade];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -204,6 +227,7 @@ FSServiceStepGoodsDelegate
         case 2:
         {
             FSPageCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FSPageCell" forIndexPath:indexPath];
+            DLog(@"FSPageCell:%@",cell);
             [cell setTitleArray:_titleArray];
             [cell setCurrentTouchIndex:_currentSelectIndex];
             [cell setSeparatorViewHidden:NO];
@@ -275,7 +299,7 @@ FSServiceStepGoodsDelegate
         NSIndexPath* indepath = ((FSServiceStepCell*)superView3).cellIndex;
         FSServiceStepForm* stepForm = _serviceStepAry[indepath.section - 3];
         stepForm.is_Edit = YES;
-        [self.myTableView reloadData];
+        [self.myTableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(3, _serviceStepAry.count)] withRowAnimation:UITableViewRowAnimationFade];
     }
     
 }
@@ -290,7 +314,7 @@ FSServiceStepGoodsDelegate
         NSIndexPath* indepath = ((FSServiceStepCell*)superView3).cellIndex;
         FSServiceStepForm* stepForm = _serviceStepAry[indepath.section - 3];
         stepForm.is_Edit = NO;
-        [self.myTableView reloadData];
+        [self.myTableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(3, _serviceStepAry.count)] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
 
@@ -364,7 +388,7 @@ FSServiceStepGoodsDelegate
             else
             {
                 stepForm.is_expand = !stepForm.is_expand;
-                [tableView reloadData];
+                [self calculateTotalSelectedServicePrice];
             }
         }
             break;
@@ -422,10 +446,7 @@ FSServiceStepGoodsDelegate
     DLog();
 }
 
-- (void)clickToPay:(id)sender
-{
-    [self performSegueWithIdentifier:@"segueToCommitOrder" sender:nil];
-}
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -437,7 +458,7 @@ FSServiceStepGoodsDelegate
     if ([segue.identifier isEqualToString:@"segueToCommitOrder"])
     {
         FSCommitOrderController* commitOrder = segue.destinationViewController;
-        
+        commitOrder.orderServiceAry = sender;
     }
 }
 
@@ -448,24 +469,62 @@ FSServiceStepGoodsDelegate
     _currentSelectIndex = toucheIndex;
     [_serviceStepAry removeAllObjects];
     _serviceStepAry = [((FSServiceSegmentTypeForm*)_serviceTypeAry[_currentSelectIndex]).step_list mutableCopy];
-    [self.myTableView reloadData];
+    [self calculateTotalSelectedServicePrice];
 }
+
 
 #pragma mark- FSServiceStepGoodsDelegate
 - (void)deleteProduct:(NSIndexPath*)indexPath
 {
     iLog(@"delete:%ld, %ld",indexPath.section,indexPath.row);
+    [_serviceStepAry removeAllObjects];
+    FSServiceStepForm* stepForm = ((FSServiceSegmentTypeForm*)_serviceTypeAry[_currentSelectIndex]).step_list[indexPath.section - 3];
+    [stepForm.product_list removeObjectAtIndex:indexPath.row - 1];
+    _serviceStepAry = [((FSServiceSegmentTypeForm*)_serviceTypeAry[_currentSelectIndex]).step_list mutableCopy];
+    [self calculateTotalSelectedServicePrice];
 }
 
 - (void)changeProduct:(NSIndexPath*)indexPath
 {
     iLog(@"change:%ld, %ld",indexPath.section,indexPath.row);
+    FSServiceStepProductForm* stepProduct = ((FSServiceStepForm*)_serviceStepAry[indexPath.section - 3]).product_list[indexPath.row - 1];
+    FSProductChangeController* productVC = [[FSProductChangeController alloc] init];
+    productVC.subTypeId = stepProduct.sub_type_id;
+    productVC.productItem = stepProduct.product_item_id;
+    productVC.delegate = self;
+    productVC.cellIndexPath = indexPath;
+    [self.navigationController pushViewController:productVC animated:YES];
+    
+    FSServiceStepForm* stepForm = _serviceStepAry[indexPath.section - 3];
+    stepForm.is_Edit = NO;
+    [self.myTableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(3, _serviceStepAry.count)] withRowAnimation:UITableViewRowAnimationFade];
+
 }
 
 - (void)updateProductNum:(NSInteger)productNum andIndex:(NSIndexPath*)indexPath
 {
     iLog(@"update:%ld, %ld, %ld",productNum, indexPath.section,indexPath.row);
+    [_serviceStepAry removeAllObjects];
+    FSServiceStepForm* stepForm = ((FSServiceSegmentTypeForm*)_serviceTypeAry[_currentSelectIndex]).step_list[indexPath.section - 3];
+    ((FSServiceStepProductForm*)stepForm.product_list[indexPath.row - 1]).product_buy_num = [NSString stringWithFormat:@"%ld",productNum];
+    _serviceStepAry = [((FSServiceSegmentTypeForm*)_serviceTypeAry[_currentSelectIndex]).step_list mutableCopy];
+    [self calculateTotalSelectedServicePrice];
+}
+
+#pragma mark- FSProductChangeDelegate
+- (void)chooseProduct:(FSServiceStepProductForm*)chooseProduct andIndex:(NSIndexPath*)cellIndex
+{
+    [_serviceStepAry removeAllObjects];
+    FSServiceStepForm* stepForm = ((FSServiceSegmentTypeForm*)_serviceTypeAry[_currentSelectIndex]).step_list[cellIndex.section - 3];
+    stepForm.product_list[cellIndex.row - 1] = chooseProduct;
+    _serviceStepAry = [((FSServiceSegmentTypeForm*)_serviceTypeAry[_currentSelectIndex]).step_list mutableCopy];
+    [self calculateTotalSelectedServicePrice];
 }
 
 
+#pragma mark- CZJOrderListPayCellDelegate
+- (void)clickToPay:(id)sender
+{
+    [self performSegueWithIdentifier:@"segueToCommitOrder" sender:_serviceStepAry];
+}
 @end

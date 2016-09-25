@@ -340,8 +340,6 @@
 		EC57A2BC1D8B79BD006DDA7F /* FSOrderProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC57A2BA1D8B79BD006DDA7F /* FSOrderProductCell.xib */; };
 		EC57A2C01D8BD990006DDA7F /* PaymentType.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC57A2BF1D8BD990006DDA7F /* PaymentType.plist */; };
 		EC5E26A31D86FB480040986B /* FSProductChangeController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5E26A21D86FB480040986B /* FSProductChangeController.m */; };
-		EC5E26A71D8703560040986B /* FSProductChangeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5E26A51D8703560040986B /* FSProductChangeCell.m */; };
-		EC5E26A81D8703560040986B /* FSProductChangeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC5E26A61D8703560040986B /* FSProductChangeCell.xib */; };
 		EC6E3CFB1D7860FE00DA5588 /* CZJProvinceForm.m in Sources */ = {isa = PBXBuildFile; fileRef = EC6E3CFA1D7860FE00DA5588 /* CZJProvinceForm.m */; };
 		EC6E3CFF1D78786700DA5588 /* CZJOrderListPayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC6E3CFD1D78786700DA5588 /* CZJOrderListPayCell.m */; };
 		EC6E3D001D78786700DA5588 /* CZJOrderListPayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC6E3CFE1D78786700DA5588 /* CZJOrderListPayCell.xib */; };
@@ -1067,9 +1065,6 @@
 		EC57A2BF1D8BD990006DDA7F /* PaymentType.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PaymentType.plist; sourceTree = "<group>"; };
 		EC5E26A11D86FB480040986B /* FSProductChangeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSProductChangeController.h; sourceTree = "<group>"; };
 		EC5E26A21D86FB480040986B /* FSProductChangeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSProductChangeController.m; sourceTree = "<group>"; };
-		EC5E26A41D8703560040986B /* FSProductChangeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSProductChangeCell.h; sourceTree = "<group>"; };
-		EC5E26A51D8703560040986B /* FSProductChangeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSProductChangeCell.m; sourceTree = "<group>"; };
-		EC5E26A61D8703560040986B /* FSProductChangeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSProductChangeCell.xib; sourceTree = "<group>"; };
 		EC6E3CF91D7860FE00DA5588 /* CZJProvinceForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJProvinceForm.h; sourceTree = "<group>"; };
 		EC6E3CFA1D7860FE00DA5588 /* CZJProvinceForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJProvinceForm.m; sourceTree = "<group>"; };
 		EC6E3CFC1D78786700DA5588 /* CZJOrderListPayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJOrderListPayCell.h; sourceTree = "<group>"; };
@@ -1586,9 +1581,6 @@
 			children = (
 				EC0DD3D61D92DB2700DB6BCC /* WLZ_ChangeCountView.h */,
 				EC0DD3D71D92DB2700DB6BCC /* WLZ_ChangeCountView.m */,
-				EC5E26A41D8703560040986B /* FSProductChangeCell.h */,
-				EC5E26A51D8703560040986B /* FSProductChangeCell.m */,
-				EC5E26A61D8703560040986B /* FSProductChangeCell.xib */,
 				EC6E3CFC1D78786700DA5588 /* CZJOrderListPayCell.h */,
 				EC6E3CFD1D78786700DA5588 /* CZJOrderListPayCell.m */,
 				EC6E3CFE1D78786700DA5588 /* CZJOrderListPayCell.xib */,
@@ -3137,7 +3129,6 @@
 				EC5427351D237AF500F3B4BF /* LaunchScreen.storyboard in Resources */,
 				EC54299D1D237E7700F3B4BF /* wl_map_icon_4@2x.png in Resources */,
 				EC4598141D757960004424A4 /* FSServiceCell.xib in Resources */,
-				EC5E26A81D8703560040986B /* FSProductChangeCell.xib in Resources */,
 				ECCEE38D1D6C8AAE0034D4F2 /* request_loading_4@2x.png in Resources */,
 				EC5429C51D237E7700F3B4BF /* MultilevelCollectionViewCell.xib in Resources */,
 				EC857BA11D7F0CFE00DF2D02 /* FSPageCell.xib in Resources */,
@@ -3302,7 +3293,6 @@
 				ECDDD4FF1D8CEB95009082DB /* FSProductEvaluateHeadCell.m in Sources */,
 				EC54278E1D237DE000F3B4BF /* PBaseTableViewCell.m in Sources */,
 				EC54B6BA1D8068980082E029 /* CZJDeliveryAddrCell.m in Sources */,
-				EC5E26A71D8703560040986B /* FSProductChangeCell.m in Sources */,
 				EC542A031D237E7700F3B4BF /* UIImage+MultiFormat.m in Sources */,
 				EC45981A1D757960004424A4 /* FSServiceStepCell.m in Sources */,
 				EC5429D41D237E7700F3B4BF /* PhotoView.m in Sources */,

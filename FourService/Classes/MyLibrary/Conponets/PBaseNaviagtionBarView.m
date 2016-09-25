@@ -172,6 +172,7 @@
     _mainTitleLabel.font = BOLDSYSTEMFONT(20);
     _mainTitleLabel.textAlignment = NSTextAlignmentCenter;
     _mainTitleLabel.hidden = YES;
+    _mainTitleLabel.textColor = WHITECOLOR;
     
     _buttomSeparator = [[UIView alloc]initWithFrame:CGRectMake(0, 63, PJ_SCREEN_WIDTH, 0.5)];
     _buttomSeparator.backgroundColor = CZJNAVIBARBGCOLOR;

@@ -117,7 +117,7 @@
 @property (strong, nonatomic) NSString* desc_image;
 @property (strong, nonatomic) NSString* create_time;
 @property (assign, nonatomic) float stepPrice;
-@property (strong, nonatomic) NSArray* product_list;
+@property (strong, nonatomic) NSMutableArray* product_list;
 @property (assign, nonatomic) BOOL is_expand;
 @property (assign, nonatomic) BOOL is_Edit;
 @end
@@ -151,6 +151,7 @@
 @property (strong, nonatomic) NSString* sub_type_id;
 @property (strong, nonatomic) NSString* sub_type_name;
 @property (strong, nonatomic) NSString* type_name;
+@property (strong, nonatomic) NSArray* product_image_list;
 @end
 
 

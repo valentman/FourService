@@ -70,6 +70,12 @@ FSMyInfoButtomViewDelegate
     }
     [self.myTableView reloadData];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getMyInfoDataFromServer) name:kCZJNotifiLoginSuccess object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableView) name:kCZJNotifiLoginOut object:nil];
+}
+
+- (void)reloadTableView
+{
+    [self.myTableView reloadData];
 }
 
 - (void)dealWithInitNavigationBar
@@ -156,13 +162,6 @@ FSMyInfoButtomViewDelegate
                                     @"segueTo":kMyOrderListVc} mutableCopy];
     
     orderSubCellAry = @[pdict1,pdict2,pdict3];
-    
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshTabBarDotLabel) name:kCZJNotifiRefreshMessageReadStatus object:nil];
-}
-
-- (void)refreshTabBarDotLabel
-{
-    [self.myTableView reloadData];
 }
 
 
@@ -216,7 +215,7 @@ FSMyInfoButtomViewDelegate
             myInfoForm.identifier = identiForm.identifier;
             myInfoForm.token = identiForm.token;
             FSBaseDataInstance.userInfoForm = myInfoForm;
-            [PUtils writeDictionaryToDocumentsDirectory:[FSBaseDataInstance.userInfoForm.keyValues mutableCopy] withPlistName:kCZJPlistFileUserBaseForm];
+//            [PUtils writeDictionaryToDocumentsDirectory:[FSBaseDataInstance.userInfoForm.keyValues mutableCopy] withPlistName:kCZJPlistFileUserBaseForm];
 
             carListAry = [FSCarListForm objectArrayWithKeyValuesArray:[dict valueForKey:@"car_list"]];
             [weakSelf updateOrderData:dict];

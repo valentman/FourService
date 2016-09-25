@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface FSCommitOrderController : PBaseViewController
-
+@property (strong, nonatomic)NSArray* orderServiceAry;
 @end

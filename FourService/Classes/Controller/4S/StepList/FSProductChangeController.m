@@ -8,7 +8,7 @@
 
 #import "FSProductChangeController.h"
 #import "FSBaseDataManager.h"
-#import "FSProductChangeCell.h"
+#import "FSServiceStepGoodsCell.h"
 
 @interface FSProductChangeController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -23,6 +23,7 @@
     [super viewDidLoad];
     [self initDatas];
     [self initViews];
+    [self getGoodsListFromServer];
 }
 
 - (void)initDatas
@@ -43,7 +44,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self.view addSubview:self.myTableView];
     
-    NSArray* nibArys = @[@"FSProductChangeCell"];
+    NSArray* nibArys = @[@"FSServiceStepGoodsCell"];
     
     for (id cells in nibArys) {
         UINib *nib=[UINib nibWithNibName:cells bundle:nil];
@@ -53,9 +54,11 @@
 
 - (void)getGoodsListFromServer
 {
-    NSDictionary* params = @{};
+    NSDictionary* params = @{@"sub_type_id" : self.subTypeId, @"product_item_id" : self.productItem};
+    weaky(self);
     [FSBaseDataInstance getProductChangeableList:params success:^(id json) {
-        
+        productListAry = [FSServiceStepProductForm objectArrayWithKeyValuesArray:json[kResoponData]];
+        [weakSelf.myTableView reloadData];
     } fail:nil];
 }
 
@@ -77,7 +80,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    FSProductChangeCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FSProductChangeCell" forIndexPath:indexPath];
+    FSServiceStepProductForm* productform = productListAry[indexPath.row];
+    FSServiceStepGoodsCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FSServiceStepGoodsCell" forIndexPath:indexPath];
+    NSString* imagUrl = ConnectString(kCZJServerAddr, ((FSProductImageForm*)productform.product_image_list.firstObject).img_url);
+    [cell.productImageView sd_setImageWithURL:[NSURL URLWithString:imagUrl] placeholderImage:DefaultPlaceHolderSquare];
+    cell.productNameLabel.text = productform.product_name;
+    cell.productPriceLabel.text = productform.sale_price;
+    cell.productNumLabel.hidden = YES;
     return cell;
 }
 
@@ -98,7 +107,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    FSServiceStepProductForm* productform = productListAry[indexPath.row];
+    if ([_delegate respondsToSelector:@selector(chooseProduct:andIndex:)])
+    {
+        [_delegate chooseProduct:productform andIndex:_cellIndexPath];
+    }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

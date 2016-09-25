@@ -21,6 +21,9 @@ UITableViewDataSource
 {
     NSArray* _orderTypeAry;                     //支付方式（支付宝，微信，银联）
     __block CZJOrderTypeForm* _defaultOrderType;        //默认支付方式（为支付宝）
+    
+    NSInteger productNum;
+    NSInteger serviceNum;
 }
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
 @property (weak, nonatomic) IBOutlet UIView *settleView;
@@ -48,6 +51,12 @@ UITableViewDataSource
             _defaultOrderType = form;
             continue;
         }
+    }
+    serviceNum = self.orderServiceAry.count;
+    productNum = 0;
+    for (FSServiceStepForm* stepForm in self.orderServiceAry)
+    {
+        productNum += stepForm.product_list.count;
     }
 }
 
@@ -137,7 +146,7 @@ UITableViewDataSource
         {
             FSOrderProductCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FSOrderProductCell" forIndexPath:indexPath];
             [cell.productImageView sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:DefaultPlaceHolderSquare];
-            cell.productNamesLabel.text = @"一共3件商品、1项服务";
+            cell.productNamesLabel.text = [NSString stringWithFormat:@"一共%ld件商品、%ld项服务",productNum,serviceNum];
             cell.LabelOne.layer.borderColor = CZJTableViewBGColor.CGColor;
             cell.LabelOne.layer.borderWidth = 1;
             cell.LabelTwo.layer.borderColor = CZJTableViewBGColor.CGColor;
@@ -305,6 +314,8 @@ UITableViewDataSource
     }
 }
 
+
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     //去掉tableview中section的headerview粘性
@@ -317,6 +328,8 @@ UITableViewDataSource
     }
 }
 
-- (IBAction)commitOrderAction:(id)sender {
+- (IBAction)commitOrderAction:(id)sender
+{
+    
 }
 @end

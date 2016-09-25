@@ -9,6 +9,7 @@
 #import "FSSettingController.h"
 #import "CZJGeneralCell.h"
 #import "FSBaseDataManager.h"
+#import "FSMyInformationController.h"
 
 @interface FSSettingController ()
 <
