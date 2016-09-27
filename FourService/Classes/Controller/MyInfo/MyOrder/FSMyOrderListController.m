@@ -16,7 +16,38 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self initViews];
+}
+
+- (void)initViews
+{
+    [self addCZJNaviBarView:CZJNaviBarViewTypeGeneral];
+    NSString* title;
+    switch (self.orderType) {
+        case FSOrderListTypeAll:
+            title = @"全部订单";
+            break;
+            
+        case FSOrderListTypeNoPay:
+            title = @"待支付";
+            break;
+            
+        case FSOrderListTypeInService:
+            title = @"服务中";
+            break;
+            
+        case FSOrderListTypeNoComment:
+            title = @"待评论";
+            break;
+            
+        default:
+            break;
+    }
+    self.naviBarView.mainTitleLabel.text = title;
+    
+    [PUtils tipWithAnimateAndText:@"" withCompeletHandler:^{
+        [PUtils showNoDataAlertViewOnTarget:self.view withPromptString:@"暂未有相关订单"];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

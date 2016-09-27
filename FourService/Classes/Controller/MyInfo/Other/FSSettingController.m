@@ -73,7 +73,7 @@ UITableViewDataSource
     
     self.exitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.exitBtn setTitle:@"退出登录" forState:UIControlStateNormal];
-    [self.exitBtn setBackgroundColor:CZJREDCOLOR];
+    [self.exitBtn setBackgroundColor:FSBLUECOLOR2];
     self.exitBtn.frame = CGRectMake(0, 0, PJ_SCREEN_WIDTH-100, 50);
     self.exitBtn.center = self.view.center;
     [self.exitBtn addTarget:self action:@selector(exitLoginAction:) forControlEvents:UIControlEventTouchUpInside];

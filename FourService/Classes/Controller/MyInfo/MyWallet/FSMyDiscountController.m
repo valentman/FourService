@@ -30,23 +30,22 @@
     self.naviBarView.buttomSeparator.hidden = YES;
     
     //右按钮
-    UIButton* rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    rightBtn.frame = CGRectMake(PJ_SCREEN_WIDTH - 100 , 0 , 100 , 44 );
-    rightBtn.titleLabel.textAlignment = NSTextAlignmentRight;
-    [rightBtn setTitle:@"使用说明" forState:UIControlStateNormal];
-    [rightBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    [rightBtn setSelected:NO];
-    [rightBtn setTag:2999];
-    rightBtn.titleLabel.font = SYSTEMFONT(16);
-    [self.naviBarView addSubview:rightBtn];
-    [rightBtn addTarget:self action:@selector(edit:) forControlEvents:UIControlEventTouchUpInside];
+//    UIButton* rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    rightBtn.frame = CGRectMake(PJ_SCREEN_WIDTH - 100 , 15 , 100 , 44 );
+//    rightBtn.titleLabel.textAlignment = NSTextAlignmentRight;
+//    [rightBtn setTitle:@"使用说明" forState:UIControlStateNormal];
+//    [rightBtn setTitleColor:WHITECOLOR forState:UIControlStateNormal];
+//    [rightBtn setSelected:NO];
+//    [rightBtn setTag:2999];
+//    rightBtn.titleLabel.font = SYSTEMFONT(16);
+//    [self.naviBarView addSubview:rightBtn];
+//    [rightBtn addTarget:self action:@selector(edit:) forControlEvents:UIControlEventTouchUpInside];
     
     CZJMyWalletCouponUnUsedController* unUsed = [[CZJMyWalletCouponUnUsedController alloc]init];
     CZJMyWalletCouponUsedController* used = [[CZJMyWalletCouponUsedController alloc]init];
     CZJMyWalletCouponOutOfTimeController* outOfTime = [[CZJMyWalletCouponOutOfTimeController alloc]init];
     CGRect pageViewFrame = CGRectMake(0, StatusBar_HEIGHT + NavigationBar_HEIGHT, PJ_SCREEN_WIDTH, PJ_SCREEN_HEIGHT);
     CZJPageControlView* pageview = [[CZJPageControlView alloc]initWithFrame:pageViewFrame andPageIndex:0];
-    pageview.backgroundColor = WHITECOLOR;
     [pageview setTitleArray:@[@"未使用",@"已使用",@"已过期"] andVCArray:@[unUsed, used, outOfTime]];
     
     [self.view addSubview:pageview];

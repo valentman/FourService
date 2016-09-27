@@ -394,6 +394,7 @@ FSMyInfoButtomViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString* sbIdentifer;
+    NSInteger type;
     switch (indexPath.section)
     {
         case 0:
@@ -408,7 +409,9 @@ FSMyInfoButtomViewDelegate
             break;
             
         case 2:
-            sbIdentifer = [orderSubCellAry[indexPath.row - 1] valueForKey:@"segueTo"];
+            sbIdentifer = kMyOrderListVc;
+            type = indexPath.row;
+            
             break;
             
         case 3:
@@ -418,7 +421,7 @@ FSMyInfoButtomViewDelegate
         default:
             break;
     }
-    [self myInforShowNextViewController:sbIdentifer];
+    [self myInforShowNextViewController:sbIdentifer andType:type];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -459,8 +462,13 @@ FSMyInfoButtomViewDelegate
     [self myInforShowNextViewController:kMySettingVc];
 }
 
-
 - (void)myInforShowNextViewController:(NSString*)sbIdentifer
+{
+    [self myInforShowNextViewController:sbIdentifer andType:0];
+}
+
+
+- (void)myInforShowNextViewController:(NSString*)sbIdentifer andType:(FSOrderListType)_orderType
 {
     if (!sbIdentifer)
         return;
@@ -472,6 +480,10 @@ FSMyInfoButtomViewDelegate
     if ([sbIdentifer isEqualToString:kMyCarListVc])
     {
         ((FSMyCarListController*)nextVC).carListAry = [carListAry mutableCopy];
+    }
+    if ([sbIdentifer isEqualToString:kMyOrderListVc])
+    {
+        ((FSMyOrderListController*)nextVC).orderType = _orderType;
     }
     [((YQSlideMenuController*)self.parentViewController) showViewController:nextVC sender:nil];
 }

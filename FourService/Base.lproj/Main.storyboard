@@ -266,6 +266,9 @@
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
+                    <connections>
+                        <segue destination="o1H-gz-C9P" kind="show" identifier="segueToAboutUs" id="PYi-Ih-Ate"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8VN-jt-8bN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -311,6 +314,7 @@
                         <segue destination="enW-6A-K1U" kind="show" identifier="segueToMyCarList" id="G8p-pj-PqS"/>
                         <segue destination="vXY-mL-C2P" kind="show" identifier="segueToMessageCenter" id="krj-Jg-sHi"/>
                         <segue destination="8iR-zO-VrT" kind="show" identifier="segueToService" id="Fvg-mA-9BK"/>
+                        <segue destination="t4f-ZH-arn" kind="show" identifier="order" id="xjH-eU-hds"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h6P-KK-BHo" sceneMemberID="firstResponder"/>
@@ -1739,6 +1743,35 @@
             </objects>
             <point key="canvasLocation" x="3483" y="1926"/>
         </scene>
+        <!--AboutUS Controller-->
+        <scene sceneID="Xrz-lQ-FDc">
+            <objects>
+                <viewController id="o1H-gz-C9P" customClass="FSAboutUSController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qwA-ZZ-259"/>
+                        <viewControllerLayoutGuide type="bottom" id="huH-C2-7OP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kJF-fG-v3F">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这里是宇宙中心" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLh-TX-6J1">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="TLh-TX-6J1" firstAttribute="centerX" secondItem="kJF-fG-v3F" secondAttribute="centerX" id="4Wu-G5-vHR"/>
+                            <constraint firstItem="TLh-TX-6J1" firstAttribute="centerY" secondItem="kJF-fG-v3F" secondAttribute="centerY" id="Ohw-mg-fDD"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aOP-zR-W1v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4190" y="1946"/>
+        </scene>
         <!--服务与反馈-->
         <scene sceneID="dDT-Nt-k8B">
             <objects>
@@ -1769,18 +1802,7 @@
                     <view key="view" contentMode="scaleToFill" id="zR5-Bm-9ME">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="k9h-yp-RdW">
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </tableView>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="k9h-yp-RdW" firstAttribute="top" secondItem="sxh-F1-96l" secondAttribute="bottom" constant="44" id="ANI-ON-QUn"/>
-                            <constraint firstAttribute="trailing" secondItem="k9h-yp-RdW" secondAttribute="trailing" id="kwY-tZ-k6h"/>
-                            <constraint firstItem="nS2-gP-EZx" firstAttribute="top" secondItem="k9h-yp-RdW" secondAttribute="bottom" id="t6Y-XI-zIx"/>
-                            <constraint firstItem="k9h-yp-RdW" firstAttribute="leading" secondItem="zR5-Bm-9ME" secondAttribute="leading" id="uxK-0L-tVS"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="lsU-Oc-uON"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

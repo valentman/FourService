@@ -44,7 +44,8 @@ DZNEmptyDataSetDelegate
     self.naviBarView.btnMore.hidden = NO;
     [self.naviBarView.btnMore setBackgroundImage:IMAGENAMED(@"") forState:UIControlStateNormal];
     [self.naviBarView.btnMore setTitle:@"关闭" forState:UIControlStateNormal];
-    [self.naviBarView.btnMore setTitleColor:BLACKCOLOR forState:UIControlStateNormal];
+    [self.naviBarView.btnMore setTitleColor:WHITECOLOR forState:UIControlStateNormal];
+    self.naviBarView.mainTitleLabel.text = self.webTitle;
     
     //WebView定义
     self.myWebView.scrollView.emptyDataSetDelegate = self;

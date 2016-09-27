@@ -460,7 +460,6 @@ void backLastView(id sender, SEL _cmd)
 
 + (void)tipWithText:(NSString*)text withCompeletHandler:(GeneralBlockHandler)compeletBlock
 {
-//    AppDelegate* mydelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:CZJAppdelegate.window animated:YES];
     hud.mode = MBProgressHUDModeText;
     hud.labelText = text;
@@ -468,6 +467,18 @@ void backLastView(id sender, SEL _cmd)
     hud.yOffset = 20.f;
     hud.removeFromSuperViewOnHide = YES;
     [hud setYOffset:PJ_SCREEN_HEIGHT/4];
+    [hud hide:YES afterDelay:1.5];
+    hud.completionBlock = compeletBlock;
+}
+
++ (void)tipWithAnimateAndText:(NSString*)text withCompeletHandler:(GeneralBlockHandler)compeletBlock
+{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:CZJAppdelegate.window animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = text;
+    hud.margin = 15.f;
+    hud.yOffset = 20.f;
+    hud.removeFromSuperViewOnHide = YES;
     [hud hide:YES afterDelay:1.5];
     hud.completionBlock = compeletBlock;
 }
@@ -1384,6 +1395,7 @@ void tapToHidePopViewAction(id sender, SEL _cmd)
     promptView.promptLabel.text = prompt;
     return promptView;
 }
+
 
 
 + (NSString*)getCurrentVersion

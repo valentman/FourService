@@ -23,12 +23,7 @@
 {
     self.isInit = YES;
     [_imageArray removeAllObjects];
-    _activeties = [array mutableCopy];
-    for (FSHomeBannerForm* tmp in array) {
-        if (tmp.news_image_url) {
-            [_imageArray addObject:[kCZJServerAddr stringByAppendingString:tmp.news_image_url]];
-        }
-    }
+    _imageArray = [array mutableCopy];
     [self loadImageData];
 }
 

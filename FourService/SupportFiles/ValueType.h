@@ -18,7 +18,7 @@
 
 #define FSNetWorkInstance [FSNetworkManager sharedFSNetworkManager]
 
-#define FSPaymentInstance [FSPaymentManager sharedFSPaymentManager]
+#define CZJPaymentInstance [CZJPaymentManager sharedCZJPaymentManager]
 
 #define FSMessageInstance [FSMessageManager sharedFSMessageManager]
 
@@ -138,6 +138,15 @@ typedef NS_ENUM(NSInteger, CZJOrderDetailType)
 {
     CZJOrderDetailTypeGeneral = 100,
     CZJOrderDetailTypeReturned
+};
+
+
+typedef NS_ENUM(NSInteger, FSOrderListType)
+{
+    FSOrderListTypeAll = 0,
+    FSOrderListTypeNoPay,
+    FSOrderListTypeInService,
+    FSOrderListTypeNoComment
 };
 
 typedef NS_ENUM(NSInteger, AFRequestType)

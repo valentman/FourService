@@ -62,6 +62,13 @@
 		EC3A18F51D41F18D00F6F193 /* FSMyOrderListController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3A18F41D41F18D00F6F193 /* FSMyOrderListController.m */; };
 		EC3A18F81D41F1AE00F6F193 /* FSMyDiscountController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3A18F71D41F1AE00F6F193 /* FSMyDiscountController.m */; };
 		EC3A18FB1D41F21C00F6F193 /* FSMyCarListController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3A18FA1D41F21C00F6F193 /* FSMyCarListController.m */; };
+		EC4448FB1D9A646700E83144 /* FSStepServiceListController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4448FA1D9A646700E83144 /* FSStepServiceListController.m */; };
+		EC4448FF1D9A706700E83144 /* CPEvaluateSuccessController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4448FD1D9A706700E83144 /* CPEvaluateSuccessController.m */; };
+		EC4449001D9A706700E83144 /* CPEvaluateSuccessController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4448FE1D9A706700E83144 /* CPEvaluateSuccessController.xib */; };
+		EC4449031D9A735B00E83144 /* CZJPaymentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4449021D9A735B00E83144 /* CZJPaymentManager.m */; };
+		EC4449071D9A7B7800E83144 /* CZJBackgroundPromptView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4449051D9A7B7800E83144 /* CZJBackgroundPromptView.m */; };
+		EC4449081D9A7B7800E83144 /* CZJBackgroundPromptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4449061D9A7B7800E83144 /* CZJBackgroundPromptView.xib */; };
+		EC44490B1D9A7E9400E83144 /* FSAboutUSController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC44490A1D9A7E9400E83144 /* FSAboutUSController.m */; };
 		EC4598111D757960004424A4 /* FSHomeNotifyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4597F11D757960004424A4 /* FSHomeNotifyCell.m */; };
 		EC4598121D757960004424A4 /* FSHomeNotifyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4597F21D757960004424A4 /* FSHomeNotifyCell.xib */; };
 		EC4598131D757960004424A4 /* FSServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4597F41D757960004424A4 /* FSServiceCell.m */; };
@@ -518,6 +525,18 @@
 		EC3A18F71D41F1AE00F6F193 /* FSMyDiscountController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyDiscountController.m; sourceTree = "<group>"; };
 		EC3A18F91D41F21C00F6F193 /* FSMyCarListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyCarListController.h; sourceTree = "<group>"; };
 		EC3A18FA1D41F21C00F6F193 /* FSMyCarListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyCarListController.m; sourceTree = "<group>"; };
+		EC4448F91D9A646700E83144 /* FSStepServiceListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSStepServiceListController.h; sourceTree = "<group>"; };
+		EC4448FA1D9A646700E83144 /* FSStepServiceListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSStepServiceListController.m; sourceTree = "<group>"; };
+		EC4448FC1D9A706700E83144 /* CPEvaluateSuccessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPEvaluateSuccessController.h; sourceTree = "<group>"; };
+		EC4448FD1D9A706700E83144 /* CPEvaluateSuccessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPEvaluateSuccessController.m; sourceTree = "<group>"; };
+		EC4448FE1D9A706700E83144 /* CPEvaluateSuccessController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPEvaluateSuccessController.xib; sourceTree = "<group>"; };
+		EC4449011D9A735B00E83144 /* CZJPaymentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJPaymentManager.h; sourceTree = "<group>"; };
+		EC4449021D9A735B00E83144 /* CZJPaymentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJPaymentManager.m; sourceTree = "<group>"; };
+		EC4449041D9A7B7800E83144 /* CZJBackgroundPromptView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CZJBackgroundPromptView.h; path = FourService/Classes/Controller/MyInfo/MyOrder/CZJBackgroundPromptView.h; sourceTree = SOURCE_ROOT; };
+		EC4449051D9A7B7800E83144 /* CZJBackgroundPromptView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CZJBackgroundPromptView.m; path = FourService/Classes/Controller/MyInfo/MyOrder/CZJBackgroundPromptView.m; sourceTree = SOURCE_ROOT; };
+		EC4449061D9A7B7800E83144 /* CZJBackgroundPromptView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CZJBackgroundPromptView.xib; path = FourService/Classes/Controller/MyInfo/MyOrder/CZJBackgroundPromptView.xib; sourceTree = SOURCE_ROOT; };
+		EC4449091D9A7E9400E83144 /* FSAboutUSController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSAboutUSController.h; sourceTree = "<group>"; };
+		EC44490A1D9A7E9400E83144 /* FSAboutUSController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSAboutUSController.m; sourceTree = "<group>"; };
 		EC4597F01D757960004424A4 /* FSHomeNotifyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHomeNotifyCell.h; sourceTree = "<group>"; };
 		EC4597F11D757960004424A4 /* FSHomeNotifyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHomeNotifyCell.m; sourceTree = "<group>"; };
 		EC4597F21D757960004424A4 /* FSHomeNotifyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSHomeNotifyCell.xib; sourceTree = "<group>"; };
@@ -1461,6 +1480,9 @@
 		EC3A18DD1D41F00400F6F193 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				EC4449041D9A7B7800E83144 /* CZJBackgroundPromptView.h */,
+				EC4449051D9A7B7800E83144 /* CZJBackgroundPromptView.m */,
+				EC4449061D9A7B7800E83144 /* CZJBackgroundPromptView.xib */,
 				EC0662741D7048DD006B62D2 /* CZJCommitReturnReasonCell.h */,
 				EC0662751D7048DD006B62D2 /* CZJCommitReturnReasonCell.m */,
 				EC0662761D7048DD006B62D2 /* CZJCommitReturnReasonCell.xib */,
@@ -1689,6 +1711,8 @@
 		EC5427291D237A6700F3B4BF /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				EC4449011D9A735B00E83144 /* CZJPaymentManager.h */,
+				EC4449021D9A735B00E83144 /* CZJPaymentManager.m */,
 				EC5427921D237E0500F3B4BF /* FSBaseDataManager.h */,
 				EC5427931D237E0500F3B4BF /* FSBaseDataManager.m */,
 				EC5427941D237E0500F3B4BF /* FSErrorCodeManager.h */,
@@ -2706,8 +2730,13 @@
 			isa = PBXGroup;
 			children = (
 				EC857B921D7F069E00DF2D02 /* Cell */,
+				EC4448FC1D9A706700E83144 /* CPEvaluateSuccessController.h */,
+				EC4448FD1D9A706700E83144 /* CPEvaluateSuccessController.m */,
+				EC4448FE1D9A706700E83144 /* CPEvaluateSuccessController.xib */,
 				EC6E89251D7EE7BE00829220 /* FSCommitOrderController.h */,
 				EC6E89261D7EE7BE00829220 /* FSCommitOrderController.m */,
+				EC4448F91D9A646700E83144 /* FSStepServiceListController.h */,
+				EC4448FA1D9A646700E83144 /* FSStepServiceListController.m */,
 			);
 			path = CommitOrder;
 			sourceTree = "<group>";
@@ -2900,6 +2929,8 @@
 				ECA233D01D37DB91004C2679 /* FSSettingController.m */,
 				EC9064651D47AC8500E9554F /* FSMyServiceFeedbackController.h */,
 				EC9064661D47AC8500E9554F /* FSMyServiceFeedbackController.m */,
+				EC4449091D9A7E9400E83144 /* FSAboutUSController.h */,
+				EC44490A1D9A7E9400E83144 /* FSAboutUSController.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -3047,7 +3078,7 @@
 				TargetAttributes = {
 					EC7760D51D2223D500E1A89F = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = UG6PG8B3H6;
+						DevelopmentTeam = 27ZN797VLM;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -3103,8 +3134,10 @@
 				EC54298C1D237E7700F3B4BF /* anjuke_icon_itis_position@2x.png in Resources */,
 				EC5429791D237E7700F3B4BF /* KMCGeigerCounterTick.aiff in Resources */,
 				EC54B6C01D8068EA0082E029 /* CZJAddDeliveryAddrCell.xib in Resources */,
+				EC4449081D9A7B7800E83144 /* CZJBackgroundPromptView.xib in Resources */,
 				EC026F2F1D2B894700CA8CEB /* FSLotteryCell.xib in Resources */,
 				ECA82A441D58CDE600F05C52 /* YQSlideMenuImages.xcassets in Resources */,
+				EC4449001D9A706700E83144 /* CPEvaluateSuccessController.xib in Resources */,
 				EC3221131D77A81B00E4019C /* CZJStoreMapCell.xib in Resources */,
 				ECD538061D4658DB00D136EF /* CZJHotBrandViewCell.xib in Resources */,
 				EC18DE921D450204006CB460 /* CZJMyMessageCenterCell.xib in Resources */,
@@ -3194,6 +3227,7 @@
 				EC5429761D237E7700F3B4BF /* README.markdown in Sources */,
 				EC542AEF1D239B8A00F3B4BF /* Order.m in Sources */,
 				EC542A741D23979500F3B4BF /* NSString+Valid.m in Sources */,
+				EC4448FF1D9A706700E83144 /* CPEvaluateSuccessController.m in Sources */,
 				EC3A18FB1D41F21C00F6F193 /* FSMyCarListController.m in Sources */,
 				EC5429B21D237E7700F3B4BF /* MJRefreshHeader.m in Sources */,
 				EC5427821D237DE000F3B4BF /* BadgeButtonView.m in Sources */,
@@ -3241,6 +3275,7 @@
 				EC542A4B1D23802000F3B4BF /* FSWebViewController.m in Sources */,
 				EC5429601D237E7700F3B4BF /* NIDropDown.m in Sources */,
 				EC5429B11D237E7700F3B4BF /* MJRefreshFooter.m in Sources */,
+				EC4448FB1D9A646700E83144 /* FSStepServiceListController.m in Sources */,
 				EC542A591D23966700F3B4BF /* ProvinceForm.m in Sources */,
 				ECA233D11D37DB91004C2679 /* FSSettingController.m in Sources */,
 				EC5427A21D237E0500F3B4BF /* FSNetworkManager.m in Sources */,
@@ -3274,6 +3309,7 @@
 				EC5427811D237DE000F3B4BF /* DynamicArrangeButtonCell.m in Sources */,
 				EC857B9B1D7F069E00DF2D02 /* CZJOrderTypeCell.m in Sources */,
 				EC0DD3D81D92DB2700DB6BCC /* WLZ_ChangeCountView.m in Sources */,
+				EC4449031D9A735B00E83144 /* CZJPaymentManager.m in Sources */,
 				EC542A711D23979500F3B4BF /* NSDate+Category.m in Sources */,
 				EC5429D21D237E7700F3B4BF /* CALayer+Anim.m in Sources */,
 				EC5429D11D237E7700F3B4BF /* OpenShare.m in Sources */,
@@ -3337,6 +3373,7 @@
 				EC542A781D23979500F3B4BF /* UIView+RGSize.m in Sources */,
 				EC95ED4E1D606A63005A50B7 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				EC7760DB1D2223D500E1A89F /* main.m in Sources */,
+				EC44490B1D9A7E9400E83144 /* FSAboutUSController.m in Sources */,
 				EC3A18F21D41F17B00F6F193 /* FSMyEvalutionController.m in Sources */,
 				EC542A161D237E7700F3B4BF /* WebViewJsBridge.m in Sources */,
 				EC5429C21D237E7700F3B4BF /* CollectionHeader.m in Sources */,
@@ -3442,6 +3479,7 @@
 				EC542A541D23815E00F3B4BF /* UIScrollView+EmptyDataSet.m in Sources */,
 				ECCEE3881D6C8AAE0034D4F2 /* FBShimmeringLayer.m in Sources */,
 				EC45981C1D757960004424A4 /* FSServiceStepGoodsCell.m in Sources */,
+				EC4449071D9A7B7800E83144 /* CZJBackgroundPromptView.m in Sources */,
 				EC5429911D237E7700F3B4BF /* CheckInstalledMapAPP.m in Sources */,
 				ECA540A31D7091F7002F6001 /* CZJTableViewCell.m in Sources */,
 				ECBC6BC81D349A46003B7446 /* NSTimer_Pause.m in Sources */,
@@ -3572,7 +3610,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: jian peng (P7ATKGF6ZW)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 27ZN797VLM;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3614,7 +3652,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 27ZN797VLM;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

@@ -12,6 +12,10 @@
 #import "FSOrderContactCell.h"
 #import "FSOrderProductCell.h"
 #import "FSBaseDataManager.h"
+#import "FSStepServiceListController.h"
+#import "CPEvaluateSuccessController.h"
+#import "OpenShareHeader.h"
+#import "CZJPaymentManager.h"
 
 @interface FSCommitOrderController ()
 <
@@ -24,6 +28,8 @@ UITableViewDataSource
     
     NSInteger productNum;
     NSInteger serviceNum;
+    float totalPrice;
+    float otherPrice;
 }
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
 @property (weak, nonatomic) IBOutlet UIView *settleView;
@@ -52,12 +58,35 @@ UITableViewDataSource
             continue;
         }
     }
-    serviceNum = self.orderServiceAry.count;
+    serviceNum = 0;
     productNum = 0;
     for (FSServiceStepForm* stepForm in self.orderServiceAry)
     {
-        productNum += stepForm.product_list.count;
+        if (stepForm.is_expand)
+        {
+            serviceNum++;
+            productNum += stepForm.product_list.count;
+        }
     }
+    
+    totalPrice = 0;
+    for (FSServiceStepForm* productForm in self.orderServiceAry)
+    {
+        float price = 0;
+        for (FSServiceStepProductForm* stepProductForm in productForm.product_list)
+        {
+            price += [stepProductForm.sale_price floatValue]*[stepProductForm.product_buy_num floatValue];
+        }
+        productForm.stepPrice = price;
+        
+        if (productForm.is_expand)
+        {
+            totalPrice += productForm.stepPrice;
+        }
+    }
+    otherPrice = 30;
+    
+    self.totalPriceLabel.text = [NSString stringWithFormat:@"￥%.2f", otherPrice + totalPrice];
 }
 
 - (void)initViews
@@ -219,11 +248,22 @@ UITableViewDataSource
             CZJGeneralCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralCell" forIndexPath:indexPath];
             cell.nameLabelLeading.constant = 20;
             cell.detailLabel.textColor = FSYellow;
+            cell.arrowImg.hidden = YES;
             if (0 == indexPath.row)
             {
+
                 cell.nameLabel.text = @"商品金额";
                 cell.detailLabel.hidden = NO;
-                cell.detailLabel.text = @"￥699";
+               
+                cell.detailLabel.text = [NSString stringWithFormat:@"￥%.2f",totalPrice];
+                cell.detailLabel.textColor = FSYellow;
+                cell.detailLabel.font = SYSTEMFONT(14);
+            }
+            else
+            {
+                cell.nameLabel.text = @"其他费用";
+                cell.detailLabel.hidden = NO;
+                cell.detailLabel.text = [NSString stringWithFormat:@"￥%.2f",otherPrice];
                 cell.detailLabel.textColor = FSYellow;
                 cell.detailLabel.font = SYSTEMFONT(14);
             }
@@ -283,7 +323,11 @@ UITableViewDataSource
             break;
             
         case 1:
-            
+        {
+            FSStepServiceListController* servicelist = [[FSStepServiceListController alloc] init];
+            servicelist.orderServiceAry = self.orderServiceAry;
+            [self.navigationController pushViewController:servicelist animated:YES];
+        }
             break;
             
         case 2:
@@ -330,6 +374,84 @@ UITableViewDataSource
 
 - (IBAction)commitOrderAction:(id)sender
 {
+    NSString* currentOrdertypeName;
+    for (CZJOrderTypeForm* form in _orderTypeAry)
+    {
+        if (form.isSelect)
+        {
+            currentOrdertypeName = form.orderTypeName;
+            break;
+        }
+    }
+    if ([currentOrdertypeName isEqualToString:@"到店支付"]) {
+        CPEvaluateSuccessController* success = [[CPEvaluateSuccessController alloc] init];
+        [self.navigationController pushViewController:success animated:YES];
+    }
+    
+    
+    [self checkPay:currentOrdertypeName];
+    
+    CZJPaymentOrderForm* paymentOrderForm = [[CZJPaymentOrderForm alloc] init];
+    paymentOrderForm.order_no = @"1231234";
+    paymentOrderForm.order_name = @"测试订单";
+    paymentOrderForm.order_description = @"支付宝你个SB";
+    paymentOrderForm.order_price = @"0.1";
+    paymentOrderForm.order_for = @"pay";
+    weaky(self);
+    if ([currentOrdertypeName isEqualToString:@"微信支付"])
+    {
+        DLog(@"提交订单页面请求微信支付");
+        [CZJPaymentInstance weixinPay:weakSelf OrderInfo:paymentOrderForm Success:^(NSDictionary *message) {
+        } Fail:^(NSDictionary *message, NSError *error) {
+            [PUtils tipWithText:@"微信支付失败" withCompeletHandler:^{
+                [weakSelf dismissViewControllerAnimated:YES completion:^{
+                    [[NSNotificationCenter defaultCenter]postNotificationName:kCZJNotifiJumpToOrderList object:nil];
+                }];
+            }];
+        }];
+    }
+    if ([currentOrdertypeName isEqualToString:@"支付宝支付"])
+    {
+        DLog(@"提交订单页面请求支付宝支付");
+        [CZJPaymentInstance aliPay:weakSelf OrderInfo:paymentOrderForm Success:^(NSDictionary *message) {
+        } Fail:^(NSDictionary *message, NSError *error) {
+            [PUtils tipWithText:@"支付宝支付失败" withCompeletHandler:^{
+                [weakSelf dismissViewControllerAnimated:YES completion:^{
+                    [[NSNotificationCenter defaultCenter]postNotificationName:kCZJNotifiJumpToOrderList object:nil];
+                }];
+                DLog(@"支付宝支付失败");
+            }];
+        }];
+    }
+    
+    if ([currentOrdertypeName isEqualToString:@"支付宝支付"])
+    {
+        
+    }
+    if ([currentOrdertypeName isEqualToString:@"微信支付"])
+    {
+        
+    }
+}
+
+- (void)checkPay:(NSString*)_orderTypeName
+{
+    if ([_orderTypeName isEqualToString:@"微信支付"] &&
+        ![OpenShare isWeixinInstalled])
+    {
+        UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+        UIAlertView* alertview = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"您的手机未安装微信客户端，请安装后支付" delegate:window cancelButtonTitle:@"收到" otherButtonTitles:nil, nil];
+        [alertview show];
+        return;
+    }
+    if ([_orderTypeName isEqualToString:@"支付宝支付"] &&
+        ![OpenShare isAlipayInstalled])
+    {
+        UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+        UIAlertView* alertview = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"您的手机未安装支付宝客户端，请安装后支付" delegate:window cancelButtonTitle:@"收到" otherButtonTitles:nil, nil];
+        [alertview show];
+        return;
+    }
     
 }
 @end

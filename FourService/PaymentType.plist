@@ -16,7 +16,17 @@
 		<key>isSelect</key>
 		<false/>
 		<key>orderTypeName</key>
-		<string>在线支付</string>
+		<string>支付宝支付</string>
+		<key>orderTypeImg</key>
+		<string>orderCommit_PayOnLineGray</string>
+		<key>orderTypeImgSelect</key>
+		<string>orderCommit_PayOnLine</string>
+	</dict>
+	<dict>
+		<key>isSelect</key>
+		<false/>
+		<key>orderTypeName</key>
+		<string>微信支付</string>
 		<key>orderTypeImg</key>
 		<string>orderCommit_PayOnLineGray</string>
 		<key>orderTypeImgSelect</key>

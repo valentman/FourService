@@ -10,4 +10,6 @@
 
 @interface FSProductPriceCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *productPriceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *productBuyNumLabel;
 @end

@@ -24,7 +24,8 @@
 <
 UICollectionViewDelegate,
 UICollectionViewDataSource,
-PBaseNaviagtionBarViewDelegate
+PBaseNaviagtionBarViewDelegate,
+PJBrowserDelegate
 >
 {
     UserBaseForm* userInfoForm;
@@ -92,7 +93,7 @@ PBaseNaviagtionBarViewDelegate
     [self.naviBarView.btnBack setSize:CGSizeMake(40, 40)];
     self.naviBarView.btnBack.layer.cornerRadius = 20;
     [self.naviBarView.btnBack setBackgroundImage:nil forState:UIControlStateNormal];
-    [self.naviBarView.btnBack setClipsToBounds:YES];
+//    [self.naviBarView.btnBack setClipsToBounds:YES];
     [self.naviBarView.btnBack setPosition:CGPointMake(12, 28) atAnchorPoint:CGPointZero];
     [self.naviBarView.btnBack addTarget:self action:@selector(clickHeadBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.naviBarView.btnBack setBadgeNum:22];
@@ -137,6 +138,7 @@ PBaseNaviagtionBarViewDelegate
     
 
     PJBrowserView* browserView = [[PJBrowserView alloc] initWithFrame:CGRectMake(0, 87, PJ_SCREEN_WIDTH, kMovieBrowserHeight) items:carViewItems];
+    browserView.delegate = self;
     [self.naviBarView addSubview:browserView];
     
     NSURL* headImgUrl;
@@ -144,7 +146,7 @@ PBaseNaviagtionBarViewDelegate
         headImgUrl = [NSURL URLWithString:userInfoForm.customer_photo];
     }
     
-    [self.naviBarView.btnBack setBackgroundImageForState:UIControlStateNormal withURL:headImgUrl placeholderImage:DefaultPlaceHolderCircle];
+    [self.naviBarView.btnBack setBackgroundImageForState:UIControlStateNormal withURL:NULL placeholderImage:DefaultPlaceHolderCircle];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -210,6 +212,24 @@ PBaseNaviagtionBarViewDelegate
 {
     [((YQSlideMenuController*)self.parentViewController) showMenu];
 
+}
+
+
+#pragma mark- PJBrowserDelegate
+- (void)browser:(PJBrowserView *)movieBrowser didSelectItemAtIndex:(NSInteger)index
+{
+    DLog();
+}
+
+
+- (void)browser:(PJBrowserView *)movieBrowser didEndScrollingAtIndex:(NSInteger)index
+{
+    DLog();
+}
+
+- (void)browser:(PJBrowserView *)movieBrowser didChangeItemAtIndex:(NSInteger)index
+{
+    DLog();
 }
 
 @end

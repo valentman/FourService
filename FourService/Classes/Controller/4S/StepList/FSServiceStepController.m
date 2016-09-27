@@ -525,6 +525,14 @@ FSProductChangeDelegate
 #pragma mark- CZJOrderListPayCellDelegate
 - (void)clickToPay:(id)sender
 {
-    [self performSegueWithIdentifier:@"segueToCommitOrder" sender:_serviceStepAry];
+    NSMutableArray* tmpAry = [NSMutableArray array];
+    for (FSServiceStepForm* stepForm in _serviceStepAry)
+    {
+        if (stepForm.is_expand)
+        {
+            [tmpAry addObject:stepForm];
+        }
+    }
+    [self performSegueWithIdentifier:@"segueToCommitOrder" sender:tmpAry];
 }
 @end

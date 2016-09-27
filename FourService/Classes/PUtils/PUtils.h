@@ -58,6 +58,7 @@
 + (void)tipWithText:(NSString *)text onView:(UIView *)view;
 + (void)tipWithText:(NSString *)text andView:(UIView *)view;
 + (void)tipWithText:(NSString*)text withCompeletHandler:(GeneralBlockHandler)compeletBlock;
++ (void)tipWithAnimateAndText:(NSString*)text withCompeletHandler:(GeneralBlockHandler)compeletBlock;
 + (void)showExitAlertViewWithContent;
 + (void)showExitAlertViewWithContentOnParent:(id)parent;
 
@@ -174,7 +175,6 @@
 + (NSMutableArray*)getAggregationArrayFromArray:(NSArray*)sourcArray;
 
 + (UIView*)getBackgroundPromptViewWithPrompt:(NSString*)prompt;
-
 + (NSString*)getCurrentVersion;
 
 //大图预览

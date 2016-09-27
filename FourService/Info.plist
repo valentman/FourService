@@ -2,6 +2,23 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>alipayshare</string>
+		<string>alipay</string>
+		<string>mqzoneshare</string>
+		<string>mqzone</string>
+		<string>mqq</string>
+		<string>weibo</string>
+		<string>sinaweibohd</string>
+		<string>sinaweibo</string>
+		<string>weibosdk</string>
+		<string>weibosdk2.5</string>
+		<string>wechat</string>
+		<string>weixin</string>
+		<string>baidumap</string>
+		<string>iosamap</string>
+	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>CFBundleDisplayName</key>

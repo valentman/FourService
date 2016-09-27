@@ -23,7 +23,7 @@
 
 #define kGeneralPageControllerFrame CGRectMake(0, 50, PJ_SCREEN_WIDTH, PJ_SCREEN_HEIGHT - 50)
 #define kGeneralPageControllerBtnTitleColorNormal [UIColor darkGrayColor]
-#define kGeneralPageControllerBtnTitleColorSelectd CZJREDCOLOR
+#define kGeneralPageControllerBtnTitleColorSelectd FSBLUECOLOR2
 /**
  *  PageControlView的配置文件
  */

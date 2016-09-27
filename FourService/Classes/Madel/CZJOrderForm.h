@@ -212,3 +212,11 @@
 @property (strong, nonatomic)NSString* returnReason;
 @property (strong, nonatomic)NSString* returnImgs;
 @end
+
+@interface CZJPaymentOrderForm : NSObject
+@property (nonatomic, strong) NSString* order_no;
+@property (nonatomic, strong) NSString* order_name;
+@property (nonatomic, strong) NSString* order_description;
+@property (nonatomic, strong) NSString* order_price;
+@property (nonatomic, strong) NSString* order_for;
+@end

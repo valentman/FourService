@@ -124,7 +124,7 @@ static NSString *const kCZJServerAPIPayWeixinNotify = @"chezhu/notifyForWeixin.d
 static NSString *const kCZJServerAPIPayZhifubaoNotify = @"chezhu/notifyForZhifubao.do";             //支付宝支付回调
 static NSString *const kCZJServerAPIChargeForWeixin = @"chezhu/chargeForWeixin.do";                 //充值微信支付回调
 static NSString *const kCZJServerAPIChargeForZhifubao = @"chezhu/chargeForZhifubao.do";             //充值支付宝支付回调
-//static NSString *const kCZJServerAPIGetWeixinPayParams = @"chezhu/getPayParams.do";                 //获取微信支付参数
+static NSString *const kCZJServerAPIGetWeixinPayParams = @"chezhu/getPayParams.do";                 //获取微信支付参数
 //
 ////门店详情接口组
 //static NSString *const kCZJServerAPIGetStoreDetail = @"chezhu/showStoreDetail.do";                  //获取门店详情 (storeId)

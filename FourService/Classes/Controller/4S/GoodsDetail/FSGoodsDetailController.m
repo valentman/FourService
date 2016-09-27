@@ -15,6 +15,7 @@
 #import "FSProductEvaluateHeadCell.h"
 #import "CZJGeneralCell.h"
 #import "FSBaseDataManager.h"
+#import "FSWebViewController.h"
 
 @interface FSGoodsDetailController ()
 <
@@ -95,7 +96,7 @@ UITableViewDataSource
     NSDictionary* params = @{@"product_id" : _productForm.product_id};
     weaky(self);
     [FSBaseDataInstance getProductDetailInfo:params success:^(id json) {
-        DLog(@"%@",json);
+        DLog(@"%@",[json description]);
         productDetailForm = [FSProductDetailForm objectWithKeyValues:json[kResoponData]];
         [weakSelf.myTableView reloadData];
     } fail:^{
@@ -113,7 +114,7 @@ UITableViewDataSource
 #pragma mark-UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -147,14 +148,24 @@ UITableViewDataSource
         case 0:
             if (0 == indexPath.row) {
                 FSActivityCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FSActivityCell" forIndexPath:indexPath];
+                NSMutableArray* imageArray = [NSMutableArray array];
+                for (FSProductImageForm* tmp in productDetailForm.product_image_list) {
+                    if (tmp.img_url) {
+                        [imageArray addObject:[kCZJServerAddr stringByAppendingString:tmp.img_url]];
+                    }
+                }
+                [cell someMethodNeedUse:indexPath DataModel:imageArray];
                 return cell;
             }
             if (1 ==indexPath.row) {
                 FSProductNameCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FSProductNameCell" forIndexPath:indexPath];
+                cell.productNameLabel.text = productDetailForm.item_name;
                 return cell;
             }
             if (2 == indexPath.row) {
                 FSProductPriceCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FSProductPriceCell" forIndexPath:indexPath];
+                cell.productPriceLabel.text = productDetailForm.sale_price;
+                cell.productBuyNumLabel.text = productDetailForm.product_buy_num;
                 return cell;
             }
             if (3 == indexPath.row) {
@@ -263,11 +274,22 @@ UITableViewDataSource
             break;
             
         case 1:
+        {
+            FSWebViewController* webView = (FSWebViewController*)[PUtils getViewControllerFromStoryboard:kCZJStoryBoardFileMain andVCName:@"webViewSBID"];
+            webView.cur_url = @"www.baidu.com";
+            webView.webTitle = picDetailAry[indexPath.row][@"title"];;
+            [self.navigationController pushViewController:webView animated:YES];
+        }
             
             break;
             
         case 2:
-            
+        {
+            FSWebViewController* webView = (FSWebViewController*)[PUtils getViewControllerFromStoryboard:kCZJStoryBoardFileMain andVCName:@"webViewSBID"];
+            webView.cur_url = @"www.baidu.com";
+            webView.webTitle = serviceIntroAry[indexPath.row][@"title"];;
+            [self.navigationController pushViewController:webView animated:YES];
+        }
             break;
             
         case 3:

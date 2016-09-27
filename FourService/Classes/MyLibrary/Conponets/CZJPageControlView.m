@@ -95,9 +95,9 @@ UIScrollViewDelegate>
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         [btn setTitle:self.btnArr[i] forState:UIControlStateNormal];
         [btn setTitleColor:((nil == self.pageControlViewConfig) ? [UIColor darkGrayColor] : self.pageControlViewConfig.btnTitleColorNormal) forState:UIControlStateNormal];
-        [btn setTitleColor:((nil == self.pageControlViewConfig) ? CZJREDCOLOR : self.pageControlViewConfig.btnTitleColorSelected) forState:UIControlStateSelected];
+        [btn setTitleColor:((nil == self.pageControlViewConfig) ? FSBLUECOLOR2 : self.pageControlViewConfig.btnTitleColorSelected) forState:UIControlStateSelected];
         btn.titleLabel.font = [UIFont systemFontOfSize:(nil == self.pageControlViewConfig) ? 16 : self.pageControlViewConfig.btnTitleLabelSize];
-        [btn setBackgroundColor:(nil == self.pageControlViewConfig) ?  CZJNAVIBARBGCOLOR : self.pageControlViewConfig.btnBackgroundColor];
+//        [btn setBackgroundColor:(nil == self.pageControlViewConfig) ?  CZJNAVIBARBGCOLOR : self.pageControlViewConfig.btnBackgroundColor];
         btn.titleLabel.lineBreakMode = NSLineBreakByCharWrapping;
         btn.titleLabel.textAlignment = NSTextAlignmentCenter;
         btn.titleLabel.numberOfLines = 2;

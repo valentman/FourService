@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface FSWebViewController : PBaseViewController
-@property (strong, nonatomic)NSString* cur_url;
+@property (strong, nonatomic) NSString* cur_url;
+@property (strong, nonatomic) NSString* webTitle;
 @end

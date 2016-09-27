@@ -166,3 +166,6 @@
 
 @implementation CZJSubmitReturnForm
 @end
+
+@implementation CZJPaymentOrderForm
+@end

@@ -71,7 +71,7 @@ UITableViewDataSource
     [btn setTitleColor:[UIColor whiteColor]forState:UIControlStateNormal];
     [btn.layer setMasksToBounds:YES];//设置按钮的圆角半径不会被遮挡
     btn.layer.cornerRadius = 5.0;
-    btn.backgroundColor = FSBLUECOLOR;
+    btn.backgroundColor = FSBLUECOLOR2;
     [btn.titleLabel setFont:[UIFont systemFontOfSize:16]];
     [btn setTitle:@"保存" forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(saveMyInfo:) forControlEvents:UIControlEventTouchUpInside];

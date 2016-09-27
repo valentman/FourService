@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FSMyOrderListController : UIViewController
+@interface FSMyOrderListController : PBaseViewController
 
+@property (assign, nonatomic)FSOrderListType orderType;
 @end
