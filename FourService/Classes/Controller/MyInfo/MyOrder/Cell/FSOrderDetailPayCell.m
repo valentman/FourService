@@ -1,16 +1,17 @@
 //
-//  CZJOrderListNoPayButtomView.m
-//  CZJShop
+//  FSOrderDetailPayCell.m
+//  FourService
 //
-//  Created by Joe.Pen on 2/23/16.
-//  Copyright © 2016 JoeP. All rights reserved.
+//  Created by Joe.Pen on 10/4/16.
+//  Copyright © 2016 Joe.Pen. All rights reserved.
 //
 
-#import "CZJOrderListNoPayButtomView.h"
+#import "FSOrderDetailPayCell.h"
 
-@implementation CZJOrderListNoPayButtomView
+@implementation FSOrderDetailPayCell
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     // Initialization code
 }
 

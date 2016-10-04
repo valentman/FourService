@@ -634,30 +634,12 @@ singleton_implementation(FSBaseDataManager);
 
 
 
-//- (void)getOrderList:(NSDictionary*)postParams
-//             Success:(SuccessBlockHandler)success
-//                fail:(FailureBlockHandler)fail
-//{
-//    SuccessBlockHandler successBlock = ^(id json){
-//        if ([self showAlertView:json])
-//        {
-//            success(json);
-//        }
-//    };
-//    
-//    FailureBlockHandler failBlock = ^(){
-//        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
-//    };
-//    
-//    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-//    [params setValuesForKeysWithDictionary:self.baseParams];
-//    [params setValuesForKeysWithDictionary:postParams];
-//    
-//    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPIGetOrderList
-//                             parameters:params
-//                                success:successBlock
-//                                   fail:failBlock];
-//}
+- (void)getOrderList:(NSDictionary*)postParams
+             Success:(SuccessBlockHandler)success
+                fail:(FailureBlockHandler)fail
+{
+    [self generalPost:postParams success:success fail:fail andServerAPI:kFSServerAPIOrderList];
+}
 
 
 //- (void)getOrderDetail:(NSDictionary*)postParams

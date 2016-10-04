@@ -156,9 +156,9 @@ singleton_interface(FSBaseDataManager);
                fail:(FailureBlockHandler)fail;
 
 //获取订单列表
-//- (void)getOrderList:(NSDictionary*)postParams
-//             Success:(SuccessBlockHandler)success
-//                fail:(FailureBlockHandler)fail;
+- (void)getOrderList:(NSDictionary*)postParams
+             Success:(SuccessBlockHandler)success
+                fail:(FailureBlockHandler)fail;
 
 //获取订单详情
 //- (void)getOrderDetail:(NSDictionary*)postParams

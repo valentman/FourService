@@ -12,4 +12,5 @@
 
 @property (strong, nonatomic) NSString* shopID;
 @property (strong, nonatomic) NSString* serviceID;
+@property (strong, nonatomic) NSString* serviceTypeId;
 @end

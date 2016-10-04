@@ -16,6 +16,7 @@
 #import "FSTopAddCarCell.h"
 #import "FSHomeNotifyCell.h"
 #import "YQSlideMenuController.h"
+#import "FSWebViewController.h"
 
 
 #define kHomeTopBgHeight 247
@@ -109,7 +110,15 @@ PJBrowserDelegate
     notifyCell = [PUtils getXibViewByName:@"FSHomeNotifyCell"];
     notifyCell.frame = CGRectMake(0, kHomeTopBgHeight + 17, PJ_SCREEN_WIDTH, 40);
     notifyCell.contentLabel.text = @"办理违章送油卡红包，拉上朋友一起享受新鲜福利";
+    [notifyCell.notifyButton addTarget:self action:@selector(notifyAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:notifyCell];
+}
+
+- (void)notifyAction:(id)sender
+{
+    FSWebViewController* webView = (FSWebViewController*)[PUtils getViewControllerFromStoryboard:kCZJStoryBoardFileMain andVCName:@"webViewSBID"];
+    webView.cur_url = @"www.baidu.com";
+    [self.navigationController pushViewController:webView animated:YES];
 }
 
 - (void)updateTopViewsWhenGetDataSuccess

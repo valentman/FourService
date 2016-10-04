@@ -15,22 +15,11 @@
 		EC026F2F1D2B894700CA8CEB /* FSLotteryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC026F2D1D2B894700CA8CEB /* FSLotteryCell.xib */; };
 		EC026F331D2B897200CA8CEB /* FSRecommendInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC026F311D2B897200CA8CEB /* FSRecommendInfoCell.m */; };
 		EC026F341D2B897200CA8CEB /* FSRecommendInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC026F321D2B897200CA8CEB /* FSRecommendInfoCell.xib */; };
-		EC06626C1D7044E5006B62D2 /* CZJMyInfoOrderListController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0662691D7044E5006B62D2 /* CZJMyInfoOrderListController.m */; };
-		EC06626D1D7044E5006B62D2 /* CZJOrderListBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC06626B1D7044E5006B62D2 /* CZJOrderListBaseController.m */; };
-		EC0662701D7045FF006B62D2 /* CZJPopPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC06626F1D7045FF006B62D2 /* CZJPopPayViewController.m */; };
 		EC0662731D704762006B62D2 /* CZJOrderForm.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0662721D704762006B62D2 /* CZJOrderForm.m */; };
-		EC0662891D7048DD006B62D2 /* CZJCommitReturnReasonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0662751D7048DD006B62D2 /* CZJCommitReturnReasonCell.m */; };
-		EC06628A1D7048DD006B62D2 /* CZJCommitReturnReasonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC0662761D7048DD006B62D2 /* CZJCommitReturnReasonCell.xib */; };
-		EC06628B1D7048DD006B62D2 /* CZJCommitReturnTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0662781D7048DD006B62D2 /* CZJCommitReturnTypeCell.m */; };
-		EC06628C1D7048DD006B62D2 /* CZJCommitReturnTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC0662791D7048DD006B62D2 /* CZJCommitReturnTypeCell.xib */; };
 		EC06628D1D7048DD006B62D2 /* CZJOneButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC06627B1D7048DD006B62D2 /* CZJOneButtonCell.m */; };
 		EC06628E1D7048DD006B62D2 /* CZJOneButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC06627C1D7048DD006B62D2 /* CZJOneButtonCell.xib */; };
 		EC06628F1D7048DD006B62D2 /* CZJOrderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC06627E1D7048DD006B62D2 /* CZJOrderListCell.m */; };
 		EC0662901D7048DD006B62D2 /* CZJOrderListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC06627F1D7048DD006B62D2 /* CZJOrderListCell.xib */; };
-		EC0662911D7048DD006B62D2 /* CZJOrderListNoPayButtomView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0662811D7048DD006B62D2 /* CZJOrderListNoPayButtomView.m */; };
-		EC0662921D7048DD006B62D2 /* CZJOrderListNoPayButtomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC0662821D7048DD006B62D2 /* CZJOrderListNoPayButtomView.xib */; };
-		EC0662951D7048DD006B62D2 /* CZJOrderReturnedListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0662871D7048DD006B62D2 /* CZJOrderReturnedListCell.m */; };
-		EC0662961D7048DD006B62D2 /* CZJOrderReturnedListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC0662881D7048DD006B62D2 /* CZJOrderReturnedListCell.xib */; };
 		EC0DD3D81D92DB2700DB6BCC /* WLZ_ChangeCountView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0DD3D71D92DB2700DB6BCC /* WLZ_ChangeCountView.m */; };
 		EC1261A41D4CEA700082378D /* FSStoreServiceForm.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1261A31D4CEA700082378D /* FSStoreServiceForm.m */; };
 		EC1261AE1D4CECB90082378D /* CZJGoodsAttentionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1261AC1D4CECB90082378D /* CZJGoodsAttentionCell.m */; };
@@ -69,6 +58,13 @@
 		EC4449071D9A7B7800E83144 /* CZJBackgroundPromptView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4449051D9A7B7800E83144 /* CZJBackgroundPromptView.m */; };
 		EC4449081D9A7B7800E83144 /* CZJBackgroundPromptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4449061D9A7B7800E83144 /* CZJBackgroundPromptView.xib */; };
 		EC44490B1D9A7E9400E83144 /* FSAboutUSController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC44490A1D9A7E9400E83144 /* FSAboutUSController.m */; };
+		EC454D7C1DA39C10007E6B3D /* FSMyOrderDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC454D7B1DA39C10007E6B3D /* FSMyOrderDetailController.m */; };
+		EC454D801DA3ACDA007E6B3D /* FSOrderDetailNoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC454D7E1DA3ACDA007E6B3D /* FSOrderDetailNoCell.m */; };
+		EC454D811DA3ACDA007E6B3D /* FSOrderDetailNoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC454D7F1DA3ACDA007E6B3D /* FSOrderDetailNoCell.xib */; };
+		EC454D851DA3AD39007E6B3D /* CZJOrderBuildingImagesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC454D831DA3AD39007E6B3D /* CZJOrderBuildingImagesCell.m */; };
+		EC454D861DA3AD39007E6B3D /* CZJOrderBuildingImagesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC454D841DA3AD39007E6B3D /* CZJOrderBuildingImagesCell.xib */; };
+		EC454D8A1DA3AD6E007E6B3D /* FSOrderDetailProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC454D881DA3AD6E007E6B3D /* FSOrderDetailProductCell.m */; };
+		EC454D8B1DA3AD6E007E6B3D /* FSOrderDetailProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC454D891DA3AD6E007E6B3D /* FSOrderDetailProductCell.xib */; };
 		EC4598111D757960004424A4 /* FSHomeNotifyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4597F11D757960004424A4 /* FSHomeNotifyCell.m */; };
 		EC4598121D757960004424A4 /* FSHomeNotifyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4597F21D757960004424A4 /* FSHomeNotifyCell.xib */; };
 		EC4598131D757960004424A4 /* FSServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4597F41D757960004424A4 /* FSServiceCell.m */; };
@@ -394,6 +390,10 @@
 		ECA82A441D58CDE600F05C52 /* YQSlideMenuImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECA82A411D58CDE600F05C52 /* YQSlideMenuImages.xcassets */; };
 		ECB422B91D4912AA00D20A9D /* PWUploadImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB422B81D4912AA00D20A9D /* PWUploadImageButton.m */; };
 		ECBC6BC81D349A46003B7446 /* NSTimer_Pause.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBC6BC71D349A46003B7446 /* NSTimer_Pause.m */; };
+		ECBD296A1DA3D3040033D823 /* FSOrderDetailPayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBD29681DA3D3040033D823 /* FSOrderDetailPayCell.m */; };
+		ECBD296B1DA3D3040033D823 /* FSOrderDetailPayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECBD29691DA3D3040033D823 /* FSOrderDetailPayCell.xib */; };
+		ECBD296F1DA3D3560033D823 /* FSOrderDetailTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBD296D1DA3D3560033D823 /* FSOrderDetailTimeCell.m */; };
+		ECBD29701DA3D3560033D823 /* FSOrderDetailTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECBD296E1DA3D3560033D823 /* FSOrderDetailTimeCell.xib */; };
 		ECBFD5F81D69920600662B5E /* PJBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBFD5F71D69920600662B5E /* PJBrowserView.m */; };
 		ECCEE3881D6C8AAE0034D4F2 /* FBShimmeringLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCEE37A1D6C8AAE0034D4F2 /* FBShimmeringLayer.m */; };
 		ECCEE3891D6C8AAE0034D4F2 /* FBShimmeringView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCEE37C1D6C8AAE0034D4F2 /* FBShimmeringView.m */; };
@@ -446,32 +446,14 @@
 		EC026F301D2B897200CA8CEB /* FSRecommendInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRecommendInfoCell.h; sourceTree = "<group>"; };
 		EC026F311D2B897200CA8CEB /* FSRecommendInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRecommendInfoCell.m; sourceTree = "<group>"; };
 		EC026F321D2B897200CA8CEB /* FSRecommendInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSRecommendInfoCell.xib; sourceTree = "<group>"; };
-		EC0662681D7044E5006B62D2 /* CZJMyInfoOrderListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJMyInfoOrderListController.h; sourceTree = "<group>"; };
-		EC0662691D7044E5006B62D2 /* CZJMyInfoOrderListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJMyInfoOrderListController.m; sourceTree = "<group>"; };
-		EC06626A1D7044E5006B62D2 /* CZJOrderListBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJOrderListBaseController.h; sourceTree = "<group>"; };
-		EC06626B1D7044E5006B62D2 /* CZJOrderListBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJOrderListBaseController.m; sourceTree = "<group>"; };
-		EC06626E1D7045FF006B62D2 /* CZJPopPayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJPopPayViewController.h; sourceTree = "<group>"; };
-		EC06626F1D7045FF006B62D2 /* CZJPopPayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJPopPayViewController.m; sourceTree = "<group>"; };
 		EC0662711D704762006B62D2 /* CZJOrderForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJOrderForm.h; sourceTree = "<group>"; };
 		EC0662721D704762006B62D2 /* CZJOrderForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJOrderForm.m; sourceTree = "<group>"; };
-		EC0662741D7048DD006B62D2 /* CZJCommitReturnReasonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJCommitReturnReasonCell.h; sourceTree = "<group>"; };
-		EC0662751D7048DD006B62D2 /* CZJCommitReturnReasonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJCommitReturnReasonCell.m; sourceTree = "<group>"; };
-		EC0662761D7048DD006B62D2 /* CZJCommitReturnReasonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJCommitReturnReasonCell.xib; sourceTree = "<group>"; };
-		EC0662771D7048DD006B62D2 /* CZJCommitReturnTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJCommitReturnTypeCell.h; sourceTree = "<group>"; };
-		EC0662781D7048DD006B62D2 /* CZJCommitReturnTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJCommitReturnTypeCell.m; sourceTree = "<group>"; };
-		EC0662791D7048DD006B62D2 /* CZJCommitReturnTypeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJCommitReturnTypeCell.xib; sourceTree = "<group>"; };
 		EC06627A1D7048DD006B62D2 /* CZJOneButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJOneButtonCell.h; sourceTree = "<group>"; };
 		EC06627B1D7048DD006B62D2 /* CZJOneButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJOneButtonCell.m; sourceTree = "<group>"; };
 		EC06627C1D7048DD006B62D2 /* CZJOneButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJOneButtonCell.xib; sourceTree = "<group>"; };
 		EC06627D1D7048DD006B62D2 /* CZJOrderListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJOrderListCell.h; sourceTree = "<group>"; };
 		EC06627E1D7048DD006B62D2 /* CZJOrderListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJOrderListCell.m; sourceTree = "<group>"; };
 		EC06627F1D7048DD006B62D2 /* CZJOrderListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJOrderListCell.xib; sourceTree = "<group>"; };
-		EC0662801D7048DD006B62D2 /* CZJOrderListNoPayButtomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJOrderListNoPayButtomView.h; sourceTree = "<group>"; };
-		EC0662811D7048DD006B62D2 /* CZJOrderListNoPayButtomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJOrderListNoPayButtomView.m; sourceTree = "<group>"; };
-		EC0662821D7048DD006B62D2 /* CZJOrderListNoPayButtomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJOrderListNoPayButtomView.xib; sourceTree = "<group>"; };
-		EC0662861D7048DD006B62D2 /* CZJOrderReturnedListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJOrderReturnedListCell.h; sourceTree = "<group>"; };
-		EC0662871D7048DD006B62D2 /* CZJOrderReturnedListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJOrderReturnedListCell.m; sourceTree = "<group>"; };
-		EC0662881D7048DD006B62D2 /* CZJOrderReturnedListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJOrderReturnedListCell.xib; sourceTree = "<group>"; };
 		EC0DD3D61D92DB2700DB6BCC /* WLZ_ChangeCountView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLZ_ChangeCountView.h; sourceTree = "<group>"; };
 		EC0DD3D71D92DB2700DB6BCC /* WLZ_ChangeCountView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLZ_ChangeCountView.m; sourceTree = "<group>"; };
 		EC1261A21D4CEA700082378D /* FSStoreServiceForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSStoreServiceForm.h; sourceTree = "<group>"; };
@@ -537,6 +519,17 @@
 		EC4449061D9A7B7800E83144 /* CZJBackgroundPromptView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CZJBackgroundPromptView.xib; path = FourService/Classes/Controller/MyInfo/MyOrder/CZJBackgroundPromptView.xib; sourceTree = SOURCE_ROOT; };
 		EC4449091D9A7E9400E83144 /* FSAboutUSController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSAboutUSController.h; sourceTree = "<group>"; };
 		EC44490A1D9A7E9400E83144 /* FSAboutUSController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSAboutUSController.m; sourceTree = "<group>"; };
+		EC454D7A1DA39C10007E6B3D /* FSMyOrderDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyOrderDetailController.h; sourceTree = "<group>"; };
+		EC454D7B1DA39C10007E6B3D /* FSMyOrderDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyOrderDetailController.m; sourceTree = "<group>"; };
+		EC454D7D1DA3ACDA007E6B3D /* FSOrderDetailNoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSOrderDetailNoCell.h; sourceTree = "<group>"; };
+		EC454D7E1DA3ACDA007E6B3D /* FSOrderDetailNoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSOrderDetailNoCell.m; sourceTree = "<group>"; };
+		EC454D7F1DA3ACDA007E6B3D /* FSOrderDetailNoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSOrderDetailNoCell.xib; sourceTree = "<group>"; };
+		EC454D821DA3AD39007E6B3D /* CZJOrderBuildingImagesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJOrderBuildingImagesCell.h; sourceTree = "<group>"; };
+		EC454D831DA3AD39007E6B3D /* CZJOrderBuildingImagesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJOrderBuildingImagesCell.m; sourceTree = "<group>"; };
+		EC454D841DA3AD39007E6B3D /* CZJOrderBuildingImagesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJOrderBuildingImagesCell.xib; sourceTree = "<group>"; };
+		EC454D871DA3AD6E007E6B3D /* FSOrderDetailProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSOrderDetailProductCell.h; sourceTree = "<group>"; };
+		EC454D881DA3AD6E007E6B3D /* FSOrderDetailProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSOrderDetailProductCell.m; sourceTree = "<group>"; };
+		EC454D891DA3AD6E007E6B3D /* FSOrderDetailProductCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSOrderDetailProductCell.xib; sourceTree = "<group>"; };
 		EC4597F01D757960004424A4 /* FSHomeNotifyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHomeNotifyCell.h; sourceTree = "<group>"; };
 		EC4597F11D757960004424A4 /* FSHomeNotifyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHomeNotifyCell.m; sourceTree = "<group>"; };
 		EC4597F21D757960004424A4 /* FSHomeNotifyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSHomeNotifyCell.xib; sourceTree = "<group>"; };
@@ -1171,6 +1164,12 @@
 		ECB422B81D4912AA00D20A9D /* PWUploadImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWUploadImageButton.m; sourceTree = "<group>"; };
 		ECBC6BC61D349A46003B7446 /* NSTimer_Pause.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSTimer_Pause.h; sourceTree = "<group>"; };
 		ECBC6BC71D349A46003B7446 /* NSTimer_Pause.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSTimer_Pause.m; sourceTree = "<group>"; };
+		ECBD29671DA3D3040033D823 /* FSOrderDetailPayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSOrderDetailPayCell.h; sourceTree = "<group>"; };
+		ECBD29681DA3D3040033D823 /* FSOrderDetailPayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSOrderDetailPayCell.m; sourceTree = "<group>"; };
+		ECBD29691DA3D3040033D823 /* FSOrderDetailPayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSOrderDetailPayCell.xib; sourceTree = "<group>"; };
+		ECBD296C1DA3D3560033D823 /* FSOrderDetailTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSOrderDetailTimeCell.h; sourceTree = "<group>"; };
+		ECBD296D1DA3D3560033D823 /* FSOrderDetailTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSOrderDetailTimeCell.m; sourceTree = "<group>"; };
+		ECBD296E1DA3D3560033D823 /* FSOrderDetailTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSOrderDetailTimeCell.xib; sourceTree = "<group>"; };
 		ECBFD5F61D69920600662B5E /* PJBrowserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJBrowserView.h; sourceTree = "<group>"; };
 		ECBFD5F71D69920600662B5E /* PJBrowserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJBrowserView.m; sourceTree = "<group>"; };
 		ECCEE3771D6C8AAE0034D4F2 /* FBShimmering-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FBShimmering-Prefix.pch"; sourceTree = "<group>"; };
@@ -1467,12 +1466,8 @@
 				EC3A18DD1D41F00400F6F193 /* Cell */,
 				EC3A18F31D41F18D00F6F193 /* FSMyOrderListController.h */,
 				EC3A18F41D41F18D00F6F193 /* FSMyOrderListController.m */,
-				EC0662681D7044E5006B62D2 /* CZJMyInfoOrderListController.h */,
-				EC0662691D7044E5006B62D2 /* CZJMyInfoOrderListController.m */,
-				EC06626A1D7044E5006B62D2 /* CZJOrderListBaseController.h */,
-				EC06626B1D7044E5006B62D2 /* CZJOrderListBaseController.m */,
-				EC06626E1D7045FF006B62D2 /* CZJPopPayViewController.h */,
-				EC06626F1D7045FF006B62D2 /* CZJPopPayViewController.m */,
+				EC454D7A1DA39C10007E6B3D /* FSMyOrderDetailController.h */,
+				EC454D7B1DA39C10007E6B3D /* FSMyOrderDetailController.m */,
 			);
 			path = MyOrder;
 			sourceTree = "<group>";
@@ -1483,24 +1478,27 @@
 				EC4449041D9A7B7800E83144 /* CZJBackgroundPromptView.h */,
 				EC4449051D9A7B7800E83144 /* CZJBackgroundPromptView.m */,
 				EC4449061D9A7B7800E83144 /* CZJBackgroundPromptView.xib */,
-				EC0662741D7048DD006B62D2 /* CZJCommitReturnReasonCell.h */,
-				EC0662751D7048DD006B62D2 /* CZJCommitReturnReasonCell.m */,
-				EC0662761D7048DD006B62D2 /* CZJCommitReturnReasonCell.xib */,
-				EC0662771D7048DD006B62D2 /* CZJCommitReturnTypeCell.h */,
-				EC0662781D7048DD006B62D2 /* CZJCommitReturnTypeCell.m */,
-				EC0662791D7048DD006B62D2 /* CZJCommitReturnTypeCell.xib */,
+				EC454D821DA3AD39007E6B3D /* CZJOrderBuildingImagesCell.h */,
+				EC454D831DA3AD39007E6B3D /* CZJOrderBuildingImagesCell.m */,
+				EC454D841DA3AD39007E6B3D /* CZJOrderBuildingImagesCell.xib */,
 				EC06627A1D7048DD006B62D2 /* CZJOneButtonCell.h */,
 				EC06627B1D7048DD006B62D2 /* CZJOneButtonCell.m */,
 				EC06627C1D7048DD006B62D2 /* CZJOneButtonCell.xib */,
 				EC06627D1D7048DD006B62D2 /* CZJOrderListCell.h */,
 				EC06627E1D7048DD006B62D2 /* CZJOrderListCell.m */,
 				EC06627F1D7048DD006B62D2 /* CZJOrderListCell.xib */,
-				EC0662801D7048DD006B62D2 /* CZJOrderListNoPayButtomView.h */,
-				EC0662811D7048DD006B62D2 /* CZJOrderListNoPayButtomView.m */,
-				EC0662821D7048DD006B62D2 /* CZJOrderListNoPayButtomView.xib */,
-				EC0662861D7048DD006B62D2 /* CZJOrderReturnedListCell.h */,
-				EC0662871D7048DD006B62D2 /* CZJOrderReturnedListCell.m */,
-				EC0662881D7048DD006B62D2 /* CZJOrderReturnedListCell.xib */,
+				EC454D7D1DA3ACDA007E6B3D /* FSOrderDetailNoCell.h */,
+				EC454D7E1DA3ACDA007E6B3D /* FSOrderDetailNoCell.m */,
+				EC454D7F1DA3ACDA007E6B3D /* FSOrderDetailNoCell.xib */,
+				EC454D871DA3AD6E007E6B3D /* FSOrderDetailProductCell.h */,
+				EC454D881DA3AD6E007E6B3D /* FSOrderDetailProductCell.m */,
+				EC454D891DA3AD6E007E6B3D /* FSOrderDetailProductCell.xib */,
+				ECBD29671DA3D3040033D823 /* FSOrderDetailPayCell.h */,
+				ECBD29681DA3D3040033D823 /* FSOrderDetailPayCell.m */,
+				ECBD29691DA3D3040033D823 /* FSOrderDetailPayCell.xib */,
+				ECBD296C1DA3D3560033D823 /* FSOrderDetailTimeCell.h */,
+				ECBD296D1DA3D3560033D823 /* FSOrderDetailTimeCell.m */,
+				ECBD296E1DA3D3560033D823 /* FSOrderDetailTimeCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -3078,7 +3076,7 @@
 				TargetAttributes = {
 					EC7760D51D2223D500E1A89F = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 27ZN797VLM;
+						DevelopmentTeam = UG6PG8B3H6;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -3125,10 +3123,13 @@
 				EC54299A1D237E7700F3B4BF /* wl_map_icon_1_press.png in Resources */,
 				ECDDD5001D8CEB95009082DB /* FSProductEvaluateHeadCell.xib in Resources */,
 				EC06628E1D7048DD006B62D2 /* CZJOneButtonCell.xib in Resources */,
+				EC454D8B1DA3AD6E007E6B3D /* FSOrderDetailProductCell.xib in Resources */,
+				EC454D811DA3ACDA007E6B3D /* FSOrderDetailNoCell.xib in Resources */,
 				EC54277D1D237DE000F3B4BF /* FSBackgroundPromptView.xib in Resources */,
 				EC4598121D757960004424A4 /* FSHomeNotifyCell.xib in Resources */,
 				EC54298F1D237E7700F3B4BF /* anjuke_icon_to_position1@2x.png in Resources */,
 				EC5429C71D237E7700F3B4BF /* MultilevelTableViewCell.xib in Resources */,
+				ECBD296B1DA3D3040033D823 /* FSOrderDetailPayCell.xib in Resources */,
 				EC5429A11D237E7700F3B4BF /* wl_map_icon_position@2x.png in Resources */,
 				ECCEE38A1D6C8AAE0034D4F2 /* request_loading_1@2x.png in Resources */,
 				EC54298C1D237E7700F3B4BF /* anjuke_icon_itis_position@2x.png in Resources */,
@@ -3145,13 +3146,13 @@
 				EC5429A21D237E7700F3B4BF /* wl_map_icon_position_press.png in Resources */,
 				EC4598161D757960004424A4 /* FSTopAddCarCell.xib in Resources */,
 				ECDDD5051D8CF069009082DB /* CZJOrderTypeExpandCell.xib in Resources */,
+				ECBD29701DA3D3560033D823 /* FSOrderDetailTimeCell.xib in Resources */,
 				EC542A191D237E7700F3B4BF /* pop@3x.png in Resources */,
 				EC5429841D237E7700F3B4BF /* Resources.bundle in Resources */,
 				EC54299F1D237E7700F3B4BF /* wl_map_icon_5@2x.png in Resources */,
 				EC5427881D237DE000F3B4BF /* LoadingFailedAlertView.xib in Resources */,
 				EC57A2B71D8B7111006DDA7F /* FSOrderContactCell.xib in Resources */,
 				EC474B3B1D5EFCAB00B54B0F /* FSMyinfoButtomView.xib in Resources */,
-				EC0662961D7048DD006B62D2 /* CZJOrderReturnedListCell.xib in Resources */,
 				EC54297D1D237E7700F3B4BF /* KSRefresh.bundle in Resources */,
 				EC0662901D7048DD006B62D2 /* CZJOrderListCell.xib in Resources */,
 				EC54298B1D237E7700F3B4BF /* anjuke_icon_itis_position.png in Resources */,
@@ -3165,7 +3166,6 @@
 				ECCEE38D1D6C8AAE0034D4F2 /* request_loading_4@2x.png in Resources */,
 				EC5429C51D237E7700F3B4BF /* MultilevelCollectionViewCell.xib in Resources */,
 				EC857BA11D7F0CFE00DF2D02 /* FSPageCell.xib in Resources */,
-				EC06628C1D7048DD006B62D2 /* CZJCommitReturnTypeCell.xib in Resources */,
 				EC026F341D2B897200CA8CEB /* FSRecommendInfoCell.xib in Resources */,
 				EC5429BC1D237E7700F3B4BF /* MJRefresh.bundle in Resources */,
 				EC9064701D47BF8A00E9554F /* CZJReceiveCouponsCell.xib in Resources */,
@@ -3190,15 +3190,14 @@
 				ECDDD4EC1D8CDF20009082DB /* FSProductNameCell.xib in Resources */,
 				ECDDD4F61D8CE20C009082DB /* FSProductPriceCell.xib in Resources */,
 				EC026F2A1D2B852F00CA8CEB /* FSActivityCell.xib in Resources */,
-				EC06628A1D7048DD006B62D2 /* CZJCommitReturnReasonCell.xib in Resources */,
 				EC54277B1D237DE000F3B4BF /* FSAlertView.xib in Resources */,
 				EC5429A01D237E7700F3B4BF /* wl_map_icon_position.png in Resources */,
 				EC54299E1D237E7700F3B4BF /* wl_map_icon_5.png in Resources */,
+				EC454D861DA3AD39007E6B3D /* CZJOrderBuildingImagesCell.xib in Resources */,
 				EC54298D1D237E7700F3B4BF /* anjuke_icon_to_position.png in Resources */,
 				EC5429901D237E7700F3B4BF /* anjuke_icon_to_position@2x.png in Resources */,
 				EC5429A31D237E7700F3B4BF /* wl_map_icon_position_press@2x.png in Resources */,
 				EC4598281D757F2E004424A4 /* FSStoreInfoCell.xib in Resources */,
-				EC0662921D7048DD006B62D2 /* CZJOrderListNoPayButtomView.xib in Resources */,
 				EC5429991D237E7700F3B4BF /* wl_map_icon_1@2x.png in Resources */,
 				ECCEE3911D6C8AAE0034D4F2 /* request_loading_8@2x.png in Resources */,
 				EC4598181D757960004424A4 /* FSTopCarInfoBarView.xib in Resources */,
@@ -3271,6 +3270,7 @@
 				EC474B3A1D5EFCAB00B54B0F /* FSMyinfoButtomView.m in Sources */,
 				EC5429631D237E7700F3B4BF /* MZGuidePages.m in Sources */,
 				ECD537FB1D4656B100D136EF /* FSCarForm.m in Sources */,
+				ECBD296F1DA3D3560033D823 /* FSOrderDetailTimeCell.m in Sources */,
 				ECA233E51D37DC8F004C2679 /* CZJMyInfoShoppingCartCell.m in Sources */,
 				EC542A4B1D23802000F3B4BF /* FSWebViewController.m in Sources */,
 				EC5429601D237E7700F3B4BF /* NIDropDown.m in Sources */,
@@ -3287,7 +3287,6 @@
 				ECD538051D4658DB00D136EF /* CZJHotBrandViewCell.m in Sources */,
 				EC54297A1D237E7700F3B4BF /* KSAutoFootRefreshView.m in Sources */,
 				EC542AF01D239B8A00F3B4BF /* base64.m in Sources */,
-				EC0662951D7048DD006B62D2 /* CZJOrderReturnedListCell.m in Sources */,
 				EC5427801D237DE000F3B4BF /* BadgeButton.m in Sources */,
 				EC5429FD1D237E7700F3B4BF /* SDWebImageDownloader.m in Sources */,
 				EC5429BD1D237E7700F3B4BF /* MJRefreshConst.m in Sources */,
@@ -3331,12 +3330,15 @@
 				EC54B6BA1D8068980082E029 /* CZJDeliveryAddrCell.m in Sources */,
 				EC542A031D237E7700F3B4BF /* UIImage+MultiFormat.m in Sources */,
 				EC45981A1D757960004424A4 /* FSServiceStepCell.m in Sources */,
+				EC454D8A1DA3AD6E007E6B3D /* FSOrderDetailProductCell.m in Sources */,
 				EC5429D41D237E7700F3B4BF /* PhotoView.m in Sources */,
 				EC542AF21D239B8A00F3B4BF /* DataVerifier.m in Sources */,
 				EC95ED4F1D606A63005A50B7 /* UIButton+AFNetworking.m in Sources */,
 				EC95ED4C1D606A63005A50B7 /* AFImageDownloader.m in Sources */,
 				EC7FC0A51D3A2B460082ECB4 /* ServiceProtocol.m in Sources */,
 				EC542A131D237E7700F3B4BF /* WebViewJavascriptBridgeBase.m in Sources */,
+				EC454D851DA3AD39007E6B3D /* CZJOrderBuildingImagesCell.m in Sources */,
+				EC454D7C1DA39C10007E6B3D /* FSMyOrderDetailController.m in Sources */,
 				EC32210E1D77A7AF00E4019C /* CZJMAAroundAnnotation.m in Sources */,
 				EC542A1B1D237E7700F3B4BF /* ZXLocationManager.m in Sources */,
 				EC5429B41D237E7700F3B4BF /* MJRefreshAutoNormalFooter.m in Sources */,
@@ -3347,7 +3349,6 @@
 				EC5429CD1D237E7700F3B4BF /* OpenShare+QQ.m in Sources */,
 				ECD537F51D46523900D136EF /* CZJCarSeriesChooseController.m in Sources */,
 				EC7760DE1D2223D500E1A89F /* AppDelegate.m in Sources */,
-				EC06628B1D7048DD006B62D2 /* CZJCommitReturnTypeCell.m in Sources */,
 				EC5429891D237E7700F3B4BF /* LXDSegmentControl.m in Sources */,
 				EC542AFF1D239DFD00F3B4BF /* FSStartPageForm.m in Sources */,
 				EC5429851D237E7700F3B4BF /* UIView+LJWKeyboardHandlerAddtion.m in Sources */,
@@ -3376,6 +3377,7 @@
 				EC44490B1D9A7E9400E83144 /* FSAboutUSController.m in Sources */,
 				EC3A18F21D41F17B00F6F193 /* FSMyEvalutionController.m in Sources */,
 				EC542A161D237E7700F3B4BF /* WebViewJsBridge.m in Sources */,
+				EC454D801DA3ACDA007E6B3D /* FSOrderDetailNoCell.m in Sources */,
 				EC5429C21D237E7700F3B4BF /* CollectionHeader.m in Sources */,
 				EC542A441D237FBA00F3B4BF /* FSBaseAlertViewController.m in Sources */,
 				EC95ED5C1D606F89005A50B7 /* AFHTTPSessionManager.m in Sources */,
@@ -3416,7 +3418,6 @@
 				EC026F291D2B852F00CA8CEB /* FSActivityCell.m in Sources */,
 				EC3220F41D77A3C500E4019C /* FSStoreDetailController.m in Sources */,
 				EC542A721D23979500F3B4BF /* NSDateFormatter+Category.m in Sources */,
-				EC06626D1D7044E5006B62D2 /* CZJOrderListBaseController.m in Sources */,
 				EC06628F1D7048DD006B62D2 /* CZJOrderListCell.m in Sources */,
 				EC6E3CFF1D78786700DA5588 /* CZJOrderListPayCell.m in Sources */,
 				EC54278A1D237DE000F3B4BF /* BasePageControlView.m in Sources */,
@@ -3427,7 +3428,6 @@
 				EC5429CC1D237E7700F3B4BF /* OpenShare+Alipay.m in Sources */,
 				EC5429971D237E7700F3B4BF /* RegionAnnotationView.m in Sources */,
 				EC5427871D237DE000F3B4BF /* LoadingFailedAlertView.m in Sources */,
-				EC0662911D7048DD006B62D2 /* CZJOrderListNoPayButtomView.m in Sources */,
 				EC5429671D237E7700F3B4BF /* IMYWebView.m in Sources */,
 				EC3220F71D77A3DD00E4019C /* FSGoodsDetailController.m in Sources */,
 				EC542A3C1D237EF500F3B4BF /* PUtils.m in Sources */,
@@ -3438,7 +3438,6 @@
 				EC54297C1D237E7700F3B4BF /* KSDefaultHeadRefreshView.m in Sources */,
 				ECA233CE1D37DB78004C2679 /* FSMyInformationController.m in Sources */,
 				EC5429861D237E7700F3B4BF /* UIViewController+LJWKeyboardHandlerHelper.m in Sources */,
-				EC06626C1D7044E5006B62D2 /* CZJMyInfoOrderListController.m in Sources */,
 				EC5429AD1D237E7700F3B4BF /* NSString+MJExtension.m in Sources */,
 				EC1261A41D4CEA700082378D /* FSStoreServiceForm.m in Sources */,
 				EC5429B51D237E7700F3B4BF /* MJRefreshAutoStateFooter.m in Sources */,
@@ -3461,7 +3460,6 @@
 				EC542A761D23979500F3B4BF /* UIScrollView+Touch.m in Sources */,
 				EC54297B1D237E7700F3B4BF /* KSDefaultFootRefreshView.m in Sources */,
 				ECA233E91D37DD4F004C2679 /* FSMyInfoForm.m in Sources */,
-				EC0662891D7048DD006B62D2 /* CZJCommitReturnReasonCell.m in Sources */,
 				EC542A731D23979500F3B4BF /* NSDictionary+NSDictonay_Unicode.m in Sources */,
 				EC5429FB1D237E7700F3B4BF /* SDWebImageCompat.m in Sources */,
 				EC06628D1D7048DD006B62D2 /* CZJOneButtonCell.m in Sources */,
@@ -3472,6 +3470,7 @@
 				EC542AF41D239B8A00F3B4BF /* NSDataEx.m in Sources */,
 				EC542A021D237E7700F3B4BF /* UIImage+GIF.m in Sources */,
 				EC5429961D237E7700F3B4BF /* RegionAnnotation.m in Sources */,
+				ECBD296A1DA3D3040033D823 /* FSOrderDetailPayCell.m in Sources */,
 				EC95ED4B1D606A63005A50B7 /* AFAutoPurgingImageCache.m in Sources */,
 				ECCEE3921D6C8AAE0034D4F2 /* YXSpritesLoadingView.m in Sources */,
 				EC3A18EC1D41F15500F6F193 /* FSMyPersonalInfoController.m in Sources */,
@@ -3490,7 +3489,6 @@
 				EC5429AC1D237E7700F3B4BF /* NSObject+MJProperty.m in Sources */,
 				EC5429801D237E7700F3B4BF /* LewPickerController.m in Sources */,
 				EC5429931D237E7700F3B4BF /* LocIsBaidu.m in Sources */,
-				EC0662701D7045FF006B62D2 /* CZJPopPayViewController.m in Sources */,
 				EC54297F1D237E7700F3B4BF /* UIScrollView+KS.m in Sources */,
 				EC3A18F51D41F18D00F6F193 /* FSMyOrderListController.m in Sources */,
 				ECD537F81D46550100D136EF /* CZJFilterBaseController.m in Sources */,
@@ -3610,7 +3608,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: jian peng (P7ATKGF6ZW)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 27ZN797VLM;
+				DEVELOPMENT_TEAM = UG6PG8B3H6;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3652,7 +3650,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 27ZN797VLM;
+				DEVELOPMENT_TEAM = UG6PG8B3H6;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

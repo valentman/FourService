@@ -17,6 +17,26 @@
 #import "OpenShareHeader.h"
 #import "CZJPaymentManager.h"
 
+
+
+@implementation FSCommitOrderForm
++ (NSDictionary *)objectClassInArray
+{
+    return @{@"step_list" : @"FSCommitStepForm"};
+}
+@end
+
+@implementation FSCommitStepForm
++ (NSDictionary *)objectClassInArray
+{
+    return @{@"product_list" : @"FSCommitProductForm"};
+}
+@end
+
+@implementation FSCommitProductForm
+@end
+
+
 @interface FSCommitOrderController ()
 <
 UITableViewDelegate,
@@ -25,6 +45,7 @@ UITableViewDataSource
 {
     NSArray* _orderTypeAry;                     //支付方式（支付宝，微信，银联）
     __block CZJOrderTypeForm* _defaultOrderType;        //默认支付方式（为支付宝）
+    FSCommitOrderForm* commitOrderForm;
     
     NSInteger productNum;
     NSInteger serviceNum;
@@ -60,14 +81,27 @@ UITableViewDataSource
     }
     serviceNum = 0;
     productNum = 0;
+    
+    commitOrderForm = [[FSCommitOrderForm alloc] init];
+    commitOrderForm.shop_id = self.shopId;
+    commitOrderForm.service_type_id = self.serviceTypeId;
+    commitOrderForm.car_id = @"1";
+    commitOrderForm.remark = @"2";
+    
+    NSMutableArray* tmpStepAry = [NSMutableArray array];
     for (FSServiceStepForm* stepForm in self.orderServiceAry)
     {
+        FSCommitStepForm* stepForm2 = [FSCommitStepForm objectWithKeyValues:stepForm.keyValues];
+        [tmpStepAry addObject:stepForm2];
         if (stepForm.is_expand)
         {
             serviceNum++;
             productNum += stepForm.product_list.count;
         }
     }
+    commitOrderForm.step_list = tmpStepAry;
+    
+    DLog(@"%@",commitOrderForm.keyValues);
     
     totalPrice = 0;
     for (FSServiceStepForm* productForm in self.orderServiceAry)
@@ -384,8 +418,11 @@ UITableViewDataSource
         }
     }
     if ([currentOrdertypeName isEqualToString:@"到店支付"]) {
-        CPEvaluateSuccessController* success = [[CPEvaluateSuccessController alloc] init];
-        [self.navigationController pushViewController:success animated:YES];
+        weaky(self);
+        [FSBaseDataInstance submitOrder:commitOrderForm.keyValues Success:^(id json) {
+            CPEvaluateSuccessController* success = [[CPEvaluateSuccessController alloc] init];
+            [weakSelf.navigationController pushViewController:success animated:YES];
+        } fail:nil];
     }
     
     

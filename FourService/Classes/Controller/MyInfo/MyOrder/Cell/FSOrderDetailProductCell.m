@@ -1,14 +1,14 @@
 //
-//  CZJCommitReturnReasonCell.m
-//  CZJShop
+//  FSOrderDetailProductCell.m
+//  FourService
 //
-//  Created by Joe.Pen on 3/9/16.
-//  Copyright © 2016 JoeP. All rights reserved.
+//  Created by Joe.Pen on 10/4/16.
+//  Copyright © 2016 Joe.Pen. All rights reserved.
 //
 
-#import "CZJCommitReturnReasonCell.h"
+#import "FSOrderDetailProductCell.h"
 
-@implementation CZJCommitReturnReasonCell
+@implementation FSOrderDetailProductCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];

@@ -1,14 +1,14 @@
 //
-//  CZJOrderReturnedListCell.m
-//  CZJShop
+//  FSOrderDetailNoCell.m
+//  FourService
 //
-//  Created by Joe.Pen on 2/2/16.
-//  Copyright © 2016 JoeP. All rights reserved.
+//  Created by Joe.Pen on 10/4/16.
+//  Copyright © 2016 Joe.Pen. All rights reserved.
 //
 
-#import "CZJOrderReturnedListCell.h"
+#import "FSOrderDetailNoCell.h"
 
-@implementation CZJOrderReturnedListCell
+@implementation FSOrderDetailNoCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];

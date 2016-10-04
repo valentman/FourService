@@ -1,17 +1,16 @@
 //
-//  CZJCommitReturnTypeCell.m
+//  CZJOrderBuildingImagesCell.m
 //  CZJShop
 //
-//  Created by Joe.Pen on 3/8/16.
+//  Created by Joe.Pen on 2/1/16.
 //  Copyright © 2016 JoeP. All rights reserved.
 //
 
-#import "CZJCommitReturnTypeCell.h"
+#import "CZJOrderBuildingImagesCell.h"
 
-@implementation CZJCommitReturnTypeCell
+@implementation CZJOrderBuildingImagesCell
 
 - (void)awakeFromNib {
-    [super awakeFromNib];
     // Initialization code
 }
 

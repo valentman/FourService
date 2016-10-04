@@ -265,6 +265,7 @@ MXPullDownMenuDelegate
     FSServiceStepController* serviceStepVC = segue.destinationViewController;
     serviceStepVC.serviceID = ((FSStoreInfoForm*)sender).shop_service_type_id;
     serviceStepVC.shopID = ((FSStoreInfoForm*)sender).shop_id;
+    serviceStepVC.serviceTypeId = self.serviceId;
 }
 
 @end

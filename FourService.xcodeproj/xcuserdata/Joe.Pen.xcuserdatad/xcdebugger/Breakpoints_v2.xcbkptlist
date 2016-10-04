@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FourService/Classes/Controller/MyInfo/MyLogin/FSLoginController.m"
-            timestampString = "496470249.871706"
+            filePath = "FourService/Classes/Controller/4S/ServiceList/FSServiceListController.m"
+            timestampString = "497108772.625971"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "329"
-            endingLineNumber = "329"
-            landmarkName = "-loginSuccess:success:fail:"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
+            landmarkName = "-browser:didSelectItemAtIndex:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,13 +41,93 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FourService/Classes/Controller/4S/ServiceList/FSServiceListController.m"
-            timestampString = "496665869.895452"
+            filePath = "FourService/Classes/MyLibrary/Conponets/PJBrowserView.m"
+            timestampString = "497145548.829222"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
-            landmarkName = "-browser:didSelectItemAtIndex:"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
+            landmarkName = "-browserDidEndScrolling"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FourService/Classes/Controller/4S/CommitOrder/FSCommitOrderController.m"
+            timestampString = "497158893.567807"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "422"
+            endingLineNumber = "422"
+            landmarkName = "-commitOrderAction:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[FSCommitOrderController commitOrderAction:]"
+                  moduleName = "FourService"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Joe.Pen/Documents/GitCode/FourService/FourService/Classes/Controller/4S/CommitOrder/FSCommitOrderController.m"
+                  timestampString = "497277967.768508"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "422"
+                  endingLineNumber = "422"
+                  offsetFromSymbolStart = "652">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__45-[FSCommitOrderController commitOrderAction:]_block_invoke"
+                  moduleName = "FourService"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Joe.Pen/Documents/GitCode/FourService/FourService/Classes/Controller/4S/CommitOrder/FSCommitOrderController.m"
+                  timestampString = "497277967.769844"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "423"
+                  endingLineNumber = "423"
+                  offsetFromSymbolStart = "64">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FourService/Classes/Controller/4S/CommitOrder/FSCommitOrderController.m"
+            timestampString = "497158912.508862"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "423"
+            endingLineNumber = "423"
+            landmarkName = "-commitOrderAction:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FourService/Classes/Controller/MyInfo/MyOrder/CZJOrderListBaseController.m"
+            timestampString = "497166147.003027"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "-getOrderListFromServer"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

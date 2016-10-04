@@ -11,4 +11,5 @@
 @interface FSHomeNotifyCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
+@property (weak, nonatomic) IBOutlet UIButton *notifyButton;
 @end

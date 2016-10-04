@@ -13,6 +13,8 @@
 {
     CZJOrderListForm* _currentListForm;
 }
+@property (weak, nonatomic) IBOutlet UILabel *orderTypeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *orderNoLabel;
 @property (weak, nonatomic) IBOutlet UIView *storeNameView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *storeNameViewLeading;
 @property (weak, nonatomic) IBOutlet UIView *separatorOne;
@@ -25,7 +27,6 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *normalContentView;
 @property (weak, nonatomic) IBOutlet UILabel *payMoneyNumLabel;
 
-@property (weak, nonatomic) IBOutlet UIView *noReceiveButtomView;
 @property (weak, nonatomic) IBOutlet UIView *buildingNoPaidButtomView;
 @property (weak, nonatomic) IBOutlet UIView *noPayButtomView;
 @property (weak, nonatomic) IBOutlet UIView *noBuildButtomView;
@@ -47,12 +48,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *completeImg;
 @property (weak, nonatomic) IBOutlet UIImageView *QRCodeImage;
 
-//可退换货列表按钮
-- (IBAction)returnGoodsAction:(id)sender;
-//确认收货按钮
-- (IBAction)confirmReceiveGoodsAction:(id)sender;
-//查看车检情况按钮
-- (IBAction)checkCarConditionAction:(id)sender;
+
 //查看施工进度按钮
 - (IBAction)showBuildProgressAction:(id)sender;
 //取消订单按钮
@@ -147,7 +143,6 @@
 {
     _currentListForm = listForm;
     //先全部初始化隐藏
-    self.noReceiveButtomView.hidden = YES;
     self.buildingNoPaidButtomView.hidden = YES;
     self.noPayButtomView.hidden = YES;
     self.noBuildButtomView.hidden = YES;
@@ -158,13 +153,6 @@
     self.noEvalutionContentView.hidden = YES;
     self.normalContentView.hidden = YES;
     
-    //通用,暂时屏蔽付款功能
-//    if (CZJOrderTypeNoPay == orderType)
-//    {
-//        self.storeNameViewLeading.constant = 40;
-//        self.selectBtn.selected = listForm.isSelected;
-//    }
-    self.payMoneyNumLabel.text = [NSString stringWithFormat:@"￥%@",listForm.orderMoney ];
     self.storeNameLabel.text = listForm.storeName;
     [self.storeTypeImg setImage:IMAGENAMED(@"commit_icon_shop")];
     
@@ -316,7 +304,6 @@
             }
             else if (3 == [listForm.status integerValue])
             {
-                self.noReceiveButtomView.hidden = NO;
                 self.stateDescLabel.hidden = NO;
                 self.stateDescLabel.text = @"已发货";
             }
@@ -418,21 +405,6 @@
             }
         }
     }
-}
-
-- (IBAction)returnGoodsAction:(id)sender
-{
-    [self.delegate clickOrderListCellAction:CZJOrderListCellBtnTypeReturnAble andOrderForm:_currentListForm];
-}
-
-- (IBAction)confirmReceiveGoodsAction:(id)sender
-{
-    [self.delegate clickOrderListCellAction:CZJOrderListCellBtnTypeConfirm andOrderForm:_currentListForm];
-}
-
-- (IBAction)checkCarConditionAction:(id)sender
-{
-    [self.delegate clickOrderListCellAction:CZJOrderListCellBtnTypeCheckCar andOrderForm:_currentListForm];
 }
 
 - (IBAction)showBuildProgressAction:(id)sender

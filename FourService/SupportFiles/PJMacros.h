@@ -152,6 +152,8 @@ CGSizeEqualToSize(CGSizeMake(1125, 2001), [[UIScreen mainScreen] currentMode].si
 #define GRAYCOLOR  [UIColor grayColor]
 #define LIGHTGRAYCOLOR [UIColor lightGrayColor]
 #define FSYellow UIColorFromHEX(0xF75411,1)
+#define FSBlue UIColorFromHEX(0x34A9E5,1)
+#define FSDisButtonBG UIColorFromHEX(0xBBBBBB,1)
 
 //本项目自定义颜色
 #define FSBLUECOLOR2 RGB (77,181,255)
