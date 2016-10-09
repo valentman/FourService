@@ -20,6 +20,13 @@
 		EC06628E1D7048DD006B62D2 /* CZJOneButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC06627C1D7048DD006B62D2 /* CZJOneButtonCell.xib */; };
 		EC06628F1D7048DD006B62D2 /* CZJOrderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC06627E1D7048DD006B62D2 /* CZJOrderListCell.m */; };
 		EC0662901D7048DD006B62D2 /* CZJOrderListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC06627F1D7048DD006B62D2 /* CZJOrderListCell.xib */; };
+		EC098E4E1DA642F500C68C44 /* CZJOrderEvaluateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC098E491DA642F500C68C44 /* CZJOrderEvaluateCell.m */; };
+		EC098E4F1DA642F500C68C44 /* CZJOrderEvaluateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC098E4A1DA642F500C68C44 /* CZJOrderEvaluateCell.xib */; };
+		EC098E501DA642F500C68C44 /* CZJOrderEvalutateAllCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC098E4C1DA642F500C68C44 /* CZJOrderEvalutateAllCell.m */; };
+		EC098E511DA642F500C68C44 /* CZJOrderEvalutateAllCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC098E4D1DA642F500C68C44 /* CZJOrderEvalutateAllCell.xib */; };
+		EC098E541DA6431400C68C44 /* FSOrderEvaluateController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC098E531DA6431400C68C44 /* FSOrderEvaluateController.m */; };
+		EC098E571DA64B8900C68C44 /* CZJEvaluateForm.m in Sources */ = {isa = PBXBuildFile; fileRef = EC098E561DA64B8900C68C44 /* CZJEvaluateForm.m */; };
+		EC098E5A1DA6503D00C68C44 /* CZJDeletableImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC098E591DA6503D00C68C44 /* CZJDeletableImageView.m */; };
 		EC0DD3D81D92DB2700DB6BCC /* WLZ_ChangeCountView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0DD3D71D92DB2700DB6BCC /* WLZ_ChangeCountView.m */; };
 		EC1261A41D4CEA700082378D /* FSStoreServiceForm.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1261A31D4CEA700082378D /* FSStoreServiceForm.m */; };
 		EC1261AE1D4CECB90082378D /* CZJGoodsAttentionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1261AC1D4CECB90082378D /* CZJGoodsAttentionCell.m */; };
@@ -454,6 +461,18 @@
 		EC06627D1D7048DD006B62D2 /* CZJOrderListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJOrderListCell.h; sourceTree = "<group>"; };
 		EC06627E1D7048DD006B62D2 /* CZJOrderListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJOrderListCell.m; sourceTree = "<group>"; };
 		EC06627F1D7048DD006B62D2 /* CZJOrderListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJOrderListCell.xib; sourceTree = "<group>"; };
+		EC098E481DA642F500C68C44 /* CZJOrderEvaluateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJOrderEvaluateCell.h; sourceTree = "<group>"; };
+		EC098E491DA642F500C68C44 /* CZJOrderEvaluateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJOrderEvaluateCell.m; sourceTree = "<group>"; };
+		EC098E4A1DA642F500C68C44 /* CZJOrderEvaluateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJOrderEvaluateCell.xib; sourceTree = "<group>"; };
+		EC098E4B1DA642F500C68C44 /* CZJOrderEvalutateAllCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJOrderEvalutateAllCell.h; sourceTree = "<group>"; };
+		EC098E4C1DA642F500C68C44 /* CZJOrderEvalutateAllCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJOrderEvalutateAllCell.m; sourceTree = "<group>"; };
+		EC098E4D1DA642F500C68C44 /* CZJOrderEvalutateAllCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJOrderEvalutateAllCell.xib; sourceTree = "<group>"; };
+		EC098E521DA6431400C68C44 /* FSOrderEvaluateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSOrderEvaluateController.h; sourceTree = "<group>"; };
+		EC098E531DA6431400C68C44 /* FSOrderEvaluateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSOrderEvaluateController.m; sourceTree = "<group>"; };
+		EC098E551DA64B8900C68C44 /* CZJEvaluateForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJEvaluateForm.h; sourceTree = "<group>"; };
+		EC098E561DA64B8900C68C44 /* CZJEvaluateForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJEvaluateForm.m; sourceTree = "<group>"; };
+		EC098E581DA6503D00C68C44 /* CZJDeletableImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJDeletableImageView.h; sourceTree = "<group>"; };
+		EC098E591DA6503D00C68C44 /* CZJDeletableImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJDeletableImageView.m; sourceTree = "<group>"; };
 		EC0DD3D61D92DB2700DB6BCC /* WLZ_ChangeCountView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLZ_ChangeCountView.h; sourceTree = "<group>"; };
 		EC0DD3D71D92DB2700DB6BCC /* WLZ_ChangeCountView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLZ_ChangeCountView.m; sourceTree = "<group>"; };
 		EC1261A21D4CEA700082378D /* FSStoreServiceForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSStoreServiceForm.h; sourceTree = "<group>"; };
@@ -1468,6 +1487,8 @@
 				EC3A18F41D41F18D00F6F193 /* FSMyOrderListController.m */,
 				EC454D7A1DA39C10007E6B3D /* FSMyOrderDetailController.h */,
 				EC454D7B1DA39C10007E6B3D /* FSMyOrderDetailController.m */,
+				EC098E521DA6431400C68C44 /* FSOrderEvaluateController.h */,
+				EC098E531DA6431400C68C44 /* FSOrderEvaluateController.m */,
 			);
 			path = MyOrder;
 			sourceTree = "<group>";
@@ -1475,6 +1496,12 @@
 		EC3A18DD1D41F00400F6F193 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				EC098E481DA642F500C68C44 /* CZJOrderEvaluateCell.h */,
+				EC098E491DA642F500C68C44 /* CZJOrderEvaluateCell.m */,
+				EC098E4A1DA642F500C68C44 /* CZJOrderEvaluateCell.xib */,
+				EC098E4B1DA642F500C68C44 /* CZJOrderEvalutateAllCell.h */,
+				EC098E4C1DA642F500C68C44 /* CZJOrderEvalutateAllCell.m */,
+				EC098E4D1DA642F500C68C44 /* CZJOrderEvalutateAllCell.xib */,
 				EC4449041D9A7B7800E83144 /* CZJBackgroundPromptView.h */,
 				EC4449051D9A7B7800E83144 /* CZJBackgroundPromptView.m */,
 				EC4449061D9A7B7800E83144 /* CZJBackgroundPromptView.xib */,
@@ -1677,6 +1704,8 @@
 		EC5427281D237A6700F3B4BF /* Madel */ = {
 			isa = PBXGroup;
 			children = (
+				EC098E551DA64B8900C68C44 /* CZJEvaluateForm.h */,
+				EC098E561DA64B8900C68C44 /* CZJEvaluateForm.m */,
 				EC6E3CF91D7860FE00DA5588 /* CZJProvinceForm.h */,
 				EC6E3CFA1D7860FE00DA5588 /* CZJProvinceForm.m */,
 				EC0662711D704762006B62D2 /* CZJOrderForm.h */,
@@ -1893,6 +1922,8 @@
 		EC5427491D237DE000F3B4BF /* Conponets */ = {
 			isa = PBXGroup;
 			children = (
+				EC098E581DA6503D00C68C44 /* CZJDeletableImageView.h */,
+				EC098E591DA6503D00C68C44 /* CZJDeletableImageView.m */,
 				ECA540A11D7091F7002F6001 /* CZJTableViewCell.h */,
 				ECA540A21D7091F7002F6001 /* CZJTableViewCell.m */,
 				ECB422B71D4912AA00D20A9D /* PWUploadImageButton.h */,
@@ -3135,6 +3166,7 @@
 				EC54298C1D237E7700F3B4BF /* anjuke_icon_itis_position@2x.png in Resources */,
 				EC5429791D237E7700F3B4BF /* KMCGeigerCounterTick.aiff in Resources */,
 				EC54B6C01D8068EA0082E029 /* CZJAddDeliveryAddrCell.xib in Resources */,
+				EC098E4F1DA642F500C68C44 /* CZJOrderEvaluateCell.xib in Resources */,
 				EC4449081D9A7B7800E83144 /* CZJBackgroundPromptView.xib in Resources */,
 				EC026F2F1D2B894700CA8CEB /* FSLotteryCell.xib in Resources */,
 				ECA82A441D58CDE600F05C52 /* YQSlideMenuImages.xcassets in Resources */,
@@ -3170,6 +3202,7 @@
 				EC5429BC1D237E7700F3B4BF /* MJRefresh.bundle in Resources */,
 				EC9064701D47BF8A00E9554F /* CZJReceiveCouponsCell.xib in Resources */,
 				EC5429751D237E7700F3B4BF /* LICENSE in Resources */,
+				EC098E511DA642F500C68C44 /* CZJOrderEvalutateAllCell.xib in Resources */,
 				EC857B9C1D7F069E00DF2D02 /* CZJOrderTypeCell.xib in Resources */,
 				EC54299B1D237E7700F3B4BF /* wl_map_icon_1_press@2x.png in Resources */,
 				EC542A151D237E7700F3B4BF /* WebViewJsBridge.js in Resources */,
@@ -3272,6 +3305,7 @@
 				ECD537FB1D4656B100D136EF /* FSCarForm.m in Sources */,
 				ECBD296F1DA3D3560033D823 /* FSOrderDetailTimeCell.m in Sources */,
 				ECA233E51D37DC8F004C2679 /* CZJMyInfoShoppingCartCell.m in Sources */,
+				EC098E4E1DA642F500C68C44 /* CZJOrderEvaluateCell.m in Sources */,
 				EC542A4B1D23802000F3B4BF /* FSWebViewController.m in Sources */,
 				EC5429601D237E7700F3B4BF /* NIDropDown.m in Sources */,
 				EC5429B11D237E7700F3B4BF /* MJRefreshFooter.m in Sources */,
@@ -3315,6 +3349,7 @@
 				ECDDD4FA1D8CE736009082DB /* FSProductEvaluateCell.m in Sources */,
 				ECDDD5041D8CF069009082DB /* CZJOrderTypeExpandCell.m in Sources */,
 				EC4598171D757960004424A4 /* FSTopCarInfoBarView.m in Sources */,
+				EC098E5A1DA6503D00C68C44 /* CZJDeletableImageView.m in Sources */,
 				EC5429D51D237E7700F3B4BF /* WyzAlbumViewController.m in Sources */,
 				EC5429591D237E7700F3B4BF /* AFNetworkReachabilityManager.m in Sources */,
 				EC4598271D757F2E004424A4 /* FSStoreInfoCell.m in Sources */,
@@ -3326,6 +3361,7 @@
 				EC542A101D237E7700F3B4BF /* VPImageCropperViewController.m in Sources */,
 				EC3221191D77A8AE00E4019C /* CZJStoreMAAroundForm.m in Sources */,
 				ECDDD4FF1D8CEB95009082DB /* FSProductEvaluateHeadCell.m in Sources */,
+				EC098E571DA64B8900C68C44 /* CZJEvaluateForm.m in Sources */,
 				EC54278E1D237DE000F3B4BF /* PBaseTableViewCell.m in Sources */,
 				EC54B6BA1D8068980082E029 /* CZJDeliveryAddrCell.m in Sources */,
 				EC542A031D237E7700F3B4BF /* UIImage+MultiFormat.m in Sources */,
@@ -3374,6 +3410,7 @@
 				EC542A781D23979500F3B4BF /* UIView+RGSize.m in Sources */,
 				EC95ED4E1D606A63005A50B7 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				EC7760DB1D2223D500E1A89F /* main.m in Sources */,
+				EC098E541DA6431400C68C44 /* FSOrderEvaluateController.m in Sources */,
 				EC44490B1D9A7E9400E83144 /* FSAboutUSController.m in Sources */,
 				EC3A18F21D41F17B00F6F193 /* FSMyEvalutionController.m in Sources */,
 				EC542A161D237E7700F3B4BF /* WebViewJsBridge.m in Sources */,
@@ -3384,6 +3421,7 @@
 				EC542A3E1D237EF500F3B4BF /* WGS84TOGCJ02.m in Sources */,
 				EC0662731D704762006B62D2 /* CZJOrderForm.m in Sources */,
 				EC542A1A1D237E7700F3B4BF /* ZHPickView.m in Sources */,
+				EC098E501DA642F500C68C44 /* CZJOrderEvalutateAllCell.m in Sources */,
 				EC4598151D757960004424A4 /* FSTopAddCarCell.m in Sources */,
 				EC542A041D237E7700F3B4BF /* UIImage+WebP.m in Sources */,
 				EC542AFA1D239B8A00F3B4BF /* WXUtil.mm in Sources */,

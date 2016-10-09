@@ -8,6 +8,7 @@
 
 #import "FSMyOrderListController.h"
 #import "FSBaseDataManager.h"
+#import "FSOrderEvaluateController.h"
 
 
 @interface FSMyOrderListController ()
@@ -228,9 +229,46 @@ CZJOrderListCellDelegate
 #pragma mark- CZJOrderListCellDelegate
 - (void)clickOrderListCellAction:(CZJOrderListCellButtonType)buttonType andOrderForm:(CZJOrderListForm*)orderListForm
 {
-//    [self.delegate clickOrderListCellButton:nil
-//                              andButtonType:buttonType
-//                               andOrderForm:orderListForm];
+    
+    FSOrderEvaluateController* orderEvaluate = [[FSOrderEvaluateController alloc] init];
+    [self.navigationController pushViewController:orderEvaluate animated:YES];
+//    currentTouchedOrderListForm = orderListForm;
+    /*switch (buttonType)
+    {
+        case CZJOrderListCellBtnTypeCheckCar:
+            [self performSegueWithIdentifier:@"segueToCarCheck" sender:self];
+            break;
+            
+        case CZJOrderListCellBtnTypeShowBuildingPro:
+            [self performSegueWithIdentifier:@"segueToBuildingProgress" sender:self];
+            break;
+            
+        case CZJOrderListCellBtnTypeCancel:
+        {
+            __weak typeof(self) weak = self;
+            [self showFSAlertView:@"亲,是否确认取消订单" andConfirmHandler:^{
+//                [FSBaseDataInstance generalPost    :@{@"orderNo" : currentTouchedOrderListForm.orderNo} success:^(id json) {
+//                    NSDictionary* dict = [PUtils DataFromJson:json];
+//                    DLog(@"%@",[dict description]);
+//                    [[NSNotificationCenter defaultCenter] postNotificationName:kCZJNotifiRefreshOrderlist object:nil];
+//                }  fail:^{
+//                    
+//                } andServerAPI:kCZJServerAPICancelOrder];
+                [weak hideWindow];
+            } andCancleHandler:nil];
+        }
+            break;
+
+        case CZJOrderListCellBtnTypeGoEvaluate:
+        {
+            FSOrderEvaluateController* orderEvaluate = [[FSOrderEvaluateController alloc] init];
+            [self.navigationController pushViewController:orderEvaluate animated:YES];
+        }
+            break;
+            
+        default:
+            break;
+    }*/
 }
 
 - (void)clickPaySelectButton:(UIButton*)btn andOrderForm:(CZJOrderListForm*)orderListForm

@@ -22,7 +22,7 @@
 //#import "CZJAttentionForm.h"
 //#import "CZJMyCardInfoForm.h"
 //#import "CZJGoodsDetailForm.h"
-//#import "CZJEvaluateForm.h"
+#import "CZJEvaluateForm.h"
 //#import "CZJPaymentOrderForm.h"
 //#import "CZJFilterForm.h"
 

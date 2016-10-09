@@ -262,10 +262,38 @@ MXPullDownMenuDelegate
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    FSServiceStepController* serviceStepVC = segue.destinationViewController;
-    serviceStepVC.serviceID = ((FSStoreInfoForm*)sender).shop_service_type_id;
-    serviceStepVC.shopID = ((FSStoreInfoForm*)sender).shop_id;
-    serviceStepVC.serviceTypeId = self.serviceId;
+    if ([segue.identifier isEqualToString:@"segueToStep"])
+    {
+        FSServiceStepController* serviceStepVC = segue.destinationViewController;
+        serviceStepVC.serviceID = ((FSStoreInfoForm*)sender).shop_service_type_id;
+        serviceStepVC.shopID = ((FSStoreInfoForm*)sender).shop_id;
+        serviceStepVC.serviceTypeId = self.serviceId;
+    }
+    else
+    {
+        
+    }
+}
+
+- (void)clickEventCallBack:(nullable id)sender
+{
+    UIButton* barButton = (UIButton*)sender;
+    switch (barButton.tag) {
+        case CZJButtonTypeNaviBarMore:
+            [self performSegueWithIdentifier:@"segueToMap" sender:nil];
+            break;
+            
+        case CZJButtonTypeNaviBarBack:
+            [self.navigationController popViewControllerAnimated:true];
+            break;
+            
+        case CZJButtonTypeHomeShopping:
+            
+            break;
+            
+        default:
+            break;
+    }
 }
 
 @end

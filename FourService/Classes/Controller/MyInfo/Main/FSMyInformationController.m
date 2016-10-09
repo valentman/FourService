@@ -64,11 +64,12 @@ FSMyInfoButtomViewDelegate
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initDatas];
+    [self initViews];
     
     if ([USER_DEFAULT boolForKey:kCZJIsUserHaveLogined]) {
         [self getMyInfoDataFromServer];
     }
-    [self.myTableView reloadData];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getMyInfoDataFromServer) name:kCZJNotifiLoginSuccess object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableView) name:kCZJNotifiLoginOut object:nil];
 }
@@ -94,7 +95,6 @@ FSMyInfoButtomViewDelegate
 - (void)viewWillAppear:(BOOL)animated
 {
     [self dealWithInitNavigationBar];
-    DLog();
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -103,16 +103,11 @@ FSMyInfoButtomViewDelegate
     self.navigationController.navigationBarHidden = YES;
     [self.tabBarController.tabBar setTintColor:RGB(235, 20, 20)];
     _currentTouchOrderListType = 0;
-    DLog();
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
 }
 
 - (void)viewDidLayoutSubviews
 {
-    [self initViews];
+    self.myTableView.frame = CGRectMake(0, 0, self.view.size.width, PJ_SCREEN_HEIGHT - Tabbar_HEIGHT);
 }
 
 - (void)initDatas
@@ -131,18 +126,18 @@ FSMyInfoButtomViewDelegate
     personalCellAry = [NSArray array];
     NSMutableDictionary* dict1 = [@{@"title":@"优惠券",
                                     @"buttonImage":@"myInfo_coupon",
-                                    @"budge":@"4",
-                                    @"item":@"nopay",
+                                    @"budge":@"0",
+                                    @"item":@"Customer_comment_num",
                                     @"segueTo":kMyCouponListVc} mutableCopy];
     NSMutableDictionary* dict2 = [@{@"title":@"收藏",
                                     @"buttonImage":@"myInfo_favorite",
-                                    @"budge":@"5",
-                                    @"item":@"nobuild",
+                                    @"budge":@"0",
+                                    @"item":@"Customer_favorite_num",
                                     @"segueTo":kMyFavoriteVc} mutableCopy];
     NSMutableDictionary* dict3 = [@{@"title":@"我的车辆",
                                     @"buttonImage":@"myInfo_car",
-                                    @"budge":@"6",
-                                    @"item":@"noreceive",
+                                    @"budge":@"0",
+                                    @"item":@"carList",
                                     @"segueTo":kMyCarListVc} mutableCopy];
     
     personalCellAry = @[dict1,dict2,dict3];
@@ -150,15 +145,15 @@ FSMyInfoButtomViewDelegate
     orderSubCellAry = [NSArray array];
     NSMutableDictionary* pdict1 = [@{@"title":@"待支付",
                                     @"budge":@"0",
-                                    @"item":@"nopay",
+                                    @"item":@"order_payed_num",
                                     @"segueTo":kMyOrderListVc} mutableCopy];
     NSMutableDictionary* pdict2 = [@{@"title":@"服务中",
                                     @"budge":@"0",
-                                    @"item":@"nobuild",
+                                    @"item":@"order_init_num",
                                     @"segueTo":kMyOrderListVc} mutableCopy];
     NSMutableDictionary* pdict3 = [@{@"title":@"待评论",
                                     @"budge":@"0",
-                                    @"item":@"noreceive",
+                                    @"item":@"order_commented_num",
                                     @"segueTo":kMyOrderListVc} mutableCopy];
     
     orderSubCellAry = @[pdict1,pdict2,pdict3];
@@ -167,11 +162,6 @@ FSMyInfoButtomViewDelegate
 
 - (void)initViews
 {
-    self.view.backgroundColor = WHITECOLOR;
-    UIImageView* imageV = [[UIImageView alloc]initWithFrame:self.view.bounds];
-    [imageV setImage:IMAGENAMED(@"myInfo_bg")];
-    [self.view addSubview:imageV];
-    
     self.myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.size.width, PJ_SCREEN_HEIGHT - Tabbar_HEIGHT) style:UITableViewStylePlain];
     self.myTableView.tableFooterView = [[UIView alloc]init];
     self.myTableView.delegate = self;
@@ -207,15 +197,15 @@ FSMyInfoButtomViewDelegate
     if ([USER_DEFAULT boolForKey:kCZJIsUserHaveLogined])
     {
         [FSBaseDataInstance getUserInfo:nil Success:^(id json) {
-            NSDictionary* dict = [json valueForKey:kResoponData];
             
+            NSDictionary* dict = [json valueForKey:kResoponData];
+            DLog(@"myINfo:%@",[dict description]);
             //服务器返回数据本地化，全部转化为模型数据存储在数组中
             myInfoForm = [UserBaseForm objectWithKeyValues:dict];
             UserBaseForm* identiForm = FSBaseDataInstance.userInfoForm;
             myInfoForm.identifier = identiForm.identifier;
             myInfoForm.token = identiForm.token;
             FSBaseDataInstance.userInfoForm = myInfoForm;
-//            [PUtils writeDictionaryToDocumentsDirectory:[FSBaseDataInstance.userInfoForm.keyValues mutableCopy] withPlistName:kCZJPlistFileUserBaseForm];
 
             carListAry = [FSCarListForm objectArrayWithKeyValuesArray:[dict valueForKey:@"car_list"]];
             [weakSelf updateOrderData:dict];
@@ -239,10 +229,15 @@ FSMyInfoButtomViewDelegate
     for (NSDictionary* walletDict in personalCellAry)
     {
         NSString* itemName = [walletDict valueForKey:@"item"];
+        if ([itemName isEqualToString:@"carList"])
+        {
+            [walletDict setValue:@(carListAry.count) forKey:@"budge"];
+            continue;
+        }
         if (![itemName isEqualToString:@""])
         {
             NSString* count = [dict valueForKey:itemName];
-            [walletDict setValue:count forKey:@"buttonTitle"];
+            [walletDict setValue:count forKey:@"budge"];
         }
     }
 }
@@ -338,10 +333,10 @@ FSMyInfoButtomViewDelegate
                     [badgeLabel setPosition:CGPointMake(110, 23) atAnchorPoint:CGPointMiddle];
                     [cell addSubview:badgeLabel];
                     badgeLabel.font = SYSTEMFONT(14);
-                    [badgeLabel setText:@"5"];
                 }
-                
-
+                UILabel *badge = VIEWWITHTAG(cell, 99);
+                badge.hidden = [orderSubCellAry[indexPath.row - 1][@"budge"] intValue] <= 0;
+                [badge setText:orderSubCellAry[indexPath.row - 1][@"budge"]];
             }
             return cell;
         }

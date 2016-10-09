@@ -110,6 +110,7 @@
                     </view>
                     <connections>
                         <segue destination="kff-U0-Rf3" kind="show" identifier="segueToStep" id="7G7-Ct-KUk"/>
+                        <segue destination="FKM-L2-yCa" kind="show" identifier="segueToMap" id="E15-gL-3jz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e4f-z4-6Jv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -293,7 +294,7 @@
                             <constraint firstAttribute="trailing" secondItem="AgK-gC-hma" secondAttribute="trailing" id="3ah-xa-QI2"/>
                             <constraint firstItem="An4-g8-D7V" firstAttribute="top" secondItem="AgK-gC-hma" secondAttribute="bottom" id="Maf-6Y-ZZB"/>
                             <constraint firstItem="AgK-gC-hma" firstAttribute="leading" secondItem="H6s-zG-gUK" secondAttribute="leading" id="PiY-Qf-Ty3"/>
-                            <constraint firstItem="AgK-gC-hma" firstAttribute="top" secondItem="i4W-Fv-7Wt" secondAttribute="bottom" id="UlW-Uy-J1u"/>
+                            <constraint firstItem="AgK-gC-hma" firstAttribute="top" secondItem="i4W-Fv-7Wt" secondAttribute="bottom" constant="-20" id="UlW-Uy-J1u"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="我的" image="all_btn_my" id="0gp-bS-dEf">
@@ -2009,6 +2010,7 @@
         <image name="myInfo_bg" width="375" height="667"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="E15-gL-3jz"/>
         <segue reference="lsh-DM-mae"/>
         <segue reference="vpj-Bf-77N"/>
     </inferredMetricsTieBreakers>
