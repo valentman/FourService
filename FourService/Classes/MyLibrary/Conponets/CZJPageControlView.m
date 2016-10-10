@@ -13,8 +13,10 @@
 @interface CZJPageControlView()
 <UIPageViewControllerDataSource,
 UIPageViewControllerDelegate,
-UIScrollViewDelegate>
+UIScrollViewDelegate,
+UIGestureRecognizerDelegate>
 {
+    UIScrollView *pageScrollView;
 }
 /**
  *  只需要修改的第一处
@@ -67,7 +69,7 @@ UIScrollViewDelegate>
 -(void)syncScrollView{
     for (UIView *view in self.pageController.view.subviews) {
         if ([view isKindOfClass:[UIScrollView class]]) {
-            UIScrollView *pageScrollView = (UIScrollView *)view;
+            pageScrollView = (UIScrollView *)view;
             pageScrollView.delegate = self;
             pageScrollView.scrollsToTop=NO;
         }
@@ -85,6 +87,37 @@ UIScrollViewDelegate>
         [_pageController setViewControllers:@[[self.viewControllerArray objectAtIndex:_currentPageIndex]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
     }
     return _pageController;
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    if ([self panShowLeftView:gestureRecognizer])
+    {
+        return YES;
+    }
+    return NO;
+}
+#pragma mark - 解决手势冲突
+- (BOOL)panShowLeftView:(UIGestureRecognizer *)gestureRecognizer
+{
+    if (gestureRecognizer == pageScrollView.panGestureRecognizer)
+    {
+        UIPanGestureRecognizer *panGes = (UIPanGestureRecognizer *)gestureRecognizer;
+        CGPoint point = [panGes translationInView:pageScrollView];
+        UIGestureRecognizerState state = gestureRecognizer.state;
+        if (UIGestureRecognizerStateBegan == state || UIGestureRecognizerStatePossible == state)
+        {
+            CGPoint location = [gestureRecognizer locationInView:pageScrollView];
+            if (point.x < 0 && location.x < pageScrollView.frame.size.width && pageScrollView.contentOffset.x <= 0)
+            {
+                return YES;
+            }
+            
+        }
+        
+    }
+    return NO;
+    
 }
 
 

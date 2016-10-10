@@ -118,7 +118,7 @@
     //3.返回按钮
     CGRect btnBackRect = CGRectMake(0, 20, 44, 44);
     _btnBack = [[ BadgeButton alloc ]initWithFrame:btnBackRect];
-    [_btnBack setBackgroundImage:[UIImage imageNamed:@"prodetail_btn_backnor"] forState:UIControlStateNormal];
+    [_btnBack setBackgroundImage:[UIImage imageNamed:@"backArrow"] forState:UIControlStateNormal];
     [_btnBack addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
     [_btnBack setTag:CZJButtonTypeNaviBarBack];
     [_btnBack setHidden:YES];
