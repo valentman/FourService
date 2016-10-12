@@ -73,7 +73,7 @@ UITableViewDataSource
     
     self.exitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.exitBtn setTitle:@"退出登录" forState:UIControlStateNormal];
-    [self.exitBtn setBackgroundColor:FSBLUECOLOR2];
+    [self.exitBtn setBackgroundColor:FSBlue];
     self.exitBtn.frame = CGRectMake(0, 0, PJ_SCREEN_WIDTH-100, 50);
     self.exitBtn.center = self.view.center;
     [self.exitBtn addTarget:self action:@selector(exitLoginAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -100,14 +100,25 @@ UITableViewDataSource
 {
     CZJGeneralCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralCell" forIndexPath:indexPath];
     cell.nameLabel.textColor = [UIColor blackColor];
+    cell.nameLabelLeading.constant = 20;
     cell.nameLabel.font = SYSTEMFONT(16);
     cell.nameLabel.text = settingAry[indexPath.row];
     NSString* versionStr = settingAry[indexPath.row];
     CGSize size = [PUtils calculateTitleSizeWithString:versionStr AndFontSize:16];
     cell.nameLabelWidth.constant = size.width + 10;
+    
+    
+    
     if (0 == indexPath.row)
     {
         cell.arrowImg.hidden = YES;
+        UISwitch *swithc =[[UISwitch alloc] init];
+        swithc.onTintColor = FSBlue;
+        BOOL isOpen = [[USER_DEFAULT valueForKey:kuserDefaultPushNotification] isEqualToString:@"true"];
+        [swithc setOn:isOpen];
+        [swithc setPosition:CGPointMake(PJ_SCREEN_WIDTH - 30, 25) atAnchorPoint:CGPointRightMiddle];
+        [cell addSubview:swithc];
+        [swithc addTarget:self action:@selector(swithAction:) forControlEvents:UIControlEventTouchUpInside];
 //        cell.chooseButton.hidden = NO;
 //        [cell.chooseButton addTarget:self action:@selector(pushAction:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -230,5 +241,19 @@ UITableViewDataSource
     
 }
 
+- (void)swithAction:(UISwitch *)sender
+{
+    if (sender.on)
+    {
+        DLog(@"开启消息推送");
+        [USER_DEFAULT setValue:@"true" forKey:kuserDefaultPushNotification];
+    }
+    else
+    {
+        DLog(@"关闭消息推送");
+        [USER_DEFAULT setValue:@"false" forKey:kuserDefaultPushNotification];
+    }
+    [USER_DEFAULT synchronize];
+}
 
 @end

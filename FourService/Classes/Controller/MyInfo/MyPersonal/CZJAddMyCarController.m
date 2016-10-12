@@ -144,8 +144,8 @@ UITextFieldDelegate
     }
     else
     {
-        self.carNameLabel.text  = [NSString stringWithFormat:@"%@ %@", _carForm.car_brand_name,_carForm.car_model_name];
-        self.carModelLabel.text = _carForm.car_type_name;
+        self.carNameLabel.text  = [NSString stringWithFormat:@"%@ %@ %@", _carForm.car_brand_name, _carForm.car_model_name, _carForm.car_type_name];
+//        self.carModelLabel.text = _carForm.car_type_name;
         [self.carBrandImg sd_setImageWithURL:[NSURL URLWithString:FSBaseDataInstance.carBrandForm.icon] placeholderImage:DefaultPlaceHolderSquare];
         NSArray* carNumAry = [_carForm.car_num componentsSeparatedByString:@"-"];
         self.carPlateNumLabel.text = carNumAry.firstObject;

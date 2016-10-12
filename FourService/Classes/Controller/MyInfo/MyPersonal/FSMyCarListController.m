@@ -12,6 +12,7 @@
 #import "CZJCarBrandChooseController.h"
 #import "FSBaseDataManager.h"
 #import "CZJAddMyCarController.h"
+#import "FSAddMyCarButtomView.h"
 
 @interface FSMyCarListController ()
 <
@@ -39,14 +40,12 @@ CZJMyCarListCellDelegate
 
 - (void)initViews
 {
-    self.view.backgroundColor = CZJNAVIBARBGCOLOR;
     [self addCZJNaviBarView:CZJNaviBarViewTypeGeneral];
     self.naviBarView.mainTitleLabel.text = @"我的车辆";
     
-    CZJGeneralCell* generalCell = [PUtils getXibViewByName:@"CZJGeneralCell"];
-    generalCell.frame = CGRectMake(0, 64, PJ_SCREEN_WIDTH, 46);
-    [generalCell.imageView setImage:IMAGENAMED(@"car_icon_add")];
-    generalCell.nameLabel.text = @"添加车辆";
+    FSAddMyCarButtomView* generalCell = [PUtils getXibViewByName:@"FSAddMyCarButtomView"];
+    generalCell.frame = CGRectMake(0, PJ_SCREEN_HEIGHT - 105, PJ_SCREEN_WIDTH, 55);
+
     UIButton* addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     addBtn.frame = CGRectMake(0, 0, generalCell.size.width, generalCell.size.height);
     [addBtn addTarget:self action:@selector(addMyCarAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -54,13 +53,14 @@ CZJMyCarListCellDelegate
     [self.view addSubview:generalCell];
     
     //消息中心表格视图
-    CGRect tableRect = CGRectMake(0, 64 + 46 + 10, PJ_SCREEN_WIDTH, PJ_SCREEN_HEIGHT - 64 - 56);
+    CGRect tableRect = CGRectMake(0, 64, PJ_SCREEN_WIDTH, PJ_SCREEN_HEIGHT - 64 - 105);
     self.myTableView = [[UITableView alloc]initWithFrame:tableRect style:UITableViewStylePlain];
     self.myTableView.tableFooterView = [[UIView alloc]init];
     self.myTableView.delegate = self;
     self.myTableView.dataSource = self;
     self.myTableView.clipsToBounds = YES;
     self.myTableView.showsVerticalScrollIndicator = NO;
+    self.myTableView.backgroundColor = CLEARCOLOR;
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self.view addSubview:self.myTableView];
     

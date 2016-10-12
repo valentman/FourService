@@ -167,9 +167,9 @@ singleton_implementation(FSNetworkManager)
 {
     AFHTTPSessionManager* manager = [AFHTTPSessionManager manager];
     _urlStr = [_urlStr stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSString* path =  [self getPath:_urlStr];
     
-    
-    [manager POST:_urlStr parameters:_parameter constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    [manager POST:path parameters:_parameter constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
         for(NSInteger i = 0; i < _uploadImageAry.count; i++)
         {

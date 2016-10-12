@@ -260,6 +260,7 @@ static NSString *const kUserDefaultStartPageUrl = @"StartPageUrl";              
 static NSString *const kUserDefaultStartPageImagePath = @"StartPageImagePath";              //启动页图片地址
 static NSString *const kUserDefaultStartPageForm = @"StartPageForm";                        //启动页数据
 static NSString *const kUserDefaultDeviceTokenStr = @"DeviceTokenStr";                      //设备Token
+static NSString *const kuserDefaultPushNotification = @"PushNotification";                  //是否开启消息推送
 
 
 //-----------------------常用字符常量定义---------------------------

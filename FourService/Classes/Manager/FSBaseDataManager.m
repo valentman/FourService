@@ -217,25 +217,6 @@ singleton_implementation(FSBaseDataManager);
                     failure:(FailureBlockHandler)_fail
                      andUrl:(NSString*)_url
 {
-//    SuccessBlockHandler successBlock = ^(id json){
-//        if ([self showAlertView:json])
-//        {
-//            success(json);
-//        }
-//    };
-//    
-//    FailureBlockHandler failBlock = ^(){
-//        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
-//    };
-//    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-//    [params setValuesForKeysWithDictionary:self.params];
-//    
-//    [FSNetWorkInstance uploadImageWithUrl:serverAPI
-//                                    Image:image
-//                               Parameters:params
-//                                  success:successBlock
-//                                  failure:failBlock];
-    
     SuccessBlockHandler successBlock = ^(id json){
         if ([self showAlertView:json])
         {
@@ -750,7 +731,7 @@ singleton_implementation(FSBaseDataManager);
                   Success:(SuccessBlockHandler)success
                      fail:(FailureBlockHandler)fail
 {
-    [self generalUploadImage:image withAPI:kFSServerAPIUploadHeadImage Success:success fail:fail];
+    [self generalUploadImages:@[image] param:nil progress:nil success:success failure:fail andUrl:kFSServerAPIUploadHeadImage];
 }
 
 

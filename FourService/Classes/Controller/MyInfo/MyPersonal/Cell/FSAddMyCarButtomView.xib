@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="FSAddMyCarButtomView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <frame key="frameInset" width="320" height="54"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HOl-HU-Grq">
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rRD-4f-Azs">
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus" translatesAutoresizingMaskIntoConstraints="NO" id="tav-UQ-qKy">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="18" id="2Hy-NN-EsJ"/>
+                                            <constraint firstAttribute="height" constant="18" id="GMd-E8-FmL"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="myInfo_car" translatesAutoresizingMaskIntoConstraints="NO" id="7nN-wV-5e9">
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="7nN-wV-5e9" secondAttribute="height" multiplier="1:1" id="6aV-TU-k57"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="添加爱车" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8z3-Rk-eQo">
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="8z3-Rk-eQo" secondAttribute="trailing" id="Htb-iN-GiJ"/>
+                                    <constraint firstItem="8z3-Rk-eQo" firstAttribute="top" secondItem="rRD-4f-Azs" secondAttribute="top" constant="11" id="IEW-0y-abd"/>
+                                    <constraint firstItem="tav-UQ-qKy" firstAttribute="leading" secondItem="rRD-4f-Azs" secondAttribute="leading" constant="32" id="SCG-Tv-eft"/>
+                                    <constraint firstItem="tav-UQ-qKy" firstAttribute="top" secondItem="rRD-4f-Azs" secondAttribute="top" constant="3" id="Zps-6p-BSv"/>
+                                    <constraint firstItem="7nN-wV-5e9" firstAttribute="leading" secondItem="rRD-4f-Azs" secondAttribute="leading" id="akt-4y-7YK"/>
+                                    <constraint firstItem="7nN-wV-5e9" firstAttribute="top" secondItem="rRD-4f-Azs" secondAttribute="top" constant="5" id="j6x-wf-wEd"/>
+                                    <constraint firstAttribute="bottom" secondItem="7nN-wV-5e9" secondAttribute="bottom" constant="5" id="qg0-eR-tL0"/>
+                                    <constraint firstAttribute="width" constant="130" id="vPy-PS-rvg"/>
+                                    <constraint firstAttribute="bottom" secondItem="8z3-Rk-eQo" secondAttribute="bottom" constant="11" id="xk8-MZ-DTA"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.18039216101169586" green="0.62352943420410156" blue="0.88627451658248901" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="rRD-4f-Azs" secondAttribute="bottom" id="7qq-IP-xMt"/>
+                            <constraint firstItem="rRD-4f-Azs" firstAttribute="centerX" secondItem="HOl-HU-Grq" secondAttribute="centerX" id="eYZ-Lu-w5I"/>
+                            <constraint firstItem="rRD-4f-Azs" firstAttribute="top" secondItem="HOl-HU-Grq" secondAttribute="top" id="y8d-Na-9hl"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="HOl-HU-Grq" secondAttribute="bottom" id="2m8-aH-hve"/>
+                    <constraint firstItem="HOl-HU-Grq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="PCc-uC-7Jw"/>
+                    <constraint firstItem="HOl-HU-Grq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="50" id="b8g-sX-rrG"/>
+                    <constraint firstAttribute="trailing" secondItem="HOl-HU-Grq" secondAttribute="trailing" constant="50" id="j8S-KY-HLV"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="-19" y="-31.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="myInfo_car" width="42" height="42"/>
+        <image name="plus" width="15" height="15"/>
+    </resources>
+</document>

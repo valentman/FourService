@@ -364,6 +364,8 @@
 		EC857B9C1D7F069E00DF2D02 /* CZJOrderTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC857B981D7F069E00DF2D02 /* CZJOrderTypeCell.xib */; };
 		EC857BA01D7F0CFE00DF2D02 /* FSPageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC857B9E1D7F0CFE00DF2D02 /* FSPageCell.m */; };
 		EC857BA11D7F0CFE00DF2D02 /* FSPageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC857B9F1D7F0CFE00DF2D02 /* FSPageCell.xib */; };
+		EC8942421DAD30DC00AA771C /* FSAddMyCarButtomView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8942401DAD30DC00AA771C /* FSAddMyCarButtomView.m */; };
+		EC8942431DAD30DC00AA771C /* FSAddMyCarButtomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC8942411DAD30DC00AA771C /* FSAddMyCarButtomView.xib */; };
 		EC9064671D47AC8500E9554F /* FSMyServiceFeedbackController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9064661D47AC8500E9554F /* FSMyServiceFeedbackController.m */; };
 		EC90646A1D47BE8C00E9554F /* CZJPageControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9064691D47BE8C00E9554F /* CZJPageControlView.m */; };
 		EC90646F1D47BF8A00E9554F /* CZJReceiveCouponsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC90646D1D47BF8A00E9554F /* CZJReceiveCouponsCell.m */; };
@@ -1121,6 +1123,9 @@
 		EC857B9D1D7F0CFE00DF2D02 /* FSPageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPageCell.h; sourceTree = "<group>"; };
 		EC857B9E1D7F0CFE00DF2D02 /* FSPageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPageCell.m; sourceTree = "<group>"; };
 		EC857B9F1D7F0CFE00DF2D02 /* FSPageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSPageCell.xib; sourceTree = "<group>"; };
+		EC89423F1DAD30DC00AA771C /* FSAddMyCarButtomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSAddMyCarButtomView.h; sourceTree = "<group>"; };
+		EC8942401DAD30DC00AA771C /* FSAddMyCarButtomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSAddMyCarButtomView.m; sourceTree = "<group>"; };
+		EC8942411DAD30DC00AA771C /* FSAddMyCarButtomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSAddMyCarButtomView.xib; sourceTree = "<group>"; };
 		EC9064651D47AC8500E9554F /* FSMyServiceFeedbackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyServiceFeedbackController.h; sourceTree = "<group>"; };
 		EC9064661D47AC8500E9554F /* FSMyServiceFeedbackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyServiceFeedbackController.m; sourceTree = "<group>"; };
 		EC9064681D47BE8C00E9554F /* CZJPageControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJPageControlView.h; sourceTree = "<group>"; };
@@ -1352,6 +1357,9 @@
 				EC18DE8E1D450204006CB460 /* CZJMyMessageCenterCell.h */,
 				EC18DE8F1D450204006CB460 /* CZJMyMessageCenterCell.m */,
 				EC18DE901D450204006CB460 /* CZJMyMessageCenterCell.xib */,
+				EC89423F1DAD30DC00AA771C /* FSAddMyCarButtomView.h */,
+				EC8942401DAD30DC00AA771C /* FSAddMyCarButtomView.m */,
+				EC8942411DAD30DC00AA771C /* FSAddMyCarButtomView.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -3164,6 +3172,7 @@
 				EC5429A11D237E7700F3B4BF /* wl_map_icon_position@2x.png in Resources */,
 				ECCEE38A1D6C8AAE0034D4F2 /* request_loading_1@2x.png in Resources */,
 				EC54298C1D237E7700F3B4BF /* anjuke_icon_itis_position@2x.png in Resources */,
+				EC8942431DAD30DC00AA771C /* FSAddMyCarButtomView.xib in Resources */,
 				EC5429791D237E7700F3B4BF /* KMCGeigerCounterTick.aiff in Resources */,
 				EC54B6C01D8068EA0082E029 /* CZJAddDeliveryAddrCell.xib in Resources */,
 				EC098E4F1DA642F500C68C44 /* CZJOrderEvaluateCell.xib in Resources */,
@@ -3413,6 +3422,7 @@
 				EC098E541DA6431400C68C44 /* FSOrderEvaluateController.m in Sources */,
 				EC44490B1D9A7E9400E83144 /* FSAboutUSController.m in Sources */,
 				EC3A18F21D41F17B00F6F193 /* FSMyEvalutionController.m in Sources */,
+				EC8942421DAD30DC00AA771C /* FSAddMyCarButtomView.m in Sources */,
 				EC542A161D237E7700F3B4BF /* WebViewJsBridge.m in Sources */,
 				EC454D801DA3ACDA007E6B3D /* FSOrderDetailNoCell.m in Sources */,
 				EC5429C21D237E7700F3B4BF /* CollectionHeader.m in Sources */,

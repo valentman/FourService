@@ -78,10 +78,12 @@ singleton_interface(FSBaseDataManager);
        andServerAPI:(NSString*)api;
 
 //上传图片通用(失败回调不带参数)
-- (void)generalUploadImage:(UIImage*)image
-                   withAPI:(NSString*)serverAPI
-                   Success:(SuccessBlockHandler)success
-                      fail:(FailureBlockHandler)fail;
+- (void)generalUploadImages:(NSArray*)_imageAry
+                      param:(NSDictionary*)_params
+                   progress:(ProgressBlockHandler)_progress
+                    success:(SuccessBlockHandler)_success
+                    failure:(FailureBlockHandler)_fail
+                     andUrl:(NSString*)_url;
 
 - (void)getAreaInfos;
 

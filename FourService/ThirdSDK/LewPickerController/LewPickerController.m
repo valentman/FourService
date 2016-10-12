@@ -43,11 +43,11 @@
     UIBarButtonItem *bbtTitle = [[UIBarButtonItem alloc] initWithCustomView:self.titleLabel];
     UIBarButtonItem* bbtOK = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"shop_icon_location"] style:UIBarButtonItemStylePlain target:self action:@selector(locationAction:)];
     bbtOK.width = 60.f;
-    [bbtOK setTintColor:CZJREDCOLOR];
+    [bbtOK setTintColor:FSBlue];
     
     UIBarButtonItem *bbtCancel = [[UIBarButtonItem alloc] initWithTitle:@"关闭" style:UIBarButtonItemStylePlain target:self action:@selector(cancelAction:)];
     bbtCancel.width = 60.f;
-    [bbtCancel setTintColor:CZJREDCOLOR];
+    [bbtCancel setTintColor:FSBlue];
     
     UIBarButtonItem *fixItemLeft = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     UIBarButtonItem *fixItemRight = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
@@ -59,7 +59,7 @@
     [btn setTitleColor:[UIColor whiteColor]forState:UIControlStateNormal];
     [btn.layer setMasksToBounds:YES];//设置按钮的圆角半径不会被遮挡
     btn.layer.cornerRadius = 5.0;
-    btn.backgroundColor = CZJREDCOLOR;
+    btn.backgroundColor = FSBlue;
     [btn.titleLabel setFont:[UIFont systemFontOfSize:16]];
     [btn setTitle:@"确定" forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(okAction:) forControlEvents:UIControlEventTouchUpInside];
