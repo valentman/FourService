@@ -51,6 +51,7 @@ typedef NS_ENUM(NSUInteger, CZJButtonType) {
     CZJButtonTypeHomeScan = 1,              //导航栏上扫一扫按钮
     CZJButtonTypeHomeShopping = 2,          //导航栏上购物车按钮
     CZJButtonTypeSearchBar,                 //导航栏上搜索按钮
+    CZJButtonTypeNaviHead,                  //导航栏左上角头像按钮
     CZJButtonTypeNaviBarBack,               //导航栏上返回上一页按钮
     CZJButtonTypeNaviBarMore,               //导航栏上详情界面更多按钮
     CZJButtonTypeNaviArrange,                //导航栏上列表排列按钮

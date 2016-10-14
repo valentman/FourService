@@ -36,6 +36,8 @@
 		EC18DE921D450204006CB460 /* CZJMyMessageCenterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC18DE901D450204006CB460 /* CZJMyMessageCenterCell.xib */; };
 		EC18DE961D450CEA006CB460 /* CZJMyCarListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC18DE941D450CEA006CB460 /* CZJMyCarListCell.m */; };
 		EC18DE971D450CEA006CB460 /* CZJMyCarListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC18DE951D450CEA006CB460 /* CZJMyCarListCell.xib */; };
+		EC2293541DAFB80900D26F05 /* HeadInfoButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2293521DAFB80900D26F05 /* HeadInfoButtonView.m */; };
+		EC2293551DAFB80900D26F05 /* HeadInfoButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC2293531DAFB80900D26F05 /* HeadInfoButtonView.xib */; };
 		EC2AC68A1D4A4EDF0065D67C /* Province.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC2AC6891D4A4EDF0065D67C /* Province.plist */; };
 		EC3220F41D77A3C500E4019C /* FSStoreDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3220F31D77A3C500E4019C /* FSStoreDetailController.m */; };
 		EC3220F71D77A3DD00E4019C /* FSGoodsDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3220F61D77A3DD00E4019C /* FSGoodsDetailController.m */; };
@@ -490,6 +492,9 @@
 		EC18DE931D450CEA006CB460 /* CZJMyCarListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJMyCarListCell.h; sourceTree = "<group>"; };
 		EC18DE941D450CEA006CB460 /* CZJMyCarListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJMyCarListCell.m; sourceTree = "<group>"; };
 		EC18DE951D450CEA006CB460 /* CZJMyCarListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZJMyCarListCell.xib; sourceTree = "<group>"; };
+		EC2293511DAFB80900D26F05 /* HeadInfoButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeadInfoButtonView.h; sourceTree = "<group>"; };
+		EC2293521DAFB80900D26F05 /* HeadInfoButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeadInfoButtonView.m; sourceTree = "<group>"; };
+		EC2293531DAFB80900D26F05 /* HeadInfoButtonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeadInfoButtonView.xib; sourceTree = "<group>"; };
 		EC2AC6891D4A4EDF0065D67C /* Province.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Province.plist; sourceTree = "<group>"; };
 		EC3220F21D77A3C500E4019C /* FSStoreDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSStoreDetailController.h; sourceTree = "<group>"; };
 		EC3220F31D77A3C500E4019C /* FSStoreDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSStoreDetailController.m; sourceTree = "<group>"; };
@@ -1982,6 +1987,9 @@
 				EC5427731D237DE000F3B4BF /* LSPageScrollView.m */,
 				ECBFD5F61D69920600662B5E /* PJBrowserView.h */,
 				ECBFD5F71D69920600662B5E /* PJBrowserView.m */,
+				EC2293511DAFB80900D26F05 /* HeadInfoButtonView.h */,
+				EC2293521DAFB80900D26F05 /* HeadInfoButtonView.m */,
+				EC2293531DAFB80900D26F05 /* HeadInfoButtonView.xib */,
 			);
 			path = Conponets;
 			sourceTree = "<group>";
@@ -3200,6 +3208,7 @@
 				EC57A2BC1D8B79BD006DDA7F /* FSOrderProductCell.xib in Resources */,
 				EC18DE971D450CEA006CB460 /* CZJMyCarListCell.xib in Resources */,
 				EC542A181D237E7700F3B4BF /* pop@2x.png in Resources */,
+				EC2293551DAFB80900D26F05 /* HeadInfoButtonView.xib in Resources */,
 				EC2AC68A1D4A4EDF0065D67C /* Province.plist in Resources */,
 				EC5427351D237AF500F3B4BF /* LaunchScreen.storyboard in Resources */,
 				EC54299D1D237E7700F3B4BF /* wl_map_icon_4@2x.png in Resources */,
@@ -3313,6 +3322,7 @@
 				EC5429631D237E7700F3B4BF /* MZGuidePages.m in Sources */,
 				ECD537FB1D4656B100D136EF /* FSCarForm.m in Sources */,
 				ECBD296F1DA3D3560033D823 /* FSOrderDetailTimeCell.m in Sources */,
+				EC2293541DAFB80900D26F05 /* HeadInfoButtonView.m in Sources */,
 				ECA233E51D37DC8F004C2679 /* CZJMyInfoShoppingCartCell.m in Sources */,
 				EC098E4E1DA642F500C68C44 /* CZJOrderEvaluateCell.m in Sources */,
 				EC542A4B1D23802000F3B4BF /* FSWebViewController.m in Sources */,

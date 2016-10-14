@@ -10,7 +10,7 @@
 
 #define kBaseTag 100
 #define kScreenWidth  [UIScreen mainScreen].bounds.size.width
-#define kItemSpacing 0
+#define kItemSpacing 5
 #define kItemWidth  120
 #define kItemHeight 150
 #define kItemSelectedWidth  135
@@ -63,26 +63,33 @@
 
 - (void)setupScrollView
 {
+    self.backgroundColor = GRAYCOLOR;
+    self.clipsToBounds = YES;
     _scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
     [self addSubview:_scrollView];
     _scrollView.showsHorizontalScrollIndicator = NO;
     _scrollView.decelerationRate = UIScrollViewDecelerationRateFast;
     _scrollView.alwaysBounceHorizontal = YES;
     _scrollView.delegate = self;
+    _scrollView.clipsToBounds = YES;
     _scrollView.contentInset = UIEdgeInsetsMake(0, kScrollViewContentOffset, 0, kScrollViewContentOffset);
-    _scrollView.contentSize = CGSizeMake((kItemWidth + kItemSpacing) * self.items.count + kItemSpacing, kMovieBrowserHeight);
+    _scrollView.contentSize = CGSizeMake(kItemWidth * self.items.count + (self.items.count + 1)*kItemSpacing, kMovieBrowserHeight - 5);
+    _scrollView.layer.borderWidth =  2;
+    _scrollView.layer.borderColor = BLACKCOLOR.CGColor;
 
     
     NSInteger i = 0;
     for (UIView* movie in self.items) {
-        UIView *itemView = [[UIView alloc] initWithFrame:CGRectMake((kItemSpacing + kItemWidth) * i + kItemSpacing, 0, kItemWidth, kItemHeight)];
+        UIView *itemView = [[UIView alloc] initWithFrame:CGRectMake(kItemSpacing * (i + 1) + kItemWidth * i, 0, kItemWidth, kItemHeight)];
+        itemView.layer.borderWidth = 2;
+        itemView.layer.borderColor = REDCOLOR.CGColor;
+        movie.tag = kBaseTag + i;
         [_scrollView addSubview:itemView];
-
         [itemView addSubview:movie];
         
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected:)];
         [movie addGestureRecognizer:tapGesture];
-        
+        tapGesture.view.tag = kBaseTag + i;
         i++;
     }
 }
@@ -141,10 +148,15 @@
             }
         }
         
-        for (UIView *imgView in self.items) {
-            if (imgView.tag != index + kBaseTag && imgView.tag != (index + kBaseTag + 1)) {
+        for (UIView *imgView in self.items)
+        {
+            NSInteger myTag = imgView.tag;
+            NSInteger befor = self.currentIndex + kBaseTag;
+            NSInteger after = (self.currentIndex + kBaseTag + 1);
+            if (imgView.tag != self.currentIndex + kBaseTag && imgView.tag != (self.currentIndex + kBaseTag + 1)) {
                 imgView.frame = CGRectMake(0, 0, kItemWidth, kItemHeight);
-                imgView.layer.borderColor = [UIColor clearColor].CGColor;
+                imgView.layer.backgroundColor = [UIColor clearColor].CGColor;
+                VIEWWITHTAG(imgView, 1001).layer.opacity = 0.5;
             }
         }
     }
@@ -172,12 +184,25 @@
     targetContentOffset->x = (kItemSpacing + kItemWidth) * index - kScrollViewContentOffset;
 }
 
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView;      // called when scroll view grinds to a halt
+{
+    DLog();
+}
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
+{
+    if ([self.delegate respondsToSelector:@selector(browser:didSelectItemAtIndex:)]) {
+        [self.delegate browser:self didSelectItemAtIndex:self.currentIndex];
+    }
+}
 
 #pragma mark - Tap Detection
 
 - (void)tapDetected:(UITapGestureRecognizer *)tapGesture
 {
-    if (tapGesture.view.tag == self.currentIndex + kBaseTag) {
+    NSInteger tapGestTag = tapGesture.view.tag;
+    NSInteger current = self.currentIndex + kBaseTag;
+    if (tapGestTag == current) {
         if ([self.delegate respondsToSelector:@selector(browser:didSelectItemAtIndex:)]) {
             [self.delegate browser:self didSelectItemAtIndex:self.currentIndex];
             return;

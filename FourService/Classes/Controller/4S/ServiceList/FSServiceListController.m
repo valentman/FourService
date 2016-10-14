@@ -17,7 +17,8 @@
 #import "FSHomeNotifyCell.h"
 #import "YQSlideMenuController.h"
 #import "FSWebViewController.h"
-
+#import "CZJAddMyCarController.h"
+#import "CZJCarBrandChooseController.h"
 
 #define kHomeTopBgHeight 247
 
@@ -90,15 +91,18 @@ PJBrowserDelegate
     self.naviBarView.frame = CGRectMake(0, 0, PJ_SCREEN_WIDTH, kHomeTopBgHeight);
     self.naviBarView.mainTitleLabel.text = @"养车人家";
     self.naviBarView.mainTitleLabel.textColor = WHITECOLOR;
-    self.naviBarView.btnBack.hidden = NO;
-    [self.naviBarView.btnBack setSize:CGSizeMake(40, 40)];
-    self.naviBarView.btnBack.layer.cornerRadius = 20;
-    [self.naviBarView.btnBack setBackgroundImage:nil forState:UIControlStateNormal];
-//    [self.naviBarView.btnBack setClipsToBounds:YES];
-    [self.naviBarView.btnBack setPosition:CGPointMake(12, 28) atAnchorPoint:CGPointZero];
-    [self.naviBarView.btnBack addTarget:self action:@selector(clickHeadBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [self.naviBarView.btnBack setBadgeNum:22];
-    [self.naviBarView.btnBack setBadgeLabelPosition:CGPointMake(50, 0)];
+    self.naviBarView.btnHead.hidden = NO;
+    
+    [self.naviBarView.btnHead setPosition:CGPointMake(12, 28) atAnchorPoint:CGPointZero];
+    [self.naviBarView.btnHead.headBtn addTarget:self action:@selector(clickHeadBtn:) forControlEvents:UIControlEventTouchUpInside];
+    self.naviBarView.btnHead.badgeLabel.layer.borderColor = WHITECOLOR.CGColor;
+    self.naviBarView.btnHead.badgeLabel.layer.borderWidth = 1.5;
+    
+    NSInteger badgeNum = 22;
+    NSString* badgeStr = [NSString stringWithFormat:@"%ld", badgeNum];
+    CGSize labelSize = [PUtils calculateTitleSizeWithString:badgeStr AndFontSize:14];
+    self.naviBarView.btnHead.badgeLabelWidth.constant = (labelSize.width < 15) ? 20 : (labelSize.width + 10);
+    [self.naviBarView.btnHead.badgeLabel setText:badgeStr];
     
     [self.naviBarView.btnMore setTitle:@"成都" forState:UIControlStateNormal];
     
@@ -155,7 +159,7 @@ PJBrowserDelegate
         headImgUrl = [NSURL URLWithString:userInfoForm.customer_photo];
     }
     
-    [self.naviBarView.btnBack setBackgroundImageForState:UIControlStateNormal withURL:NULL placeholderImage:DefaultPlaceHolderCircle];
+    [self.naviBarView.btnHead.headBtn setImageForState:UIControlStateNormal withURL:headImgUrl placeholderImage:IMAGENAMED(@"placeholder_personal")];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -209,6 +213,19 @@ PJBrowserDelegate
     [self performSegueWithIdentifier:@"segueToStoreList" sender:serviceListForm.service_type_id];
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    //去掉tableview中section的headerview粘性
+    DLog(@"%f",scrollView.contentOffset.y);
+    CGFloat sectionHeaderHeight = 40;
+    if (scrollView.contentOffset.y<=sectionHeaderHeight&&scrollView.contentOffset.y>=0) {
+        scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
+    }
+    else if (scrollView.contentOffset.y>=sectionHeaderHeight) {
+        scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);
+    }
+}
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(nullable id)sender
 {
@@ -227,18 +244,30 @@ PJBrowserDelegate
 #pragma mark- PJBrowserDelegate
 - (void)browser:(PJBrowserView *)movieBrowser didSelectItemAtIndex:(NSInteger)index
 {
-    DLog();
+    DLog(@"%ld",index);
+    if (index < userInfoForm.car_list.count) {
+        FSCarListForm* carForm = userInfoForm.car_list[index];
+        CZJAddMyCarController* addCarVC = (CZJAddMyCarController*)[PUtils getViewControllerFromStoryboard:kCZJStoryBoardFileMain andVCName:@"addMyCarSBID"];
+        addCarVC.carForm = carForm;
+        [self.navigationController pushViewController:addCarVC animated:YES];
+    }
+    else
+    {
+        CZJCarBrandChooseController *svc = [[CZJCarBrandChooseController alloc] initWithType:CZJCarListTypeGeneral];
+        svc.viewFrom = @"carList";
+        [self.navigationController pushViewController:svc animated:YES];
+    }
 }
 
 
 - (void)browser:(PJBrowserView *)movieBrowser didEndScrollingAtIndex:(NSInteger)index
 {
-    DLog();
+    DLog(@"%ld",index);
 }
 
 - (void)browser:(PJBrowserView *)movieBrowser didChangeItemAtIndex:(NSInteger)index
 {
-    DLog();
+    DLog(@"%ld",index);
 }
 
 @end

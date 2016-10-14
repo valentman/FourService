@@ -22,6 +22,7 @@
 @end
 
 @implementation PBaseNaviagtionBarView
+@synthesize btnHead = _btnHead;
 @synthesize btnBack = _btnBack;
 @synthesize btnScan = _btnScan;
 @synthesize btnShop = _btnShop;
@@ -122,6 +123,13 @@
     [_btnBack addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
     [_btnBack setTag:CZJButtonTypeNaviBarBack];
     [_btnBack setHidden:YES];
+    
+    //头像按钮
+    _btnHead = [PUtils getXibViewByName:@"HeadInfoButtonView"];
+    [_btnHead setFrame:btnBackRect];
+    [_btnHead setTag:CZJButtonTypeNaviHead];
+    [_btnHead.headBtn addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
+    [_btnHead setHidden:YES];
     
     //4.更多按钮
     CGRect btnMoreRect = CGRectMake(CGRectGetMaxX(_selfBounds) - 58, 22, 40, 40);
@@ -310,6 +318,7 @@
             break;
     }
 
+    [self addSubview:_btnHead];
     [self addSubview:_customSearchBar];
     [self addSubview:_btnScan];
     [self addSubview:_btnBack];

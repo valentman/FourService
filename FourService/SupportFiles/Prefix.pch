@@ -25,6 +25,7 @@
 
 #import "PUtils.h"
 #import "BadgeButton.h"
+#import "HeadInfoButtonView.h"
 #import "PBaseTableViewCell.h"
 #import "FSViewControllerDelegate.h"
 #import "PBaseViewController.h"

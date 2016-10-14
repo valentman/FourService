@@ -25,28 +25,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FourService/Classes/Controller/4S/ServiceList/FSServiceListController.m"
-            timestampString = "497108772.625971"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "230"
-            endingLineNumber = "230"
-            landmarkName = "-browser:didSelectItemAtIndex:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "FourService/Classes/MyLibrary/Conponets/PJBrowserView.m"
-            timestampString = "497145548.829222"
+            timestampString = "498066933.825462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
             landmarkName = "-browserDidEndScrolling"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,7 +58,7 @@
                   moduleName = "FourService"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Joe.Pen/Documents/GitCode/FourService/FourService/Classes/Controller/4S/CommitOrder/FSCommitOrderController.m"
-                  timestampString = "497982453.257727"
+                  timestampString = "498096614.294644"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "422"
@@ -89,7 +73,7 @@
                   moduleName = "FourService"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Joe.Pen/Documents/GitCode/FourService/FourService/Classes/Controller/4S/CommitOrder/FSCommitOrderController.m"
-                  timestampString = "497982453.258958"
+                  timestampString = "498096614.298097"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "423"
@@ -176,6 +160,22 @@
             startingLineNumber = "172"
             endingLineNumber = "172"
             landmarkName = "-generalPost:success:failure:andServerAPI:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FourService/Classes/Controller/4S/ServiceList/FSServiceListController.m"
+            timestampString = "498096614.158091"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "249"
+            endingLineNumber = "249"
+            landmarkName = "-browser:didSelectItemAtIndex:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

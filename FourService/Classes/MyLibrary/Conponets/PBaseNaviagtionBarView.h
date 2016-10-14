@@ -18,6 +18,7 @@
 @end
 
 @interface PBaseNaviagtionBarView : UIView<UISearchBarDelegate, FSViewControllerDelegate>
+@property(nullable, strong, nonatomic)HeadInfoButtonView* btnHead;                            //返回按钮
 @property(nullable, strong, nonatomic)BadgeButton* btnBack;                            //返回按钮
 @property(nullable, strong, nonatomic)BadgeButton* btnScan;                            //扫一扫按钮
 @property(nullable, strong, nonatomic)BadgeButton* btnShop;                            //购物车

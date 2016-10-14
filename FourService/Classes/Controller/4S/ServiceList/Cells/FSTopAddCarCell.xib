@@ -12,7 +12,7 @@
             <rect key="frame" x="0.0" y="0.0" width="135" height="171"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="135" height="171"/>
+                <frame key="frameInset" width="135" height="170"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_addBtn" translatesAutoresizingMaskIntoConstraints="NO" id="mKe-Vg-FhP">
@@ -21,17 +21,24 @@
                             <constraint firstAttribute="height" constant="41" id="QIW-gp-LKN"/>
                         </constraints>
                     </imageView>
+                    <view tag="1001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NO5-fq-mW6">
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
+                    <constraint firstItem="NO5-fq-mW6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="MTl-yb-wCh"/>
                     <constraint firstItem="mKe-Vg-FhP" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="PPx-rS-jxP"/>
+                    <constraint firstItem="NO5-fq-mW6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="b8E-NB-ug4"/>
                     <constraint firstItem="mKe-Vg-FhP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="ffD-A7-SPt"/>
+                    <constraint firstAttribute="trailing" secondItem="NO5-fq-mW6" secondAttribute="trailing" id="g8z-c9-UHX"/>
+                    <constraint firstAttribute="bottom" secondItem="NO5-fq-mW6" secondAttribute="bottom" id="hyU-3k-zKa"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="addBtnImage" destination="mKe-Vg-FhP" id="EC9-gp-Jpq"/>
             </connections>
-            <point key="canvasLocation" x="163.5" y="255.5"/>
+            <point key="canvasLocation" x="1" y="-25"/>
         </tableViewCell>
     </objects>
     <resources>
