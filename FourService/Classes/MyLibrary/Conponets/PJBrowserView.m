@@ -10,10 +10,10 @@
 
 #define kBaseTag 100
 #define kScreenWidth  [UIScreen mainScreen].bounds.size.width
-#define kItemSpacing 5
+#define kItemSpacing 10
 #define kItemWidth  120
 #define kItemHeight 150
-#define kItemSelectedWidth  135
+#define kItemSelectedWidth  120
 #define kItemSelectedHeight 160
 #define kScrollViewContentOffset (kScreenWidth / 2.0 - (kItemWidth / 2.0 + kItemSpacing))
 
@@ -31,8 +31,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.items = [_viewItems mutableCopy];
-        [self setupScrollView];
+        self.items = [NSMutableArray array];
+        [self updateItems:_viewItems];
     }
     
     return self;
@@ -42,8 +42,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.items = [_viewItems mutableCopy];
-        [self setupScrollView];
+        self.items = [NSMutableArray array];
+        [self updateItems:_viewItems];
         [self setCurrentItemIndex:index];
     }
     
@@ -59,11 +59,17 @@
     }
 }
 
+- (void)updateItems:(NSArray *)_viewItems
+{
+    [self.items removeAllObjects];
+    self.items = [_viewItems mutableCopy];
+    [self setupScrollView];
+}
+
 #pragma mark - Setup
 
 - (void)setupScrollView
 {
-    self.backgroundColor = GRAYCOLOR;
     self.clipsToBounds = YES;
     _scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
     [self addSubview:_scrollView];
@@ -73,16 +79,16 @@
     _scrollView.delegate = self;
     _scrollView.clipsToBounds = YES;
     _scrollView.contentInset = UIEdgeInsetsMake(0, kScrollViewContentOffset, 0, kScrollViewContentOffset);
-    _scrollView.contentSize = CGSizeMake(kItemWidth * self.items.count + (self.items.count + 1)*kItemSpacing, kMovieBrowserHeight - 5);
-    _scrollView.layer.borderWidth =  2;
-    _scrollView.layer.borderColor = BLACKCOLOR.CGColor;
+    _scrollView.contentSize = CGSizeMake(kItemWidth * self.items.count + (self.items.count + 1)*kItemSpacing, kMovieBrowserHeight);
+//    _scrollView.layer.borderWidth =  2;
+//    _scrollView.layer.borderColor = BLACKCOLOR.CGColor;
 
     
     NSInteger i = 0;
     for (UIView* movie in self.items) {
         UIView *itemView = [[UIView alloc] initWithFrame:CGRectMake(kItemSpacing * (i + 1) + kItemWidth * i, 0, kItemWidth, kItemHeight)];
-        itemView.layer.borderWidth = 2;
-        itemView.layer.borderColor = REDCOLOR.CGColor;
+//        itemView.layer.borderWidth = 2;
+//        itemView.layer.borderColor = REDCOLOR.CGColor;
         movie.tag = kBaseTag + i;
         [_scrollView addSubview:itemView];
         [itemView addSubview:movie];

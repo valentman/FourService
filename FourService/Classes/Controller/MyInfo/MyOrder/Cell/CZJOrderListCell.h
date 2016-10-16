@@ -34,12 +34,12 @@ typedef NS_ENUM(NSInteger,CZJOrderListCellButtonType)
 
 @protocol CZJOrderListCellDelegate <NSObject>
 
-- (void)clickPaySelectButton:(UIButton*)btn andOrderForm:(CZJOrderListForm*)orderListForm;
-- (void)clickOrderListCellAction:(CZJOrderListCellButtonType)buttonType andOrderForm:(CZJOrderListForm*)orderListForm;
+- (void)clickPaySelectButton:(UIButton*)btn andOrderForm:(FSOrderListForm*)orderListForm;
+- (void)clickOrderListCellAction:(CZJOrderListCellButtonType)buttonType andOrderForm:(FSOrderListForm*)orderListForm;
 @end
 
 @interface CZJOrderListCell : CZJTableViewCell
 @property (weak, nonatomic)id <CZJOrderListCellDelegate> delegate;
 
-- (void)setCellModelWithType:(CZJOrderListForm*)listForm andType:(CZJOrderType)orderType;
+- (void)setCellModelWithType:(FSOrderListForm*)listForm andType:(CZJOrderType)orderType;
 @end

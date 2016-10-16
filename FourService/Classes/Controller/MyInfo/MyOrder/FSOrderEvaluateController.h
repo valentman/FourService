@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface FSOrderEvaluateController : PBaseViewController
-
+@property (strong, nonatomic) FSOrderDetailForm *orderDetailForm;
 @end

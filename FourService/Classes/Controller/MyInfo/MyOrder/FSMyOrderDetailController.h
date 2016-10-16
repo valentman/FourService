@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface FSMyOrderDetailController : PBaseViewController
-
+@property (strong, nonatomic) NSString *orderId;
 @end

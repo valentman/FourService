@@ -12,6 +12,7 @@
 #import "VPImageCropperViewController.h"
 #import "FSBaseDataManager.h"
 #import "CZJDeletableImageView.h"
+#import "FSBaseDataManager.h"
 
 
 @interface FSOrderEvaluateController ()
@@ -45,19 +46,19 @@ CZJStarRateViewDelegate
 - (void)initDatas
 {
     myEvaluationForm = [[CZJMyEvaluationForm alloc] init];
-//    myEvaluationForm.orderNo = self.orderDetailForm.orderNo;
+//    myEvaluationForm.order_id = self.orderDetailForm.order_id;
 //    myEvaluationForm.storeId = self.orderDetailForm.storeId;
 //    NSString* head = FSBaseDataInstance.userInfoForm.headPic;
 //    myEvaluationForm.head = head.length > 0 ? head : @"";
 //    myEvaluationForm.name = FSBaseDataInstance.userInfoForm.name;
 //    myEvaluationForm.orderTime = self.orderDetailForm.createTime;
-    myEvaluationForm.descScore = @"5";
-    myEvaluationForm.serviceScore = @"5";
-    myEvaluationForm.deliveryScore = @"5";
-    myEvaluationForm.environmentScore = @"5";
+    myEvaluationForm.description_score = @"5";
+    myEvaluationForm.service_score = @"5";
+    myEvaluationForm.environment_score = @"5";
+    myEvaluationForm.professional_score = @"5";
 //    myEvaluationForm.activityId = self.orderDetailForm.activityId;
-    myEvaluationForm.items = [NSMutableArray array];
-//    for (CZJOrderGoodsForm* goodsForm in self.orderDetailForm.items)
+    myEvaluationForm.comment_image_list = [NSMutableArray array];
+//    for (FSOrderGoodsForm* goodsForm in self.orderDetailForm.items)
 //    {
 //        CZJMyEvaluationGoodsForm* mygoodsform = [[CZJMyEvaluationGoodsForm alloc] init];
 //        mygoodsform.storeItemPid = goodsForm.storeItemPid;
@@ -110,31 +111,30 @@ CZJStarRateViewDelegate
 
 - (void)refreshPic:(NSString*)picImg
 {
-    CZJMyEvaluationGoodsForm* returnedListForm = (CZJMyEvaluationGoodsForm*)myEvaluationForm.items[choosedSecionIndex];
-    [returnedListForm.evalImgs addObject:picImg];
-    [self.myTableView reloadSections:[NSIndexSet indexSetWithIndex:choosedSecionIndex] withRowAnimation:UITableViewRowAnimationAutomatic];
+//    CZJMyEvaluationGoodsForm* returnedListForm = (CZJMyEvaluationGoodsForm*)myEvaluationForm.items[choosedSecionIndex];
+//    [returnedListForm.evalImgs addObject:picImg];
+//    [self.myTableView reloadSections:[NSIndexSet indexSetWithIndex:choosedSecionIndex] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 
 - (void)addMyComment:(id)sender
 {
-    NSDictionary* dict = myEvaluationForm.keyValues;
-    DLog(@"发表评价%@",[dict description]);
-//    __weak typeof(self) weak = self;
-//    [FSBaseDataInstance generalPost:@{@"paramJson" : [CZJUtils JsonFromData:dict]} success:^(id json)
-//     {
-//         NSDictionary* dicts = [CZJUtils DataFromJson:json];
-//         MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//         hud.mode = MBProgressHUDModeText;
-//         hud.labelText = @"感谢发表";
-//         [hud hide:YES afterDelay:1.5];
-//         hud.completionBlock = ^{
-//             [[NSNotificationCenter defaultCenter] postNotificationName:kCZJNotifiRefreshOrderlist object:nil];
-//             [weak.navigationController popViewControllerAnimated:YES];
-//         };
-//     }  fail:^{
-//         
-//     } andServerAPI:kCZJServerAPISubmitComment];
+    NSDictionary* paradict = myEvaluationForm.keyValues;
+    DLog(@"发表评价%@",[paradict description]);
+    
+    __weak typeof(self) weak = self;
+    [FSBaseDataInstance evaluateOrder:paradict Success:^(id json) {
+        MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeText;
+        hud.labelText = @"感谢发表";
+        [hud hide:YES afterDelay:1.5];
+        hud.completionBlock = ^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:kCZJNotifiRefreshOrderlist object:nil];
+            [weak.navigationController popViewControllerAnimated:YES];
+        };
+    } fail:^{
+        
+    }];
 }
 
 
@@ -230,12 +230,12 @@ CZJStarRateViewDelegate
 
 - (void)picViewDeleteBtnHandler:(UIButton*)sender
 {
-    NSInteger indexSection = sender.tag;
-    CZJDeletableImageView* picImage = (CZJDeletableImageView*)[sender superview];
-    [picImage removeFromSuperview];
-    CZJMyEvaluationGoodsForm* returnedListForm = (CZJMyEvaluationGoodsForm*)myEvaluationForm.items[indexSection];
-    [returnedListForm.evalImgs removeObject:picImage.imgName];
-    [self.myTableView reloadSections:[NSIndexSet indexSetWithIndex:indexSection] withRowAnimation:UITableViewRowAnimationAutomatic];
+//    NSInteger indexSection = sender.tag;
+//    CZJDeletableImageView* picImage = (CZJDeletableImageView*)[sender superview];
+//    [picImage removeFromSuperview];
+//    CZJMyEvaluationGoodsForm* returnedListForm = (CZJMyEvaluationGoodsForm*)myEvaluationForm.items[indexSection];
+//    [returnedListForm.evalImgs removeObject:picImage.imgName];
+//    [self.myTableView reloadSections:[NSIndexSet indexSetWithIndex:indexSection] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark-UITableViewDelegate
@@ -295,17 +295,13 @@ CZJStarRateViewDelegate
         NSString* descStr = (NSString*)obj;
         if ([descStr isEqualToString:@"描述相符"])
         {
-            myEvaluationForm.descScore = scoreStr;
+            myEvaluationForm.description_score = scoreStr;
         }
         if ([descStr isEqualToString:@"服务态度"])
         {
-            myEvaluationForm.serviceScore = scoreStr;
+            myEvaluationForm.service_score = scoreStr;
         }
-        if ([descStr isEqualToString:@"发货速度"])
-        {
-            myEvaluationForm.deliveryScore = scoreStr;
-        }
-        myEvaluationForm.environmentScore = @"5";
+        myEvaluationForm.environment_score = @"5";
     }
     
 }
@@ -422,10 +418,10 @@ CZJStarRateViewDelegate
 
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
-    NSInteger indexSection = textView.tag;
-    CZJMyEvaluationGoodsForm* returnedListForm = (CZJMyEvaluationGoodsForm*)myEvaluationForm.items[indexSection];
-    returnedListForm.message = textView.text;
-    DLog(@"%@",textView.text);
+//    NSInteger indexSection = textView.tag;
+//    CZJMyEvaluationGoodsForm* returnedListForm = (CZJMyEvaluationGoodsForm*)myEvaluationForm.items[indexSection];
+//    returnedListForm.message = textView.text;
+//    DLog(@"%@",textView.text);
 }
 
 

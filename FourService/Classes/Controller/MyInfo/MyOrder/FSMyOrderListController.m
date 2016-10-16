@@ -9,7 +9,7 @@
 #import "FSMyOrderListController.h"
 #import "FSBaseDataManager.h"
 #import "FSOrderEvaluateController.h"
-
+#import "FSMyOrderDetailController.h"
 
 @interface FSMyOrderListController ()
 <
@@ -24,7 +24,7 @@ CZJOrderListCellDelegate
     MJRefreshAutoNormalFooter* refreshFooter;
     __block CZJHomeGetDataFromServerType _getdataType;
 }
-@property (strong, nonatomic)NSMutableArray* orderList;
+@property (strong, nonatomic)NSMutableArray<FSOrderListForm *> *orderList;
 @property (strong, nonatomic)UITableView* myTableView;
 @property (assign, nonatomic) NSInteger page;
 @end
@@ -118,16 +118,16 @@ CZJOrderListCellDelegate
     [PUtils removeNoDataAlertViewFromTarget:self.view];
     [PUtils removeReloadAlertViewFromTarget:self.view];
     [_params setValue:@(self.page) forKey:@"page_num"];
-    [_params setValue:@(1) forKey:@"order_status"];
+    [_params setValue:@(self.orderType) forKey:@"order_status"];
     
     [FSBaseDataInstance getOrderList:_params Success:^(id json) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:NO];
         DLog(@"orderList:%@",[json description]);
         //========获取数据返回，判断数据大于0不==========
-        NSArray* tmpAry = json[kResoponData];
+        NSMutableArray* tmpAry = json[kResoponData];
         if (CZJHomeGetDataFromServerTypeTwo == _getdataType)
         {
-            [_orderList addObjectsFromArray: [CZJOrderListForm objectArrayWithKeyValuesArray:tmpAry]];
+            [_orderList addObjectsFromArray: [FSOrderListForm objectArrayWithKeyValuesArray:tmpAry]];
             if (tmpAry.count < 10)
             {
                 [refreshFooter noticeNoMoreData];
@@ -139,7 +139,7 @@ CZJOrderListCellDelegate
         }
         else
         {
-            _orderList = [[CZJOrderListForm objectArrayWithKeyValuesArray:tmpAry] mutableCopy];
+            _orderList = [[FSOrderListForm objectArrayWithKeyValuesArray:tmpAry] mutableCopy];
             if (_orderList.count < 10)
             {
                 [refreshFooter noticeNoMoreData];
@@ -202,7 +202,8 @@ CZJOrderListCellDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:@"segueToOrderDetail" sender:nil];
+    FSOrderListForm *orderListForm = self.orderList[indexPath.section];
+    [self performSegueWithIdentifier:@"segueToOrderDetail" sender:orderListForm.order_id];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -225,9 +226,18 @@ CZJOrderListCellDelegate
     }
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"segueToOrderDetail"])
+    {
+        FSMyOrderDetailController* orderDetail = segue.destinationViewController;
+        orderDetail.orderId = sender;
+    }
+}
+
 
 #pragma mark- CZJOrderListCellDelegate
-- (void)clickOrderListCellAction:(CZJOrderListCellButtonType)buttonType andOrderForm:(CZJOrderListForm*)orderListForm
+- (void)clickOrderListCellAction:(CZJOrderListCellButtonType)buttonType andOrderForm:(FSOrderListForm*)orderListForm
 {
     
     FSOrderEvaluateController* orderEvaluate = [[FSOrderEvaluateController alloc] init];
@@ -271,7 +281,7 @@ CZJOrderListCellDelegate
     }*/
 }
 
-- (void)clickPaySelectButton:(UIButton*)btn andOrderForm:(CZJOrderListForm*)orderListForm
+- (void)clickPaySelectButton:(UIButton*)btn andOrderForm:(FSOrderListForm*)orderListForm
 {
     
 }

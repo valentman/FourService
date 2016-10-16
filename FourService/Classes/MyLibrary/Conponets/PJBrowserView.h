@@ -23,7 +23,9 @@
 @property (nonatomic, assign, readwrite) id<PJBrowserDelegate> delegate;
 @property (nonatomic, assign, readonly)  NSInteger currentIndex;
 
+
 - (instancetype)initWithFrame:(CGRect)frame items:(NSArray *)_viewItems;
 - (instancetype)initWithFrame:(CGRect)frame items:(NSArray *)_viewItems currentIndex:(NSInteger)index;
 - (void)setCurrentItemIndex:(NSInteger)index;
+- (void)updateItems:(NSArray *)_viewItems;
 @end

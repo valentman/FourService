@@ -60,17 +60,20 @@
 
 //--------------------我的评价简介Item信息---------------------
 @interface CZJMyEvaluationForm : NSObject
-@property (strong, nonatomic)NSString*  activityId;
-@property (strong, nonatomic)NSString* orderNo;
-@property (strong, nonatomic)NSString* serviceScore;
-@property (strong, nonatomic)NSString* descScore;
-@property (strong, nonatomic)NSString* environmentScore;
-@property (strong, nonatomic)NSString* deliveryScore;
-@property (strong, nonatomic)NSString* storeId;
-@property (strong, nonatomic)NSString* head;
-@property (strong, nonatomic)NSString* name;
-@property (strong, nonatomic)NSString* orderTime;
-@property (strong, nonatomic)NSMutableArray* items;
+@property (strong, nonatomic)NSString* order_id;
+@property (strong, nonatomic)NSString* shop_id;
+@property (strong, nonatomic)NSString* content;
+@property (strong, nonatomic)NSString* comment_score;
+@property (strong, nonatomic)NSString* professional_score;
+@property (strong, nonatomic)NSString* environment_score;
+@property (strong, nonatomic)NSString* service_score;
+@property (strong, nonatomic)NSString* description_score;
+@property (strong, nonatomic)NSMutableArray* comment_image_list;
+@end
+
+@interface FSOrderEvaluateImageForm : NSObject
+@property (strong, nonatomic)NSString* image_name;
+@property (strong, nonatomic)NSString* image_url;
 @end
 
 

@@ -21,7 +21,7 @@
 #import "FSMyInformationController.h"
 #import "YQSlideMenuController.h"
 
-@interface AppDelegate ()
+@interface AppDelegate ()<UIActionSheetDelegate>
 
 @end
 
@@ -74,7 +74,16 @@
         [[CCLocationManager shareLocation]getCity:^(NSString *addressString) {
             CLLocationCoordinate2D location = CLLocationCoordinate2DMake([USER_DEFAULT doubleForKey:CCLastLatitude],[USER_DEFAULT doubleForKey:CCLastLongitude]);
             [FSBaseDataInstance setCurLocation:location];
-            [FSBaseDataInstance setCurCityName:addressString];
+            
+            if ([addressString isEqualToString:[USER_DEFAULT valueForKey: CCLastCity]])
+            {
+                UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:@"切换城市" delegate:self cancelButtonTitle:@"" destructiveButtonTitle:@"" otherButtonTitles:@"", nil];
+            }
+            else
+            {
+                [FSBaseDataInstance setCurCityName:addressString];
+            }
+            
         }];
     }
     else if (IS_IOS7)
@@ -289,6 +298,14 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+
+
+#pragma mark- UIActionSheetDelegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
 }
 
 @end

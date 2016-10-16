@@ -14,13 +14,16 @@
 #import "FSServiceStoreCell.h"
 #import "FSOrderDetailPayCell.h"
 #import "FSOrderDetailTimeCell.h"
+#import "FSBaseDataManager.h"
 
 @interface FSMyOrderDetailController ()
 <
 UITableViewDataSource,
 UITableViewDelegate
 >
-
+{
+    FSOrderDetailForm *orderDetailForm;
+}
 @property (strong, nonatomic)UITableView* myTableView;
 @end
 
@@ -30,6 +33,7 @@ UITableViewDelegate
     [super viewDidLoad];
     [self initDatas];
     [self initViews];
+    [self getOrderDetailFromServer];
 }
 
 - (void)initDatas
@@ -73,6 +77,16 @@ UITableViewDelegate
         }
     }
     return _myTableView;
+}
+
+- (void)getOrderDetailFromServer
+{
+    NSDictionary* params = @{@"order_id" : self.orderId};
+    [FSBaseDataInstance getOrderDetail:params Success:^(id json) {
+        DLog(@"%@", [json description]);
+    } fail:^{
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -124,9 +138,9 @@ UITableViewDelegate
         case 0:
         {
             FSOrderDetailNoCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FSOrderDetailNoCell" forIndexPath:indexPath];
-            cell.orderNoLable.text = @"YC234234";
-            cell.orderTypeLabel.text = @"保养";
-            cell.orderStateLabel.text = @"施工中";
+            cell.orderNoLable.text = orderDetailForm.order_id;
+            cell.orderTypeLabel.text = orderDetailForm.service_type_name;
+            cell.orderStateLabel.text = orderDetailForm.status;
             return cell;
         }
             break;
@@ -136,7 +150,7 @@ UITableViewDelegate
             {
                 CZJGeneralCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralCell" forIndexPath:indexPath];
                 [cell.headImgView setImage:IMAGENAMED(@"orderShop")];
-                cell.nameLabel.text = @"成都南门凯德天府店";
+                cell.nameLabel.text = orderDetailForm.shop_name;
                 cell.arrowImg.hidden = YES;
                 return cell;
             }
@@ -152,7 +166,7 @@ UITableViewDelegate
 //                [cell.storeImage sd_setImageWithURL:imgUrl placeholderImage:DefaultPlaceHolderSquare];
                 
                 //门店名称
-                cell.storeNameLabel.text = @"成都南门凯德天府店";
+                cell.storeNameLabel.text = orderDetailForm.shop_name;
                 
                 cell.discountPriceLabel.hidden = YES;
                 cell.originPriceLabel.hidden = YES;
@@ -181,14 +195,14 @@ UITableViewDelegate
             {
                 CZJGeneralCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralCell" forIndexPath:indexPath];
                 [cell.headImgView setImage:IMAGENAMED(@"shop_location")];
-                cell.nameLabel.text = @"成都市天仁路399号";
+                cell.nameLabel.text = orderDetailForm.shop_address;
                 return cell;
             }
             if (3 == indexPath.row)
             {
                 CZJGeneralCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralCell" forIndexPath:indexPath];
                 [cell.headImgView setImage:IMAGENAMED(@"shop_phone")];
-                cell.nameLabel.text = @"028-86889898";
+                cell.nameLabel.text = orderDetailForm.shop_tel;
                 return cell;
             }
             break;
@@ -198,7 +212,7 @@ UITableViewDelegate
             {
                 CZJOrderBuildingImagesCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJOrderBuildingImagesCell" forIndexPath:indexPath];
                 cell.myTitleLabel.text = @"商品";
-                cell.totalLabel.text = @"共1件";
+                cell.totalLabel.text = [NSString stringWithFormat:@"共%ld件",orderDetailForm.order_step.count];
                 return cell;
             }
             else
@@ -232,6 +246,9 @@ UITableViewDelegate
         case 4:
         {
             FSOrderDetailPayCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FSOrderDetailPayCell" forIndexPath:indexPath];
+            cell.totalPrice.text = orderDetailForm.price;
+            cell.couponPrice.text = @"￥0.00";
+            cell.payPrice.text = orderDetailForm.price;
             return cell;
         }
             break;
@@ -239,6 +256,8 @@ UITableViewDelegate
         case 5:
         {
             FSOrderDetailTimeCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FSOrderDetailTimeCell" forIndexPath:indexPath];
+            cell.orderTimeLabel.text = orderDetailForm.pay_time;
+            cell.orderPayType.text = orderDetailForm.pay_way;
             return cell;
         }
             break;

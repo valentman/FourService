@@ -53,6 +53,20 @@
 		EC3221131D77A81B00E4019C /* CZJStoreMapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC3221111D77A81B00E4019C /* CZJStoreMapCell.xib */; };
 		EC3221161D77A87A00E4019C /* CZJStoreForm.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3221151D77A87A00E4019C /* CZJStoreForm.m */; };
 		EC3221191D77A8AE00E4019C /* CZJStoreMAAroundForm.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3221181D77A8AE00E4019C /* CZJStoreMAAroundForm.m */; };
+		EC3728BE1DB1C1F60035F61E /* ChineseInclude.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3728AE1DB1C1F60035F61E /* ChineseInclude.m */; };
+		EC3728BF1DB1C1F60035F61E /* ChineseToPinyinResource.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3728B01DB1C1F60035F61E /* ChineseToPinyinResource.m */; };
+		EC3728C01DB1C1F60035F61E /* HanyuPinyinOutputFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3728B21DB1C1F60035F61E /* HanyuPinyinOutputFormat.m */; };
+		EC3728C11DB1C1F60035F61E /* NSString+PinYin4Cocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3728B41DB1C1F60035F61E /* NSString+PinYin4Cocoa.m */; };
+		EC3728C21DB1C1F60035F61E /* PinyinFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3728B61DB1C1F60035F61E /* PinyinFormatter.m */; };
+		EC3728C31DB1C1F60035F61E /* PinYinForObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3728B81DB1C1F60035F61E /* PinYinForObjc.m */; };
+		EC3728C41DB1C1F60035F61E /* PinyinHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3728BA1DB1C1F60035F61E /* PinyinHelper.m */; };
+		EC3728C51DB1C1F60035F61E /* unicode_to_hanyu_pinyin.txt in Resources */ = {isa = PBXBuildFile; fileRef = EC3728BB1DB1C1F60035F61E /* unicode_to_hanyu_pinyin.txt */; };
+		EC3728C61DB1C1F60035F61E /* ZYPinYinSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3728BD1DB1C1F60035F61E /* ZYPinYinSearch.m */; };
+		EC3728D11DB1C24A0035F61E /* ButtonGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3728C91DB1C24A0035F61E /* ButtonGroupView.m */; };
+		EC3728D21DB1C24A0035F61E /* CityButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3728CB1DB1C24A0035F61E /* CityButton.m */; };
+		EC3728D31DB1C24A0035F61E /* citydict.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC3728CC1DB1C24A0035F61E /* citydict.plist */; };
+		EC3728D41DB1C24A0035F61E /* CityItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3728CE1DB1C24A0035F61E /* CityItem.m */; };
+		EC3728D51DB1C24A0035F61E /* FSCityLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3728D01DB1C24A0035F61E /* FSCityLocationController.m */; };
 		EC3A18E91D41F13F00F6F193 /* FSMyViewedController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3A18E81D41F13F00F6F193 /* FSMyViewedController.m */; };
 		EC3A18EC1D41F15500F6F193 /* FSMyPersonalInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3A18EB1D41F15500F6F193 /* FSMyPersonalInfoController.m */; };
 		EC3A18EF1D41F16700F6F193 /* FSMyAttentionController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3A18EE1D41F16700F6F193 /* FSMyAttentionController.m */; };
@@ -519,6 +533,32 @@
 		EC3221151D77A87A00E4019C /* CZJStoreForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJStoreForm.m; sourceTree = "<group>"; };
 		EC3221171D77A8AE00E4019C /* CZJStoreMAAroundForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJStoreMAAroundForm.h; sourceTree = "<group>"; };
 		EC3221181D77A8AE00E4019C /* CZJStoreMAAroundForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJStoreMAAroundForm.m; sourceTree = "<group>"; };
+		EC3728AD1DB1C1F60035F61E /* ChineseInclude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseInclude.h; sourceTree = "<group>"; };
+		EC3728AE1DB1C1F60035F61E /* ChineseInclude.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChineseInclude.m; sourceTree = "<group>"; };
+		EC3728AF1DB1C1F60035F61E /* ChineseToPinyinResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseToPinyinResource.h; sourceTree = "<group>"; };
+		EC3728B01DB1C1F60035F61E /* ChineseToPinyinResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChineseToPinyinResource.m; sourceTree = "<group>"; };
+		EC3728B11DB1C1F60035F61E /* HanyuPinyinOutputFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HanyuPinyinOutputFormat.h; sourceTree = "<group>"; };
+		EC3728B21DB1C1F60035F61E /* HanyuPinyinOutputFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HanyuPinyinOutputFormat.m; sourceTree = "<group>"; };
+		EC3728B31DB1C1F60035F61E /* NSString+PinYin4Cocoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PinYin4Cocoa.h"; sourceTree = "<group>"; };
+		EC3728B41DB1C1F60035F61E /* NSString+PinYin4Cocoa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PinYin4Cocoa.m"; sourceTree = "<group>"; };
+		EC3728B51DB1C1F60035F61E /* PinyinFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinyinFormatter.h; sourceTree = "<group>"; };
+		EC3728B61DB1C1F60035F61E /* PinyinFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinyinFormatter.m; sourceTree = "<group>"; };
+		EC3728B71DB1C1F60035F61E /* PinYinForObjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinYinForObjc.h; sourceTree = "<group>"; };
+		EC3728B81DB1C1F60035F61E /* PinYinForObjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinYinForObjc.m; sourceTree = "<group>"; };
+		EC3728B91DB1C1F60035F61E /* PinyinHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinyinHelper.h; sourceTree = "<group>"; };
+		EC3728BA1DB1C1F60035F61E /* PinyinHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinyinHelper.m; sourceTree = "<group>"; };
+		EC3728BB1DB1C1F60035F61E /* unicode_to_hanyu_pinyin.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = unicode_to_hanyu_pinyin.txt; sourceTree = "<group>"; };
+		EC3728BC1DB1C1F60035F61E /* ZYPinYinSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYPinYinSearch.h; sourceTree = "<group>"; };
+		EC3728BD1DB1C1F60035F61E /* ZYPinYinSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYPinYinSearch.m; sourceTree = "<group>"; };
+		EC3728C81DB1C24A0035F61E /* ButtonGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonGroupView.h; sourceTree = "<group>"; };
+		EC3728C91DB1C24A0035F61E /* ButtonGroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonGroupView.m; sourceTree = "<group>"; };
+		EC3728CA1DB1C24A0035F61E /* CityButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityButton.h; sourceTree = "<group>"; };
+		EC3728CB1DB1C24A0035F61E /* CityButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityButton.m; sourceTree = "<group>"; };
+		EC3728CC1DB1C24A0035F61E /* citydict.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = citydict.plist; sourceTree = "<group>"; };
+		EC3728CD1DB1C24A0035F61E /* CityItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityItem.h; sourceTree = "<group>"; };
+		EC3728CE1DB1C24A0035F61E /* CityItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityItem.m; sourceTree = "<group>"; };
+		EC3728CF1DB1C24A0035F61E /* FSCityLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCityLocationController.h; sourceTree = "<group>"; };
+		EC3728D01DB1C24A0035F61E /* FSCityLocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCityLocationController.m; sourceTree = "<group>"; };
 		EC3A18E71D41F13F00F6F193 /* FSMyViewedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyViewedController.h; sourceTree = "<group>"; };
 		EC3A18E81D41F13F00F6F193 /* FSMyViewedController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyViewedController.m; sourceTree = "<group>"; };
 		EC3A18EA1D41F15500F6F193 /* FSMyPersonalInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyPersonalInfoController.h; sourceTree = "<group>"; };
@@ -1458,6 +1498,46 @@
 			path = AMap;
 			sourceTree = "<group>";
 		};
+		EC3728AC1DB1C1F60035F61E /* ZYPinYinSearchLib */ = {
+			isa = PBXGroup;
+			children = (
+				EC3728AD1DB1C1F60035F61E /* ChineseInclude.h */,
+				EC3728AE1DB1C1F60035F61E /* ChineseInclude.m */,
+				EC3728AF1DB1C1F60035F61E /* ChineseToPinyinResource.h */,
+				EC3728B01DB1C1F60035F61E /* ChineseToPinyinResource.m */,
+				EC3728B11DB1C1F60035F61E /* HanyuPinyinOutputFormat.h */,
+				EC3728B21DB1C1F60035F61E /* HanyuPinyinOutputFormat.m */,
+				EC3728B31DB1C1F60035F61E /* NSString+PinYin4Cocoa.h */,
+				EC3728B41DB1C1F60035F61E /* NSString+PinYin4Cocoa.m */,
+				EC3728B51DB1C1F60035F61E /* PinyinFormatter.h */,
+				EC3728B61DB1C1F60035F61E /* PinyinFormatter.m */,
+				EC3728B71DB1C1F60035F61E /* PinYinForObjc.h */,
+				EC3728B81DB1C1F60035F61E /* PinYinForObjc.m */,
+				EC3728B91DB1C1F60035F61E /* PinyinHelper.h */,
+				EC3728BA1DB1C1F60035F61E /* PinyinHelper.m */,
+				EC3728BB1DB1C1F60035F61E /* unicode_to_hanyu_pinyin.txt */,
+				EC3728BC1DB1C1F60035F61E /* ZYPinYinSearch.h */,
+				EC3728BD1DB1C1F60035F61E /* ZYPinYinSearch.m */,
+			);
+			path = ZYPinYinSearchLib;
+			sourceTree = "<group>";
+		};
+		EC3728C71DB1C24A0035F61E /* CityLocation */ = {
+			isa = PBXGroup;
+			children = (
+				EC3728C81DB1C24A0035F61E /* ButtonGroupView.h */,
+				EC3728C91DB1C24A0035F61E /* ButtonGroupView.m */,
+				EC3728CA1DB1C24A0035F61E /* CityButton.h */,
+				EC3728CB1DB1C24A0035F61E /* CityButton.m */,
+				EC3728CC1DB1C24A0035F61E /* citydict.plist */,
+				EC3728CD1DB1C24A0035F61E /* CityItem.h */,
+				EC3728CE1DB1C24A0035F61E /* CityItem.m */,
+				EC3728CF1DB1C24A0035F61E /* FSCityLocationController.h */,
+				EC3728D01DB1C24A0035F61E /* FSCityLocationController.m */,
+			);
+			path = CityLocation;
+			sourceTree = "<group>";
+		};
 		EC3A18D41D41F00400F6F193 /* MyAttention */ = {
 			isa = PBXGroup;
 			children = (
@@ -1598,6 +1678,7 @@
 		EC4597EE1D757960004424A4 /* ServiceList */ = {
 			isa = PBXGroup;
 			children = (
+				EC3728C71DB1C24A0035F61E /* CityLocation */,
 				EC4597EF1D757960004424A4 /* Cells */,
 				EC4597FC1D757960004424A4 /* FSServiceListController.h */,
 				EC4597FD1D757960004424A4 /* FSServiceListController.m */,
@@ -1837,6 +1918,7 @@
 		EC54272F1D237AC200F3B4BF /* ThirdSDK */ = {
 			isa = PBXGroup;
 			children = (
+				EC3728AC1DB1C1F60035F61E /* ZYPinYinSearchLib */,
 				EC3220FD1D77A6BF00E4019C /* AMap3DMap */,
 				EC5427A41D237E7600F3B4BF /* AFNetworking */,
 				EC542A7B1D239B8A00F3B4BF /* Ali */,
@@ -3203,8 +3285,10 @@
 				EC57A2B71D8B7111006DDA7F /* FSOrderContactCell.xib in Resources */,
 				EC474B3B1D5EFCAB00B54B0F /* FSMyinfoButtomView.xib in Resources */,
 				EC54297D1D237E7700F3B4BF /* KSRefresh.bundle in Resources */,
+				EC3728C51DB1C1F60035F61E /* unicode_to_hanyu_pinyin.txt in Resources */,
 				EC0662901D7048DD006B62D2 /* CZJOrderListCell.xib in Resources */,
 				EC54298B1D237E7700F3B4BF /* anjuke_icon_itis_position.png in Resources */,
+				EC3728D31DB1C24A0035F61E /* citydict.plist in Resources */,
 				EC57A2BC1D8B79BD006DDA7F /* FSOrderProductCell.xib in Resources */,
 				EC18DE971D450CEA006CB460 /* CZJMyCarListCell.xib in Resources */,
 				EC542A181D237E7700F3B4BF /* pop@2x.png in Resources */,
@@ -3294,6 +3378,7 @@
 				EC5429BE1D237E7700F3B4BF /* UIScrollView+MJExtension.m in Sources */,
 				EC5429B01D237E7700F3B4BF /* MJRefreshComponent.m in Sources */,
 				ECBFD5F81D69920600662B5E /* PJBrowserView.m in Sources */,
+				EC3728D51DB1C24A0035F61E /* FSCityLocationController.m in Sources */,
 				EC32210C1D77A7AF00E4019C /* CZJCustomAnnotationView.m in Sources */,
 				EC5429C81D237E7700F3B4BF /* MultilevelMenu.m in Sources */,
 				EC542AF11D239B8A00F3B4BF /* DataSigner.m in Sources */,
@@ -3328,6 +3413,7 @@
 				EC542A4B1D23802000F3B4BF /* FSWebViewController.m in Sources */,
 				EC5429601D237E7700F3B4BF /* NIDropDown.m in Sources */,
 				EC5429B11D237E7700F3B4BF /* MJRefreshFooter.m in Sources */,
+				EC3728BE1DB1C1F60035F61E /* ChineseInclude.m in Sources */,
 				EC4448FB1D9A646700E83144 /* FSStepServiceListController.m in Sources */,
 				EC542A591D23966700F3B4BF /* ProvinceForm.m in Sources */,
 				ECA233D11D37DB91004C2679 /* FSSettingController.m in Sources */,
@@ -3336,6 +3422,7 @@
 				EC5429951D237E7700F3B4BF /* RegexKitLite.m in Sources */,
 				EC5429FF1D237E7700F3B4BF /* SDWebImageManager.m in Sources */,
 				EC542A141D237E7700F3B4BF /* WKWebViewJavascriptBridge.m in Sources */,
+				EC3728D41DB1C24A0035F61E /* CityItem.m in Sources */,
 				EC5429B81D237E7700F3B4BF /* MJRefreshBackStateFooter.m in Sources */,
 				ECD538051D4658DB00D136EF /* CZJHotBrandViewCell.m in Sources */,
 				EC54297A1D237E7700F3B4BF /* KSAutoFootRefreshView.m in Sources */,
@@ -3353,6 +3440,7 @@
 				EC542AF31D239B8A00F3B4BF /* MD5DataSigner.m in Sources */,
 				EC5429681D237E7700F3B4BF /* IMY_NJKWebViewProgress.m in Sources */,
 				EC5429F91D237E7700F3B4BF /* NSData+ImageContentType.m in Sources */,
+				EC3728D21DB1C24A0035F61E /* CityButton.m in Sources */,
 				EC18DE961D450CEA006CB460 /* CZJMyCarListCell.m in Sources */,
 				EC542A051D237E7700F3B4BF /* UIImageView+HighlightedWebCache.m in Sources */,
 				EC5429F81D237E7700F3B4BF /* MKAnnotationView+WebCache.m in Sources */,
@@ -3372,6 +3460,7 @@
 				EC5429D51D237E7700F3B4BF /* WyzAlbumViewController.m in Sources */,
 				EC5429591D237E7700F3B4BF /* AFNetworkReachabilityManager.m in Sources */,
 				EC4598271D757F2E004424A4 /* FSStoreInfoCell.m in Sources */,
+				EC3728C11DB1C1F60035F61E /* NSString+PinYin4Cocoa.m in Sources */,
 				EC9271F31D4E00EC00B8EABF /* FSChooseSexualController.m in Sources */,
 				EC5429941D237E7700F3B4BF /* MapViewController.m in Sources */,
 				EC54295D1D237E7700F3B4BF /* AFURLResponseSerialization.m in Sources */,
@@ -3396,10 +3485,12 @@
 				EC454D7C1DA39C10007E6B3D /* FSMyOrderDetailController.m in Sources */,
 				EC32210E1D77A7AF00E4019C /* CZJMAAroundAnnotation.m in Sources */,
 				EC542A1B1D237E7700F3B4BF /* ZXLocationManager.m in Sources */,
+				EC3728C31DB1C1F60035F61E /* PinYinForObjc.m in Sources */,
 				EC5429B41D237E7700F3B4BF /* MJRefreshAutoNormalFooter.m in Sources */,
 				EC7FC0A41D3A2B460082ECB4 /* FSRegisterController.m in Sources */,
 				EC5427A11D237E0500F3B4BF /* FSMessageManager.m in Sources */,
 				EC542A3D1D237EF500F3B4BF /* ShareMessage.m in Sources */,
+				EC3728C61DB1C1F60035F61E /* ZYPinYinSearch.m in Sources */,
 				EC542A411D237F5E00F3B4BF /* FSDateTime.m in Sources */,
 				EC5429CD1D237E7700F3B4BF /* OpenShare+QQ.m in Sources */,
 				ECD537F51D46523900D136EF /* CZJCarSeriesChooseController.m in Sources */,
@@ -3408,6 +3499,7 @@
 				EC542AFF1D239DFD00F3B4BF /* FSStartPageForm.m in Sources */,
 				EC5429851D237E7700F3B4BF /* UIView+LJWKeyboardHandlerAddtion.m in Sources */,
 				EC95ED511D606A63005A50B7 /* UIProgressView+AFNetworking.m in Sources */,
+				EC3728BF1DB1C1F60035F61E /* ChineseToPinyinResource.m in Sources */,
 				EC5429871D237E7700F3B4BF /* UIWindow+LJWPresentViewController.m in Sources */,
 				EC5427A31D237E0500F3B4BF /* FSPaymentManager.m in Sources */,
 				EC54277C1D237DE000F3B4BF /* FSBackgroundPromptView.m in Sources */,
@@ -3443,6 +3535,7 @@
 				EC542A1A1D237E7700F3B4BF /* ZHPickView.m in Sources */,
 				EC098E501DA642F500C68C44 /* CZJOrderEvalutateAllCell.m in Sources */,
 				EC4598151D757960004424A4 /* FSTopAddCarCell.m in Sources */,
+				EC3728D11DB1C24A0035F61E /* ButtonGroupView.m in Sources */,
 				EC542A041D237E7700F3B4BF /* UIImage+WebP.m in Sources */,
 				EC542AFA1D239B8A00F3B4BF /* WXUtil.mm in Sources */,
 				EC5427891D237DE000F3B4BF /* PBaseNaviagtionBarView.m in Sources */,
@@ -3454,6 +3547,7 @@
 				ECA82A431D58CDE600F05C52 /* YQSlideMenuController.m in Sources */,
 				EC5429BA1D237E7700F3B4BF /* MJRefreshNormalHeader.m in Sources */,
 				EC542AF91D239B8A00F3B4BF /* payRequsestHandler.mm in Sources */,
+				EC3728C01DB1C1F60035F61E /* HanyuPinyinOutputFormat.m in Sources */,
 				EC5429651D237E7700F3B4BF /* iConsole.m in Sources */,
 				EC5429A61D237E7700F3B4BF /* MJConst.m in Sources */,
 				EC542AF71D239B8A00F3B4BF /* RSADataVerifier.m in Sources */,
@@ -3533,6 +3627,7 @@
 				ECCEE3921D6C8AAE0034D4F2 /* YXSpritesLoadingView.m in Sources */,
 				EC3A18EC1D41F15500F6F193 /* FSMyPersonalInfoController.m in Sources */,
 				EC18DE911D450204006CB460 /* CZJMyMessageCenterCell.m in Sources */,
+				EC3728C21DB1C1F60035F61E /* PinyinFormatter.m in Sources */,
 				EC542A541D23815E00F3B4BF /* UIScrollView+EmptyDataSet.m in Sources */,
 				ECCEE3881D6C8AAE0034D4F2 /* FBShimmeringLayer.m in Sources */,
 				EC45981C1D757960004424A4 /* FSServiceStepGoodsCell.m in Sources */,
@@ -3547,6 +3642,7 @@
 				EC5429AC1D237E7700F3B4BF /* NSObject+MJProperty.m in Sources */,
 				EC5429801D237E7700F3B4BF /* LewPickerController.m in Sources */,
 				EC5429931D237E7700F3B4BF /* LocIsBaidu.m in Sources */,
+				EC3728C41DB1C1F60035F61E /* PinyinHelper.m in Sources */,
 				EC54297F1D237E7700F3B4BF /* UIScrollView+KS.m in Sources */,
 				EC3A18F51D41F18D00F6F193 /* FSMyOrderListController.m in Sources */,
 				ECD537F81D46550100D136EF /* CZJFilterBaseController.m in Sources */,

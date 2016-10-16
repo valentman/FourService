@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface FSOrderDetailTimeCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *orderTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *orderPayType;
 
 @end

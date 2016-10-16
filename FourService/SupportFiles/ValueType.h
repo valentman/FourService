@@ -141,7 +141,7 @@ typedef NS_ENUM(NSInteger, CZJOrderDetailType)
     CZJOrderDetailTypeReturned
 };
 
-
+//订单列表界面类型（所有订单、待付款、服务中、待评价、已评价）
 typedef NS_ENUM(NSInteger, FSOrderListType)
 {
     FSOrderListTypeAll = 0,

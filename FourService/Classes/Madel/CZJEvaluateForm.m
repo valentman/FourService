@@ -15,11 +15,25 @@
 @end
 
 @implementation CZJMyEvaluationForm
+- (id)init
+{
+    if (self == [super init])
+    {
+        self.comment_image_list = [NSMutableArray array];
+    }
+    return nil;
+}
+
 + (NSDictionary *)objectClassInArray
 {
-    return @{@"items" : @"CZJMyEvaluationGoodsForm"};
+    return @{@"comment_image_list" : @"FSOrderEvaluateImageForm"};
 }
 @end
+
+
+@implementation FSOrderEvaluateImageForm
+@end
+
 
 @implementation CZJDetailEvalInfo
 + (NSDictionary *)objectClassInArray

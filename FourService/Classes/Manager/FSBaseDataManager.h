@@ -163,9 +163,14 @@ singleton_interface(FSBaseDataManager);
                 fail:(FailureBlockHandler)fail;
 
 //获取订单详情
-//- (void)getOrderDetail:(NSDictionary*)postParams
-//               Success:(SuccessBlockHandler)success
-//                  fail:(FailureBlockHandler)fail;
+- (void)getOrderDetail:(NSDictionary*)postParams
+               Success:(SuccessBlockHandler)success
+                  fail:(FailureBlockHandler)fail;
+
+//评价订单
+- (void)evaluateOrder:(NSDictionary*)postParams
+              Success:(SuccessBlockHandler)success
+                 fail:(FailureBlockHandler)fail;
 
 //车况检查
 //- (void)getOrderCarCheck:(NSDictionary*)postParams

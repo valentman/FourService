@@ -19,21 +19,33 @@
 #import "FSWebViewController.h"
 #import "CZJAddMyCarController.h"
 #import "CZJCarBrandChooseController.h"
+#import "FSCityLocationController.h"
 
 #define kHomeTopBgHeight 247
+
+typedef  NS_ENUM(NSInteger, MoveDirection)
+{
+    MoveDirectionTop,
+    MoveDirectionDown
+};
 
 @interface FSServiceListController ()
 <
 UICollectionViewDelegate,
 UICollectionViewDataSource,
 PBaseNaviagtionBarViewDelegate,
-PJBrowserDelegate
+PJBrowserDelegate,
+CityLocationDelegate
 >
 {
     UserBaseForm* userInfoForm;
     NSDictionary* todoThingDict;
     NSArray* serviceAry;
+    
     FSHomeNotifyCell* notifyCell;
+    PJBrowserView* browserView;
+    
+    __block BOOL isTop;
 }
 @property (strong, nonatomic)UITableView* myTableView;
 @property (strong, nonatomic)UICollectionView* myCollectionView;
@@ -51,6 +63,7 @@ PJBrowserDelegate
 {
     [self getDataFromServer];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getDataFromServer) name:kCZJNotifiLoginSuccess object:nil];
+    isTop = NO;
 }
 
 - (void)getDataFromServer
@@ -118,6 +131,30 @@ PJBrowserDelegate
     [self.view addSubview:notifyCell];
 }
 
+- (void)moveCollectionView
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        if (isTop)
+        {
+            self.myCollectionView.frame = CGRectMake(0, kHomeTopBgHeight + 17 + 40 + 20, PJ_SCREEN_WIDTH, PJ_SCREEN_HEIGHT - 20 - 44 - kMovieBrowserHeight);
+            self.naviBarView.frame =CGRectMake(0, 0, PJ_SCREEN_WIDTH, kHomeTopBgHeight);
+            notifyCell.frame = CGRectMake(0, kHomeTopBgHeight + 17, PJ_SCREEN_WIDTH, 40);
+            browserView.frame = CGRectMake(0, 87, PJ_SCREEN_WIDTH, kMovieBrowserHeight);
+        }
+        else
+        {
+            self.myCollectionView.frame = CGRectMake(0, 84 + 17 + 40 + 20, PJ_SCREEN_WIDTH, PJ_SCREEN_HEIGHT - 20 - 44 - 17 - 40);
+            self.naviBarView.frame = CGRectMake(0, 0, PJ_SCREEN_WIDTH, 84);
+            notifyCell.frame = CGRectMake(0, 84 + 17, PJ_SCREEN_WIDTH, 40);
+            browserView.frame = CGRectMake(0, 87, PJ_SCREEN_WIDTH, 0);
+        }
+    } completion:^(BOOL finished) {
+        self.myCollectionView.scrollEnabled = YES;
+        isTop = !isTop;
+    }];
+}
+
+
 - (void)notifyAction:(id)sender
 {
     FSWebViewController* webView = (FSWebViewController*)[PUtils getViewControllerFromStoryboard:kCZJStoryBoardFileMain andVCName:@"webViewSBID"];
@@ -150,9 +187,12 @@ PJBrowserDelegate
     [carViewItems addObject:addcarView];
     
 
-    PJBrowserView* browserView = [[PJBrowserView alloc] initWithFrame:CGRectMake(0, 87, PJ_SCREEN_WIDTH, kMovieBrowserHeight) items:carViewItems];
-    browserView.delegate = self;
-    [self.naviBarView addSubview:browserView];
+    if (!browserView) {
+        browserView = [[PJBrowserView alloc] initWithFrame:CGRectMake(0, 87, PJ_SCREEN_WIDTH, kMovieBrowserHeight) items:carViewItems];
+        browserView.delegate = self;
+        [self.naviBarView addSubview:browserView];
+    }
+    
     
     NSURL* headImgUrl;
     if (userInfoForm.customer_photo ) {
@@ -217,6 +257,15 @@ PJBrowserDelegate
 {
     //去掉tableview中section的headerview粘性
     DLog(@"%f",scrollView.contentOffset.y);
+    if ((scrollView.contentOffset.y > 0 && !isTop) ||
+        (scrollView.contentOffset.y < 0 && isTop))
+    {
+        [self.myCollectionView setContentOffset:CGPointZero];
+        self.myCollectionView.scrollEnabled = NO;
+        [self moveCollectionView];
+        
+    }
+    
     CGFloat sectionHeaderHeight = 40;
     if (scrollView.contentOffset.y<=sectionHeaderHeight&&scrollView.contentOffset.y>=0) {
         scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
@@ -268,6 +317,37 @@ PJBrowserDelegate
 - (void)browser:(PJBrowserView *)movieBrowser didChangeItemAtIndex:(NSInteger)index
 {
     DLog(@"%ld",index);
+}
+
+
+- (void)clickEventCallBack:(nullable id)sender
+{
+    UIButton* barButton = (UIButton*)sender;
+    switch (barButton.tag) {
+        case CZJButtonTypeNaviBarMore:
+        {
+            FSCityLocationController *cityListView = [[FSCityLocationController alloc]init];
+            cityListView.delegate = self;
+            //热门城市列表
+            NSMutableArray *hotcityAry = [@[@"广州",@"北京",@"天津",@"厦门",@"重庆",@"福州",@"泉州",@"济南",@"深圳",@"长沙",@"无锡"] mutableCopy];
+            cityListView.arrayHotCity = hotcityAry;
+            //历史选择城市列表
+            cityListView.arrayHistoricalCity = [@[@"福州",@"厦门",@"泉州"] mutableCopy];
+            //定位城市列表
+            cityListView.arrayLocatingCity   = [NSMutableArray arrayWithObjects:FSBaseDataInstance.curCityName, nil];
+            
+            [self presentViewController:cityListView animated:YES completion:nil];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (void)didClickedWithCityName:(NSString*)cityName
+{
+    [self.naviBarView.btnMore setTitle:cityName forState:UIControlStateNormal];
 }
 
 @end

@@ -39,6 +39,8 @@ static NSString *const kFSServerAPIFavoriteList = @"Customer/customerShopFavorit
 static NSString *const kFSServerAPIEvalutionList = @"";                                         //评价列表
 static NSString *const kFSServerAPIDiscountList = @"Customer/customerDiscountList";             //优惠券
 static NSString *const kFSServerAPIOrderList = @"Customer/customerOrderList";                   //订单列表
+static NSString *const kFSServerAPIOrderDetail = @"Customer/orderDetail";                       //订单详情
+static NSString *const kFSServerAPIOrderEvaluate = @"Service/orderComment";                     //订单评价
 
 //4s服务接口组
 static NSString *const kFSServerAPIServiceList = @"Service/serviceList";                        //服务列表

@@ -11,7 +11,7 @@
 
 @interface CZJOrderListCell ()
 {
-    CZJOrderListForm* _currentListForm;
+    FSOrderListForm* _currentListForm;
 }
 @property (weak, nonatomic) IBOutlet UILabel *orderTypeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *orderNoLabel;
@@ -139,7 +139,7 @@
 }
 
 
-- (void)setCellModelWithType:(CZJOrderListForm*)listForm andType:(CZJOrderType)orderType
+- (void)setCellModelWithType:(FSOrderListForm*)listForm andType:(CZJOrderType)orderType
 {
     _currentListForm = listForm;
     //先全部初始化隐藏
@@ -153,16 +153,17 @@
     self.noEvalutionContentView.hidden = YES;
     self.normalContentView.hidden = YES;
     
-    self.storeNameLabel.text = listForm.storeName;
+    self.storeNameLabel.text = listForm.shop_name;
     [self.storeTypeImg setImage:IMAGENAMED(@"commit_icon_shop")];
     
+    /*
     //内容视图根据商品的个数来决定显示详情，还是显示图片组
     if (listForm.items.count > 1)
     {
         self.normalContentView.hidden = NO;
         for ( int i= 0; i <listForm.items.count; i++)
         {
-            CZJOrderGoodsForm* goodsForm = (CZJOrderGoodsForm*)listForm.items[i];
+            FSOrderGoodsForm* goodsForm = (FSOrderGoodsForm*)listForm.items[i];
             UIImageView* goodsImage = [[UIImageView alloc]initWithFrame:CGRectMake(10 + 88 * i, 5, 78, 78)];
             [goodsImage sd_setImageWithURL:[NSURL URLWithString:goodsForm.itemImg] placeholderImage:DefaultPlaceHolderSquare];
             [self.normalContentView addSubview:goodsImage];
@@ -171,7 +172,7 @@
     else
     {
         self.noEvalutionContentView.hidden = NO;
-        CZJOrderGoodsForm* goodsForm = (CZJOrderGoodsForm*)listForm.items[0];
+        FSOrderGoodsForm* goodsForm = (FSOrderGoodsForm*)listForm.items[0];
         [self.goodImg sd_setImageWithURL:[NSURL URLWithString:goodsForm.itemImg] placeholderImage:DefaultPlaceHolderSquare];
         self.goodsNameLabel.text = goodsForm.itemName;
         self.goodsModel.text = goodsForm.itemSku;
@@ -180,9 +181,10 @@
         self.priceLabelWidth.constant = priceSize.width + 20;
         self.numLabel.text = [NSString stringWithFormat:@"×%@",goodsForm.itemCount];
     }
+     */
     
     //-----------------------------------未付款----------------------------------
-    if (!listForm.paidFlag)
+    /*if (!listForm.paidFlag)
     {
         //区分是服务和商品：type==0为商品，type==1为服务
         if (0 == [listForm.type integerValue])
@@ -405,6 +407,7 @@
             }
         }
     }
+     */
 }
 
 - (IBAction)showBuildProgressAction:(id)sender

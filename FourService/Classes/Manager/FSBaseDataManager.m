@@ -418,194 +418,8 @@ singleton_implementation(FSBaseDataManager);
 
 
 
-#pragma mark- 获取商品或服务详情
-//- (void)loadDetailsWithType:(CZJDetailType)type
-//            AndStoreItemPid:(NSString*)storeItemPid
-//                    Success:(GeneralBlockHandler)success
-//                       fail:(FailureBlockHandler)fail
-//{
-//    SuccessBlockHandler successBlock = ^(id json)
-//    {
-//        if ([self showAlertView:json])
-//        {
-//            success(json);
-//        }
-//    };
-//    
-//    FailureBlockHandler failBlock = ^(){
-//        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
-//    };
-//    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-//    [params setValuesForKeysWithDictionary:_baseParams];
-//    [params setObject:storeItemPid forKey:@"storeItemPid"];
-//    NSString* apiUrl;
-//    if (CZJDetailTypeGoods == type)
-//    {
-//        apiUrl = kCZJServerAPIGoodsDetail;
-//    }
-//    else if (CZJDetailTypeService == type)
-//    {
-//        apiUrl = kCZJServerAPIServiceDetail;
-//    }
-//    
-//    [FSNetWorkInstance postJSONWithUrl:apiUrl
-//                             parameters:params
-//                                success:successBlock
-//                                   fail:failBlock];
-//}
-
-
-//- (void)loadDetailHotRecommendWithType:(CZJDetailType)type
-//                            andStoreId:(NSString*)storeId
-//                               Success:(GeneralBlockHandler)success
-//                                  fail:(FailureBlockHandler)fail
-//{
-//    SuccessBlockHandler successBlock = ^(id json)
-//    {
-//        if ([self showAlertView:json])
-//        {
-//            success(json);
-//        }
-//    };
-//    
-//    FailureBlockHandler failBlock = ^(){
-//        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
-//    };
-//    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-//    [params setValuesForKeysWithDictionary:_baseParams];
-//    [params setObject:storeId forKey:@"storeId"];
-//
-//    NSString* apiUrl;
-//    if (CZJDetailTypeGoods == type)
-//    {
-//        apiUrl = kCZJServerAPIGoodsHotReco;
-//    }
-//    else if (CZJDetailTypeService == type)
-//    {
-//        apiUrl = kCZJServerAPIGoodsHotReco;
-//    }
-//    
-//    [FSNetWorkInstance postJSONWithUrl:apiUrl
-//                             parameters:params
-//                                success:successBlock
-//                                   fail:failBlock];
-//}
-
-
-
-
-
-
-#pragma mark- 门店
-//- (void)showStoreWithParams:(NSDictionary*)postParams
-//                       type:(CZJHomeGetDataFromServerType)type
-//                    success:(SuccessBlockHandler)success
-//                       fail:(FailureBlockHandler)failure
-//{
-//    SuccessBlockHandler successBlock = ^(id json){
-//        if ([self showAlertView:json])
-//        {
-//            success(json);
-//        }
-//    };
-//    
-//    FailureBlockHandler failBlock = ^(){
-//        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
-//        failure();
-//    };
-//    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-//    [params setValuesForKeysWithDictionary:_baseParams];
-//    [params setValuesForKeysWithDictionary:postParams];
-//    
-//    [FSNetWorkInstance postJSONWithUrl:kFSServerAPIStoreList
-//                             parameters:params
-//                                success:successBlock
-//                                   fail:failBlock];
-//}
-
-//- (void)loadStoreInfo:(NSDictionary*)postParams
-//                success:(SuccessBlockHandler)success
-//                   fail:(FailureBlockHandler)failure
-//{
-//    SuccessBlockHandler successBlock = ^(id json){
-//        if ([self showAlertView:json])
-//        {
-//            success(json);
-//        }
-//    };
-//    
-//    FailureBlockHandler failBlock = ^(){
-//        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
-//        if (failure)
-//        {
-//            failure();
-//        }
-//    };
-//    
-//    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-//    [params setValuesForKeysWithDictionary:self.baseParams];
-//    [params setValuesForKeysWithDictionary:postParams];
-//    
-//    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPILoadGoodsInStore
-//                             parameters:params
-//                                success:successBlock
-//                                   fail:failBlock];
-//}
-
-//- (void)loadStoreDetail:(NSDictionary*)postParams
-//                success:(SuccessBlockHandler)success
-//                   fail:(FailureBlockHandler)failure
-//{
-//    SuccessBlockHandler successBlock = ^(id json){
-//        if ([self showAlertView:json])
-//        {
-//            success(json);
-//        }
-//    };
-//    
-//    FailureBlockHandler failBlock = ^(){
-//        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
-//    };
-//    
-//    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-//    [params setValuesForKeysWithDictionary:self.baseParams];
-//    [params setValuesForKeysWithDictionary:postParams];
-//    
-//    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPIGetStoreDetail
-//                             parameters:params
-//                                success:successBlock
-//                                   fail:failBlock];
-//}
-
 
 #pragma mark- 订单
-//-------------------------订单数据------------------------------
-//- (void)loadSettleOrder:(NSDictionary*)postParams
-//                Success:(SuccessBlockHandler)success
-//                   fail:(FailureBlockHandler)fail
-//{
-//    SuccessBlockHandler successBlock = ^(id json)
-//    {
-//        if ([self showAlertView:json])
-//        {
-//        }
-//        success(json);
-//    };
-//    
-//    FailureBlockHandler failBlock = ^(){
-//        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
-//    };
-//    
-//    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-//    [params setValuesForKeysWithDictionary:self.baseParams];
-//    [params setValuesForKeysWithDictionary:postParams];
-//    
-//    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPISettleOrders
-//                             parameters:params
-//                                success:successBlock
-//                                   fail:failBlock];
-//}
-
 - (void)submitOrder:(NSDictionary*)postParams
             Success:(SuccessBlockHandler)success
                fail:(FailureBlockHandler)fail
@@ -622,92 +436,22 @@ singleton_implementation(FSBaseDataManager);
     [self generalPost:postParams success:success fail:fail andServerAPI:kFSServerAPIOrderList];
 }
 
-
-//- (void)getOrderDetail:(NSDictionary*)postParams
-//               Success:(SuccessBlockHandler)success
-//                  fail:(FailureBlockHandler)fail
-//{
-//    SuccessBlockHandler successBlock = ^(id json){
-//        if ([self showAlertView:json])
-//        {
-//            success(json);
-//        }
-//        else
-//        {
-//            if (fail) {
-//                fail();
-//            }
-//        }
-//    };
-//    
-//    FailureBlockHandler failBlock = ^(){
-//        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
-//        if (fail) {
-//            fail();
-//        }
-//    };
-//    
-//    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-//    [params setValuesForKeysWithDictionary:self.baseParams];
-//    [params setValuesForKeysWithDictionary:postParams];
-//    
-//    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPIGetOrderDetail
-//                             parameters:params
-//                                success:successBlock
-//                                   fail:failBlock];
-//}
+- (void)getOrderDetail:(NSDictionary*)postParams
+               Success:(SuccessBlockHandler)success
+                  fail:(FailureBlockHandler)fail
+{
+    [self generalPost:postParams success:success fail:fail andServerAPI:kFSServerAPIOrderDetail];
+}
 
 
-//- (void)getOrderCarCheck:(NSDictionary*)postParams
-//                 Success:(SuccessBlockHandler)success
-//                    fail:(FailureBlockHandler)fail
-//{
-//    SuccessBlockHandler successBlock = ^(id json){
-//        if ([self showAlertView:json])
-//        {
-//            success(json);
-//        }
-//    };
-//    
-//    FailureBlockHandler failBlock = ^(){
-//        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
-//    };
-//    
-//    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-//    [params setValuesForKeysWithDictionary:self.baseParams];
-//    [params setValuesForKeysWithDictionary:postParams];
-//    
-//    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPICarCheck
-//                             parameters:params
-//                                success:successBlock
-//                                   fail:failBlock];
-//}
+- (void)evaluateOrder:(NSDictionary*)postParams
+              Success:(SuccessBlockHandler)success
+                 fail:(FailureBlockHandler)fail
+{
+    [self generalPost:postParams success:success fail:fail andServerAPI:kFSServerAPIOrderEvaluate];
+}
 
 
-//- (void)getOrderBuildProgress:(NSDictionary*)postParams
-//                      Success:(SuccessBlockHandler)success
-//                         fail:(FailureBlockHandler)fail
-//{
-//    SuccessBlockHandler successBlock = ^(id json){
-//        if ([self showAlertView:json])
-//        {
-//            success(json);
-//        }
-//    };
-//    
-//    FailureBlockHandler failBlock = ^(){
-//        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
-//    };
-//    
-//    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-//    [params setValuesForKeysWithDictionary:self.baseParams];
-//    [params setValuesForKeysWithDictionary:postParams];
-//    
-//    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPIBuildingProgress
-//                             parameters:params
-//                                success:successBlock
-//                                   fail:failBlock];
-//}
 
 
 

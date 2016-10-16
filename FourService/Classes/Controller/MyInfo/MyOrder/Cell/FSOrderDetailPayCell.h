@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface FSOrderDetailPayCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *totalPrice;
+@property (weak, nonatomic) IBOutlet UILabel *couponPrice;
+@property (weak, nonatomic) IBOutlet UILabel *payPrice;
 
 @end
