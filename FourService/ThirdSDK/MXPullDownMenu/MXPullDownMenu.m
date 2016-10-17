@@ -14,7 +14,6 @@
 #import "MXPullDownCollectionViewCell.h"
 #import "ProvinceForm.h"
 #import "FSBaseDataManager.h"
-//#import "CZJStoreDetailForm.h"
 #define kMXPullDownCollectionViewCell @"MXPullDownCollectionViewCell"
 
 
@@ -64,39 +63,40 @@
 {
     self = [super init];
     if (self) {
-        //数据初始化
+        //设置Frame及背景颜色
         self.frame = CGRectMake(0, 0, PJ_SCREEN_WIDTH, 44);
-        _menuColor = [UIColor grayColor];
+        self.backgroundColor = CLEARCOLOR;
+        
+        //菜单名字及小三角颜色
+        _menuColor = WHITECOLOR;
+        
+        //菜单栏名称数组,在根据菜单栏数目计算标题，箭头的数量。
         _array = array;
         _numOfMenu = _array.count;
-        _selectIndex = -1;
-        _menuType = menutype;
-        _currentSelectedMenudIndex = 0;
-        _show = NO;
         CGFloat textLayerInterval = PJ_SCREEN_WIDTH / ( _numOfMenu * 2);
         CGFloat separatorLineInterval = PJ_SCREEN_WIDTH / _numOfMenu;
         _titles = [[NSMutableArray alloc] initWithCapacity:_numOfMenu];
         _indicators = [[NSMutableArray alloc] initWithCapacity:_numOfMenu];
+        
+        //菜单栏类型
+         _menuType = menutype;
+    
+        //数据初始化
         _containCitys = [NSMutableArray array];
+        _show = NO;
+        
+        //当前选择栏索引初始化
+        _selectIndex = -1;
+        _currentSelectedMenudIndex = 0;
 
         
         //确定下拉菜单的高度
         switch (_menuType) {
             case CZJMXPullDownMenuTypeNone:
-                
                 break;
                 
             case CZJMXPullDownMenuTypeStore:
                  _viewContentHeight = PJ_SCREEN_HEIGHT - StatusBar_HEIGHT - NavigationBar_HEIGHT - self.frame.size.height - Tabbar_HEIGHT - 200;
-                break;
-                
-            case CZJMXPullDownMenuTypeService:
-            case CZJMXPullDownMenuTypeGoods:
-                 _viewContentHeight = PJ_SCREEN_HEIGHT - StatusBar_HEIGHT - NavigationBar_HEIGHT - self.frame.size.height - Tabbar_HEIGHT - 200;
-                break;
-                
-            case CZJMXPullDownMenuTypeStoreDetail:
-                _viewContentHeight = PJ_SCREEN_HEIGHT - StatusBar_HEIGHT - NavigationBar_HEIGHT - self.frame.size.height - Tabbar_HEIGHT - 200;
                 break;
                 
             default:
@@ -111,15 +111,13 @@
             switch (_menuType)
             {
                 case CZJMXPullDownMenuTypeNone:
-                case CZJMXPullDownMenuTypeGoods:
                     title = [self creatTextLayerWithNSString:_array[i][0] withColor:_menuColor andPosition:position];
                     break;
                     
                 case CZJMXPullDownMenuTypeStore:
-                case CZJMXPullDownMenuTypeService:
                     if (0 == i) {
                         ProvinceForm* form = _array[i][0];
-                        title = [self creatTextLayerWithNSString:form.name withColor:_menuColor andPosition:position];
+                        title = [self creatTextLayerWithNSString:@"成都" withColor:_menuColor andPosition:position];
                     }
                     else
                     {
@@ -127,8 +125,7 @@
                     }
                     break;
                     
-                case CZJMXPullDownMenuTypeStoreDetail:
-                    _menuColor = [UIColor darkGrayColor];
+
                 default:
                     title = [self creatTextLayerWithNSString:_array[i][0] withColor:_menuColor andPosition:position];
                     break;
@@ -138,49 +135,22 @@
             
             //小三角图形
             CGPoint pt = CGPointMake(position.x + title.bounds.size.width / 2 + 8, self.frame.size.height / 2);
-            if ((CZJMXPullDownMenuTypeService == _menuType || CZJMXPullDownMenuTypeGoods == _menuType) &&
-                2 == i)
-            {
-                //如果是服务列表界面，筛选则用筛选图片代替小三角
-                UIImageView* imgeview = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"serve_icon_shaixuan"]];
-                [self.layer addSublayer:[imgeview layer]];
-                [imgeview layer].position = CGPointMake(position.x + title.bounds.size.width / 2 + 8, self.frame.size.height / 2 + 2);
-                [_indicators addObject:[imgeview layer]];
-            }
-            else if ((CZJMXPullDownMenuTypeGoods == _menuType) && 1 == i)
-            {
-                //如果是商品列表界面，价格即用上下箭头图片代替
-                UIImageView* imgeview = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"pro_icon_price"]];
-                [self.layer addSublayer:[imgeview layer]];
-                [imgeview layer].position = CGPointMake(position.x + title.bounds.size.width / 2 + 8, self.frame.size.height / 2 + 2);
-                [_indicators addObject:[imgeview layer]];
-            }
-            else
-            {
-                if (CZJMXPullDownMenuTypeStoreDetail == _menuType &&
-                    0 != i)
-                {
-                    UIView* view = [[UIView alloc]init];
-                    [_indicators addObject:view];
-                    continue;
-                }
-                CAShapeLayer *indicator = [self creatIndicatorWithColor:_menuColor andPosition:pt];
-                [self.layer addSublayer:indicator];
-                [_indicators addObject:indicator];
-            }
+            CAShapeLayer *indicator = [self creatIndicatorWithColor:_menuColor andPosition:pt];
+            [self.layer addSublayer:indicator];
+            [_indicators addObject:indicator];
             
             //分割线
-            if (i != _numOfMenu - 1 && CZJMXPullDownMenuTypeStoreDetail != _menuType)
+            if (i != _numOfMenu - 1)
             {
                 CGPoint separatorPosition = CGPointMake((i + 1) * separatorLineInterval, self.frame.size.height / 2);
-                CAShapeLayer *separator = [self creatSeparatorLineWithColor:[UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:1.0] andPosition:separatorPosition];
+                CAShapeLayer *separator = [self creatSeparatorLineWithColor:WHITECOLOR andPosition:separatorPosition];
                 [self.layer addSublayer:separator];
             }
         }
         
         
         //TableView
-        _tableView = [self creatTableViewAtPosition:CGPointMake(0, self.frame.origin.y + self.frame.size.height)];//
+        _tableView = [self creatTableViewAtPosition:CGPointMake(0, self.frame.origin.y + self.frame.size.height)];
         _tableView.tintColor = CZJREDCOLOR;
         _tableView.dataSource = self;
         _tableView.delegate = self;
@@ -195,12 +165,11 @@
         
         
         // 设置menu, 并添加手势
-        self.backgroundColor = CZJNAVIBARBGCOLOR;
         UIGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapMenu:)];
         [self addGestureRecognizer:tapGesture];
         
         // 创建半透黑色背景
-        _backGroundView = [[UIView alloc] initWithFrame:CGRectMake(0,self.frame.origin.y + self.frame.size.height + 40, PJ_SCREEN_WIDTH, PJ_SCREEN_HEIGHT)];
+        _backGroundView = [[UIView alloc] initWithFrame:CGRectMake(0,self.frame.origin.y + self.frame.size.height + 64, PJ_SCREEN_WIDTH, PJ_SCREEN_HEIGHT)];
         _backGroundView.backgroundColor = RGBA(100, 240, 240, 0);
         UIGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapBackGround:)];
         [_backGroundView addGestureRecognizer:gesture];
@@ -258,51 +227,15 @@
     if (0 == _currentSelectedMenudIndex)
     {
         switch (_menuType) {
-            case CZJMXPullDownMenuTypeService:
             case CZJMXPullDownMenuTypeStore:
             {
                 ProvinceForm* province = ((ProvinceForm*)_array[_currentSelectedMenudIndex][indexPath.row]);
-                cell.textLabel.text = province.name;
+                cell.textLabel.text = @"成都";
                 ((UILabel*)[cell viewWithTag:1001]).text = province.total;
                 [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
             }
                 break;
                 
-            case CZJMXPullDownMenuTypeStoreDetail:
-            {
-                cell.textLabel.text = _array[_currentSelectedMenudIndex][indexPath.row];
-                if (cell.textLabel.text == [(CATextLayer *)[_titles objectAtIndex:_currentSelectedMenudIndex] string]) {
-                    [cell.textLabel setTextColor:[tableView tintColor]];
-                }
-                [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-                
-                //有二级的需要一个小箭头
-                NSMutableArray* tempAry = [NSMutableArray array];
-                if ([cell.textLabel.text isEqualToString:@"服务"])
-                {
-                    tempAry = [FSBaseDataInstance.serviceTypesAry mutableCopy];
-                }
-                if ([cell.textLabel.text isEqualToString:@"商品"])
-                {
-                    tempAry = [FSBaseDataInstance.goodsTypesAry mutableCopy];
-                }
-                
-                if (tempAry.count > 0)
-                {
-                    UIImageView* arrowImgview = [[UIImageView alloc]initWithImage:IMAGENAMED(@"all_arrow_next")];
-                    [arrowImgview setTag:1001];
-                    arrowImgview.frame = CGRectMake(PJ_SCREEN_WIDTH* 0.5 - 21, 12.5, 6, 11);
-                    [cell addSubview:arrowImgview];
-                }
-                else
-                {
-                    if (!VIEWWITHTAG(cell, 1001))
-                    {
-                        VIEWWITHTAG(cell, 1001).hidden = YES;
-                    }
-                }
-            }
-            case CZJMXPullDownMenuTypeGoods:
             case CZJMXPullDownMenuTypeNone:
             {
                 cell.textLabel.text = _array[_currentSelectedMenudIndex][indexPath.row];
@@ -345,16 +278,6 @@
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
-    if (0 == _currentSelectedMenudIndex &&
-        CZJMXPullDownMenuTypeGoods != _menuType)
-    {
-        cell.backgroundColor = CZJNAVIBARBGCOLOR;
-    }
-    if (0 == _currentSelectedMenudIndex &&
-        CZJMXPullDownMenuTypeStoreDetail == _menuType)
-    {
-        [cell.textLabel setTextColor:[UIColor grayColor]];
-    }
     cell.backgroundColor = CZJNAVIBARBGCOLOR;
 }
 
@@ -377,46 +300,10 @@
         cell.backgroundColor = [UIColor whiteColor];
         _selectIndex = indexPath.row;
         switch (_menuType) {
-            case CZJMXPullDownMenuTypeService:
             case CZJMXPullDownMenuTypeStore:
             {
-                _containCitys = [((ProvinceForm*)_array[0][indexPath.row]).containCitys mutableCopy];
-                [_subCollectionView reloadData];
-            }
-                break;
-                
-            case CZJMXPullDownMenuTypeStoreDetail:
-            {
-                [cell.textLabel setTextColor:[tableView tintColor]];
-                [_containCitys removeAllObjects];
-                if ([cell.textLabel.text isEqualToString:@"服务"])
-                {
-                    _containCitys = [FSBaseDataInstance.serviceTypesAry mutableCopy];
-                }
-                if ([cell.textLabel.text isEqualToString:@"商品"])
-                {
-                    _containCitys = [FSBaseDataInstance.goodsTypesAry mutableCopy];
-                }
-                
-                
-                if (_containCitys.count > 0)
-                {
-                    [_subCollectionView reloadData];
-                }
-                else
-                {
-                    [_subCollectionView reloadData];
-                    if (_isTableViewShow) {
-                        [self confiMenuWithSelectRow:indexPath.row];
-                        [self.delegate pullDownMenu:self didSelectCityName:_array[_currentSelectedMenudIndex][indexPath.row]];
-                    }
-                }
-            }
-                break;
-            case CZJMXPullDownMenuTypeGoods:
-            {
-                [self confiMenuWithSelectRow:indexPath.row];
-                [self.delegate PullDownMenu:self didSelectRowAtColumn:_currentSelectedMenudIndex row:indexPath.row];
+//                _containCitys = [((ProvinceForm*)_array[0][indexPath.row]).containCitys mutableCopy];
+//                [_subCollectionView reloadData];
             }
                 break;
                 
@@ -453,27 +340,7 @@
     [cell.cityStoreNum setTextColor:[_tableView tintColor]];
     _selectedCityName = cell.cityName.text;
     [self confiMenuWithSelectRow:indexPath.row];
-    
-    if (CZJMXPullDownMenuTypeStoreDetail == _menuType)
-    {
-        if (1 == _selectIndex && [cell.cityName.text isEqualToString:@"全部"])
-        {
-            _selectedCityName = @"10000";
-        }
-        else if (2 == _selectIndex && [cell.cityName.text isEqualToString:@"全部"])
-        {
-            _selectedCityName = @"20000";
-        }
-        else
-        {
-//            _selectedCityName = ((CZJStoreDetailTypesForm*)[_containCitys objectAtIndex:indexPath.row]).typeId;
-        }
-        [self.delegate pullDownMenuFirstName:_array[_currentSelectedMenudIndex][_selectIndex] andSecondName:_selectedCityName];
-    }
-    else
-    {
-       [self.delegate pullDownMenu:self didSelectCityName:_selectedCityName];
-    }
+    [self.delegate pullDownMenu:self didSelectCityName:_selectedCityName];
 }
 
 
@@ -482,38 +349,16 @@
     MXPullDownCollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:kMXPullDownCollectionViewCell forIndexPath:indexPath];
     cell.shaixuanImage.hidden = YES;
 
-    if (CZJMXPullDownMenuTypeStoreDetail == _menuType)
-    {
-//        CZJStoreDetailTypesForm* typeForm = _containCitys[indexPath.row];
-//        cell.cityName.text = typeForm.name;
-//        [cell.cityName setTextColor:BLACKCOLOR];
-//        if ([typeForm.name isEqualToString:((CATextLayer*)_titles[0]).string])
-//        {
-//            cell.shaixuanImage.hidden = NO;
-//            [cell.cityName setTextColor:CZJREDCOLOR];
-//            return cell;
-//        }
-//        if (isFirstTitle && [typeForm.name isEqualToString:@"全部"] && _goodsServiceSelectIndex == _lastSelectIndexPath.row)
-//        {
-//            cell.shaixuanImage.hidden = NO;
-//            [cell.cityName setTextColor:CZJREDCOLOR];
-//            return cell;
-//        }
-
-    }
-    else
-    {
-        CitysForm* form = (CitysForm*)(_containCitys[indexPath.row]);
-        cell.cityName.text = form.name;
-        cell.cityStoreNum.text = form.total;
-        cell.backgroundColor = [UIColor whiteColor];
-        
-        [cell.cityName setTextColor:[self tableView:_tableView cellForRowAtIndexPath:_selelctIndexPath].textLabel.textColor];
-        [cell.cityStoreNum setTextColor:[self tableView:_tableView cellForRowAtIndexPath:_selelctIndexPath].textLabel.textColor];
-        if (cell.cityName.text == [(CATextLayer *)[_titles objectAtIndex:_currentSelectedMenudIndex] string]) {
-            [cell.cityName setTextColor:[_tableView tintColor]];
-            [cell.cityStoreNum setTextColor:[_tableView tintColor]];
-        }
+    CitysForm* form = (CitysForm*)(_containCitys[indexPath.row]);
+    cell.cityName.text = form.name;
+    cell.cityStoreNum.text = form.total;
+    cell.backgroundColor = [UIColor whiteColor];
+    
+    [cell.cityName setTextColor:[self tableView:_tableView cellForRowAtIndexPath:_selelctIndexPath].textLabel.textColor];
+    [cell.cityStoreNum setTextColor:[self tableView:_tableView cellForRowAtIndexPath:_selelctIndexPath].textLabel.textColor];
+    if (cell.cityName.text == [(CATextLayer *)[_titles objectAtIndex:_currentSelectedMenudIndex] string]) {
+        [cell.cityName setTextColor:[_tableView tintColor]];
+        [cell.cityStoreNum setTextColor:[_tableView tintColor]];
     }
     
     return cell;
@@ -540,35 +385,35 @@
     
     //=================指定界面情况=======================
     //商品列表和服务列表模块筛选按钮
-    if ((CZJMXPullDownMenuTypeService == _menuType || CZJMXPullDownMenuTypeGoods== _menuType) &&
-        2 == tapIndex)
-    {
-        [self.delegate pullDownMenuDidSelectFiliterButton:self];
-        [self tapBackGround:nil];
-        return;
-    }
+//    if ((CZJMXPullDownMenuTypeService == _menuType || CZJMXPullDownMenuTypeGoods== _menuType) &&
+//        2 == tapIndex)
+//    {
+//        [self.delegate pullDownMenuDidSelectFiliterButton:self];
+//        [self tapBackGround:nil];
+//        return;
+//    }
     
     //商品列表的价格按钮
-    if (CZJMXPullDownMenuTypeGoods== _menuType &&
-        1 == tapIndex)
-    {
-        //改变点击菜单的颜色
-        [self tapIndexSetTitleColor:tapIndex];
-        [self.delegate pullDownMenuDidSelectPriceButton:self];
-        [self tapBackGround:nil];
-        return;
-    }
+//    if (CZJMXPullDownMenuTypeGoods== _menuType &&
+//        1 == tapIndex)
+//    {
+//        //改变点击菜单的颜色
+//        [self tapIndexSetTitleColor:tapIndex];
+//        [self.delegate pullDownMenuDidSelectPriceButton:self];
+//        [self tapBackGround:nil];
+//        return;
+//    }
     
     //改变点击菜单的颜色
     [self tapIndexSetTitleColor:tapIndex];
     
     //门店详情界面下拉菜单
-    if (CZJMXPullDownMenuTypeStoreDetail == _menuType && 0 != tapIndex)
-    {
-        [self.delegate pullDownMenu:self didSelectCityName:_array[tapIndex][0]];
-        [self tapBackGround:nil];
-        return;
-    }
+//    if (CZJMXPullDownMenuTypeStoreDetail == _menuType && 0 != tapIndex)
+//    {
+//        [self.delegate pullDownMenu:self didSelectCityName:_array[tapIndex][0]];
+//        [self tapBackGround:nil];
+//        return;
+//    }
     
     
     //=================一般情况=======================
@@ -588,53 +433,7 @@
             _show = YES;
             if (0 == _currentSelectedMenudIndex )
             {
-                if ((CZJMXPullDownMenuTypeGoods != _menuType && CZJMXPullDownMenuTypeStoreDetail != _menuType)) {
-                    [self tableView:_tableView didSelectRowAtIndexPath:_selelctIndexPath];
-                }
-                if (CZJMXPullDownMenuTypeStoreDetail == _menuType)
-                {
-                    
-                    NSString* firsTitle = ((CATextLayer*)_titles[0]).string;
-                    
-                    isFirstTitle = YES;
-                    //判断当前选择条目是否是服务
-//                    for (CZJStoreDetailTypesForm* secondTitle in FSBaseDataInstance.serviceTypesAry)
-//                    {
-//                        if ([secondTitle.name isEqualToString:firsTitle])
-//                        {
-//                            isFirstTitle = NO;
-//                            _selectIndex = 1;
-//                            _goodsServiceSelectIndex = 1;
-//                            _selelctIndexPath = [NSIndexPath indexPathForRow:1 inSection:0];
-//                            break;
-//                        }
-//                    }
-//                    //判断当前选择条目是否是商品
-//                    for (CZJStoreDetailTypesForm* secondTitle in FSBaseDataInstance.goodsTypesAry)
-//                    {
-//                        if ([secondTitle.name isEqualToString:firsTitle])
-//                        {
-//                            isFirstTitle = NO;
-//                            _selectIndex = 2;
-//                            _goodsServiceSelectIndex = 2;
-//                            _selelctIndexPath = [NSIndexPath indexPathForRow:2 inSection:0];
-//                            break;
-//                        }
-//                    }
-                    
-                    for (int i = 0; i < ((NSArray*)_array[0]).count; i++)
-                    {
-                         NSString* currentTitle = _array[0][i];
-                        if ([currentTitle isEqualToString:firsTitle])
-                        {
-                            isFirstTitle = YES;
-                            _goodsServiceSelectIndex = i;
-                            _selelctIndexPath = [NSIndexPath indexPathForRow:i inSection:0];
-                            break;
-                        }
-                    }
-                    [self tableView:_tableView didSelectRowAtIndexPath:_selelctIndexPath];
-                }
+                [self tableView:_tableView didSelectRowAtIndexPath:_selelctIndexPath];
             }
         }];
     }
@@ -645,10 +444,6 @@
 {
     for (int i = 0; i < _numOfMenu; i++)
     {
-        if (CZJMXPullDownMenuTypeStoreDetail == _menuType && 0 == tapIndex)
-        {
-            return;
-        }
         [self animateTitle:_titles[i] show:(i == tapIndex) complete:^{
             [self animateIndicator:_indicators[i] Forward:(i == tapIndex) complete:^{
             }];
@@ -752,8 +547,7 @@
         CGFloat tableViewHeight;
         
         
-        if (_currentSelectedMenudIndex == 0 &&
-            CZJMXPullDownMenuTypeGoods != _menuType)
+        if (_currentSelectedMenudIndex == 0)
         {
             tableViewHeight = _viewContentHeight;
             _subCollectionView.frame = CGRectMake(PJ_SCREEN_WIDTH - _collectionViewWidth, self.frame.origin.y + self.frame.size.height, _collectionViewWidth, 0);
@@ -783,8 +577,7 @@
         
         [UIView animateWithDuration:0.35 animations:^{
             tableView.frame = CGRectMake(0, self.frame.origin.y + self.frame.size.height, self.frame.size.width, 0);
-            if (_currentSelectedMenudIndex == 0 &&
-                CZJMXPullDownMenuTypeGoods != _menuType)
+            if (_currentSelectedMenudIndex == 0)
             {
                 _subCollectionView.frame = CGRectMake(PJ_SCREEN_WIDTH - _collectionViewWidth, self.frame.origin.y + self.frame.size.height, _collectionViewWidth, 0);
             }
@@ -886,9 +679,6 @@
 - (UITableView *)creatTableViewAtPosition:(CGPoint)point
 {
     UITableView *tableView = [UITableView new];
-    if (_menuType == CZJMXPullDownMenuTypeStoreDetail)
-    {
-    }
     tableView.frame = CGRectMake(point.x, point.y, self.frame.size.width, 0);
     tableView.rowHeight = 36;
     tableView.backgroundColor = CZJNAVIBARBGCOLOR;
@@ -915,19 +705,6 @@
 
 #pragma mark - otherMethods
 
-- (void)storeDetailConfiMenuWithSelectRow:(NSInteger)row
-{
-    _goodsServiceSelectIndex = row;
-    CATextLayer *title = (CATextLayer *)_titles[_currentSelectedMenudIndex];
-    title.string = _array[_currentSelectedMenudIndex][row];
-    [self animateIdicator:_indicators[_currentSelectedMenudIndex] background:_backGroundView tableView:_tableView title:_titles[_currentSelectedMenudIndex] forward:NO complecte:^{
-        _show = NO;
-        
-    }];
-    CAShapeLayer *indicator = (CAShapeLayer *)_indicators[_currentSelectedMenudIndex];
-    indicator.position = CGPointMake(title.position.x + title.frame.size.width / 2 + 8, indicator.position.y);
-}
-
 - (void)confiMenuWithSelectRow:(NSInteger)row
 {
     CATextLayer *title = (CATextLayer *)_titles[_currentSelectedMenudIndex];
@@ -937,38 +714,7 @@
     }
     if (0 == _currentSelectedMenudIndex)
     {
-        if (CZJMXPullDownMenuTypeGoods == _menuType)
-        {
-            title.string = [[_array objectAtIndex:_currentSelectedMenudIndex] objectAtIndex:row];
-        }
-
-        else if (CZJMXPullDownMenuTypeStoreDetail == _menuType)
-        {
-            if (1 == _selectIndex && 0 == row)
-            {
-                title.string = @"服务";
-            }
-            else if (2 == _selectIndex && 0 == row)
-            {
-                title.string = @"商品";
-            }
-            else
-            {
-                if (_containCitys.count <= 0)
-                {
-                    title.string = _array[_currentSelectedMenudIndex][row];
-                }
-                else
-                {
-//                    CZJStoreDetailTypesForm* detailTypeForm = (CZJStoreDetailTypesForm*)[_containCitys objectAtIndex:row];
-//                    title.string = detailTypeForm.name;
-                }
-            }
-        }
-        else
-        {
-            title.string = _selectedCityName;
-        }
+        title.string = _selectedCityName;
     }
     
     [self animateIdicator:_indicators[_currentSelectedMenudIndex] background:_backGroundView tableView:_tableView title:_titles[_currentSelectedMenudIndex] forward:NO complecte:^{

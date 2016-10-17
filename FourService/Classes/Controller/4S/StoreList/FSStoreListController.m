@@ -47,7 +47,7 @@ MXPullDownMenuDelegate
 - (void)initViews
 {
     [self addCZJNaviBarView:CZJNaviBarViewTypeGeneral];
-    self.naviBarView.frame = CGRectMake(0, 0, PJ_SCREEN_WIDTH, 106);
+    self.naviBarView.frame = CGRectMake(0, 0, PJ_SCREEN_WIDTH, 64 + 44);
     self.naviBarView.mainTitleLabel.text = @"选择门店";
     self.naviBarView.mainTitleLabel.textColor = WHITECOLOR;
     self.naviBarView.backgroundImageView.frame = self.naviBarView.frame;
@@ -62,11 +62,12 @@ MXPullDownMenuDelegate
     NSArray* storeTypes = @[@"全部",@"一站式", @"快修快保", @"装饰美容" , @"维修厂"];
 //    if ([FSBaseDataInstance storeForm].provinceForms &&
 //        [FSBaseDataInstance storeForm].provinceForms.count > 0) {
-//        NSArray* menuArray = @[ sortTypes,storeTypes];
-//        self.pullDownMenu  = [[MXPullDownMenu alloc] initWithArray:menuArray AndType:CZJMXPullDownMenuTypeStore WithFrame:self.pullDownMenu.frame];
-//        self.pullDownMenu.delegate = self;
-//    self.pullDownMenu.frame = CGRectMake(0, 65, PJ_SCREEN_WIDTH, 46);
-//    [self.naviBarView addSubview:self.pullDownMenu];
+        NSArray* menuArray = @[ sortTypes,storeTypes];
+        self.pullDownMenu  = [[MXPullDownMenu alloc] initWithArray:menuArray AndType:CZJMXPullDownMenuTypeStore WithFrame:self.pullDownMenu.frame];
+        self.pullDownMenu.delegate = self;
+    
+    self.pullDownMenu.frame = CGRectMake(0, 64, PJ_SCREEN_WIDTH, 44);
+    [self.view addSubview:self.pullDownMenu];
 }
 
 - (UITableView*)myTableView

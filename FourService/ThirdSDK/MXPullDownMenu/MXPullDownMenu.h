@@ -33,9 +33,6 @@ typedef NS_ENUM(NSInteger, CZJMXPullDownMenuType)
 {
     CZJMXPullDownMenuTypeNone,                  //没有定制的情况
     CZJMXPullDownMenuTypeStore,                 //门店界面
-    CZJMXPullDownMenuTypeService,               //服务列表界面
-    CZJMXPullDownMenuTypeGoods,                 //商品列表界面
-    CZJMXPullDownMenuTypeStoreDetail            //门店详情界面
 };
 
 @protocol MXPullDownMenuDelegate <NSObject>
@@ -56,7 +53,6 @@ UICollectionViewDataSource,
 UICollectionViewDelegate
 >
 - (MXPullDownMenu *)initWithArray:(NSArray *)array AndType:(CZJMXPullDownMenuType)menutype WithFrame:(CGRect)frame;
-- (void)storeDetailConfiMenuWithSelectRow:(NSInteger)row;
 - (void)confiMenuWithSelectRow:(NSInteger)row;
 - (void)tapIndexSetTitleColor:(NSInteger)tapIndex;
 - (void)touchMXPullDownMenuAtMenuIndex:(NSInteger)tapIndex;
