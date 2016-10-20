@@ -71,24 +71,24 @@
 - (void)setupScrollView
 {
     self.clipsToBounds = YES;
-    _scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
-    [self addSubview:_scrollView];
-    _scrollView.showsHorizontalScrollIndicator = NO;
-    _scrollView.decelerationRate = UIScrollViewDecelerationRateFast;
-    _scrollView.alwaysBounceHorizontal = YES;
-    _scrollView.delegate = self;
-    _scrollView.clipsToBounds = YES;
-    _scrollView.contentInset = UIEdgeInsetsMake(0, kScrollViewContentOffset, 0, kScrollViewContentOffset);
+    if (!_scrollView) {
+        _scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
+        [self addSubview:_scrollView];
+        _scrollView.showsHorizontalScrollIndicator = NO;
+        _scrollView.decelerationRate = UIScrollViewDecelerationRateFast;
+        _scrollView.alwaysBounceHorizontal = YES;
+        _scrollView.delegate = self;
+        _scrollView.clipsToBounds = YES;
+        _scrollView.contentInset = UIEdgeInsetsMake(0, kScrollViewContentOffset, 0, kScrollViewContentOffset);
+    }
+    [_scrollView removeAllSubViews];
     _scrollView.contentSize = CGSizeMake(kItemWidth * self.items.count + (self.items.count + 1)*kItemSpacing, kMovieBrowserHeight);
-//    _scrollView.layer.borderWidth =  2;
-//    _scrollView.layer.borderColor = BLACKCOLOR.CGColor;
-
     
     NSInteger i = 0;
     for (UIView* movie in self.items) {
         UIView *itemView = [[UIView alloc] initWithFrame:CGRectMake(kItemSpacing * (i + 1) + kItemWidth * i, 0, kItemWidth, kItemHeight)];
-//        itemView.layer.borderWidth = 2;
-//        itemView.layer.borderColor = REDCOLOR.CGColor;
+//        itemView.backgroundColor = REDCOLOR;
+//        movie.backgroundColor = FSYellow;
         movie.tag = kBaseTag + i;
         [_scrollView addSubview:itemView];
         [itemView addSubview:movie];

@@ -60,9 +60,11 @@ MXPullDownMenuDelegate
     //下拉菜单
     NSArray* sortTypes = @[@"默认排序", @"距离最近", @"评分最高", @"销量最高"];
     NSArray* storeTypes = @[@"全部",@"一站式", @"快修快保", @"装饰美容" , @"维修厂"];
+    NSArray *siftTypes = @[@"筛选"];
+    NSArray *provincCitys = @[@"成都", @"绵阳"];
 //    if ([FSBaseDataInstance storeForm].provinceForms &&
 //        [FSBaseDataInstance storeForm].provinceForms.count > 0) {
-        NSArray* menuArray = @[ sortTypes,storeTypes];
+        NSArray* menuArray = @[provincCitys, sortTypes, storeTypes, siftTypes];
         self.pullDownMenu  = [[MXPullDownMenu alloc] initWithArray:menuArray AndType:CZJMXPullDownMenuTypeStore WithFrame:self.pullDownMenu.frame];
         self.pullDownMenu.delegate = self;
     

@@ -302,6 +302,7 @@ static NSString *const kCZJNotifiRefreshMessageReadStatus = @"refreshMessageRead
 static NSString *const kCZJNotifiGetNewNotify = @"getNewNotify";                                //新消息通知
 static NSString *const kCZJNotifiLoginSuccess = @"loginSuccess";                                //登录成功
 static NSString *const kCZJNotifiLoginOut = @"loginout";                                        //退出登录
+static NSString *const kCZJNotifiNotCurrentCity = @"notCurrentcity";                            //切换城市
 
 
 //-----------------------StoryBoardID常量定义---------------------------

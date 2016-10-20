@@ -38,7 +38,6 @@ PJBrowserDelegate,
 CityLocationDelegate
 >
 {
-    UserBaseForm* userInfoForm;
     NSDictionary* todoThingDict;
     NSArray* serviceAry;
     
@@ -63,6 +62,8 @@ CityLocationDelegate
 {
     [self getDataFromServer];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getDataFromServer) name:kCZJNotifiLoginSuccess object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTopViewsWhenGetDataSuccess) name:kCZJNotifiLoginOut object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showExchangeCity:) name:kCZJNotifiNotCurrentCity object:nil];
     isTop = NO;
 }
 
@@ -73,13 +74,29 @@ CityLocationDelegate
         DLog(@"%@",[json description]);
         NSDictionary* tmpDict = json[kResoponData];
         serviceAry = [FSServiceListForm objectArrayWithKeyValuesArray:[tmpDict valueForKey:@"type_list"]];
-        userInfoForm = [UserBaseForm objectWithKeyValues:[tmpDict valueForKey:@"customer_info"]];
+        FSBaseDataInstance.userInfoForm = [UserBaseForm objectWithKeyValues:[tmpDict valueForKey:@"customer_info"]];
         todoThingDict = [tmpDict valueForKey:@"todo_list"];
         [weakSelf.myCollectionView reloadData];
-        if (userInfoForm) {
+        if (FSBaseDataInstance.userInfoForm) {
             [weakSelf updateTopViewsWhenGetDataSuccess];
         }
     } fail:^{
+        
+    }];
+}
+
+- (void)showExchangeCity:(id)postData
+{
+    NSString *alertStr = [NSString stringWithFormat:@"您当前位置为%@,是否切换到当前位置？", postData];
+    UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"切换城市" message:alertStr preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"不切换" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"切换" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//        [USER_DEFAULT setObject:postData forKey:CCLastCity];
+    }];
+    [alertView addAction:cancelAction];
+    [alertView addAction:confirmAction];
+    
+    [self presentViewController:alertView animated:YES completion:^{
         
     }];
 }
@@ -104,20 +121,21 @@ CityLocationDelegate
     self.naviBarView.frame = CGRectMake(0, 0, PJ_SCREEN_WIDTH, kHomeTopBgHeight);
     self.naviBarView.mainTitleLabel.text = @"养车人家";
     self.naviBarView.mainTitleLabel.textColor = WHITECOLOR;
-    self.naviBarView.btnHead.hidden = NO;
     
-    [self.naviBarView.btnHead setPosition:CGPointMake(12, 28) atAnchorPoint:CGPointZero];
+    self.naviBarView.btnHead.hidden = NO;
     [self.naviBarView.btnHead.headBtn addTarget:self action:@selector(clickHeadBtn:) forControlEvents:UIControlEventTouchUpInside];
     self.naviBarView.btnHead.badgeLabel.layer.borderColor = WHITECOLOR.CGColor;
     self.naviBarView.btnHead.badgeLabel.layer.borderWidth = 1.5;
+    [self.naviBarView.btnHead.headBtn setBackgroundColor:WHITECOLOR];
     
     NSInteger badgeNum = 22;
-    NSString* badgeStr = [NSString stringWithFormat:@"%ld", badgeNum];
+    NSString* badgeStr = [NSString stringWithFormat:@"%ld", (long)badgeNum];
     CGSize labelSize = [PUtils calculateTitleSizeWithString:badgeStr AndFontSize:14];
     self.naviBarView.btnHead.badgeLabelWidth.constant = (labelSize.width < 15) ? 20 : (labelSize.width + 10);
     [self.naviBarView.btnHead.badgeLabel setText:badgeStr];
     
     [self.naviBarView.btnMore setTitle:@"成都" forState:UIControlStateNormal];
+    
     
     self.naviBarView.backgroundImageView.frame = self.naviBarView.frame;
     [self.naviBarView.backgroundImageView setImage:IMAGENAMED(@"home_topBg")];
@@ -168,9 +186,9 @@ CityLocationDelegate
     
     //carInfoBar
     NSMutableArray* carViewItems = [NSMutableArray array];
-    if (userInfoForm.car_list.count > 0)
+    if (FSBaseDataInstance.userInfoForm.car_list.count > 0)
     {
-        for (FSCarListForm* carForm in userInfoForm.car_list)
+        for (FSCarListForm* carForm in FSBaseDataInstance.userInfoForm.car_list)
         {
             FSTopCarInfoBarView* carInfoBarView = [PUtils getXibViewByName:@"FSTopCarInfoBarView"];
             [carInfoBarView.iconImageView sd_setImageWithURL:[NSURL URLWithString:ConnectString(kCZJServerAddr, carForm.icon)] placeholderImage:DefaultPlaceHolderCircle];
@@ -192,11 +210,15 @@ CityLocationDelegate
         browserView.delegate = self;
         [self.naviBarView addSubview:browserView];
     }
+    else
+    {
+        [browserView updateItems:carViewItems];
+    }
     
     
     NSURL* headImgUrl;
-    if (userInfoForm.customer_photo ) {
-        headImgUrl = [NSURL URLWithString:userInfoForm.customer_photo];
+    if (FSBaseDataInstance.userInfoForm.customer_photo ) {
+        headImgUrl = [NSURL URLWithString:FSBaseDataInstance.userInfoForm.customer_photo];
     }
     
     [self.naviBarView.btnHead.headBtn setImageForState:UIControlStateNormal withURL:headImgUrl placeholderImage:IMAGENAMED(@"placeholder_personal")];
@@ -294,8 +316,8 @@ CityLocationDelegate
 - (void)browser:(PJBrowserView *)movieBrowser didSelectItemAtIndex:(NSInteger)index
 {
     DLog(@"%ld",index);
-    if (index < userInfoForm.car_list.count) {
-        FSCarListForm* carForm = userInfoForm.car_list[index];
+    if (index < FSBaseDataInstance.userInfoForm.car_list.count) {
+        FSCarListForm* carForm = FSBaseDataInstance.userInfoForm.car_list[index];
         CZJAddMyCarController* addCarVC = (CZJAddMyCarController*)[PUtils getViewControllerFromStoryboard:kCZJStoryBoardFileMain andVCName:@"addMyCarSBID"];
         addCarVC.carForm = carForm;
         [self.navigationController pushViewController:addCarVC animated:YES];

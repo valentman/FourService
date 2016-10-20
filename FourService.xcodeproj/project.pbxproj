@@ -27,6 +27,7 @@
 		EC098E541DA6431400C68C44 /* FSOrderEvaluateController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC098E531DA6431400C68C44 /* FSOrderEvaluateController.m */; };
 		EC098E571DA64B8900C68C44 /* CZJEvaluateForm.m in Sources */ = {isa = PBXBuildFile; fileRef = EC098E561DA64B8900C68C44 /* CZJEvaluateForm.m */; };
 		EC098E5A1DA6503D00C68C44 /* CZJDeletableImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC098E591DA6503D00C68C44 /* CZJDeletableImageView.m */; };
+		EC0D05411DB7D4E10088B77E /* KSCrash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0D05401DB7D4E10088B77E /* KSCrash.framework */; };
 		EC0DD3D81D92DB2700DB6BCC /* WLZ_ChangeCountView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0DD3D71D92DB2700DB6BCC /* WLZ_ChangeCountView.m */; };
 		EC1261A41D4CEA700082378D /* FSStoreServiceForm.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1261A31D4CEA700082378D /* FSStoreServiceForm.m */; };
 		EC1261AE1D4CECB90082378D /* CZJGoodsAttentionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1261AC1D4CECB90082378D /* CZJGoodsAttentionCell.m */; };
@@ -491,6 +492,7 @@
 		EC098E561DA64B8900C68C44 /* CZJEvaluateForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJEvaluateForm.m; sourceTree = "<group>"; };
 		EC098E581DA6503D00C68C44 /* CZJDeletableImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJDeletableImageView.h; sourceTree = "<group>"; };
 		EC098E591DA6503D00C68C44 /* CZJDeletableImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJDeletableImageView.m; sourceTree = "<group>"; };
+		EC0D05401DB7D4E10088B77E /* KSCrash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KSCrash.framework; sourceTree = "<group>"; };
 		EC0DD3D61D92DB2700DB6BCC /* WLZ_ChangeCountView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLZ_ChangeCountView.h; sourceTree = "<group>"; };
 		EC0DD3D71D92DB2700DB6BCC /* WLZ_ChangeCountView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLZ_ChangeCountView.m; sourceTree = "<group>"; };
 		EC1261A21D4CEA700082378D /* FSStoreServiceForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSStoreServiceForm.h; sourceTree = "<group>"; };
@@ -1340,6 +1342,7 @@
 				EC5427151D23791F00F3B4BF /* libsqlite3.0.tbd in Frameworks */,
 				EC5427161D23791F00F3B4BF /* libsqlite3.tbd in Frameworks */,
 				EC3221021D77A6BF00E4019C /* MAMapKit.framework in Frameworks */,
+				EC0D05411DB7D4E10088B77E /* KSCrash.framework in Frameworks */,
 				EC5427171D23791F00F3B4BF /* libstdc++.6.0.9.tbd in Frameworks */,
 				EC5427181D23791F00F3B4BF /* libz.tbd in Frameworks */,
 				EC5427191D23791F00F3B4BF /* NotificationCenter.framework in Frameworks */,
@@ -1918,6 +1921,7 @@
 		EC54272F1D237AC200F3B4BF /* ThirdSDK */ = {
 			isa = PBXGroup;
 			children = (
+				EC0D05401DB7D4E10088B77E /* KSCrash.framework */,
 				EC3728AC1DB1C1F60035F61E /* ZYPinYinSearchLib */,
 				EC3220FD1D77A6BF00E4019C /* AMap3DMap */,
 				EC5427A41D237E7600F3B4BF /* AFNetworking */,
@@ -3205,7 +3209,7 @@
 				TargetAttributes = {
 					EC7760D51D2223D500E1A89F = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 27ZN797VLM;
+						DevelopmentTeam = UG6PG8B3H6;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -3760,9 +3764,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: jian peng (P7ATKGF6ZW)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 27ZN797VLM;
+				DEVELOPMENT_TEAM = UG6PG8B3H6;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3790,10 +3794,9 @@
 					"\"$(SRCROOT)/FourService/ThirdSDK/Ali/openssl\"",
 					"$(PROJECT_DIR)/FourService/ThirdSDK/XinGe",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Joe.FourService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -3804,7 +3807,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 27ZN797VLM;
+				DEVELOPMENT_TEAM = UG6PG8B3H6;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3832,10 +3835,9 @@
 					"\"$(SRCROOT)/FourService/ThirdSDK/Ali/openssl\"",
 					"$(PROJECT_DIR)/FourService/ThirdSDK/XinGe",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Joe.FourService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

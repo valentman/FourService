@@ -22,6 +22,7 @@
 #import "FSDefinition.h"
 #import "ValueType.h"
 #import "AFNetworking.h"
+#import "CCLocationManager.h"
 
 #import "PUtils.h"
 #import "BadgeButton.h"

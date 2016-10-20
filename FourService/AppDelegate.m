@@ -20,6 +20,7 @@
 #import "FSServiceListController.h"
 #import "FSMyInformationController.h"
 #import "YQSlideMenuController.h"
+#import <KSCrash/KSCrashInstallationStandard.h>
 
 @interface AppDelegate ()<UIActionSheetDelegate>
 
@@ -67,33 +68,6 @@
      } fail:^{
          
      }];
-    
-    //--------------------4.初始化定位-------------------
-    if (IS_IOS8)
-    {
-        [[CCLocationManager shareLocation]getCity:^(NSString *addressString) {
-            CLLocationCoordinate2D location = CLLocationCoordinate2DMake([USER_DEFAULT doubleForKey:CCLastLatitude],[USER_DEFAULT doubleForKey:CCLastLongitude]);
-            [FSBaseDataInstance setCurLocation:location];
-            
-            if ([addressString isEqualToString:[USER_DEFAULT valueForKey: CCLastCity]])
-            {
-                UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:@"切换城市" delegate:self cancelButtonTitle:@"" destructiveButtonTitle:@"" otherButtonTitles:@"", nil];
-            }
-            else
-            {
-                [FSBaseDataInstance setCurCityName:addressString];
-            }
-            
-        }];
-    }
-    else if (IS_IOS7)
-    {
-        [[ZXLocationManager sharedZXLocationManager]getCityName:^(NSString *addressString) {
-            CLLocationCoordinate2D location = CLLocationCoordinate2DMake([USER_DEFAULT doubleForKey:CCLastLatitude],[USER_DEFAULT doubleForKey:CCLastLongitude]);
-            [FSBaseDataInstance setCurLocation:location];
-            [FSBaseDataInstance setCurCityName:addressString];
-        }];
-    }
     
     //--------------------5.推送注册中心-----------------
     [XGPush startApp:kCZJPushServerAppId appKey:kCZJPushServerAppKey];
@@ -156,6 +130,19 @@
     [self.window makeKeyAndVisible];
     
     
+    
+    //--------------------4.初始化定位-------------------
+    [[CCLocationManager shareLocation]getCity:^(NSString *addressString) {
+        CLLocationCoordinate2D location = CLLocationCoordinate2DMake([USER_DEFAULT doubleForKey:CCLastLatitude],[USER_DEFAULT doubleForKey:CCLastLongitude]);
+        [FSBaseDataInstance setCurLocation:location];
+        
+//        if (![addressString isEqualToString:[USER_DEFAULT valueForKey: CCLastCity]])
+//        {
+            [[NSNotificationCenter defaultCenter]postNotificationName:kCZJNotifiNotCurrentCity object:addressString];
+//        }
+    }];
+    
+    
     //---------------------7.分享设置---------------------
     [OpenShare connectQQWithAppId:kCZJOpenShareQQAppId];
     [OpenShare connectWeiboWithAppKey:kCZJOpenShareWeiboAppKey];
@@ -169,6 +156,12 @@
     
     //--------------------9.开启帧数显示------------------
     [KMCGeigerCounter sharedGeigerCounter].enabled = NO;
+    
+    //-------------------10.崩溃收集接口---------------
+//    KSCrashInstallationStandard* installation = [KSCrashInstallationStandard sharedInstance];
+//    installation.url = [NSURL URLWithString:@"https://collector.bughd.com/kscrash?key=70f8d3e70188d1c35b61464f5fc77329"];
+//    [installation install];
+//    [installation sendAllReportsWithCompletion:nil];
     
     return YES;
 }

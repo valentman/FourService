@@ -1,0 +1,3 @@
+xcodebuild -project <path/to/project.xcproj> -scheme <scheme-name> -configuration <config-name> clean archive -archivePath <output-path> DEVELOPMENT_TEAM=<dev-team-id>
+
+xcodebuild -exportArchive -archivePath <path/to/your.xcarchive> -exportOptionsPlist <path/to/exportOptions.plist> -exportPath <output-path>
