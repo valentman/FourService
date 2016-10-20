@@ -85,13 +85,14 @@ CityLocationDelegate
     }];
 }
 
-- (void)showExchangeCity:(id)postData
+- (void)showExchangeCity:(NSNotification *)notify
 {
-    NSString *alertStr = [NSString stringWithFormat:@"您当前位置为%@,是否切换到当前位置？", postData];
+    NSString *alertStr = [NSString stringWithFormat:@"您当前位置为%@,是否切换到当前位置？", notify.object];
     UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"切换城市" message:alertStr preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"不切换" style:UIAlertActionStyleCancel handler:nil];
     UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"切换" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//        [USER_DEFAULT setObject:postData forKey:CCLastCity];
+        [self.naviBarView.btnMore setTitle:[USER_DEFAULT valueForKey:CCLastCity] forState:UIControlStateNormal];
+        [USER_DEFAULT setObject:notify.object forKey:CCLastCity];
     }];
     [alertView addAction:cancelAction];
     [alertView addAction:confirmAction];
@@ -134,7 +135,7 @@ CityLocationDelegate
     self.naviBarView.btnHead.badgeLabelWidth.constant = (labelSize.width < 15) ? 20 : (labelSize.width + 10);
     [self.naviBarView.btnHead.badgeLabel setText:badgeStr];
     
-    [self.naviBarView.btnMore setTitle:@"成都" forState:UIControlStateNormal];
+    [self.naviBarView.btnMore setTitle:[USER_DEFAULT valueForKey:CCLastCity] forState:UIControlStateNormal];
     
     
     self.naviBarView.backgroundImageView.frame = self.naviBarView.frame;

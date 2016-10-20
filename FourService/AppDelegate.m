@@ -132,6 +132,11 @@
     
     
     //--------------------4.初始化定位-------------------
+    [[CCLocationManager shareLocation] getLocationCoordinate:^(CLLocationCoordinate2D locationCorrrdinate) {
+        
+    } withAddress:^(NSString *addressString) {
+        
+    }];
     [[CCLocationManager shareLocation]getCity:^(NSString *addressString) {
         CLLocationCoordinate2D location = CLLocationCoordinate2DMake([USER_DEFAULT doubleForKey:CCLastLatitude],[USER_DEFAULT doubleForKey:CCLastLongitude]);
         [FSBaseDataInstance setCurLocation:location];
