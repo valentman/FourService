@@ -174,6 +174,8 @@
              _justCity = _city;
          }
          
+         _latestCoordinate = CLLocationCoordinate2DMake(newLocation.coordinate.latitude ,newLocation.coordinate.longitude );
+         
          if (_cityBlock) {
              _cityBlock(_justCity);
              _cityBlock = nil;
@@ -182,18 +184,19 @@
              _addressBlock(_lastAddress);
              _addressBlock = nil;
          }
+         
+         if (_locationBlock) {
+             _locationBlock(_latestCoordinate);
+             _locationBlock = nil;
+         }
+         
+         if (_locationCityBlock) {
+             _locationCityBlock(_latestCoordinate,_justCity);
+             _locationCityBlock = nil;
+         }
      }];
     
-    _latestCoordinate = CLLocationCoordinate2DMake(newLocation.coordinate.latitude ,newLocation.coordinate.longitude );
-    if (_locationBlock) {
-        _locationBlock(_latestCoordinate);
-        _locationBlock = nil;
-    }
-    
-    if (_locationCityBlock) {
-        _locationCityBlock(_latestCoordinate,_justCity);
-        _locationCityBlock = nil;
-    }
+
     
     NSLog(@"%f--%f",newLocation.coordinate.latitude,newLocation.coordinate.longitude);
 //    [USER_DEFAULT setObject:@(newLocation.coordinate.latitude) forKey:CCLastLatitude];
