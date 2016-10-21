@@ -15,13 +15,14 @@
 #define  CCLastCity      @"CCLastCity"
 #define  CCLastAddress   @"CCLastAddress"
 
+typedef void (^LocationCityBlock)(CLLocationCoordinate2D locationCorrrdinate, NSString *cityString);
 typedef void (^LocationBlock)(CLLocationCoordinate2D locationCorrrdinate);
 typedef void (^LocationErrorBlock) (NSError *error);
 typedef void(^NSStringBlock)(NSString *cityString);
 typedef void(^NSStringBlock)(NSString *addressString);
 
 @interface CCLocationManager : NSObject<CLLocationManagerDelegate>
-@property (nonatomic) CLLocationCoordinate2D lastCoordinate;
+@property (nonatomic) CLLocationCoordinate2D latestCoordinate;
 @property(nonatomic,strong)NSString *lastCity;
 @property(nonatomic,strong)NSString *justCity;
 @property (nonatomic,strong) NSString *lastAddress;
@@ -55,6 +56,13 @@ typedef void(^NSStringBlock)(NSString *addressString);
  *  @param addressBlock  addressBlock description
  */
 - (void) getLocationCoordinate:(LocationBlock) locaiontBlock  withAddress:(NSStringBlock) addressBlock;
+
+
+/**
+ *  获取坐标和城市信息，同时返回
+ *
+ */
+- (void)getLocationAndCity:(LocationCityBlock)locationCtiyBlock;
 
 /**
  *  获取详细地址

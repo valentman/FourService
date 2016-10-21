@@ -132,21 +132,16 @@
     
     
     //--------------------4.初始化定位-------------------
-    [[CCLocationManager shareLocation] getLocationCoordinate:^(CLLocationCoordinate2D locationCorrrdinate) {
-        
-    } withAddress:^(NSString *addressString) {
-        
-    }];
-    [[CCLocationManager shareLocation]getCity:^(NSString *addressString) {
+    [[CCLocationManager shareLocation] getLocationAndCity:^(CLLocationCoordinate2D locationCorrrdinate, NSString *cityString) {
         CLLocationCoordinate2D location = CLLocationCoordinate2DMake([USER_DEFAULT doubleForKey:CCLastLatitude],[USER_DEFAULT doubleForKey:CCLastLongitude]);
         [FSBaseDataInstance setCurLocation:location];
         
-//        if (![addressString isEqualToString:[USER_DEFAULT valueForKey: CCLastCity]])
-//        {
-            [[NSNotificationCenter defaultCenter]postNotificationName:kCZJNotifiNotCurrentCity object:addressString];
-//        }
+        //        if (![addressString isEqualToString:[USER_DEFAULT valueForKey: CCLastCity]])
+        //        {
+        [[NSNotificationCenter defaultCenter]postNotificationName:kCZJNotifiNotCurrentCity object:cityString];
+        //        }
     }];
-    
+
     
     //---------------------7.分享设置---------------------
     [OpenShare connectQQWithAppId:kCZJOpenShareQQAppId];

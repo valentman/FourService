@@ -300,8 +300,7 @@
             [_btnMore setBackgroundImage:NULL forState:UIControlStateNormal];
             [_btnMore setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 8)];
             
-            CALayer *trangle = [PUtils creatIndicatorWithColor:WHITECOLOR andPosition:CGPointMake(40, 23)];
-            [self.btnMore.layer addSublayer:trangle];
+            
         }
             break;
             

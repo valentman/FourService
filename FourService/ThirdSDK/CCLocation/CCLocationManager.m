@@ -13,6 +13,7 @@
     CLLocationManager *_manager;
 
 }
+@property (nonatomic, strong) LocationCityBlock locationCityBlock;
 @property (nonatomic, strong) LocationBlock locationBlock;
 @property (nonatomic, strong) NSStringBlock cityBlock;
 @property (nonatomic, strong) NSStringBlock addressBlock;
@@ -42,7 +43,7 @@
         float latitude = [standard floatForKey:CCLastLatitude];
         self.longitude = longitude;
         self.latitude = latitude;
-        self.lastCoordinate = CLLocationCoordinate2DMake(longitude,latitude);
+        self.latestCoordinate = CLLocationCoordinate2DMake(longitude,latitude);
         self.lastCity = [standard objectForKey:CCLastCity];
         self.lastAddress=[standard objectForKey:CCLastAddress];
         self.isNeedShowAlert = YES;
@@ -91,6 +92,12 @@
 {
     self.locationBlock = [locaiontBlock copy];
     self.addressBlock = [addressBlock copy];
+    [self startLocation];
+}
+
+- (void)getLocationAndCity:(LocationCityBlock)locationCtiyBlock
+{
+    self.locationCityBlock = [locationCtiyBlock copy];
     [self startLocation];
 }
 
@@ -162,12 +169,9 @@
              
              //获取地级市以下详细地址
              _lastAddress = [NSString stringWithFormat:@"%@%@%@%@",_city,_subCity,_bigRoad,_street];
-             [USER_DEFAULT setObject:_lastAddress forKey:CCLastAddress];
-             DLog(@"#######%@",_lastAddress);
              
              //获取当前城市名称
              _justCity = _city;
-             [USER_DEFAULT setObject:_justCity forKey:CCLastCity];//城市市地址
          }
          
          if (_cityBlock) {
@@ -178,19 +182,22 @@
              _addressBlock(_lastAddress);
              _addressBlock = nil;
          }
-         
-         
      }];
     
-    _lastCoordinate = CLLocationCoordinate2DMake(newLocation.coordinate.latitude ,newLocation.coordinate.longitude );
+    _latestCoordinate = CLLocationCoordinate2DMake(newLocation.coordinate.latitude ,newLocation.coordinate.longitude );
     if (_locationBlock) {
-        _locationBlock(_lastCoordinate);
+        _locationBlock(_latestCoordinate);
         _locationBlock = nil;
     }
     
+    if (_locationCityBlock) {
+        _locationCityBlock(_latestCoordinate,_justCity);
+        _locationCityBlock = nil;
+    }
+    
     NSLog(@"%f--%f",newLocation.coordinate.latitude,newLocation.coordinate.longitude);
-    [USER_DEFAULT setObject:@(newLocation.coordinate.latitude) forKey:CCLastLatitude];
-    [USER_DEFAULT setObject:@(newLocation.coordinate.longitude) forKey:CCLastLongitude];
+//    [USER_DEFAULT setObject:@(newLocation.coordinate.latitude) forKey:CCLastLatitude];
+//    [USER_DEFAULT setObject:@(newLocation.coordinate.longitude) forKey:CCLastLongitude];
     
     [manager stopUpdatingLocation];   
 }
