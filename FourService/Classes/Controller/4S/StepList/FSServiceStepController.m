@@ -502,6 +502,7 @@ FSProductChangeDelegate
     iLog(@"change:%ld, %ld",indexPath.section,indexPath.row);
     FSServiceStepProductForm* stepProduct = ((FSServiceStepForm*)_serviceStepAry[indexPath.section - 3]).product_list[indexPath.row - 1];
     FSProductChangeController* productVC = [[FSProductChangeController alloc] init];
+    productVC.shopId = self.shopID;
     productVC.subTypeId = stepProduct.sub_type_id;
     productVC.productItem = stepProduct.product_item_id;
     productVC.delegate = self;

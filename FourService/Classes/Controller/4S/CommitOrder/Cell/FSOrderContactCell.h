@@ -10,6 +10,6 @@
 
 @interface FSOrderContactCell : PBaseTableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *contactNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *contactPhoneLabel;
+@property (weak, nonatomic) IBOutlet UITextField *contactNameLabel;
+@property (weak, nonatomic) IBOutlet UITextField *contactPhoneLabel;
 @end

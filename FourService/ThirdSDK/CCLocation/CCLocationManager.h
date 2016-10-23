@@ -14,6 +14,10 @@
 #define  CCLastLatitude  @"CCLastLatitude"
 #define  CCLastCity      @"CCLastCity"
 #define  CCLastAddress   @"CCLastAddress"
+#define  CCLatestLon     @"CCLatestLongtitude"
+#define  CCLatestLat     @"CCLatestLatitude"
+#define  CCLatestCity    @"CCLatestCity"
+#define  CCLatestAddress @"CCLatestAddress"
 
 typedef void (^LocationCityBlock)(CLLocationCoordinate2D locationCorrrdinate, NSString *cityString);
 typedef void (^LocationBlock)(CLLocationCoordinate2D locationCorrrdinate);

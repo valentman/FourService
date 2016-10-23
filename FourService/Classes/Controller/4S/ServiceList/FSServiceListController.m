@@ -66,7 +66,8 @@ CityLocationDelegate
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTopViewsWhenGetDataSuccess) name:kCZJNotifiLoginOut object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showExchangeCity:) name:kCZJNotifiNotCurrentCity object:nil];
     isTop = NO;
-    currentCityStr = [USER_DEFAULT valueForKey:CCLastCity];
+//    currentCityStr = [USER_DEFAULT valueForKey:CCLastCity];
+    currentCityStr = @"市";
 }
 
 - (void)getDataFromServer
@@ -89,13 +90,34 @@ CityLocationDelegate
 
 - (void)showExchangeCity:(NSNotification *)notify
 {
+    float lati = [[USER_DEFAULT valueForKey:CCLastLatitude] floatValue];
+    float longti = [[USER_DEFAULT valueForKey:CCLastLongitude] floatValue];
+    NSString *lastCity = [USER_DEFAULT valueForKey:CCLastCity];
+    NSString *lastaddr = [USER_DEFAULT valueForKey:CCLastAddress];
+    DLog(@"lastLat:%f, lastLon:%f, lastCity:%@, lastAddr:%@",lati, longti,lastCity, lastaddr);
+    
+    float lati1 = [[USER_DEFAULT valueForKey:CCLatestLat] floatValue];
+    float longti1 = [[USER_DEFAULT valueForKey:CCLatestLon] floatValue];
+    NSString *lastCity1 = [USER_DEFAULT valueForKey:CCLatestCity];
+    NSString *lastaddr1 = [USER_DEFAULT valueForKey:CCLatestAddress];
+    DLog(@"lastLat:%f, lastLon:%f, lastCity:%@, lastAddr:%@",lati1, longti1,lastCity1, lastaddr1);
+    
     currentCityStr = notify.object;
     NSString *alertStr = [NSString stringWithFormat:@"您当前位置为%@,是否切换到当前位置？", currentCityStr];
     UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"切换城市" message:alertStr preferredStyle:UIAlertControllerStyleAlert];
     weaky(self);
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"不切换" style:UIAlertActionStyleCancel handler:nil];
     UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"切换" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        currentCityStr = [USER_DEFAULT valueForKey:CCLatestCity];
+        [USER_DEFAULT setValue:currentCityStr forKey:CCLastCity];
+        [USER_DEFAULT setValue:[USER_DEFAULT valueForKey:CCLatestLat] forKey:CCLastLatitude];
+        [USER_DEFAULT setValue:[USER_DEFAULT valueForKey:CCLatestLon] forKey:CCLastLongitude];
+        [USER_DEFAULT synchronize];
+        CLLocationCoordinate2D location = CLLocationCoordinate2DMake([USER_DEFAULT doubleForKey:CCLatestLat],[USER_DEFAULT doubleForKey:CCLatestLon]);
+        [FSBaseDataInstance setCurLocation:location];
+        
         [weakSelf updateCityButton];
+        [weakSelf getDataFromServer];
     }];
     [alertView addAction:cancelAction];
     [alertView addAction:confirmAction];
@@ -156,11 +178,13 @@ CityLocationDelegate
 
 - (void)updateCityButton
 {
-    [USER_DEFAULT setObject:currentCityStr forKey:CCLastCity];
     [self.naviBarView.btnMore setTitle:currentCityStr forState:UIControlStateNormal];
     CGSize citySize = [PUtils calculateTitleSizeWithString:currentCityStr AndFontSize:14];
-    [self.naviBarView.btnMore setSize:CGSizeMake(citySize.width, 44)];
-    CALayer *trangle = [PUtils creatIndicatorWithColor:WHITECOLOR andPosition:CGPointMake(citySize.width - 5, 23)];
+    [self.naviBarView.btnMore setSize:CGSizeMake(citySize.width + 20, 44)];
+    self.naviBarView.btnMore.frame = CGRectMake(PJ_SCREEN_WIDTH - citySize.width - 20 - 15, 20, citySize.width + 20, 44);
+    
+    CAShapeLayer *trangle = [PUtils creatIndicatorWithColor:WHITECOLOR andPosition:CGPointMake(citySize.width + 15, 23)];
+    [self.naviBarView.btnMore.layer removeShapeSubLayer];
     [self.naviBarView.btnMore.layer addSublayer:trangle];
 }
 
@@ -216,7 +240,7 @@ CityLocationDelegate
     FSTopAddCarCell* addcarView = [PUtils getXibViewByName:@"FSTopAddCarCell"];
     [addcarView.addBtnImage setImage:IMAGENAMED(@"home_addBtn")];
     addcarView.backgroundColor = CLEARCOLOR;
-    addcarView.frame = CGRectMake(0, 0, PJ_SCREEN_WIDTH, kMovieBrowserHeight);
+    addcarView.frame = CGRectMake(0, 0, 120, kMovieBrowserHeight);
     [carViewItems addObject:addcarView];
     
 

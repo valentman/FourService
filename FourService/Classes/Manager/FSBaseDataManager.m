@@ -66,6 +66,10 @@ singleton_implementation(FSBaseDataManager);
                                  @"suffix" : ((iPhone6Plus || iPhone6) ? @"@3x" : @"@2x")
                                  };
     _baseParams = [_tmpparams mutableCopy];
+    
+    //经纬度
+    CLLocationCoordinate2D location = CLLocationCoordinate2DMake([USER_DEFAULT doubleForKey:CCLastLatitude],[USER_DEFAULT doubleForKey:CCLastLongitude]);
+    [self setCurLocation:location];
 }
 
 - (NSArray*)orderPaymentTypeAry

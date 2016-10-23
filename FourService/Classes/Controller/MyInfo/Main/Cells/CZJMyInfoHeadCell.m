@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userPhoneLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *bgImage;
+@property (weak, nonatomic) IBOutlet UIImageView *infoHeadBg;
 
 
 - (IBAction)messageAction:(id)sender;
@@ -29,6 +30,10 @@
     self.userPhoneLabel.layer.borderColor = WHITECOLOR.CGColor;
     self.userPhoneLabel.layer.cornerRadius = 11;
     [self.userPhoneLabel.layer setMasksToBounds:YES];
+    self.haveLoginView.hidden = YES;
+    self.unLoginView.hidden = NO;
+//    self.infoHeadBg.hidden = YES;
+    self.userHeadImg.hidden = NO;
     // Initialization code
 }
 
@@ -40,6 +45,10 @@
 
 - (void)setUserPersonalInfo:(UserBaseForm*)userinfo andDefaultCar:(FSCarListForm*)car
 {
+    self.haveLoginView.hidden = NO;
+    self.unLoginView.hidden = YES;
+//    self.infoHeadBg.hidden = NO;
+    self.userHeadImg.hidden = NO;
     self.userNameLabel.text = [PUtils isBlankString:userinfo.chinese_name] ? @"昵称" : userinfo.chinese_name;
     self.userPhoneLabel.text = userinfo.customer_pho;
     [self.userHeadImg sd_setImageWithURL:[NSURL URLWithString:userinfo.customer_photo] placeholderImage:IMAGENAMED(@"my_icon_head")];

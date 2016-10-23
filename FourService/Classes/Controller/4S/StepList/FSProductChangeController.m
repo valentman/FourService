@@ -54,9 +54,12 @@
 
 - (void)getGoodsListFromServer
 {
-    NSDictionary* params = @{@"sub_type_id" : self.subTypeId, @"product_item_id" : self.productItem};
+    NSDictionary* params = @{@"shop_id" : self.shopId,
+                             @"sub_type_id" : self.subTypeId,
+                             @"product_item_id" : self.productItem};
     weaky(self);
     [FSBaseDataInstance getProductChangeableList:params success:^(id json) {
+        DLog(@"%@",[json description]);
         productListAry = [FSServiceStepProductForm objectArrayWithKeyValuesArray:json[kResoponData]];
         [weakSelf.myTableView reloadData];
     } fail:nil];
@@ -82,7 +85,10 @@
 {
     FSServiceStepProductForm* productform = productListAry[indexPath.row];
     FSServiceStepGoodsCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FSServiceStepGoodsCell" forIndexPath:indexPath];
-    NSString* imagUrl = ConnectString(kCZJServerAddr, ((FSProductImageForm*)productform.product_image_list.firstObject).img_url);
+    NSString* imagUrl = @"";
+    if (productform.product_image_list.firstObject) {
+        imagUrl = ConnectString(kCZJServerAddr, ((FSProductImageForm*)productform.product_image_list.firstObject).img_url);
+    }
     [cell.productImageView sd_setImageWithURL:[NSURL URLWithString:imagUrl] placeholderImage:DefaultPlaceHolderSquare];
     cell.productNameLabel.text = productform.product_name;
     cell.productPriceLabel.text = productform.sale_price;
@@ -114,6 +120,4 @@
     }
     [self.navigationController popViewControllerAnimated:YES];
 }
-
-
 @end

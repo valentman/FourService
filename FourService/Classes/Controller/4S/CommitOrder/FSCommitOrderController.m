@@ -46,6 +46,7 @@ UITableViewDataSource
     NSArray* _orderTypeAry;                     //支付方式（支付宝，微信，银联）
     __block CZJOrderTypeForm* _defaultOrderType;        //默认支付方式（为支付宝）
     FSCommitOrderForm* commitOrderForm;
+    FSOrderContactCell* contactCell;
     
     NSInteger productNum;
     NSInteger serviceNum;
@@ -86,7 +87,7 @@ UITableViewDataSource
     commitOrderForm.shop_id = self.shopId;
     commitOrderForm.service_type_id = self.serviceTypeId;
     commitOrderForm.car_id = @"1";
-    commitOrderForm.remark = @"2";
+    commitOrderForm.remark = @"";
     
     NSMutableArray* tmpStepAry = [NSMutableArray array];
     for (FSServiceStepForm* stepForm in self.orderServiceAry)
@@ -200,8 +201,11 @@ UITableViewDataSource
     {
         case 0:
         {
-            FSOrderContactCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FSOrderContactCell" forIndexPath:indexPath];
-            return cell;
+            contactCell = [tableView dequeueReusableCellWithIdentifier:@"FSOrderContactCell" forIndexPath:indexPath];
+            
+            contactCell.contactNameLabel.text = FSBaseDataInstance.userInfoForm.chinese_name;
+            contactCell.contactPhoneLabel.text = FSBaseDataInstance.userInfoForm.customer_pho;
+            return contactCell;
         }
             break;
             
@@ -408,6 +412,17 @@ UITableViewDataSource
 
 - (IBAction)commitOrderAction:(id)sender
 {
+    
+    if (![PUtils isMobileNumber:contactCell.contactPhoneLabel.text]) {
+        [PUtils tipWithText:@"请填写正确的手机号码" andView:nil];
+        return;
+    }
+    
+    if ([PUtils isBlankString:contactCell.contactNameLabel.text]) {
+        [PUtils tipWithText:@"请填写正确的联系人" andView:nil];
+        return;
+    }
+    
     NSString* currentOrdertypeName;
     for (CZJOrderTypeForm* form in _orderTypeAry)
     {
@@ -424,6 +439,8 @@ UITableViewDataSource
             [weakSelf.navigationController pushViewController:success animated:YES];
         } fail:nil];
     }
+    
+    
     
     
     [self checkPay:currentOrdertypeName];

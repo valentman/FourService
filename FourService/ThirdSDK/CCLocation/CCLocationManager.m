@@ -169,9 +169,19 @@
              
              //获取地级市以下详细地址
              _lastAddress = [NSString stringWithFormat:@"%@%@%@%@",_city,_subCity,_bigRoad,_street];
+             if (![PUtils isBlankString:_lastAddress])
+             {
+                 [USER_DEFAULT setValue:_lastAddress forKey:CCLatestAddress];
+                 [USER_DEFAULT synchronize];
+             }
              
              //获取当前城市名称
              _justCity = _city;
+             if (![PUtils isBlankString:_justCity])
+             {
+                 [USER_DEFAULT setValue:_justCity forKey:CCLatestCity];
+                 [USER_DEFAULT synchronize];
+             }
          }
          
          _latestCoordinate = CLLocationCoordinate2DMake(newLocation.coordinate.latitude ,newLocation.coordinate.longitude );
@@ -196,11 +206,10 @@
          }
      }];
     
-
-    
     NSLog(@"%f--%f",newLocation.coordinate.latitude,newLocation.coordinate.longitude);
-//    [USER_DEFAULT setObject:@(newLocation.coordinate.latitude) forKey:CCLastLatitude];
-//    [USER_DEFAULT setObject:@(newLocation.coordinate.longitude) forKey:CCLastLongitude];
+    [USER_DEFAULT setObject:@(newLocation.coordinate.latitude) forKey:CCLatestLat];
+    [USER_DEFAULT setObject:@(newLocation.coordinate.longitude) forKey:CCLatestLon];
+    [USER_DEFAULT synchronize];
     
     [manager stopUpdatingLocation];   
 }

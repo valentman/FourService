@@ -121,7 +121,10 @@ FSMyInfoButtomViewDelegate
     NSMutableDictionary* pDict1 = [@{@"title":@"反馈咨询",
                                      @"buttonImage":@"myInfo_fankui",
                                      @"segueTo":kMyOpinionVc}mutableCopy];
-    otherCellAry = @[pDict0,pDict1];
+    NSMutableDictionary* pDict2 = [@{@"title":@"设置",
+                                     @"buttonImage":@"myInfo_setting",
+                                     @"segueTo":kMySettingVc}mutableCopy];
+    otherCellAry = @[pDict0, pDict1, pDict2];
     
     personalCellAry = [NSArray array];
     NSMutableDictionary* dict1 = [@{@"title":@"优惠券",
@@ -162,7 +165,7 @@ FSMyInfoButtomViewDelegate
 
 - (void)initViews
 {
-    self.myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.size.width, PJ_SCREEN_HEIGHT - Tabbar_HEIGHT) style:UITableViewStylePlain];
+    self.myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.size.width, PJ_SCREEN_HEIGHT) style:UITableViewStylePlain];
     self.myTableView.tableFooterView = [[UIView alloc]init];
     self.myTableView.delegate = self;
     self.myTableView.dataSource = self;
@@ -183,12 +186,6 @@ FSMyInfoButtomViewDelegate
     self.myTableView.tableFooterView = [[UIView alloc] init];
     self.myTableView.showsVerticalScrollIndicator = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
-    FSMyinfoButtomView* buttomView = [PUtils getXibViewByName:@"FSMyinfoButtomView"];
-    buttomView.frame = CGRectMake(0, PJ_SCREEN_HEIGHT - 60, self.view.size.width, 50);
-    buttomView.backgroundColor = CLEARCOLOR;
-    buttomView.delegate = self;
-    [self.view addSubview:buttomView];
 }
 
 - (void)getMyInfoDataFromServer
@@ -264,7 +261,7 @@ FSMyInfoButtomViewDelegate
             return orderSubCellAry.count + 1;
             break;
         case 3:
-            return 2;
+            return otherCellAry.count;
         default:
             break;
     }
@@ -454,7 +451,7 @@ FSMyInfoButtomViewDelegate
 #pragma mark - FSMyInfoButtomViewDelegate
 - (void)clickButtomBtnCallBack:(id)sender
 {
-    [self myInforShowNextViewController:kMySettingVc];
+    
 }
 
 - (void)myInforShowNextViewController:(NSString*)sbIdentifer

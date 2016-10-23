@@ -15,6 +15,7 @@
 @end
 
 @interface FSProductChangeController : PBaseViewController
+@property (strong, nonatomic) NSString* shopId;
 @property (strong, nonatomic) NSString* subTypeId;
 @property (strong, nonatomic) NSString* productItem;
 @property (strong, nonatomic) NSIndexPath* cellIndexPath;

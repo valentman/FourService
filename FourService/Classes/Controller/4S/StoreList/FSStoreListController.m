@@ -47,7 +47,7 @@ MXPullDownMenuDelegate
 - (void)initViews
 {
     [self addCZJNaviBarView:CZJNaviBarViewTypeGeneral];
-    self.naviBarView.frame = CGRectMake(0, 0, PJ_SCREEN_WIDTH, 64 + 44);
+    self.naviBarView.frame = CGRectMake(0, 0, PJ_SCREEN_WIDTH, 64);
     self.naviBarView.mainTitleLabel.text = @"选择门店";
     self.naviBarView.mainTitleLabel.textColor = WHITECOLOR;
     self.naviBarView.backgroundImageView.frame = self.naviBarView.frame;
@@ -58,25 +58,25 @@ MXPullDownMenuDelegate
     self.naviBarView.btnMore.hidden = NO;
     
     //下拉菜单
-    NSArray* sortTypes = @[@"默认排序", @"距离最近", @"评分最高", @"销量最高"];
-    NSArray* storeTypes = @[@"全部",@"一站式", @"快修快保", @"装饰美容" , @"维修厂"];
-    NSArray *siftTypes = @[@"筛选"];
-    NSArray *provincCitys = @[@"成都", @"绵阳"];
-//    if ([FSBaseDataInstance storeForm].provinceForms &&
-//        [FSBaseDataInstance storeForm].provinceForms.count > 0) {
-        NSArray* menuArray = @[provincCitys, sortTypes, storeTypes, siftTypes];
-        self.pullDownMenu  = [[MXPullDownMenu alloc] initWithArray:menuArray AndType:CZJMXPullDownMenuTypeStore WithFrame:self.pullDownMenu.frame];
-        self.pullDownMenu.delegate = self;
-    
-    self.pullDownMenu.frame = CGRectMake(0, 64, PJ_SCREEN_WIDTH, 44);
-    [self.view addSubview:self.pullDownMenu];
+//    NSArray* sortTypes = @[@"默认排序", @"距离最近", @"评分最高", @"销量最高"];
+//    NSArray* storeTypes = @[@"全部",@"一站式", @"快修快保", @"装饰美容" , @"维修厂"];
+//    NSArray *siftTypes = @[@"筛选"];
+//    NSArray *provincCitys = @[@"成都", @"绵阳"];
+////    if ([FSBaseDataInstance storeForm].provinceForms &&
+////        [FSBaseDataInstance storeForm].provinceForms.count > 0) {
+//        NSArray* menuArray = @[provincCitys, sortTypes, storeTypes, siftTypes];
+//        self.pullDownMenu  = [[MXPullDownMenu alloc] initWithArray:menuArray AndType:CZJMXPullDownMenuTypeStore WithFrame:self.pullDownMenu.frame];
+//        self.pullDownMenu.delegate = self;
+//    
+//    self.pullDownMenu.frame = CGRectMake(0, 64, PJ_SCREEN_WIDTH, 44);
+//    [self.view addSubview:self.pullDownMenu];
 }
 
 - (UITableView*)myTableView
 {
     if (!_myTableView)
     {
-        self.myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64 + 46, PJ_SCREEN_WIDTH, PJ_SCREEN_HEIGHT - StatusBar_HEIGHT - NavigationBar_HEIGHT - 46) style:UITableViewStylePlain];
+        self.myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, PJ_SCREEN_WIDTH, PJ_SCREEN_HEIGHT - StatusBar_HEIGHT - NavigationBar_HEIGHT) style:UITableViewStylePlain];
         self.myTableView.tableFooterView = [[UIView alloc]init];
         self.myTableView.delegate = self;
         self.myTableView.dataSource = self;
@@ -112,7 +112,6 @@ MXPullDownMenuDelegate
     [PUtils removeReloadAlertViewFromTarget:self.view];
     if (_getdataType == CZJHomeGetDataFromServerTypeOne)
     {
-//        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     }
     [YXSpritesLoadingView showWithText:nil andShimmering:NO andBlurEffect:NO];
     [FSBaseDataInstance getStoreList:params type:CZJHomeGetDataFromServerTypeOne success:^(id json) {

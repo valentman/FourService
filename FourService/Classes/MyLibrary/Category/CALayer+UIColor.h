@@ -10,4 +10,7 @@
 
 @interface CALayer (Color)
 - (void)setBorderColorWithUIColor:(UIColor *)color;
+
+- (void)removeAllSubLayer;
+- (void)removeShapeSubLayer;
 @end
