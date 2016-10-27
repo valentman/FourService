@@ -76,7 +76,7 @@ UITableViewDataSource
 
 - (void)initViews
 {
-    self.view.backgroundColor = BGCOLOR;
+    self.view.backgroundColor = WHITECOLOR;
    
     //自定义搜索背景
     UIView *searchView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, 40*(self.view.frame.size.height/568))];
@@ -156,7 +156,9 @@ UITableViewDataSource
 {
     //自定义导航栏
     UIView *customNavView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 64)];
-    customNavView.backgroundColor = BGCOLOR;
+    UIImageView *backgroundImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 64)];
+    [backgroundImageView setImage:IMAGENAMED(@"home_topBg")];
+    [customNavView addSubview:backgroundImageView];
     
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [backBtn setImage:[UIImage imageNamed:@"cancel"] forState:UIControlStateNormal];
@@ -166,6 +168,7 @@ UITableViewDataSource
     UILabel *titleLab = [[UILabel alloc]initWithFrame:CGRectMake(0, 20, customNavView.frame.size.width, customNavView.frame.size.height-20)];
     titleLab.textAlignment = NSTextAlignmentCenter;
     titleLab.text          = title;
+    titleLab.textColor = WHITECOLOR;
     [customNavView addSubview:titleLab];
     
     
@@ -180,11 +183,8 @@ UITableViewDataSource
 
 - (void)ininHeaderView
 {
-    
-    
     _tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 250)];
     _tableHeaderView.backgroundColor = [UIColor clearColor];
-    
     
     //定位城市
     UILabel *title1 = [[UILabel alloc]initWithFrame:CGRectMake(10, 10, 160, 21)];
@@ -200,12 +200,10 @@ UITableViewDataSource
     
     
     //常用城市
-    
     UILabel *title2 = [[UILabel alloc]initWithFrame:CGRectMake(10, _locatingCityGroupView.frame.origin.y+_locatingCityGroupView.frame.size.height+10, 160, 21)];
     title2.text = @"常用城市";
     title2.font = [UIFont systemFontOfSize:15];
     [_tableHeaderView addSubview:title2];
-    
     
     long rowHistorical = _arrayHistoricalCity.count/3;
     if (_arrayHistoricalCity.count%3 > 0) {
@@ -262,11 +260,6 @@ UITableViewDataSource
     self.cities = [NSMutableDictionary dictionaryWithContentsOfFile:path];
     
     [_keys addObjectsFromArray:[[self.cities allKeys] sortedArrayUsingSelector:@selector(compare:)]];
-    
-    //    //添加热门城市
-    //    NSString *strHot = @"#";
-    //    [self.keys insertObject:strHot atIndex:0];
-    //    [self.cities setObject:_arrayHotCity forKey:strHot];
     
     NSArray *allValuesAry = [self.cities allValues];
     for (NSArray*oneAry in allValuesAry) {

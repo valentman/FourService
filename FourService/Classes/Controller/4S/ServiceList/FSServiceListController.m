@@ -66,8 +66,7 @@ CityLocationDelegate
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTopViewsWhenGetDataSuccess) name:kCZJNotifiLoginOut object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showExchangeCity:) name:kCZJNotifiNotCurrentCity object:nil];
     isTop = NO;
-//    currentCityStr = [USER_DEFAULT valueForKey:CCLastCity];
-    currentCityStr = @"市";
+    currentCityStr = [USER_DEFAULT valueForKey:CCLastCity];
 }
 
 - (void)getDataFromServer

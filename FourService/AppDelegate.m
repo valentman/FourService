@@ -135,11 +135,10 @@
     [[CCLocationManager shareLocation] getLocationAndCity:^(CLLocationCoordinate2D locationCorrrdinate, NSString *cityString) {
         CLLocationCoordinate2D location = CLLocationCoordinate2DMake([USER_DEFAULT doubleForKey:CCLastLatitude],[USER_DEFAULT doubleForKey:CCLastLongitude]);
         [FSBaseDataInstance setCurLocation:location];
-        
-        //        if (![addressString isEqualToString:[USER_DEFAULT valueForKey: CCLastCity]])
-        //        {
-        [[NSNotificationCenter defaultCenter]postNotificationName:kCZJNotifiNotCurrentCity object:cityString];
-        //        }
+        if (![cityString isEqualToString:[USER_DEFAULT valueForKey: CCLastCity]])
+        {
+            [[NSNotificationCenter defaultCenter]postNotificationName:kCZJNotifiNotCurrentCity object:cityString];
+        }
     }];
 
     
@@ -155,7 +154,7 @@
     
     
     //--------------------9.开启帧数显示------------------
-    [KMCGeigerCounter sharedGeigerCounter].enabled = NO;
+    [KMCGeigerCounter sharedGeigerCounter].enabled = YES;
     
     //-------------------10.崩溃收集接口---------------
 //    KSCrashInstallationStandard* installation = [KSCrashInstallationStandard sharedInstance];
