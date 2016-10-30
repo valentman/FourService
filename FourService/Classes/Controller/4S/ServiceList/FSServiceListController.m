@@ -44,6 +44,7 @@ CityLocationDelegate
     
     FSHomeNotifyCell* notifyCell;
     PJBrowserView* browserView;
+    UserBaseForm *serviceUserBaseForm;
     
     __block BOOL isTop;
 }
@@ -73,10 +74,9 @@ CityLocationDelegate
 {
     __weak typeof(self) weakSelf = self;
     [FSBaseDataInstance getServiceList:^(id json) {
-        DLog(@"%@",[json description]);
         NSDictionary* tmpDict = json[kResoponData];
         serviceAry = [FSServiceListForm objectArrayWithKeyValuesArray:[tmpDict valueForKey:@"type_list"]];
-        FSBaseDataInstance.userInfoForm = [UserBaseForm objectWithKeyValues:[tmpDict valueForKey:@"customer_info"]];
+        serviceUserBaseForm = [UserBaseForm objectWithKeyValues:[tmpDict valueForKey:@"customer_info"]];
         todoThingDict = [tmpDict valueForKey:@"todo_list"];
         [weakSelf.myCollectionView reloadData];
         if (FSBaseDataInstance.userInfoForm) {
@@ -89,18 +89,6 @@ CityLocationDelegate
 
 - (void)showExchangeCity:(NSNotification *)notify
 {
-    float lati = [[USER_DEFAULT valueForKey:CCLastLatitude] floatValue];
-    float longti = [[USER_DEFAULT valueForKey:CCLastLongitude] floatValue];
-    NSString *lastCity = [USER_DEFAULT valueForKey:CCLastCity];
-    NSString *lastaddr = [USER_DEFAULT valueForKey:CCLastAddress];
-    DLog(@"lastLat:%f, lastLon:%f, lastCity:%@, lastAddr:%@",lati, longti,lastCity, lastaddr);
-    
-    float lati1 = [[USER_DEFAULT valueForKey:CCLatestLat] floatValue];
-    float longti1 = [[USER_DEFAULT valueForKey:CCLatestLon] floatValue];
-    NSString *lastCity1 = [USER_DEFAULT valueForKey:CCLatestCity];
-    NSString *lastaddr1 = [USER_DEFAULT valueForKey:CCLatestAddress];
-    DLog(@"lastLat:%f, lastLon:%f, lastCity:%@, lastAddr:%@",lati1, longti1,lastCity1, lastaddr1);
-    
     currentCityStr = notify.object;
     NSString *alertStr = [NSString stringWithFormat:@"您当前位置为%@,是否切换到当前位置？", currentCityStr];
     UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"切换城市" message:alertStr preferredStyle:UIAlertControllerStyleAlert];
@@ -121,9 +109,7 @@ CityLocationDelegate
     [alertView addAction:cancelAction];
     [alertView addAction:confirmAction];
     
-    [self presentViewController:alertView animated:YES completion:^{
-        
-    }];
+    [self presentViewController:alertView animated:YES completion:nil];
 }
 
 
@@ -168,10 +154,18 @@ CityLocationDelegate
     self.naviBarView.btnHead.badgeLabel.layer.borderWidth = 1.5;
     [self.naviBarView.btnHead.headBtn setBackgroundColor:WHITECOLOR];
     
-    NSInteger badgeNum = 22;
+    NSInteger badgeNum = [serviceUserBaseForm.order_init_num integerValue] +
+                        [serviceUserBaseForm.order_payed_num integerValue] +
+                        [serviceUserBaseForm.order_finish_num integerValue] +
+                        [serviceUserBaseForm.order_commented_num integerValue] +
+                        [serviceUserBaseForm.discount_normal_num integerValue];
+    
     NSString* badgeStr = [NSString stringWithFormat:@"%ld", (long)badgeNum];
     CGSize labelSize = [PUtils calculateTitleSizeWithString:badgeStr AndFontSize:14];
     self.naviBarView.btnHead.badgeLabelWidth.constant = (labelSize.width < 15) ? 20 : (labelSize.width + 10);
+    if (0 == badgeNum) {
+        [self.naviBarView.btnHead.badgeLabel setHidden:YES];
+    }
     [self.naviBarView.btnHead.badgeLabel setText:badgeStr];
 }
 
@@ -267,6 +261,11 @@ CityLocationDelegate
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
 }
 
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -295,7 +294,6 @@ CityLocationDelegate
 
 //返回collectionCell尺寸
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    DLog(@"PJ_SCREEN_WIDTH:%f",PJ_SCREEN_WIDTH);
     int width =  (PJ_SCREEN_WIDTH - 37*2 - 42*2)/3;
     int height = 105;
     return CGSizeMake(width, height);
@@ -369,17 +367,6 @@ CityLocationDelegate
 }
 
 
-- (void)browser:(PJBrowserView *)movieBrowser didEndScrollingAtIndex:(NSInteger)index
-{
-    DLog(@"%ld",index);
-}
-
-- (void)browser:(PJBrowserView *)movieBrowser didChangeItemAtIndex:(NSInteger)index
-{
-    DLog(@"%ld",index);
-}
-
-
 - (void)clickEventCallBack:(nullable id)sender
 {
     UIButton* barButton = (UIButton*)sender;
@@ -389,7 +376,7 @@ CityLocationDelegate
             FSCityLocationController *cityListView = [[FSCityLocationController alloc]init];
             cityListView.delegate = self;
             //热门城市列表
-            NSMutableArray *hotcityAry = [@[@"广州",@"北京",@"天津",@"厦门",@"重庆",@"福州",@"泉州",@"济南",@"深圳",@"长沙",@"无锡"] mutableCopy];
+            NSMutableArray *hotcityAry = [@[@"广州",@"北京",@"天津",@"厦门",@"重庆",@"福州",@"泉州",@"济南"] mutableCopy];
             cityListView.arrayHotCity = hotcityAry;
             //历史选择城市列表
             cityListView.arrayHistoricalCity = [@[@"福州",@"厦门",@"泉州"] mutableCopy];

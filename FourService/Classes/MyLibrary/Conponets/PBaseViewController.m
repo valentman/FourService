@@ -87,7 +87,7 @@ UIGestureRecognizerDelegate
          switch (status)
          {
              case AFNetworkReachabilityStatusUnknown:
-                 DLog(@"未知网络状态");
+//                 DLog(@"未知网络状态");
                  break;
              case AFNetworkReachabilityStatusNotReachable:
                  [PUtils tipWithText:@"请检查网络设置，确保连接网络" andView:nil];
@@ -95,11 +95,11 @@ UIGestureRecognizerDelegate
                  break;
              case AFNetworkReachabilityStatusReachableViaWWAN:
                  _isNetWorkCanReachable = YES;
-                 DLog(@"手机自有网络连接");
+//                 DLog(@"手机自有网络连接");
                  break;
              case AFNetworkReachabilityStatusReachableViaWiFi:
                  _isNetWorkCanReachable = YES;
-                 DLog(@"Wifi连接");
+//                 DLog(@"Wifi连接");
                  break;
              default:
                  break;

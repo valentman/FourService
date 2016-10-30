@@ -42,8 +42,7 @@ NSString* const kMyOpinionVc = @"opinionSBID";
 UITableViewDataSource,
 UITableViewDelegate,
 CZJMyInfoHeadCellDelegate,
-CZJGeneralSubCellDelegate,
-FSMyInfoButtomViewDelegate
+CZJGeneralSubCellDelegate
 >
 {
     NSArray* personalCellAry;               //个人信息下子项数组
@@ -130,7 +129,7 @@ FSMyInfoButtomViewDelegate
     NSMutableDictionary* dict1 = [@{@"title":@"优惠券",
                                     @"buttonImage":@"myInfo_coupon",
                                     @"budge":@"0",
-                                    @"item":@"Customer_comment_num",
+                                    @"item":@"discount_normal_num",
                                     @"segueTo":kMyCouponListVc} mutableCopy];
     NSMutableDictionary* dict2 = [@{@"title":@"收藏",
                                     @"buttonImage":@"myInfo_favorite",
@@ -196,7 +195,7 @@ FSMyInfoButtomViewDelegate
         [FSBaseDataInstance getUserInfo:nil Success:^(id json) {
             
             NSDictionary* dict = [json valueForKey:kResoponData];
-            DLog(@"myINfo:%@",[dict description]);
+
             //服务器返回数据本地化，全部转化为模型数据存储在数组中
             myInfoForm = [UserBaseForm objectWithKeyValues:dict];
             UserBaseForm* identiForm = FSBaseDataInstance.userInfoForm;
@@ -401,13 +400,20 @@ FSMyInfoButtomViewDelegate
             break;
             
         case 2:
-            sbIdentifer = kMyOrderListVc;
-            type = indexPath.row;
-            
+            if ([PUtils isLoginIn:self andNaviBar:nil])
+            {
+                sbIdentifer = kMyOrderListVc;
+                type = indexPath.row;
+            }
             break;
             
         case 3:
             sbIdentifer = [otherCellAry[indexPath.row]valueForKey:@"segueTo"];
+            if (![sbIdentifer isEqualToString:kMySettingVc]) {
+                if (![PUtils isLoginIn:self andNaviBar:nil]) {
+                    return;
+                }
+            }
             break;
             
         default:
@@ -442,16 +448,12 @@ FSMyInfoButtomViewDelegate
 #pragma mark- CZJGeneralSubCellDelegate
 - (void)clickSubCellButton:(UIButton*)button andType:(int)subType
 {
-    _currentTouchOrderListType = button.tag;
-    NSDictionary* dict = personalCellAry[_currentTouchOrderListType - 1];
-    [self myInforShowNextViewController:[dict valueForKey:@"segueTo"]];
-}
-
-
-#pragma mark - FSMyInfoButtomViewDelegate
-- (void)clickButtomBtnCallBack:(id)sender
-{
-    
+    if ([PUtils isLoginIn:self andNaviBar:nil])
+    {
+        _currentTouchOrderListType = button.tag;
+        NSDictionary* dict = personalCellAry[_currentTouchOrderListType - 1];
+        [self myInforShowNextViewController:[dict valueForKey:@"segueTo"]];
+    }
 }
 
 - (void)myInforShowNextViewController:(NSString*)sbIdentifer

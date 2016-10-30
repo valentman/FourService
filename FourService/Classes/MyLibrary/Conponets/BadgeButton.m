@@ -60,7 +60,6 @@
 
 - (void)setBadgeLabelPosition:(CGPoint)pt
 {
-    DLog(@"x:%f,y:%f",pt.x,pt.y);
     [_badgeLabel setPosition:pt atAnchorPoint:CGPointTopRight];
 }
 

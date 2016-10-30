@@ -115,8 +115,6 @@ MXPullDownMenuDelegate
     }
     [YXSpritesLoadingView showWithText:nil andShimmering:NO andBlurEffect:NO];
     [FSBaseDataInstance getStoreList:params type:CZJHomeGetDataFromServerTypeOne success:^(id json) {
-        
-        DLog(@"%@",[json description]);
         [YXSpritesLoadingView dismiss];
         //返回数据
         NSArray* tmpAry = [NSArray array];
@@ -225,15 +223,15 @@ MXPullDownMenuDelegate
     cell.openTimeLabel.text = storeInfoForm.service_time;
     
     //评价分数和单数
-    cell.evaluateScoreLabel.text = @"5.0";
-    cell.totalOrderLabel.text = [NSString stringWithFormat:@"/ %@单",@"300"];
+    cell.evaluateScoreLabel.text = storeInfoForm.shop_score;
+    cell.totalOrderLabel.text = [NSString stringWithFormat:@"/ %@单",storeInfoForm.order_num];
     
     //地址距离
-    cell.storeAddrLabel.text = @"成都市武侯区天仁路388号";
+    cell.storeAddrLabel.text = storeInfoForm.shop_address;
     cell.distanceLabel.text = [NSString stringWithFormat:@"%@km",@"2.9" ];
     
     //门店类型
-    cell.storeTypeLabel.text = @"快修店";
+//    cell.storeTypeLabel.text = storeInfoForm.shop;
     
     //设置支付方式
     [cell setPaymentAvaiable:nil];

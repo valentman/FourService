@@ -155,7 +155,7 @@
          if (placemarks.count > 0) {
              CLPlacemark *placemark = [placemarks objectAtIndex:0];
              
-             DLog(@"%@,%@,%@,%@,%@,%@",placemark.country,placemark.administrativeArea,placemark.locality,placemark.subLocality,placemark.thoroughfare,placemark.subThoroughfare);
+//             DLog(@"%@,%@,%@,%@,%@,%@",placemark.country,placemark.administrativeArea,placemark.locality,placemark.subLocality,placemark.thoroughfare,placemark.subThoroughfare);
              _country = placemark.country;
              _province = placemark.administrativeArea;
              _city = [NSString stringWithFormat:@"%@",placemark.locality];
@@ -206,7 +206,7 @@
          }
      }];
     
-    NSLog(@"%f--%f",newLocation.coordinate.latitude,newLocation.coordinate.longitude);
+//    NSLog(@"%f--%f",newLocation.coordinate.latitude,newLocation.coordinate.longitude);
     [USER_DEFAULT setObject:@(newLocation.coordinate.latitude) forKey:CCLatestLat];
     [USER_DEFAULT setObject:@(newLocation.coordinate.longitude) forKey:CCLatestLon];
     [USER_DEFAULT synchronize];

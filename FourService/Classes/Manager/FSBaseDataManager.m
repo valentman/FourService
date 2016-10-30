@@ -135,7 +135,7 @@ singleton_implementation(FSBaseDataManager);
         [PUtils tipWithText:[dict valueForKey:@"message"] andView:nil];
         return NO;
     }
-    DLog(@"%@",msgKey);
+    DLog(@"%@",[dict[kResoponData] description]);
     return YES;
 }
 

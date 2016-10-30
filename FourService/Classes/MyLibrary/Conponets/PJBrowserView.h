@@ -12,6 +12,7 @@
 @class PJBrowserView;
 
 @protocol PJBrowserDelegate <NSObject>
+@optional
 - (void)browser:(PJBrowserView *)movieBrowser didSelectItemAtIndex:(NSInteger)index;
 - (void)browser:(PJBrowserView *)movieBrowser didEndScrollingAtIndex:(NSInteger)index;
 - (void)browser:(PJBrowserView *)movieBrowser didChangeItemAtIndex:(NSInteger)index;
