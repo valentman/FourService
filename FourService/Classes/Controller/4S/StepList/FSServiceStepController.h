@@ -9,8 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface FSServiceStepController : PBaseViewController
-
-@property (strong, nonatomic) NSString* shopID;
-@property (strong, nonatomic) NSString* serviceID;
-@property (strong, nonatomic) NSString* serviceTypeId;
+@property (strong, nonatomic) FSStoreInfoForm *storeInfoForm;
 @end

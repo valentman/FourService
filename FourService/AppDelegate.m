@@ -135,6 +135,7 @@
     [[CCLocationManager shareLocation] getLocationAndCity:^(CLLocationCoordinate2D locationCorrrdinate, NSString *cityString) {
         CLLocationCoordinate2D location = CLLocationCoordinate2DMake([USER_DEFAULT doubleForKey:CCLastLatitude],[USER_DEFAULT doubleForKey:CCLastLongitude]);
         [FSBaseDataInstance setCurLocation:location];
+        [FSBaseDataInstance setCurCityName:[USER_DEFAULT valueForKey: CCLastCity]];
         if (![cityString isEqualToString:[USER_DEFAULT valueForKey: CCLastCity]])
         {
             [[NSNotificationCenter defaultCenter]postNotificationName:kCZJNotifiNotCurrentCity object:cityString];

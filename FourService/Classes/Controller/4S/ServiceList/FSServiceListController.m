@@ -381,8 +381,8 @@ CityLocationDelegate
             //历史选择城市列表
             cityListView.arrayHistoricalCity = [@[@"福州",@"厦门",@"泉州"] mutableCopy];
             //定位城市列表
-            cityListView.arrayLocatingCity   = [NSMutableArray arrayWithObjects:FSBaseDataInstance.curCityName, nil];
-            
+            cityListView.arrayLocatingCity   = [@[[USER_DEFAULT valueForKey:CCLatestCity]] mutableCopy];
+        
             [self presentViewController:cityListView animated:YES completion:nil];
         }
             break;
@@ -394,7 +394,11 @@ CityLocationDelegate
 
 - (void)didClickedWithCityName:(NSString*)cityName
 {
-    [self.naviBarView.btnMore setTitle:cityName forState:UIControlStateNormal];
+    [USER_DEFAULT setValue:cityName forKey:CCLastCity];
+    [USER_DEFAULT synchronize];
+    currentCityStr = cityName;
+    [self updateCityButton];
+    
 }
 
 @end

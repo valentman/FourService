@@ -58,7 +58,7 @@
                   moduleName = "FourService"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Joe.Pen/Documents/GitCode/FourService/FourService/Classes/Controller/4S/CommitOrder/FSCommitOrderController.m"
-                  timestampString = "499419139.053613"
+                  timestampString = "499624462.529428"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "437"
@@ -73,7 +73,7 @@
                   moduleName = "FourService"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Joe.Pen/Documents/GitCode/FourService/FourService/Classes/Controller/4S/CommitOrder/FSCommitOrderController.m"
-                  timestampString = "499419139.054857"
+                  timestampString = "499624462.531164"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "438"
@@ -208,6 +208,22 @@
             startingLineNumber = "266"
             endingLineNumber = "266"
             landmarkName = "-preferredStatusBarStyle"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FourService/Classes/Controller/4S/StepList/Cells/FSPageCell.m"
+            timestampString = "499619660.82394"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "-awakeFromNib"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

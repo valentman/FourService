@@ -86,8 +86,7 @@ FSProductChangeDelegate
         NSArray* nibArys = @[@"FSServiceStepCell",
                              @"FSServiceStepGoodsCell",
                              @"FSStoreInfoCell",
-                             @"CZJGeneralCell",
-                             @"FSPageCell"];
+                             @"CZJGeneralCell"];
         
         for (id cells in nibArys) {
             UINib *nib=[UINib nibWithNibName:cells bundle:nil];
@@ -99,10 +98,9 @@ FSProductChangeDelegate
 
 - (void)getDataFromServer
 {
-    NSDictionary* params = @{@"shop_service_type_id" : self.serviceID, @"shop_id" : self.shopID};
-    __weak typeof (self) weakSelf = self;
+    NSDictionary* params = @{@"shop_service_type_id" : self.storeInfoForm.shop_service_type_id, @"shop_id" : self.storeInfoForm.shop_id};
+    weaky(self);
     [FSBaseDataInstance getServiceStepList:params success:^(id json) {
-        DLog(@"%@",[json description]);
         NSArray* tmpAry = [json valueForKey:kResoponData];
         _serviceTypeAry = [[FSServiceSegmentTypeForm objectArrayWithKeyValuesArray:tmpAry] mutableCopy];
         [weakSelf dealWithStepAry];
@@ -202,6 +200,11 @@ FSProductChangeDelegate
                 FSStoreInfoCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FSStoreInfoCell" forIndexPath:indexPath];
                 
                 [cell.storeBgImageView sd_setImageWithURL:[NSURL URLWithString:@"https://img7-tuhu-cn.alikunlun.com/Images/Marketing/Shops/c63b293d-f057-4311-bb7a-4c1d35fda13d.jpg@230w_230h_100Q.jpg"]];
+                cell.storeTypeLabel.text = @"";
+                cell.storeNameLabel.text = self.storeInfoForm.shop_name;
+                cell.storeOrderLabel.text = self.storeInfoForm.order_num;
+                cell.evaluateNumLabel.text = self.storeInfoForm.shop_score;
+                cell.evaluateScoreLabel.text = @"";
                 return cell;
             }
         }
@@ -226,12 +229,14 @@ FSProductChangeDelegate
             
         case 2:
         {
-            FSPageCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FSPageCell" forIndexPath:indexPath];
+            FSPageCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FSPageCell"];
             DLog(@"FSPageCell:%@",cell);
-            [cell setTitleArray:_titleArray];
-            [cell setCurrentTouchIndex:_currentSelectIndex];
-            [cell setSeparatorViewHidden:NO];
-            cell.delegate = self;
+            if (!cell) {
+                cell = [[FSPageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"FSPageCell"];
+                [cell setTitleArray:_titleArray];
+                [cell setSeparatorViewHidden:NO];
+                cell.delegate = self;
+            }
             return cell;
         }
             break;
@@ -360,6 +365,7 @@ FSProductChangeDelegate
 {
     NSString* sbIdentifer;
     id senderData;
+    DLog(@"%ld, %ld",indexPath.section,indexPath.row);
     switch (indexPath.section)
     {
         case 0:
@@ -375,6 +381,10 @@ FSProductChangeDelegate
             {
                 [PUtils callHotLine:@"028-86889898" AndTarget:nil];
             }
+            break;
+            
+        case 2:
+            return;
             break;
 
         default:
@@ -470,8 +480,8 @@ FSProductChangeDelegate
     {
         FSCommitOrderController* commitOrder = segue.destinationViewController;
         commitOrder.orderServiceAry = sender;
-        commitOrder.shopId = self.shopID;
-        commitOrder.serviceTypeId =  self.serviceTypeId;
+        commitOrder.shopId = self.storeInfoForm.shop_id;
+        commitOrder.serviceTypeId =  self.storeInfoForm.shop_service_type_id;
     }
 }
 
@@ -502,7 +512,7 @@ FSProductChangeDelegate
     iLog(@"change:%ld, %ld",indexPath.section,indexPath.row);
     FSServiceStepProductForm* stepProduct = ((FSServiceStepForm*)_serviceStepAry[indexPath.section - 3]).product_list[indexPath.row - 1];
     FSProductChangeController* productVC = [[FSProductChangeController alloc] init];
-    productVC.shopId = self.shopID;
+    productVC.shopId = self.storeInfoForm.shop_id;
     productVC.subTypeId = stepProduct.sub_type_id;
     productVC.productItem = stepProduct.product_item_id;
     productVC.delegate = self;

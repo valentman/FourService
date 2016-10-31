@@ -80,8 +80,6 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    _underLineView = [[UIView alloc] init];
-    _underLineView.backgroundColor = RGB(46, 159, 226);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -92,9 +90,9 @@
 
 - (void)setTitleArray:(NSArray *)titleArray
 {
-    [_titleArray removeAllObjects];
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+
     _titleArray = [titleArray mutableCopy];
-    [self removeAllSubViews];
     //获取数量
     NSInteger titleCount = _titleArray.count;
     _segmentWidth = PJ_SCREEN_WIDTH/titleCount;
@@ -107,11 +105,19 @@
         [segview initLabels:_titleArray[i]];
         [segview addTarget:self action:@selector(segmentButtonTouche:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:segview];
-        [self sendSubviewToBack:segview];
     }
-    _underLineView.frame = CGRectMake(0, self.bounds.size.height, _segmentWidth, 2);
-    [self addSubview:_underLineView];
-    [self bringSubviewToFront:_underLineView];
+    self.underLineView.frame = CGRectMake(0, self.bounds.size.height - 2, _segmentWidth, 2);
+}
+
+- (UIView *)underLineView
+{
+    if (!_underLineView)
+    {
+        _underLineView = [[UIView alloc] init];
+        _underLineView.backgroundColor = RGB(46, 159, 226);
+        [self addSubview:_underLineView];
+    }
+    return _underLineView;
 }
 
 - (void)segmentButtonTouche:(UIButton*)sender
@@ -122,7 +128,7 @@
 - (void)moveButtomLine:(NSInteger)index
 {
     [UIView animateWithDuration:0.2 animations:^{
-        _underLineView.frame = CGRectMake(index * _segmentWidth, self.bounds.size.height, _segmentWidth, 2);
+        _underLineView.frame = CGRectMake(index * _segmentWidth, self.bounds.size.height - 2, _segmentWidth, 2);
     } completion:^(BOOL finished) {
         if ([_delegate respondsToSelector:@selector(segmentButtonTouchHandle:)]) {
             [_delegate segmentButtonTouchHandle:index];
