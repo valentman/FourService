@@ -218,9 +218,9 @@ CityLocationDelegate
     
     //carInfoBar
     NSMutableArray* carViewItems = [NSMutableArray array];
-    if (FSBaseDataInstance.userInfoForm.car_list.count > 0)
+    if (serviceUserBaseForm.car_list.count > 0)
     {
-        for (FSCarListForm* carForm in FSBaseDataInstance.userInfoForm.car_list)
+        for (FSCarListForm* carForm in serviceUserBaseForm.car_list)
         {
             FSTopCarInfoBarView* carInfoBarView = [PUtils getXibViewByName:@"FSTopCarInfoBarView"];
             [carInfoBarView.iconImageView sd_setImageWithURL:[NSURL URLWithString:ConnectString(kCZJServerAddr, carForm.icon)] placeholderImage:DefaultPlaceHolderCircle];
@@ -352,8 +352,8 @@ CityLocationDelegate
 - (void)browser:(PJBrowserView *)movieBrowser didSelectItemAtIndex:(NSInteger)index
 {
     DLog(@"%ld",index);
-    if (index < FSBaseDataInstance.userInfoForm.car_list.count) {
-        FSCarListForm* carForm = FSBaseDataInstance.userInfoForm.car_list[index];
+    if (index < serviceUserBaseForm.car_list.count) {
+        FSCarListForm* carForm = serviceUserBaseForm.car_list[index];
         CZJAddMyCarController* addCarVC = (CZJAddMyCarController*)[PUtils getViewControllerFromStoryboard:kCZJStoryBoardFileMain andVCName:@"addMyCarSBID"];
         addCarVC.carForm = carForm;
         [self.navigationController pushViewController:addCarVC animated:YES];

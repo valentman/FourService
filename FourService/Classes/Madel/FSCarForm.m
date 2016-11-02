@@ -14,7 +14,7 @@
     if (self = [super init])
     {
         _carBrandsForms = [NSMutableDictionary dictionary]; //汽车品牌列表信息
-        _carSeries = [NSMutableDictionary dictionary];     //汽车指定品牌车系列表
+        _carSeries = [NSMutableArray array];                //汽车指定品牌车系列表
         _carModels = [NSMutableArray array];                //汽车车型信息列表
         _hotBrands = [NSMutableArray array];
         _haveCarsForms = [NSArray array];
@@ -51,31 +51,19 @@
 - (void)setNewCarSeriesWithDict:(NSDictionary*)dict AndBrandName:(NSString*)brandName
 {
     [_carSeries removeAllObjects];
-    //对车牌数据进行整理
-    NSArray* array = [dict valueForKey:@"msg"];
-//    for (NSDictionary* dict in array) {
-//        CarSeriesForm* Obj = [CarSeriesForm objectWithKeyValues:dict];
-//        
-//        if (_carSeries.count > 0 && [_carSeries objectForKey:Obj.groupName]) {
-//            [[_carSeries objectForKey:Obj.groupName] addObject:Obj];
-//        }else{
-//            NSMutableArray* tmp_series = [NSMutableArray array];
-//            [tmp_series addObject:Obj];
-//            if (Obj.groupName || [Obj.groupName isEqualToString:@" "]) {
-//                [_carSeries setValue:tmp_series forKey:Obj.groupName];
-//            }else{
-//                [_carSeries setValue:tmp_series forKey:brandName];
-//            }
-//            
-//        }
-//    }
+    //对车系数据进行整理
+    NSArray* array = [dict valueForKey:kResoponData];
+    for (NSDictionary* dict in array) {
+        CarSeriesForm* Obj = [CarSeriesForm objectWithKeyValues:dict];
+        [_carSeries addObject:Obj];
+    }
 }
 
 - (void)setNewCarModelsWithDict:(NSDictionary*)dict
 {
     [_carModels removeAllObjects];
-    //对车牌数据进行整理
-    NSArray* array = [dict valueForKey:@"msg"];
+    //对车型数据进行整理
+    NSArray* array = [dict valueForKey:kResoponData];
     for (NSDictionary* dict in array) {
         CarModelForm* form = [CarModelForm objectWithKeyValues:dict];
         [_carModels addObject:form];

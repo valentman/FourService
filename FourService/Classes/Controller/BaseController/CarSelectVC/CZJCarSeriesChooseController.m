@@ -17,6 +17,9 @@
 UITableViewDelegate,
 UITableViewDataSource
 >
+{
+    NSArray *serialAry;
+}
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIImageView *curCarBrandLogo;
 @property (nonatomic, strong) UILabel* curCarBrandName;
@@ -50,8 +53,7 @@ UITableViewDataSource
 
 - (void)initData
 {
-    _carSes = [[FSBaseDataInstance carForm] carSeries];
-    _keys = [_carSes allKeys];
+    serialAry = [[FSBaseDataInstance carForm] carSeries];
 }
 
 
@@ -94,13 +96,11 @@ UITableViewDataSource
 
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [_keys count];
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSString* tmp_key = [_keys objectAtIndex:section];
-    NSArray*  sess = [_carSes objectForKey:tmp_key];
-    return [sess count];
+    return [serialAry count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -114,9 +114,7 @@ UITableViewDataSource
         [nameLabel setTag:1999];
         nameLabel.textAlignment = NSTextAlignmentLeft;
     }
-    NSString* tmp_key = [_keys objectAtIndex:indexPath.section];
-    NSArray*  sess = [_carSes objectForKey:tmp_key];
-    CarSeriesForm* obj = [sess objectAtIndex:indexPath.row];
+    CarSeriesForm* obj = [serialAry objectAtIndex:indexPath.row];
     
     cell.separatorInset = UIEdgeInsetsMake(0, 50, 0, 0);
     
@@ -132,9 +130,7 @@ UITableViewDataSource
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSString* tmp_key = [_keys objectAtIndex:indexPath.section];
-    NSArray*  sess = [_carSes objectForKey:tmp_key];
-    CarSeriesForm* obj = [sess objectAtIndex:indexPath.row];
+    CarSeriesForm* obj = [serialAry objectAtIndex:indexPath.row];
     _currentSelect = obj;
     
     [FSBaseDataInstance setCarSerialForm:obj];

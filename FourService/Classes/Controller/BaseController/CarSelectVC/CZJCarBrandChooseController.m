@@ -48,7 +48,7 @@ UITableViewDelegate
     }
     
     NSInteger width = PJ_SCREEN_WIDTH - (CZJCarListTypeFilter == _carlistType ? kMGLeftSpace  : 0);
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, width, PJ_SCREEN_HEIGHT)];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, width, PJ_SCREEN_HEIGHT - 64)];
     self.tableView.clipsToBounds = YES;
     self.tableView.backgroundColor = CZJTableViewBGColor;
     self.tableView.tableFooterView = [[UIView alloc]init];
@@ -99,12 +99,10 @@ UITableViewDelegate
 
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    DLog();
     return 2 + _keys.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    DLog(@"section:%ld",section)
     if (0 == section)
     {
         if (CZJCarListTypeFilter == _carlistType)
@@ -136,7 +134,6 @@ UITableViewDelegate
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    DLog(@"section:%ld",indexPath.section);
     if (indexPath.section == 0)
     {
         UITableViewCell* cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"SKStableCell"];
@@ -175,7 +172,7 @@ UITableViewDelegate
                 CGRect hotBrandRect = [PUtils viewFrameFromDynamic:CZJMarginMake(15, 10) size:CGSizeMake(40, 55) index:i divide:divide subWidth:subWidth];
                 CZJHotBrandViewCell* hotCell = [PUtils getXibViewByName:@"CZJHotBrandViewCell"];
                 hotCell.frame = hotBrandRect;
-                [hotCell.brandImg sd_setImageWithURL:[NSURL URLWithString:brandForm.icon] placeholderImage:DefaultPlaceHolderSquare];
+                [hotCell.brandImg sd_setImageWithURL:[NSURL URLWithString:ConnectString(kCZJServerAddr, brandForm.icon)] placeholderImage:DefaultPlaceHolderSquare];
                 hotCell.brandName.text = brandForm.car_brand_name;
                 [hotCell.hotBrandBtn setTag:i];
                 [hotCell.hotBrandBtn addTarget:self action:@selector(hotBtnClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -194,7 +191,19 @@ UITableViewDelegate
         
         cell.arrowImg.hidden = YES;
         cell.nameLabel.text = obj.car_brand_name;
-        [cell.headImgView sd_setImageWithURL:[NSURL URLWithString:obj.icon]
+        NSString *userAgent = @"";
+        userAgent = [NSString stringWithFormat:@"%@/%@ (%@; iOS %@; Scale/%0.2f)", [[[NSBundle mainBundle] infoDictionary] objectForKey:(__bridge NSString *)kCFBundleExecutableKey] ?: [[[NSBundle mainBundle] infoDictionary] objectForKey:(__bridge NSString *)kCFBundleIdentifierKey], [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"] ?: [[[NSBundle mainBundle] infoDictionary] objectForKey:(__bridge NSString *)kCFBundleVersionKey], [[UIDevice currentDevice] model], [[UIDevice currentDevice] systemVersion], [[UIScreen mainScreen] scale]];
+        
+        if (userAgent) {
+            if (![userAgent canBeConvertedToEncoding:NSASCIIStringEncoding]) {
+                NSMutableString *mutableUserAgent = [userAgent mutableCopy];
+                if (CFStringTransform((__bridge CFMutableStringRef)(mutableUserAgent), NULL, (__bridge CFStringRef)@"Any-Latin; Latin-ASCII; [:^ASCII:] Remove", false)) {
+                    userAgent = mutableUserAgent;
+                }
+            }
+            [[SDWebImageDownloader sharedDownloader] setValue:userAgent forHTTPHeaderField:@"User-Agent"];
+        }
+        [cell.headImgView sd_setImageWithURL:[NSURL URLWithString:ConnectString(kCZJServerAddr, obj.icon)]
                           placeholderImage:DefaultPlaceHolderSquare
                                  completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL){
                                      
@@ -208,28 +217,6 @@ UITableViewDelegate
         return cell;
     }
     return nil;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForSubRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"UITableViewCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (!cell)
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    
-//    HaveCarsForm* form = (HaveCarsForm*)_haveCars[indexPath.row];
-//    cell.textLabel.text = [NSString stringWithFormat:@"%@",form.brandName];
-//    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:form.logo]
-//                      placeholderImage:DefaultPlaceHolderSquare
-//                             completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL){
-//                                 
-//                             }];
-    cell.textLabel.font = [UIFont systemFontOfSize:14];
-    if (0 == indexPath.row)
-    {
-        cell.textLabel.textColor  = CZJREDCOLOR;
-    }
-    return cell;
 }
 
 
@@ -272,7 +259,7 @@ UITableViewDelegate
             NSInteger row = 0;
             if (_hotBrands.count > 0)
             {
-                row = ceil(_hotBrands.count / divide);
+                row = ceilf((float)_hotBrands.count / (float)divide);
             }
             return (65 + 10) * row;
         }

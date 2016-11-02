@@ -385,7 +385,7 @@ singleton_implementation(FSBaseDataManager);
     };
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setValuesForKeysWithDictionary:_baseParams];
-    [params setObject:brandId forKey:@"brandId"];
+    [params setObject:brandId forKey:@"brand_id"];
     
     [FSNetWorkInstance postJSONWithUrl:kFSServerAPIGetCarModels
                             parameters:params
@@ -412,7 +412,7 @@ singleton_implementation(FSBaseDataManager);
     };
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setValuesForKeysWithDictionary:_baseParams];
-    [params setObject:seriesId forKey:@"seriesId"];
+    [params setObject:seriesId forKey:@"model_id"];
 
     [FSNetWorkInstance postJSONWithUrl:kFSServerAPIGetCarTypes
                             parameters:params
