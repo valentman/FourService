@@ -206,14 +206,14 @@ MXPullDownMenuDelegate
     cell.storeNameLabel.text = storeInfoForm.shop_name;
     
     //折扣价
-    NSString* discountPriceStr = [NSString stringWithFormat:@"￥%@",@"28"];
+    NSString* discountPriceStr = [NSString stringWithFormat:@"￥%@",storeInfoForm.service_discount_price];
     cell.discountPriceLabel.text = discountPriceStr;
     CGSize discountLabelSize = [PUtils calculateTitleSizeWithString:discountPriceStr WithFont:cell.discountPriceLabel.font];
     cell.discoutPriceLabelWidth.constant = discountLabelSize.width;
     cell.discountPriceLabel.keyWord = @"￥";
     
     //原价
-    NSString* originPriceStr = [NSString stringWithFormat:@"￥%@",@"68"];
+    NSString* originPriceStr = [NSString stringWithFormat:@"￥%@",storeInfoForm.service_price];
     cell.originPriceLabel.text = originPriceStr;
     CGSize originLabelSize = [PUtils calculateTitleSizeWithString:originPriceStr WithFont:cell.originPriceLabel.font];
     cell.originPriceLabelWidth.constant = originLabelSize.width;

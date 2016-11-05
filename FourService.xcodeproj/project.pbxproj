@@ -399,6 +399,17 @@
 		EC95ED531D606A63005A50B7 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = EC95ED4A1D606A63005A50B7 /* UIWebView+AFNetworking.m */; };
 		EC95ED5C1D606F89005A50B7 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC95ED591D606F89005A50B7 /* AFHTTPSessionManager.m */; };
 		EC95ED5D1D606F89005A50B7 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC95ED5B1D606F89005A50B7 /* AFURLSessionManager.m */; };
+		EC9DF3D71DCD707200DFD8BA /* CZJQRView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9DF3D41DCD707200DFD8BA /* CZJQRView.m */; };
+		EC9DF3D81DCD707200DFD8BA /* CZJScanQRController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9DF3D61DCD707200DFD8BA /* CZJScanQRController.m */; };
+		EC9DF3DB1DCD910800DFD8BA /* FSPayMentController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9DF3DA1DCD910800DFD8BA /* FSPayMentController.m */; };
+		EC9DF3DE1DCD912E00DFD8BA /* FSConfirmInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9DF3DD1DCD912E00DFD8BA /* FSConfirmInfoController.m */; };
+		EC9DF3E21DCDDF4600DFD8BA /* FSConfirmInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9DF3E01DCDDF4600DFD8BA /* FSConfirmInfoCell.m */; };
+		EC9DF3E31DCDDF4600DFD8BA /* FSConfirmInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC9DF3E11DCDDF4600DFD8BA /* FSConfirmInfoCell.xib */; };
+		EC9DF3E71DCDE28700DFD8BA /* FSDiscountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9DF3E51DCDE28700DFD8BA /* FSDiscountCell.m */; };
+		EC9DF3E81DCDE28700DFD8BA /* FSDiscountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC9DF3E61DCDE28700DFD8BA /* FSDiscountCell.xib */; };
+		EC9DF3F31DCDEE7000DFD8BA /* ALView+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9DF3EB1DCDEE7000DFD8BA /* ALView+PureLayout.m */; };
+		EC9DF3F41DCDEE7000DFD8BA /* NSArray+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9DF3ED1DCDEE7000DFD8BA /* NSArray+PureLayout.m */; };
+		EC9DF3F51DCDEE7000DFD8BA /* NSLayoutConstraint+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9DF3EF1DCDEE7000DFD8BA /* NSLayoutConstraint+PureLayout.m */; };
 		ECA233CE1D37DB78004C2679 /* FSMyInformationController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA233CC1D37DB78004C2679 /* FSMyInformationController.m */; };
 		ECA233D11D37DB91004C2679 /* FSSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA233D01D37DB91004C2679 /* FSSettingController.m */; };
 		ECA233DF1D37DC8F004C2679 /* CZJGeneralCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA233D41D37DC8F004C2679 /* CZJGeneralCell.m */; };
@@ -1206,6 +1217,29 @@
 		EC95ED591D606F89005A50B7 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
 		EC95ED5A1D606F89005A50B7 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		EC95ED5B1D606F89005A50B7 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		EC9DF3D31DCD707200DFD8BA /* CZJQRView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJQRView.h; sourceTree = "<group>"; };
+		EC9DF3D41DCD707200DFD8BA /* CZJQRView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJQRView.m; sourceTree = "<group>"; };
+		EC9DF3D51DCD707200DFD8BA /* CZJScanQRController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJScanQRController.h; sourceTree = "<group>"; };
+		EC9DF3D61DCD707200DFD8BA /* CZJScanQRController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJScanQRController.m; sourceTree = "<group>"; };
+		EC9DF3D91DCD910800DFD8BA /* FSPayMentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPayMentController.h; sourceTree = "<group>"; };
+		EC9DF3DA1DCD910800DFD8BA /* FSPayMentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPayMentController.m; sourceTree = "<group>"; };
+		EC9DF3DC1DCD912E00DFD8BA /* FSConfirmInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSConfirmInfoController.h; sourceTree = "<group>"; };
+		EC9DF3DD1DCD912E00DFD8BA /* FSConfirmInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSConfirmInfoController.m; sourceTree = "<group>"; };
+		EC9DF3DF1DCDDF4600DFD8BA /* FSConfirmInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSConfirmInfoCell.h; sourceTree = "<group>"; };
+		EC9DF3E01DCDDF4600DFD8BA /* FSConfirmInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSConfirmInfoCell.m; sourceTree = "<group>"; };
+		EC9DF3E11DCDDF4600DFD8BA /* FSConfirmInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSConfirmInfoCell.xib; sourceTree = "<group>"; };
+		EC9DF3E41DCDE28700DFD8BA /* FSDiscountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSDiscountCell.h; sourceTree = "<group>"; };
+		EC9DF3E51DCDE28700DFD8BA /* FSDiscountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSDiscountCell.m; sourceTree = "<group>"; };
+		EC9DF3E61DCDE28700DFD8BA /* FSDiscountCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSDiscountCell.xib; sourceTree = "<group>"; };
+		EC9DF3EA1DCDEE7000DFD8BA /* ALView+PureLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALView+PureLayout.h"; sourceTree = "<group>"; };
+		EC9DF3EB1DCDEE7000DFD8BA /* ALView+PureLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALView+PureLayout.m"; sourceTree = "<group>"; };
+		EC9DF3EC1DCDEE7000DFD8BA /* NSArray+PureLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+PureLayout.h"; sourceTree = "<group>"; };
+		EC9DF3ED1DCDEE7000DFD8BA /* NSArray+PureLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+PureLayout.m"; sourceTree = "<group>"; };
+		EC9DF3EE1DCDEE7000DFD8BA /* NSLayoutConstraint+PureLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+PureLayout.h"; sourceTree = "<group>"; };
+		EC9DF3EF1DCDEE7000DFD8BA /* NSLayoutConstraint+PureLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+PureLayout.m"; sourceTree = "<group>"; };
+		EC9DF3F01DCDEE7000DFD8BA /* PureLayout+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PureLayout+Internal.h"; sourceTree = "<group>"; };
+		EC9DF3F11DCDEE7000DFD8BA /* PureLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PureLayout.h; sourceTree = "<group>"; };
+		EC9DF3F21DCDEE7000DFD8BA /* PureLayoutDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PureLayoutDefines.h; sourceTree = "<group>"; };
 		ECA233CB1D37DB78004C2679 /* FSMyInformationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyInformationController.h; sourceTree = "<group>"; };
 		ECA233CC1D37DB78004C2679 /* FSMyInformationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyInformationController.m; sourceTree = "<group>"; };
 		ECA233CF1D37DB91004C2679 /* FSSettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSettingController.h; sourceTree = "<group>"; };
@@ -1681,6 +1715,7 @@
 		EC4597EE1D757960004424A4 /* ServiceList */ = {
 			isa = PBXGroup;
 			children = (
+				EC9DF3D21DCD707200DFD8BA /* Scan */,
 				EC3728C71DB1C24A0035F61E /* CityLocation */,
 				EC4597EF1D757960004424A4 /* Cells */,
 				EC4597FC1D757960004424A4 /* FSServiceListController.h */,
@@ -1921,6 +1956,7 @@
 		EC54272F1D237AC200F3B4BF /* ThirdSDK */ = {
 			isa = PBXGroup;
 			children = (
+				EC9DF3E91DCDEE7000DFD8BA /* PureLayout */,
 				EC0D05401DB7D4E10088B77E /* KSCrash.framework */,
 				EC3728AC1DB1C1F60035F61E /* ZYPinYinSearchLib */,
 				EC3220FD1D77A6BF00E4019C /* AMap3DMap */,
@@ -3027,6 +3063,43 @@
 			name = Serialization;
 			sourceTree = "<group>";
 		};
+		EC9DF3D21DCD707200DFD8BA /* Scan */ = {
+			isa = PBXGroup;
+			children = (
+				EC9DF3D31DCD707200DFD8BA /* CZJQRView.h */,
+				EC9DF3D41DCD707200DFD8BA /* CZJQRView.m */,
+				EC9DF3D51DCD707200DFD8BA /* CZJScanQRController.h */,
+				EC9DF3D61DCD707200DFD8BA /* CZJScanQRController.m */,
+				EC9DF3D91DCD910800DFD8BA /* FSPayMentController.h */,
+				EC9DF3DA1DCD910800DFD8BA /* FSPayMentController.m */,
+				EC9DF3DC1DCD912E00DFD8BA /* FSConfirmInfoController.h */,
+				EC9DF3DD1DCD912E00DFD8BA /* FSConfirmInfoController.m */,
+				EC9DF3DF1DCDDF4600DFD8BA /* FSConfirmInfoCell.h */,
+				EC9DF3E01DCDDF4600DFD8BA /* FSConfirmInfoCell.m */,
+				EC9DF3E11DCDDF4600DFD8BA /* FSConfirmInfoCell.xib */,
+				EC9DF3E41DCDE28700DFD8BA /* FSDiscountCell.h */,
+				EC9DF3E51DCDE28700DFD8BA /* FSDiscountCell.m */,
+				EC9DF3E61DCDE28700DFD8BA /* FSDiscountCell.xib */,
+			);
+			path = Scan;
+			sourceTree = "<group>";
+		};
+		EC9DF3E91DCDEE7000DFD8BA /* PureLayout */ = {
+			isa = PBXGroup;
+			children = (
+				EC9DF3EA1DCDEE7000DFD8BA /* ALView+PureLayout.h */,
+				EC9DF3EB1DCDEE7000DFD8BA /* ALView+PureLayout.m */,
+				EC9DF3EC1DCDEE7000DFD8BA /* NSArray+PureLayout.h */,
+				EC9DF3ED1DCDEE7000DFD8BA /* NSArray+PureLayout.m */,
+				EC9DF3EE1DCDEE7000DFD8BA /* NSLayoutConstraint+PureLayout.h */,
+				EC9DF3EF1DCDEE7000DFD8BA /* NSLayoutConstraint+PureLayout.m */,
+				EC9DF3F01DCDEE7000DFD8BA /* PureLayout+Internal.h */,
+				EC9DF3F11DCDEE7000DFD8BA /* PureLayout.h */,
+				EC9DF3F21DCDEE7000DFD8BA /* PureLayoutDefines.h */,
+			);
+			path = PureLayout;
+			sourceTree = "<group>";
+		};
 		ECA233C91D37DB78004C2679 /* MyInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -3332,6 +3405,7 @@
 				EC54277B1D237DE000F3B4BF /* FSAlertView.xib in Resources */,
 				EC5429A01D237E7700F3B4BF /* wl_map_icon_position.png in Resources */,
 				EC54299E1D237E7700F3B4BF /* wl_map_icon_5.png in Resources */,
+				EC9DF3E31DCDDF4600DFD8BA /* FSConfirmInfoCell.xib in Resources */,
 				EC454D861DA3AD39007E6B3D /* CZJOrderBuildingImagesCell.xib in Resources */,
 				EC54298D1D237E7700F3B4BF /* anjuke_icon_to_position.png in Resources */,
 				EC5429901D237E7700F3B4BF /* anjuke_icon_to_position@2x.png in Resources */,
@@ -3340,6 +3414,7 @@
 				EC5429991D237E7700F3B4BF /* wl_map_icon_1@2x.png in Resources */,
 				ECCEE3911D6C8AAE0034D4F2 /* request_loading_8@2x.png in Resources */,
 				EC4598181D757960004424A4 /* FSTopCarInfoBarView.xib in Resources */,
+				EC9DF3E81DCDE28700DFD8BA /* FSDiscountCell.xib in Resources */,
 				ECDDD4F11D8CE1C8009082DB /* CZJDetailReturnableAnyWayCell.xib in Resources */,
 				ECA233E21D37DC8F004C2679 /* CZJGeneralSubCell.xib in Resources */,
 			);
@@ -3367,6 +3442,7 @@
 				EC542A741D23979500F3B4BF /* NSString+Valid.m in Sources */,
 				EC4448FF1D9A706700E83144 /* CPEvaluateSuccessController.m in Sources */,
 				EC3A18FB1D41F21C00F6F193 /* FSMyCarListController.m in Sources */,
+				EC9DF3D71DCD707200DFD8BA /* CZJQRView.m in Sources */,
 				EC5429B21D237E7700F3B4BF /* MJRefreshHeader.m in Sources */,
 				EC5427821D237DE000F3B4BF /* BadgeButtonView.m in Sources */,
 				EC5427901D237DE000F3B4BF /* PBaseViewController.m in Sources */,
@@ -3400,6 +3476,7 @@
 				EC542A4C1D23802000F3B4BF /* FSWebViewJSI.m in Sources */,
 				EC4598131D757960004424A4 /* FSServiceCell.m in Sources */,
 				EC542AEA1D239B8A00F3B4BF /* AliPayManager.m in Sources */,
+				EC9DF3E21DCDDF4600DFD8BA /* FSConfirmInfoCell.m in Sources */,
 				EC5429AA1D237E7700F3B4BF /* NSObject+MJCoding.m in Sources */,
 				ECDDD4F51D8CE20C009082DB /* FSProductPriceCell.m in Sources */,
 				EC6E89271D7EE7BE00829220 /* FSCommitOrderController.m in Sources */,
@@ -3443,6 +3520,7 @@
 				EC5429641D237E7700F3B4BF /* GTMStackTrace.m in Sources */,
 				EC542AF31D239B8A00F3B4BF /* MD5DataSigner.m in Sources */,
 				EC5429681D237E7700F3B4BF /* IMY_NJKWebViewProgress.m in Sources */,
+				EC9DF3D81DCD707200DFD8BA /* CZJScanQRController.m in Sources */,
 				EC5429F91D237E7700F3B4BF /* NSData+ImageContentType.m in Sources */,
 				EC3728D21DB1C24A0035F61E /* CityButton.m in Sources */,
 				EC18DE961D450CEA006CB460 /* CZJMyCarListCell.m in Sources */,
@@ -3477,6 +3555,7 @@
 				EC54278E1D237DE000F3B4BF /* PBaseTableViewCell.m in Sources */,
 				EC54B6BA1D8068980082E029 /* CZJDeliveryAddrCell.m in Sources */,
 				EC542A031D237E7700F3B4BF /* UIImage+MultiFormat.m in Sources */,
+				EC9DF3E71DCDE28700DFD8BA /* FSDiscountCell.m in Sources */,
 				EC45981A1D757960004424A4 /* FSServiceStepCell.m in Sources */,
 				EC454D8A1DA3AD6E007E6B3D /* FSOrderDetailProductCell.m in Sources */,
 				EC5429D41D237E7700F3B4BF /* PhotoView.m in Sources */,
@@ -3495,6 +3574,9 @@
 				EC5427A11D237E0500F3B4BF /* FSMessageManager.m in Sources */,
 				EC542A3D1D237EF500F3B4BF /* ShareMessage.m in Sources */,
 				EC3728C61DB1C1F60035F61E /* ZYPinYinSearch.m in Sources */,
+				EC9DF3F51DCDEE7000DFD8BA /* NSLayoutConstraint+PureLayout.m in Sources */,
+				EC9DF3F41DCDEE7000DFD8BA /* NSArray+PureLayout.m in Sources */,
+				EC9DF3DB1DCD910800DFD8BA /* FSPayMentController.m in Sources */,
 				EC542A411D237F5E00F3B4BF /* FSDateTime.m in Sources */,
 				EC5429CD1D237E7700F3B4BF /* OpenShare+QQ.m in Sources */,
 				ECD537F51D46523900D136EF /* CZJCarSeriesChooseController.m in Sources */,
@@ -3558,6 +3640,7 @@
 				EC95ED521D606A63005A50B7 /* UIRefreshControl+AFNetworking.m in Sources */,
 				EC1261AE1D4CECB90082378D /* CZJGoodsAttentionCell.m in Sources */,
 				ECDDD4F01D8CE1C8009082DB /* CZJDetailReturnableAnyWayCell.m in Sources */,
+				EC9DF3F31DCDEE7000DFD8BA /* ALView+PureLayout.m in Sources */,
 				EC542A7A1D23979500F3B4BF /* UIViewController+HUD.m in Sources */,
 				EC026F2E1D2B894700CA8CEB /* FSLotteryCell.m in Sources */,
 				EC5429BB1D237E7700F3B4BF /* MJRefreshStateHeader.m in Sources */,
@@ -3597,6 +3680,7 @@
 				EC5429AD1D237E7700F3B4BF /* NSString+MJExtension.m in Sources */,
 				EC1261A41D4CEA700082378D /* FSStoreServiceForm.m in Sources */,
 				EC5429B51D237E7700F3B4BF /* MJRefreshAutoStateFooter.m in Sources */,
+				EC9DF3DE1DCD912E00DFD8BA /* FSConfirmInfoController.m in Sources */,
 				EC5427911D237DE000F3B4BF /* LSPageScrollView.m in Sources */,
 				EC3221161D77A87A00E4019C /* CZJStoreForm.m in Sources */,
 				EC5429FA1D237E7700F3B4BF /* SDImageCache.m in Sources */,

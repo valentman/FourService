@@ -23,6 +23,7 @@
 #import "ValueType.h"
 #import "AFNetworking.h"
 #import "CCLocationManager.h"
+#import "PureLayout.h"
 
 #import "PUtils.h"
 #import "BadgeButton.h"

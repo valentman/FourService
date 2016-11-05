@@ -69,3 +69,12 @@
 @property (strong, nonatomic)NSString* url;
 @property (strong, nonatomic)NSString* weight;
 @end
+
+@interface CZJSCanQRForm : NSObject
+@property (strong, nonatomic) NSString *operationType;  //付款、活动展示、扫描下载App、
+@property (strong, nonatomic) NSString *storeType;      //门店、加油站、4S店，其他
+@property (strong, nonatomic) NSString *storeName;      //门店名称
+@property (strong, nonatomic) NSString *content;        //内容
+@property (strong, nonatomic) NSString *discount;       //评星
+@property (strong, nonatomic) NSString *todo;           //备注信息
+@end

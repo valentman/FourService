@@ -310,6 +310,7 @@ static NSString *const kCZJStoryBoardFileMain = @"Main";
 static NSString *const kCZJStoryBoardIDHomeView = @"homeViewSBID";
 static NSString *const kCZJStoryBoardIDMyInfoView = @"MyInfoSBID";
 static NSString *const kCZJStoryBoardIDStartPage = @"startPageSBID";
+static NSString *const kCZJStoryBoardIDConfirmPay = @"confirmPaySBID";
 static NSString *const kCZJStoryBoardIDGoodsDetailVC = @"goodsDetailSBID";              //商品或服务详情
 static NSString *const kCZJStoryBoardIDStoreDetailVC = @"storeDetailVC";                //门店详情
 static NSString *const kCZJStoryBoardIDPaymentSuccess = @"paymentSuccessSBID";          //订单支付成功

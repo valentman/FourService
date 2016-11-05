@@ -148,25 +148,25 @@ CityLocationDelegate
 
 - (void)updateHeadButton
 {
-    self.naviBarView.btnHead.hidden = NO;
-    [self.naviBarView.btnHead.headBtn addTarget:self action:@selector(clickHeadBtn:) forControlEvents:UIControlEventTouchUpInside];
-    self.naviBarView.btnHead.badgeLabel.layer.borderColor = WHITECOLOR.CGColor;
-    self.naviBarView.btnHead.badgeLabel.layer.borderWidth = 1.5;
-    [self.naviBarView.btnHead.headBtn setBackgroundColor:WHITECOLOR];
-    
-    NSInteger badgeNum = [serviceUserBaseForm.order_init_num integerValue] +
-                        [serviceUserBaseForm.order_payed_num integerValue] +
-                        [serviceUserBaseForm.order_finish_num integerValue] +
-                        [serviceUserBaseForm.order_commented_num integerValue] +
-                        [serviceUserBaseForm.discount_normal_num integerValue];
-    
-    NSString* badgeStr = [NSString stringWithFormat:@"%ld", (long)badgeNum];
-    CGSize labelSize = [PUtils calculateTitleSizeWithString:badgeStr AndFontSize:14];
-    self.naviBarView.btnHead.badgeLabelWidth.constant = (labelSize.width < 15) ? 20 : (labelSize.width + 10);
-    if (0 == badgeNum) {
-        [self.naviBarView.btnHead.badgeLabel setHidden:YES];
-    }
-    [self.naviBarView.btnHead.badgeLabel setText:badgeStr];
+    self.naviBarView.btnScan.hidden = NO;
+//    [self.naviBarView.btnHead.headBtn addTarget:self action:@selector(clickHeadBtn:) forControlEvents:UIControlEventTouchUpInside];
+//    self.naviBarView.btnHead.badgeLabel.layer.borderColor = WHITECOLOR.CGColor;
+//    self.naviBarView.btnHead.badgeLabel.layer.borderWidth = 1.5;
+//    [self.naviBarView.btnHead.headBtn setBackgroundColor:WHITECOLOR];
+//    
+//    NSInteger badgeNum = [serviceUserBaseForm.order_init_num integerValue] +
+//                        [serviceUserBaseForm.order_payed_num integerValue] +
+//                        [serviceUserBaseForm.order_finish_num integerValue] +
+//                        [serviceUserBaseForm.order_commented_num integerValue] +
+//                        [serviceUserBaseForm.discount_normal_num integerValue];
+//    
+//    NSString* badgeStr = [NSString stringWithFormat:@"%ld", (long)badgeNum];
+//    CGSize labelSize = [PUtils calculateTitleSizeWithString:badgeStr AndFontSize:14];
+//    self.naviBarView.btnHead.badgeLabelWidth.constant = (labelSize.width < 15) ? 20 : (labelSize.width + 10);
+//    if (0 == badgeNum) {
+//        [self.naviBarView.btnHead.badgeLabel setHidden:YES];
+//    }
+//    [self.naviBarView.btnHead.badgeLabel setText:badgeStr];
 }
 
 - (void)updateCityButton

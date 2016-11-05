@@ -10,7 +10,7 @@
 //#import "CZJLoginController.h"
 //#import "FourServicepingCartController.h"
 //#import "CZJSearchController.h"
-//#import "CZJScanQRController.h"
+#import "CZJScanQRController.h"
 
 
 @interface PBaseNaviagtionBarView ()<UISearchBarDelegate>
@@ -178,9 +178,9 @@
     //标题
     _mainTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(60, 20, PJ_SCREEN_WIDTH - 120, 44)];
     _mainTitleLabel.font = BOLDSYSTEMFONT(20);
-    _mainTitleLabel.textAlignment = NSTextAlignmentCenter;
     _mainTitleLabel.hidden = YES;
     _mainTitleLabel.textColor = WHITECOLOR;
+    _mainTitleLabel.textAlignment = NSTextAlignmentCenter;
     
     _buttomSeparator = [[UIView alloc]initWithFrame:CGRectMake(0, 63, PJ_SCREEN_WIDTH, 0.5)];
     _buttomSeparator.backgroundColor = CZJNAVIBARBGCOLOR;
@@ -228,7 +228,6 @@
             //只有详情界面不需要导航栏
             [self setBackgroundColor:CLEARCOLOR];
             [_btnBack setHidden:NO];
-//            [_btnShop setHidden:NO];
             [_btnMore setHidden:NO];
             [_customSearchBar setHidden:YES];
             
@@ -242,13 +241,6 @@
             _btnMore.layer.cornerRadius = 20;
             _btnMore.backgroundColor = RGB(230, 230, 230);
             [_btnMore setBackgroundImage:[UIImage imageNamed:@"prodetail_btn_morenor"] forState:UIControlStateNormal];
-
-//            shopBtnImageName = @"prodetail_btn_shopnor";
-//            btnShopRect = CGRectMake(CGRectGetMaxX(_selfBounds) - 112, 2, 40, 40);
-//            _btnShop.frame = btnShopRect;
-//            _btnShop.layer.cornerRadius = 20;
-//            _btnShop.backgroundColor = RGB(230, 230, 230);
-//            [_btnShop setBackgroundImage:[UIImage imageNamed:shopBtnImageName] forState:UIControlStateNormal];
             break;
             
         case CZJNaviBarViewTypeGoodsList:
@@ -279,10 +271,7 @@
             _mainTitleLabel.hidden = NO;
             _mainTitleLabel.font = BOLDSYSTEMFONT(18);
             _mainTitleLabel.textColor = WHITECOLOR;
-            [self setBackgroundColor:CLEARCOLOR];
-            [_btnBack setBackgroundImage:IMAGENAMED(@"scan_icon_back") forState:UIControlStateNormal];
             _btnBack.hidden = NO;
-            [_btnBack setPosition:CGPointMake(15, 0) atAnchorPoint:CGPointZero];
             break;
             
         case CZJNaviBarViewTypeSearch:
@@ -299,8 +288,6 @@
             _btnMore.titleLabel.font = SYSTEMFONT(15);
             [_btnMore setBackgroundImage:NULL forState:UIControlStateNormal];
             [_btnMore setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 8)];
-            
-            
         }
             break;
             
@@ -353,8 +340,8 @@
         {
             if ([PUtils isCameraAvailable:((UIViewController*)_delegate)])
             {
-//                CZJScanQRController* scanVC = (CZJScanQRController*)[PUtils getViewControllerFromStoryboard:kCZJStoryBoardFileMain andVCName:kCZJStoryBoardIDScanQR];
-//                [((UIViewController*)_delegate).navigationController pushViewController:scanVC animated:YES];
+                CZJScanQRController* scanVC = (CZJScanQRController*)[PUtils getViewControllerFromStoryboard:kCZJStoryBoardFileMain andVCName:kCZJStoryBoardIDScanQR];
+                [((UIViewController*)_delegate).navigationController pushViewController:scanVC animated:YES];
             }
         }
             

@@ -24,3 +24,6 @@
 
 @implementation FSHomeAdvertiseForm
 @end
+
+@implementation CZJSCanQRForm
+@end

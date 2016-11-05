@@ -48,6 +48,10 @@
 @property (strong, nonatomic) NSString* service_image;
 @property (strong, nonatomic) NSString* area_id;
 @property (strong, nonatomic) NSString* order_num;
+@property (strong, nonatomic) NSString* comment_num;
+@property (strong, nonatomic) NSString* service_discount;
+@property (strong, nonatomic) NSString* service_price;
+@property (strong, nonatomic) NSString* service_discount_price;
 @property (strong, nonatomic) NSString* shop_score;
 @property (strong, nonatomic) NSString* shop_name;
 @property (strong, nonatomic) NSString* shop_province;

@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="UlC-D3-PYm">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="UlC-D3-PYm">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -2156,6 +2156,96 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZL2-6q-7QK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4712" y="1283"/>
+        </scene>
+        <!--扫一扫-->
+        <scene sceneID="YQa-KH-ndl">
+            <objects>
+                <viewController storyboardIdentifier="scanQRSBID" extendedLayoutIncludesOpaqueBars="YES" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vqR-Pz-eN6" userLabel="扫一扫" customClass="CZJScanQRController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hyL-05-nHV"/>
+                        <viewControllerLayoutGuide type="bottom" id="O7f-mi-fiy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KSW-4V-bvq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lgo-ZU-61V">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="准备ing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZQA-xw-FfG">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="54h-wd-bOt"/>
+                                            <constraint firstAttribute="height" constant="23" id="Vwc-A5-Wsj"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="WoK-M2-5qN">
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" red="0.095122713770000006" green="0.21194224070000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="b37-ix-mYC"/>
+                                            <constraint firstAttribute="height" constant="20" id="f3b-3s-WQY"/>
+                                        </constraints>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="ZQA-xw-FfG" firstAttribute="centerX" secondItem="Lgo-ZU-61V" secondAttribute="centerX" id="0s3-XT-rDr"/>
+                                    <constraint firstItem="WoK-M2-5qN" firstAttribute="centerX" secondItem="ZQA-xw-FfG" secondAttribute="centerX" id="59H-1Z-6d9"/>
+                                    <constraint firstItem="WoK-M2-5qN" firstAttribute="bottom" secondItem="ZQA-xw-FfG" secondAttribute="bottom" constant="30" id="J5w-hE-pur"/>
+                                    <constraint firstItem="ZQA-xw-FfG" firstAttribute="centerY" secondItem="Lgo-ZU-61V" secondAttribute="centerY" id="zah-Xo-hPN"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rsg-mP-jej">
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="rsg-mP-jej" firstAttribute="centerY" secondItem="KSW-4V-bvq" secondAttribute="centerY" id="1FX-uN-2US"/>
+                            <constraint firstItem="rsg-mP-jej" firstAttribute="trailing" secondItem="Lgo-ZU-61V" secondAttribute="trailing" id="BJQ-Kh-Slg"/>
+                            <constraint firstItem="rsg-mP-jej" firstAttribute="leading" secondItem="KSW-4V-bvq" secondAttribute="leading" id="Jm3-Bq-wXi"/>
+                            <constraint firstItem="rsg-mP-jej" firstAttribute="bottom" secondItem="Lgo-ZU-61V" secondAttribute="bottom" id="X8Z-BQ-3TQ"/>
+                            <constraint firstItem="rsg-mP-jej" firstAttribute="leading" secondItem="Lgo-ZU-61V" secondAttribute="leading" id="Y0l-Ys-rKy"/>
+                            <constraint firstItem="Lgo-ZU-61V" firstAttribute="top" secondItem="rsg-mP-jej" secondAttribute="top" id="bCL-us-rih"/>
+                            <constraint firstAttribute="trailing" secondItem="rsg-mP-jej" secondAttribute="trailing" id="cT8-ji-ZxX"/>
+                            <constraint firstItem="Lgo-ZU-61V" firstAttribute="top" secondItem="KSW-4V-bvq" secondAttribute="top" id="uUm-ek-43z"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="w7V-m9-Eht"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
+                    <connections>
+                        <outlet property="indicator" destination="WoK-M2-5qN" id="ozd-BD-IqU"/>
+                        <outlet property="operatorView" destination="rsg-mP-jej" id="L6k-3n-8Os"/>
+                        <outlet property="preView" destination="Lgo-ZU-61V" id="N2W-fj-yWs"/>
+                        <outlet property="readyLabel" destination="ZQA-xw-FfG" id="mVg-In-fDW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nvd-kZ-eAv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="470" y="-16"/>
+        </scene>
+        <!--确认信息-->
+        <scene sceneID="jmH-yx-Ml6">
+            <objects>
+                <viewController storyboardIdentifier="confirmPaySBID" title="确认信息" id="Azr-6j-psz" customClass="FSConfirmInfoController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ufT-cp-7VS"/>
+                        <viewControllerLayoutGuide type="bottom" id="yl5-7U-ww1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xYT-IB-fOn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.97254902124404907" green="0.97254902124404907" blue="0.97254902124404907" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f5q-0n-dT9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1234" y="-16"/>
         </scene>
     </scenes>
     <resources>
