@@ -10,6 +10,7 @@
 #import "CZJGeneralCell.h"
 #import "FSConfirmInfoCell.h"
 #import "FSDiscountCell.h"
+#import "FSPayMentController.h"
 
 @interface FSConfirmInfoController ()
 <UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
@@ -51,13 +52,14 @@
     self.naviBarView.mainTitleLabel.numberOfLines = 2;
     self.naviBarView.mainTitleLabel.textAlignment = NSTextAlignmentCenter;
     
-    
     self.confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.confirmBtn setTitle:@"确认买单" forState:UIControlStateNormal];
     [self.confirmBtn setTitleColor:WHITECOLOR forState:UIControlStateNormal];
     [self.confirmBtn setBackgroundColor:FSBLUECOLOR2];
     self.confirmBtn.layer.cornerRadius = 8;
     self.confirmBtn.clipsToBounds = YES;
+    [self.confirmBtn addTarget:self action:@selector(actionConfirmPay:) forControlEvents:UIControlEventTouchUpInside];
+    self.confirmBtn.enabled = NO;
     
     [self.myTableView reloadData];
 }
@@ -191,6 +193,7 @@
         case 3:
         {
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"confirmCell"];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             if (!cell) {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"confirmCell"];
                 [cell addSubview:self.confirmBtn];
@@ -236,6 +239,13 @@
     return 10;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (0 == indexPath.row && 2 == indexPath.section) {
+        [PUtils tipWithText:@"暂无可用" andView:nil];
+    }
+}
+
 - (void)partAction:(UIButton *)sender
 {
     isPart = !isPart;
@@ -261,6 +271,13 @@
 - (void)updatePrice
 {
     realPaymentPrice = ([originPrice floatValue] - [notPartPrice floatValue]) * discountNum/10;
-    [self.myTableView reloadData];
+    [self.myTableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:2]] withRowAnimation:UITableViewRowAnimationNone];
+    self.confirmBtn.enabled = realPaymentPrice > 0.001;
+}
+
+- (void)actionConfirmPay:(UIButton *)sender
+{
+    FSPayMentController *paymentVC = [[FSPayMentController alloc]init];
+    [self.navigationController pushViewController:paymentVC animated:YES];
 }
 @end

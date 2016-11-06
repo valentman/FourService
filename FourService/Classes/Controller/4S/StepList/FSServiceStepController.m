@@ -98,7 +98,8 @@ FSProductChangeDelegate
 
 - (void)getDataFromServer
 {
-    NSDictionary* params = @{@"shop_service_type_id" : self.storeInfoForm.shop_service_type_id, @"shop_id" : self.storeInfoForm.shop_id};
+    NSDictionary* params = @{@"shop_service_type_id" : self.storeInfoForm.shop_service_type_id, @"shop_id" : self.storeInfoForm.shop_id,
+                             @"service_type_id" : self.storeInfoForm.service_type_id};
     weaky(self);
     [FSBaseDataInstance getServiceStepList:params success:^(id json) {
         NSArray* tmpAry = [json valueForKey:kResoponData];
