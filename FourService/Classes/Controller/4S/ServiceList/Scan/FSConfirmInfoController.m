@@ -173,6 +173,7 @@
             
             
             [cell.buttonNotPart setSelected:isPart];
+            [cell.promptLabel setTextColor:isPart ? FSBLUECOLOR : CZJGRAYCOLOR];
             [cell.buttonNotPart addTarget:self action:@selector(partAction:) forControlEvents:UIControlEventTouchUpInside];
             return cell;
         }
@@ -182,6 +183,7 @@
         {
             FSDiscountCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSDiscountCell" forIndexPath:indexPath];
             cell.discountLabel.text = [NSString stringWithFormat:@"%@折",self.scanQRForm.discount];
+            [cell.choosebutton setSelected:([self.scanQRForm.discount floatValue] > 0.001 && originPrice > 0)] ;
             return cell;
         }
             break;
@@ -290,7 +292,7 @@
 - (void)updatePrice
 {
     realPaymentPrice = ([originPrice floatValue] - [notPartPrice floatValue]) * discountNum/10;
-    [self.myTableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:2]] withRowAnimation:UITableViewRowAnimationNone];
+    [self.myTableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:2], [NSIndexPath indexPathForRow:0 inSection:1]] withRowAnimation:UITableViewRowAnimationNone];
     self.confirmBtn.enabled = realPaymentPrice > 0.001;
     [self.confirmBtn setBackgroundColor:realPaymentPrice > 0.001 ? FSBLUECOLOR : CZJGRAYCOLOR];
 }

@@ -70,12 +70,13 @@
         self.myTableView.tableFooterView = [[UIView alloc]init];
         self.myTableView.delegate = self;
         self.myTableView.dataSource = self;
-        self.myTableView.clipsToBounds = NO;
+        self.myTableView.clipsToBounds = YES;
         self.myTableView.showsVerticalScrollIndicator = NO;
         self.myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.automaticallyAdjustsScrollViewInsets = NO;
         self.myTableView.backgroundColor = CLEARCOLOR;
         [self.view addSubview:self.myTableView];
+        [self.view sendSubviewToBack:self.myTableView];
         
         NSArray* nibArys = @[@"CZJGeneralCell",
                              @"FSOrderDetailNoCell",
