@@ -104,13 +104,13 @@ UIAlertViewDelegate
 //    isHomeview = [views.lastObject isKindOfClass:[CZJHomeViewController class]];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
-{
-    if (!isHomeview)
-    {
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
-    }
-}
+//- (void)viewDidDisappear:(BOOL)animated
+//{
+//    if (!isHomeview)
+//    {
+//        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+//    }
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
