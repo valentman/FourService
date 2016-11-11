@@ -57,6 +57,7 @@ DZNEmptyDataSetDelegate
     
     self.progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
     self.progressView.frame = CGRectMake(0, 64, PJ_SCREEN_WIDTH, 2);
+    [self.progressView setProgressTintColor:FSBLUECOLOR];
     [self.view addSubview:self.progressView];
     
     //URLRequest

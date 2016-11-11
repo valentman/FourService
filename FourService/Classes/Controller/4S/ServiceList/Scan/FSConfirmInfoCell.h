@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *totalPriceLabel;
 @property (weak, nonatomic) IBOutlet UIButton *buttonNotPart;
 @property (weak, nonatomic) IBOutlet UITextField *notPartPriceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *promptLabel;
 
 @end

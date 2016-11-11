@@ -156,8 +156,15 @@ CGSizeEqualToSize(CGSizeMake(1125, 2001), [[UIScreen mainScreen] currentMode].si
 #define FSDisButtonBG UIColorFromHEX(0xBBBBBB,1)
 
 //本项目自定义颜色
-#define FSBLUECOLOR2 RGB (77,181,255)
-#define FSBLUECOLOR RGB(92, 137, 229)
+#define FSBlackColor33 RGB (51, 51, 51)
+#define FSGrayColor66 RGB (102, 102, 102)
+#define FSGrayColor99 RGB (153, 153, 153)
+#define FSGrayColorB9 RGB (185, 185, 185)
+#define FSGrayColorD9 RGB (217, 217, 217)
+#define FSGrayColorEE RGB (238, 238, 238)
+
+#define FSBLUECOLOR RGB(52, 169, 229)
+#define FSDISBLUECOLOR RGB(52, 169, 229)
 #define CZJBLUECOLOR RGB(44, 148, 255)
 #define CZJREDCOLOR RGB(251, 70, 78)
 #define CZJGRAYCOLOR RGB(180, 180, 180)

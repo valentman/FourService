@@ -53,7 +53,7 @@
     self.confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.confirmBtn setTitle:@"立即支付" forState:UIControlStateNormal];
     [self.confirmBtn setTitleColor:WHITECOLOR forState:UIControlStateNormal];
-    [self.confirmBtn setBackgroundColor:FSBLUECOLOR2];
+    [self.confirmBtn setBackgroundColor:FSBLUECOLOR];
     self.confirmBtn.layer.cornerRadius = 8;
     self.confirmBtn.clipsToBounds = YES;
     [self.confirmBtn addTarget:self action:@selector(actionPay:) forControlEvents:UIControlEventTouchUpInside];
@@ -70,12 +70,13 @@
         self.myTableView.tableFooterView = [[UIView alloc]init];
         self.myTableView.delegate = self;
         self.myTableView.dataSource = self;
-        self.myTableView.clipsToBounds = NO;
+        self.myTableView.clipsToBounds = YES;
         self.myTableView.showsVerticalScrollIndicator = NO;
         self.myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.automaticallyAdjustsScrollViewInsets = NO;
         self.myTableView.backgroundColor = CLEARCOLOR;
         [self.view addSubview:self.myTableView];
+        [self.view sendSubviewToBack:self.myTableView];
         
         NSArray* nibArys = @[@"CZJGeneralCell",
                              @"FSOrderDetailNoCell",

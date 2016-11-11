@@ -144,7 +144,7 @@ FSProductChangeDelegate
     }
     _payCell.orderMoneyLabel.text = [NSString stringWithFormat:@"￥%.2f",totalPrice];
     _payCell.orderButton.enabled = YES;
-    [_payCell.orderButton setBackgroundColor:FSBLUECOLOR2];
+    [_payCell.orderButton setBackgroundColor:FSBLUECOLOR];
     if (totalPrice == 0)
     {
         _payCell.orderButton.enabled = NO;

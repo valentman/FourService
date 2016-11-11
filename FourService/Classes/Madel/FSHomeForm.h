@@ -70,6 +70,21 @@
 @property (strong, nonatomic)NSString* weight;
 @end
 
+
+/*
+ {
+ "operationType" : "0",
+ "storeType" : "0",
+ "storeName" : "中石化",
+ "content" :
+ {
+ "gasline" : "93"
+ },
+ "discount" : "8.5",
+ "todo" : "no"
+ }
+ */
+
 @interface CZJSCanQRForm : NSObject
 @property (strong, nonatomic) NSString *operationType;  //付款、活动展示、扫描下载App、
 @property (strong, nonatomic) NSString *storeType;      //门店、加油站、4S店，其他
@@ -78,3 +93,5 @@
 @property (strong, nonatomic) NSString *discount;       //评星
 @property (strong, nonatomic) NSString *todo;           //备注信息
 @end
+
+

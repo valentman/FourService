@@ -32,23 +32,9 @@ UITableViewDataSource
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self addCZJNaviBarViewWithNotHiddenNavi:CZJNaviBarViewTypeGeneral];
-    self.naviBarView.mainTitleLabel.text = @"选择车系";
-    
-    self.view.backgroundColor = CZJNAVIBARBGCOLOR;
-    [self initTableView];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    [FSBaseDataInstance loadCarSeriesWithBrandId:self.carBrand.car_brand_id BrandName:self.carBrand.car_brand_name Success:^(){
-        [self initData];
-        [self.tableView reloadData];
-    } fail:^(){
-        
-    }];
+    [self initData];
+    [self initViews];
+    [self getDataFromServer];
 }
 
 - (void)initData
@@ -56,11 +42,13 @@ UITableViewDataSource
     serialAry = [[FSBaseDataInstance carForm] carSeries];
 }
 
-
-- (void)initTableView
+- (void)initViews
 {
+    self.view.backgroundColor = CZJNAVIBARBGCOLOR;
+    [self addCZJNaviBarViewWithNotHiddenNavi:CZJNaviBarViewTypeGeneral];
+    self.naviBarView.mainTitleLabel.text = @"选择车系";
+    
     NSInteger width = PJ_SCREEN_WIDTH - (CZJCarListTypeFilter == _carlistType ? kMGLeftSpace  : 0);
-
     
     self.topView = [[UIView alloc]initWithFrame:CGRectMake(0, StatusBar_HEIGHT + NavigationBar_HEIGHT, PJ_SCREEN_WIDTH, 64)];
     [self.topView setBackgroundColor:[UIColor whiteColor]];
@@ -83,10 +71,22 @@ UITableViewDataSource
     self.tableView.tableFooterView = [[UIView alloc]init];
     [self.view addSubview:self.tableView];
     
-    [_curCarBrandLogo sd_setImageWithURL:[NSURL URLWithString:self.carBrand.icon]
+    [_curCarBrandLogo sd_setImageWithURL:[NSURL URLWithString:ConnectString(kCZJServerAddr, self.carBrand.icon)]
                         placeholderImage:DefaultPlaceHolderSquare
                                completed:nil];
     _curCarBrandName.text = self.carBrand.car_brand_name;
+}
+
+- (void)getDataFromServer
+{
+    [MBProgressHUD showHUDAddedTo: self.view animated:YES];
+    [FSBaseDataInstance loadCarSeriesWithBrandId:self.carBrand.car_brand_id BrandName:self.carBrand.car_brand_name Success:^(){
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [self initData];
+        [self.tableView reloadData];
+    } fail:^(){
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -113,6 +113,7 @@ UITableViewDataSource
         nameLabel.font = SYSTEMFONT(14);
         [nameLabel setTag:1999];
         nameLabel.textAlignment = NSTextAlignmentLeft;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     CarSeriesForm* obj = [serialAry objectAtIndex:indexPath.row];
     

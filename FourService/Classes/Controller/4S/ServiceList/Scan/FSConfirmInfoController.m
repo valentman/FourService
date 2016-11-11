@@ -11,6 +11,8 @@
 #import "FSConfirmInfoCell.h"
 #import "FSDiscountCell.h"
 #import "FSPayMentController.h"
+#import "FSBaseDataManager.h"
+
 
 @interface FSConfirmInfoController ()
 <UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
@@ -32,6 +34,14 @@
     [super viewDidLoad];
     [self initDatas];
     [self initViews];
+    if (self.payMentUrl)
+    {
+        [self getDataFromServer];
+    }
+    else
+    {
+        [self.myTableView reloadData];
+    }
 }
 
 - (void)initDatas
@@ -55,13 +65,22 @@
     self.confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.confirmBtn setTitle:@"确认买单" forState:UIControlStateNormal];
     [self.confirmBtn setTitleColor:WHITECOLOR forState:UIControlStateNormal];
-    [self.confirmBtn setBackgroundColor:FSBLUECOLOR2];
+    [self.confirmBtn setBackgroundColor:CZJGRAYCOLOR];
     self.confirmBtn.layer.cornerRadius = 8;
     self.confirmBtn.clipsToBounds = YES;
     [self.confirmBtn addTarget:self action:@selector(actionConfirmPay:) forControlEvents:UIControlEventTouchUpInside];
     self.confirmBtn.enabled = NO;
-    
-    [self.myTableView reloadData];
+}
+
+- (void)getDataFromServer
+{
+    [MBProgressHUD showHUDAddedTo: self.view animated:YES];
+    [FSBaseDataInstance directPost:nil success:^(id json) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        [self.myTableView reloadData];
+    } failure:^{
+        
+    } andServerAPI:self.payMentUrl];
 }
 
 - (UITableView*)myTableView
@@ -154,6 +173,7 @@
             
             
             [cell.buttonNotPart setSelected:isPart];
+            [cell.promptLabel setTextColor:isPart ? FSBLUECOLOR : CZJGRAYCOLOR];
             [cell.buttonNotPart addTarget:self action:@selector(partAction:) forControlEvents:UIControlEventTouchUpInside];
             return cell;
         }
@@ -163,6 +183,7 @@
         {
             FSDiscountCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSDiscountCell" forIndexPath:indexPath];
             cell.discountLabel.text = [NSString stringWithFormat:@"%@折",self.scanQRForm.discount];
+            [cell.choosebutton setSelected:([self.scanQRForm.discount floatValue] > 0.001 && originPrice > 0)] ;
             return cell;
         }
             break;
@@ -193,12 +214,12 @@
         case 3:
         {
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"confirmCell"];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             if (!cell) {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"confirmCell"];
                 [cell addSubview:self.confirmBtn];
                 [self.confirmBtn autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(10, 15, 10, 15)];
                 cell.backgroundColor = CLEARCOLOR;
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
             }
             cell.separatorInset = HiddenCellSeparator;
             return cell;
@@ -271,8 +292,9 @@
 - (void)updatePrice
 {
     realPaymentPrice = ([originPrice floatValue] - [notPartPrice floatValue]) * discountNum/10;
-    [self.myTableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:2]] withRowAnimation:UITableViewRowAnimationNone];
+    [self.myTableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:2], [NSIndexPath indexPathForRow:0 inSection:1]] withRowAnimation:UITableViewRowAnimationNone];
     self.confirmBtn.enabled = realPaymentPrice > 0.001;
+    [self.confirmBtn setBackgroundColor:realPaymentPrice > 0.001 ? FSBLUECOLOR : CZJGRAYCOLOR];
 }
 
 - (void)actionConfirmPay:(UIButton *)sender

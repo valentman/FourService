@@ -235,7 +235,15 @@ UIAlertViewDelegate
             NSString* scanStr = metadataObj.stringValue;
             CZJSCanQRForm* scanForm = [[CZJSCanQRForm alloc]init];
             
-            if ([scanStr hasPrefix:@"http://"] || [scanStr hasPrefix:@"https://"])
+            if ([scanStr containsString:@"www.carnettech.com"])
+            {
+                scanForm.operationType = @"0";
+                _isReading = NO;
+                scanForm.storeType = @"4";
+                scanForm.content = scanStr;
+                [self performSelectorOnMainThread:@selector(dealWithQRScanData:) withObject:scanForm waitUntilDone:NO];
+            }
+            else if ([scanStr hasPrefix:@"http://"] || [scanStr hasPrefix:@"https://"])
             {//判断此二维码是网址链接
                 FSWebViewController* webView = (FSWebViewController*)[PUtils getViewControllerFromStoryboard:kCZJStoryBoardFileMain andVCName:@"webViewSBID"];
                 webView.cur_url = scanStr;
@@ -282,6 +290,14 @@ UIAlertViewDelegate
                 break;
                 
             case 3://洗车店
+                break;
+                
+            case 4://链接
+            {
+                FSConfirmInfoController* detailVC = (FSConfirmInfoController*)[PUtils getViewControllerFromStoryboard:kCZJStoryBoardFileMain andVCName:kCZJStoryBoardIDConfirmPay];
+                detailVC.payMentUrl = scanForm.content;
+                [self.navigationController pushViewController:detailVC animated:YES];
+            }
                 break;
                 
             default:
