@@ -144,7 +144,38 @@ singleton_implementation(FSBaseDataManager);
 
 /*/////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////*/
-
+- (void)directPost:(NSDictionary*)postParams
+           success:(SuccessBlockHandler)success
+           failure:(FailureBlockHandler)failure
+      andServerAPI:(NSString*)api
+{
+    SuccessBlockHandler successBlock = ^(id json){
+        if ([self showAlertView:json])
+        {
+            success(json);
+        }
+        else
+        {
+            if (failure)
+                failure();
+        }
+    };
+    
+    FailureBlockHandler failBlock = ^(){
+        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
+        if (failure)
+            failure();
+    };
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setValuesForKeysWithDictionary:self.baseParams];
+    [params setValuesForKeysWithDictionary:postParams];
+    
+    [FSNetWorkInstance postDataWithUrl:api
+                            parameters:postParams
+                               success:successBlock
+                                  fail:failBlock];
+}
 
 - (void)generalPost:(NSDictionary*)postParams
             success:(SuccessBlockHandler)success

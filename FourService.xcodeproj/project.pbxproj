@@ -3220,10 +3220,10 @@
 				ECD537F71D46550100D136EF /* CZJFilterBaseController.m */,
 				ECD537ED1D46523900D136EF /* CZJCarBrandChooseController.h */,
 				ECD537EE1D46523900D136EF /* CZJCarBrandChooseController.m */,
-				ECD537EF1D46523900D136EF /* CZJCarModelChooseController.h */,
-				ECD537F01D46523900D136EF /* CZJCarModelChooseController.m */,
 				ECD537F11D46523900D136EF /* CZJCarSeriesChooseController.h */,
 				ECD537F21D46523900D136EF /* CZJCarSeriesChooseController.m */,
+				ECD537EF1D46523900D136EF /* CZJCarModelChooseController.h */,
+				ECD537F01D46523900D136EF /* CZJCarModelChooseController.m */,
 			);
 			path = CarSelectVC;
 			sourceTree = "<group>";
@@ -3282,7 +3282,7 @@
 				TargetAttributes = {
 					EC7760D51D2223D500E1A89F = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = UG6PG8B3H6;
+						DevelopmentTeam = 27ZN797VLM;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -3850,7 +3850,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = UG6PG8B3H6;
+				DEVELOPMENT_TEAM = 27ZN797VLM;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3891,7 +3891,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = UG6PG8B3H6;
+				DEVELOPMENT_TEAM = 27ZN797VLM;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

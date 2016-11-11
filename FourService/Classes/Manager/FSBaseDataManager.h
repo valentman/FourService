@@ -65,6 +65,11 @@ singleton_interface(FSBaseDataManager);
 
 
 //-------------------------通用接口------------------------------
+- (void)directPost:(NSDictionary*)postParams
+           success:(SuccessBlockHandler)success
+           failure:(FailureBlockHandler)failure
+      andServerAPI:(NSString*)api;
+
 //通用(失败回调带参数)
 - (void)generalPost:(NSDictionary*)postParams
             success:(SuccessBlockHandler)success

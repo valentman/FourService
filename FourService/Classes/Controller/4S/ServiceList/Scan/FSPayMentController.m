@@ -53,7 +53,7 @@
     self.confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.confirmBtn setTitle:@"立即支付" forState:UIControlStateNormal];
     [self.confirmBtn setTitleColor:WHITECOLOR forState:UIControlStateNormal];
-    [self.confirmBtn setBackgroundColor:FSBLUECOLOR2];
+    [self.confirmBtn setBackgroundColor:FSBLUECOLOR];
     self.confirmBtn.layer.cornerRadius = 8;
     self.confirmBtn.clipsToBounds = YES;
     [self.confirmBtn addTarget:self action:@selector(actionPay:) forControlEvents:UIControlEventTouchUpInside];

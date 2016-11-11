@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface FSConfirmInfoController : PBaseViewController
-@property (strong, nonatomic)CZJSCanQRForm *scanQRForm;
+@property (strong, nonatomic) CZJSCanQRForm *scanQRForm;
+@property (strong, nonatomic) NSString *payMentUrl;
 @end

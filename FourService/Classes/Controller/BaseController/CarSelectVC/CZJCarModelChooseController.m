@@ -34,15 +34,9 @@ UITableViewDelegate
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self addCZJNaviBarViewWithNotHiddenNavi:CZJNaviBarViewTypeGeneral];
-    self.naviBarView.mainTitleLabel.text = @"选择车型";
-    
-    [self initTableView];
-    [FSBaseDataInstance loadCarModelSeriesId:[NSString stringWithFormat:@"%@", self.carSeries.car_model_id] Success:^()
-     {
-         [self initData];
-     } fail:^(){}];
+    [self initData];
+    [self initViews];
+    [self getDataFromServer];
 }
 
 - (void)initData
@@ -51,11 +45,13 @@ UITableViewDelegate
     [self.tableView reloadData];
 }
 
-
-- (void)initTableView
+- (void)initViews
 {
+    [self addCZJNaviBarViewWithNotHiddenNavi:CZJNaviBarViewTypeGeneral];
+    self.naviBarView.mainTitleLabel.text = @"选择车型";
+    
     NSInteger width = PJ_SCREEN_WIDTH - (CZJCarListTypeFilter == _carlistType ? kMGLeftSpace  : 0);
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, width, PJ_SCREEN_HEIGHT)];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64 + 64, width, PJ_SCREEN_HEIGHT - 128)];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.clipsToBounds = YES;
@@ -70,7 +66,7 @@ UITableViewDelegate
     //品牌logo
     _curCarBrandLogo = [[UIImageView alloc]initWithFrame:CGRectMake(14,StatusBar_HEIGHT + NavigationBar_HEIGHT + 5, 50 , 50)];
     [self.view addSubview:_curCarBrandLogo];
-    [_curCarBrandLogo sd_setImageWithURL:[NSURL URLWithString:self.carBrand.icon]
+    [_curCarBrandLogo sd_setImageWithURL:[NSURL URLWithString:ConnectString(kCZJServerAddr, self.carBrand.icon)]
                         placeholderImage:DefaultPlaceHolderSquare
                                completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL){
                                    
@@ -97,7 +93,17 @@ UITableViewDelegate
     _curCarSerieName.textAlignment = NSTextAlignmentLeft;
     _curCarSerieName.text = _carSeries.car_model_name;
     [self.view addSubview:_curCarSerieName];
-    
+}
+
+
+- (void)getDataFromServer
+{
+    [MBProgressHUD showHUDAddedTo: self.view animated:YES];
+    [FSBaseDataInstance loadCarModelSeriesId:[NSString stringWithFormat:@"%@", self.carSeries.car_model_id] Success:^()
+     {
+         [MBProgressHUD hideHUDForView:self.view animated:YES];
+         [self initData];
+     } fail:^(){}];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -118,6 +124,7 @@ UITableViewDelegate
         [nameLabel setTag:1999];
         nameLabel.textAlignment = NSTextAlignmentLeft;
         [cell addSubview:nameLabel];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     CarModelForm* obj = [_carModels objectAtIndex:indexPath.row];
     ((UILabel*)VIEWWITHTAG(cell, 1999)).text = obj.car_type_name;

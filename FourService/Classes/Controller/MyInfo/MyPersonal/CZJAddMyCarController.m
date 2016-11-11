@@ -134,9 +134,8 @@ UITextFieldDelegate
     
     if (!_carForm)
     {
-        self.carNameLabel.text = [NSString stringWithFormat:@"%@ %@", FSBaseDataInstance.carBrandForm.car_brand_name,FSBaseDataInstance.carSerialForm.car_model_name];
-        self.carModelLabel.text = FSBaseDataInstance.carModealForm.car_type_name;
-        [self.carBrandImg sd_setImageWithURL:[NSURL URLWithString:FSBaseDataInstance.carBrandForm.icon] placeholderImage:DefaultPlaceHolderSquare];
+        self.carNameLabel.text = [NSString stringWithFormat:@"%@ %@ %@", FSBaseDataInstance.carBrandForm.car_brand_name,FSBaseDataInstance.carSerialForm.car_model_name, FSBaseDataInstance.carModealForm.car_type_name];
+        [self.carBrandImg sd_setImageWithURL:[NSURL URLWithString:ConnectString(kCZJServerAddr, FSBaseDataInstance.carBrandForm.icon)] placeholderImage:DefaultPlaceHolderSquare];
         
         provinceStr = @"川";
         numverPlateStr = @"A";
@@ -145,17 +144,21 @@ UITextFieldDelegate
     else
     {
         self.carNameLabel.text  = [NSString stringWithFormat:@"%@ %@ %@", _carForm.car_brand_name, _carForm.car_model_name, _carForm.car_type_name];
-//        self.carModelLabel.text = _carForm.car_type_name;
-        [self.carBrandImg sd_setImageWithURL:[NSURL URLWithString:FSBaseDataInstance.carBrandForm.icon] placeholderImage:DefaultPlaceHolderSquare];
+        [self.carBrandImg sd_setImageWithURL:[NSURL URLWithString:ConnectString(kCZJServerAddr,_carForm.icon)] placeholderImage:DefaultPlaceHolderSquare];
         NSArray* carNumAry = [_carForm.car_num componentsSeparatedByString:@"-"];
-        self.carPlateNumLabel.text = carNumAry.firstObject;
+        self.carPlateNumLabel.text = [PUtils isBlankString:carNumAry.firstObject] ? @"川A" : carNumAry.firstObject;
         self.plateNumTextField.text = carNumAry.lastObject;
         self.defBtn.selected = _carForm.is_default;
         self.vinCodeTextField.text = _carForm.vin_code;
         self.engineCodeTextField.text = _carForm.engine_code;
-        [self.buyDateBtn setTitle:_carForm.buy_date forState:UIControlStateNormal];
-        [self.productBtn setTitle:_carForm.product_date forState:UIControlStateNormal];
-        [self.maintainDateBtn setTitle:_carForm.maintain_date forState:UIControlStateNormal];
+        
+        [self.buyDateBtn setTitle:_carForm.buy_date ? _carForm.buy_date : @"点击添加" forState:UIControlStateNormal];
+        [self.productBtn setTitle:_carForm.product_date ? _carForm.product_date : @"点击添加" forState:UIControlStateNormal];
+        [self.maintainDateBtn setTitle:_carForm.maintain_date ? _carForm.maintain_date : @"点击添加" forState:UIControlStateNormal];
+        [self.buyDateBtn setTitleColor:_carForm.buy_date ? FSBlackColor33 : FSGrayColor99 forState:UIControlStateNormal];
+        [self.productBtn setTitleColor:_carForm.product_date ? FSBlackColor33 : FSGrayColor99 forState:UIControlStateNormal];
+        [self.maintainDateBtn setTitleColor:_carForm.maintain_date ? FSBlackColor33 : FSGrayColor99 forState:UIControlStateNormal];
+        
     }
     
 }
@@ -206,7 +209,7 @@ UITextFieldDelegate
                                        @"maintain_date":self.maintainDateBtn.titleLabel.text ? self.maintainDateBtn.titleLabel.text : @"0"
                                        } mutableCopy];
     [FSBaseDataInstance addMyCar:carInfo Success:^(id json) {
-        [PUtils tipWithText:@"添加成功" andView:nil];
+        [PUtils tipWithText:_carForm ? @"更新成功" : @"添加成功" andView:nil];
         NSArray* vcs = self.navigationController.viewControllers;
         for (id controller in vcs)
         {
@@ -347,6 +350,7 @@ UITextFieldDelegate
         NSString *destDateString = [dateFormatter stringFromDate:selected];
         [_currentSelectDateBtn setTitle:@"" forState:UIControlStateNormal];
         [_currentSelectDateBtn setTitle:destDateString forState:UIControlStateNormal];
+        [_currentSelectDateBtn setTitleColor:destDateString ? FSBlackColor33 : FSGrayColor99 forState:UIControlStateNormal];
         DLog(@"%@",destDateString);
     }
     [self closeBackgroundView];
