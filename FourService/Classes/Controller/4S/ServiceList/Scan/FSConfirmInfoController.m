@@ -49,6 +49,7 @@
     isPart = NO;
     isDiscount = NO;
     discountNum = [self.scanQRForm.discount floatValue];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldDidChange:) name:UITextFieldTextDidChangeNotification object:nil];
 }
 
 - (void)initViews
@@ -151,11 +152,16 @@
             cell.totalPriceLabel.leftViewMode = UITextFieldViewModeAlways;
             cell.totalPriceLabel.leftView = totalLabel;
             cell.totalPriceLabel.tag = 1001;
-            cell.totalPriceLabel.delegate = self;
-            if ([originPrice floatValue] > 0.001) {
+            if ([originPrice floatValue] > 0.1)
+            {
+                cell.totalPriceLabel.font = BOLDSYSTEMFONT(20);
                 cell.totalPriceLabel.text = [NSString stringWithFormat:@"￥%@",originPrice];
             }
-            
+            else
+            {
+                cell.totalPriceLabel.font = SYSTEMFONT(14);
+                cell.totalPriceLabel.text = @"";
+            }
             
             UILabel *notPartLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 127, 50)];
             notPartLabel.font = SYSTEMFONT(14);
@@ -166,11 +172,16 @@
             cell.notPartPriceLabel.leftViewMode = UITextFieldViewModeAlways;
             cell.notPartPriceLabel.leftView = notPartLabel;
             cell.notPartPriceLabel.tag = 1002;
-            cell.notPartPriceLabel.delegate = self;
-            if ([notPartPrice floatValue] > 0.001) {
+            if ([notPartPrice floatValue] > 0.1)
+            {
+                cell.notPartPriceLabel.font = BOLDSYSTEMFONT(20);
                 cell.notPartPriceLabel.text = [NSString stringWithFormat:@"￥%@",notPartPrice];
             }
-            
+            else
+            {
+                cell.notPartPriceLabel.font = SYSTEMFONT(14);
+                cell.notPartPriceLabel.text = @"";
+            }
             
             [cell.buttonNotPart setSelected:isPart];
             [cell.promptLabel setTextColor:isPart ? FSBLUECOLOR : CZJGRAYCOLOR];
@@ -273,10 +284,34 @@
     [self.myTableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
 }
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+- (void)textFieldDidChange:(NSNotification *)notify
 {
-    NSString* price = [NSString stringWithFormat:@"%@%@",textField.text,string];
+    UITextField * textField = notify.object;
+    NSString* price = [NSString stringWithFormat:@"%@",textField.text];
     DLog(@"1000: %@",price);
+    if (price.length > 0)
+    {
+        textField.font = BOLDSYSTEMFONT(20);
+        if (price.length == 1 && ![price containsString:@"￥"])
+        {
+            textField.text = [NSString stringWithFormat:@"￥%@",price];
+        }
+        else if (price.length == 1 && [price containsString:@"￥"])
+        {
+            textField.text = @"";
+            price = @"";
+            textField.font = SYSTEMFONT(14);
+        }
+    }
+    else
+    {
+       textField.font = SYSTEMFONT(14);
+    }
+    if ([price containsString:@"￥"] && price.length > 1)
+    {
+        price = [price substringFromIndex:1];
+    }
+
     if (textField.tag == 1001)
     {
         originPrice = price;
@@ -286,15 +321,20 @@
         notPartPrice = price;
     }
     [self updatePrice];
-    return YES;
 }
 
 - (void)updatePrice
 {
-    realPaymentPrice = ([originPrice floatValue] - [notPartPrice floatValue]) * discountNum/10;
+    if ([notPartPrice floatValue] > [originPrice floatValue])
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kFSNotifiShowAlertView object:@"优惠金额超出应付金额，这显然不科学"];
+    }
+    float total = ([originPrice floatValue] - [notPartPrice floatValue]);
+    realPaymentPrice = (total > 0 ? total : 0) * discountNum/10;
     [self.myTableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:2], [NSIndexPath indexPathForRow:0 inSection:1]] withRowAnimation:UITableViewRowAnimationNone];
     self.confirmBtn.enabled = realPaymentPrice > 0.001;
     [self.confirmBtn setBackgroundColor:realPaymentPrice > 0.001 ? FSBLUECOLOR : CZJGRAYCOLOR];
+    [self.confirmBtn setTitle:realPaymentPrice > 0.001 ? [NSString stringWithFormat:@"%.2f元 确认买单",realPaymentPrice] : @"确认买单" forState:UIControlStateNormal];
 }
 
 - (void)actionConfirmPay:(UIButton *)sender

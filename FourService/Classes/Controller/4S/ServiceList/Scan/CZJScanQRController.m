@@ -9,10 +9,6 @@
 #import "CZJScanQRController.h"
 #import "CZJQRView.h"
 #import "FSWebViewController.h"
-//#import "CZJDetailViewController.h"
-//#import "CZJStoreDetailController.h"
-//#import "CZJCommitOrderController.h"
-//#import "CZJHomeViewController.h"
 #import "FSBaseDataManager.h"
 #import "FSConfirmInfoController.h"
 
@@ -26,12 +22,15 @@ UIAlertViewDelegate
     AVCaptureSession * _AVSession;
     CGSize transparentArea;
     BOOL isHomeview;
+    
+    __block CZJSCanQRForm* scanForm;
 }
 @property (weak, nonatomic) IBOutlet UIView *preView;
 @property (weak, nonatomic) IBOutlet UIView *operatorView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
 @property (weak, nonatomic) IBOutlet UILabel *readyLabel;
 
+@property (strong, nonatomic) UIButton* btnTorch;
 @property (strong, nonatomic) UILabel* hintLabel;
 @property (strong, nonatomic) UIView* boxView;
 @property (strong, nonatomic) CZJQRView* qrView;
@@ -64,7 +63,8 @@ UIAlertViewDelegate
     _isLighting = NO;
     _dragDown = YES;
     
-    transparentArea = CGSizeMake(200, 200);
+    transparentArea = CGSizeMake(PJ_SCREEN_WIDTH * 0.6, PJ_SCREEN_WIDTH * 0.6);
+    scanForm = [[CZJSCanQRForm alloc]init];
 }
 
 - (void)initViews
@@ -78,17 +78,18 @@ UIAlertViewDelegate
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     
     //打开/关闭闪光灯按钮
-    UIButton* btnTorch = [[ UIButton alloc ]initWithFrame:CGRectMake((PJ_SCREEN_WIDTH - 100)*0.5, PJ_SCREEN_HEIGHT - 150, 100, 100)];
-    [btnTorch setImage:IMAGENAMED(@"scan_icon_light") forState:UIControlStateNormal];
-    [btnTorch setImage:IMAGENAMED(@"scan_icon_light_sel") forState:UIControlStateSelected];
-    [btnTorch addTarget:self action:@selector(openTorch:) forControlEvents:UIControlEventTouchUpInside];
-    [btnTorch setSelected:NO];
-    [_operatorView addSubview:btnTorch];
+    _btnTorch = [[ UIButton alloc ]initWithFrame:CGRectMake((PJ_SCREEN_WIDTH - 100)*0.5, PJ_SCREEN_HEIGHT - 150, 100, 100)];
+    [_btnTorch setImage:IMAGENAMED(@"scan_icon_light") forState:UIControlStateNormal];
+    [_btnTorch setImage:IMAGENAMED(@"scan_icon_light_sel") forState:UIControlStateSelected];
+    [_btnTorch addTarget:self action:@selector(openTorch:) forControlEvents:UIControlEventTouchUpInside];
+    [_btnTorch setSelected:NO];
+    [_operatorView addSubview:_btnTorch];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [_operatorView setHidden:YES];
+    _indicator.hidden = NO;
     [_indicator startAnimating];
 }
 
@@ -97,20 +98,18 @@ UIAlertViewDelegate
     [self startReading];
 }
 
-
 - (void)viewWillDisappear:(BOOL)animated
 {
-//    NSArray* views = self.navigationController.viewControllers;
-//    isHomeview = [views.lastObject isKindOfClass:[CZJHomeViewController class]];
+    AVCaptureDevice * device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    if ([device hasTorch] && [device hasFlash])
+    {
+        [device lockForConfiguration:nil];
+        [device setTorchMode:AVCaptureTorchModeOff];
+        [device setFlashMode:AVCaptureFlashModeOff];
+        _isLighting = NO;
+        [_btnTorch setSelected:NO];
+    }
 }
-
-//- (void)viewDidDisappear:(BOOL)animated
-//{
-//    if (!isHomeview)
-//    {
-//        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
-//    }
-//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -123,9 +122,8 @@ UIAlertViewDelegate
         
         CGRect screenRect = PJ_SCREEN_BOUNDS;
         _qrView = [[CZJQRView alloc] initWithFrame:screenRect];
-        _qrView.transparentArea = CGSizeMake(_preView.bounds.size.width*0.7, _preView.bounds.size.height*0.7*PJ_SCREEN_ASPECTRATIO);
-        
-        _qrView.backgroundColor = [UIColor clearColor];
+        _qrView.transparentArea = transparentArea;
+        _qrView.backgroundColor = CLEARCOLOR;
     }
     return _qrView;
 }
@@ -233,30 +231,7 @@ UIAlertViewDelegate
         {
             [_captureSession stopRunning];
             NSString* scanStr = metadataObj.stringValue;
-            CZJSCanQRForm* scanForm = [[CZJSCanQRForm alloc]init];
-            
-            if ([scanStr containsString:@"www.carnettech.com"])
-            {
-                scanForm.operationType = @"0";
-                _isReading = NO;
-                scanForm.storeType = @"4";
-                scanForm.content = scanStr;
-                [self performSelectorOnMainThread:@selector(dealWithQRScanData:) withObject:scanForm waitUntilDone:NO];
-            }
-            else if ([scanStr hasPrefix:@"http://"] || [scanStr hasPrefix:@"https://"])
-            {//判断此二维码是网址链接
-                FSWebViewController* webView = (FSWebViewController*)[PUtils getViewControllerFromStoryboard:kCZJStoryBoardFileMain andVCName:@"webViewSBID"];
-                webView.cur_url = scanStr;
-                [self.navigationController pushViewController:webView animated:YES];
-            }
-            else
-            {//判断此二维码是预设信息
-                NSDictionary* dict = [PUtils dictionaryFromJsonString:scanStr];
-                scanForm = [CZJSCanQRForm objectWithKeyValues:dict];
-                _isReading = NO;
-                [self performSelectorOnMainThread:@selector(dealWithQRScanData:) withObject:scanForm waitUntilDone:NO];
-            }
-            
+            [self performSelectorOnMainThread:@selector(dealWithQRScanData:) withObject:scanStr waitUntilDone:NO];
         }
     }
 }
@@ -264,9 +239,32 @@ UIAlertViewDelegate
 
 #pragma mark- 开始扫描
 
-- (void)dealWithQRScanData:(CZJSCanQRForm*)scanForm
+- (void)dealWithQRScanData:(NSString*)scanStr
 {
     __block BOOL isOver = YES;
+    
+    if ([scanStr containsString:@"www.carnettech.com"])
+    {
+        scanForm.operationType = @"0";
+        _isReading = NO;
+        scanForm.storeType = @"4";
+        scanForm.content = scanStr;
+    }
+    else if ([scanStr hasPrefix:@"http://"] || [scanStr hasPrefix:@"https://"])
+    {//判断此二维码是网址链接
+        FSWebViewController* webView = (FSWebViewController*)[PUtils getViewControllerFromStoryboard:kCZJStoryBoardFileMain andVCName:@"webViewSBID"];
+        webView.cur_url = scanStr;
+        [self stopReading];
+        [self.navigationController pushViewController:webView animated:YES];
+        return;
+    }
+    else
+    {//判断此二维码是预设信息
+        NSDictionary* dict = [PUtils dictionaryFromJsonString:scanStr];
+        scanForm = [CZJSCanQRForm objectWithKeyValues:dict];
+        _isReading = NO;
+    }
+    
     if ([scanForm.operationType isEqualToString:@"0"])
     {//付款二维码
         switch ([scanForm.storeType integerValue]) {// 0-加油站 1-4S 2-快修店 3-洗车店
@@ -275,6 +273,7 @@ UIAlertViewDelegate
                 FSConfirmInfoController* detailVC = (FSConfirmInfoController*)[PUtils getViewControllerFromStoryboard:kCZJStoryBoardFileMain andVCName:kCZJStoryBoardIDConfirmPay];
                 detailVC.scanQRForm = scanForm;
                 [self.navigationController pushViewController:detailVC animated:YES];
+                isOver = YES;
             }
                 break;
                 
@@ -297,6 +296,7 @@ UIAlertViewDelegate
                 FSConfirmInfoController* detailVC = (FSConfirmInfoController*)[PUtils getViewControllerFromStoryboard:kCZJStoryBoardFileMain andVCName:kCZJStoryBoardIDConfirmPay];
                 detailVC.payMentUrl = scanForm.content;
                 [self.navigationController pushViewController:detailVC animated:YES];
+                isOver = YES;
             }
                 break;
                 

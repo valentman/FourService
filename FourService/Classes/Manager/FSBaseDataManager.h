@@ -90,7 +90,7 @@ singleton_interface(FSBaseDataManager);
                     failure:(FailureBlockHandler)_fail
                      andUrl:(NSString*)_url;
 
-- (void)getAreaInfos;
+//- (void)getAreaInfos;
 
 //-------------------------首页数据------------------------------
 //获取首页数据

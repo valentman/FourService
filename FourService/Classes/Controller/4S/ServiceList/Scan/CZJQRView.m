@@ -18,24 +18,20 @@ static NSTimeInterval kQrLineanimateDuration = 0.02;
 
 
 - (void)layoutSubviews {
-    
     [super layoutSubviews];
     if (!qrLine) {
-        
         [self initQRLine];
-        
         NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:kQrLineanimateDuration target:self selector:@selector(show) userInfo:nil repeats:YES];
         [timer fire];
     }
 }
 
 - (void)initQRLine {
-    
-    
-    CGRect screenBounds = PJ_SCREEN_BOUNDS;
-    qrLine  = [[UIImageView alloc] initWithFrame:CGRectMake(screenBounds.size.width / 2 - self.transparentArea.width / 2, screenBounds.size.height / 2 - self.transparentArea.height / 2 - 50, self.transparentArea.width, 2)];
-    qrLine.image = [UIImage imageNamed:@"scan_img_line"];
-    qrLine.contentMode = UIViewContentModeScaleAspectFill;
+    CGRect qrLineFrame = CGRectMake((PJ_SCREEN_WIDTH - self.transparentArea.width) / 2, (PJ_SCREEN_HEIGHT - self.transparentArea.height) / 2 - 50, self.transparentArea.width, 2);
+    qrLine  = [[UIImageView alloc] initWithFrame:qrLineFrame];
+    [qrLine setTintColor:FSBLUECOLOR];
+    qrLine.image = [[UIImage imageNamed:@"scan_img_line"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    qrLine.contentMode = UIViewContentModeScaleToFill;
     [self addSubview:qrLine];
     qrLineY = qrLine.frame.origin.y;
 }
@@ -105,7 +101,7 @@ static NSTimeInterval kQrLineanimateDuration = 0.02;
     
     //画四个边角
     CGContextSetLineWidth(ctx, 2);
-    CGContextSetRGBStrokeColor(ctx, 255 /255.0, 102/255.0, 102/255.0, 1);//红色
+    CGContextSetRGBStrokeColor(ctx, 52 /255.0, 169/255.0, 229/255.0, 1);//红色
     
     //左上角
     CGPoint poinsTopLeftA[] = {

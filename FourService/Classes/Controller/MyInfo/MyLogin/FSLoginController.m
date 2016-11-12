@@ -49,6 +49,7 @@ FDAlertViewDelegate
 @property (weak, nonatomic) IBOutlet UILabel *daojishiLab;
 @property (weak, nonatomic) IBOutlet UIButton *isPasswordTypeBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *imageCode;
+@property (weak, nonatomic) IBOutlet UIButton *exitButton;
 
 
 - (IBAction)loginWithCodeAction:(id)sender;
@@ -86,12 +87,6 @@ FDAlertViewDelegate
     self.pwdTextField.assistantHeight = 50;
     self.codeTextField.assistantHeight = 50;
     
-    [self.agreeProtocolBtn setImage:[UIImage imageNamed:@"login_icon_select_sel"] forState:UIControlStateSelected];
-    [self.agreeProtocolBtn setImage:[UIImage imageNamed:@"login_icon_select"] forState:UIControlStateNormal];
-    
-    [self.isPasswordTypeBtn setImage:[UIImage imageNamed:@"login_btn_eye_on"] forState:UIControlStateSelected];
-    [self.isPasswordTypeBtn setImage:[UIImage imageNamed:@"login_btn_eye_off"] forState:UIControlStateNormal];
-    
     [self.agreeProtocolBtn setSelected:YES];
     [self.isPasswordTypeBtn setSelected:NO];
     
@@ -110,7 +105,6 @@ FDAlertViewDelegate
     
     self.confirmBtn.enabled = NO;
     self.confirmBtn.backgroundColor = [UIColor lightGrayColor];
-    
     
     loginViewOriginRect = self.loginBtnView.frame;
 }
@@ -158,7 +152,7 @@ FDAlertViewDelegate
     {
         [self.codePrompt setHidden:YES];
         self.confirmBtn.enabled = YES;
-        [self.confirmBtn setBackgroundColor:CZJREDCOLOR];
+        [self.confirmBtn setBackgroundColor:FSBLUECOLOR];
     }
 }
 
@@ -190,7 +184,7 @@ FDAlertViewDelegate
     {
         [self.pwdPrompt setHidden:YES];
         self.confirmBtn.enabled = YES;
-        [self.confirmBtn setBackgroundColor:CZJREDCOLOR];
+        [self.confirmBtn setBackgroundColor:FSBLUECOLOR];
     }
 }
 
@@ -353,7 +347,6 @@ FDAlertViewDelegate
             failBlock();
         }
     }
-    
 }
 
 
@@ -442,7 +435,7 @@ FDAlertViewDelegate
             {
                 [self.pwdPrompt setHidden:YES];
                 self.confirmBtn.enabled = YES;
-                [self.confirmBtn setBackgroundColor:CZJREDCOLOR];
+                [self.confirmBtn setBackgroundColor:FSBLUECOLOR];
             }
             break;
             
@@ -460,7 +453,7 @@ FDAlertViewDelegate
             {
                 [self.codePrompt setHidden:YES];
                 self.confirmBtn.enabled = YES;
-                [self.confirmBtn setBackgroundColor:CZJREDCOLOR];
+                [self.confirmBtn setBackgroundColor:FSBLUECOLOR];
             }
             break;
             
@@ -490,7 +483,7 @@ FDAlertViewDelegate
             {
                 [self.pwdPrompt setHidden:YES];
                 self.confirmBtn.enabled = YES;
-                [self.confirmBtn setBackgroundColor:CZJREDCOLOR];
+                [self.confirmBtn setBackgroundColor:FSBLUECOLOR];
             }
             break;
             
@@ -508,7 +501,7 @@ FDAlertViewDelegate
             {
                 [self.codePrompt setHidden:YES];
                 self.confirmBtn.enabled = YES;
-                [self.confirmBtn setBackgroundColor:CZJREDCOLOR];
+                [self.confirmBtn setBackgroundColor:FSBLUECOLOR];
             }
             break;
             

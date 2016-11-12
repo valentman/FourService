@@ -65,12 +65,16 @@ FDAlertViewDelegate
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageCode;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *confirmBtnTop;
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
+@property (weak, nonatomic) IBOutlet UIButton *exitButton;
+
 
 - (IBAction)getCodeAction:(id)sender;
 - (IBAction)confirmAction:(id)sender;
 - (IBAction)backAction:(id)sender;
 - (IBAction)exitAction:(id)sender;
 - (IBAction)isSecurityPwdAction:(id)sender;
+
 
 @end
 
@@ -102,18 +106,12 @@ FDAlertViewDelegate
     self.pwdTextField.secureTextEntry = YES;
     self.repeatPwdTextField.secureTextEntry = YES;
     
-    [self.isPasswordTypeBtn setImage:[UIImage imageNamed:@"login_btn_eye_on"] forState:UIControlStateSelected];
-    [self.isPasswordTypeBtn setImage:[UIImage imageNamed:@"login_btn_eye_off"] forState:UIControlStateNormal];
     [self.isPasswordTypeBtn setSelected:NO];
-    [self.isRePasswordTypeBtn setImage:[UIImage imageNamed:@"login_btn_eye_on"] forState:UIControlStateSelected];
-    [self.isRePasswordTypeBtn setImage:[UIImage imageNamed:@"login_btn_eye_off"] forState:UIControlStateNormal];
     [self.isRePasswordTypeBtn setSelected:NO];
     
     [self.confirmBtn setEnabled:YES];
     self.confirmBtn.backgroundColor = [UIColor lightGrayColor];
-    
-    [self.agreeProtocolBtn setImage:[UIImage imageNamed:@"login_icon_select_sel"] forState:UIControlStateSelected];
-    [self.agreeProtocolBtn setImage:[UIImage imageNamed:@"login_icon_select"] forState:UIControlStateNormal];
+
     [self.agreeProtocolBtn setSelected:YES];
     
     
@@ -309,10 +307,15 @@ FDAlertViewDelegate
     }
 }
 
-- (IBAction)isSecurityPwdAction:(id)sender {
-    BOOL flag = self.isPasswordTypeBtn.isSelected;
-    [self.isPasswordTypeBtn setSelected:!flag];
-    self.pwdTextField.secureTextEntry = flag;
+- (IBAction)isSecurityPwdAction:(UIButton *)sender {
+    BOOL flag = sender.isSelected;
+    [sender setSelected:!flag];
+    if (sender.tag == 0) {
+        self.pwdTextField.secureTextEntry = flag;
+    }
+    if (sender.tag == 1) {
+        self.repeatPwdTextField.secureTextEntry = flag;
+    }
 }
 
 - (void)showAlert:(NSString*)str{
@@ -463,7 +466,7 @@ FDAlertViewDelegate
                 [self.view layoutIfNeeded];
             } completion:^(BOOL finished) {
                 [self.confirmBtn setEnabled:YES];
-                self.confirmBtn.backgroundColor = CZJREDCOLOR;
+                self.confirmBtn.backgroundColor = FSBLUECOLOR;
             }];
             
 //            self.phoneNumTextField.enabled = NO;

@@ -23,10 +23,31 @@
 #import <KSCrash/KSCrashInstallationStandard.h>
 
 @interface AppDelegate ()<UIActionSheetDelegate>
-
+@property (strong, nonatomic) __block UIView* notifyView;
 @end
 
 @implementation AppDelegate
+
+- (void)initNotifyView
+{
+    _notifyView = [[UIView alloc]initWithFrame:CGRectMake(0, -64, PJ_SCREEN_WIDTH, 64)];
+    _notifyView.backgroundColor = CZJREDCOLOR;
+    _notifyView.alpha = 0.9;
+    UISwipeGestureRecognizer* downGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipToHideNotifyView:)];
+    [downGesture setDirection:UISwipeGestureRecognizerDirectionUp];
+    [_notifyView addGestureRecognizer:downGesture];
+    UILabel* notifyLabel = [[UILabel alloc]initWithFrame:CGRectMake(15, 27, PJ_SCREEN_WIDTH - 30, 35)];
+    notifyLabel.tag = 1001;
+    notifyLabel.textColor = WHITECOLOR;
+    notifyLabel.textAlignment = NSTextAlignmentLeft;
+    notifyLabel.font = SYSTEMFONT(14);
+    notifyLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+    notifyLabel.numberOfLines = 2;
+    [_notifyView addSubview:notifyLabel];
+    [self.window addSubview:_notifyView];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showNotifyView:) name:kFSNotifiShowAlertView object:nil];
+}
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -158,10 +179,12 @@
     [KMCGeigerCounter sharedGeigerCounter].enabled = YES;
     
     //-------------------10.崩溃收集接口---------------
-//    KSCrashInstallationStandard* installation = [KSCrashInstallationStandard sharedInstance];
-//    installation.url = [NSURL URLWithString:@"https://collector.bughd.com/kscrash?key=70f8d3e70188d1c35b61464f5fc77329"];
-//    [installation install];
-//    [installation sendAllReportsWithCompletion:nil];
+    KSCrashInstallationStandard* installation = [KSCrashInstallationStandard sharedInstance];
+    installation.url = [NSURL URLWithString:@"https://collector.bughd.com/kscrash?key=70f8d3e70188d1c35b61464f5fc77329"];
+    [installation install];
+    [installation sendAllReportsWithCompletion:nil];
+    
+    [self initNotifyView];
     
     return YES;
 }
@@ -299,6 +322,34 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     
+}
+
+#pragma mark- LocalNotification
+//显示通知条
+- (void)showNotifyView:(NSNotification *)notification
+{
+    ((UILabel*)VIEWWITHTAG(_notifyView, 1001)).text = notification.object;
+    [UIView animateWithDuration:0.5 animations:^{
+        _notifyView.frame = CGRectMake(0, 0, PJ_SCREEN_WIDTH, 64);
+    } completion:^(BOOL finished) {
+        if (finished)
+        {
+            [self performSelector:@selector(hideNotifyView) withObject:nil afterDelay:4];
+        }
+    }];
+}
+
+- (void)swipToHideNotifyView:(UIGestureRecognizer*)gestture
+{
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(hideNotifyView) object:nil];
+    [self hideNotifyView];
+}
+
+- (void)hideNotifyView
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        _notifyView.frame = CGRectMake(0, -64, PJ_SCREEN_WIDTH, 64);
+    }];
 }
 
 @end

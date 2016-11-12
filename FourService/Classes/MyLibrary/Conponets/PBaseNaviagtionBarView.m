@@ -263,7 +263,6 @@
             _mainTitleLabel.hidden = NO;
             _mainTitleLabel.font = BOLDSYSTEMFONT(18);
             _btnBack.hidden = NO;
-            _buttomSeparator.hidden = NO;
             break;
             
         case CZJNaviBarViewTypeScan:

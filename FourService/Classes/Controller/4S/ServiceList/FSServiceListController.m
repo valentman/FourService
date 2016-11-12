@@ -173,10 +173,11 @@ CityLocationDelegate
 {
     [self.naviBarView.btnMore setTitle:currentCityStr forState:UIControlStateNormal];
     CGSize citySize = [PUtils calculateTitleSizeWithString:currentCityStr AndFontSize:14];
-    [self.naviBarView.btnMore setSize:CGSizeMake(citySize.width + 20, 44)];
-    self.naviBarView.btnMore.frame = CGRectMake(PJ_SCREEN_WIDTH - citySize.width - 20 - 15, 20, citySize.width + 20, 44);
+    NSInteger cityWidth = (citySize.width + 20) > (PJ_SCREEN_WIDTH/2 - 60) ? (PJ_SCREEN_WIDTH/2 - 60) : (citySize.width + 20);
+    [self.naviBarView.btnMore setSize:CGSizeMake(cityWidth, 44)];
+    self.naviBarView.btnMore.frame = CGRectMake(PJ_SCREEN_WIDTH - cityWidth - 15, 20, cityWidth, 44);
     
-    CAShapeLayer *trangle = [PUtils creatIndicatorWithColor:WHITECOLOR andPosition:CGPointMake(citySize.width + 15, 23)];
+    CAShapeLayer *trangle = [PUtils creatIndicatorWithColor:WHITECOLOR andPosition:CGPointMake(cityWidth - 5, 23)];
     [self.naviBarView.btnMore.layer removeShapeSubLayer];
     [self.naviBarView.btnMore.layer addSublayer:trangle];
 }
@@ -372,7 +373,9 @@ CityLocationDelegate
             //历史选择城市列表
             cityListView.arrayHistoricalCity = [@[@"福州",@"厦门",@"泉州"] mutableCopy];
             //定位城市列表
-            cityListView.arrayLocatingCity   = [@[[USER_DEFAULT valueForKey:CCLatestCity]] mutableCopy];
+            NSString *locationCity = [USER_DEFAULT valueForKey:CCLatestCity] ? [USER_DEFAULT valueForKey:CCLatestCity] : @"成都";
+            
+            cityListView.arrayLocatingCity   = [@[locationCity] mutableCopy];
         
             [self presentViewController:cityListView animated:YES completion:nil];
         }

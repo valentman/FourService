@@ -106,7 +106,7 @@ CZJGeneralSubCellDelegate
 
 - (void)viewDidLayoutSubviews
 {
-    self.myTableView.frame = CGRectMake(0, 0, self.view.size.width, PJ_SCREEN_HEIGHT - Tabbar_HEIGHT);
+    self.myTableView.frame = CGRectMake(0, 0, self.view.size.width, PJ_SCREEN_HEIGHT);
 }
 
 - (void)initDatas
@@ -168,7 +168,7 @@ CZJGeneralSubCellDelegate
     self.myTableView.tableFooterView = [[UIView alloc]init];
     self.myTableView.delegate = self;
     self.myTableView.dataSource = self;
-    self.myTableView.clipsToBounds = NO;
+    self.myTableView.clipsToBounds = YES;
     self.myTableView.showsVerticalScrollIndicator = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.myTableView.backgroundColor = CLEARCOLOR;
