@@ -10,7 +10,7 @@
 
 @interface CZJMyInfoHeadCell ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *userHeadImg;
+
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userPhoneLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *bgImage;
@@ -32,9 +32,7 @@
     [self.userPhoneLabel.layer setMasksToBounds:YES];
     self.haveLoginView.hidden = YES;
     self.unLoginView.hidden = NO;
-//    self.infoHeadBg.hidden = YES;
     self.userHeadImg.hidden = NO;
-    // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -47,7 +45,6 @@
 {
     self.haveLoginView.hidden = NO;
     self.unLoginView.hidden = YES;
-//    self.infoHeadBg.hidden = NO;
     self.userHeadImg.hidden = NO;
     self.userNameLabel.text = [PUtils isBlankString:userinfo.chinese_name] ? @"昵称" : userinfo.chinese_name;
     self.userPhoneLabel.text = userinfo.customer_pho;

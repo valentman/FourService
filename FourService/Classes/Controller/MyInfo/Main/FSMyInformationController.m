@@ -75,6 +75,7 @@ CZJGeneralSubCellDelegate
 
 - (void)reloadTableView
 {
+    [self resetOrderData];
     [self.myTableView reloadData];
 }
 
@@ -238,6 +239,18 @@ CZJGeneralSubCellDelegate
     }
 }
 
+- (void)resetOrderData
+{
+    for (NSMutableDictionary* orderDict in orderSubCellAry)
+    {
+        [orderDict setValue:@"0" forKey:@"budge"];
+    }
+    for (NSDictionary* walletDict in personalCellAry)
+    {
+        [walletDict setValue:@"0" forKey:@"budge"];
+    }
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -275,7 +288,7 @@ CZJGeneralSubCellDelegate
             CZJMyInfoHeadCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJMyInfoHeadCell" forIndexPath:indexPath];
             cell.unLoginView.hidden = [USER_DEFAULT boolForKey:kCZJIsUserHaveLogined];
             cell.haveLoginView.hidden = ![USER_DEFAULT boolForKey:kCZJIsUserHaveLogined];
-            
+            [cell.userHeadImg setImage:[USER_DEFAULT boolForKey:kCZJIsUserHaveLogined] ? nil : IMAGENAMED(@"personal_icon_head")];
             if (FSBaseDataInstance.userInfoForm && [USER_DEFAULT boolForKey:kCZJIsUserHaveLogined])
             {
                 [cell setUserPersonalInfo:myInfoForm andDefaultCar:defaultCar];

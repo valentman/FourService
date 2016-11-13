@@ -55,16 +55,16 @@ UITableViewDelegate
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.clipsToBounds = YES;
-    UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,80)];
-    self.tableView.tableFooterView = v;
+    self.tableView.tableFooterView = [[UIView alloc]init];
     [self.view addSubview:self.tableView];
     
+    //顶部汽车品牌图标和名称
     self.topView = [[UIView alloc]initWithFrame:CGRectMake(0, StatusBar_HEIGHT + NavigationBar_HEIGHT, PJ_SCREEN_WIDTH, 64)];
     [self.topView setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:self.topView];
     
     //品牌logo
-    _curCarBrandLogo = [[UIImageView alloc]initWithFrame:CGRectMake(14,StatusBar_HEIGHT + NavigationBar_HEIGHT + 5, 50 , 50)];
+    _curCarBrandLogo = [[UIImageView alloc]initWithFrame:CGRectMake(14,StatusBar_HEIGHT + NavigationBar_HEIGHT + 5, 54 , 54)];
     [self.view addSubview:_curCarBrandLogo];
     [_curCarBrandLogo sd_setImageWithURL:[NSURL URLWithString:ConnectString(kCZJServerAddr, self.carBrand.icon)]
                         placeholderImage:DefaultPlaceHolderSquare
@@ -73,7 +73,7 @@ UITableViewDelegate
                                }];
     
     //品牌名
-    _curCarBrandName = [[UILabel alloc]initWithFrame:CGRectMake(80,StatusBar_HEIGHT + NavigationBar_HEIGHT + 20, 200 , 21)];
+    _curCarBrandName = [[UILabel alloc]initWithFrame:CGRectMake(80,StatusBar_HEIGHT + NavigationBar_HEIGHT + 20, 200 , 24)];
     _curCarBrandName.textColor = [UIColor grayColor];
     _curCarBrandName.font = [UIFont systemFontOfSize:16];
     _curCarBrandName.textAlignment = NSTextAlignmentLeft;
@@ -82,12 +82,12 @@ UITableViewDelegate
     
     //箭头
     CGSize titleSize = [PUtils calculateTitleSizeWithString:self.carBrand.car_brand_name AndFontSize:16];
-    _nextArrowImg = [[UIImageView alloc]initWithFrame:CGRectMake(80 + titleSize.width+ 5, StatusBar_HEIGHT + NavigationBar_HEIGHT + 26, 5, 10)];
+    _nextArrowImg = [[UIImageView alloc]initWithFrame:CGRectMake(80 + titleSize.width+ 5, StatusBar_HEIGHT + NavigationBar_HEIGHT + 27, 5, 10)];
     [_nextArrowImg setImage:[UIImage imageNamed:@"all_arrow_next"]];
     [self.view addSubview:_nextArrowImg];
     
     //车系名
-    _curCarSerieName = [[UILabel alloc]initWithFrame:CGRectMake(80 + titleSize.width+ 15, StatusBar_HEIGHT + NavigationBar_HEIGHT + 20, 200 , 21)];
+    _curCarSerieName = [[UILabel alloc]initWithFrame:CGRectMake(80 + titleSize.width+ 15, StatusBar_HEIGHT + NavigationBar_HEIGHT + 20, 200 , 24)];
     _curCarSerieName.textColor = [UIColor grayColor];
     _curCarSerieName.font = [UIFont systemFontOfSize:16];
     _curCarSerieName.textAlignment = NSTextAlignmentLeft;
@@ -118,7 +118,7 @@ UITableViewDelegate
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CarModelCellIdentifierID];
     if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CarModelCellIdentifierID];
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CarModelCellIdentifierID];
         UILabel* nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(50, 16, PJ_SCREEN_WIDTH - 75, 18)];
         nameLabel.font = SYSTEMFONT(14);
         [nameLabel setTag:1999];

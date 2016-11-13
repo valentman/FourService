@@ -11,7 +11,7 @@
 #import "ButtonGroupView.h"
 #import "PinYinForObjc.h"
 #define KSectionIndexBackgroundColor  [UIColor clearColor] //索引试图未选中时的背景颜色
-#define kSectionIndexTrackingBackgroundColor [UIColor lightGrayColor]//索引试图选中时的背景
+#define kSectionIndexTrackingBackgroundColor [UIColor clearColor]//索引试图选中时的背景
 #define kSectionIndexColor [UIColor grayColor]//索引试图字体颜色
 #define HotBtnColumns 3 //每行显示的热门城市数
 #define BGCOLOR [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1]
@@ -275,13 +275,6 @@ UITableViewDataSource
     
     //获取当前屏幕window
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    //添加黑色透明背景
-    //    if (!_bgImageView) {
-    //        _bgImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, window.frame.size.width, window.frame.size.height)];
-    //        _bgImageView.backgroundColor = [UIColor blackColor];
-    //        _bgImageView.alpha = 0.1;
-    //        [window addSubview:_bgImageView];
-    //    }
     if (!_tipsView) {
         //添加字母提示框
         _tipsView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 80, 80)];
@@ -306,15 +299,8 @@ UITableViewDataSource
     }
     _tipsLab.text = title;//设置当前显示字母
     
-    //    [self performSelector:@selector(hiddenTipsView:) withObject:nil afterDelay:0.3];
-    //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-    //        [self hiddenTipsView];
-    //    });
-    
-    
     _timer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(hiddenTipsView) userInfo:nil repeats:NO];
     [[NSRunLoop mainRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
-    
 }
 
 - (void)hiddenTipsView

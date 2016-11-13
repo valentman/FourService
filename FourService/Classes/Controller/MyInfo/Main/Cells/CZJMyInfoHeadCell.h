@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIView *unLoginView;
 @property (weak, nonatomic) IBOutlet UIView *haveLoginView;
 @property (weak, nonatomic) IBOutlet BadgeButton *messageBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *userHeadImg;
 
 
 - (void)setUserPersonalInfo:(UserBaseForm*)userinfo andDefaultCar:(FSCarListForm*)car;

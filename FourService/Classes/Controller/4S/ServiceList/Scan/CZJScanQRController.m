@@ -95,7 +95,15 @@ UIAlertViewDelegate
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [self startReading];
+    if ([PUtils isCameraAvailable])
+    {
+        [self startReading];
+    }
+    else
+    {
+        
+    }
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated

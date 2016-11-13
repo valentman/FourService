@@ -25,6 +25,11 @@ UITableViewDelegate
     NSArray* _hotBrands;
     NSArray* _keys;
     id _currentSelect;
+    
+    UIImageView   *_bgImageView;
+    UIView        *_tipsView;
+    UILabel       *_tipsLab;
+    NSTimer       *_timer;
 }
 @property (nonatomic, strong) UITableView *tableView;
 @end
@@ -134,6 +139,13 @@ UITableViewDelegate
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if ([self.tableView respondsToSelector:@selector(setSectionIndexColor:)]) {
+        self.tableView.sectionIndexBackgroundColor = CLEARCOLOR;  //修改索引试图未选中时的背景颜色
+        self.tableView.sectionIndexTrackingBackgroundColor = CLEARCOLOR;//修改索引试图选中时的背景颜色
+        self.tableView.sectionIndexColor = GRAYCOLOR;//修改索引试图字体颜色
+    }
+    
     if (indexPath.section == 0)
     {
         UITableViewCell* cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"SKStableCell"];
@@ -323,6 +335,61 @@ UITableViewDelegate
         svc.carBrand = obj;
         [self.navigationController pushViewController:svc animated:YES];
     }
+}
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+{
+    //    NSLog(@"title = %@",title);
+    [self showTipsWithTitle:title];
+    
+    return index;
+}
+
+- (void)showTipsWithTitle:(NSString*)title
+{
+    //获取当前屏幕window
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    if (!_tipsView) {
+        //添加字母提示框
+        _tipsView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 80, 80)];
+        _tipsView.center = window.center;
+        _tipsView.backgroundColor = [UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:0.8];
+        //设置提示框圆角
+        _tipsView.layer.masksToBounds = YES;
+        _tipsView.layer.cornerRadius  = _tipsView.frame.size.width/20;
+        _tipsView.layer.borderColor   = [UIColor whiteColor].CGColor;
+        _tipsView.layer.borderWidth   = 2;
+        [window addSubview:_tipsView];
+    }
+    if (!_tipsLab) {
+        //添加提示字母lable
+        _tipsLab = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, _tipsView.frame.size.width, _tipsView.frame.size.height)];
+        //设置背景为透明
+        _tipsLab.backgroundColor = [UIColor clearColor];
+        _tipsLab.font = [UIFont boldSystemFontOfSize:50];
+        _tipsLab.textAlignment = NSTextAlignmentCenter;
+        
+        [_tipsView addSubview:_tipsLab];
+    }
+    _tipsLab.text = title;//设置当前显示字母
+    
+    _timer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(hiddenTipsView) userInfo:nil repeats:NO];
+    [[NSRunLoop mainRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+    
+}
+
+- (void)hiddenTipsView
+{
+    [UIView animateWithDuration:0.2 animations:^{
+        _bgImageView.alpha = 0;
+        _tipsView.alpha = 0;
+    } completion:^(BOOL finished) {
+        [_bgImageView removeFromSuperview];
+        [_tipsView removeFromSuperview];
+        _bgImageView = nil;
+        _tipsLab     = nil;
+        _tipsView    = nil;
+    }];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView

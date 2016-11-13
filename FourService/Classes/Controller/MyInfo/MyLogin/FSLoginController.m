@@ -13,7 +13,6 @@
 #import "FSRegisterController.h"
 #import "XGPush.h"
 
-#define kLoginColorRed RGB(255, 102, 102)
 #define kPhoneNum 1000
 #define kPwdNum 1001
 #define kCodeNum 1002
@@ -264,7 +263,7 @@ FDAlertViewDelegate
             [PUtils tipWithText:[json valueForKey:@"msg"] onView:weakSelf.view];
         }
         [weakSelf.confirmBtn setEnabled:YES];
-        [weakSelf.confirmBtn setBackgroundColor:kLoginColorRed];
+        [weakSelf.confirmBtn setBackgroundColor:FSBLUECOLOR];
         
         //先处理登录成功数据
         [self loginSuccess:json success:^{
@@ -276,10 +275,9 @@ FDAlertViewDelegate
     };
     SuccessBlockHandler failure = ^(id json){
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-//        NSDictionary* dict = [PUtils FDataFromJsonF:json];
-        [PUtils tipWithText:[json valueForKey:@"msg"] onView:weakSelf.view];
+        [PUtils tipWithText:@"登陆失败，请重试" onView:weakSelf.view];
         [weakSelf.confirmBtn setEnabled:YES];
-        [weakSelf.confirmBtn setBackgroundColor:kLoginColorRed];
+        [weakSelf.confirmBtn setBackgroundColor:FSBLUECOLOR];
     };
     
     
@@ -292,7 +290,7 @@ FDAlertViewDelegate
         [self.confirmBtn setBackgroundColor:[UIColor lightGrayColor]];
         NSDictionary* loginDict = @{@"customer_pho" : self.phoneNumTextField.text,
                                     @"password" : self.pwdTextField.text};
-    [FSBaseDataInstance loginWithPwdOrCode:loginDict success:successBlock fail:failure];
+        [FSBaseDataInstance loginWithPwdOrCode:loginDict success:successBlock fail:failure];
     }
     
     
