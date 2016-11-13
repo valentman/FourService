@@ -74,12 +74,14 @@
 @interface FSPageCell ()
 @property (strong, nonatomic) __block UIView* underLineView;
 @property (assign, nonatomic) NSInteger segmentWidth;
+@property (strong, nonatomic) UIScrollView *contentScroll;
 @end
 
 @implementation FSPageCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -88,25 +90,37 @@
     // Configure the view for the selected state
 }
 
+- (UIScrollView *)contentScroll
+{
+    if (!_contentScroll) {
+        _contentScroll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, PJ_SCREEN_WIDTH, self.bounds.size.height)];
+        _contentScroll.showsHorizontalScrollIndicator = NO;
+        _contentScroll.showsVerticalScrollIndicator = NO;
+        [self addSubview:_contentScroll];
+    }
+    return _contentScroll;
+}
+
 - (void)setTitleArray:(NSArray *)titleArray
 {
     self.selectionStyle = UITableViewCellSelectionStyleNone;
-
+    
     _titleArray = [titleArray mutableCopy];
     //获取数量
     NSInteger titleCount = _titleArray.count;
-    _segmentWidth = PJ_SCREEN_WIDTH/titleCount;
-    CGSize setmentViewSize = CGSizeMake(_segmentWidth, self.bounds.size.height - 2);
+    _segmentWidth = PJ_SCREEN_WIDTH/3;
+    [self.contentScroll setContentSize:CGSizeMake(_segmentWidth * titleCount, self.bounds.size.height - 2)];
+    self.underLineView.frame = CGRectMake(0, self.bounds.size.height - 2, _segmentWidth, 2);
+    
     for (int i = 0; i < titleCount; i++)
     {
-        CGRect segFrame = [PUtils viewFramFromDynamic:CZJMarginMake(0, 0) size:setmentViewSize index:i divide:3];
+        CGRect segFrame = CGRectMake(i * _segmentWidth, 0, _segmentWidth, self.bounds.size.height - 4);
         FSSegmentView* segview = [[FSSegmentView alloc]initWithFrame:segFrame];
         segview.tag = i;
         [segview initLabels:_titleArray[i]];
         [segview addTarget:self action:@selector(segmentButtonTouche:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:segview];
+        [self.contentScroll addSubview:segview];
     }
-    self.underLineView.frame = CGRectMake(0, self.bounds.size.height - 2, _segmentWidth, 2);
 }
 
 - (UIView *)underLineView
@@ -115,7 +129,7 @@
     {
         _underLineView = [[UIView alloc] init];
         _underLineView.backgroundColor = RGB(46, 159, 226);
-        [self addSubview:_underLineView];
+        [_contentScroll addSubview:_underLineView];
     }
     return _underLineView;
 }
@@ -127,7 +141,7 @@
 
 - (void)moveButtomLine:(NSInteger)index
 {
-    [UIView animateWithDuration:0.2 animations:^{
+    [UIScrollView animateWithDuration:0.2 animations:^{
         _underLineView.frame = CGRectMake(index * _segmentWidth, self.bounds.size.height - 2, _segmentWidth, 2);
     } completion:^(BOOL finished) {
         if ([_delegate respondsToSelector:@selector(segmentButtonTouchHandle:)]) {
