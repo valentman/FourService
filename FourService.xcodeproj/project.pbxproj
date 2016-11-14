@@ -108,6 +108,14 @@
 		EC4598211D757960004424A4 /* FSStoreListController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4598101D757960004424A4 /* FSStoreListController.m */; };
 		EC4598271D757F2E004424A4 /* FSStoreInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4598251D757F2E004424A4 /* FSStoreInfoCell.m */; };
 		EC4598281D757F2E004424A4 /* FSStoreInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4598261D757F2E004424A4 /* FSStoreInfoCell.xib */; };
+		EC46811C1DD9497F0045369F /* FSAddCarOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC46811A1DD9497F0045369F /* FSAddCarOneCell.m */; };
+		EC46811D1DD9497F0045369F /* FSAddCarOneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC46811B1DD9497F0045369F /* FSAddCarOneCell.xib */; };
+		EC4681211DD9544E0045369F /* FSAddCarTwoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC46811F1DD9544E0045369F /* FSAddCarTwoCell.m */; };
+		EC4681221DD9544E0045369F /* FSAddCarTwoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4681201DD9544E0045369F /* FSAddCarTwoCell.xib */; };
+		EC4681261DD9580E0045369F /* FSAddCarPromptCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4681241DD9580E0045369F /* FSAddCarPromptCell.m */; };
+		EC4681271DD9580E0045369F /* FSAddCarPromptCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4681251DD9580E0045369F /* FSAddCarPromptCell.xib */; };
+		EC46812B1DD959B20045369F /* FSAddCarThreeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4681291DD959B20045369F /* FSAddCarThreeCell.m */; };
+		EC46812C1DD959B20045369F /* FSAddCarThreeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC46812A1DD959B20045369F /* FSAddCarThreeCell.xib */; };
 		EC474B3A1D5EFCAB00B54B0F /* FSMyinfoButtomView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC474B381D5EFCAB00B54B0F /* FSMyinfoButtomView.m */; };
 		EC474B3B1D5EFCAB00B54B0F /* FSMyinfoButtomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC474B391D5EFCAB00B54B0F /* FSMyinfoButtomView.xib */; };
 		EC474B3E1D5F700000B54B0F /* FSServiceForm.m in Sources */ = {isa = PBXBuildFile; fileRef = EC474B3D1D5F700000B54B0F /* FSServiceForm.m */; };
@@ -640,6 +648,18 @@
 		EC4598241D757F2E004424A4 /* FSStoreInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSStoreInfoCell.h; sourceTree = "<group>"; };
 		EC4598251D757F2E004424A4 /* FSStoreInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSStoreInfoCell.m; sourceTree = "<group>"; };
 		EC4598261D757F2E004424A4 /* FSStoreInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSStoreInfoCell.xib; sourceTree = "<group>"; };
+		EC4681191DD9497F0045369F /* FSAddCarOneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSAddCarOneCell.h; sourceTree = "<group>"; };
+		EC46811A1DD9497F0045369F /* FSAddCarOneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSAddCarOneCell.m; sourceTree = "<group>"; };
+		EC46811B1DD9497F0045369F /* FSAddCarOneCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSAddCarOneCell.xib; sourceTree = "<group>"; };
+		EC46811E1DD9544E0045369F /* FSAddCarTwoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSAddCarTwoCell.h; sourceTree = "<group>"; };
+		EC46811F1DD9544E0045369F /* FSAddCarTwoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSAddCarTwoCell.m; sourceTree = "<group>"; };
+		EC4681201DD9544E0045369F /* FSAddCarTwoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSAddCarTwoCell.xib; sourceTree = "<group>"; };
+		EC4681231DD9580E0045369F /* FSAddCarPromptCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSAddCarPromptCell.h; sourceTree = "<group>"; };
+		EC4681241DD9580E0045369F /* FSAddCarPromptCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSAddCarPromptCell.m; sourceTree = "<group>"; };
+		EC4681251DD9580E0045369F /* FSAddCarPromptCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSAddCarPromptCell.xib; sourceTree = "<group>"; };
+		EC4681281DD959B20045369F /* FSAddCarThreeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSAddCarThreeCell.h; sourceTree = "<group>"; };
+		EC4681291DD959B20045369F /* FSAddCarThreeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSAddCarThreeCell.m; sourceTree = "<group>"; };
+		EC46812A1DD959B20045369F /* FSAddCarThreeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSAddCarThreeCell.xib; sourceTree = "<group>"; };
 		EC474B371D5EFCAB00B54B0F /* FSMyinfoButtomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMyinfoButtomView.h; sourceTree = "<group>"; };
 		EC474B381D5EFCAB00B54B0F /* FSMyinfoButtomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMyinfoButtomView.m; sourceTree = "<group>"; };
 		EC474B391D5EFCAB00B54B0F /* FSMyinfoButtomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSMyinfoButtomView.xib; sourceTree = "<group>"; };
@@ -1445,6 +1465,18 @@
 				EC89423F1DAD30DC00AA771C /* FSAddMyCarButtomView.h */,
 				EC8942401DAD30DC00AA771C /* FSAddMyCarButtomView.m */,
 				EC8942411DAD30DC00AA771C /* FSAddMyCarButtomView.xib */,
+				EC4681191DD9497F0045369F /* FSAddCarOneCell.h */,
+				EC46811A1DD9497F0045369F /* FSAddCarOneCell.m */,
+				EC46811B1DD9497F0045369F /* FSAddCarOneCell.xib */,
+				EC46811E1DD9544E0045369F /* FSAddCarTwoCell.h */,
+				EC46811F1DD9544E0045369F /* FSAddCarTwoCell.m */,
+				EC4681201DD9544E0045369F /* FSAddCarTwoCell.xib */,
+				EC4681231DD9580E0045369F /* FSAddCarPromptCell.h */,
+				EC4681241DD9580E0045369F /* FSAddCarPromptCell.m */,
+				EC4681251DD9580E0045369F /* FSAddCarPromptCell.xib */,
+				EC4681281DD959B20045369F /* FSAddCarThreeCell.h */,
+				EC4681291DD959B20045369F /* FSAddCarThreeCell.m */,
+				EC46812A1DD959B20045369F /* FSAddCarThreeCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -3287,8 +3319,8 @@
 				TargetAttributes = {
 					EC7760D51D2223D500E1A89F = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = UG6PG8B3H6;
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = 27ZN797VLM;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -3316,6 +3348,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECD538041D4658DB00D136EF /* CZJCarBrandsListCellTableViewCell.xib in Resources */,
+				EC4681271DD9580E0045369F /* FSAddCarPromptCell.xib in Resources */,
 				ECCEE3901D6C8AAE0034D4F2 /* request_loading_7@2x.png in Resources */,
 				EC542A171D237E7700F3B4BF /* pop.png in Resources */,
 				ECA233E41D37DC8F004C2679 /* CZJMyInfoHeadCell.xib in Resources */,
@@ -3331,6 +3364,8 @@
 				EC5427361D237AF500F3B4BF /* Main.storyboard in Resources */,
 				EC45981B1D757960004424A4 /* FSServiceStepCell.xib in Resources */,
 				EC5429981D237E7700F3B4BF /* wl_map_icon_1.png in Resources */,
+				EC46812C1DD959B20045369F /* FSAddCarThreeCell.xib in Resources */,
+				EC4681221DD9544E0045369F /* FSAddCarTwoCell.xib in Resources */,
 				EC54299A1D237E7700F3B4BF /* wl_map_icon_1_press.png in Resources */,
 				ECDDD5001D8CEB95009082DB /* FSProductEvaluateHeadCell.xib in Resources */,
 				EC06628E1D7048DD006B62D2 /* CZJOneButtonCell.xib in Resources */,
@@ -3369,6 +3404,7 @@
 				EC54297D1D237E7700F3B4BF /* KSRefresh.bundle in Resources */,
 				EC3728C51DB1C1F60035F61E /* unicode_to_hanyu_pinyin.txt in Resources */,
 				EC0662901D7048DD006B62D2 /* CZJOrderListCell.xib in Resources */,
+				EC46811D1DD9497F0045369F /* FSAddCarOneCell.xib in Resources */,
 				EC54298B1D237E7700F3B4BF /* anjuke_icon_itis_position.png in Resources */,
 				EC3728D31DB1C24A0035F61E /* citydict.plist in Resources */,
 				EC57A2BC1D8B79BD006DDA7F /* FSOrderProductCell.xib in Resources */,
@@ -3448,6 +3484,7 @@
 				EC4448FF1D9A706700E83144 /* CPEvaluateSuccessController.m in Sources */,
 				EC3A18FB1D41F21C00F6F193 /* FSMyCarListController.m in Sources */,
 				EC9DF3D71DCD707200DFD8BA /* CZJQRView.m in Sources */,
+				EC4681211DD9544E0045369F /* FSAddCarTwoCell.m in Sources */,
 				EC5429B21D237E7700F3B4BF /* MJRefreshHeader.m in Sources */,
 				EC5427821D237DE000F3B4BF /* BadgeButtonView.m in Sources */,
 				EC5427901D237DE000F3B4BF /* PBaseViewController.m in Sources */,
@@ -3473,6 +3510,7 @@
 				EC542A071D237E7700F3B4BF /* UIView+WebCacheOperation.m in Sources */,
 				EC54298A1D237E7700F3B4BF /* LXDSegmentControlConfiguration.m in Sources */,
 				EC5429821D237E7700F3B4BF /* LJWKeyboardHandler.m in Sources */,
+				EC46812B1DD959B20045369F /* FSAddCarThreeCell.m in Sources */,
 				EC3A18E91D41F13F00F6F193 /* FSMyViewedController.m in Sources */,
 				EC5E26A31D86FB480040986B /* FSProductChangeController.m in Sources */,
 				EC542A061D237E7700F3B4BF /* UIImageView+WebCache.m in Sources */,
@@ -3598,6 +3636,7 @@
 				EC5429AE1D237E7700F3B4BF /* MJRefreshAutoFooter.m in Sources */,
 				EC5429D31D237E7700F3B4BF /* CALayer+Transition.m in Sources */,
 				EC5429831D237E7700F3B4BF /* LJWKeyboardToolBar.m in Sources */,
+				EC46811C1DD9497F0045369F /* FSAddCarOneCell.m in Sources */,
 				EC857BA01D7F0CFE00DF2D02 /* FSPageCell.m in Sources */,
 				EC45981F1D757960004424A4 /* FSServiceStoreCell.m in Sources */,
 				ECA82A421D58CDE600F05C52 /* UIViewController+YQSlideMenu.m in Sources */,
@@ -3719,6 +3758,7 @@
 				ECBD296A1DA3D3040033D823 /* FSOrderDetailPayCell.m in Sources */,
 				EC95ED4B1D606A63005A50B7 /* AFAutoPurgingImageCache.m in Sources */,
 				ECCEE3921D6C8AAE0034D4F2 /* YXSpritesLoadingView.m in Sources */,
+				EC4681261DD9580E0045369F /* FSAddCarPromptCell.m in Sources */,
 				EC3A18EC1D41F15500F6F193 /* FSMyPersonalInfoController.m in Sources */,
 				EC18DE911D450204006CB460 /* CZJMyMessageCenterCell.m in Sources */,
 				EC3728C21DB1C1F60035F61E /* PinyinFormatter.m in Sources */,
@@ -3857,7 +3897,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = UG6PG8B3H6;
+				DEVELOPMENT_TEAM = 27ZN797VLM;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3888,8 +3928,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Joe.FourService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3ddb7341-72ea-48b8-b2d9-5ef6faea582d";
-				PROVISIONING_PROFILE_SPECIFIER = WildcardDevelopmentProvisionProfile;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -3899,8 +3939,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = UG6PG8B3H6;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 27ZN797VLM;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3931,8 +3971,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Joe.FourService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a9b41176-8ad6-4cc9-95f2-675926060707";
-				PROVISIONING_PROFILE_SPECIFIER = "XC iOS Ad Hoc: com.Joe.FourService";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
