@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FSAddCarPromptCell : UITableViewCell
+@interface FSAddCarPromptCell : CZJTableViewCell
 
 @end

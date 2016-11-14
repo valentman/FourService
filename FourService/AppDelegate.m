@@ -21,12 +21,65 @@
 #import "FSMyInformationController.h"
 #import "YQSlideMenuController.h"
 #import <KSCrash/KSCrashInstallationStandard.h>
+#import "MZGuidePages.h"
 
 @interface AppDelegate ()<UIActionSheetDelegate>
 @property (strong, nonatomic) __block UIView* notifyView;
 @end
 
 @implementation AppDelegate
+
+- (void)initUserDefaultDatas
+{
+    [USER_DEFAULT setValue:@"" forKey:kUserDefaultTimeDay];
+    [USER_DEFAULT setValue:@"" forKey:kUserDefaultTimeMin];
+    [USER_DEFAULT setValue:@"" forKey:kUserDefaultRandomCode];
+    
+    [USER_DEFAULT setValue:@"" forKey:kUserDefaultChoosedCarModelType];
+    [USER_DEFAULT setValue:@"" forKey:kUserDefaultChoosedCarModelID];
+    [USER_DEFAULT setValue:@"" forKey:kUserDefaultChoosedBrandID];
+    [USER_DEFAULT setValue:@"" forKey:kUserDefaultStartPrice];
+    [USER_DEFAULT setValue:@"" forKey:kUserDefaultEndPrice];
+    [USER_DEFAULT setValue:@"false" forKey:kUSerDefaultStockFlag];
+    [USER_DEFAULT setValue:@"false" forKey:kUSerDefaultPromotionFlag];
+    [USER_DEFAULT setValue:@"false" forKey:kUSerDefaultRecommendFlag];
+    [USER_DEFAULT setValue:@"" forKey:kUserDefaultServicePlace];
+    [USER_DEFAULT setValue:@"" forKey:kUserDefaultDetailStoreItemPid];
+    [USER_DEFAULT setValue:@"" forKey:kUserDefaultDetailItemCode];
+    
+    [USER_DEFAULT setObject:@"" forKey:kUSerDefaultSexual];
+    [USER_DEFAULT setValue:@"" forKey:kUserDefaultStartPageUrl];
+    [USER_DEFAULT setValue:@"" forKey:kUserDefaultStartPageImagePath];
+    [USER_DEFAULT setValue:@"" forKey:kUserDefaultStartPageForm];
+    [USER_DEFAULT setObject:@"0" forKey:kUserDefaultShoppingCartCount];
+    [USER_DEFAULT setObject:@"0" forKey:kCZJDefaultCityID];
+    [USER_DEFAULT setObject:@"" forKey:kCZJDefaultyCityName];
+}
+
+- (void)guidePages
+{
+    //数据源
+    NSArray *imageArray = @[ @"loading01", @"loading02", @"loading03"];
+    
+    //  初始化方法1
+    MZGuidePages *mzgpc = [[MZGuidePages alloc] init];
+    mzgpc.imageDatas = imageArray;
+    __weak typeof(MZGuidePages) *weakMZ = mzgpc;
+    mzgpc.buttonAction = ^{
+        [UIView animateWithDuration:1.0f
+                         animations:^{
+                             weakMZ.alpha = 0.0;
+                             [[UIApplication sharedApplication]setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+                         }
+                         completion:^(BOOL finished) {
+                             [weakMZ removeFromSuperview];
+                         }];
+    };
+    
+    //要在makeKeyAndVisible之后调用才有效
+    [self.window addSubview:mzgpc];
+}
+
 
 - (void)initNotifyView
 {
@@ -150,6 +203,26 @@
     self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
     
+    if (![USER_DEFAULT boolForKey:kCZJIsFirstLogin])
+    {
+        //----------------第一次安装App需要初始化userdefault数据-----------------
+        [USER_DEFAULT setValue:@"1" forKey:kCZJIsFirstLogin];
+        [self initUserDefaultDatas];
+        
+        //---------------然后下载下次启动显示的启动页------------
+//        [self getStartPageDataFromServer:YES];
+    }
+    
+//    [self guidePages];
+    
+    //当版本更新后即要启动引导页
+    if (![USER_DEFAULT valueForKey:kCZJLastVersion] ||
+        ![[USER_DEFAULT valueForKey:kCZJLastVersion] isEqualToString:[PUtils getCurrentVersion]])
+    {
+        [USER_DEFAULT setValue:[PUtils getCurrentVersion] forKey:kCZJLastVersion];
+        [self guidePages];
+        [[UIApplication sharedApplication]setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+    }
     
     
     //--------------------4.初始化定位-------------------

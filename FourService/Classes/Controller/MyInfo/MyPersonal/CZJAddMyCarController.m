@@ -20,6 +20,13 @@
 #import "FSAddCarThreeCell.h"
 #import "FSAddCarPromptCell.h"
 
+typedef NS_ENUM(NSInteger, FSTextField)
+{
+    FSTextFieldCarNum       =1,    //
+    FSTextFieldEngineCode   =2,    //
+    FSTextFieldVinCode      =4     //
+};
+
 @interface CZJAddMyCarController ()
 <
 LewPickerControllerDelegate,
@@ -39,33 +46,20 @@ UITableViewDataSource
     
     NSString* provinceStr;
     NSString* numverPlateStr;
+    NSString *plateNumStr;
+    NSString *numberPlate;
     
     NSInteger currentSelectPro;
     NSInteger currentSelectNum;
     
     NSArray *dateTitleAry;
 }
-//@property (weak, nonatomic) IBOutlet UIView *viewTwo;
-//@property (weak, nonatomic) IBOutlet UIView *viewOne;
-//@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewOneLayoutHeight;
-//@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewTwoLayoutWidth;
-//@property (weak, nonatomic) IBOutlet UIImageView *carBrandImg;
-//@property (weak, nonatomic) IBOutlet UILabel *carNameLabel;
-//@property (weak, nonatomic) IBOutlet UILabel *carModelLabel;
-//@property (weak, nonatomic) IBOutlet UILabel *carPlateNumLabel;
-//@property (weak, nonatomic) IBOutlet UIButton *defBtn;
-//@property (weak, nonatomic) IBOutlet UITextField *plateNumTextField;
-//@property (weak, nonatomic) IBOutlet UITextField *engineCodeTextField;
-//@property (weak, nonatomic) IBOutlet UITextField *vinCodeTextField;
-//
-//@property (weak, nonatomic) IBOutlet UIButton *productBtn;
-//@property (weak, nonatomic) IBOutlet UIButton *buyDateBtn;
-//@property (weak, nonatomic) IBOutlet UIButton *maintainDateBtn;
-//
-//- (IBAction)setCarDefalutAction:(id)sender;
+
+- (void)setCarDefalutAction:(UIButton *)sender;
+- (void)chooseCarPlateNumAction:(UIButton *)sender;
+- (void)chooseDateAction:(UIButton *)sender;
+
 - (IBAction)addMyCarAction:(id)sender;
-//- (IBAction)chooseCarPlateNumAction:(id)sender;
-//- (IBAction)chooseDateAction:(id)sender;
 
 @property (strong, nonatomic) UITableView *myTableView;
 
@@ -86,15 +80,6 @@ UITableViewDataSource
     self.naviBarView.mainTitleLabel.text = @"编辑车辆信息";
     self.view.backgroundColor = CZJTableViewBGColor;
     
-//    self.view.backgroundColor = CZJNAVIBARBGCOLOR;
-//    self.viewOneLayoutHeight.constant = 0.3;
-//    self.viewTwoLayoutWidth.constant = 0.3;
-//    CGPoint pt = CGPointMake(self.carPlateNumLabel.origin.x + self.carPlateNumLabel.size.width, self.carPlateNumLabel.origin.y + self.carPlateNumLabel.size.height * 0.5);
-//    CAShapeLayer *indicator = [PUtils creatIndicatorWithColor:[UIColor blackColor] andPosition:pt];
-//    [self.viewTwo.layer addSublayer:indicator];
-//    
-//    self.plateNumTextField.delegate = self;
-    
     //背景触摸层
     _backgroundView = [[UIView alloc]initWithFrame:self.view.bounds];
     _backgroundView.backgroundColor = RGBA(100, 240, 240, 0);
@@ -102,78 +87,30 @@ UITableViewDataSource
 
 - (void)initDatas
 {
+    plateNumStr = @"";
     dateTitleAry = @[@"生产日期", @"上牌日期", @"最近保养日期"];
-//    provinceAry = [PUtils readArrayFromBundleDirectoryWithName:@"Province"];
-//    numberPlateAry = @[@"A",
-//                       @"B",
-//                       @"C",
-//                       @"D",
-//                       @"E",
-//                       @"F",
-//                       @"G",
-//                       @"H",
-//                       @"I",
-//                       @"J",
-//                       @"K",
-//                       @"L",
-//                       @"M",
-//                       @"N",
-//                       @"O",
-//                       @"P",
-//                       @"Q",
-//                       @"R",
-//                       @"S",
-//                       @"T",
-//                       @"U",
-//                       @"V",
-//                       @"W",
-//                       @"X",
-//                       @"Y",
-//                       @"Z",
-//                       ];
-//    
-//    NSString* curProvince ;
-//    NSString* curCity;
-//    if (IS_IOS8)
-//    {
-//        curProvince = [CCLocationManager shareLocation].province;
-//        curCity = [CCLocationManager shareLocation].city;
-//    }
-//    else if (IS_IOS7)
-//    {
-//        curProvince = [ZXLocationManager sharedZXLocationManager].province;
-//        curCity = [ZXLocationManager sharedZXLocationManager].city;
-//    }
-//    
-//    if (!_carForm)
-//    {
-//        self.carNameLabel.text = [NSString stringWithFormat:@"%@ %@ %@", FSBaseDataInstance.carBrandForm.car_brand_name,FSBaseDataInstance.carSerialForm.car_model_name, FSBaseDataInstance.carModealForm.car_type_name];
-//        [self.carBrandImg sd_setImageWithURL:[NSURL URLWithString:ConnectString(kCZJServerAddr, FSBaseDataInstance.carBrandForm.icon)] placeholderImage:DefaultPlaceHolderSquare];
-//        
-//        provinceStr = @"川";
-//        numverPlateStr = @"A";
-//        _carPlateNumLabel.text = [NSString stringWithFormat:@"%@%@",provinceStr, numverPlateStr];
-//    }
-//    else
-//    {
-//        self.carNameLabel.text  = [NSString stringWithFormat:@"%@ %@ %@", _carForm.car_brand_name, _carForm.car_model_name, _carForm.car_type_name];
-//        [self.carBrandImg sd_setImageWithURL:[NSURL URLWithString:ConnectString(kCZJServerAddr,_carForm.icon)] placeholderImage:DefaultPlaceHolderSquare];
-//        NSArray* carNumAry = [_carForm.car_num componentsSeparatedByString:@"-"];
-//        self.carPlateNumLabel.text = [PUtils isBlankString:carNumAry.firstObject] ? @"川A" : carNumAry.firstObject;
-//        self.plateNumTextField.text = carNumAry.lastObject;
-//        self.defBtn.selected = _carForm.is_default;
-//        self.vinCodeTextField.text = _carForm.vin_code;
-//        self.engineCodeTextField.text = _carForm.engine_code;
-//        
-//        [self.buyDateBtn setTitle:_carForm.buy_date ? _carForm.buy_date : @"点击添加" forState:UIControlStateNormal];
-//        [self.productBtn setTitle:_carForm.product_date ? _carForm.product_date : @"点击添加" forState:UIControlStateNormal];
-//        [self.maintainDateBtn setTitle:_carForm.maintain_date ? _carForm.maintain_date : @"点击添加" forState:UIControlStateNormal];
-//        [self.buyDateBtn setTitleColor:_carForm.buy_date ? FSBlackColor33 : FSGrayColor99 forState:UIControlStateNormal];
-//        [self.productBtn setTitleColor:_carForm.product_date ? FSBlackColor33 : FSGrayColor99 forState:UIControlStateNormal];
-//        [self.maintainDateBtn setTitleColor:_carForm.maintain_date ? FSBlackColor33 : FSGrayColor99 forState:UIControlStateNormal];
-//        
-//    }
-//
+    provinceAry = [PUtils readArrayFromBundleDirectoryWithName:@"Province"];
+    numberPlateAry = @[@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"I",
+                       @"J",@"K",@"L",@"M",@"N",@"O",@"P",@"Q",@"R",
+                       @"S",@"T",@"U",@"V",@"W",@"X",@"Y",@"Z"
+                       ];
+    if (!_carForm)
+    {
+        _carForm = [[FSCarListForm alloc] init];
+        _carForm.car_brand_name = FSBaseDataInstance.carBrandForm.car_brand_name;
+        _carForm.car_model_name = FSBaseDataInstance.carSerialForm.car_model_name;
+        _carForm.car_type_name = FSBaseDataInstance.carModealForm.car_type_name;
+        _carForm.icon = FSBaseDataInstance.carBrandForm.icon;
+        numberPlate = @"川A";
+        _carForm.is_default = YES;
+    }
+    else
+    {
+        NSArray* carNumAry = [_carForm.car_num componentsSeparatedByString:@"-"];
+        numberPlate = [PUtils isBlankString:carNumAry.firstObject] ? @"川A" : carNumAry.firstObject;;
+        plateNumStr = carNumAry.lastObject;
+    }
+
     [self.myTableView reloadData];
 }
 
@@ -210,65 +147,213 @@ UITableViewDataSource
     [super didReceiveMemoryWarning];
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+
+#pragma mark-UITableViewDataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    [self.view endEditing:YES];
+    return 3;
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (0 == section)
+    {
+        return 3;
+    }
+    if (1 == section)
+    {
+        return 2;
+    }
+    if (2 == section)
+    {
+        return 3;
+    }
+    return 0;
+}
 
-- (IBAction)setCarDefalutAction:(id)sender
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (indexPath.section) {
+        case 0:
+        {
+            if (0 == indexPath.row)
+            {
+                FSAddCarOneCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSAddCarOneCell" forIndexPath:indexPath];
+                cell.infoTextField.hidden = YES;
+                
+                [cell setSeparatorViewHidden:NO];
+
+                cell.infoLabel.text  = [NSString stringWithFormat:@"%@ %@ %@", _carForm.car_brand_name, _carForm.car_model_name, _carForm.car_type_name];
+                [cell.logonImage sd_setImageWithURL:[NSURL URLWithString:ConnectString(kCZJServerAddr,_carForm.icon)] placeholderImage:DefaultPlaceHolderSquare];
+                
+                return cell;
+            }
+            if (1 == indexPath.row)
+            {
+                FSAddCarTwoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSAddCarTwoCell" forIndexPath:indexPath];
+                [cell setSeparatorViewHidden:NO];
+                cell.carNumberTextField.delegate = self;
+                cell.carNumberTextField.tag = FSTextFieldCarNum;
+                [cell.defaultButton addTarget:self action:@selector(setCarDefalutAction:) forControlEvents:UIControlEventTouchUpInside];
+                [cell.carNumberButton addTarget:self action:@selector(chooseCarPlateNumAction:) forControlEvents:UIControlEventTouchUpInside];
+                
+                NSArray* carNumAry = [_carForm.car_num componentsSeparatedByString:@"-"];
+                NSString *carNumStr = [PUtils isBlankString:carNumAry.firstObject] ? @"川A" : carNumAry.firstObject;
+                [cell.carNumberButton setTitle:carNumStr forState:UIControlStateNormal];
+                cell.carNumberTextField.text = carNumAry.lastObject ? carNumAry.lastObject : @"";
+                cell.defaultButton.selected = _carForm.is_default;
+                
+                return cell;
+            }
+            if (2 == indexPath.row)
+            {
+                FSAddCarPromptCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSAddCarPromptCell" forIndexPath:indexPath];
+                cell.separatorInset = HiddenCellSeparator;
+                return cell;
+            }
+        }
+            break;
+            
+        case 1:
+        {
+            FSAddCarOneCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSAddCarOneCell" forIndexPath:indexPath];
+            cell.logonImage.hidden = YES;
+            cell.infoLabel.hidden = YES;
+            cell.titleLabel.text = indexPath.row == 0 ? @"发动机编号" : @"VIN码";
+            cell.infoTextField.tag = indexPath.row == 0 ? FSTextFieldEngineCode : FSTextFieldVinCode;
+            cell.infoTextField.delegate = self;
+            if (_carForm) {
+                cell.infoTextField.text = indexPath.row == 0 ? _carForm.engine_code : _carForm.vin_code;
+            }
+            
+            [cell setSeparatorViewHidden:NO];
+            return cell;
+        }
+            break;
+            
+        case 2:
+        {
+            FSAddCarThreeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSAddCarThreeCell" forIndexPath:indexPath];
+            cell.titleLabel.text = dateTitleAry[indexPath.row];
+            [cell.dateButton addTarget:self action:@selector(chooseDateAction:) forControlEvents:UIControlEventTouchUpInside];
+            cell.dateButton.tag = indexPath.row;
+            if (_carForm) {
+                if (0 == indexPath.row)
+                {
+                    [cell.dateButton setTitle:_carForm.buy_date ? _carForm.buy_date : @"点击添加" forState:UIControlStateNormal];
+                    [cell.dateButton setTitleColor:_carForm.buy_date ? FSBlackColor33 : FSGrayColor99 forState:UIControlStateNormal];
+                }
+                if (1 == indexPath.row)
+                {
+                    [cell.dateButton setTitle:_carForm.product_date ? _carForm.product_date : @"点击添加" forState:UIControlStateNormal];
+                    [cell.dateButton setTitleColor:_carForm.product_date ? FSBlackColor33 : FSGrayColor99 forState:UIControlStateNormal];
+                }
+                if (2 == indexPath.row)
+                {
+                    [cell.dateButton setTitle:_carForm.maintain_date ? _carForm.maintain_date : @"点击添加" forState:UIControlStateNormal];
+                    [cell.dateButton setTitleColor:_carForm.maintain_date ? FSBlackColor33 : FSGrayColor99 forState:UIControlStateNormal];
+                }
+            }
+            
+            if (2 == indexPath.row)
+            {
+                cell.separatorInset = HiddenCellSeparator;
+            }
+            else
+            {
+                [cell setSeparatorViewHidden:NO];
+            }
+            return cell;
+        }
+            break;
+            
+        default:
+            break;
+    }
+    return nil;
+}
+
+#pragma mark-UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (0 == indexPath.section)
+    {
+        if (2 == indexPath.row)
+            return 50;
+        return 90;
+    }
+    if (1 == indexPath.section)
+    {
+        return 90;
+    }
+    if (2 == indexPath.section)
+    {
+        return 46;
+    }
+    return 0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (0 == section || 1 == section)
+    {
+        return 0;
+    }
+    return 10;
+}
+
+- (void)setCarDefalutAction:(UIButton *)sender
 {
     [self.view endEditing:YES];
-//    self.defBtn.selected = !self.defBtn.selected;
+    sender.selected = !sender.selected;
+    _carForm.is_default = sender.selected;
 }
 
 - (IBAction)addMyCarAction:(id)sender
 {
-//    [self.view endEditing:YES];
-//    if (self.plateNumTextField.text == nil ||
-//        [self.plateNumTextField.text isEqualToString:@""] ||
-//        [PUtils isBlankString:self.plateNumTextField.text])
-//    {
-//        [PUtils tipWithText:@"请输入车牌号" andView:nil];
-//        return;
-//    }
-//    else if (![PUtils isLicencePlate:self.plateNumTextField.text]) {
-//        [PUtils tipWithText:@"请输入正确的车牌" andView:nil];
-//        return;
-//    }
-//
-//    CarModelForm* _carModealForm = FSBaseDataInstance.carModealForm;
-//    
-//    NSString* modelId = _carModealForm ? _carModealForm.car_model_id: _carForm.car_type_id;
-//    
-//    NSMutableDictionary* carInfo = [@{ @"car_id" : _carForm ? _carForm.car_id : @"",
-//                                       @"car_type_id": modelId,
-//                                       @"car_num" : [NSString stringWithFormat:@"%@-%@",self.carPlateNumLabel.text, self.plateNumTextField.text],
-//                                       @"is_default" : self.defBtn.selected ? @"true" : @"false",
-//                                       @"vin_code":self.vinCodeTextField.text ? self.vinCodeTextField.text : @"0",
-//                                       @"engine_code":self.engineCodeTextField.text ? self.engineCodeTextField.text : @"0",
-//                                       @"buy_date":self.buyDateBtn.titleLabel.text ? self.buyDateBtn.titleLabel.text : @"0",
-//                                       @"product_date":self.productBtn.titleLabel.text ? self.productBtn.titleLabel.text : @"0",
-//                                       @"maintain_date":self.maintainDateBtn.titleLabel.text ? self.maintainDateBtn.titleLabel.text : @"0"
-//                                       } mutableCopy];
-//    [FSBaseDataInstance addMyCar:carInfo Success:^(id json) {
-//        [PUtils tipWithText:_carForm ? @"更新成功" : @"添加成功" andView:nil];
-//        NSArray* vcs = self.navigationController.viewControllers;
-//        for (id controller in vcs)
-//        {
-//            if ([controller isKindOfClass:[FSMyCarListController class]])
-//            {
-//                [((FSMyCarListController*)controller) getCarListFromServer];
-//                [self.navigationController popToViewController:controller animated:true];
-//                break;
-//            }
-//        }
-//    } fail:^{
-//        
-//    }];
+    [self.view endEditing:YES];
+    if ([PUtils isBlankString:plateNumStr])
+    {
+        [PUtils tipWithText:@"请输入车牌号" andView:nil];
+        return;
+    }
+    else if (![PUtils isLicencePlate:plateNumStr]) {
+        [PUtils tipWithText:@"请输入正确的车牌" andView:nil];
+        return;
+    }
+
+    CarModelForm* _carModealForm = FSBaseDataInstance.carModealForm;
+    NSString* modelId = _carModealForm ? _carModealForm.car_type_id: _carForm.car_type_id;
+
+    NSMutableDictionary* carInfo =
+    [@{@"car_id" : _carForm.car_id ? _carForm.car_id : @"",
+       @"car_type_id": modelId,
+       @"car_num" : [NSString stringWithFormat:@"%@-%@", numberPlate, plateNumStr],
+       @"is_default" : _carForm.is_default ? @"true" : @"false",
+       @"vin_code": _carForm.vin_code ? _carForm.vin_code : @"0",
+       @"engine_code": _carForm.engine_code ? _carForm.engine_code : @"0",
+       @"buy_date": _carForm.buy_date ? _carForm.buy_date : @"0",
+       @"product_date": _carForm.product_date ? _carForm.product_date : @"0",
+       @"maintain_date": _carForm.maintain_date ? _carForm.maintain_date : @"0"
+       } mutableCopy];
+    [FSBaseDataInstance addMyCar:carInfo Success:^(id json) {
+        [PUtils tipWithText:_carForm ? @"更新成功" : @"添加成功" andView:nil];
+        NSArray* vcs = self.navigationController.viewControllers;
+        for (id controller in vcs)
+        {
+            if ([controller isKindOfClass:[FSMyCarListController class]])
+            {
+                [((FSMyCarListController*)controller) getCarListFromServer];
+                [self.navigationController popToViewController:controller animated:true];
+                break;
+            }
+        }
+    } fail:^{
+        
+    }];
 }
 
-- (IBAction)chooseCarPlateNumAction:(id)sender
+- (void)chooseCarPlateNumAction:(UIButton *)sender
 {
     [self.view endEditing:YES];
     _pickerView = [[UIPickerView alloc]init];
@@ -293,10 +378,9 @@ UITableViewDataSource
     {
         [_pickerView selectRow:currentSelectNum inComponent:1 animated:YES];
     }
-
 }
 
-- (IBAction)chooseDateAction:(id)sender
+- (void)chooseDateAction:(UIButton *)sender
 {
     [self.view endEditing:YES];
     _datePickerView = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 350, 320, 216)];
@@ -327,13 +411,30 @@ UITableViewDataSource
 
 - (void)datePickerValueChanged:(UIDatePicker*)sender
 {
-    DLog(@"%@",sender.date);
+    DLog(@"%@",[sender.date description]);
 }
 
 #pragma mark - UITextFieldDelegate
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-//    self.plateNumTextField.text = [textField.text uppercaseString];
+    switch (textField.tag) {
+        case FSTextFieldCarNum:
+            textField.text = [textField.text uppercaseString];
+            plateNumStr = textField.text;
+            _carForm.car_num = [_carForm.car_num stringByAppendingString:plateNumStr];
+            break;
+            
+        case FSTextFieldEngineCode:
+            _carForm.engine_code = textField.text;
+            break;
+            
+        case FSTextFieldVinCode:
+            _carForm.vin_code = textField.text;
+            break;
+            
+        default:
+            break;
+    }
 }
 
 
@@ -382,8 +483,8 @@ UITableViewDataSource
         currentSelectNum = [_pickerView selectedRowInComponent:1];
         provinceStr = provinceAry[currentSelectPro];
         numverPlateStr = numberPlateAry[currentSelectNum];
-        NSString *numberPlate = [NSString stringWithFormat:@"%@%@",provinceStr,numverPlateStr];
-//        _carPlateNumLabel.text = numberPlate;
+        numberPlate = [NSString stringWithFormat:@"%@%@",provinceStr,numverPlateStr];
+        [self.myTableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
     }
     else if ([pickerController.pickerView isKindOfClass:[UIDatePicker class]])
     {
@@ -394,6 +495,22 @@ UITableViewDataSource
         [_currentSelectDateBtn setTitle:@"" forState:UIControlStateNormal];
         [_currentSelectDateBtn setTitle:destDateString forState:UIControlStateNormal];
         [_currentSelectDateBtn setTitleColor:destDateString ? FSBlackColor33 : FSGrayColor99 forState:UIControlStateNormal];
+        switch (_currentSelectDateBtn.tag) {
+            case 0:
+                _carForm.product_date = destDateString;
+                break;
+                
+            case 1:
+                _carForm.buy_date = destDateString;
+                break;
+                
+            case 2:
+                _carForm.maintain_date = destDateString;
+                break;
+                
+            default:
+                break;
+        }
         DLog(@"%@",destDateString);
     }
     [self closeBackgroundView];
@@ -420,118 +537,5 @@ UITableViewDataSource
 }
 
 
-#pragma mark-UITableViewDataSource
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 3;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    if (0 == section)
-    {
-        return 3;
-    }
-    if (1 == section)
-    {
-        return 2;
-    }
-    if (2 == section)
-    {
-        return 3;
-    }
-    return 0;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    switch (indexPath.section) {
-        case 0:
-        {
-            if (0 == indexPath.row)
-            {
-                FSAddCarOneCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSAddCarOneCell" forIndexPath:indexPath];
-                cell.infoTextField.hidden = YES;
-                [cell setSeparatorViewHidden:NO];
-                return cell;
-            }
-            if (1 == indexPath.row)
-            {
-                FSAddCarTwoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSAddCarTwoCell" forIndexPath:indexPath];
-                [cell setSeparatorViewHidden:NO];
-                return cell;
-            }
-            if (2 == indexPath.row)
-            {
-                FSAddCarPromptCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSAddCarPromptCell" forIndexPath:indexPath];
-                cell.separatorInset = HiddenCellSeparator;
-                return cell;
-            }
-        }
-            break;
-            
-        case 1:
-        {
-            FSAddCarOneCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSAddCarOneCell" forIndexPath:indexPath];
-            cell.logonImage.hidden = YES;
-            cell.infoLabel.hidden = YES;
-            cell.titleLabel.text = indexPath.row == 0 ? @"发动机编号" : @"VIN码";
-            [cell setSeparatorViewHidden:NO];
-            return cell;
-        }
-            break;
-            
-        case 2:
-        {
-            FSAddCarThreeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSAddCarThreeCell" forIndexPath:indexPath];
-            cell.titleLabel.text = dateTitleAry[indexPath.row];
-            if (2 == indexPath.row)
-            {
-                cell.separatorInset = HiddenCellSeparator;
-            }
-            else
-            {
-                [cell setSeparatorViewHidden:NO];
-            }
-            
-            
-            return cell;
-        }
-            break;
-            
-        default:
-            break;
-    }
-    return nil;
-}
-
-#pragma mark-UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (0 == indexPath.section)
-    {
-        if (2 == indexPath.row)
-            return 50;
-        return 90;
-    }
-    if (1 == indexPath.section)
-    {
-        return 90;
-    }
-    if (2 == indexPath.section)
-    {
-        return 46;
-    }
-    return 0;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    if (0 == section || 1 == section)
-    {
-        return 0;
-    }
-    return 10;
-}
 
 @end

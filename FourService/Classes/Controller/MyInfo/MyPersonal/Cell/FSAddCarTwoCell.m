@@ -16,7 +16,7 @@
     self.sepaWidth.constant = 0.3;
     
     CGPoint pt = CGPointMake(48, 27);
-    CAShapeLayer *indicator = [PUtils creatIndicatorWithColor:BLUECOLOR andPosition:pt];
+    CAShapeLayer *indicator = [PUtils creatIndicatorWithColor:FSBLUECOLOR andPosition:pt];
     [self.carNumberButton.layer addSublayer:indicator];
     // Initialization code
 }
