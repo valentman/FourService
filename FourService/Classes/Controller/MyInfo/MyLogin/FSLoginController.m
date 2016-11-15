@@ -109,6 +109,7 @@ FDAlertViewDelegate
 }
 
 
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -118,7 +119,10 @@ FDAlertViewDelegate
 #pragma mark- Actions
 - (IBAction)exitOutAction:(id)sender
 {
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    [APPLICATION setStatusBarStyle:UIStatusBarStyleLightContent];
+    [self.navigationController dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 - (IBAction)loginWithCodeAction:(id)sender

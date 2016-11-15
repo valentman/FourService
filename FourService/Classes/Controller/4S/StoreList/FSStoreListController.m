@@ -236,6 +236,7 @@ MXPullDownMenuDelegate
     //设置支付方式
     [cell setPaymentAvaiable:nil];
     
+    [cell setSeparatorViewHidden:NO];
     return cell;
 }
 

@@ -20,7 +20,7 @@
 
 
 #define kDefaultCalloutViewMargin       -8
-#define MAPKEY @"dd2b9e1576489ef636cdda90c74cbdbe"
+#define MAPKEY @"d5fcddb0f39bb73c79c57dd8849a33ce"
 
 @interface FSStoreMapController ()
 <

@@ -104,7 +104,7 @@ static uint32_t const kCZJPushServerAppId = 2200145103;
 static NSString *const kCZJPushServerAppKey = @"I18QP9TZB66R";
 
 //分享设置ID
-static NSString *const kCZJOpenShareQQAppId = @"1104733921";
+static NSString *const kCZJOpenShareQQAppId = @"1105749219";
 static NSString *const kCZJOpenShareWeiboAppKey = @"2485849568";
 static NSString *const kCZJOpenShareWeixinAppId = @"wxe3d6ba717d704a6e";
 

@@ -109,7 +109,7 @@
     //获取数量
     NSInteger titleCount = _titleArray.count;
     _segmentWidth = PJ_SCREEN_WIDTH/3;
-    [self.contentScroll setContentSize:CGSizeMake(_segmentWidth * titleCount, self.bounds.size.height - 2)];
+//    [self.contentScroll setContentSize:CGSizeMake(_segmentWidth * titleCount, self.bounds.size.height - 2)];
     self.underLineView.frame = CGRectMake(0, self.bounds.size.height - 2, _segmentWidth, 2);
     
     for (int i = 0; i < titleCount; i++)
@@ -119,7 +119,7 @@
         segview.tag = i;
         [segview initLabels:_titleArray[i]];
         [segview addTarget:self action:@selector(segmentButtonTouche:) forControlEvents:UIControlEventTouchUpInside];
-        [self.contentScroll addSubview:segview];
+        [self addSubview:segview];
     }
 }
 
@@ -129,7 +129,7 @@
     {
         _underLineView = [[UIView alloc] init];
         _underLineView.backgroundColor = RGB(46, 159, 226);
-        [_contentScroll addSubview:_underLineView];
+        [self addSubview:_underLineView];
     }
     return _underLineView;
 }

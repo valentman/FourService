@@ -453,29 +453,6 @@ UITableViewDataSource
     }];
 }
 
-//- (void)textFieldDidBeginEditing:(UITextField *)textField
-//{
-//    float height = PJ_SCREEN_HEIGHT - self.keyBoardHeight;
-//    iLog(@"%f, %f",self.touchPtInView.y, height);
-//    CGRect destiFrame = CGRectMake(0, 64, PJ_SCREEN_WIDTH, PJ_SCREEN_HEIGHT - 64);
-//    if (self.touchPtInView.y > height)
-//    {
-//        destiFrame = CGRectMake(0, 64 - self.touchPtInView.y + height, PJ_SCREEN_WIDTH, PJ_SCREEN_HEIGHT - 64);
-//    }
-//
-//    [UIView animateWithDuration:0.5 animations:^{
-//        self.myTableView.frame = destiFrame;
-//    }];
-//}
-
-//- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
-//{
-//    [UIView animateWithDuration:0.5 animations:^{
-//        self.myTableView.frame = CGRectMake(0, 64, PJ_SCREEN_WIDTH, PJ_SCREEN_HEIGHT - 64);
-//    }];
-//    return YES;
-//}
-
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     switch (textField.tag) {
@@ -572,19 +549,16 @@ UITableViewDataSource
             default:
                 break;
         }
-        DLog(@"%@",destDateString);
     }
     [self closeBackgroundView];
     return  YES;
 }
 
 - (void)lewPickerControllerDidOKButtonPressed:(LewPickerController *)pickerController{
-    NSLog(@"OK");
     [self closeBackgroundView];
 }
 
 - (void)lewPickerControllerDidCancelButtonPressed:(LewPickerController *)pickerController{
-    NSLog(@"cancel");
     [self closeBackgroundView];
 }
 
@@ -596,7 +570,4 @@ UITableViewDataSource
         [_backgroundView removeFromSuperview];
     }];
 }
-
-
-
 @end
