@@ -545,25 +545,14 @@ singleton_implementation(FSBaseDataManager);
          Success:(SuccessBlockHandler)success
             fail:(FailureBlockHandler)fail
 {
-    SuccessBlockHandler successBlock = ^(id json){
-        if ([self showAlertView:json])
-        {
-            success(json);
-        }
-    };
-    
-    FailureBlockHandler failBlock = ^(){
-        [[FSErrorCodeManager sharedFSErrorCodeManager] ShowNetError];
-    };
-    
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValuesForKeysWithDictionary:self.baseParams];
-    [params setValuesForKeysWithDictionary:postParams];
-    
-    [FSNetWorkInstance postJSONWithUrl:kFSServerAPIAddMyCar
-                             parameters:params
-                                success:successBlock
-                                   fail:failBlock];
+    [self generalPost:postParams success:success fail:fail andServerAPI:kFSServerAPIAddMyCar];
+}
+
+- (void)editMyCar:(NSDictionary*)postParams
+          Success:(SuccessBlockHandler)success
+             fail:(FailureBlockHandler)fail
+{
+    [self generalPost:postParams success:success fail:fail andServerAPI:kFSServerAPIEditMyCar];
 }
 
 //移除爱车

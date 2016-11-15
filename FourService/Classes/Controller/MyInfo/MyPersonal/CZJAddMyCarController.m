@@ -53,6 +53,8 @@ UITableViewDataSource
     NSInteger currentSelectNum;
     
     NSArray *dateTitleAry;
+    
+    BOOL isAddCar;
 }
 
 - (void)setCarDefalutAction:(UIButton *)sender;
@@ -78,7 +80,7 @@ UITableViewDataSource
 {
     [PUtils customizeNavigationBarForTarget:self];
     [self addCZJNaviBarView:CZJNaviBarViewTypeGeneral];
-    self.naviBarView.mainTitleLabel.text = @"编辑车辆信息";
+    self.naviBarView.mainTitleLabel.text = isAddCar ? @"添加车辆信息" : @"编辑车辆信息";
     self.view.backgroundColor = CZJTableViewBGColor;
     
     //背景触摸层
@@ -104,12 +106,14 @@ UITableViewDataSource
         _carForm.icon = FSBaseDataInstance.carBrandForm.icon;
         numberPlate = @"川A";
         _carForm.is_default = YES;
+        isAddCar = YES;
     }
     else
     {
         NSArray* carNumAry = [_carForm.car_num componentsSeparatedByString:@"-"];
         numberPlate = [PUtils isBlankString:carNumAry.firstObject] ? @"川A" : carNumAry.firstObject;;
         plateNumStr = carNumAry.lastObject;
+        isAddCar = NO;
     }
 
     [self.myTableView reloadData];
@@ -337,21 +341,38 @@ UITableViewDataSource
        @"product_date": _carForm.product_date ? _carForm.product_date : @"0",
        @"maintain_date": _carForm.maintain_date ? _carForm.maintain_date : @"0"
        } mutableCopy];
-    [FSBaseDataInstance addMyCar:carInfo Success:^(id json) {
-        [PUtils tipWithText:_carForm ? @"更新成功" : @"添加成功" andView:nil];
-        NSArray* vcs = self.navigationController.viewControllers;
-        for (id controller in vcs)
-        {
-            if ([controller isKindOfClass:[FSMyCarListController class]])
+    
+    if (isAddCar)
+    {
+        weaky(self);
+        [FSBaseDataInstance addMyCar:carInfo Success:^(id json) {
+            [PUtils tipWithText:@"添加成功" withCompeletHandler:^{
+                FSMyCarListController *carList = (FSMyCarListController *)[PUtils getViewControllerFromStoryboard:kCZJStoryBoardFileMain andVCName:@"carListSBID"];
+                [weakSelf presentViewController:carList animated:YES completion:^{
+                    [weakSelf.navigationController popToRootViewControllerAnimated:NO];
+                }];
+            }];
+        } fail:^{
+            
+        }];
+    }
+    else
+    {
+        [FSBaseDataInstance editMyCar:carInfo Success:^(id json) {
+            [PUtils tipWithText: @"更新成功" andView:nil];
+            NSArray* vcs = self.navigationController.viewControllers;
+            for (id controller in vcs)
             {
-                [((FSMyCarListController*)controller) getCarListFromServer];
-                [self.navigationController popToViewController:controller animated:true];
-                break;
+                if ([controller isKindOfClass:[FSMyCarListController class]])
+                {
+                    [((FSMyCarListController*)controller) getCarListFromServer];
+                    [self.navigationController popToViewController:controller animated:true];
+                    break;
+                }
             }
-        }
-    } fail:^{
-        
-    }];
+        } fail:nil];
+    }
+
 }
 
 - (void)chooseCarPlateNumAction:(UIButton *)sender
@@ -423,7 +444,6 @@ UITableViewDataSource
     for (UITouch *touch in touches)
     {
         self.touchPtInView = [touch locationInView:self.window];
-        iLog(@"%f, %f", self.touchPtInView.x, self.touchPtInView.y);
     }
 }
 
@@ -435,7 +455,6 @@ UITableViewDataSource
     self.keyBoardHeight = keyboardRect.size.height;
     
     float height = PJ_SCREEN_HEIGHT - self.keyBoardHeight - 40;
-    iLog(@"%f, %f",self.touchPtInView.y, height);
     CGRect destiFrame = CGRectMake(0, 64, PJ_SCREEN_WIDTH, PJ_SCREEN_HEIGHT - 64);
     if (self.touchPtInView.y > (height + 10))
     {

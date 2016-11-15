@@ -211,6 +211,11 @@ singleton_interface(FSBaseDataManager);
          Success:(SuccessBlockHandler)success
             fail:(FailureBlockHandler)fail;
 
+//编辑车辆
+- (void)editMyCar:(NSDictionary*)postParams
+         Success:(SuccessBlockHandler)success
+            fail:(FailureBlockHandler)fail;
+
 //获取爱车列表
 - (void)getMyCarList:(NSDictionary*)postParams
              Success:(SuccessBlockHandler)success
