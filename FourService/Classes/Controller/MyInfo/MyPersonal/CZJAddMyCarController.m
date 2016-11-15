@@ -71,6 +71,7 @@ UITableViewDataSource
     [super viewDidLoad];
     [self initViews];
     [self initDatas];
+    [self addTouchObserver];
 }
 
 - (void)initViews
@@ -415,6 +416,66 @@ UITableViewDataSource
 }
 
 #pragma mark - UITextFieldDelegate
+- (void)viewGetTouched:(NSNotification *)notifi
+{
+    UIEvent *event = notifi.object;
+    NSSet *touches = [event allTouches];
+    for (UITouch *touch in touches)
+    {
+        self.touchPtInView = [touch locationInView:self.window];
+        iLog(@"%f, %f", self.touchPtInView.x, self.touchPtInView.y);
+    }
+}
+
+- (void)keyboardWillShow:(NSNotification *)notifi
+{
+    NSDictionary *userInfo = [notifi userInfo];
+    NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+    CGRect keyboardRect = [aValue CGRectValue];
+    self.keyBoardHeight = keyboardRect.size.height;
+    
+    float height = PJ_SCREEN_HEIGHT - self.keyBoardHeight - 40;
+    iLog(@"%f, %f",self.touchPtInView.y, height);
+    CGRect destiFrame = CGRectMake(0, 64, PJ_SCREEN_WIDTH, PJ_SCREEN_HEIGHT - 64);
+    if (self.touchPtInView.y > (height + 10))
+    {
+        destiFrame = CGRectMake(0, 64 - self.touchPtInView.y + height, PJ_SCREEN_WIDTH, PJ_SCREEN_HEIGHT - 64 - 75);
+        [UIView animateWithDuration:0.5 animations:^{
+            self.myTableView.frame = destiFrame;
+        }];
+    }
+}
+
+- (void)keyboardWillHide:(NSNotification *)notifi
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        self.myTableView.frame = CGRectMake(0, 64, PJ_SCREEN_WIDTH, PJ_SCREEN_HEIGHT - 64 - 75);
+    }];
+}
+
+//- (void)textFieldDidBeginEditing:(UITextField *)textField
+//{
+//    float height = PJ_SCREEN_HEIGHT - self.keyBoardHeight;
+//    iLog(@"%f, %f",self.touchPtInView.y, height);
+//    CGRect destiFrame = CGRectMake(0, 64, PJ_SCREEN_WIDTH, PJ_SCREEN_HEIGHT - 64);
+//    if (self.touchPtInView.y > height)
+//    {
+//        destiFrame = CGRectMake(0, 64 - self.touchPtInView.y + height, PJ_SCREEN_WIDTH, PJ_SCREEN_HEIGHT - 64);
+//    }
+//
+//    [UIView animateWithDuration:0.5 animations:^{
+//        self.myTableView.frame = destiFrame;
+//    }];
+//}
+
+//- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
+//{
+//    [UIView animateWithDuration:0.5 animations:^{
+//        self.myTableView.frame = CGRectMake(0, 64, PJ_SCREEN_WIDTH, PJ_SCREEN_HEIGHT - 64);
+//    }];
+//    return YES;
+//}
+
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     switch (textField.tag) {

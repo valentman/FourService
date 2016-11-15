@@ -710,6 +710,7 @@ static void exceptionHandler(NSException *exception)
 
 - (void)sendEvent:(UIEvent *)event
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kFSNotifiSendEvent object:event];
 	if ([iConsole sharedConsole].enabled && event.type == UIEventTypeTouches)
 	{
 		NSSet *touches = [event allTouches];

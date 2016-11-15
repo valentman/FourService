@@ -184,6 +184,7 @@ static NSString *const kCZJNotifiLoginSuccess = @"loginSuccess";                
 static NSString *const kCZJNotifiLoginOut = @"loginout";                                        //退出登录
 static NSString *const kCZJNotifiNotCurrentCity = @"notCurrentcity";                            //切换城市
 static NSString *const kFSNotifiShowAlertView = @"showAlertView";
+static NSString *const kFSNotifiSendEvent = @"sendEvent";
 
 
 //-----------------------StoryBoardID常量定义---------------------------

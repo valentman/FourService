@@ -14,7 +14,9 @@
 PBaseNaviagtionBarViewDelegate,
 UIGestureRecognizerDelegate
 >
-
+{
+    BOOL isRecieveTouchNotifi;
+}
 @property (strong, nonatomic) __block UIView* notifyView;
 
 @end
@@ -30,11 +32,65 @@ UIGestureRecognizerDelegate
 - (void)initCZJVCDatas
 {
     self.windowAlpha = 1.0f;
+    isRecieveTouchNotifi = NO;
 }
 
+- (void)addTouchObserver
+{
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(viewGetTouched:)
+                                                name:kFSNotifiSendEvent
+                                              object:nil];
+    //增加监听，当键盘出现或改变时收出消息
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    //增加监听，当键退出时收出消息
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+    isRecieveTouchNotifi = YES;
+}
+
+- (void)dealloc
+{
+    if (isRecieveTouchNotifi) {
+        [[NSNotificationCenter defaultCenter]removeObserver:self name:kFSNotifiShowAlertView object:nil];
+        [[NSNotificationCenter defaultCenter]removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+        [[NSNotificationCenter defaultCenter]removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+
+- (void)viewGetTouched:(NSNotification *)notifi
+{
+    UIEvent *event = notifi.object;
+    NSSet *touches = [event allTouches];
+    for (UITouch *touch in touches)
+    {
+        CGPoint pt = [touch locationInView:self.view];
+        DLog(@"%f, %f", pt.x, pt.y);
+    }
+}
+
+- (void)keyboardWillShow:(NSNotification *)notifi
+{
+    NSDictionary *userInfo = [notifi userInfo];
+    NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+    CGRect keyboardRect = [aValue CGRectValue];
+    self.keyBoardHeight = keyboardRect.size.height;
+}
+
+- (void)keyboardWillHide:(NSNotification *)notifi
+{
+    
 }
 
 /**

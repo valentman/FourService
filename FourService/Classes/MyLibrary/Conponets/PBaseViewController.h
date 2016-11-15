@@ -46,6 +46,11 @@
 /* 网络是否联通 */
 @property (assign, nonatomic) BOOL isNetWorkCanReachable;
 
+/* 点击位置 */
+@property (assign, nonatomic) CGPoint touchPtInView;
+
+@property (assign, nonatomic) int keyBoardHeight;
+
 /* 添加自定义导航栏 */
 - (void)addCZJNaviBarView:(CZJNaviBarViewType)naviBarViewType;
 - (void)addCZJNaviBarViewWithNotHiddenNavi:(CZJNaviBarViewType)naviBarViewType;
@@ -60,5 +65,8 @@
 
 /* 检测网络状态 */
 - (void)checkNetWorkStatus;
+
+/* 添加点击事件监听 */
+- (void)addTouchObserver;
 
 @end

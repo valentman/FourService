@@ -82,6 +82,7 @@ CGSizeEqualToSize(CGSizeMake(1125, 2001), [[UIScreen mainScreen] currentMode].si
 //中英状态下键盘的高度
 #define kEnglishKeyboardHeight  (216.f)
 #define kChineseKeyboardHeight  (252.f)
+#define RectZero CGRectMake(0, 0, PJ_SCREEN_WIDTH, PJ_SCREEN_HEIGHT)
 
 
 //---------------获取设备系统缓存目录和文件目录---------------
