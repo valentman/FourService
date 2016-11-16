@@ -44,8 +44,6 @@
 		EC3220F71D77A3DD00E4019C /* FSGoodsDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3220F61D77A3DD00E4019C /* FSGoodsDetailController.m */; };
 		EC3220FA1D77A40000E4019C /* FSStoreMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3220F91D77A40000E4019C /* FSStoreMapController.m */; };
 		EC3220FC1D77A63000E4019C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC3220FB1D77A63000E4019C /* MapKit.framework */; };
-		EC3221021D77A6BF00E4019C /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC3220FF1D77A6BF00E4019C /* MAMapKit.framework */; };
-		EC3221031D77A6BF00E4019C /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC3221001D77A6BF00E4019C /* AMapSearchKit.framework */; };
 		EC3221041D77A6BF00E4019C /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC3221011D77A6BF00E4019C /* MAMapKit.framework */; };
 		EC32210C1D77A7AF00E4019C /* CZJCustomAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3221071D77A7AF00E4019C /* CZJCustomAnnotationView.m */; };
 		EC32210D1D77A7AF00E4019C /* CZJCustomCallOutView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3221091D77A7AF00E4019C /* CZJCustomCallOutView.m */; };
@@ -375,6 +373,10 @@
 		EC57A2BC1D8B79BD006DDA7F /* FSOrderProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC57A2BA1D8B79BD006DDA7F /* FSOrderProductCell.xib */; };
 		EC57A2C01D8BD990006DDA7F /* PaymentType.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC57A2BF1D8BD990006DDA7F /* PaymentType.plist */; };
 		EC5E26A31D86FB480040986B /* FSProductChangeController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5E26A21D86FB480040986B /* FSProductChangeController.m */; };
+		EC66E2751DDBF5B0001BDC63 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC66E2741DDBF5B0001BDC63 /* JavaScriptCore.framework */; };
+		EC66E2771DDBF62A001BDC63 /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EC66E2761DDBF62A001BDC63 /* AMap.bundle */; };
+		EC66E2791DDBF92D001BDC63 /* AMapFoundationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC66E2781DDBF92D001BDC63 /* AMapFoundationKit.framework */; };
+		EC66E27B1DDBF936001BDC63 /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC66E27A1DDBF936001BDC63 /* AMapSearchKit.framework */; };
 		EC6E3CFB1D7860FE00DA5588 /* CZJProvinceForm.m in Sources */ = {isa = PBXBuildFile; fileRef = EC6E3CFA1D7860FE00DA5588 /* CZJProvinceForm.m */; };
 		EC6E3CFF1D78786700DA5588 /* CZJOrderListPayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC6E3CFD1D78786700DA5588 /* CZJOrderListPayCell.m */; };
 		EC6E3D001D78786700DA5588 /* CZJOrderListPayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC6E3CFE1D78786700DA5588 /* CZJOrderListPayCell.xib */; };
@@ -539,8 +541,6 @@
 		EC3220F81D77A40000E4019C /* FSStoreMapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSStoreMapController.h; sourceTree = "<group>"; };
 		EC3220F91D77A40000E4019C /* FSStoreMapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSStoreMapController.m; sourceTree = "<group>"; };
 		EC3220FB1D77A63000E4019C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		EC3220FF1D77A6BF00E4019C /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
-		EC3221001D77A6BF00E4019C /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
 		EC3221011D77A6BF00E4019C /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
 		EC3221061D77A7AF00E4019C /* CZJCustomAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJCustomAnnotationView.h; sourceTree = "<group>"; };
 		EC3221071D77A7AF00E4019C /* CZJCustomAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJCustomAnnotationView.m; sourceTree = "<group>"; };
@@ -1177,6 +1177,10 @@
 		EC57A2BF1D8BD990006DDA7F /* PaymentType.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PaymentType.plist; sourceTree = "<group>"; };
 		EC5E26A11D86FB480040986B /* FSProductChangeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSProductChangeController.h; sourceTree = "<group>"; };
 		EC5E26A21D86FB480040986B /* FSProductChangeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSProductChangeController.m; sourceTree = "<group>"; };
+		EC66E2741DDBF5B0001BDC63 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		EC66E2761DDBF62A001BDC63 /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AMap.bundle; path = MAMapKit.framework/AMap.bundle; sourceTree = "<group>"; };
+		EC66E2781DDBF92D001BDC63 /* AMapFoundationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapFoundationKit.framework; sourceTree = "<group>"; };
+		EC66E27A1DDBF936001BDC63 /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
 		EC6E3CF91D7860FE00DA5588 /* CZJProvinceForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJProvinceForm.h; sourceTree = "<group>"; };
 		EC6E3CFA1D7860FE00DA5588 /* CZJProvinceForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJProvinceForm.m; sourceTree = "<group>"; };
 		EC6E3CFC1D78786700DA5588 /* CZJOrderListPayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJOrderListPayCell.h; sourceTree = "<group>"; };
@@ -1366,6 +1370,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC66E2751DDBF5B0001BDC63 /* JavaScriptCore.framework in Frameworks */,
 				EC3220FC1D77A63000E4019C /* MapKit.framework in Frameworks */,
 				EC542B161D23A51B00F3B4BF /* CoreMotion.framework in Frameworks */,
 				EC3221041D77A6BF00E4019C /* MAMapKit.framework in Frameworks */,
@@ -1384,21 +1389,21 @@
 				EC54270B1D23791F00F3B4BF /* AVFoundation.framework in Frameworks */,
 				EC54270C1D23791F00F3B4BF /* CFNetwork.framework in Frameworks */,
 				EC54270D1D23791F00F3B4BF /* CoreAudio.framework in Frameworks */,
+				EC66E2791DDBF92D001BDC63 /* AMapFoundationKit.framework in Frameworks */,
 				EC542AED1D239B8A00F3B4BF /* libcrypto.a in Frameworks */,
 				EC54270E1D23791F00F3B4BF /* CoreGraphics.framework in Frameworks */,
 				EC54270F1D23791F00F3B4BF /* CoreImage.framework in Frameworks */,
 				EC542AEC1D239B8A00F3B4BF /* AlipaySDK.framework in Frameworks */,
 				EC5427101D23791F00F3B4BF /* CoreLocation.framework in Frameworks */,
 				EC542B041D239EA100F3B4BF /* libXG-SDK.a in Frameworks */,
+				EC66E27B1DDBF936001BDC63 /* AMapSearchKit.framework in Frameworks */,
 				EC5427111D23791F00F3B4BF /* CoreTelephony.framework in Frameworks */,
 				EC5427121D23791F00F3B4BF /* CoreText.framework in Frameworks */,
-				EC3221031D77A6BF00E4019C /* AMapSearchKit.framework in Frameworks */,
 				EC542AEE1D239B8A00F3B4BF /* libssl.a in Frameworks */,
 				EC5427131D23791F00F3B4BF /* Foundation.framework in Frameworks */,
 				EC5427141D23791F00F3B4BF /* libc++.tbd in Frameworks */,
 				EC5427151D23791F00F3B4BF /* libsqlite3.0.tbd in Frameworks */,
 				EC5427161D23791F00F3B4BF /* libsqlite3.tbd in Frameworks */,
-				EC3221021D77A6BF00E4019C /* MAMapKit.framework in Frameworks */,
 				EC0D05411DB7D4E10088B77E /* KSCrash.framework in Frameworks */,
 				EC5427171D23791F00F3B4BF /* libstdc++.6.0.9.tbd in Frameworks */,
 				EC5427181D23791F00F3B4BF /* libz.tbd in Frameworks */,
@@ -1542,17 +1547,10 @@
 		EC3220FD1D77A6BF00E4019C /* AMap3DMap */ = {
 			isa = PBXGroup;
 			children = (
-				EC3220FE1D77A6BF00E4019C /* AMap3DMap */,
-				EC3221001D77A6BF00E4019C /* AMapSearchKit.framework */,
+				EC66E27A1DDBF936001BDC63 /* AMapSearchKit.framework */,
+				EC66E2781DDBF92D001BDC63 /* AMapFoundationKit.framework */,
+				EC66E2761DDBF62A001BDC63 /* AMap.bundle */,
 				EC3221011D77A6BF00E4019C /* MAMapKit.framework */,
-			);
-			path = AMap3DMap;
-			sourceTree = "<group>";
-		};
-		EC3220FE1D77A6BF00E4019C /* AMap3DMap */ = {
-			isa = PBXGroup;
-			children = (
-				EC3220FF1D77A6BF00E4019C /* MAMapKit.framework */,
 			);
 			path = AMap3DMap;
 			sourceTree = "<group>";
@@ -2930,6 +2928,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		EC66E2731DDBF5B0001BDC63 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EC66E2741DDBF5B0001BDC63 /* JavaScriptCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EC6E89241D7EE7A300829220 /* CommitOrder */ = {
 			isa = PBXGroup;
 			children = (
@@ -2950,6 +2956,7 @@
 			children = (
 				EC7760D81D2223D500E1A89F /* FourService */,
 				EC7760D71D2223D500E1A89F /* Products */,
+				EC66E2731DDBF5B0001BDC63 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -3319,7 +3326,7 @@
 				TargetAttributes = {
 					EC7760D51D2223D500E1A89F = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = UG6PG8B3H6;
+						DevelopmentTeam = 27ZN797VLM;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -3365,6 +3372,7 @@
 				EC45981B1D757960004424A4 /* FSServiceStepCell.xib in Resources */,
 				EC5429981D237E7700F3B4BF /* wl_map_icon_1.png in Resources */,
 				EC46812C1DD959B20045369F /* FSAddCarThreeCell.xib in Resources */,
+				EC66E2771DDBF62A001BDC63 /* AMap.bundle in Resources */,
 				EC4681221DD9544E0045369F /* FSAddCarTwoCell.xib in Resources */,
 				EC54299A1D237E7700F3B4BF /* wl_map_icon_1_press.png in Resources */,
 				ECDDD5001D8CEB95009082DB /* FSProductEvaluateHeadCell.xib in Resources */,
@@ -3897,14 +3905,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = UG6PG8B3H6;
+				DEVELOPMENT_TEAM = 27ZN797VLM;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FourService/",
 					"$(PROJECT_DIR)/FourService/ThirdSDK",
 					"$(PROJECT_DIR)/FourService/ThirdSDK/Ali",
-					"$(PROJECT_DIR)/FourService/ThirdSDK/AMap3DMap/AMap3DMap",
 					"$(PROJECT_DIR)/FourService/ThirdSDK/AMap3DMap",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -3940,14 +3947,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = UG6PG8B3H6;
+				DEVELOPMENT_TEAM = 27ZN797VLM;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FourService/",
 					"$(PROJECT_DIR)/FourService/ThirdSDK",
 					"$(PROJECT_DIR)/FourService/ThirdSDK/Ali",
-					"$(PROJECT_DIR)/FourService/ThirdSDK/AMap3DMap/AMap3DMap",
 					"$(PROJECT_DIR)/FourService/ThirdSDK/AMap3DMap",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

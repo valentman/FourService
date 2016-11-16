@@ -273,7 +273,9 @@
 - (UIButton *)creatCancelButtonWith
 {
     UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(PJ_SCREEN_WIDTH - BUTTON_WIDTH- BUTTON_INTERVAL_WIDTH, BUTTON_INTERVAL_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT)];
-    [cancelButton setImage:IMAGENAMED(@"login_btn_off") forState:UIControlStateNormal];
+    [cancelButton setTintColor:FSBLUECOLOR];
+    UIImage *cancelImage = IMAGENAMED(@"login_btn_off");
+    [cancelButton setImage:[cancelImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     
     return cancelButton;
 }

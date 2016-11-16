@@ -7,8 +7,9 @@
 //
 
 #import "FSStoreMapController.h"
+#import <AMapFoundationKit/AMapFoundationKit.h>
 #import <MAMapKit/MAMapKit.h>
-#import <AMapSearchKit/AMapSearchAPI.h>
+#import <AMapSearchKit/AMapSearchKit.h>
 #import "CZJCustomAnnotationView.h"
 #import "CZJMAAroundAnnotation.h"
 #import "CZJStoreMAAroundForm.h"
@@ -106,7 +107,7 @@ UIGestureRecognizerDelegate
 - (void)initMapViews
 {
     //添加MapView
-    [MAMapServices sharedServices].apiKey = MAPKEY;
+    [AMapServices sharedServices].apiKey = MAPKEY;
     _mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 64)];
     _mapView.delegate = self;
     _mapView.showsScale = NO;

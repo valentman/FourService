@@ -17,6 +17,7 @@
 #import "FSGoodsDetailController.h"
 #import "FSCommitOrderController.h"
 #import "FSProductChangeController.h"
+#import "ShareMessage.h"
 
 @interface FSServiceStepController ()
 <
@@ -559,5 +560,33 @@ FSProductChangeDelegate
         }
     }
     [self performSegueWithIdentifier:@"segueToCommitOrder" sender:tmpAry];
+}
+
+- (void)clickEventCallBack:(nullable id)sender
+{
+    UIButton* barButton = (UIButton*)sender;
+    switch (barButton.tag) {
+        case CZJButtonTypeNaviBarMore:
+        {
+            [[ShareMessage shareMessage] showPanel:self.view
+                                              type:1
+                                             title:@"分享测试"
+                                              body:@"分享测试"
+                                              link:@"www.baidu.com"
+                                             image:nil];
+        }
+            break;
+            
+        case CZJButtonTypeNaviBarBack:
+            [self.navigationController popViewControllerAnimated:true];
+            break;
+            
+        case CZJButtonTypeHomeShopping:
+            
+            break;
+            
+        default:
+            break;
+    }
 }
 @end

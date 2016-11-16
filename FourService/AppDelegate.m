@@ -1,3 +1,4 @@
+
 //
 //  AppDelegate.m
 //  FourService
@@ -359,7 +360,7 @@
     
 //    DLog(@"%@",url.absoluteString);
     //第二步：添加回调
-    if (![url.absoluteString hasPrefix:@"CheZhiJian"]) {
+    if (![url.absoluteString hasPrefix:@"Fourservice"]) {
         DLog(@"微信");
         return [OpenShare handleOpenURL:url];
     }
