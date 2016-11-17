@@ -174,18 +174,18 @@
     //推送反馈回调版本示例
     GeneralBlockHandler _successBlock = ^(void){
         //成功之后的处理
-//        DLog(@"[XGPush]handleLaunching's successBlock");
+        DLog(@"[XGPush]handleLaunching's successBlock");
     };
     
     GeneralBlockHandler _errorBlock = ^(void){
         //失败之后的处理
-//        DLog(@"[XGPush]handleLaunching's errorBlock");
+        DLog(@"[XGPush]handleLaunching's errorBlock");
     };
     [XGPush handleLaunching:launchOptions successCallback:_successBlock errorCallback:_errorBlock];
     
     //角标清0
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
-//    iLog(@"========CZJ launchOptions:%@",[launchOptions description]);
+    iLog(@"========FS launchOptions:%@",[launchOptions description]);
     
     
     //-----------------6.设置主页并判断是否启动广告页面--------------
@@ -213,8 +213,6 @@
         //---------------然后下载下次启动显示的启动页------------
 //        [self getStartPageDataFromServer:YES];
     }
-    
-//    [self guidePages];
     
     //当版本更新后即要启动引导页
     if (![USER_DEFAULT valueForKey:kCZJLastVersion] ||
@@ -307,7 +305,7 @@
 - (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
 {
     //用户已经允许接收以下类型的推送
-//    iLog(@"========CZJ 注册用户通知成功");
+    iLog(@"========FS 注册用户通知成功");
 }
 
 //按钮点击事件回调
@@ -326,22 +324,22 @@
 {
     GeneralBlockHandler successBlock = ^(void){
         //成功之后的处理
-//        DLog(@"[XGPush]register successBlock");
+        DLog(@"[XGPush]register successBlock");
     };
     
     GeneralBlockHandler errorBlock = ^(void){
         //失败之后的处理
-//        DLog(@"[XGPush]register errorBlock");
+        DLog(@"[XGPush]register errorBlock");
     };
     NSString * deviceTokenStr = [XGPush registerDevice:deviceToken successCallback:successBlock errorCallback:errorBlock];
     [USER_DEFAULT setValue:deviceToken forKey:kUserDefaultDeviceTokenStr];
-//    iLog(@"========CZJ 设备deviceTokenStr:%@",deviceTokenStr);
+    iLog(@"========FS 设备deviceTokenStr:%@",deviceTokenStr);
 }
 
 //如果deviceToken获取不到会进入此事件
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
-//    DLog(@"%@", [NSString stringWithFormat: @"[XGPush] Error: %@",error]);
+    DLog(@"%@", [NSString stringWithFormat: @"[XGPush] Error: %@",error]);
 }
 
 
@@ -352,13 +350,13 @@
          annotation:(id)annotation {
     //跳转支付宝钱包进行支付，处理支付结果
     [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
-//        DLog(@"result ---- = %@",resultDic);
+        DLog(@"result ---- = %@",resultDic);
         if ([[resultDic valueForKey:@"resultStatus"] intValue] == 9000) {
             [[NSNotificationCenter defaultCenter] postNotificationName:kCZJAlipaySuccseful object:resultDic];
         }
     }];
     
-//    DLog(@"%@",url.absoluteString);
+    DLog(@"%@",url.absoluteString);
     //第二步：添加回调
     if (![url.absoluteString hasPrefix:@"Fourservice"]) {
         DLog(@"微信");

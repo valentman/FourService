@@ -10,6 +10,8 @@
 #import "CZJGeneralCell.h"
 #import "FSBaseDataManager.h"
 #import "FSMyInformationController.h"
+#import "XGPush.h"
+#import "XGSetting.h"
 
 @interface FSSettingController ()
 <
@@ -232,6 +234,10 @@ UITableViewDataSource
             FSBaseDataInstance.userInfoForm = nil;
             [FSBaseDataInstance refreshChezhuID];
             
+            //注销远程通知
+            [[UIApplication sharedApplication] unregisterForRemoteNotifications];
+            [XGPush unRegisterDevice];
+            
             [weak.navigationController popViewControllerAnimated:YES];
             [PUtils tipWithText:@"退出成功" andView:nil];
             [[NSNotificationCenter defaultCenter]postNotificationName:kCZJNotifiLoginOut object:nil];
@@ -249,6 +255,9 @@ UITableViewDataSource
     {
         DLog(@"开启消息推送");
         [USER_DEFAULT setValue:@"true" forKey:kuserDefaultPushNotification];
+        [XGPush setAccount:FSBaseDataInstance.userInfoForm.identifier];
+        [XGPush registerDeviceStr:[USER_DEFAULT valueForKey:kUserDefaultDeviceTokenStr]];
+        [XGPush registerDevice:[USER_DEFAULT valueForKey:kUserDefaultDeviceTokenStr]];
     }
     else
     {

@@ -36,6 +36,7 @@ CZJMyCarListCellDelegate
 
 - (void)initDatas
 {
+    self.carListAry = [FSBaseDataInstance.userInfoForm.car_list mutableCopy];
 }
 
 - (void)initViews
@@ -142,9 +143,30 @@ CZJMyCarListCellDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     FSCarListForm* carListForm = self.carListAry[indexPath.section];
-    CZJAddMyCarController* addCarVC = (CZJAddMyCarController*)[PUtils getViewControllerFromStoryboard:kCZJStoryBoardFileMain andVCName:@"addMyCarSBID"];
-    addCarVC.carForm = carListForm;
-    [self.navigationController pushViewController:addCarVC animated:YES];
+    switch (self.carFromType) {
+        case FSCarListFromTypeGeneral:
+        {
+            
+            CZJAddMyCarController* addCarVC = (CZJAddMyCarController*)[PUtils getViewControllerFromStoryboard:kCZJStoryBoardFileMain andVCName:@"addMyCarSBID"];
+            addCarVC.carForm = carListForm;
+            [self.navigationController pushViewController:addCarVC animated:YES];
+        }
+            break;
+            
+        case FSCarListFromTypeCommitOrder:
+        {
+            if ([self.delegate respondsToSelector:@selector(selectOneCar:)])
+            {
+                [self.delegate selectOneCar:carListForm];
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+        }
+            break;
+            
+        default:
+            break;
+    }
+
 }
 
 - (void)addMyCarAction:(id)sender

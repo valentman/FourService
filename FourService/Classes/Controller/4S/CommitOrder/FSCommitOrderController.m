@@ -16,6 +16,7 @@
 #import "CPEvaluateSuccessController.h"
 #import "OpenShareHeader.h"
 #import "CZJPaymentManager.h"
+#import "FSMyCarListController.h"
 
 
 
@@ -40,13 +41,15 @@
 @interface FSCommitOrderController ()
 <
 UITableViewDelegate,
-UITableViewDataSource
+UITableViewDataSource,
+FSMyCarListControllerDelegate
 >
 {
     NSArray* _orderTypeAry;                     //支付方式（支付宝，微信，银联）
     __block CZJOrderTypeForm* _defaultOrderType;        //默认支付方式（为支付宝）
     FSCommitOrderForm* commitOrderForm;
     FSOrderContactCell* contactCell;
+    FSCarListForm *commitCarForm;
     
     NSInteger productNum;
     NSInteger serviceNum;
@@ -70,6 +73,20 @@ UITableViewDataSource
 
 - (void)initDatas
 {
+    
+    for (FSCarListForm *carform in FSBaseDataInstance.userInfoForm.car_list)
+    {
+        if (carform.is_default)
+        {
+            commitCarForm = carform;
+            break;
+        }
+    }
+    if (!commitCarForm)
+    {
+        commitCarForm = FSBaseDataInstance.userInfoForm.car_list.firstObject;
+    }
+    
     //支付方式
     _orderTypeAry = FSBaseDataInstance.orderPaymentTypeAry;
     for (CZJOrderTypeForm* form in _orderTypeAry)
@@ -166,7 +183,7 @@ UITableViewDataSource
 #pragma mark-UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return 5;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -182,10 +199,14 @@ UITableViewDataSource
             break;
             
         case 2:
-            return 1 + _orderTypeAry.count + 1;
+            return 1;
             break;
             
         case 3:
+            return 1 + _orderTypeAry.count + 1;
+            break;
+            
+        case 4:
             return 2;
             break;
             
@@ -211,6 +232,20 @@ UITableViewDataSource
             
         case 1:
         {
+            CZJGeneralCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralCell" forIndexPath:indexPath];
+            cell.nameLabel.textColor = FSBLUECOLOR;
+            cell.nameLabelWidth.constant = PJ_SCREEN_WIDTH - 150;
+            cell.nameLabelLeading.constant = 15;
+            cell.nameLabel.font = SYSTEMFONT(15);
+            NSString *carInfo = [NSString stringWithFormat:@"%@ %@",commitCarForm.car_model_name,commitCarForm.car_type_name];
+            cell.nameLabel.text = carInfo;
+            cell.detailLabel.text = @"点击更换";
+            return cell;
+        }
+            break;
+            
+        case 2:
+        {
             FSOrderProductCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FSOrderProductCell" forIndexPath:indexPath];
             [cell.productImageView sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:DefaultPlaceHolderSquare];
             cell.productNamesLabel.text = [NSString stringWithFormat:@"一共%ld件商品、%ld项服务",productNum,serviceNum];
@@ -222,7 +257,7 @@ UITableViewDataSource
         }
             break;
             
-        case 2:
+        case 3:
         {
             if (indexPath.row >=1 &&
                 indexPath.row <= _orderTypeAry.count)
@@ -281,7 +316,7 @@ UITableViewDataSource
         }
             break;
             
-        case 3:
+        case 4:
         {
             CZJGeneralCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CZJGeneralCell" forIndexPath:indexPath];
             cell.nameLabelLeading.constant = 20;
@@ -326,14 +361,18 @@ UITableViewDataSource
             break;
             
         case 1:
-            return 70;
+            return 54;
             break;
             
         case 2:
-            return 44;
+            return 70;
             break;
             
         case 3:
+            return 44;
+            break;
+            
+        case 4:
             return 44;
             break;
             
@@ -362,13 +401,22 @@ UITableViewDataSource
             
         case 1:
         {
+            FSMyCarListController *carlist = (FSMyCarListController *)[PUtils getViewControllerFromStoryboard:kCZJStoryBoardFileMain andVCName:@"carListSBID"];
+            carlist.delegate = self;
+            carlist.carFromType = FSCarListFromTypeCommitOrder;
+            [self.navigationController pushViewController:carlist animated:YES];
+        }
+            break;
+            
+        case 2:
+        {
             FSStepServiceListController* servicelist = [[FSStepServiceListController alloc] init];
             servicelist.orderServiceAry = self.orderServiceAry;
             [self.navigationController pushViewController:servicelist animated:YES];
         }
             break;
             
-        case 2:
+        case 3:
         {
             if (indexPath.row >=1 &&
                 indexPath.row <= _orderTypeAry.count)
@@ -387,7 +435,7 @@ UITableViewDataSource
         }
             break;
             
-        case 3:
+        case 4:
             
             break;
             
@@ -508,4 +556,14 @@ UITableViewDataSource
     }
     
 }
+
+#pragma mark- FSMyCarListControllerDelegate
+- (void)selectOneCar:(FSCarListForm *)carForm
+{
+    commitCarForm = carForm;
+    [self.myTableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
+}
+
+
+
 @end

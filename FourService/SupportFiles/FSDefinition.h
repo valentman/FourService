@@ -100,8 +100,8 @@ static NSString *const kCZJAPPURL = @"https://itunes.apple.com/us/app/id10355673
 static NSString *const kCZJAPPURLVersionCheck = @"http://itunes.apple.com/lookup";
 
 //第三方推送服务方申请的AppID和AppKey,暂时使用信鸽的。
-static uint32_t const kCZJPushServerAppId = 2200145103;
-static NSString *const kCZJPushServerAppKey = @"I18QP9TZB66R";
+static uint32_t const kCZJPushServerAppId = 2200242393;
+static NSString *const kCZJPushServerAppKey = @"IS4EG86J1S2N";
 
 //分享设置ID
 static NSString *const kCZJOpenShareQQAppId = @"1105749219";
