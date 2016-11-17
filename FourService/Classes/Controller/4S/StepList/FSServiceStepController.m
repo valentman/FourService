@@ -551,15 +551,17 @@ FSProductChangeDelegate
 #pragma mark- CZJOrderListPayCellDelegate
 - (void)clickToPay:(id)sender
 {
-    NSMutableArray* tmpAry = [NSMutableArray array];
-    for (FSServiceStepForm* stepForm in _serviceStepAry)
-    {
-        if (stepForm.is_expand)
+    if ([PUtils isLoginIn:self andNaviBar:nil]) {
+        NSMutableArray* tmpAry = [NSMutableArray array];
+        for (FSServiceStepForm* stepForm in _serviceStepAry)
         {
-            [tmpAry addObject:stepForm];
+            if (stepForm.is_expand)
+            {
+                [tmpAry addObject:stepForm];
+            }
         }
+        [self performSegueWithIdentifier:@"segueToCommitOrder" sender:tmpAry];
     }
-    [self performSegueWithIdentifier:@"segueToCommitOrder" sender:tmpAry];
 }
 
 - (void)clickEventCallBack:(nullable id)sender
@@ -568,12 +570,15 @@ FSProductChangeDelegate
     switch (barButton.tag) {
         case CZJButtonTypeNaviBarMore:
         {
-            [[ShareMessage shareMessage] showPanel:self.view
-                                              type:1
-                                             title:@"分享测试"
-                                              body:@"分享测试"
-                                              link:@"www.baidu.com"
-                                             image:nil];
+            if ([PUtils isLoginIn:self andNaviBar:nil])
+            {
+                [[ShareMessage shareMessage] showPanel:self.view
+                                                  type:1
+                                                 title:@"分享测试"
+                                                  body:@"分享测试"
+                                                  link:@"www.baidu.com"
+                                                 image:nil];
+            }
         }
             break;
             

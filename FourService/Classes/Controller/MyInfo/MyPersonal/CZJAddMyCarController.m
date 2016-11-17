@@ -316,6 +316,8 @@ UITableViewDataSource
 
 - (IBAction)addMyCarAction:(id)sender
 {
+    if (![PUtils isLoginIn:self andNaviBar:nil])
+        return;
     [self.view endEditing:YES];
     if ([PUtils isBlankString:plateNumStr])
     {
