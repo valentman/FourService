@@ -105,8 +105,8 @@ static NSString *const kCZJPushServerAppKey = @"IS4EG86J1S2N";
 
 //分享设置ID
 static NSString *const kCZJOpenShareQQAppId = @"1105749219";
-static NSString *const kCZJOpenShareWeiboAppKey = @"402180334";
-static NSString *const kCZJOpenShareWeixinAppId = @"wxd930ea5d5a258f4f";
+static NSString *const kCZJOpenShareWeiboAppKey = @"2884886503";
+static NSString *const kCZJOpenShareWeixinAppId = @"wx8fb9def99081a89f";
 
 
 //----------------------本地Plist文件名--------------------------
