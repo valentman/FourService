@@ -181,14 +181,11 @@ UITableViewDataSource
     cell.goodNameLayoutHeight.constant = nameSize.height > 15 ? nameSize.height + 5 : 15;
     
     //关注价格
-    //    cell.priceLabel.text = form.currentPrice;
     cell.priceButton.constant = 10;
     
     //好评等隐藏
     cell.goodrateName.hidden = YES;
     cell.evaluateLabel.hidden = YES;
-    cell.dealName.hidden = YES;
-    cell.dealCountLabel.hidden = YES;
     cell.separatorInset = HiddenCellSeparator;
     return cell;
 }

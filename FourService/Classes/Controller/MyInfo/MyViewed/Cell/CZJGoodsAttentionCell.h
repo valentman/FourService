@@ -15,13 +15,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *evaluateLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *evaluateLayoutWidth;
-@property (weak, nonatomic) IBOutlet UILabel *dealCountLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *dealCountLayoutWidth;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewLayoutLeading;
 @property (weak, nonatomic) IBOutlet UIButton *selectBtn;
 @property (weak, nonatomic) IBOutlet UILabel *goodrateName;
-@property (weak, nonatomic) IBOutlet UILabel *dealName;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *priceButton;
 @end

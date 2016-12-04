@@ -11,12 +11,5 @@
 @implementation FSStoreDetailForm
 @end
 
-@implementation FSStoreCommentForm
-+ (NSDictionary *)objectClassInArray
-{
-    return @{@"comment_image_list" : @"FSStoreCommentImageForm"};
-}
-@end
-
-@implementation FSStoreCommentImageForm
+@implementation FSViewedForm
 @end

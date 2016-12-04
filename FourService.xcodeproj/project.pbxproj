@@ -39,6 +39,7 @@
 		EC18DE971D450CEA006CB460 /* CZJMyCarListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC18DE951D450CEA006CB460 /* CZJMyCarListCell.xib */; };
 		EC2293541DAFB80900D26F05 /* HeadInfoButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2293521DAFB80900D26F05 /* HeadInfoButtonView.m */; };
 		EC2293551DAFB80900D26F05 /* HeadInfoButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC2293531DAFB80900D26F05 /* HeadInfoButtonView.xib */; };
+		EC2A80121DF43D6100DBD255 /* PUtils+NSDate.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2A80111DF43D6100DBD255 /* PUtils+NSDate.m */; };
 		EC2AC68A1D4A4EDF0065D67C /* Province.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC2AC6891D4A4EDF0065D67C /* Province.plist */; };
 		EC3220F41D77A3C500E4019C /* FSStoreDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3220F31D77A3C500E4019C /* FSStoreDetailController.m */; };
 		EC3220F71D77A3DD00E4019C /* FSGoodsDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3220F61D77A3DD00E4019C /* FSGoodsDetailController.m */; };
@@ -533,6 +534,8 @@
 		EC2293511DAFB80900D26F05 /* HeadInfoButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeadInfoButtonView.h; sourceTree = "<group>"; };
 		EC2293521DAFB80900D26F05 /* HeadInfoButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeadInfoButtonView.m; sourceTree = "<group>"; };
 		EC2293531DAFB80900D26F05 /* HeadInfoButtonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeadInfoButtonView.xib; sourceTree = "<group>"; };
+		EC2A80101DF43D6100DBD255 /* PUtils+NSDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PUtils+NSDate.h"; sourceTree = "<group>"; };
+		EC2A80111DF43D6100DBD255 /* PUtils+NSDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PUtils+NSDate.m"; sourceTree = "<group>"; };
 		EC2AC6891D4A4EDF0065D67C /* Province.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Province.plist; sourceTree = "<group>"; };
 		EC3220F21D77A3C500E4019C /* FSStoreDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSStoreDetailController.h; sourceTree = "<group>"; };
 		EC3220F31D77A3C500E4019C /* FSStoreDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSStoreDetailController.m; sourceTree = "<group>"; };
@@ -1933,6 +1936,8 @@
 			children = (
 				EC542A351D237EF500F3B4BF /* PUtils.h */,
 				EC542A361D237EF500F3B4BF /* PUtils.m */,
+				EC2A80101DF43D6100DBD255 /* PUtils+NSDate.h */,
+				EC2A80111DF43D6100DBD255 /* PUtils+NSDate.m */,
 				EC542A371D237EF500F3B4BF /* FSViewControllerDelegate.h */,
 				EC542A381D237EF500F3B4BF /* ShareMessage.h */,
 				EC542A391D237EF500F3B4BF /* ShareMessage.m */,
@@ -3511,6 +3516,7 @@
 				EC3728D51DB1C24A0035F61E /* FSCityLocationController.m in Sources */,
 				EC32210C1D77A7AF00E4019C /* CZJCustomAnnotationView.m in Sources */,
 				EC5429C81D237E7700F3B4BF /* MultilevelMenu.m in Sources */,
+				EC2A80121DF43D6100DBD255 /* PUtils+NSDate.m in Sources */,
 				EC542AF11D239B8A00F3B4BF /* DataSigner.m in Sources */,
 				EC5429A51D237E7700F3B4BF /* MBProgressHUD.m in Sources */,
 				EC5429C01D237E7700F3B4BF /* UIView+MJExtension.m in Sources */,
