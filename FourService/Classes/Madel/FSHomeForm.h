@@ -75,7 +75,7 @@
  {
  "operationType" : "0",
  "storeType" : "0",
- "storeName" : "中石化",
+ "storeName" : "中国石化城东加油站",
  "content" :
  {
  "gasline" : "93"

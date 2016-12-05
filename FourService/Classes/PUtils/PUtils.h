@@ -110,16 +110,7 @@
 + (void)removeNoDataAlertViewFromTarget:(UIView*)targetView;
 
 //-----------------------------其它处理方法---------------------------
-//获取时间间隔
-+ (BOOL)isTimeCrossOneDay;
-+ (BOOL)isTimeCrossFiveMin:(int)intervalMin;
-+ (BOOL)isTimeCrossMinInterval:(int)intervalTimer withIdentity:(NSString*)userDefault;
-+ (FSDateTime*)getLeftDatetime:(NSInteger)timeStamp;
-+ (NSString*)getCurrentDateTime;
-+ (NSString*)getFullDateTime:(NSInteger)time;
-//+ (NSString*)getChatDatetime:(NSInteger)chatTime;
-+ (NSString*)getCurrentHourTime;
-+ (NSString*)getDateTimeSinceTime:(NSInteger)skillTime;
+
 
 
 //延迟执行Block
