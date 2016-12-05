@@ -20,6 +20,7 @@
 #import "CZJAddMyCarController.h"
 #import "CZJCarBrandChooseController.h"
 #import "FSCityLocationController.h"
+#import "FSChangeTireController.h"
 
 #define kHomeTopBgHeight 247
 
@@ -300,19 +301,26 @@ CityLocationDelegate
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     FSServiceListForm* serviceListForm = serviceAry[indexPath.item];
+    NSString *segueIdentifer;
+    id senderData;
     if ([serviceListForm.service_type_name isEqualToString:@"换轮胎"])
     {
-        
+        segueIdentifer = @"segueToChangeTire";
+        senderData = serviceListForm.service_type_id;
     }
-    if ([serviceListForm.service_type_name isEqualToString:@""])
+    else if ([serviceListForm.service_type_name isEqualToString:@""])
     {
         
     }
     else
     {
-        [self performSegueWithIdentifier:@"segueToStoreList" sender:serviceListForm.service_type_id];
+        segueIdentifer = @"segueToStoreList";
+        senderData = serviceListForm.service_type_id;
     }
     
+    if (segueIdentifer) {
+        [self performSegueWithIdentifier:segueIdentifer sender:senderData];
+    }
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -340,8 +348,16 @@ CityLocationDelegate
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(nullable id)sender
 {
-    FSStoreListController* storeListVC = segue.destinationViewController;
-    storeListVC.serviceId = sender;
+    if ([segue.identifier isEqualToString:@"segueToStoreList"])
+    {
+        FSStoreListController* storeListVC = segue.destinationViewController;
+        storeListVC.serviceId = sender;
+    }
+    if ([segue.identifier isEqualToString:@"segueToChangeTire"])
+    {
+        FSChangeTireController* storeListVC = segue.destinationViewController;
+        storeListVC.serviceId = sender;
+    }
 }
 
 
