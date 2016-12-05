@@ -8,7 +8,7 @@
 
 
 #import <Foundation/Foundation.h>
-//服务项目数据、服务列表
+//============1.服务项目数据、服务列表===========
 @interface FSServiceListForm : NSObject
 @property (strong, nonatomic) NSString* service_type_id;
 @property (strong, nonatomic) NSString* service_type_image;
@@ -17,27 +17,8 @@
 @property (strong, nonatomic) NSString* service_type_name;
 @end
 
-//门店图文数据
-@interface FSStoreImageForm : NSObject
-@property (strong, nonatomic) NSString* shop_image_id;
-@property (strong, nonatomic) NSString* shop_id;
-@property (strong, nonatomic) NSString* image_url;
-@property (strong, nonatomic) NSString* image_name;
-@property (strong, nonatomic) NSString* create_time;
-@end
 
-//对应服务提供门店数据
-@interface FSStoreServiceListForm : NSObject
-@property (strong, nonatomic) NSString* shop_service_type_id;
-@property (strong, nonatomic) NSString* shop_id;
-@property (strong, nonatomic) NSString* name;
-@property (strong, nonatomic) NSString* service_desc;
-@property (strong, nonatomic) NSString* is_discount;
-@property (strong, nonatomic) NSString* service_type_id;
-@property (strong, nonatomic) NSString* service_image;
-@end
-
-//门店详情数据
+//============2.门店列表门店数据、门店详情数据=============
 @interface FSStoreInfoForm : NSObject
 @property (strong, nonatomic) NSString* shop_service_type_id;
 @property (strong, nonatomic) NSString* shop_id;
@@ -79,6 +60,27 @@
 @property (strong, nonatomic) NSArray* comment_list;
 @end
 
+//=============2.1 门店详情门店照片数据============
+@interface FSStoreImageForm : NSObject
+@property (strong, nonatomic) NSString* shop_image_id;
+@property (strong, nonatomic) NSString* shop_id;
+@property (strong, nonatomic) NSString* image_url;
+@property (strong, nonatomic) NSString* image_name;
+@property (strong, nonatomic) NSString* create_time;
+@end
+
+//============2.2 门店详情门店服务列表数据============
+@interface FSStoreServiceListForm : NSObject
+@property (strong, nonatomic) NSString* shop_service_type_id;
+@property (strong, nonatomic) NSString* shop_id;
+@property (strong, nonatomic) NSString* name;
+@property (strong, nonatomic) NSString* service_desc;
+@property (strong, nonatomic) NSString* is_discount;
+@property (strong, nonatomic) NSString* service_type_id;
+@property (strong, nonatomic) NSString* service_image;
+@end
+
+//============2.3 门店详情门店评论数据=============
 @interface FSStoreCommentForm : NSObject
 @property(nonatomic, strong) NSString* order_comment_id;
 @property(nonatomic, strong) NSString* shop_id;
@@ -93,6 +95,7 @@
 @property(nonatomic, strong) NSArray* comment_image_list;
 @end
 
+//============2.3.1 门店详情门店评论,评论照片数据=============
 @interface FSStoreCommentImageForm : NSObject
 @property(nonatomic, strong) NSString* order_comment_image_id;
 @property(nonatomic, strong) NSString* order_comment_id;
@@ -101,7 +104,9 @@
 @property(nonatomic, strong) NSString* create_time;
 @end
 
-//服务套餐ABC数据
+
+
+//============3. 门店服务套餐A、B、C数据===========
 @interface FSServiceSegmentTypeForm : NSObject
 @property (strong, nonatomic) NSString* shop_service_type_item_id;
 @property (strong, nonatomic) NSString* shop_service_type_id;
@@ -114,7 +119,7 @@
 @property (strong, nonatomic) NSArray* step_list;
 @end
 
-//服务步骤数据
+//============3.1 门店服务套餐A、B、C里面服务步骤数据===========
 @interface FSServiceStepForm : NSObject
 @property (strong, nonatomic) NSString* shop_service_step_id;
 @property (strong, nonatomic) NSString* shop_service_type_id;
@@ -128,7 +133,7 @@
 @property (assign, nonatomic) BOOL is_Edit;
 @end
 
-//服务步骤里面相关商品数据
+//============3.1.1 门店服务套餐A、B、C里面服务步骤商品数据===========
 @interface FSServiceStepProductForm : NSObject
 @property (strong, nonatomic) NSString* brand_id;
 @property (strong, nonatomic) NSString* create_time;
@@ -160,8 +165,17 @@
 @property (strong, nonatomic) NSArray* product_image_list;
 @end
 
+//============3.1.1.1 门店服务套餐A、B、C里面服务步骤商品图片数据===========
+@interface FSProductImageForm : NSObject
+@property (strong, nonatomic) NSString* img_id;
+@property (strong, nonatomic) NSString* product_id;
+@property (strong, nonatomic) NSString* img_url;
+@property (strong, nonatomic) NSString* img_name;
+@end
 
-//商品详情数据
+
+
+//============4 商品详情数据 ===============
 @interface FSProductDetailForm : NSObject
 @property (strong, nonatomic) NSString* product_id;
 @property (strong, nonatomic) NSString* type_id;
@@ -189,16 +203,7 @@
 @end
 
 
-//商品图片
-@interface FSProductImageForm : NSObject
-@property (strong, nonatomic) NSString* img_id;
-@property (strong, nonatomic) NSString* product_id;
-@property (strong, nonatomic) NSString* img_url;
-@property (strong, nonatomic) NSString* img_name;
-@end
-
-
-//评论列表
+//============4.1 商品详情评论数据 ===============
 @interface FSCommentForm : NSObject
 @property (strong, nonatomic) NSString* comment_id;
 @property (strong, nonatomic) NSString* product_id;
@@ -211,7 +216,7 @@
 @property (strong, nonatomic) NSArray* comment_image_list;
 @end
 
-//评论图片
+//============4.1.1 商品详情评论图片数据 ===============
 @interface FSCommentImageForm : NSObject
 @property (strong, nonatomic) NSString* product_comment_image_id;
 @property (strong, nonatomic) NSString* product_comment_id;

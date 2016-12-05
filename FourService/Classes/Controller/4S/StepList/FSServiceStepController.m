@@ -32,6 +32,7 @@ FSProductChangeDelegate
 @property (strong, nonatomic) __block NSMutableArray* serviceTypeAry;
 @property (strong, nonatomic) __block NSMutableArray* titleArray;
 @property (assign, nonatomic) NSInteger currentSelectIndex;
+@property (strong, nonatomic) NSString *currentItemID;
 @property (strong, nonatomic)UITableView* myTableView;
 @property (strong, nonatomic) CZJOrderListPayCell* payCell;
 @end
@@ -477,6 +478,7 @@ FSProductChangeDelegate
     {
         FSGoodsDetailController* goodsDetail = segue.destinationViewController;
         goodsDetail.productForm = sender;
+        goodsDetail.itemID = _currentItemID;
     }
     if ([segue.identifier isEqualToString:@"segueToCommitOrder"])
     {
@@ -494,6 +496,7 @@ FSProductChangeDelegate
     _currentSelectIndex = toucheIndex;
     [_serviceStepAry removeAllObjects];
     _serviceStepAry = [((FSServiceSegmentTypeForm*)_serviceTypeAry[_currentSelectIndex]).step_list mutableCopy];
+    _currentItemID = ((FSServiceSegmentTypeForm*)_serviceTypeAry[_currentSelectIndex]).shop_service_type_item_id;
     [self calculateTotalSelectedServicePrice];
 }
 

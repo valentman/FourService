@@ -10,4 +10,5 @@
 
 @interface FSGoodsDetailController : PBaseViewController
 @property (strong, nonatomic) FSServiceStepProductForm* productForm;
+@property (strong, nonatomic) NSString *itemID;
 @end

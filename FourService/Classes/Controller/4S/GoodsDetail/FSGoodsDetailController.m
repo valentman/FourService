@@ -93,7 +93,7 @@ UITableViewDataSource
 
 - (void)getGoodsDetailFromServer
 {
-    NSDictionary* params = @{@"product_id" : _productForm.product_id};
+    NSDictionary* params = @{@"product_item_id" : _productForm.product_item_id};
     weaky(self);
     [FSBaseDataInstance getProductDetailInfo:params success:^(id json) {
         DLog(@"%@",[json description]);

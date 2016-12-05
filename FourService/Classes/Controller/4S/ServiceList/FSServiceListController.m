@@ -300,7 +300,19 @@ CityLocationDelegate
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     FSServiceListForm* serviceListForm = serviceAry[indexPath.item];
-    [self performSegueWithIdentifier:@"segueToStoreList" sender:serviceListForm.service_type_id];
+    if ([serviceListForm.service_type_name isEqualToString:@"换轮胎"])
+    {
+        
+    }
+    if ([serviceListForm.service_type_name isEqualToString:@""])
+    {
+        
+    }
+    else
+    {
+        [self performSegueWithIdentifier:@"segueToStoreList" sender:serviceListForm.service_type_id];
+    }
+    
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
