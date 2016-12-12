@@ -218,6 +218,7 @@
     else
     {
         FSChangeTireCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSChangeTireCell" forIndexPath:indexPath];
+        cell.separatorInset = IndentCellSeparator(20);
         return cell;
     }
     return nil;
@@ -231,7 +232,7 @@
         return 130;
     }
     
-    return 60;
+    return 90;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

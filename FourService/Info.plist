@@ -73,6 +73,17 @@
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
+		<key>NSAllowsArbitraryLoadsInWebContent</key>
+		<true/>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>TemporaryExceptionMinimumTLSVersion</key>
+			<string>TLSv1.1</string>
+			<key>IncludesSubdomains</key>
+			<true/>
+			<key>TemporaryExceptionAllowsInsecureHTTPLoads</key>
+			<true/>
+		</dict>
 	</dict>
 	<key>NSAppleMusicUsageDescription</key>
 	<string>是否允许此App访问你的媒体资料库？</string>
