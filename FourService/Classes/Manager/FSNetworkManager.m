@@ -168,7 +168,8 @@ singleton_implementation(FSNetworkManager)
     AFHTTPSessionManager* manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/plain",@"application/json",@"text/javascript",@"text/html", @"application/javascript", @"text/js", nil];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/plain",@"application/json",@"text/javascript",@"text/html", @"text/json", nil];
+    manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
     _urlStr = [_urlStr stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSString* path =  [self getPath:_urlStr];
     
