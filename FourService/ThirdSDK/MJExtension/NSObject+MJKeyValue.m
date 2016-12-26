@@ -280,6 +280,7 @@ static NSNumberFormatter *_numberFormatter;
             id value = [property valueFromObject:self];
 //            if (!value) return;
             
+            
             // 2.如果是模型属性
             MJType *type = property.type;
             Class typeClass = type.typeClass;

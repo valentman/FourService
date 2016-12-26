@@ -28,6 +28,7 @@ static NSString *const kFSServerAPICheckVerifyCode = @"Login/checkVerify";      
 static NSString *const kFSServerAPIGetMyInfo = @"Customer/customerInfo";                        //个人信息
 static NSString *const kFSServerAPIEditMyInfo = @"Customer/editCustomer";                       //编辑个人信息
 static NSString *const kFSServerAPIUploadHeadImage = @"Customer/uploadHeadImage";               //上传头像
+//static NSString *const kFSServerAPIUploadHeadImage = @"Service/uploadImage";               //上传头像
 static NSString *const kFSServerAPIAddMyCar = @"Customer/addCustomerCar";                       //增加车辆
 static NSString *const kFSServerAPIDeleteMyCar = @"Customer/delCustomerCar";                    //删除车辆
 static NSString *const kFSServerAPIEditMyCar = @"Customer/editCustomerCar";                     //编辑车辆

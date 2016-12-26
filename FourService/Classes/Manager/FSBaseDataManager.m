@@ -252,8 +252,10 @@ singleton_implementation(FSBaseDataManager);
                     failure:(FailureBlockHandler)_fail
                      andUrl:(NSString*)_url
 {
-    SuccessBlockHandler successBlock = ^(id json){
-        if ([self showAlertView:json])
+    SuccessBlockHandler successBlock = ^(id json)
+    {
+        NSDictionary *dict2 = [PUtils DataFromJson:json];
+        if ([dict2[@"code"] integerValue] == 0)
         {
             _success(json);
         }
