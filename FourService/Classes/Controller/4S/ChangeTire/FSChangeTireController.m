@@ -10,6 +10,7 @@
 #import "FSChangeTireCell.h"
 #import "FSServiceStoreCell.h"
 #import "FSBaseDataManager.h"
+#import "FSTireSpecsController.h"
 
 @interface FSChangeTireController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -42,12 +43,12 @@
     [self addCZJNaviBarView:CZJNaviBarViewTypeGeneral];
     self.naviBarView.frame = CGRectMake(0, 0, PJ_SCREEN_WIDTH, 64);
     self.naviBarView.mainTitleLabel.text = @"轮胎规格";
-    self.naviBarView.mainTitleLabel.textColor = WHITECOLOR;
-    self.naviBarView.backgroundImageView.frame = self.naviBarView.frame;
-    [self.naviBarView.backgroundImageView setImage:IMAGENAMED(@"home_topBg")];
+
     self.naviBarView.clipsToBounds = YES;
     [self.naviBarView.btnMore setBackgroundImage:nil forState:UIControlStateNormal];
-    [self.naviBarView.btnMore setImage:IMAGENAMED(@"shop_btn_map") forState:UIControlStateNormal];
+    self.naviBarView.btnMore.frame = CGRectMake(PJ_SCREEN_WIDTH - 80, 22, 80, 40);
+    self.naviBarView.btnMore.titleLabel.font = SYSTEMFONT(14);
+    [self.naviBarView.btnMore setTitle:@"切换规格" forState:UIControlStateNormal];
     self.naviBarView.btnMore.hidden = NO;
 }
 
@@ -258,6 +259,27 @@
     }
     else if (scrollView.contentOffset.y>=sectionHeaderHeight) {
         scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);
+    }
+}
+
+- (void)clickEventCallBack:(nullable id)sender
+{
+    UIButton* barButton = (UIButton*)sender;
+    switch (barButton.tag) {
+        case CZJButtonTypeNaviBarMore:
+        {
+            FSTireSpecsController *specsController = [[FSTireSpecsController alloc] init];
+            [self presentViewController:specsController animated:YES completion:nil];
+        }
+            
+            break;
+            
+        case CZJButtonTypeNaviBarBack:
+            [self.navigationController popViewControllerAnimated:true];
+            break;
+            
+        default:
+            break;
     }
 }
 

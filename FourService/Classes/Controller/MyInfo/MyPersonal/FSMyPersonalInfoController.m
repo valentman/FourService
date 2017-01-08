@@ -150,8 +150,9 @@ UITableViewDataSource
         case 0:
         {
             __weak typeof(self) weakSelf = self;
+            
             PWUploadImageButton* imagebutton = [[PWUploadImageButton alloc] initWithFrame:CGRectMake(PJ_SCREEN_WIDTH - 50 - 40, 5, 55, 55)];
-            [imagebutton.bgImageView sd_setImageWithURL:[NSURL URLWithString:self.myinfor.customer_photo] placeholderImage:nil];
+            [imagebutton.bgImageView sd_setImageWithURL:[NSURL URLWithString:ConnectString(kCZJServerAddr,self.myinfor.customer_photo]) placeholderImage:nil];
             imagebutton.bgImageView.clipsToBounds = YES;
             imagebutton.bgImageView.layer.cornerRadius = 27.5;
             imagebutton.targetController = self;
@@ -164,7 +165,7 @@ UITableViewDataSource
                     NSArray* urlAry = [json valueForKey:@"data"];
                     NSDictionary* dict = urlAry.firstObject;
                     NSArray* keys = [dict allKeys];
-                    weakSelf.myinfor.customer_photo = ConnectString(kCZJServerAddr,[dict valueForKey:keys.firstObject]);
+                    weakSelf.myinfor.customer_photo = [dict valueForKey:keys.firstObject];
                     [weakSelf.myTableView reloadData];
                 } fail:^{
                     

@@ -11,8 +11,9 @@
 
 typedef NS_ENUM(NSInteger, FSCarListFromType)
 {
-    FSCarListFromTypeGeneral       =0,        //
-    FSCarListFromTypeCommitOrder   =1
+    FSCarListFromTypeGeneral       =0,        //一般
+    FSCarListFromTypeCommitOrder   =1,        //结算界面
+    FSCarListFromTypeTireSpecs                  //轮胎规格界面
 };
 
 

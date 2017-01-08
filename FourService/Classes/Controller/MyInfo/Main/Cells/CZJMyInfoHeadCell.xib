@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,16 +16,11 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="220"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="320" height="219"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="219"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="myInfo_headBg" translatesAutoresizingMaskIntoConstraints="NO" id="N85-9j-OAo">
-                        <constraints>
-                            <constraint firstAttribute="width" constant="100" id="fW1-bs-D5i"/>
-                            <constraint firstAttribute="height" constant="100" id="qlT-Lh-8x0"/>
-                        </constraints>
-                    </imageView>
-                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="personal_icon_head" translatesAutoresizingMaskIntoConstraints="NO" id="GWr-Xv-uRo">
+                    <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GWr-Xv-uRo">
+                        <rect key="frame" x="118" y="38" width="86" height="86"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="86" id="3c2-yl-sd7"/>
                             <constraint firstAttribute="height" constant="86" id="LN2-TS-8hn"/>
@@ -34,9 +32,13 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <view hidden="YES" opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ABF-5Y-qOp">
+                        <rect key="frame" x="16.5" y="76" width="287" height="143.5"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="myInfo_topBg" translatesAutoresizingMaskIntoConstraints="NO" id="sau-by-EUj"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="myInfo_topBg" translatesAutoresizingMaskIntoConstraints="NO" id="sau-by-EUj">
+                                <rect key="frame" x="0.0" y="0.0" width="287" height="143.5"/>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="myInfo_subscript" translatesAutoresizingMaskIntoConstraints="NO" id="d9y-Me-Vg0">
+                                <rect key="frame" x="0.0" y="0.0" width="52" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="52" id="7p2-KN-ZRe"/>
                                     <constraint firstAttribute="height" constant="52" id="AV8-xP-pF6"/>
@@ -48,6 +50,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="彭剑" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9O-3b-7et">
+                                <rect key="frame" x="103.5" y="70" width="80" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="jb3-hx-RMG"/>
                                     <constraint firstAttribute="width" constant="80" id="zB5-q8-E6q"/>
@@ -57,6 +60,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18608330206" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xjl-0E-Qtk">
+                                <rect key="frame" x="93.5" y="98" width="100" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="L1b-ib-xAs"/>
                                     <constraint firstAttribute="height" constant="22" id="vzo-po-C2C"/>
@@ -77,6 +81,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMl-OS-bcz" customClass="BadgeButton">
+                                <rect key="frame" x="191.5" y="68" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="DaO-ci-KFH"/>
                                     <constraint firstAttribute="width" constant="25" id="K1h-fm-86q"/>
@@ -87,6 +92,7 @@
                                 </connections>
                             </button>
                             <button clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZx-It-2lW" customClass="BadgeButton">
+                                <rect key="frame" x="167.5" y="21" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="hsO-EH-XZv"/>
                                     <constraint firstAttribute="width" constant="25" id="owG-Rg-lxo"/>
@@ -124,8 +130,10 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <view opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ffc-NE-hbV">
+                        <rect key="frame" x="40" y="40" width="240" height="159.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点击登录" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1vL-Ah-IXg">
+                                <rect key="frame" x="80" y="113.5" width="80" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Z26-Fg-QKN"/>
                                     <constraint firstAttribute="width" constant="80" id="kNF-LI-2fo"/>
@@ -147,13 +155,11 @@
                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="ABF-5Y-qOp" secondAttribute="bottom" id="3HW-Jk-7m6"/>
-                    <constraint firstItem="GWr-Xv-uRo" firstAttribute="centerY" secondItem="N85-9j-OAo" secondAttribute="centerY" constant="-5" id="7qU-W9-CUb"/>
                     <constraint firstItem="ABF-5Y-qOp" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="IgB-i7-EUy"/>
-                    <constraint firstItem="GWr-Xv-uRo" firstAttribute="centerX" secondItem="N85-9j-OAo" secondAttribute="centerX" id="Jcy-ae-N3u"/>
                     <constraint firstItem="ffc-NE-hbV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="Zs4-gj-auQ"/>
-                    <constraint firstItem="N85-9j-OAo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="36" id="a0i-FY-Cew"/>
+                    <constraint firstItem="GWr-Xv-uRo" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" constant="1" id="fLT-oL-KN1"/>
                     <constraint firstAttribute="trailing" secondItem="ffc-NE-hbV" secondAttribute="trailing" constant="40" id="gV9-ef-nEb"/>
-                    <constraint firstItem="N85-9j-OAo" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" constant="1" id="uMm-pD-3Lf"/>
+                    <constraint firstItem="GWr-Xv-uRo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="38" id="hKQ-dE-qE9"/>
                     <constraint firstAttribute="bottom" secondItem="ffc-NE-hbV" secondAttribute="bottom" constant="20" id="unk-JE-baQ"/>
                     <constraint firstItem="ffc-NE-hbV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="40" id="w8m-tA-N3W"/>
                 </constraints>
@@ -162,7 +168,6 @@
             <connections>
                 <outlet property="bgImage" destination="sau-by-EUj" id="trP-DW-eet"/>
                 <outlet property="haveLoginView" destination="ABF-5Y-qOp" id="ZVK-1P-hI6"/>
-                <outlet property="infoHeadBg" destination="N85-9j-OAo" id="2P9-sj-xtS"/>
                 <outlet property="messageBtn" destination="eMl-OS-bcz" id="aJm-2v-J1b"/>
                 <outlet property="unLoginView" destination="ffc-NE-hbV" id="rve-XK-Ccz"/>
                 <outlet property="userHeadImg" destination="GWr-Xv-uRo" id="XGm-1F-zJS"/>
@@ -174,10 +179,8 @@
     </objects>
     <resources>
         <image name="myInfo_edit" width="27" height="27"/>
-        <image name="myInfo_headBg" width="97" height="97"/>
         <image name="myInfo_subscript" width="52" height="52"/>
         <image name="myInfo_topBg" width="297" height="149"/>
         <image name="my_icon_pay" width="20" height="20"/>
-        <image name="personal_icon_head" width="50" height="50"/>
     </resources>
 </document>

@@ -182,6 +182,7 @@ singleton_implementation(FSNetworkManager)
             NSData *imageData = UIImageJPEGRepresentation(image, 0);
             NSString * Name = [NSString stringWithFormat:@"%@%zi", ImageName, i+1];
             NSString * fileName = [NSString stringWithFormat:@"%@%zi.jpeg", ImageFileName,i+1];
+            NSLog(@"%ld",imageData.length);
             
             [formData appendPartWithFileData:imageData name:Name fileName:fileName mimeType:@"image/jpeg"];
         }

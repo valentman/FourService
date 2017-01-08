@@ -163,6 +163,16 @@ CZJMyCarListCellDelegate
         }
             break;
             
+        case FSCarListFromTypeTireSpecs:
+        {
+            if ([self.delegate respondsToSelector:@selector(selectOneCar:)])
+            {
+                [self.delegate selectOneCar:carListForm];
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }
+        }
+            break;
+            
         default:
             break;
     }
@@ -214,6 +224,36 @@ CZJMyCarListCellDelegate
     } fail:^{
         
     }];
+}
+
+- (void)clickEventCallBack:(nullable id)sender
+{
+    UIButton* barButton = (UIButton*)sender;
+    switch (barButton.tag) {
+        case CZJButtonTypeNaviBarMore:
+            break;
+            
+        case CZJButtonTypeNaviBarBack:
+        {
+            if (self.carFromType == FSCarListFromTypeTireSpecs)
+            {
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }
+            else
+            {
+                [self.navigationController popViewControllerAnimated:true];
+            }
+        }
+            
+            break;
+            
+        case CZJButtonTypeHomeShopping:
+            
+            break;
+            
+        default:
+            break;
+    }
 }
 
 @end

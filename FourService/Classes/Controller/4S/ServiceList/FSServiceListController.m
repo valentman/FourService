@@ -21,11 +21,7 @@
 #import "CZJCarBrandChooseController.h"
 #import "FSCityLocationController.h"
 #import "FSChangeTireController.h"
-
-//#import "HBSDK.h"
-//#import "HBPaymentInfo.h"
-//#import "HBCallBackModel.h"
-//#define APPKEY @"47f33cdd-e5e6-4fef-99a9-92ae8e82a2b4"
+#import "FSMyServiceFeedbackController.h"
 
 #define kHomeTopBgHeight 247
 
@@ -64,70 +60,8 @@ CityLocationDelegate
     [super viewDidLoad];
     [self initData];
     [self initViews];
-//    [self SDKTest];
 }
 
-//- (void)SDKTest
-//{
-//    HBCallBackModel *model=[HBCallBackModel defaultManger];
-//    model.HBdelegate=self;
-//    
-//    [HBSDK initWithAppID:APPKEY];
-//}
-//
-//- (void)callbackAction:(NSString *)message
-//{
-//    UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"反馈" message:message preferredStyle:UIAlertControllerStyleActionSheet];
-//    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-//    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:nil];
-//    [alertView addAction:cancelAction];
-//    [alertView addAction:okAction];
-//    [self presentViewController:alertView animated:YES completion:nil];
-//}
-//
-//-(NSString *)convertStrFromDic:(id)dic{
-//    
-//    NSData *data=[NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:nil];
-//    NSString *josnStr=[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-//    return josnStr;
-//    
-//}
-//
-//- (void)dealWithTouchAction:(NSInteger)type
-//{
-//    switch (type) {
-//        case 1:
-//        {
-//            NSDictionary *devicDict = (NSDictionary *)[HBSDK getDeviceInfo];
-//            NSLog(@"%@",devicDict);
-//        }
-//            break;
-//            
-//        case 2:
-//        {
-//            NSDictionary *params = @{@"idNumber" : @"112321312",
-//                                     @"name" : @"李四",
-//                                     @"cardNumber" : @"23423423423"};
-//            [HBSDK threeFactorAuthWithParameters:params];
-//        }
-//            break;
-//            
-//        default:
-//            break;
-//    }
-//}
-//
-//-(void)getRespCallBackFromHB:(HBCallBackModel*)resp
-//{
-//    switch (resp.key) {
-//        case HB_REQ_KEY_AUTH3:
-//            [self callbackAction:[self convertStrFromDic:resp.callBackResult]];
-//            break;
-//            
-//        default:
-//            break;
-//    }
-//}
 
 - (void)initData
 {
@@ -376,9 +310,10 @@ CityLocationDelegate
         segueIdentifer = @"segueToChangeTire";
         senderData = serviceListForm.service_type_id;
     }
-    else if ([serviceListForm.service_type_name isEqualToString:@""])
+    else if ([serviceListForm.service_type_name isEqualToString:@"维修"])
     {
-        
+        FSMyServiceFeedbackController *maintainVC = (FSMyServiceFeedbackController *)[PUtils getViewControllerFromStoryboard:kCZJStoryBoardFileMain andVCName:@"opinionSBID"];
+        [self.navigationController pushViewController:maintainVC animated:YES];
     }
     else
     {
@@ -432,7 +367,6 @@ CityLocationDelegate
 - (void)clickHeadBtn:(nullable id)sender
 {
     [((YQSlideMenuController*)self.parentViewController) showMenu];
-
 }
 
 
@@ -488,7 +422,6 @@ CityLocationDelegate
     [USER_DEFAULT synchronize];
     currentCityStr = cityName;
     [self updateCityButton];
-    
 }
 
 @end

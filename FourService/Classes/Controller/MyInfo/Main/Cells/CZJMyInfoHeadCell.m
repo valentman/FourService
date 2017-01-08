@@ -48,7 +48,10 @@
     self.userHeadImg.hidden = NO;
     self.userNameLabel.text = [PUtils isBlankString:userinfo.chinese_name] ? @"昵称" : userinfo.chinese_name;
     self.userPhoneLabel.text = userinfo.customer_pho;
-    [self.userHeadImg sd_setImageWithURL:[NSURL URLWithString:userinfo.customer_photo] placeholderImage:IMAGENAMED(@"my_icon_head")];
+    if (userinfo.customer_photo) {
+        [self.userHeadImg sd_setImageWithURL:[NSURL URLWithString:ConnectString(kCZJServerAddr, userinfo.customer_photo)] placeholderImage:IMAGENAMED(@"my_icon_head")];
+    }
+    
     self.userHeadImg.clipsToBounds = YES;
 }
 

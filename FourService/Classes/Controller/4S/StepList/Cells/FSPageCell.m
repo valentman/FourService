@@ -109,8 +109,8 @@
     //获取数量
     NSInteger titleCount = _titleArray.count;
     _segmentWidth = PJ_SCREEN_WIDTH/3;
-//    [self.contentScroll setContentSize:CGSizeMake(_segmentWidth * titleCount, self.bounds.size.height - 2)];
-    self.underLineView.frame = CGRectMake(0, self.bounds.size.height - 2, _segmentWidth, 2);
+    
+    NSMutableArray *segmentViewAry = [NSMutableArray array];
     
     for (int i = 0; i < titleCount; i++)
     {
@@ -119,30 +119,33 @@
         segview.tag = i;
         [segview initLabels:_titleArray[i]];
         [segview addTarget:self action:@selector(segmentButtonTouche:) forControlEvents:UIControlEventTouchUpInside];
+        [segmentViewAry addObject:segview];
         [self addSubview:segview];
     }
+    
+    [self segmentButtonTouche:segmentViewAry.firstObject];
 }
 
 - (UIView *)underLineView
 {
     if (!_underLineView)
     {
-        _underLineView = [[UIView alloc] init];
+        _underLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 43, _segmentWidth, 3)];
         _underLineView.backgroundColor = RGB(46, 159, 226);
         [self addSubview:_underLineView];
     }
     return _underLineView;
 }
 
-- (void)segmentButtonTouche:(UIButton*)sender
+- (void)segmentButtonTouche:(UIControl *)sender
 {
     [self moveButtomLine:sender.tag];
 }
 
 - (void)moveButtomLine:(NSInteger)index
 {
-    [UIScrollView animateWithDuration:0.2 animations:^{
-        _underLineView.frame = CGRectMake(index * _segmentWidth, self.bounds.size.height - 2, _segmentWidth, 2);
+    [UIView animateWithDuration:0.2 animations:^{
+        self.underLineView.frame = CGRectMake(index * _segmentWidth, 43, _segmentWidth, 3);
     } completion:^(BOOL finished) {
         if ([_delegate respondsToSelector:@selector(segmentButtonTouchHandle:)]) {
             [_delegate segmentButtonTouchHandle:index];

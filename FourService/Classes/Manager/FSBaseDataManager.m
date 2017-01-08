@@ -254,8 +254,7 @@ singleton_implementation(FSBaseDataManager);
 {
     SuccessBlockHandler successBlock = ^(id json)
     {
-        NSDictionary *dict2 = [PUtils DataFromJson:json];
-        if ([dict2[@"code"] integerValue] == 0)
+        if ([self showAlertView:json])
         {
             _success(json);
         }

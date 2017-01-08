@@ -122,9 +122,6 @@ FSProductChangeDelegate
         
         [_titleArray addObject:dict];
     }
-    _serviceStepAry = [((FSServiceSegmentTypeForm*)_serviceTypeAry[_currentSelectIndex]).step_list mutableCopy];
-    
-    [self calculateTotalSelectedServicePrice];
 }
 
 - (void)calculateTotalSelectedServicePrice
@@ -153,7 +150,7 @@ FSProductChangeDelegate
         [_payCell.orderButton setBackgroundColor:CZJGRAYCOLOR];
     }
     
-    [self.myTableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(3, _serviceStepAry.count)] withRowAnimation:UITableViewRowAnimationFade];
+    [self.myTableView reloadData];
 }
 
 
@@ -254,7 +251,7 @@ FSProductChangeDelegate
                 FSServiceStepGoodsCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FSServiceStepGoodsCell" forIndexPath:indexPath];
                 cell.delegate = self;
                 cell.cellIndex = indexPath;
-                [cell.productImageView sd_setImageWithURL:[NSURL URLWithString:nil] placeholderImage:DefaultPlaceHolderSquare];
+                [cell.productImageView sd_setImageWithURL:[NSURL URLWithString:ConnectString(kCZJServerAddr, ((FSProductImageForm *)stepProductForm.product_image_list.firstObject).img_url)] placeholderImage:DefaultPlaceHolderSquare];
                 cell.productNameLabel.text = stepProductForm.product_name;
                 cell.productNumLabel.text = [NSString stringWithFormat:@"×%@",stepProductForm.product_buy_num];
                 cell.productPriceLabel.text = stepProductForm.sale_price;
@@ -495,8 +492,10 @@ FSProductChangeDelegate
 {
     _currentSelectIndex = toucheIndex;
     [_serviceStepAry removeAllObjects];
-    _serviceStepAry = [((FSServiceSegmentTypeForm*)_serviceTypeAry[_currentSelectIndex]).step_list mutableCopy];
-    _currentItemID = ((FSServiceSegmentTypeForm*)_serviceTypeAry[_currentSelectIndex]).shop_service_type_item_id;
+    
+    FSServiceSegmentTypeForm * segmentTypeForm = _serviceTypeAry[_currentSelectIndex];
+    _serviceStepAry = [segmentTypeForm.step_list mutableCopy];
+    _currentItemID = segmentTypeForm.shop_service_type_item_id;
     [self calculateTotalSelectedServicePrice];
 }
 

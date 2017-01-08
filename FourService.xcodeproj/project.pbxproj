@@ -53,6 +53,7 @@
 		EC3221131D77A81B00E4019C /* CZJStoreMapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC3221111D77A81B00E4019C /* CZJStoreMapCell.xib */; };
 		EC3221161D77A87A00E4019C /* CZJStoreForm.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3221151D77A87A00E4019C /* CZJStoreForm.m */; };
 		EC3221191D77A8AE00E4019C /* CZJStoreMAAroundForm.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3221181D77A8AE00E4019C /* CZJStoreMAAroundForm.m */; };
+		EC33F1FA1E2223BC0068DBD2 /* FSTireSpecsController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC33F1F91E2223BC0068DBD2 /* FSTireSpecsController.m */; };
 		EC3728BE1DB1C1F60035F61E /* ChineseInclude.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3728AE1DB1C1F60035F61E /* ChineseInclude.m */; };
 		EC3728BF1DB1C1F60035F61E /* ChineseToPinyinResource.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3728B01DB1C1F60035F61E /* ChineseToPinyinResource.m */; };
 		EC3728C01DB1C1F60035F61E /* HanyuPinyinOutputFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3728B21DB1C1F60035F61E /* HanyuPinyinOutputFormat.m */; };
@@ -561,6 +562,8 @@
 		EC3221151D77A87A00E4019C /* CZJStoreForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJStoreForm.m; sourceTree = "<group>"; };
 		EC3221171D77A8AE00E4019C /* CZJStoreMAAroundForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJStoreMAAroundForm.h; sourceTree = "<group>"; };
 		EC3221181D77A8AE00E4019C /* CZJStoreMAAroundForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJStoreMAAroundForm.m; sourceTree = "<group>"; };
+		EC33F1F81E2223BC0068DBD2 /* FSTireSpecsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTireSpecsController.h; sourceTree = "<group>"; };
+		EC33F1F91E2223BC0068DBD2 /* FSTireSpecsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTireSpecsController.m; sourceTree = "<group>"; };
 		EC3728AD1DB1C1F60035F61E /* ChineseInclude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseInclude.h; sourceTree = "<group>"; };
 		EC3728AE1DB1C1F60035F61E /* ChineseInclude.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChineseInclude.m; sourceTree = "<group>"; };
 		EC3728AF1DB1C1F60035F61E /* ChineseToPinyinResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseToPinyinResource.h; sourceTree = "<group>"; };
@@ -2971,6 +2974,8 @@
 				EC7441E51DF5B5DF000AC710 /* Cell */,
 				EC7441E21DF5B5CF000AC710 /* FSChangeTireController.h */,
 				EC7441E31DF5B5CF000AC710 /* FSChangeTireController.m */,
+				EC33F1F81E2223BC0068DBD2 /* FSTireSpecsController.h */,
+				EC33F1F91E2223BC0068DBD2 /* FSTireSpecsController.m */,
 			);
 			path = ChangeTire;
 			sourceTree = "<group>";
@@ -3768,6 +3773,7 @@
 				EC54297C1D237E7700F3B4BF /* KSDefaultHeadRefreshView.m in Sources */,
 				ECA233CE1D37DB78004C2679 /* FSMyInformationController.m in Sources */,
 				EC5429861D237E7700F3B4BF /* UIViewController+LJWKeyboardHandlerHelper.m in Sources */,
+				EC33F1FA1E2223BC0068DBD2 /* FSTireSpecsController.m in Sources */,
 				EC5429AD1D237E7700F3B4BF /* NSString+MJExtension.m in Sources */,
 				EC1261A41D4CEA700082378D /* FSStoreServiceForm.m in Sources */,
 				EC5429B51D237E7700F3B4BF /* MJRefreshAutoStateFooter.m in Sources */,
