@@ -44,14 +44,18 @@ CZJMyCarListCellDelegate
     [self addCZJNaviBarView:CZJNaviBarViewTypeGeneral];
     self.naviBarView.mainTitleLabel.text = @"我的车辆";
     
-    FSAddMyCarButtomView* generalCell = [PUtils getXibViewByName:@"FSAddMyCarButtomView"];
-    generalCell.frame = CGRectMake(0, PJ_SCREEN_HEIGHT - 105, PJ_SCREEN_WIDTH, 55);
+    if (self.carFromType == FSCarListFromTypeGeneral)
+    {
+        FSAddMyCarButtomView* generalCell = [PUtils getXibViewByName:@"FSAddMyCarButtomView"];
+        generalCell.frame = CGRectMake(0, PJ_SCREEN_HEIGHT - 105, PJ_SCREEN_WIDTH, 55);
+        
+        UIButton* addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        addBtn.frame = CGRectMake(0, 0, generalCell.size.width, generalCell.size.height);
+        [addBtn addTarget:self action:@selector(addMyCarAction:) forControlEvents:UIControlEventTouchUpInside];
+        [generalCell addSubview:addBtn];
+        [self.view addSubview:generalCell];
+    }
 
-    UIButton* addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    addBtn.frame = CGRectMake(0, 0, generalCell.size.width, generalCell.size.height);
-    [addBtn addTarget:self action:@selector(addMyCarAction:) forControlEvents:UIControlEventTouchUpInside];
-    [generalCell addSubview:addBtn];
-    [self.view addSubview:generalCell];
     
     //消息中心表格视图
     CGRect tableRect = CGRectMake(0, 64, PJ_SCREEN_WIDTH, PJ_SCREEN_HEIGHT - 64 - 105);
