@@ -82,6 +82,7 @@ singleton_interface(FSBaseDataManager);
                fail:(FailureBlockHandler)fail
        andServerAPI:(NSString*)api;
 
+
 //上传图片通用(失败回调不带参数)
 - (void)generalUploadImages:(NSArray*)_imageAry
                       param:(NSDictionary*)_params
@@ -90,7 +91,23 @@ singleton_interface(FSBaseDataManager);
                     failure:(FailureBlockHandler)_fail
                      andUrl:(NSString*)_url;
 
-//- (void)getAreaInfos;
+
+/**
+ *  图片上传接口
+ *
+ *  @param _imageAry 图片数组
+ *  @param _params   参数（）
+ *  @param _progress 进度回调
+ *  @param _success  成功回调
+ *  @param _fail     失败回调
+ */
+- (void)uploadImages:(NSArray*)_imageAry
+               param:(NSDictionary*)_params
+            progress:(ProgressBlockHandler)_progress
+             success:(SuccessBlockHandler)_success
+             failure:(FailureBlockHandler)_fail;
+
+
 
 //-------------------------首页数据------------------------------
 //获取首页数据

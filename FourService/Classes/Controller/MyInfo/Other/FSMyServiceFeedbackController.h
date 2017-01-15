@@ -8,6 +8,12 @@
 
 #import "PBaseViewController.h"
 
-@interface FSMyServiceFeedbackController : PBaseViewController
+typedef NS_ENUM(NSInteger, FSFeedbackFromType)
+{
+    FSFeedbackFromTypeGeneral = 0,      //反馈咨询
+    FSFeedbackFromTypeFix               //维修保养
+};
 
+@interface FSMyServiceFeedbackController : PBaseViewController
+@property (assign, nonatomic) FSFeedbackFromType fromType;
 @end

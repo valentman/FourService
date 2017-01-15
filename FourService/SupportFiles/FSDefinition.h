@@ -12,7 +12,6 @@
 //----------------------------服务器接口-------------------------------
 //服务地址
 static NSString *const kCZJServerAddr = @"http://119.29.135.211/";                              //线上正式环境
-//http://119.29.135.211/Customer/uploadHeadImage
 
 //首页接口组 
 static NSString *const kFSServerAPIShowHome = @"Home/home";                                     //获取首页数据
@@ -29,7 +28,6 @@ static NSString *const kFSServerAPICheckVerifyCode = @"Login/checkVerify";      
 static NSString *const kFSServerAPIGetMyInfo = @"Customer/customerInfo";                        //个人信息
 static NSString *const kFSServerAPIEditMyInfo = @"Customer/editCustomer";                       //编辑个人信息
 static NSString *const kFSServerAPIUploadHeadImage = @"Customer/uploadHeadImage";               //上传头像
-//static NSString *const kFSServerAPIUploadHeadImage = @"Service/uploadImage";               //上传头像
 static NSString *const kFSServerAPIAddMyCar = @"Customer/addCustomerCar";                       //增加车辆
 static NSString *const kFSServerAPIDeleteMyCar = @"Customer/delCustomerCar";                    //删除车辆
 static NSString *const kFSServerAPIEditMyCar = @"Customer/editCustomerCar";                     //编辑车辆
@@ -42,7 +40,7 @@ static NSString *const kFSServerAPIEvalutionList = @"";                         
 static NSString *const kFSServerAPIDiscountList = @"Customer/customerDiscountList";             //优惠券
 static NSString *const kFSServerAPIOrderList = @"Customer/customerOrderList";                   //订单列表
 static NSString *const kFSServerAPIOrderDetail = @"Customer/orderDetail";                       //订单详情
-static NSString *const kFSServerAPIOrderEvaluate = @"Service/orderComment";                     //订单评价
+
 
 //4s服务接口组
 static NSString *const kFSServerAPIServiceList = @"Service/serviceList";                        //服务列表
@@ -54,6 +52,8 @@ static NSString *const kFSserverAPIProductChangeable= @"Service/sameProductList"
 static NSString *const kFSServerAPIProductDetailInfo = @"Service/productInfo";                  //商品详情
 static NSString *const kFSServerAPIProductEvaluate = @"Service/productCommentList";             //商品评论列表
 static NSString *const kFSServerAPICommitOrder = @"Service/bookOrder";                          //提交订单
+static NSString *const kFSServerAPIUploadImage = @"Service/uploadImage";                        //上传图片
+static NSString *const kFSServerAPIOrderEvaluate = @"Service/orderComment";                     //订单评价
 
 
 

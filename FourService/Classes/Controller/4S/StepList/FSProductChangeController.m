@@ -57,7 +57,7 @@
     NSDictionary* params = @{@"shop_id" : self.shopId,
                              @"sub_type_id" : self.subTypeId,
                              @"product_item_id" : self.productItem};
-    weaky(self);
+    weakSelf(self);
     [FSBaseDataInstance getProductChangeableList:params success:^(id json) {
         DLog(@"%@",[json description]);
         productListAry = [FSServiceStepProductForm objectArrayWithKeyValuesArray:json[kResoponData]];

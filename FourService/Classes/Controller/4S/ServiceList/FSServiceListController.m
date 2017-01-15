@@ -313,6 +313,7 @@ CityLocationDelegate
     else if ([serviceListForm.service_type_name isEqualToString:@"维修"])
     {
         FSMyServiceFeedbackController *maintainVC = (FSMyServiceFeedbackController *)[PUtils getViewControllerFromStoryboard:kCZJStoryBoardFileMain andVCName:@"opinionSBID"];
+        maintainVC.fromType = FSFeedbackFromTypeFix;
         [self.navigationController pushViewController:maintainVC animated:YES];
     }
     else

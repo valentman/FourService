@@ -245,6 +245,7 @@ singleton_implementation(FSBaseDataManager);
 }
 
 
+
 - (void)generalUploadImages:(NSArray*)_imageAry
                       param:(NSDictionary*)_params
                    progress:(ProgressBlockHandler)_progress
@@ -284,26 +285,20 @@ singleton_implementation(FSBaseDataManager);
     
 }
 
-//- (void)getAreaInfos
-//{
-//    SuccessBlockHandler successBlock = ^(id json) {
-//        if ([self showAlertView:json])
-//        {
-//            NSDictionary* newdict = [[PUtils DataFromJson:json] valueForKey:@"msg"];
-//            
-//            //省份信息写入缓存
-//            [PUtils writeDictionaryToDocumentsDirectory:[newdict mutableCopy] withPlistName:kCZJPlistFileProvinceCitys];
-////            [_storeForm setNewProvinceDataWithDictionary:newdict];
-//        }
-//    };
-//
-//    FailureBlockHandler failBlock = ^{
-//    };
-//    [FSNetWorkInstance postJSONWithUrl:kCZJServerAPIGetCitys
-//                             parameters:_baseParams
-//                                success:successBlock
-//                                   fail:failBlock];
-//}
+
+- (void)uploadImages:(NSArray*)_imageAry
+               param:(NSDictionary*)_params
+            progress:(ProgressBlockHandler)_progress
+             success:(SuccessBlockHandler)_success
+             failure:(FailureBlockHandler)_fail
+{
+    [self generalUploadImages:_imageAry
+                        param:_params
+                     progress:_progress
+                      success:_success
+                      failure:_fail
+                       andUrl:kFSServerAPIUploadImage];
+}
 
 
 
