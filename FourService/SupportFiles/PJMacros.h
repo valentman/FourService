@@ -36,7 +36,7 @@
 (CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) || \
 CGSizeEqualToSize(CGSizeMake(1125, 2001), [[UIScreen mainScreen] currentMode].size)) : NO)
 #define isPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-#define Divide ((iPhone5 || iPhone4) ? 3 : 4)
+#define Divide ((iPhone5 || iPhone4) ? 3 : 5)
 
 //判断是真机还是模拟器
 #if TARGET_OS_IPHONE

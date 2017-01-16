@@ -13,25 +13,9 @@
 #import "FSErrorCodeManager.h"
 #import "CCLocationManager.h"
 #import "ZXLocationManager.h"
-//#import "FourServicepingCartForm.h"
-//#import "CZJOrderForm.h"
 #import "AppDelegate.h"
 
 @implementation FSBaseDataManager
-#pragma mark- synthesize
-@synthesize curLocation =  _curLocation;
-//@synthesize homeForm = _homeForm;
-//@synthesize carForm = _carForm;
-//@synthesize storeForm = _storeForm;
-@synthesize baseParams = _baseParams;
-//@synthesize shoppingCartForm = _shoppingCartForm;
-@synthesize discoverForms = _discoverForms;
-@synthesize goodsTypesAry = _goodsTypesAry;
-@synthesize serviceTypesAry = _serviceTypesAry;
-@synthesize carBrandForm = _carBrandForm;
-@synthesize carModealForm = _carModealForm;
-@synthesize carSerialForm = _carSerialForm;
-@synthesize orderPaymentTypeAry = _orderPaymentTypeAry;
 
 #pragma mark- implement
 singleton_implementation(FSBaseDataManager);
@@ -42,7 +26,6 @@ singleton_implementation(FSBaseDataManager);
     {
         _baseParams = [NSMutableDictionary dictionary];
         _discoverForms = [NSMutableDictionary dictionary];
-        _orderStoreCouponAry = [NSMutableArray array];
         _serviceTypesAry = [NSMutableArray array];
         _goodsTypesAry = [NSMutableArray array];
         _orderPaymentTypeAry = [NSArray array];
@@ -56,6 +39,7 @@ singleton_implementation(FSBaseDataManager);
     }
     return nil;
 }
+
 
 - (void)initPostBaseParameters
 {
@@ -85,12 +69,6 @@ singleton_implementation(FSBaseDataManager);
     return _orderPaymentTypeAry;
 }
 
-- (void)refreshChezhuID
-{
-    [_baseParams setValue:((nil == self.userInfoForm.identifier) ? @"0" : self.userInfoForm.identifier) forKey:@"identifier"];
-    [_baseParams setValue:((nil == self.userInfoForm.token) ? @"0" : self.userInfoForm.token) forKey:@"token"];
-//    [_params setValue:((nil == self.userInfoForm.mobile) ? @"0" : self.userInfoForm.mobile) forKey:@"chezhuMobile"];
-}
 
 
 - (void)setCurLocation:(CLLocationCoordinate2D)curLocation
@@ -127,6 +105,30 @@ singleton_implementation(FSBaseDataManager);
 //        } andServerAPI:kCZJServerAPIGetCityIdByName];
 //    }
 }
+
+
+//启动读出用户默认配置信息
+- (void)loginWithDefaultInfoSuccess:(void (^)())success
+                               fail:(void (^)())fail{
+    
+    NSDictionary* userDict = [PUtils readDictionaryFromDocumentsDirectoryWithPlistName:kCZJPlistFileUserBaseForm];
+    if (!userDict)
+    {
+        [USER_DEFAULT setBool:NO forKey:kCZJIsUserHaveLogined];
+        return;
+    }
+    self.userInfoForm = [UserBaseForm objectWithKeyValues:userDict];
+    [self refreshChezhuID];
+    success();
+}
+
+
+- (void)refreshChezhuID
+{
+    [_baseParams setValue:self.userInfoForm.identifier ? : @"0" forKey:@"identifier"];
+    [_baseParams setValue:self.userInfoForm.token ? : @"0" forKey:@"token"];
+}
+
 
 - (BOOL)showAlertView:(id)info{
     NSDictionary* dict = [NSDictionary dictionaryWithDictionary:info];
@@ -282,7 +284,6 @@ singleton_implementation(FSBaseDataManager);
                          progress:_progress
                            sccess:successBlock
                           failure:failBlock];
-    
 }
 
 
@@ -659,24 +660,6 @@ singleton_implementation(FSBaseDataManager);
 }
 
 
-
-//启动读出用户默认配置信息
-- (void)loginWithDefaultInfoSuccess:(void (^)())success
-                               fail:(void (^)())fail{
-    
-    NSDictionary* userDict = [PUtils readDictionaryFromDocumentsDirectoryWithPlistName:kCZJPlistFileUserBaseForm];
-    if (!userDict)
-    {
-        [USER_DEFAULT setBool:NO forKey:kCZJIsUserHaveLogined];
-        return;
-    }
-    self.userInfoForm = [[UserBaseForm alloc] init];
-    self.userInfoForm = [UserBaseForm objectWithKeyValues:userDict];
-    [self refreshChezhuID];
-    success();
-}
-
-
 - (void)getServiceList:(SuccessBlockHandler)success
                   fail:(FailureBlockHandler)fail
 {
@@ -737,5 +720,20 @@ singleton_implementation(FSBaseDataManager);
                             fail:(FailureBlockHandler)fail
 {
     [self generalPost:postParams success:success fail:fail andServerAPI:kFSServerAPIProductEvaluate];
+}
+
+//反馈
+- (void)feedBack:(NSDictionary *)postParams
+               success:(SuccessBlockHandler)success
+                  fail:(FailureBlockHandler)fail
+{
+    [self generalPost:postParams success:success fail:fail andServerAPI:kFSServerAPIFeedback];
+}
+
+- (void)maintainceFeedback:(NSDictionary *)postParams
+               success:(SuccessBlockHandler)success
+                  fail:(FailureBlockHandler)fail
+{
+    [self generalPost:postParams success:success fail:fail andServerAPI:kFSServerAPIFixFback];
 }
 @end

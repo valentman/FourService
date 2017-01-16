@@ -71,11 +71,14 @@ CZJGeneralSubCellDelegate
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getMyInfoDataFromServer) name:kCZJNotifiLoginSuccess object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableView) name:kCZJNotifiLoginOut object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableView) name:kCZJNotifiUpdateHead object:nil];
 }
 
 - (void)reloadTableView
 {
-    [self resetOrderData];
+    if (![USER_DEFAULT valueForKey:kCZJIsUserHaveLogined]) {
+        [self resetOrderData];
+    }
     [self.myTableView reloadData];
 }
 
@@ -291,7 +294,7 @@ CZJGeneralSubCellDelegate
             [cell.userHeadImg setImage:[USER_DEFAULT boolForKey:kCZJIsUserHaveLogined] ? nil : IMAGENAMED(@"personal_icon_head")];
             if (FSBaseDataInstance.userInfoForm && [USER_DEFAULT boolForKey:kCZJIsUserHaveLogined])
             {
-                [cell setUserPersonalInfo:myInfoForm andDefaultCar:defaultCar];
+                [cell setUserPersonalInfo:FSBaseDataInstance.userInfoForm andDefaultCar:defaultCar];
                 cell.delegate = self;
             }
             cell.backgroundColor = CLEARCOLOR;

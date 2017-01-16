@@ -8,49 +8,23 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
-//@class HomeForm;
-//@class CZJStoreForm;
-//@class CZJDiscoverForm;
-//@class FourServicepingCartForm;
-//@class CZJOrderStoreCouponsForm;
-//@class CZJGoodsDetailForm;
 
 @interface FSBaseDataManager : NSObject
-{
-    FSCarForm* _carForm;                           //汽车列表信息
-    UserBaseForm* _userInfoForm;                    //我的个人信息
 
-    CarBrandsForm* _carBrandForm;
-    CarSeriesForm* _carSerialForm;
-    CarModelForm* _carModealForm;
-    
-    NSMutableDictionary* _discoverForms;            //发现信息
-    NSMutableArray* _orderStoreCouponAry;           //订单结算页面可用优惠券列表
-    
-    NSMutableArray* _goodsTypesAry;
-    NSMutableArray* _serviceTypesAry;
-    NSMutableDictionary *_baseParams;                   //post参数字典
-    
-    //固定数据
-    NSArray* _orderPaymentTypeAry;           //支付方式数组（暂时固定为三个支付方式）
-}
 //--------------------服务器返回数据对象模型----------------------------
-//@property (nonatomic, retain) HomeForm* homeForm;
-@property (nonatomic, retain) FSCarForm* carForm;
-//@property (nonatomic, retain) CZJStoreForm* storeForm;
 @property (nonatomic, retain) UserBaseForm* userInfoForm;
-//@property (nonatomic, retain) FourServicepingCartForm* shoppingCartForm;
 
+@property (nonatomic, retain) FSCarForm* carForm;
 @property (nonatomic, retain) CarBrandsForm* carBrandForm;
 @property (nonatomic, retain) CarSeriesForm* carSerialForm;
 @property (nonatomic, retain) CarModelForm* carModealForm;
-
 
 @property (nonatomic, retain) NSMutableDictionary* discoverForms;
 
 @property (nonatomic, retain) NSMutableArray* goodsTypesAry;
 @property (nonatomic, retain) NSMutableArray* serviceTypesAry;
 @property (nonatomic, retain) NSArray* orderPaymentTypeAry;
+
 //-------------------------本地数据对象------------------------------
 @property (nonatomic, assign) CLLocationCoordinate2D curLocation;
 @property (nonatomic, retain) NSString* curCityName;                    //用户当前城市
@@ -358,5 +332,14 @@ singleton_interface(FSBaseDataManager);
                             fail:(FailureBlockHandler)fail;
 
 
+//意见反馈
+- (void)feedBack:(NSDictionary *)postParams
+               success:(SuccessBlockHandler)success
+                  fail:(FailureBlockHandler)fail;
+
+//维修反馈
+- (void)maintainceFeedback:(NSDictionary *)postParams
+                   success:(SuccessBlockHandler)success
+                      fail:(FailureBlockHandler)fail;
 
 @end

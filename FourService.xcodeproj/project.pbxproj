@@ -1966,9 +1966,9 @@
 		EC5427271D237A6700F3B4BF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				EC026F1E1D2B519400CA8CEB /* Home */,
 				EC3A18FC1D41F27E00F6F193 /* FourS */,
 				EC5759B01D6DE3D9009F3F5D /* Goods */,
-				EC026F1E1D2B519400CA8CEB /* Home */,
 				ECA233C91D37DB78004C2679 /* MyInfo */,
 			);
 			path = Controller;

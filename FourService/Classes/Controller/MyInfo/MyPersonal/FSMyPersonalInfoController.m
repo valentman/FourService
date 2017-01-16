@@ -166,7 +166,9 @@ UITableViewDataSource
                     NSDictionary* dict = urlAry.firstObject;
                     NSArray* keys = [dict allKeys];
                     weakSelf.myinfor.customer_photo = [dict valueForKey:keys.firstObject];
+                    FSBaseDataInstance.userInfoForm.customer_photo = [dict valueForKey:keys.firstObject];
                     [weakSelf.myTableView reloadData];
+                    [[NSNotificationCenter defaultCenter]postNotificationName:kCZJNotifiUpdateHead object:nil];
                 } fail:^{
                     
                 }];
@@ -192,9 +194,11 @@ UITableViewDataSource
                 case 0:
                     sexual = @"女";
                     break;
+                    
                 case 1:
                     sexual = @"男";
                     break;
+                    
                 case 2:
                     sexual = @"保密";
                     break;

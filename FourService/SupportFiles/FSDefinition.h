@@ -54,6 +54,8 @@ static NSString *const kFSServerAPIProductEvaluate = @"Service/productCommentLis
 static NSString *const kFSServerAPICommitOrder = @"Service/bookOrder";                          //提交订单
 static NSString *const kFSServerAPIUploadImage = @"Service/uploadImage";                        //上传图片
 static NSString *const kFSServerAPIOrderEvaluate = @"Service/orderComment";                     //订单评价
+static NSString *const kFSServerAPIFeedback = @"Service/feedback";                              //意见反馈
+static NSString *const kFSServerAPIFixFback = @"Service/maintenance";                           //维修反馈
 
 
 
@@ -184,6 +186,7 @@ static NSString *const kCZJNotifiRefreshMessageReadStatus = @"refreshMessageRead
 static NSString *const kCZJNotifiGetNewNotify = @"getNewNotify";                                //新消息通知
 static NSString *const kCZJNotifiLoginSuccess = @"loginSuccess";                                //登录成功
 static NSString *const kCZJNotifiLoginOut = @"loginout";                                        //退出登录
+static NSString *const kCZJNotifiUpdateHead = @"UpdateHead";                                        //退出登录
 static NSString *const kCZJNotifiNotCurrentCity = @"notCurrentcity";                            //切换城市
 static NSString *const kFSNotifiShowAlertView = @"showAlertView";
 static NSString *const kFSNotifiSendEvent = @"sendEvent";

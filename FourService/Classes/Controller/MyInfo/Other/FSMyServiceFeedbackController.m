@@ -8,6 +8,7 @@
 
 #import "FSMyServiceFeedbackController.h"
 #import "CPAddEvaluationPhotoVCell.h"
+#import "FSBaseDataManager.h"
 
 @interface FSMyServiceFeedbackController ()<UITextViewDelegate,UITextFieldDelegate, CPAddEvaluatePhotoDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *contentTextView;
@@ -63,9 +64,9 @@
     if (self.fromType == FSFeedbackFromTypeFix)
     {
         self.photoView.sd_layout
-        .leftSpaceToView(self.view, 15)
+        .leftSpaceToView(self.view, 0)
         .topSpaceToView(self.contactTextField, 15)
-        .rightSpaceToView(self.view, 15)
+        .rightSpaceToView(self.view, 0)
         .heightIs(80);
     }
 }
@@ -75,7 +76,7 @@
     if (!_photoView) {
         _photoView = [PUtils getXibViewByName:@"CPAddEvaluationPhotoVCell"];
         _photoView.delegate = self;
-        _photoView.backgroundColor = WHITECOLOR;
+        _photoView.backgroundColor = CLEARCOLOR;
         [self.view addSubview:_photoView];
     }
     return _photoView;
@@ -88,12 +89,60 @@
 - (IBAction)commitAction:(id)sender
 {
     MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.completionBlock = ^{
-        [PUtils tipWithText:@"感谢反馈" withCompeletHandler:^{
-            [self.navigationController popViewControllerAnimated:YES];
-        }];
-    };
-    [hud hide:YES afterDelay:1.5];
+    switch (self.fromType) {
+        case FSFeedbackFromTypeGeneral:
+        {
+            NSDictionary *params = @{@"image_list" : self.photoPicArray,
+                                     @"feedback_type" : @"1",
+                                     @"content" : @"'"};
+            [FSBaseDataInstance feedBack:params success:^(id json) {
+                hud.completionBlock = ^{
+                    [PUtils tipWithText:@"感谢反馈" withCompeletHandler:^{
+                        [self.navigationController popViewControllerAnimated:YES];
+                    }];
+                };
+                [hud hide:YES afterDelay:0];
+                
+            } fail:^(){
+                hud.completionBlock = ^{
+                    [PUtils tipWithText:@"反馈失败" withCompeletHandler:^{
+                        [self.navigationController popViewControllerAnimated:YES];
+                    }];
+                };
+                [hud hide:YES afterDelay:0];
+            }];
+        }
+            break;
+            
+        case FSFeedbackFromTypeFix:
+        {
+            NSDictionary *params = @{@"image_list" : self.photoPicArray,
+                                     @"shop_id" : @"1",
+                                     @"content" : @"'"};
+            [FSBaseDataInstance maintainceFeedback:params success:^(id json) {
+                hud.completionBlock = ^{
+                    [PUtils tipWithText:@"感谢反馈" withCompeletHandler:^{
+                        [self.navigationController popViewControllerAnimated:YES];
+                    }];
+                };
+                [hud hide:YES afterDelay:0];
+                
+            } fail:^(){
+                hud.completionBlock = ^{
+                    [PUtils tipWithText:@"反馈失败" withCompeletHandler:^{
+                        [self.navigationController popViewControllerAnimated:YES];
+                    }];
+                };
+                [hud hide:YES afterDelay:0];
+            }];
+        }
+            break;
+            
+        default:
+            break;
+    }
+
+    
 }
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
@@ -127,7 +176,7 @@
 
 - (void)updatePhotoView
 {
-    [self.photoView setSize_sd:CGSizeMake(PJ_SCREEN_WIDTH - 30, 1 + self.photoPicArray.count/4 * 80)];
+    [self.photoView setSize_sd:CGSizeMake(PJ_SCREEN_WIDTH, (1 + self.photoPicArray.count/Divide) * 90)];
     [self.photoView setPicAry:self.photoPicArray];
 }
 @end
