@@ -24,7 +24,7 @@
 #define SHAREBUTTON_INTERVAL_HEIGHT             35
 
 //分享按钮标题
-#define SHARETITLE_WIDTH                        70
+#define SHARETITLE_WIDTH                        80
 #define SHARETITLE_HEIGHT                       20
 #define SHARETITLE_INTERVAL_WIDTH               (PJ_SCREEN_WIDTH - SHARETITLE_WIDTH * 3)/4.0f
 #define SHARETITLE_INTERVAL_HEIGHT              SHAREBUTTON_WIDTH+SHAREBUTTON_INTERVAL_HEIGHT
@@ -123,17 +123,8 @@
 
 - (void)showInView:(UIView *)view
 {
-//    UIViewController *appRootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
-//    UIViewController *topVC = appRootVC;
-//    while (topVC.presentedViewController) {
-//        topVC = topVC.presentedViewController;
-//    }
-    
-    
     AppDelegate* mydelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     [mydelegate.window addSubview:self];
-//    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-//    [window addSubview:self];
 }
 
 #pragma mark - Praviate method

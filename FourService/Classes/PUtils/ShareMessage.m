@@ -51,7 +51,11 @@
     [lxActivity showInView:pView];
 }
 
--(void)showPanel:(UIView*)pView Type:(int)type WithTitle:(NSString*)title AndBody:(NSString*)body{
+-(void)showPanel:(UIView*)pView
+            Type:(int)type
+       WithTitle:(NSString*)title
+         AndBody:(NSString*)body
+{
     NSData* image = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"share_icon" ofType:@"png"]];
     [self showPanel:pView
                type:type

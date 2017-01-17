@@ -521,6 +521,7 @@
 		ECF4E5191E2B9DC0004BD4B3 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = ECF4E4F71E2B9DC0004BD4B3 /* README.md */; };
 		ECF4E5201E2BA653004BD4B3 /* UITableView+SDAutoTableViewCellHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF4E51D1E2BA653004BD4B3 /* UITableView+SDAutoTableViewCellHeight.m */; };
 		ECF4E5211E2BA653004BD4B3 /* UIView+SDAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF4E51F1E2BA653004BD4B3 /* UIView+SDAutoLayout.m */; };
+		ECFFD0E01E2E0E26001266B4 /* share_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = ECFFD0DF1E2E0E26001266B4 /* share_icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1470,6 +1471,7 @@
 		ECF4E51D1E2BA653004BD4B3 /* UITableView+SDAutoTableViewCellHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+SDAutoTableViewCellHeight.m"; sourceTree = "<group>"; };
 		ECF4E51E1E2BA653004BD4B3 /* UIView+SDAutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDAutoLayout.h"; sourceTree = "<group>"; };
 		ECF4E51F1E2BA653004BD4B3 /* UIView+SDAutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDAutoLayout.m"; sourceTree = "<group>"; };
+		ECFFD0DF1E2E0E26001266B4 /* share_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share_icon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3118,6 +3120,7 @@
 		EC7760D91D2223D500E1A89F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				ECFFD0DF1E2E0E26001266B4 /* share_icon.png */,
 				EC57A2BF1D8BD990006DDA7F /* PaymentType.plist */,
 				EC2AC6891D4A4EDF0065D67C /* Province.plist */,
 				ECEFBA851D2616A3000460A5 /* FSDefinition.h */,
@@ -3546,7 +3549,7 @@
 				TargetAttributes = {
 					EC7760D51D2223D500E1A89F = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = UG6PG8B3H6;
+						DevelopmentTeam = 4H7VQ8HPF3;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -3642,6 +3645,7 @@
 				EC54299F1D237E7700F3B4BF /* wl_map_icon_5@2x.png in Resources */,
 				EC5427881D237DE000F3B4BF /* LoadingFailedAlertView.xib in Resources */,
 				EC57A2B71D8B7111006DDA7F /* FSOrderContactCell.xib in Resources */,
+				ECFFD0E01E2E0E26001266B4 /* share_icon.png in Resources */,
 				EC474B3B1D5EFCAB00B54B0F /* FSMyinfoButtomView.xib in Resources */,
 				ECF4E50A1E2B9DC0004BD4B3 /* ZLPhotoBrowser.bundle in Resources */,
 				EC7441EA1DF5B5F5000AC710 /* FSChangeTireCell.xib in Resources */,
@@ -4168,7 +4172,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = UG6PG8B3H6;
+				DEVELOPMENT_TEAM = 4H7VQ8HPF3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4211,7 +4215,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = UG6PG8B3H6;
+				DEVELOPMENT_TEAM = 4H7VQ8HPF3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

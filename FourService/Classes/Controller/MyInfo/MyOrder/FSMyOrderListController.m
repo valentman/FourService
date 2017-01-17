@@ -118,7 +118,11 @@ CZJOrderListCellDelegate
     [PUtils removeNoDataAlertViewFromTarget:self.view];
     [PUtils removeReloadAlertViewFromTarget:self.view];
     [_params setValue:@(self.page) forKey:@"page_num"];
-    [_params setValue:@(self.orderType) forKey:@"order_status"];
+    if (self.orderType != FSOrderListTypeAll)
+    {
+        [_params setValue:@(self.orderType) forKey:@"order_status"];
+    }
+    
     
     [FSBaseDataInstance getOrderList:_params Success:^(id json) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:NO];

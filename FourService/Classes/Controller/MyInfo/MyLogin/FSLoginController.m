@@ -76,6 +76,8 @@ FDAlertViewDelegate
     self.navigationController.toolbar.translucent = NO;
     self.navigationController.navigationBar.shadowImage =[UIImage imageNamed:@"nav_bargound"];
     [self.navigationController setNavigationBarHidden:YES];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(textDidChanged:) name:UITextFieldTextDidChangeNotification object:nil];
 }
 
 - (void)initViewButtons
@@ -194,13 +196,13 @@ FDAlertViewDelegate
 - (IBAction)getCodeAction:(id)sender
 {
     //输入内容校验（是不是手机号，以及有没有输入文字）
-//    if (!self.phoneNumTextField.text ||
-//        ![PUtils isPhoneNumber:self.phoneNumTextField.text] ||
-//        [self.phoneNumTextField.text isEqualToString:@""])
-//    {
-//        [PUtils tipWithText:@"请输入正确手机号码!" onView:self.view];
-//        return;
-//    }
+    if (!self.phoneNumTextField.text ||
+        ![PUtils isPhoneNumber:self.phoneNumTextField.text] ||
+        [self.phoneNumTextField.text isEqualToString:@""])
+    {
+        [PUtils tipWithText:@"请输入正确手机号码!" onView:self.view];
+        return;
+    }
     
     if (self.getCodeBtn.enabled)
     {
@@ -248,7 +250,7 @@ FDAlertViewDelegate
 //                                                fail:^(){}];
         
         //临时的图片验证码
-        [self.imageCode sd_setImageWithURL:[NSURL URLWithString:kFSServerAPIVerifyCode] placeholderImage:nil options:SDWebImageRefreshCached completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        [self.imageCode sd_setImageWithURL:[NSURL URLWithString:ConnectString(kCZJServerAddr, kFSServerAPIVerifyCode) ] placeholderImage:nil options:SDWebImageRefreshCached completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             [self.getCodeBtn setEnabled:NO];
             [self.getCodeBtn setHidden:YES];
         }];
@@ -466,8 +468,10 @@ FDAlertViewDelegate
     return YES;
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField
+
+- (void)textDidChanged:(NSNotification *)notify
 {
+    UITextField *textField = notify.object;
     switch (textField.tag) {
         case kPhoneNum:
             if (textField.text.length == 0) {
@@ -479,7 +483,7 @@ FDAlertViewDelegate
             if (textField.text.length == 0) {
                 [self.pwdPrompt setHidden:NO];
                 self.confirmBtn.enabled = NO;
-                [self.confirmBtn setBackgroundColor:GRAYCOLOR];
+                [self.confirmBtn setBackgroundColor:LIGHTGRAYCOLOR];
             }
             if (textField.text.length > 0 && self.phoneNumTextField.text.length == 11)
             {
@@ -493,13 +497,13 @@ FDAlertViewDelegate
             if (textField.text.length == 0) {
                 [self.codePrompt setHidden:NO];
             }
-            else if (textField.text.length > 0 && textField.text.length < 6)
+            else if (textField.text.length > 0 && textField.text.length < 4)
             {
                 [self.codePrompt setHidden:YES];
                 self.confirmBtn.enabled = NO;
-                [self.confirmBtn setBackgroundColor:GRAYCOLOR];
+                [self.confirmBtn setBackgroundColor:LIGHTGRAYCOLOR];
             }
-            else if (textField.text.length == 6 && self.phoneNumTextField.text.length == 11)
+            else if (textField.text.length == 4 && self.phoneNumTextField.text.length == 11)
             {
                 [self.codePrompt setHidden:YES];
                 self.confirmBtn.enabled = YES;

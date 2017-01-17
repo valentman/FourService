@@ -575,11 +575,9 @@ FSProductChangeDelegate
             if ([PUtils isLoginIn:self andNaviBar:nil])
             {
                 [[ShareMessage shareMessage] showPanel:self.view
-                                                  type:1
-                                                 title:@"分享测试"
-                                                  body:@"分享测试"
-                                                  link:@"www.baidu.com"
-                                                 image:nil];
+                                                  Type:1
+                                             WithTitle:@"分享测试"
+                                               AndBody:@"分享测试"];
             }
         }
             break;

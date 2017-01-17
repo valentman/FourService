@@ -144,10 +144,10 @@ typedef NS_ENUM(NSInteger, CZJOrderDetailType)
 //订单列表界面类型（所有订单、待付款、服务中、待评价、已评价）
 typedef NS_ENUM(NSInteger, FSOrderListType)
 {
-    FSOrderListTypeAll = 0,
-    FSOrderListTypeNoPay,
-    FSOrderListTypeInService,
-    FSOrderListTypeNoComment
+    FSOrderListTypeAll = 10,
+    FSOrderListTypeNoPay = 0,
+    FSOrderListTypeInService = 1,
+    FSOrderListTypeNoComment = 2
 };
 
 typedef NS_ENUM(NSInteger, AFRequestType)

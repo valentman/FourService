@@ -92,7 +92,7 @@ FDAlertViewDelegate
 - (void)initViews
 {
     //顶部步骤按钮颜色
-    [self setStageButtonColor:RegistStageTypeSetPwd];
+    [self setStageButtonColor:RegistStageTypeVerifyCode];
     
     self.phoneNumTextField.delegate = self;
     self.pwdTextField.delegate = self;
@@ -145,43 +145,43 @@ FDAlertViewDelegate
     
     if (self.getCodeBtn.enabled)
     {
-//        GeneralBlockHandler successblock = ^(){
-//            [self.getCodeBtn setEnabled:NO];
-//            [self.getCodeBtn setHidden:YES];
-//            [self.daojishiLab setHidden:NO];
-//            
-//            [self.codeTextField becomeFirstResponder];
-//            
-//            __block int timeout=119; //倒计时时间
-//            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-//            __block dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0,queue);
-//            dispatch_source_set_timer(timer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0); //每秒执行
-//            dispatch_source_set_event_handler(timer, ^{
-//                if(timeout<=0){ //倒计时结束，关闭
-//                    dispatch_source_cancel(timer);
-//                    timer = nil;
-//                    dispatch_async(dispatch_get_main_queue(), ^{
-//                        //设置界面的按钮显示 根据自己需求设置
-//                        [self.getCodeBtn setEnabled:YES];
-//                        [self.getCodeBtn setHidden:NO];
-//                        [self.daojishiLab setHidden:YES];
-//                        [self.getCodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
-//                    });
-//                }else{
-//                    int seconds = timeout % 120;
-//                    NSString *strTime = [NSString stringWithFormat:@"重新发送(%d)", seconds];
-//                    dispatch_async(dispatch_get_main_queue(), ^{
-//                        //设置界面的按钮显示 根据自己需求设置
-//                        [self.getCodeBtn setEnabled:NO];
-//                        [self.getCodeBtn setHidden:YES];
-//                        [self.daojishiLab setHidden:NO];
-//                        [self.daojishiLab setText:strTime];
-//                    });
-//                    timeout--;
-//                }
-//            });
-//            dispatch_resume(timer);
-//        };
+        GeneralBlockHandler successblock = ^(){
+            [self.getCodeBtn setEnabled:NO];
+            [self.getCodeBtn setHidden:YES];
+            [self.daojishiLab setHidden:NO];
+            
+            [self.codeTextField becomeFirstResponder];
+            
+            __block int timeout=119; //倒计时时间
+            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+            __block dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0,queue);
+            dispatch_source_set_timer(timer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0); //每秒执行
+            dispatch_source_set_event_handler(timer, ^{
+                if(timeout<=0){ //倒计时结束，关闭
+                    dispatch_source_cancel(timer);
+                    timer = nil;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        //设置界面的按钮显示 根据自己需求设置
+                        [self.getCodeBtn setEnabled:YES];
+                        [self.getCodeBtn setHidden:NO];
+                        [self.daojishiLab setHidden:YES];
+                        [self.getCodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+                    });
+                }else{
+                    int seconds = timeout % 120;
+                    NSString *strTime = [NSString stringWithFormat:@"重新发送(%d)", seconds];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        //设置界面的按钮显示 根据自己需求设置
+                        [self.getCodeBtn setEnabled:NO];
+                        [self.getCodeBtn setHidden:YES];
+                        [self.daojishiLab setHidden:NO];
+                        [self.daojishiLab setText:strTime];
+                    });
+                    timeout--;
+                }
+            });
+            dispatch_resume(timer);
+        };
         
         //临时用图片验证码代替
         [self.imageCode sd_setImageWithURL:[NSURL URLWithString:ConnectString(kCZJServerAddr, kFSServerAPIVerifyCode) ] placeholderImage:nil options:SDWebImageRefreshCached completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
