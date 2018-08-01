@@ -743,6 +743,7 @@ void tapToHidePopViewAction(id sender, SEL _cmd)
 
 + (BOOL)isLoginIn:(PBaseViewController*)target andNaviBar:(PBaseNaviagtionBarView*)naviBar
 {
+    return YES;
     if ([USER_DEFAULT boolForKey:kCZJIsUserHaveLogined])
     {
         return YES;

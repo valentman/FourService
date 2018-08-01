@@ -1596,7 +1596,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="OUb-25-75R"/>
                                 </constraints>
-                                <color key="textColor" red="0.50588238240000005" green="0.50588238240000005" blue="0.50588238240000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -1620,7 +1619,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="hnt-zL-Cpg"/>
                                 </constraints>
-                                <color key="textColor" red="0.50588238240000005" green="0.50588238240000005" blue="0.50588238240000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>

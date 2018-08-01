@@ -33,6 +33,7 @@
     switch (self.fromType) {
         case FSFeedbackFromTypeFix:
             title = @"维修报修";
+            self.promptLabel.text = @"请将您所遇到的问题详细填写提交，并可通过下面图片添加按钮进行添加相关图片更直观反映问题，我们会尽快安排工作人员同你联系。谢谢。";
             break;
             
         case FSFeedbackFromTypeGeneral:
